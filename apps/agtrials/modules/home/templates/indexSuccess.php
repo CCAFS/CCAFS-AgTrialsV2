@@ -6,7 +6,7 @@
                 Search Trials
             </div>
             <span class="HomeButtonText">
-                Text
+                Text AgTrials Test
             </span>
         </div>
         <div class="HomeButton" style="margin-left: 20px;"> 
