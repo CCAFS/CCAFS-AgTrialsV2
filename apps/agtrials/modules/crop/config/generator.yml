@@ -1,0 +1,45 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           TbCrop
+    theme:                 bootstrap
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          tb_crop
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+          id_crop:                     {label: Id} 
+          crpname:                     {label: Name} 
+          crpscientificname:           {label: Scientific name} 
+        
+      list:
+        title:          Crop list
+        max_per_page:   10
+        display:        [id_crop, crpname, crpscientificname]
+        fields:
+          id_crop:                     {label: Id} 
+          crpname:                     {label: Name} 
+          crpscientificname:           {label: Scientific name} 
+
+        object_actions:
+          _edit:        ~
+        batch_actions:  {}
+      #Configuracion para Filtro Registros
+      filter:  ~
+
+      #Configuracion para Formulario Registro
+      form:    ~
+
+      #Configuracion para Edicion Registro
+      edit:
+        title:          Edit crop
+
+      #Configuracion para Nuevo Registro
+      new:
+        title:          New crop

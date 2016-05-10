@@ -1,0 +1,316 @@
+tb_triallocation:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                TbTriallocation
+    module:               triallocation
+    prefix_path:          /triallocation
+    column:               id_triallocation
+    with_wildcard_routes: true
+
+tb_administrativedivision:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                TbAdministrativedivision
+    module:               administrativedivision
+    prefix_path:          /administrativedivision
+    column:               id_administrativedivision
+    with_wildcard_routes: true
+
+tb_variety:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                TbVariety
+    module:               variety
+    prefix_path:          /variety
+    column:               id_variety
+    with_wildcard_routes: true
+
+tb_variablesmeasured:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                TbVariablesmeasured
+    module:               variablesmeasured
+    prefix_path:          /variablesmeasured
+    column:               id_variablesmeasured
+    with_wildcard_routes: true
+
+tb_traitclass:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                TbTraitclass
+    module:               traitclass
+    prefix_path:          /traitclass
+    column:               id_traitclass
+    with_wildcard_routes: true
+
+tb_rolecontactperson:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                TbRolecontactperson
+    module:               rolecontactperson
+    prefix_path:          /rolecontactperson
+    column:               id_rolecontactperson
+    with_wildcard_routes: true
+
+tb_project:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                TbProject
+    module:               project
+    prefix_path:          /project
+    column:               id_project
+    with_wildcard_routes: true
+
+tb_institution:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                TbInstitution
+    module:               institution
+    prefix_path:          /institution
+    column:               id_institution
+    with_wildcard_routes: true
+
+tb_experimentaldesign:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                TbExperimentaldesign
+    module:               experimentaldesign
+    prefix_path:          /experimentaldesign
+    column:               id_experimentaldesign
+    with_wildcard_routes: true
+
+tb_donor:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                TbDonor
+    module:               donor
+    prefix_path:          /donor
+    column:               id_donor
+    with_wildcard_routes: true
+
+tb_crop:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                TbCrop
+    module:               crop
+    prefix_path:          /crop
+    column:               id_crop
+    with_wildcard_routes: true
+
+tb_contactperson:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                TbContactperson
+    module:               contactperson
+    prefix_path:          /contactperson
+    column:               id_contactperson
+    with_wildcard_routes: true
+
+tb_trial:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                TbTrial
+    module:               trial
+    prefix_path:          /trial
+    column:               id_trial
+    with_wildcard_routes: true
+    
+sf_guard_signin:
+  url:   /login
+  param: { module: sfGuardAuth, action: signin }
+
+sf_guard_signout:
+  url:   /logout
+  param: { module: sfGuardAuth, action: signout }
+
+sf_guard_password:
+  url:   /request_password
+  param: { module: sfGuardAuth, action: password }
+
+forgotpassword:
+  url:   /forgotpassword
+  param: { module: sfGuardAuth, action: forgotpassword }
+  
+changepassword:
+  url:   /changepassword/*
+  param: { module: sfGuardUser, action: changepassword }
+
+user:
+  url:   /user/*
+  param: { module: sfGuardUser, action: user }
+
+autousers:
+  url:   /autousers/*
+  param: { module: sfGuardUser, action: autousers }
+  
+autogroups:
+  url:   /autogroups/*
+  param: { module: sfGuardUser, action: autogroups }
+
+  
+#ENRRUTAMIENTO TRIAL
+
+DownloadFileTrial:
+  url:   /DownloadFileTrial/*
+  param: { module: trial, action: DownloadFileTrial }
+  
+DownloadDataTemplate:
+  url:   /DownloadDataTemplate/*
+  param: { module: trial, action: DownloadDataTemplate }
+  
+batchuploadtrials:   
+  url:   /batchuploadtrials/*
+  param: { module: trial, action: batchuploadtrials }
+  
+UploadTemplates:   
+  url:   /UploadTemplates/*
+  param: { module: trial, action: UploadTemplates }
+  
+searchtrials:   
+  url:   /searchtrials/*
+  param: { module: trial, action: searchtrials }
+  
+
+  
+  
+#INICIO: ENRRUTAMIENTO Batch Upload Project / Trial Groups
+batchuploadproject:
+  url:   /batchuploadproject/*
+  param: { module: project, action: batchuploadproject }
+
+downloadestrutureproject:
+  url:   /downloadestrutureproject/*
+  param: { module: project, action: downloadestrutureproject }
+  
+#INICIO: ENRRUTAMIENTO Batch Upload Trial location
+batchuploadtriallocation:
+  url:   /batchuploadtriallocation/*
+  param: { module: triallocation, action: batchuploadtriallocation }
+
+downloadestruturetriallocation:
+  url:   /downloadestruturetriallocation/*
+  param: { module: triallocation, action: downloadestruturetriallocation }
+  
+checktriallocation:
+  url:   /checktriallocation/*
+  param: { module: triallocation, action: checktriallocation }
+  
+viewtriallocation:
+  url:   /viewtriallocation/*
+  param: { module: triallocation, action: viewtriallocation }
+  
+checkbatchtriallocation:
+  url:   /checkbatchtriallocation/*
+  param: { module: triallocation, action: checkbatchtriallocation }
+  
+downloadcheckbatchtriallocation:
+  url:   /downloadcheckbatchtriallocation/*
+  param: { module: triallocation, action: downloadcheckbatchtriallocation }
+  
+downloadresultcheckbatchtriallocation:
+  url:   /downloadresultcheckbatchtriallocation/*
+  param: { module: triallocation, action: downloadresultcheckbatchtriallocation }
+  
+  
+  
+#INICIO: ENRRUTAMIENTO Batch Upload Variables measured
+batchuploadvariablesmeasured:
+  url:   /batchuploadvariablesmeasured/*
+  param: { module: variablesmeasured, action: batchuploadvariablesmeasured }
+
+downloadestruturevariablesmeasured:
+  url:   /downloadestruturevariablesmeasured/*
+  param: { module: variablesmeasured, action: downloadestruturevariablesmeasured }
+  
+checkvariablesmeasured:
+  url:   /checkvariablesmeasured/*
+  param: { module: variablesmeasured, action: checkvariablesmeasured }
+  
+checkbatchvariablesmeasured:
+  url:   /checkbatchvariablesmeasured/*
+  param: { module: variablesmeasured, action: checkbatchvariablesmeasured }
+    
+checkbatchvariablesmeasured:
+  url:   /checkbatchvariablesmeasured/*
+  param: { module: variablesmeasured, action: checkbatchvariablesmeasured }
+  
+downloadcheckbatchvariablesmeasured:
+  url:   /downloadcheckbatchvariablesmeasured/*
+  param: { module: variablesmeasured, action: downloadcheckbatchvariablesmeasured }
+  
+downloadresultcheckbatchvariablesmeasured:
+  url:   /downloadresultcheckbatchvariablesmeasured/*
+  param: { module: variablesmeasured, action: downloadresultcheckbatchvariablesmeasured }  
+  
+  
+  
+  
+#INICIO: ENRRUTAMIENTO Batch Upload Variety
+batchuploadvariety:
+  url:   /batchuploadvariety/*
+  param: { module: variety, action: batchuploadvariety }
+
+downloadestruturevariety:
+  url:   /downloadestruturevariety/*
+  param: { module: variety, action: downloadestruturevariety }
+  
+checkvariety:
+  url:   /checkvariety/*
+  param: { module: variety, action: checkvariety }
+  
+checkbatchvariety:
+  url:   /checkbatchvariety/*
+  param: { module: variety, action: checkbatchvariety }
+  
+checkbatchvariety:
+  url:   /checkbatchvariety/*
+  param: { module: variety, action: checkbatchvariety }
+  
+downloadcheckbatchvariety:
+  url:   /downloadcheckbatchvariety/*
+  param: { module: variety, action: downloadcheckbatchvariety }
+  
+downloadresultcheckbatchvariety:
+  url:   /downloadresultcheckbatchvariety/*
+  param: { module: variety, action: downloadresultcheckbatchvariety }    
+  
+  
+#modulo Home
+about:
+  url:   /about/*
+  param: { module: home, action: about }
+  
+statistics:
+  url:   /statistics/*
+  param: { module: home, action: statistics }
+  
+contact:
+  url:   /contact/*
+  param: { module: home, action: contact }
+
+register:
+  url:   /register/*
+  param: { module: home, action: register }
+  
+# default rules
+
+homepage:
+  url:   /
+  param: { module: home, action: index }
+
+default_symfony:
+  url:   /symfony/:action/*
+  param: { module: default }
+
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   :module/:action/*
+
+
+
+
+
+

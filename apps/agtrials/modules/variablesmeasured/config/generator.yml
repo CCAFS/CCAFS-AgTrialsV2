@@ -1,0 +1,52 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           TbVariablesmeasured
+    theme:                 bootstrap
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          tb_variablesmeasured
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+          id_variablesmeasured:            {label: Id} 
+          id_crop:                         {label: Crop} 
+          id_traitclass:                   {label: Trait class} 
+          vrmsname:                        {label: Name} 
+          vrmsshortname:                   {label: Short name} 
+          vrmsdefinition:                  {label: Definition} 
+          vrmnmethod:                      {label: Method} 
+          vrmsunit:                        {label: Unit} 
+        
+      list:
+        title:          Variables measured list
+        max_per_page:   10
+        display:        [id_variablesmeasured, _crop, _traitclass, vrmsname]
+        fields:
+          id_variablesmeasured:            {label: Id} 
+          _crop:                           {label: Crop} 
+          _traitclass:                     {label: Trait class} 
+          vrmsname:                        {label: Name} 
+         
+
+        object_actions:
+          _edit:        ~
+        batch_actions:  {}
+      #Configuracion para Filtro Registros
+      filter:  ~
+
+      #Configuracion para Formulario Registro
+      form:    ~
+
+      #Configuracion para Edicion Registro
+      edit:
+        title:          Edit Variables measured
+
+      #Configuracion para Nuevo Registro
+      new:
+        title:          New Variables measured

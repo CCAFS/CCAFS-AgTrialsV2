@@ -1,0 +1,19 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/13-View
+
+default:
+  http_metas:
+    content-type: text/html
+    
+  metas:
+    title:        The Global Agricultural Trial Repository - CGIAR - CCAFS - CIAT
+    description:  The Global Agricultural Trial Repository  
+    keywords:     Trial, Site, Bibliography, CGIAR, CCAFS, CIAT, Crop, Technology, Variety/Race, Variables measured
+    language:     en
+    robots:       index, follow
+
+  stylesheets:    [/bootstrapAdminThemePlugin/css/bootstrap.min.css,/jquery-ui-1.11.4/jquery-ui.min.css,/jquery.alerts/jquery.alerts.css,bootstrap-personalized.css,main.css]
+  javascripts:    [/js/jquery-ui-1.11.3/jquery-1.11.3.min.js,/bootstrapAdminThemePlugin/js/bootstrap.min.js,/jquery.alerts/jquery-1.4.2.min.js,/jquery.alerts/jquery.alerts.mod.js,functions.js,modulesvalidate.js]
+
+  has_layout:     true
+  layout:         layout

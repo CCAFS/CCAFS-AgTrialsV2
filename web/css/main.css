@@ -1,0 +1,581 @@
+/* inicio: ESTILOS NUEVOS AGTRIALS V2*/
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #595959;
+}
+
+.Session{
+    background: #EEEEEE none repeat scroll 0 0;
+    border-radius: 3px;
+}
+
+.Menu1 {
+    background: #27AE60 none repeat scroll 0 0;
+}
+
+.MenuTrials{
+    background: #EEEEEE none repeat scroll 0 0;
+    border-radius: 3px;
+    width: 200px;
+    height:162px;
+    border-top-width: 0px; top: 47px;
+}
+
+.MenuTrialsButton{
+    font-size:14px;
+    font-weight: lighter;
+    border-radius: 5px;
+    float: left;
+    width: 170px;
+    height: 40px;
+    padding-top: 8px;
+    margin-top: 10px;
+    text-align: center;
+    cursor: pointer;
+    background: #FFF;
+}
+
+.MenuTrialsButtonSelected{
+    font-size:16px;
+    color: #2A9A60;
+    font-weight: lighter;
+    border-radius: 5px;
+    float: left;
+    width: 170px;
+    height: 40px;
+    padding-top: 8px;
+    margin-top: 10px;
+    text-align: center;
+    cursor: pointer;
+    background: #FFF;
+}
+
+footer {
+    background: #e0e0e0 none repeat scroll 0 0;
+}
+.FooterContainer {
+    color: #5a5a5a;
+    padding: 10px 30px;
+}
+.FooterPartners {
+    background: #FFFFFF;
+    padding: 10px 30px;
+}
+
+.page-header{
+    height: 45px;
+}
+
+.TotalResults{
+    color: #777777;
+    font-size:18px;
+}
+
+.navbar{
+    margin-bottom: 5px;
+}
+
+
+.TableModule {
+    border-collapse: separate;
+    border-spacing:  10px !important;
+    padding-left: 5px;
+}
+
+.Title{
+    font-size: 18px;
+    font-weight: normal;
+    margin-bottom: 5px !important;
+    padding-left: 10px;
+    color: #595959;
+}
+
+.Title0{
+    margin-bottom: 5px !important;
+}
+
+.sf_admin_form{
+
+}
+
+.Title1{
+    font-size: 14px;
+    font-weight:bold;
+    padding-left: 12px;
+}
+
+.Line{
+    background-color: #595959;
+    height: 3px; 
+    border: 0px;
+}
+
+.LineModule{
+    background-color: #595959;
+    height: 2px; 
+    border: 0px;
+    margin-left: 13px;
+    margin-right: 13px;
+    margin-top: 0px;
+}
+
+.LogoAgTrias{
+    color: #27AE60;
+    font-size:60px;
+    float: left;
+    width: 20%;
+    height: 100px;
+
+}
+
+.LogoNombre{
+    color: #7f8c8d;;
+    font-size:20px;
+    float: left;
+    width: 25%;
+    height: 100px;
+    position: relative;
+    top: 20px;
+}
+
+.LogoCCAFS{
+    float: right;
+    width: 40%;
+    height: 100px;
+    text-align:right;
+}
+
+.MenuPPl{}
+
+.MenuPPlOpc{
+    font-size:20px;
+    Background : #27ae60;
+    Color: #fff;
+    font-weight: normal;
+    float: left;
+    width: 120px;
+    height: 50px;
+    position: relative;
+    padding-top: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.MenuPPlOpcUser{
+    color: #FFF;
+    font-size:16px;
+    float: right;
+    width: 200px;
+    height: 50px;
+    position: relative;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.HomePart1{
+    position: static;
+    background: #ecf0f1 none repeat scroll 0 0;
+    height: 100px;
+    margin-left: 0px; 
+    margin-right: 0px;
+}
+.HomePart2{
+    height: 300px;
+}
+
+.HomeButtons{
+    width: 800px;
+    padding-top: 12px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.HomeButton{
+    font-size:16px;
+    color: #16a085;
+    font-weight: lighter;
+    border-radius: 5px;
+    float: left;
+    width: 250px;
+    height: 40px;
+    padding-top: 8px;
+    text-align: center;
+    cursor: pointer;
+    background: #FFF;
+}
+
+.HomeButtonText{
+    font-size:14px;
+    Color: #7f8c8d;
+    font-weight: lighter;
+    font-style: italic;
+}
+
+.HomePart2{
+    height: 250px;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.HomePart2Div{
+    float: left;
+    width: 500px;
+    height: 250px;
+    padding-top: 25px;
+    text-align: center;
+}
+
+.HomePart2Map{
+    float: right;
+    width: 500px;
+    height: 250px;
+    padding-top: 25px;
+    text-align: right;
+}
+
+.HomeTit{
+    color: #34495e;
+    font-size:28px;
+    font-style: italic;
+}
+
+.WhatAgTrialsTex{
+    font-size:14px;
+    color: #777777;
+    text-decoration: none;
+    text-align: justify;
+}
+
+.HomePart3{
+    background: #ecf0f1 none repeat scroll 0 0;
+    padding-bottom: 25px;
+    margin-left: 0px; 
+    margin-right: 0px;
+}
+
+.HomePart31 {
+    width: 850px;
+    padding-top: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.HomeBoxs{
+    text-align: center;
+    padding-top: 12px;
+}
+
+.HomeBox{
+    color: #FFF;
+    font-size:14px;
+    float: left;
+    width: 250px;
+    height: 80px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    cursor: pointer;
+    background: #2C3E50;
+    border-radius: 1px;
+}
+
+.HomePart4{
+    padding-top: 15px;
+    height: 250px;
+    margin-left: 0px; 
+    margin-right: 0px;
+}
+
+.HomePart41 {
+    width: 915px;
+    padding-top: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.LatestTrials{
+    color: #777777;
+    font-size:14px;
+    float: left;
+    width: 450px;
+    height: 70px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    cursor: pointer;
+    background: #ECF0F1;
+    border-radius: 1px;
+}
+
+.NameTrial{
+    color: #556363;
+    text-align: left;
+    font-size:14px;
+    font-weight: bold;
+}
+
+.DateLocationTrial{
+    Color: #7f8c8d;
+    font-weight: lighter;
+    font-style: italic;
+    text-align: left;
+}
+
+.IconTrial{
+    margin-left: 420px;
+    position: absolute;
+    text-align: right;
+}
+
+/*   About   */
+.AboutTextoTit{
+    color: #595959;
+    font-size:14px;
+    font-weight: bold;
+    text-align: left;
+    padding-top: 15px; 
+    margin-left: 15px;
+}
+
+.AboutTextoGrl{
+    color: #595959;
+    font-size:14px;
+    text-align: left;
+    margin-left: 15px;
+}
+
+.AboutLine{
+    background-color: #595959;
+    height: 2px; 
+    border: 0px;
+    margin-top: 3px;
+    margin-bottom: 10px;
+}
+
+
+.DivName{
+    vertical-align:middle;
+    text-align: center; 
+
+}
+
+.DivNotice{
+    padding: 10px;
+    font-size: 13px;
+    color: red;
+    font-weight:bold;
+}
+
+.BotonAcciones{
+    height: 50px;
+    padding: .5em;
+    bottom: 20px;
+    position: fixed;
+    z-index: 99;
+    font-size: 13px;
+    text-align: left;
+}
+
+
+.MenuTrial {
+    background-color: #EEEEEE;
+    border-left: 0px solid #48732A;
+    border-right: 0px solid #48732A;
+    border-top: 0px solid #48732A;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom: 0px solid #48732A;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    width: 200px;
+    height: 250px;
+    padding-left: 6px; 
+    padding-top: 6px; 
+    padding-bottom: 6px;
+    margin-left: 50px;
+
+}
+
+
+.MenuFlotante {
+    background-color: #EEEEEE;
+    border-left: 1px solid #48732A;
+    border-top: 1px solid #48732A;
+    border-top-left-radius: 4px;
+    border-bottom: 1px solid #48732A;
+    border-bottom-left-radius: 4px;
+    bottom: 30px;
+    font-size: 13px;
+    max-height: 99vh;
+    opacity: 0.8;
+    overflow: auto;
+    position: fixed;
+    right: 0;
+    width: 210px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    z-index: 999;
+    padding-left: 6px; 
+    padding-top: 6px; 
+    padding-bottom: 6px;
+}
+
+.MenuFlotante a{
+    color: #48732A;
+    text-decoration:none;
+}
+
+.MenuFlotante a:hover{
+    color: #48732A;
+    font-weight:bold;
+    background-color: #D6D6D6;
+    text-decoration:none;
+    border-radius: 4px;
+    padding-left: 5px; 
+    padding-right: 5px;
+}
+
+
+.BotonAccionesFijo{ 
+    /*position:absolute;*/
+    font-size: 13px;
+    text-align: left;
+}
+
+.Button-Action-Down {
+    height:auto; 
+    width:auto;
+    font-weight: bold;
+    color: #444444;
+    text-align: left;
+}
+
+.Span-Action-Link {
+    height:auto; 
+    width:auto;
+    font-weight: bold;
+    color: #6D8D2D;
+    text-align: left;
+    cursor: pointer;
+}
+
+.DivListSelect {
+    width:99.6%;
+    max-height: 200px;
+    position:relative;
+    overflow-y: scroll;
+    border: solid 2px #C0C0C0;
+}
+
+.DivDataCrop{
+    border-width: 0px;
+    overflow:hidden;
+}
+
+
+.FilaLista:hover{
+    background-color: #D0E2B7;
+}
+
+
+.TrTable{
+    height:35px;
+}
+
+table, tr, td {
+    text-align: left;
+}
+
+input, textarea, select {
+    padding: 3px;
+    border: solid 2px #c9c9c9;
+}
+
+.SearchInput {
+    padding: 3px;
+    background: url(/images/input-search.png) no-repeat 4px 8px; 
+    padding-left: 25px;
+    background-color: #FFFFFF;
+}
+
+.DateInput {
+    padding: 3px;
+    border: solid 1px #c9c9c9;
+    background: url(/images/calendar-icon.png) no-repeat 4px 8px; 
+    outline:0; 
+    padding-left: 25px;
+    background-color: #FFFFFF;
+
+}
+
+.EmailInput {
+    padding: 3px;
+    border: solid 1px #c9c9c9;
+    background: url(/images/Mail-icon.png) no-repeat 4px 8px; 
+    outline:0; 
+    padding-left: 25px;
+    background-color: #FFFFFF;
+
+}
+
+.PhoneInput {
+    padding: 3px;
+    border: solid 1px #c9c9c9;
+    background: url(/images/phone-icon.png) no-repeat 4px 8px; 
+    outline:0; 
+    padding-left: 25px;
+    background-color: #FFFFFF;
+
+}
+
+#ErrorEmailAddress {
+    border:0px solid #87B6D9;
+    font-size:11px;
+    color:red;
+}
+#CodeError{
+    border:0px solid #87B6D9;
+    font-size:12px;
+    color:red;
+}
+
+.CodeBox{
+    background-image:url('/images/backgrounds/bg3.jpg');
+    background-repeat:no-repeat;
+    width:100px;
+    text-align: center;
+    font-size: 18pt;
+    color:red;
+    font-weight:bold;
+    background-color: #FFFFFF;
+
+}
+
+/* fin: ESTILOS NUEVOS AGTRIALS V2*/
+
+.ui-widget-header{
+    background: #BAC960;
+    border: 1px solid #819E6D;
+}
+
+.DivRow {
+    margin-right: -15px;
+    margin-left: -15px;
+    height: 50px;
+}
+.DivRow-2 {
+    margin-right: -15px;
+    margin-left: -15px;
+    width: 1000px;
+}
+
+.DivColIcon {
+    padding-top: 5px;
+    width: 8.33333333%;
+    float: left;
+}
