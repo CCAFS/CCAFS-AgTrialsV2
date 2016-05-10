@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
-        <span class="Title">Search Trials</span>
+        <span class="Title">Search Trials.</span>
         <div class="Session"style="margin-top: 10px; margin-bottom: 10px;">
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </div>
