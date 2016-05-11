@@ -229,6 +229,28 @@ td a{
 }
 
 .nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
-    background-color: #eee;
-    border-color: #27AE60;
+    background-color: #2A9A60;
+    border-color: #2A9A60;
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+    background-color: #27AE60;
+    text-decoration: none;
+}
+
+.dropdown-menu{
+    background-color: #27AE60;
+    border-top-width: 0px; 
+    padding-top: 0px; 
+    top: 40px;
+}
+
+.dropdown-menu a{
+    margin-top: 5px;
+}
+
+.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+    background-color: #2A9A60;
+    color: #2A9A60;
+    text-decoration: none;
 }
