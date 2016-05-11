@@ -3,7 +3,7 @@
 <script src="/autocomplete/lib/jquery.ui.1.8.16.js"></script>
 <script src="/autocomplete/autocomplete.js"></script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         //DEFINICION DE CAMPOS OBLIGATORIOS
         var CamposObligatorios = {
             'emailaddress': 'Email address',
@@ -18,11 +18,11 @@
         };
 
         //inicio: VALIDAMOS EL ENVIO DEL FORMULARIO
-        $("#SubmitRegister").click(function(event) {
+        $("#SubmitRegister").click(function (event) {
             var Ico = "<img src='/images/bullet-black-icon.png'> ";
             var BanderaFaltantes = false;
             var MensajeFaltantes = "";
-            $.each(CamposObligatorios, function(Id, Campo) {
+            $.each(CamposObligatorios, function (Id, Campo) {
                 if ($('#' + Id).attr('value') == '') {
                     BanderaFaltantes = true;
                     MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
@@ -42,7 +42,7 @@
             }
         });
 
-        $('#emailaddress').blur(function() {
+        $('#emailaddress').blur(function () {
             var emailaddress = $('#emailaddress').attr('value');
             if ($('#emailaddress').attr('value') != '' && ($("#emailaddress").val().indexOf('@', 0) == -1 || $("#emailaddress").val().indexOf('.', 0) == -1)) {
                 $('#ErrorEmailAddress').html('Email address Error');
@@ -51,7 +51,7 @@
                     type: "GET",
                     url: "/home/validacorreo",
                     data: "emailaddress=" + emailaddress,
-                    success: function(data) {
+                    success: function (data) {
                         $('#ErrorEmailAddress').html(data);
                         if (data != '')
                             $('#emailaddress').attr('value', '');
@@ -60,18 +60,18 @@
             }
         });
 
-        $('#RefreshCode').click(function() {
+        $('#RefreshCode').click(function () {
             $.ajax({
                 type: "GET",
                 url: "/home/refreshcode",
-                success: function(data) {
+                success: function (data) {
                     $('#securitycode').attr('value', data);
                 }
             });
 
         });
 
-        $('#code').blur(function() {
+        $('#code').blur(function () {
             var code = $('#code').attr('value');
             var securitycode = $('#securitycode').attr('value');
             if (code != securitycode) {
@@ -82,14 +82,14 @@
             }
         });
 
-        $('#code').focus(function() {
+        $('#code').focus(function () {
             $('#CodeError').html('');
         });
 
     });
 </script>
-<div class="page-header">
-    <h1 class="title-module">Register</h1>
+<div style="margin-top: 10px;">
+    <span class="Title">Register</span>
 </div>
 <?php if (isset($Notice)) { ?>
     <span>
@@ -102,102 +102,105 @@
     <?php echo image_tag('loading.gif'); ?>
     <br>Please Wait...
 </div>
-<form class="form-horizontal"  id="FormRegister" name="FormRegister" action="" method="post"  autocomplete="off">
-    <fieldset>
-        <div class="form-group control-type-text">
-            <label class="col-sm-4 control-label">Email address</label>     
-            <div class=" col-sm-4 control-type-text">
-                <div id="ErrorEmailAddress"></div>
-                <div class=" col-sm-15 control-type-text">
-                    <input class="form-control" type="text" name="emailaddress" id="emailaddress"/>
+<div class="Session" style="margin-top: 10px; margin-bottom: 10px; border-bottom-width: 0px; padding: 10px; border-top-width: 10px;">
+
+    <form class="form-horizontal"  id="FormRegister" name="FormRegister" action="" method="post"  autocomplete="off">
+        <fieldset>
+            <div class="form-group control-type-text">
+                <label class="col-sm-4 control-label">Email address</label>     
+                <div class=" col-sm-4 control-type-text">
+                    <div id="ErrorEmailAddress"></div>
+                    <div class=" col-sm-15 control-type-text">
+                        <input class="form-control" type="text" name="emailaddress" id="emailaddress"/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group control-type-text">
-            <label class="col-sm-4 control-label">First name</label>      
-            <div class=" col-sm-4 control-type-text">
-                <input class="form-control" type="text" name="firstname" id="firstname"/>
-            </div>
-        </div>
-        <div class="form-group control-type-text">
-            <label class="col-sm-4 control-label">Last name</label>      
-            <div class=" col-sm-4 control-type-text">
-                <input class="form-control" type="text" name="lastname" id="lastname"/>
-            </div>
-        </div>
-        <div class="form-group control-type-text">
-            <label class="col-sm-4 control-label">Institution or Affiliation</label>      
-            <div class=" col-sm-4 control-type-text">
-                <input name="id_institution" id="id_institution" type="hidden" value="" /> 
-                <input class="form-control SearchInput" name="institution" id="institution" type="text"/>
-            </div>
-        </div>
-        <div class="form-group control-type-text">
-            <label class="col-sm-4 control-label">Country</label>      
-            <div class=" col-sm-4 control-type-text">
-                <input name="id_country" id="id_country" type="hidden"value="" /> 
-                <input class="form-control SearchInput" name="country" id="country" type="text" size="17" maxlength="150" value="" />
-            </div>
-        </div>
-        <div class="form-group control-type-text">
-            <label class="col-sm-4 control-label">City</label>      
-            <div class=" col-sm-4 control-type-text">
-                <input class="form-control" type="text" name="city" id="city"/>
-            </div>
-        </div>
-        <div class="form-group control-type-text">
-            <label class="col-sm-4 control-label">State</label>      
-            <div class=" col-sm-4 control-type-text">
-                <input class="form-control" type="text" name="state" id="state"/>
-            </div>
-        </div>
-        <div class="form-group control-type-text">
-            <label class="col-sm-4 control-label">Address</label>      
-            <div class=" col-sm-4 control-type-text">
-                <input class="form-control" type="text" name="address" id="address"/>
-            </div>
-        </div>
-        <div class="form-group control-type-text">
-            <label class="col-sm-4 control-label">Telephone</label>      
-            <div class=" col-sm-4 control-type-text">
-                <input class="form-control" type="text" name="telephone" id="telephone"/>
-            </div>
-        </div>
-        <div>
-            <p>
-                <strong>Information:</strong> The www.agtrials.org
-                database is not yet fully available to the general
-                public. If you interested in full access, please state
-                your motivation for accessing the database. Will you
-                contribute any data to the database? What is your
-                intended use of the data? In the short term, we will not
-                be granting full access to everyone requesting it. After
-                filling out this form, we will contact you regarding your
-                collaboration with Agtrials.org. Please fill in the text
-                box below with this motivation:
-            </p>
-        </div>
-        <div class="form-group control-type-text">
-            <label class="col-sm-4 control-label">Motivation</label>      
-            <div class=" col-sm-4 control-type-text">
-                <textarea class="form-control" name="motivation" id="motivation" rows="3" cols="68"></textarea>
-            </div>
-        </div>
-        <div class="form-group control-type-text">
-            <label class="col-sm-4 control-label">Security Code</label>      
-            <div class=" col-sm-4 control-type-text">
-                <div id="CodeError"></div>
-                <div class=" col-sm-6 control-type-text">
-                    <input class="form-control" type="text" name="code" id="code" size="15" oncopy="return false;" onpaste="return false;" oncut="return false;" autocomplete="off" />
+            <div class="form-group control-type-text">
+                <label class="col-sm-4 control-label">First name</label>      
+                <div class=" col-sm-4 control-type-text">
+                    <input class="form-control" type="text" name="firstname" id="firstname"/>
                 </div>
-                <input type="text" value="<?php echo @generatecode(6); ?>" name="securitycode" id="securitycode" class="CodeBox" oncopy="return false;" onpaste="return false;" oncut="return false;" readonly="readonly" /> 
-                <span><img src="/images/actions-view-refresh-icon.png" id="RefreshCode" title="Refresh security code" name="RefreshCode" /></span>
             </div>
+            <div class="form-group control-type-text">
+                <label class="col-sm-4 control-label">Last name</label>      
+                <div class=" col-sm-4 control-type-text">
+                    <input class="form-control" type="text" name="lastname" id="lastname"/>
+                </div>
+            </div>
+            <div class="form-group control-type-text">
+                <label class="col-sm-4 control-label">Institution or Affiliation</label>      
+                <div class=" col-sm-4 control-type-text">
+                    <input name="id_institution" id="id_institution" type="hidden" value="" /> 
+                    <input class="form-control SearchInput" name="institution" id="institution" type="text"/>
+                </div>
+            </div>
+            <div class="form-group control-type-text">
+                <label class="col-sm-4 control-label">Country</label>      
+                <div class=" col-sm-4 control-type-text">
+                    <input name="id_country" id="id_country" type="hidden"value="" /> 
+                    <input class="form-control SearchInput" name="country" id="country" type="text" size="17" maxlength="150" value="" />
+                </div>
+            </div>
+            <div class="form-group control-type-text">
+                <label class="col-sm-4 control-label">City</label>      
+                <div class=" col-sm-4 control-type-text">
+                    <input class="form-control" type="text" name="city" id="city"/>
+                </div>
+            </div>
+            <div class="form-group control-type-text">
+                <label class="col-sm-4 control-label">State</label>      
+                <div class=" col-sm-4 control-type-text">
+                    <input class="form-control" type="text" name="state" id="state"/>
+                </div>
+            </div>
+            <div class="form-group control-type-text">
+                <label class="col-sm-4 control-label">Address</label>      
+                <div class=" col-sm-4 control-type-text">
+                    <input class="form-control" type="text" name="address" id="address"/>
+                </div>
+            </div>
+            <div class="form-group control-type-text">
+                <label class="col-sm-4 control-label">Telephone</label>      
+                <div class=" col-sm-4 control-type-text">
+                    <input class="form-control" type="text" name="telephone" id="telephone"/>
+                </div>
+            </div>
+            <div>
+                <p>
+                    <strong>Information:</strong> The www.agtrials.org
+                    database is not yet fully available to the general
+                    public. If you interested in full access, please state
+                    your motivation for accessing the database. Will you
+                    contribute any data to the database? What is your
+                    intended use of the data? In the short term, we will not
+                    be granting full access to everyone requesting it. After
+                    filling out this form, we will contact you regarding your
+                    collaboration with Agtrials.org. Please fill in the text
+                    box below with this motivation:
+                </p>
+            </div>
+            <div class="form-group control-type-text">
+                <label class="col-sm-4 control-label">Motivation</label>      
+                <div class=" col-sm-4 control-type-text">
+                    <textarea class="form-control" name="motivation" id="motivation" rows="3" cols="68"></textarea>
+                </div>
+            </div>
+            <div class="form-group control-type-text">
+                <label class="col-sm-4 control-label">Security Code</label>      
+                <div class=" col-sm-4 control-type-text">
+                    <div id="CodeError"></div>
+                    <div class=" col-sm-6 control-type-text">
+                        <input class="form-control" type="text" name="code" id="code" size="15" oncopy="return false;" onpaste="return false;" oncut="return false;" autocomplete="off" />
+                    </div>
+                    <input type="text" value="<?php echo @generatecode(6); ?>" name="securitycode" id="securitycode" class="CodeBox" oncopy="return false;" onpaste="return false;" oncut="return false;" readonly="readonly" /> 
+                    <span><img src="/images/actions-view-refresh-icon.png" id="RefreshCode" title="Refresh security code" name="RefreshCode" /></span>
+                </div>
+            </div>
+            </div>
+        </fieldset>
+        <div class="form-actions">
+            <button class="btn btn-action" type="button" title=" Submit " id="SubmitRegister" neme="SubmitRegister"><span class="glyphicon glyphicon-saved" aria-hidden="true"></span>&ensp;Submit&ensp;</button>
         </div>
-        </div>
-    </fieldset>
-    <div class="form-actions">
-        <button class="btn btn-action" type="button" title=" Submit " id="SubmitRegister" neme="SubmitRegister"><span class="glyphicon glyphicon-saved" aria-hidden="true"></span>&ensp;Submit&ensp;</button>
-    </div>
-    </br>
-</form>
+        </br>
+    </form>
+</div>
