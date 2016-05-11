@@ -9,7 +9,7 @@
     });
 </script>
 <div style="margin-top: 10px;">
-    <span class="Title">Welcome to Trial Site - Sign In</span>
+    <span class="Title">Sign In</span>
 </div>
 <div id="div_loading" class="loading" align="center" style="display:none;">
     <?php echo image_tag('loading.gif'); ?>
@@ -24,13 +24,13 @@
         <?php endif; ?>
         <fieldset>
             <div class="form-group control-type-text">
-                <label class="col-sm-4 control-label">Username</label>      
+                <div class="col-sm-1">Username:</div>
                 <div class=" col-sm-4 control-type-text">
                     <?php echo $form['username'] ?>                           
                 </div>
             </div>
             <div class="form-group control-type-text">
-                <label class="col-sm-4 control-label">Password</label>      
+                <div class="col-sm-1">Password:</div>
                 <div class=" col-sm-4 control-type-text">
                     <?php echo $form['password'] ?>    
                     <?php echo $form['_csrf_token'] ?>

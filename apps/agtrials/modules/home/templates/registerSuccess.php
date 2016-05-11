@@ -107,61 +107,61 @@
     <form class="form-horizontal"  id="FormRegister" name="FormRegister" action="" method="post"  autocomplete="off">
         <fieldset>
             <div class="form-group control-type-text">
-                <label class="col-sm-4 control-label">Email address</label>     
-                <div class=" col-sm-4 control-type-text">
+                <div class="col-sm-2">Email address:</div>
+                <div class="col-sm-4 control-type-text">
                     <div id="ErrorEmailAddress"></div>
-                    <div class=" col-sm-15 control-type-text">
+                    <div class="col-sm-15 control-type-text">
                         <input class="form-control" type="text" name="emailaddress" id="emailaddress"/>
                     </div>
                 </div>
             </div>
             <div class="form-group control-type-text">
-                <label class="col-sm-4 control-label">First name</label>      
-                <div class=" col-sm-4 control-type-text">
+                <div class="col-sm-2">First name:</div>
+                <div class="col-sm-4 control-type-text">
                     <input class="form-control" type="text" name="firstname" id="firstname"/>
                 </div>
             </div>
             <div class="form-group control-type-text">
-                <label class="col-sm-4 control-label">Last name</label>      
-                <div class=" col-sm-4 control-type-text">
+                <div class="col-sm-2">Last name:</div>
+                <div class="col-sm-4 control-type-text">
                     <input class="form-control" type="text" name="lastname" id="lastname"/>
                 </div>
             </div>
             <div class="form-group control-type-text">
-                <label class="col-sm-4 control-label">Institution or Affiliation</label>      
-                <div class=" col-sm-4 control-type-text">
+                <div class="col-sm-2">Institution or Affiliation:</div>
+                <div class="col-sm-4 control-type-text">
                     <input name="id_institution" id="id_institution" type="hidden" value="" /> 
                     <input class="form-control SearchInput" name="institution" id="institution" type="text"/>
                 </div>
             </div>
             <div class="form-group control-type-text">
-                <label class="col-sm-4 control-label">Country</label>      
-                <div class=" col-sm-4 control-type-text">
+                <div class="col-sm-2">Country:</div>
+                <div class="col-sm-4 control-type-text">
                     <input name="id_country" id="id_country" type="hidden"value="" /> 
                     <input class="form-control SearchInput" name="country" id="country" type="text" size="17" maxlength="150" value="" />
                 </div>
             </div>
             <div class="form-group control-type-text">
-                <label class="col-sm-4 control-label">City</label>      
-                <div class=" col-sm-4 control-type-text">
+                <div class="col-sm-2">City:</div>
+                <div class="col-sm-4 control-type-text">
                     <input class="form-control" type="text" name="city" id="city"/>
                 </div>
             </div>
             <div class="form-group control-type-text">
-                <label class="col-sm-4 control-label">State</label>      
-                <div class=" col-sm-4 control-type-text">
+                <div class="col-sm-2">State:</div>
+                <div class="col-sm-4 control-type-text">
                     <input class="form-control" type="text" name="state" id="state"/>
                 </div>
             </div>
             <div class="form-group control-type-text">
-                <label class="col-sm-4 control-label">Address</label>      
-                <div class=" col-sm-4 control-type-text">
+                <div class="col-sm-2">Address:</div>
+                <div class="col-sm-4 control-type-text">
                     <input class="form-control" type="text" name="address" id="address"/>
                 </div>
             </div>
             <div class="form-group control-type-text">
-                <label class="col-sm-4 control-label">Telephone</label>      
-                <div class=" col-sm-4 control-type-text">
+                <div class="col-sm-2">Telephone:</div>
+                <div class="col-sm-4 control-type-text">
                     <input class="form-control" type="text" name="telephone" id="telephone"/>
                 </div>
             </div>
@@ -180,27 +180,26 @@
                 </p>
             </div>
             <div class="form-group control-type-text">
-                <label class="col-sm-4 control-label">Motivation</label>      
-                <div class=" col-sm-4 control-type-text">
+                <div class="col-sm-2">Motivation:</div>
+                <div class="col-sm-4 control-type-text">
                     <textarea class="form-control" name="motivation" id="motivation" rows="3" cols="68"></textarea>
                 </div>
             </div>
             <div class="form-group control-type-text">
-                <label class="col-sm-4 control-label">Security Code</label>      
-                <div class=" col-sm-4 control-type-text">
+                <div class="col-sm-2">Security Code:</div>
+                <div class="col-sm-4 control-type-text">
                     <div id="CodeError"></div>
-                    <div class=" col-sm-6 control-type-text">
+                    <div class="col-sm-6 control-type-text" style="padding-left: 0px;">
                         <input class="form-control" type="text" name="code" id="code" size="15" oncopy="return false;" onpaste="return false;" oncut="return false;" autocomplete="off" />
                     </div>
                     <input type="text" value="<?php echo @generatecode(6); ?>" name="securitycode" id="securitycode" class="CodeBox" oncopy="return false;" onpaste="return false;" oncut="return false;" readonly="readonly" /> 
-                    <span><img src="/images/actions-view-refresh-icon.png" id="RefreshCode" title="Refresh security code" name="RefreshCode" /></span>
+                    <span><img src="/images/actions-view-refresh-icon.png" id="RefreshCode" title="Refresh security code" alt="picture not loaded"/></span>
                 </div>
             </div>
-            </div>
+
         </fieldset>
-        <div class="form-actions">
+        <div>
             <button class="btn btn-action" type="button" title=" Submit " id="SubmitRegister" neme="SubmitRegister"><span class="glyphicon glyphicon-saved" aria-hidden="true"></span>&ensp;Submit&ensp;</button>
         </div>
-        </br>
     </form>
-</div>
+</div>       
