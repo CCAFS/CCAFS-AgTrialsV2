@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
 /* inicio: ESTILOS NUEVOS AGTRIALS V2*/
 body {
     font-family: 'Open Sans', sans-serif;
@@ -10,7 +11,14 @@ body {
 }
 
 .Menu1 {
-    background: #27AE60 none repeat scroll 0 0;
+    background: #27AE60;
+    
+}
+
+header {
+    box-shadow: 0px 2px 3px rgba(0,0,0,0.2);
+    z-index: 999;
+    position: relative;
 }
 
 .MenuTrials{
@@ -121,26 +129,24 @@ footer {
 
 .LogoAgTrias{
     color: #27AE60;
-    font-size:60px;
+    font-size: 4.3em;
+    font-weight: 300;
     float: left;
-    width: 20%;
-    height: 100px;
-
+    width: 19%;
 }
 
 .LogoNombre{
-    color: #7f8c8d;;
+    color: #7f8c8d;
     font-size:20px;
     float: left;
     width: 25%;
-    height: 100px;
     position: relative;
     top: 20px;
 }
 
 .LogoCCAFS{
     float: right;
-    width: 40%;
+    width: 30%;
     height: 100px;
     text-align:right;
 }
@@ -148,17 +154,16 @@ footer {
 .MenuPPl{}
 
 .MenuPPlOpc{
-    font-size:20px;
+    font-size: 1.2em;
     Background : #27ae60;
     Color: #fff;
-    font-weight: normal;
+    font-weight: 300;
     float: left;
-    width: 120px;
-    height: 50px;
     position: relative;
-    padding-top: 10px;
+    padding: 15px 2.5%;
     text-align: center;
     cursor: pointer;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
 
 .MenuPPlOpcUser{
@@ -173,19 +178,11 @@ footer {
 }
 
 .HomePart1{
-    position: static;
-    background: #ecf0f1 none repeat scroll 0 0;
-    height: 100px;
-    margin-left: 0px; 
-    margin-right: 0px;
-}
-.HomePart2{
-    height: 300px;
+    background: #ecf0f1;
 }
 
 .HomeButtons{
-    width: 800px;
-    padding-top: 12px;
+    margin: 24px 0;
     margin-left: auto;
     margin-right: auto;
 }
@@ -194,14 +191,19 @@ footer {
     font-size:16px;
     color: #16a085;
     font-weight: lighter;
-    border-radius: 5px;
     float: left;
-    width: 250px;
-    height: 40px;
-    padding-top: 8px;
+    width: 31%;
+    margin: 4px 1.1%;
     text-align: center;
     cursor: pointer;
-    background: #FFF;
+}
+
+.HomeButton .button{
+    background: #fff;
+    padding: 18px 0px;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+    border-radius: 3px;
+    margin-bottom: 5px;
 }
 
 .HomeButtonText{
@@ -212,15 +214,12 @@ footer {
 }
 
 .HomePart2{
-    height: 250px;
-    width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
+  margin: 14px 0;
 }
 
 .HomePart2Div{
     float: left;
-    width: 500px;
+    width: 45%;
     height: 250px;
     padding-top: 25px;
     text-align: center;
@@ -228,10 +227,9 @@ footer {
 
 .HomePart2Map{
     float: right;
-    width: 500px;
-    height: 250px;
-    padding-top: 25px;
+    width: 51%;
     text-align: right;
+    height: 247px;
 }
 
 .HomeTit{
@@ -255,10 +253,6 @@ footer {
 }
 
 .HomePart31 {
-    width: 850px;
-    padding-top: 12px;
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
 }
 
@@ -271,11 +265,8 @@ footer {
     color: #FFF;
     font-size:14px;
     float: left;
-    width: 250px;
-    height: 80px;
-    padding-top: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
+    width: 30%;
+    padding: 24px;
     text-align: center;
     cursor: pointer;
     background: #2C3E50;

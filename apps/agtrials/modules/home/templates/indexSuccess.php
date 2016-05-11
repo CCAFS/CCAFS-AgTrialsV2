@@ -1,60 +1,45 @@
 <div class="row HomePart1">
-    <div class="row HomeButtons">
+    <div class="container row HomeButtons">
         <div class="HomeButton"> 
-            <div class="HomeButton" onclick="window.location.href = '/searchtrials'"> 
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                Search Trials
+            <div class="button" onclick="window.location.href = '/searchtrials'"> 
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>Search Trials
             </div>
-            <span class="HomeButtonText">
-                Text AgTrials Test
-            </span>
+            <span class="HomeButtonText">Text AgTrials Test</span>
         </div>
-        <div class="HomeButton" style="margin-left: 20px;"> 
-            <div class="HomeButton" onclick="window.location.href = '/trial/new'">             
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                Add New Trial
+        <div class="HomeButton" style=""> 
+            <div class="button" onclick="window.location.href = '/trial/new'">             
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add New Trial
             </div>
-            <span class="HomeButtonText">
-                Text
-            </span>        
+            <span class="HomeButtonText">Text</span>        
         </div>
-        <div class="HomeButton" style="margin-left: 20px;"> 
-            <div class="HomeButton" onclick="window.location.href = '/batchuploadtrials'">             
-                <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
-                Upload Batch of Trials
+        <div class="HomeButton" style=""> 
+            <div class="button" onclick="window.location.href = '/batchuploadtrials'">             
+                <span class="glyphicon glyphicon-open" aria-hidden="true"></span>Upload Batch of Trials
             </div>
-            <span class="HomeButtonText">
-                Text
-            </span>        
+            <span class="HomeButtonText">Text</span>        
         </div>
     </div>
 </div>
 
 <div class="row HomePart2">
-    <div class="HomePart2Div">
-        <span class="HomeTit">What is AgTrials?</span><br>
-        <p class="WhatAgTrialsTex">
-            Agtrials.org is an information portal developed by the CGIAR Research Program on Climate Change, Agriculture and Food Security (CCAFS) which provides access to a database on the performance of agricultural technologies at sites across the developing world. It builds on decades of evaluation trials, mostly of varieties, but includes any agricultural technology for developing world farmers. 
-        </p> 
-    </div>
-    <div class="HomePart2Map">
-        <iframe width="420" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="/home/mapindex"></iframe>
+    <div class="container">
+        <div class="HomePart2Div">
+            <h1 class="HomeTit">What is AgTrials?</h1>
+            <p class="WhatAgTrialsTex">Agtrials.org is an information portal developed by the CGIAR Research Program on Climate Change, Agriculture and Food Security (CCAFS) which provides access to a database on the performance of agricultural technologies at sites across the developing world. It builds on decades of evaluation trials, mostly of varieties, but includes any agricultural technology for developing world farmers. </p> 
+        </div>
+        <div class="HomePart2Map">
+            <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="/home/mapindex"></iframe>
+        </div>     
     </div>
 </div>
 
 <div class="row HomePart3">
-    <div class="HomePart31">
+    <div class="container HomePart31">
         <span class="HomeTit">What you can do</span><br>
         <div class="row HomeBoxs">   
-            <div class="HomeBox" style="margin-left: 35px;" onclick="window.location.href = '/#'">    
-                Share data and information on evaluations of agricultural technology.
-            </div>
-            <div class="HomeBox" style="margin-left: 30px;" onclick="window.location.href = '/#'">    
-                Acquire agricultural evaluation date sets for your own research.
-            </div>
-            <div class="HomeBox" style="margin-left: 30px;" onclick="window.location.href = '/#'">   
-                Explore the geographic dimensions of agricultural evaluation.
-            </div>
+            <div class="HomeBox" style="margin-left: 35px;" onclick="window.location.href = '/#'"> Share data and information on evaluations of agricultural technology.</div>
+            <div class="HomeBox" style="margin-left: 30px;" onclick="window.location.href = '/#'"> Acquire agricultural evaluation date sets for your own research.</div>
+            <div class="HomeBox" style="margin-left: 30px;" onclick="window.location.href = '/#'"> Explore the geographic dimensions of agricultural evaluation.</div>
         </div>
     </div>
 </div>

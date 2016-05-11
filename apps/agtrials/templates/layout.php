@@ -53,8 +53,7 @@ if ($sf_user->isAuthenticated()) {
         <?php include_metas(); ?>
         <?php include_title(); ?>
         <?php include_javascripts(); ?>
-        <?php include_stylesheets(); ?>
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <?php include_stylesheets(); ?> 
     </head>
     <body> 
         <header >
