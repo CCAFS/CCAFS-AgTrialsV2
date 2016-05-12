@@ -115,9 +115,7 @@ if ($sf_user->isAuthenticated()) {
         </header>
         <?php if ($Container) { ?>
             <div class="container"> 
-                <div class=""> 
-                    <?php echo $sf_content; ?>
-                </div>
+                <?php echo $sf_content; ?>
             </div>
             <?php
         } else {
