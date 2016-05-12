@@ -119,20 +119,20 @@ if ($sf_user->isAuthenticated()) {
                     <?php echo $sf_content; ?>
                 </div>
             </div>
-            <footer>
-                <div class="FooterContainer">
-                    <span>Please report any system problems and send us your feedback here.</span><br/>
-                    <span>@ Copyright 2016</span><br/>
-                    <span>Current version 2.0</span>
-                </div>
-                <div class="FooterPartners"> 
-                    <span style="color: #34495e; font-weight: bold;">Our partners</span>
-                </div>
-            </footer>
             <?php
         } else {
             echo $sf_content;
         }
         ?>
+        <footer>
+            <div class="FooterContainer">
+                <span>Please report any system problems and send us your feedback here.</span><br/>
+                <span>@ Copyright 2016</span><br/>
+                <span>Current version 2.0</span>
+            </div>
+            <div class="FooterPartners"> 
+                <span style="color: #34495e; font-weight: bold;">Our partners</span>
+            </div>
+        </footer>
     </body>
 </html>
