@@ -28,10 +28,8 @@ if (($Modulo == 'home') && ($Action == 'index')) {
     $Home = "style='background : #2a9a60;'";
     $Container = false;
 }
-if ($Modulo == 'trial') {
+if ($Modulo == 'trial')
     $Trial = "style='background : #2a9a60;'";
-    $ContainerWidth = "style=''";
-}
 if (($Modulo == 'admin') && (($Action == 'batchuploadanother') || ($Action == 'checkanother')))
     $Processes = "style='background : #2a9a60;'";
 if (($Modulo == 'home') && ($Action == 'about'))
@@ -117,7 +115,7 @@ if ($sf_user->isAuthenticated()) {
         </header>
 
         <?php if ($Container) { ?>
-            <div class="container"  <?php echo $ContainerWidth; ?>> 
+            <div class="container"> 
                 <div class=""> 
                     <?php echo $sf_content; ?>
                 </div>
