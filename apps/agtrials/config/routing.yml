@@ -292,8 +292,14 @@ register:
   url:   /register/*
   param: { module: home, action: register }
   
+#modulo Admin
+batchuploadanother:
+  url:   /batchuploadanother/*
+  param: { module: admin, action: batchuploadanother }
+  
+  
+  
 # default rules
-
 homepage:
   url:   /
   param: { module: home, action: index }

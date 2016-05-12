@@ -1,2 +1,3 @@
-
+batchuploadanother:
+  is_secure:   on        # La acción "Nuevo" es sólo para usuarios autenticados
   
