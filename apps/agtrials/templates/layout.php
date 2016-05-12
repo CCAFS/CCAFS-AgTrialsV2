@@ -74,22 +74,9 @@ if ($sf_user->isAuthenticated()) {
                     <div id="Home" class="MenuPPlOpc" <?php echo $Home ?> onclick="window.location.href = '/home'">Home</div>
                     <div class="MenuPPlOpc" <?php echo $About ?> onclick="window.location.href = '/about'">About Us</div>
                     <div class="MenuPPlOpc" <?php echo $Trial ?> onclick="window.location.href = '/trial/new'">Trial</div>
-
                     <?php if ($sf_user->isAuthenticated()) { ?>
-                        <div class="MenuPPlOpc" <?php echo $Processes ?>>
-                            <ul class="nav navbar-nav navbar-right" style="margin-right: 0px;">
-                                <li class="dropdown" id="fat-menu">
-                                    <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#" id="drop3">
-                                        Processes
-                                    </a>
-                                    <ul aria-labelledby="drop3" class="dropdown-menu">
-                                        <li><a href="/batchuploadanother">Batch upload another</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                        <div class="MenuPPlOpc" <?php echo $Processes ?> onclick="window.location.href = 'batchuploadanother'">Processes</div>
                     <?php } ?>
-
                     <div class="MenuPPlOpc" <?php echo $Statistics ?> onclick="window.location.href = '/statistics'">Statistics</div>
                     <div class="MenuPPlOpc" <?php echo $Contact ?> onclick="window.location.href = '/contact'">Contact Us</div>
                     <div class="MenuPPlOpcUser">

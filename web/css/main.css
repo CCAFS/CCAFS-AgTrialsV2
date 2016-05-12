@@ -12,7 +12,7 @@ body {
 
 .Menu1 {
     background: #27AE60;
-    
+
 }
 
 header {
@@ -44,6 +44,42 @@ header {
 }
 
 .MenuTrialsButtonSelected{
+    font-size:16px;
+    color: #2A9A60;
+    font-weight: lighter;
+    border-radius: 5px;
+    float: left;
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    text-align: center;
+    cursor: pointer;
+    background: #FFF;
+}
+
+.MenuProcesses{
+    background: #EEEEEE none repeat scroll 0 0;
+    border-radius: 3px;
+    border-top-width: 0px;
+    top: 47px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.MenuProcessesButton{
+    font-size:14px;
+    font-weight: lighter;
+    border-radius: 5px;
+    float: left;
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    text-align: center;
+    cursor: pointer;
+    background: #FFF;
+}
+
+.MenuProcessesButtonSelected{
     font-size:16px;
     color: #2A9A60;
     font-weight: lighter;
@@ -199,11 +235,16 @@ footer {
 }
 
 .HomeButton .button{
-    background: #fff;
-    padding: 18px 0px;
-    box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
-    border-radius: 3px;
-    margin-bottom: 5px;
+
+    background: #fff;
+
+    padding: 18px 0px;
+
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+
+    border-radius: 3px;
+
+    margin-bottom: 5px;
 }
 
 .HomeButtonText{
@@ -214,7 +255,7 @@ footer {
 }
 
 .HomePart2{
-  margin: 14px 0;
+    margin: 14px 0;
 }
 
 .HomePart2Div{

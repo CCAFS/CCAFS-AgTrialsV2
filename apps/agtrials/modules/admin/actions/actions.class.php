@@ -44,4 +44,9 @@ class adminActions extends sfActions {
     public function executeBatchuploadanother(sfWebRequest $request) {
         
     }
+
+    public function executeCheckanother(sfWebRequest $request) {
+        
+    }
+
 }
