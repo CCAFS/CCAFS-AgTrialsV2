@@ -30,7 +30,7 @@ if (($Modulo == 'home') && ($Action == 'index')) {
 }
 if ($Modulo == 'trial') {
     $Trial = "style='background : #2a9a60;'";
-    $ContainerWidth = "style='width: 1500px;'";
+    $ContainerWidth = "style=''";
 }
 if (($Modulo == 'home') && ($Action == 'about'))
     $About = "style='background : #2a9a60;'";
@@ -124,7 +124,7 @@ if ($sf_user->isAuthenticated()) {
 
         <?php if ($Container) { ?>
             <div class="container"  <?php echo $ContainerWidth; ?>> 
-                <div class="col-md-12"> 
+                <div class=""> 
                     <?php echo $sf_content; ?>
                 </div>
             </div>

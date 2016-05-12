@@ -24,9 +24,10 @@ header {
 .MenuTrials{
     background: #EEEEEE none repeat scroll 0 0;
     border-radius: 3px;
-    width: 200px;
-    height:162px;
-    border-top-width: 0px; top: 47px;
+    border-top-width: 0px;
+    top: 47px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .MenuTrialsButton{
@@ -34,10 +35,9 @@ header {
     font-weight: lighter;
     border-radius: 5px;
     float: left;
-    width: 170px;
-    height: 40px;
-    padding-top: 8px;
-    margin-top: 10px;
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
     text-align: center;
     cursor: pointer;
     background: #FFF;
@@ -49,10 +49,9 @@ header {
     font-weight: lighter;
     border-radius: 5px;
     float: left;
-    width: 170px;
-    height: 40px;
-    padding-top: 8px;
-    margin-top: 10px;
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
     text-align: center;
     cursor: pointer;
     background: #FFF;

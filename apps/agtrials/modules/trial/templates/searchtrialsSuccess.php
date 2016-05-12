@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-4 MenuTrials">
+    <div class="col-md-2 MenuTrials">
         <div onclick="window.location.href = '/searchtrials'" class="MenuTrialsButtonSelected"> 
             Search Trials
         </div>
