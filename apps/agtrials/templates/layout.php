@@ -32,7 +32,7 @@ if ($Modulo == 'trial') {
     $Trial = "style='background : #2a9a60;'";
     $ContainerWidth = "style=''";
 }
-if (($Modulo == 'admin') && ($Action == 'batchuploadanother'))
+if (($Modulo == 'admin') && (($Action == 'batchuploadanother') || ($Action == 'checkanother')))
     $Processes = "style='background : #2a9a60;'";
 if (($Modulo == 'home') && ($Action == 'about'))
     $About = "style='background : #2a9a60;'";

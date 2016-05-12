@@ -1,3 +1,5 @@
 batchuploadanother:
-  is_secure:   on        # La acción "Nuevo" es sólo para usuarios autenticados
+  is_secure:   on        # La acción es sólo para usuarios autenticados
   
+checkanother:
+  is_secure:   on        # La acción es sólo para usuarios autenticados
