@@ -3,8 +3,8 @@
         <div onclick="window.location.href = '/batchuploadanother'" class="MenuProcessesButtonSelected"> 
             Batch upload another
         </div>
-        <div onclick="window.location.href = '/trial/new'" class="MenuProcessesButton"> 
-            Add new Trial
+        <div onclick="window.location.href = '/checkanother'" class="MenuProcessesButton"> 
+            Check another
         </div>
     </div>
     <div class="col-md-9 sf_admin_form" style="margin-top: 13px; width: 930px;">

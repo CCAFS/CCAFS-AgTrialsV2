@@ -4,7 +4,7 @@
             Batch upload another
         </div>
         <div onclick="window.location.href = '/checkanother'" class="MenuProcessesButtonSelected"> 
-            Add new Trial
+            Check another
         </div>
     </div>
     <div class="col-md-9 sf_admin_form" style="margin-top: 13px; width: 930px;">
