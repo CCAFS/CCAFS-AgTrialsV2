@@ -75,7 +75,7 @@ if ($sf_user->isAuthenticated()) {
                     <div class="MenuPPlOpc" <?php echo $About ?> onclick="window.location.href = '/about'">About Us</div>
                     <div class="MenuPPlOpc" <?php echo $Trial ?> onclick="window.location.href = '/trial/new'">Trial</div>
                     <?php if ($sf_user->isAuthenticated()) { ?>
-                        <div class="MenuPPlOpc" <?php echo $Processes ?> onclick="window.location.href = 'batchuploadanother'">Processes</div>
+                        <div class="MenuPPlOpc" <?php echo $Processes ?> onclick="window.location.href = '/batchuploadanother'">Processes</div>
                     <?php } ?>
                     <div class="MenuPPlOpc" <?php echo $Statistics ?> onclick="window.location.href = '/statistics'">Statistics</div>
                     <div class="MenuPPlOpc" <?php echo $Contact ?> onclick="window.location.href = '/contact'">Contact Us</div>
