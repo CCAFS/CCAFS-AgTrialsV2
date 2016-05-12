@@ -132,7 +132,7 @@ footer {
     font-size: 4.3em;
     font-weight: 300;
     float: left;
-    width: 19%;
+    width: 20%;
 }
 
 .LogoNombre{
@@ -149,6 +149,7 @@ footer {
     width: 30%;
     height: 100px;
     text-align:right;
+    margin: 5px 0;
 }
 
 .MenuPPl{}
@@ -236,6 +237,7 @@ footer {
     color: #34495e;
     font-size:28px;
     font-style: italic;
+    text-align: center;
 }
 
 .WhatAgTrialsTex{
@@ -247,9 +249,7 @@ footer {
 
 .HomePart3{
     background: #ecf0f1 none repeat scroll 0 0;
-    padding-bottom: 25px;
-    margin-left: 0px; 
-    margin-right: 0px;
+    padding: 20px 0 38px 0;
 }
 
 .HomePart31 {
@@ -264,35 +264,34 @@ footer {
 .HomeBox{
     color: #FFF;
     font-size:14px;
-    float: left;
     width: 30%;
     padding: 24px;
+    margin: 1%;
     text-align: center;
     cursor: pointer;
     background: #2C3E50;
-    border-radius: 1px;
+    border-radius: 2px;
+    display: inline-block;
+    position: relative;
 }
 
 .HomePart4{
-    padding-top: 15px;
-    height: 250px;
-    margin-left: 0px; 
-    margin-right: 0px;
+    padding: 0 0 25px 0;
 }
 
 .HomePart41 {
-    width: 915px;
+    /* width: 915px; */
     padding-top: 12px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    /* text-align: center; */
 }
 
 .LatestTrials{
     color: #777777;
     font-size:14px;
     float: left;
-    width: 450px;
+    width: 48.5%;
     height: 70px;
     padding-top: 5px;
     padding-left: 10px;
@@ -301,6 +300,7 @@ footer {
     cursor: pointer;
     background: #ECF0F1;
     border-radius: 1px;
+    position: relative;
 }
 
 .NameTrial{
@@ -318,9 +318,9 @@ footer {
 }
 
 .IconTrial{
-    margin-left: 420px;
     position: absolute;
-    text-align: right;
+    right: 8px;
+    top: 7px;
 }
 
 /*   About   */
