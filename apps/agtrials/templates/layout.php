@@ -32,6 +32,8 @@ if ($Modulo == 'trial') {
     $Trial = "style='background : #2a9a60;'";
     $ContainerWidth = "style=''";
 }
+if (($Modulo == 'admin') && ($Action == 'batchuploadanother'))
+    $Processes = "style='background : #2a9a60;'";
 if (($Modulo == 'home') && ($Action == 'about'))
     $About = "style='background : #2a9a60;'";
 if (($Modulo == 'home') && ($Action == 'statistics'))
@@ -53,7 +55,8 @@ if ($sf_user->isAuthenticated()) {
         <?php include_metas(); ?>
         <?php include_title(); ?>
         <?php include_javascripts(); ?>
-        <?php include_stylesheets(); ?> 
+        <?php include_stylesheets(); ?>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
     </head>
     <body> 
         <header >
@@ -73,15 +76,14 @@ if ($sf_user->isAuthenticated()) {
                     <div class="MenuPPlOpc" <?php echo $Trial ?> onclick="window.location.href = '/trial/new'">Trial</div>
 
                     <?php if ($sf_user->isAuthenticated()) { ?>
-                        <div class="MenuPPlOpc">
+                        <div class="MenuPPlOpc" <?php echo $Processes ?>>
                             <ul class="nav navbar-nav navbar-right" style="margin-right: 0px;">
                                 <li class="dropdown" id="fat-menu">
                                     <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#" id="drop3">
                                         Processes
                                     </a>
                                     <ul aria-labelledby="drop3" class="dropdown-menu">
-                                        <li><a href="#">xxx</a></li>
-                                        <li><a href="#">xxx</a></li>
+                                        <li><a href="/batchuploadanother">Batch upload another</a></li>
                                     </ul>
                                 </li>
                             </ul>
