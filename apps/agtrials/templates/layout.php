@@ -113,7 +113,6 @@ if ($sf_user->isAuthenticated()) {
                 </div>
             </div>
         </header>
-
         <?php if ($Container) { ?>
             <div class="container"> 
                 <div class=""> 
@@ -135,7 +134,5 @@ if ($sf_user->isAuthenticated()) {
             echo $sf_content;
         }
         ?>
-
-
     </body>
 </html>
