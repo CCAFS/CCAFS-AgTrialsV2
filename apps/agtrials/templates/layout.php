@@ -123,13 +123,28 @@ if ($sf_user->isAuthenticated()) {
         }
         ?>
         <footer>
-            <div class="FooterContainer">
-                <span>Please report any system problems and send us your feedback here.</span><br/>
-                <span>@ Copyright 2016</span><br/>
-                <span>Current version 2.0</span>
-            </div>
-            <div class="FooterPartners"> 
-                <span style="color: #34495e; font-weight: bold;">Our partners</span>
+            <div class="container">
+                
+                <p>
+                Please report any system problems and send us your feedback here. <br />
+                @ Copyright 2016 <br />
+                Current version 2.0 
+                </p>
+                <br />
+                <h4 class="our-partners-title">Our partners</h4>
+                <div class="FooterPartners"> 
+                    <div class="partner-logo"><img src="/images/logos/logo_01.png" alt="CIAT" /></div>
+                    <div class="partner-logo"><img src="/images/logos/logo_02.png" alt="CIP" /></div>
+                    <div class="partner-logo"><img src="/images/logos/logo_03.png" alt="ICARDA" /></div>
+                    <div class="partner-logo"><img src="/images/logos/logo_04.png" alt="ILRI" /></div>
+                    <div class="partner-logo"><img src="/images/logos/logo_05.png" alt="IRRI" /></div>
+                    <div class="partner-logo"><img src="/images/logos/logo_06.png" alt="Bioversity" /></div>
+                    <div class="partner-logo"><img src="/images/logos/logo_07.png" alt="Africa Rice" /></div>
+                    <div class="partner-logo"><img src="/images/logos/logo_08.png" alt="IITA" /></div>
+                    <div class="partner-logo"><img src="/images/logos/logo_09.png" alt="CIMMYT" /></div>
+                    <div class="partner-logo"><img src="/images/logos/logo_10.png" alt="ICRISAT" /></div>
+                    <div class="partner-logo"><img src="/images/logos/logo_11.png" alt="" /></div>
+                </div>        
             </div>
         </footer>
     </body>

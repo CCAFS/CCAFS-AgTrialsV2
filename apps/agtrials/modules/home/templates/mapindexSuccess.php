@@ -33,5 +33,5 @@ $maps = json_encode($puntos);
 <div class="Mapa">
     <input type="hidden" id="mgr-cb" name="mgr-cb" />
     <input type="hidden" id="mc-cb" name="mc-cb" checked/>
-    <div id="map" style="width:100%; height:100%">Loading Map...</div>
+    <div id="map" style="width:100%; height:100%; text-align: center;">Loading Map...</div>
 </div>                        

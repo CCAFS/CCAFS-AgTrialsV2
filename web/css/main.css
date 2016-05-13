@@ -8,6 +8,7 @@ body {
 .Session{
     background: #EEEEEE none repeat scroll 0 0;
     border-radius: 3px;
+    padding: 15px;
 }
 
 .Menu1 {
@@ -95,14 +96,17 @@ header {
 
 footer {
     background: #e0e0e0 none repeat scroll 0 0;
+    padding: 25px 0 38px  0;
+    border-top: 7px solid #dcdbdb;
+    margin-top: 30px;
 }
 .FooterContainer {
     color: #5a5a5a;
-    padding: 10px 30px;
 }
 .FooterPartners {
     background: #FFFFFF;
-    padding: 10px 30px;
+    padding: 10px 0px;
+    text-align: center;
 }
 
 .page-header{
@@ -609,4 +613,20 @@ input, textarea, select {
     padding-top: 5px;
     width: 8.33333333%;
     float: left;
+}
+
+/* Footer Logos*/
+.partner-logo {
+  width: 8.5%;
+  display: inline-block;
+}
+
+.partner-logo img{
+  width: 100%;
+}
+
+.our-partners-title {
+  color: #34495e;
+  font-weight: bold;
+  text-align: left;
 }
