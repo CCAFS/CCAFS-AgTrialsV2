@@ -28,22 +28,20 @@ header {
 }
 
 .MenuTrials{
-    background: #EEEEEE none repeat scroll 0 0;
+    background: #eee;
     border-radius: 3px;
     border-top-width: 0px;
-    top: 47px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 5px 0px;
+    /* margin-top: 49px; */
 }
 
 .MenuTrialsButton{
     font-size:14px;
     font-weight: lighter;
     border-radius: 5px;
-    float: left;
-    width: 100%;
+    width: 90%;
+    margin: 5px 5%;
     padding: 8px;
-    margin: 5px 0;
     text-align: center;
     cursor: pointer;
     background: #FFF;
@@ -646,4 +644,38 @@ input, textarea, select {
   color: #34495e;
   font-weight: bold;
   text-align: left;
+}
+
+/* Trial subMenu */
+
+ul.subMenu {
+    padding: 3px 0 0 9px;
+    text-align: left;
+}
+
+ul.subMenu li{
+  text-decoration: none;
+  font-weight: lighter;
+  list-style: none;
+  font-size: 0.9em;
+  line-height: 1.65em;
+}
+ul.subMenu li a{
+    
+color: #93c47d;
+}
+
+
+.left-column {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  margin-top: 49px;
+}
+
+.positionFixedTop {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  width: 198px;
 }

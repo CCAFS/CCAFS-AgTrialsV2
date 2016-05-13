@@ -55,6 +55,26 @@ $(document).ready(function () {
             $('#DivTemplatesInformation').hide();
         }
     });
+    
+    // Funcion que que el Menu siga al scroll y ese sea siempre visible
+    var menuOffset = $('.MenuTrials').offset();
+    $(window).scroll(function() {
+        if($(window).scrollTop() >= menuOffset.top) {
+            $('.MenuTrials').addClass('positionFixedTop');
+        } else {
+            $('.MenuTrials').removeClass('positionFixedTop');
+        }
+    });
+
+
+    $('a.page-scroll').on('click', function(e){
+        e.preventDefault();
+        var $target = $($(this).attr('href'));
+        $('html, body').animate({
+            scrollTop: $target.offset().top 
+        }, 500);
+        return false;
+    });
 
 });
 

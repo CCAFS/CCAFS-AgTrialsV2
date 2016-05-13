@@ -1,9 +1,11 @@
 <?php use_javascript('batchuploadtrials.js') ?>
 <div class="row">
-    <div class="col-md-2 MenuTrials">
-        <div onclick="window.location.href = '/searchtrials'" class="MenuTrialsButton">Search Trials</div>
-        <div onclick="window.location.href = '/trial/new'" class="MenuTrialsButton">Add new Trial</div>
-        <div onclick="window.location.href = '/batchuploadtrials'" class="MenuTrialsButton selected">Batch Upload Trials</div>
+    <div class="col-md-2 left-column">
+        <div class="MenuTrials">
+            <div onclick="window.location.href = '/searchtrials'" class="MenuTrialsButton">Search Trials</div>
+            <div onclick="window.location.href = '/trial/new'" class="MenuTrialsButton">Add new Trial </div>
+            <div onclick="window.location.href = '/batchuploadtrials'" class="MenuTrialsButton selected">Batch Upload Trials</div>
+        </div>
     </div>
     <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
         <?php if ($Form == "Step1") { ?>

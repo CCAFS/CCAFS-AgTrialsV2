@@ -36,14 +36,29 @@ if (isset($session_group_id)) {
         $('#group_id').autocompletegroups({
             selected: [<?php if ($selectedgroup) echo $selectedgroup; ?>]
         });
-    });
-
+    }); 
 </script>
 <div class="row">
-    <div class="col-md-2 MenuTrials">
-        <div onclick="window.location.href = '/searchtrials'" class="MenuTrialsButton"> Search Trials</div>
-        <div onclick="window.location.href = '/trial/new'" class="MenuTrialsButton selected"> Add new Trial</div>
-        <div onclick="window.location.href = '/batchuploadtrials'" class="MenuTrialsButton"> Batch Upload Trials</div>
+    <div class="col-md-2 left-column">
+        <div class="MenuTrials">
+            <div onclick="window.location.href = '/searchtrials'" class="MenuTrialsButton"> Search Trials</div>
+            <div onclick="window.location.href = '/trial/new'" class="MenuTrialsButton selected"> Add new Trial
+                <ul class="subMenu">
+                    <li><a class="page-scroll" href="#ProjectTrialGroups">Project / Trial Groups</a></li>
+                    <li><a class="page-scroll" href="#LeadofProject">Lead of Project</a></li>
+                    <li><a class="page-scroll" href="#ProjectImplementingInstitutions">Project Implementing</a></li>
+                    <li><a class="page-scroll" href="#FundingforProject">Funding for Project</a></li>
+                    <li><a class="page-scroll" href="#ProjectInformation">Project Information</a></li>
+                    <li><a class="page-scroll" href="#TrialManager">Trial Manager</a></li>
+                    <li><a class="page-scroll" href="#TrialLocation">Trial Location</a></li>
+                    <li><a class="page-scroll" href="#TrialCharacteristics">Trial Characteristics</a></li>
+                    <li><a class="page-scroll" href="#AccesstoInformation">Access to Information</a></li>
+                    <li><a class="page-scroll" href="#License">License</a></li>
+                    <li><a class="page-scroll" href="#TrialCropInfo">Trial Crop Info</a></li>
+                </ul>
+            </div>
+            <div onclick="window.location.href = '/batchuploadtrials'" class="MenuTrialsButton"> Batch Upload Trials</div>            
+        </div>
     </div>
     <div class="col-md-10 sf_admin_form">
         <?php echo form_tag_for($form, '@tb_trial', array('enctype' => 'multipart/form-data', 'id' => 'FormTrial', 'name' => 'FormTrial')); ?>
@@ -1116,50 +1131,6 @@ if (isset($session_group_id)) {
 
     <div class="BotonAcciones">
         <?php include_partial('trial/form_actions', array('tb_trial' => $tb_trial, 'form' => $form, 'configuration' => $configuration, 'helper' => $helper)) ?>
-    </div>
-    <div class="MenuFlotante">
-        <li>
-            <a class="page-scroll" href="#Home" ><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home Trials</a>
-        </li>
-        <li>
-            <a class="page-scroll" href="#ProjectTrialGroups">Project / Trial Groups</a>
-        </li>
-        <li>
-            <a class="page-scroll" href="#LeadofProject">Lead of Project</a>
-        </li>
-        <li>
-            <a class="page-scroll" href="#ProjectImplementingInstitutions">Project Implementing Instit...</a>
-        </li>
-        <li>
-            <a class="page-scroll" href="#ProjectImplementingPeriod">Project Implementing Period</a>
-        </li>
-        <li>
-            <a class="page-scroll" href="#FundingforProject">Funding for Project</a>
-        </li>
-        <li>
-            <a class="page-scroll" href="#ProjectInformation">Project Information</a>
-        </li>
-        <li>
-            <a class="page-scroll" href="#TrialManager">Trial Manager</a>
-        </li>
-        <li>
-            <a class="page-scroll" href="#TrialImplementingPeriod">Trial Implementing Period</a>
-        </li>
-        <li>
-            <a class="page-scroll" href="#TrialLocation">Trial Location</a>
-        </li>
-        <li>
-            <a class="page-scroll" href="#TrialCharacteristics">Trial Characteristics</a>
-        </li>
-        <li>
-            <a class="page-scroll" href="#AccesstoInformation">Access to Information</a>
-        </li>
-        <li>
-            <a class="page-scroll" href="#License">License</a>
-        </li>
-        <li>
-            <a class="page-scroll" href="#TrialCropInfo">Trial Crop Info</a>
-        </li>
     </div>
 </div>
 </div>
