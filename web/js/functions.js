@@ -30,7 +30,7 @@ $(document).ready(function () {
             jAlert('Please, Select Upload Template or Template File', 'Error');
         } else {
             $('#div_loading').show();
-            $('#FormAction').attr('value', 'Execute');
+            $('#Form').attr('value', 'Execute');
             $('#batchuploadanother').submit();
         }
     });

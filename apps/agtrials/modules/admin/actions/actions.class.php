@@ -42,7 +42,11 @@ class adminActions extends sfActions {
      * @param sfRequest $request A request object
      */
     public function executeBatchuploadanother(sfWebRequest $request) {
-        
+        if (isset($_POST['Form'])) {
+            $TemplateFile = $request->getFiles('TemplateFile');
+            $SelectTemplate = $request->getParameter('SelectTemplate');
+            echo "$TemplateFile *** $SelectTemplate";
+        }
     }
 
     public function executeCheckanother(sfWebRequest $request) {
