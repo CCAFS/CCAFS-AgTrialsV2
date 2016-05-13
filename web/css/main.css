@@ -619,18 +619,24 @@ input, textarea, select {
     float: left;
 }
 
-/* Footer Logos*/
-.partner-logo {
-  width: 8.5%;
-  display: inline-block;
+.ContainerBatch{
+    padding-left: 30px; padding-top: 30px;
 }
 
-.partner-logo img{
-  width: 100%;
+.RowDownloadTemplate{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 10px 10px 10px;
 }
 
-.our-partners-title {
-  color: #34495e;
-  font-weight: bold;
-  text-align: left;
+.DownloadTemplate{
+    background: #fff;
+    width: 150px;
+    height: 100px;
+    padding-top: 5px;
+    font-weight: lighter;
+    float: left;
+    margin: 10px 25px;
+    text-align: center;
+    cursor: pointer;
 }
