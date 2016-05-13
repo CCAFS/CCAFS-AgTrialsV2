@@ -10,27 +10,27 @@
     <div class="col-md-9 sf_admin_form" style="margin-top: 13px; width: 930px;">
         <span class="Title">Batch upload another</span>
         <div class="Session" style="margin-top: 10px; margin-bottom: 10px;">
-            <div class="ContainerBatch">
-                <div>Download templates:</div>
-                <div class="row RowDownloadTemplate">
-                    <div class="DownloadTemplate" onclick="window.location.href = '/downloadestrutureproject'">
-                        <img width="60" height="50" border="0" src="/images/DownloadTemplate.png">
-                        <div>Trial Project Template</div>
+            <div class="container">
+                    <div>Download templates:</div>
+                    <div class="row RowDownloadTemplate">
+                        <div class="DownloadTemplate" onclick="window.location.href = '/downloadestrutureproject'">
+                            <img width="60" height="50" border="0" src="/images/DownloadTemplate.png">
+                            <div>Trial Project Template</div>
+                        </div>
+                        <div class="DownloadTemplate" onclick="window.location.href = '/downloadestruturetriallocation'">
+                            <img width="60" height="50" border="0" src="/images/DownloadTemplate.png">
+                            <div>Trial Location Template</div>
+                        </div>
+                        <div class="DownloadTemplate" onclick="window.location.href = '/downloadestruturevariablesmeasured'">
+                            <img width="60" height="50" border="0" src="/images/DownloadTemplate.png">
+                            <div>Trial Varieties Template</div>
+                        </div>
+                        <div class="DownloadTemplate" onclick="window.location.href = '/downloadestruturevariety'">
+                            <img width="60" height="50" border="0" src="/images/DownloadTemplate.png">
+                            <div>Trial Variables Measured Template</div>
+                        </div>
                     </div>
-                    <div class="DownloadTemplate" onclick="window.location.href = '/downloadestruturetriallocation'">
-                        <img width="60" height="50" border="0" src="/images/DownloadTemplate.png">
-                        <div>Trial Location Template</div>
-                    </div>
-                    <div class="DownloadTemplate" onclick="window.location.href = '/downloadestruturevariablesmeasured'">
-                        <img width="60" height="50" border="0" src="/images/DownloadTemplate.png">
-                        <div>Trial Varieties Template</div>
-                    </div>
-                    <div class="DownloadTemplate" onclick="window.location.href = '/downloadestruturevariety'">
-                        <img width="60" height="50" border="0" src="/images/DownloadTemplate.png">
-                        <div>Trial Variables Measured Template</div>
-                    </div>
-                </div>
-                <div class="container">
+
                     <form class="form-horizontal" id="batchuploadanother" name="batchuploadanother" action="<?php echo url_for('@batchuploadanother'); ?>" enctype="multipart/form-data" method="post">
                         <div>Upload Template:</div>
                         <div class="col-sm-4">
@@ -49,7 +49,6 @@
                             </div>
                         </div>
                     </form>
-                </div>
             </div>
         </div>
     </div>

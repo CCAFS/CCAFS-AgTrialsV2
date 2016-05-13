@@ -619,10 +619,6 @@ input, textarea, select {
     float: left;
 }
 
-.ContainerBatch{
-    padding-left: 30px; padding-top: 30px;
-}
-
 .RowDownloadTemplate{
     margin-left: auto;
     margin-right: auto;
