@@ -532,4 +532,8 @@ function CutString($String, $Length) {
     return $VarCutted;
 }
 
+function UploadTrialProjectTemplate($File) {
+    die("Hola...");
+}
+
 ?>

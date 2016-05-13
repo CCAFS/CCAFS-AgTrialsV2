@@ -45,7 +45,9 @@ class adminActions extends sfActions {
         if (isset($_POST['Form'])) {
             $TemplateFile = $request->getFiles('TemplateFile');
             $SelectTemplate = $request->getParameter('SelectTemplate');
-            echo "$TemplateFile *** $SelectTemplate";
+            if ($SelectTemplate == 'Trial Project Template') {
+                UploadTrialProjectTemplate($TemplateFile);
+            }
         }
     }
 
