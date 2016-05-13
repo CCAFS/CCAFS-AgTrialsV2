@@ -30,18 +30,26 @@
                         <div>Trial Variables Measured Template</div>
                     </div>
                 </div>
-                <form class="form-horizontal" id="batchuploadanother" name="batchuploadanother" action="<?php echo url_for('@batchuploadanother'); ?>" enctype="multipart/form-data" method="post">
-                    <div>Upload Template:</div>
-                    <div class="col-sm-4">
-                        <select class="form-control" size="1" id="SelectTemplate" name="SelectTemplate">
-                            <option value="">Choose...</option>
-                            <option value="Trial Project Template" title="Trial Project Template">Trial Project Template</option>
-                            <option value="Trial Location Template" title="Trial Location Template">Trial Location Template</option>
-                            <option value="Trial Varieties Template" title="Trial Varieties Template">Trial Varieties Template</option>
-                            <option value="Trial Variables Measured Template" title="Trial Variables Measured Template">Trial Variables Measured Template</option>
-                        </select>
-                    </div>
-                </form>
+                <div class="container">
+                    <form class="form-horizontal" id="batchuploadanother" name="batchuploadanother" action="<?php echo url_for('@batchuploadanother'); ?>" enctype="multipart/form-data" method="post">
+                        <div>Upload Template:</div>
+                        <div class="col-sm-4">
+                            <select class="form-control" size="1" id="SelectTemplate" name="SelectTemplate">
+                                <option value="">Choose...</option>
+                                <option value="Trial Project Template" title="Trial Project Template">Trial Project Template</option>
+                                <option value="Trial Location Template" title="Trial Location Template">Trial Location Template</option>
+                                <option value="Trial Varieties Template" title="Trial Varieties Template">Trial Varieties Template</option>
+                                <option value="Trial Variables Measured Template" title="Trial Variables Measured Template">Trial Variables Measured Template</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="col-sm-3">Template File:</div>
+                            <div class=" col-sm-4 control-type-text">
+                                <input type="file" value="" id="TemplateFile" name="TemplateFile">
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
