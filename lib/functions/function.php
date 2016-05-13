@@ -563,6 +563,9 @@ function UploadTrialProjectTemplate($File, $id_user) {
             die(include("../lib/html/HTML.php"));
         }
 
+        if (is_file("$uploadstrialgroup"))
+            unlink("$uploadstrialgroup");
+
         move_uploaded_file($FileTmpName, "$uploadstrialgroup/$FileName");
         $inputFileName = "$uploadstrialgroup/$FileName";
 
@@ -674,6 +677,7 @@ function UploadTrialLocationTemplate($File, $id_user) {
     $FileTmpName = $File['tmp_name'];
     $FileSizeMB = round(($FileSize / 1048576), 2);
 
+
     if ($FileName != '') {
         $extension = explode(".", $FileName);
         $FileExt = strtoupper($extension[1]);
@@ -682,9 +686,11 @@ function UploadTrialLocationTemplate($File, $id_user) {
             die(include("../lib/html/HTML.php"));
         }
 
+        if (is_file("$uploadstriallocation"))
+            unlink("$uploadstriallocation");
+
         move_uploaded_file($FileTmpName, "$uploadstriallocation/$FileName");
         $inputFileName = "$uploadstriallocation/$FileName";
-
 
         $ExcelFileInfo = PHPExcel_IOFactory::load($inputFileName);
         $ArrayData = $ExcelFileInfo->getActiveSheet()->toArray(null, true, true, true);
@@ -788,11 +794,251 @@ function UploadTrialLocationTemplate($File, $id_user) {
 }
 
 function UploadTrialVarietiesTemplate($File, $id_user) {
-    die("En Desarrollo Upload Trial Varieties Template...");
+    //PARAMETROS
+    $Modulo = "Variety";
+    $Cols = 5;
+    $MaxRecordsFile = 10000;
+    $MaxSizeFile = 5; // ESTE VALOR ES EN MB
+
+    $connection = Doctrine_Manager::getInstance()->connection();
+    ini_set("memory_limit", "2048M");
+    set_time_limit(900000000000);
+    $UploadDir = sfConfig::get("sf_upload_dir");
+    $uploadsvariety = $UploadDir . "/filevariety";
+    if (!is_dir($uploadsvariety)) {
+        mkdir($uploadsvariety, 0777);
+    }
+
+    //ARCHIVO
+    $FileSize = $File['size'];
+    $FileType = $File['type'];
+    $FileName = $File['name'];
+    $FileTmpName = $File['tmp_name'];
+    $FileSizeMB = round(($FileSize / 1048576), 2);
+
+    if ($FileName != '') {
+        $extension = explode(".", $FileName);
+        $FileExt = strtoupper($extension[1]);
+        if ((!($FileExt == "XLS")) || ($FileSizeMB < 0) || ($FileSizeMB > 5) || ($DataFileSizeMB > 5)) {
+            $Forma = "FileErrorTemplates";
+            die(include("../lib/html/HTML.php"));
+        }
+
+        if (is_file("$uploadsvariety"))
+            unlink("$uploadsvariety");
+
+        move_uploaded_file($FileTmpName, "$uploadsvariety/$FileName");
+        $inputFileName = "$uploadsvariety/$FileName";
+
+
+        $ExcelFileInfo = PHPExcel_IOFactory::load($inputFileName);
+        $ArrayData = $ExcelFileInfo->getActiveSheet()->toArray(null, true, true, true);
+        unset($ArrayData[1]);
+        $NumRows = count($ArrayData);
+        $NumCols = count($ArrayData[2]);
+
+        $TotalRecord = $NumRows;
+        if ($Cols != $NumCols) {
+            $Forma = "FileErrorTemplatesCols";
+            die(include("../lib/html/HTML.php"));
+        }
+
+        if ($TotalRecord > $MaxRecordsFile) {
+            $Forma = "FileErrorTemplatesRecords";
+            die(include("../lib/html/HTML.php"));
+        }
+
+        $Forma = "Body";
+        include("../lib/html/HTML.php");
+        $error_filas = "";
+        $grabados = 0;
+        $errores = 0;
+        $row = 2;
+        foreach ($ArrayData AS $ArrayRow) {
+            $banderaerrorfila = false;
+            $id_crop = trim($ArrayRow['A']);
+            $vrtorigin = trim($ArrayRow['B']);
+            $vrtname = trim($ArrayRow['C']);
+            $vrtsynonymous = trim($ArrayRow['D']);
+            $vrtdescription = trim($ArrayRow['E']);
+
+            $Fields = '{"' . $id_crop . '","' . $vrtorigin . '","' . $vrtname . '","' . $vrtsynonymous . '","' . $vrtdescription . '"}';
+
+            $Fields = str_replace("'", "''", $Fields);
+            $Fields = utf8_encode($Fields);
+            $QUERY = "SELECT fc_checkfieldsbatchvariety('$Fields'::text[]) AS info;";
+            $st = $connection->execute($QUERY);
+            $Result = $st->fetchAll();
+            if (count($Result) > 0) {
+                $info = null;
+                foreach ($Result AS $Value) {
+                    $info = $Value['info'];
+                    if ($info != "OK")
+                        $banderaerrorfila = true;
+                }
+            }
+
+            if ($banderaerrorfila)
+                $error_filas .= "<b>Fila $row:</b> (" . substr($info, 2, (strlen($info) - 1)) . ") <br>";
+
+            if (!$banderaerrorfila) {
+                $vrtorigin = utf8_encode($vrtorigin);
+                $vrtname = utf8_encode($vrtname);
+                $vrtsynonymous = utf8_encode($vrtsynonymous);
+                $vrtdescription = utf8_encode($vrtdescription);
+                TbVarietyTable::addVariety($id_crop, $vrtorigin, $vrtname, $vrtsynonymous, $vrtdescription, $id_user);
+                $grabados++;
+            } else {
+                $errores++;
+            }
+
+            $fila_actual = ($row - 1);
+            $porcentaje = $fila_actual * 100 / $TotalRecord; //saco mi valor en porcentaje
+            echo "<script>callprogress(" . round($porcentaje) . ",$fila_actual,$TotalRecord);</script>";
+            flush();
+            ob_flush();
+            echo "<script>counter($grabados,$errores);</script>";
+            flush();
+            ob_flush();
+            $row++;
+        }
+
+        echo "<script>FinishedProcess();</script>";
+        if ($errores > 0)
+            echo "<script>errores('$error_filas');</script>";
+        die();
+    }
+
+
+    $this->MaxRecordsFile = $MaxRecordsFile;
+    $this->MaxSizeFile = $MaxSizeFile;
+    $this->Cols = $Cols;
 }
 
 function UploadTrialVariablesMeasuredTemplate($File, $id_user) {
-    die("En Desarrollo Upload Trial Variables Measured Template...");
+
+    //PARAMETROS
+    $Modulo = "Variables measured";
+    $Cols = 7;
+    $MaxRecordsFile = 10000;
+    $MaxSizeFile = 5; // ESTE VALOR ES EN MB
+
+    $connection = Doctrine_Manager::getInstance()->connection();
+    ini_set("memory_limit", "2048M");
+    set_time_limit(900000000000);
+    $UploadDir = sfConfig::get("sf_upload_dir");
+    $uploadsvariablesmeasured = $UploadDir . "/filevariablesmeasured";
+    if (!is_dir($uploadsvariablesmeasured)) {
+        mkdir($uploadsvariablesmeasured, 0777);
+    }
+
+    //ARCHIVO
+    $FileSize = $File['size'];
+    $FileType = $File['type'];
+    $FileName = $File['name'];
+    $FileTmpName = $File['tmp_name'];
+    $FileSizeMB = round(($FileSize / 1048576), 2);
+
+    if ($FileName != '') {
+        $extension = explode(".", $FileName);
+        $FileExt = strtoupper($extension[1]);
+        if ((!($FileExt == "XLS")) || ($FileSizeMB < 0) || ($FileSizeMB > 5) || ($DataFileSizeMB > 5)) {
+            $Forma = "FileErrorTemplates";
+            die(include("../lib/html/HTML.php"));
+        }
+
+        if (is_file("$uploadsvariablesmeasured"))
+            unlink("$uploadsvariablesmeasured");
+
+        move_uploaded_file($FileTmpName, "$uploadsvariablesmeasured/$FileName");
+        $inputFileName = "$uploadsvariablesmeasured/$FileName";
+
+
+        $ExcelFileInfo = PHPExcel_IOFactory::load($inputFileName);
+        $ArrayData = $ExcelFileInfo->getActiveSheet()->toArray(null, true, true, true);
+        unset($ArrayData[1]);
+        $NumRows = count($ArrayData);
+        $NumCols = count($ArrayData[2]);
+
+        $TotalRecord = $NumRows;
+        if ($Cols != $NumCols) {
+            $Forma = "FileErrorTemplatesCols";
+            die(include("../lib/html/HTML.php"));
+        }
+
+        if ($TotalRecord > $MaxRecordsFile) {
+            $Forma = "FileErrorTemplatesRecords";
+            die(include("../lib/html/HTML.php"));
+        }
+
+        $Forma = "Body";
+        include("../lib/html/HTML.php");
+        $error_filas = "";
+        $grabados = 0;
+        $errores = 0;
+        $row = 2;
+        foreach ($ArrayData AS $ArrayRow) {
+            $banderaerrorfila = false;
+            $id_crop = trim($ArrayRow['A']);
+            $id_traitclass = trim($ArrayRow['B']);
+            $vrmsname = trim($ArrayRow['C']);
+            $vrmsshortname = trim($ArrayRow['D']);
+            $vrmsdefinition = trim($ArrayRow['E']);
+            $vrmnmethod = trim($ArrayRow['F']);
+            $vrmsunit = trim($ArrayRow['G']);
+
+            $Fields = '{"' . $id_crop . '","' . $id_traitclass . '","' . $vrmsname . '","' . $vrmsshortname . '","' . $vrmsdefinition . '","' . $vrmnmethod . '","' . $vrmsunit . '"}';
+
+            $Fields = str_replace("'", "''", $Fields);
+            $Fields = utf8_encode($Fields);
+            $QUERY = "SELECT fc_checkfieldsbatchvariablesmeasured('$Fields'::text[]) AS info;";
+            $st = $connection->execute($QUERY);
+            $Result = $st->fetchAll();
+            if (count($Result) > 0) {
+                $info = null;
+                foreach ($Result AS $Value) {
+                    $info = $Value['info'];
+                    if ($info != "OK")
+                        $banderaerrorfila = true;
+                }
+            }
+
+            if ($banderaerrorfila)
+                $error_filas .= "<b>Fila $row:</b> (" . substr($info, 2, (strlen($info) - 1)) . ") <br>";
+
+            if (!$banderaerrorfila) {
+                $vrmsname = utf8_encode($vrmsname);
+                $vrmsshortname = utf8_encode($vrmsshortname);
+                $vrmsdefinition = utf8_encode($vrmsdefinition);
+                $vrmnmethod = utf8_encode($vrmnmethod);
+                $vrmsunit = utf8_encode($vrmsunit);
+                TbVariablesmeasuredTable::addVariablesmeasured($id_crop, $id_traitclass, $vrmsname, $vrmsshortname, $vrmsdefinition, $vrmnmethod, $vrmsunit, $id_user);
+                $grabados++;
+            } else {
+                $errores++;
+            }
+
+            $fila_actual = ($row - 1);
+            $porcentaje = $fila_actual * 100 / $TotalRecord; //saco mi valor en porcentaje
+            echo "<script>callprogress(" . round($porcentaje) . ",$fila_actual,$TotalRecord);</script>";
+            flush();
+            ob_flush();
+            echo "<script>counter($grabados,$errores);</script>";
+            flush();
+            ob_flush();
+            $row++;
+        }
+
+        echo "<script>FinishedProcess();</script>";
+        if ($errores > 0)
+            echo "<script>errores('$error_filas');</script>";
+        die();
+    }
+
+
+    $this->MaxRecordsFile = $MaxRecordsFile;
+    $this->MaxSizeFile = $MaxSizeFile;
+    $this->Cols = $Cols;
 }
 
 ?>
