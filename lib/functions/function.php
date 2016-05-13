@@ -651,4 +651,16 @@ function UploadTrialProjectTemplate($File, $id_user) {
     $this->Cols = $Cols;
 }
 
+function UploadTrialLocationTemplate($File, $id_user) {
+    die("En Desarrollo Upload Trial Location Template...");
+}
+
+function UploadTrialVarietiesTemplate($File, $id_user) {
+    die("En Desarrollo Upload Trial Varieties Template...");
+}
+
+function UploadTrialVariablesMeasuredTemplate($File, $id_user) {
+    die("En Desarrollo Upload Trial Variables Measured Template...");
+}
+
 ?>

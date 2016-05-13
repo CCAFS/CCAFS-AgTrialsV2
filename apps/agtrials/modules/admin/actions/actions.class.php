@@ -49,6 +49,15 @@ class adminActions extends sfActions {
             if ($SelectTemplate == 'Trial Project Template') {
                 UploadTrialProjectTemplate($TemplateFile, $id_user);
             }
+            if ($SelectTemplate == 'Trial Location Template') {
+                UploadTrialLocationTemplate($TemplateFile, $id_user);
+            }
+            if ($SelectTemplate == 'Trial Varieties Template') {
+                UploadTrialVarietiesTemplate($TemplateFile, $id_user);
+            }
+            if ($SelectTemplate == 'Trial Variables Measured Template') {
+                UploadTrialVariablesMeasuredTemplate($TemplateFile, $id_user);
+            }
         }
     }
 
