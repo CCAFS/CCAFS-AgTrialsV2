@@ -110,6 +110,6 @@
 </fieldset>
 <fieldset>
     <div class="form-group control-type-text" style="margin-left: 0px; margin-right: 0px;">
-        <button class="btn btn-action" type="button" title=" Back " id="Back" neme="Back" onclick="history.back();"> <span class ="glyphicon glyphicon-step-backward" aria-hidden="true"></span>&ensp;Back&ensp;</button>
+        <button class="btn btn-action" type="button" title=" Back " id="Back" neme="Back" onclick="window.location.href = '/batchuploadanother'"> <span class ="glyphicon glyphicon-step-backward" aria-hidden="true"></span>&ensp;Back&ensp;</button>
     </div>
 </fieldset>
