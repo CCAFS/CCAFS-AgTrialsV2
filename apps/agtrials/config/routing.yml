@@ -174,19 +174,11 @@ searchtrials:
   
   
 #INICIO: ENRRUTAMIENTO Batch Upload Project / Trial Groups
-batchuploadproject:
-  url:   /batchuploadproject/*
-  param: { module: project, action: batchuploadproject }
-
 downloadestrutureproject:
   url:   /downloadestrutureproject/*
   param: { module: project, action: downloadestrutureproject }
   
 #INICIO: ENRRUTAMIENTO Batch Upload Trial location
-batchuploadtriallocation:
-  url:   /batchuploadtriallocation/*
-  param: { module: triallocation, action: batchuploadtriallocation }
-
 downloadestruturetriallocation:
   url:   /downloadestruturetriallocation/*
   param: { module: triallocation, action: downloadestruturetriallocation }
@@ -214,10 +206,6 @@ downloadresultcheckbatchtriallocation:
   
   
 #INICIO: ENRRUTAMIENTO Batch Upload Variables measured
-batchuploadvariablesmeasured:
-  url:   /batchuploadvariablesmeasured/*
-  param: { module: variablesmeasured, action: batchuploadvariablesmeasured }
-
 downloadestruturevariablesmeasured:
   url:   /downloadestruturevariablesmeasured/*
   param: { module: variablesmeasured, action: downloadestruturevariablesmeasured }
@@ -242,14 +230,8 @@ downloadresultcheckbatchvariablesmeasured:
   url:   /downloadresultcheckbatchvariablesmeasured/*
   param: { module: variablesmeasured, action: downloadresultcheckbatchvariablesmeasured }  
   
-  
-  
-  
+      
 #INICIO: ENRRUTAMIENTO Batch Upload Variety
-batchuploadvariety:
-  url:   /batchuploadvariety/*
-  param: { module: variety, action: batchuploadvariety }
-
 downloadestruturevariety:
   url:   /downloadestruturevariety/*
   param: { module: variety, action: downloadestruturevariety }
