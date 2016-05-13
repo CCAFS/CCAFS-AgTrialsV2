@@ -43,10 +43,11 @@ class adminActions extends sfActions {
      */
     public function executeBatchuploadanother(sfWebRequest $request) {
         if (isset($_POST['Form'])) {
+            $id_user = $this->getUser()->getGuardUser()->getId();
             $TemplateFile = $request->getFiles('TemplateFile');
             $SelectTemplate = $request->getParameter('SelectTemplate');
             if ($SelectTemplate == 'Trial Project Template') {
-                UploadTrialProjectTemplate($TemplateFile);
+                UploadTrialProjectTemplate($TemplateFile, $id_user);
             }
         }
     }

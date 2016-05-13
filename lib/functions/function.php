@@ -532,8 +532,123 @@ function CutString($String, $Length) {
     return $VarCutted;
 }
 
-function UploadTrialProjectTemplate($File) {
-    die("Hola...");
+function UploadTrialProjectTemplate($File, $id_user) {
+//PARAMETROS
+    $Modulo = "Project";
+    $Cols = 8;
+    $MaxRecordsFile = 10000;
+    $MaxSizeFile = 5; // ESTE VALOR ES EN MB
+
+    $connection = Doctrine_Manager::getInstance()->connection();
+    ini_set("memory_limit", "2048M");
+    set_time_limit(900000000000);
+    $UploadDir = sfConfig::get("sf_upload_dir");
+    $uploadstrialgroup = $UploadDir . "/fileproject";
+    if (!is_dir($uploadstrialgroup)) {
+        mkdir($uploadstrialgroup, 0777);
+    }
+
+    //ARCHIVO
+    $FileSize = $File['size'];
+    $FileType = $File['type'];
+    $FileName = $File['name'];
+    $FileTmpName = $File['tmp_name'];
+    $FileSizeMB = round(($FileSize / 1048576), 2);
+
+    if ($FileName != '') {
+        $extension = explode(".", $FileName);
+        $FileExt = strtoupper($extension[1]);
+        if ((!($FileExt == "XLS")) || ($FileSizeMB < 0) || ($FileSizeMB > 5) || ($DataFileSizeMB > 5)) {
+            $Forma = "FileErrorTemplates";
+            die(include("../lib/html/HTML.php"));
+        }
+
+        move_uploaded_file($FileTmpName, "$uploadstrialgroup/$FileName");
+        $inputFileName = "$uploadstrialgroup/$FileName";
+
+
+        $ExcelFileInfo = PHPExcel_IOFactory::load($inputFileName);
+        $ArrayData = $ExcelFileInfo->getActiveSheet()->toArray(null, true, true, true);
+        unset($ArrayData[1]);
+        $NumRows = count($ArrayData);
+        $NumCols = count($ArrayData[2]);
+
+
+        $TotalRecord = $NumRows;
+        if ($Cols != $NumCols) {
+            $Forma = "FileErrorTemplatesCols";
+            die(include("../lib/html/HTML.php"));
+        }
+
+        if ($TotalRecord > $MaxRecordsFile) {
+            $Forma = "FileErrorTemplatesRecords";
+            die(include("../lib/html/HTML.php"));
+        }
+
+        $Forma = "Body";
+        include("../lib/html/HTML.php");
+        $error_filas = "";
+        $grabados = 0;
+        $errores = 0;
+        $row = 2;
+        foreach ($ArrayData AS $ArrayRow) {
+            $banderaerrorfila = false;
+            $prjname = trim($ArrayRow['A']);
+            $id_leadofproject = trim($ArrayRow['B']);
+            $id_projectimplementinginstitutions = trim($ArrayRow['C']);
+            $prjprojectimplementingperiodstartdate = trim($ArrayRow['D']);
+            $prjprojectimplementingperiodenddate = trim($ArrayRow['E']);
+            $id_donor = trim($ArrayRow['F']);
+            $prjabstract = trim($ArrayRow['G']);
+            $prjkeywords = trim($ArrayRow['H']);
+
+            $Fields = '{"' . $prjname . '","' . $id_leadofproject . '","' . $id_projectimplementinginstitutions . '","' . $prjprojectimplementingperiodstartdate . '","' . $prjprojectimplementingperiodenddate . '","' . $id_donor . '","' . $prjabstract . '","' . $prjkeywords . '"}';
+            $Fields = str_replace("'", "''", $Fields);
+            $Fields = utf8_encode($Fields);
+            $QUERY = "SELECT fc_checkfieldsbatchproject('$Fields'::text[]) AS info;";
+            $st = $connection->execute($QUERY);
+            $Result = $st->fetchAll();
+            if (count($Result) > 0) {
+                $info = null;
+                foreach ($Result AS $Value) {
+                    $info = $Value['info'];
+                    if ($info != "OK")
+                        $banderaerrorfila = true;
+                }
+            }
+
+            if ($banderaerrorfila)
+                $error_filas .= "<b>Fila $row:</b> (" . substr($info, 2, (strlen($info) - 1)) . ") <br>";
+
+            if (!$banderaerrorfila) {
+                $prjname = utf8_encode($prjname);
+                TbProjectTable::addProject($prjname, $id_leadofproject, $id_projectimplementinginstitutions, $prjprojectimplementingperiodstartdate, $prjprojectimplementingperiodenddate, $id_donor, $prjabstract, $prjkeywords);
+                $grabados++;
+            } else {
+                $errores++;
+            }
+
+            $fila_actual = ($row - 1);
+            $porcentaje = $fila_actual * 100 / $TotalRecord; //saco mi valor en porcentaje
+            echo "<script>callprogress(" . round($porcentaje) . ",$fila_actual,$TotalRecord);</script>";
+            flush();
+            ob_flush();
+            echo "<script>counter($grabados,$errores);</script>";
+            flush();
+            ob_flush();
+            $row++;
+        }
+
+        echo "<script>FinishedProcess();</script>";
+        if ($errores > 0)
+            echo "<script>errores('$error_filas');</script>";
+        die();
+    }
+
+
+    $this->MaxRecordsFile = $MaxRecordsFile;
+    $this->MaxSizeFile = $MaxSizeFile;
+    $this->Cols = $Cols;
 }
 
 ?>
