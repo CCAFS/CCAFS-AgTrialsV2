@@ -26,12 +26,33 @@ $(document).ready(function () {
     $('#ExecuteBatchuploadanother').click(function () {
         var TemplateFile = $('#TemplateFile').attr('value');
         var SelectTemplate = $('#SelectTemplate').attr('value');
-        if ((TemplateFile == '') || (SelectTemplate == '')) {
+        if ((TemplateFile === '') || (SelectTemplate === '')) {
             jAlert('Please, Select Upload Template or Template File', 'Error');
         } else {
             $('#div_loading').show();
             $('#FormAction').attr('value', 'Execute');
             $('#batchuploadanother').submit();
+        }
+    });
+
+    $('#SelectTemplate').change(function () {
+        var SelectTemplate = $('#SelectTemplate').attr('value');
+        if (SelectTemplate !== '') {
+            $('#DivTemplatesInformation').show();
+            if (SelectTemplate === 'Trial Project Template')
+                $('#DivTemplatesInformationInfo').html("Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</br>Exact number of columns <b>'8'</b> for Template File.</br>Max. <b>10000 Records</b> for Template File.</br>Don't close the window during the process.");
+
+            if (SelectTemplate === 'Trial Location Template')
+                $('#DivTemplatesInformationInfo').html("Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</br>Exact number of columns <b>'8'</b> for Template File.</br>Max. <b>10000 Records</b> for Template File.</br>Don't close the window during the process.");
+
+            if (SelectTemplate === 'Trial Varieties Template')
+                $('#DivTemplatesInformationInfo').html("Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</br>Exact number of columns <b>'5'</b> for Template File.</br>Max. <b>10000 Records</b> for Template File.</br>Don't close the window during the process.");
+
+            if (SelectTemplate === 'Trial Variables Measured Template')
+                $('#DivTemplatesInformationInfo').html("Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</br>Exact number of columns <b>'7'</b> for Template File.</br>Max. <b>10000 Records</b> for Template File.</br>Don't close the window during the process.");
+
+        } else {
+            $('#DivTemplatesInformation').hide();
         }
     });
 

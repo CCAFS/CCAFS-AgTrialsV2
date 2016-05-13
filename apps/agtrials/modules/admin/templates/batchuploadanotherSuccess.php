@@ -25,18 +25,22 @@
                         <img width="60" height="50" border="0" src="/images/DownloadTemplate.png">
                         <div>Trial Location Template</div>
                     </div>
-                    <div class="DownloadTemplate" onclick="window.location.href = '/downloadestruturevariablesmeasured'">
+                    <div class="DownloadTemplate" onclick="window.location.href = '/downloadestruturevariety'">
                         <img width="60" height="50" border="0" src="/images/DownloadTemplate.png">
                         <div>Trial Varieties Template</div>
                     </div>
-                    <div class="DownloadTemplate" onclick="window.location.href = '/downloadestruturevariety'">
+                    <div class="DownloadTemplate" onclick="window.location.href = '/downloadestruturevariablesmeasured'">
                         <img width="60" height="50" border="0" src="/images/DownloadTemplate.png">
                         <div>Trial Variables Measured Template</div>
                     </div>
                 </div>
+                <div id="DivTemplatesInformation" style="display:none;">
+                    <div><b>Templates Information:</b></div>
+                    <div id="DivTemplatesInformationInfo"></div>
+                </div>
 
                 <form class="form-horizontal" id="batchuploadanother" name="batchuploadanother" action="<?php echo url_for('@batchuploadanother'); ?>" enctype="multipart/form-data" method="post">
-                    <fieldset style="margin-top: 5px;">
+                    <fieldset style="margin-top: 20px;">
                         <div class="form-group control-type-text">
                             <div class="col-sm-2">Upload Template:</div>
                             <div class=" col-sm-3 control-type-text">
