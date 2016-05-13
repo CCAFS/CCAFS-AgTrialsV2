@@ -17,7 +17,7 @@
                         <img width="60" height="50" border="0" src="/images/DownloadTemplate.png">
                         <div>Trial Project Template</div>
                     </div>
-                    <div class="DownloadTemplate" onclick="window.location.href = '/downloadcheckbatchtriallocation'">
+                    <div class="DownloadTemplate" onclick="window.location.href = '/downloadestruturetriallocation'">
                         <img width="60" height="50" border="0" src="/images/DownloadTemplate.png">
                         <div>Trial Location Template</div>
                     </div>
@@ -30,7 +30,18 @@
                         <div>Trial Variables Measured Template</div>
                     </div>
                 </div>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <form class="form-horizontal" id="batchuploadanother" name="batchuploadanother" action="<?php echo url_for('@batchuploadanother'); ?>" enctype="multipart/form-data" method="post">
+                    <div>Upload Template:</div>
+                    <div class="col-sm-4">
+                        <select class="form-control" size="1" id="SelectTemplate" name="SelectTemplate">
+                            <option value="">Choose...</option>
+                            <option value="Trial Project Template" title="Trial Project Template">Trial Project Template</option>
+                            <option value="Trial Location Template" title="Trial Location Template">Trial Location Template</option>
+                            <option value="Trial Varieties Template" title="Trial Varieties Template">Trial Varieties Template</option>
+                            <option value="Trial Variables Measured Template" title="Trial Variables Measured Template">Trial Variables Measured Template</option>
+                        </select>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
