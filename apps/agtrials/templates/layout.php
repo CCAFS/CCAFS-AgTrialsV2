@@ -25,19 +25,19 @@ $Container = true;
 $Modulo = sfContext::getInstance()->getRequest()->getParameterHolder()->get('module');
 $Action = sfContext::getInstance()->getRequest()->getParameterHolder()->get('action');
 if (($Modulo == 'home') && ($Action == 'index')) {
-    $Home = "style='background : #2a9a60;'";
+    $Home = "selected";
     $Container = false;
 }
 if ($Modulo == 'trial')
-    $Trial = "style='background : #2a9a60;'";
+    $Trial = "selected";
 if (($Modulo == 'admin') && (($Action == 'batchuploadanother') || ($Action == 'checkanother')))
-    $Processes = "style='background : #2a9a60;'";
+    $Processes = "selected";
 if (($Modulo == 'home') && ($Action == 'about'))
-    $About = "style='background : #2a9a60;'";
+    $About = "selected";
 if (($Modulo == 'home') && ($Action == 'statistics'))
-    $Statistics = "style='background : #2a9a60;'";
+    $Statistics = "selected";
 if (($Modulo == 'home') && ($Action == 'contact'))
-    $Contact = "style='background : #2a9a60;'";
+    $Contact = "selected";
 
 if ($sf_user->isAuthenticated()) {
     $id_user = sfContext::getInstance()->getUser()->getGuardUser()->getId();
@@ -69,22 +69,20 @@ if ($sf_user->isAuthenticated()) {
         <header class="Menu1">
             <div class="container">
                 <div class="row MenuPPl">
-                    <div id="Home" class="MenuPPlOpc" <?php echo $Home ?> onclick="window.location.href = '/home'">Home</div>
-                    <div class="MenuPPlOpc" <?php echo $About ?> onclick="window.location.href = '/about'">About Us</div>
-                    <div class="MenuPPlOpc" <?php echo $Trial ?> onclick="window.location.href = '/trial/new'">Trial</div>
+                    <div id="Home" class="MenuPPlOpc <?php echo $Home ?>" onclick="window.location.href = '/home'">Home</div>
+                    <div class="MenuPPlOpc <?php echo $About ?>" onclick="window.location.href = '/about'">About Us</div>
+                    <div class="MenuPPlOpc <?php echo $Trial ?>" onclick="window.location.href = '/trial/new'">Trial</div>
                     <?php if ($sf_user->isAuthenticated()) { ?>
-                        <div class="MenuPPlOpc" <?php echo $Processes ?> onclick="window.location.href = '/batchuploadanother'">Processes</div>
+                        <div class="MenuPPlOpc <?php echo $Processes ?>" onclick="window.location.href = '/batchuploadanother'">Processes</div>
                     <?php } ?>
-                    <div class="MenuPPlOpc" <?php echo $Statistics ?> onclick="window.location.href = '/statistics'">Statistics</div>
-                    <div class="MenuPPlOpc" <?php echo $Contact ?> onclick="window.location.href = '/contact'">Contact Us</div>
+                    <div class="MenuPPlOpc <?php echo $Statistics ?>" onclick="window.location.href = '/statistics'">Statistics</div>
+                    <div class="MenuPPlOpc <?php echo $Contact ?>" onclick="window.location.href = '/contact'">Contact Us</div>
                     <div class="MenuPPlOpcUser">
                         <ul class="nav navbar-nav navbar-right">
                             <?php if ($sf_user->isAuthenticated()) { ?>
                                 <li class="dropdown" id="fat-menu">
                                     <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#" id="drop3">
-                                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                        <?php echo $CompleteName; ?>
-                                        <span class="caret"></span>
+                                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span><?php echo $CompleteName; ?><span class="caret"></span>
                                     </a>
                                     <ul aria-labelledby="drop3" class="dropdown-menu">
                                         <li><a href="/user">Profile</a></li>

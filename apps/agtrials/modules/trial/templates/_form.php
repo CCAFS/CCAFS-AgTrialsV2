@@ -41,15 +41,9 @@ if (isset($session_group_id)) {
 </script>
 <div class="row">
     <div class="col-md-2 MenuTrials">
-        <div onclick="window.location.href = '/searchtrials'" class="MenuTrialsButton"> 
-            Search Trials
-        </div>
-        <div onclick="window.location.href = '/trial/new'" class="MenuTrialsButtonSelected"> 
-            Add new Trial
-        </div>
-        <div onclick="window.location.href = '/batchuploadtrials'" class="MenuTrialsButton"> 
-            Batch Upload Trials
-        </div>
+        <div onclick="window.location.href = '/searchtrials'" class="MenuTrialsButton"> Search Trials</div>
+        <div onclick="window.location.href = '/trial/new'" class="MenuTrialsButton selected"> Add new Trial</div>
+        <div onclick="window.location.href = '/batchuploadtrials'" class="MenuTrialsButton"> Batch Upload Trials</div>
     </div>
     <div class="col-md-10 sf_admin_form">
         <?php echo form_tag_for($form, '@tb_trial', array('enctype' => 'multipart/form-data', 'id' => 'FormTrial', 'name' => 'FormTrial')); ?>

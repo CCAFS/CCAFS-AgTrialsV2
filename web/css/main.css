@@ -49,19 +49,12 @@ header {
     background: #FFF;
 }
 
-.MenuTrialsButtonSelected{
-    font-size:16px;
+.MenuTrialsButton.selected{
     color: #2A9A60;
-    font-weight: lighter;
-    border-radius: 5px;
-    float: left;
-    width: 100%;
-    padding: 8px;
-    margin: 5px 0;
-    text-align: center;
-    cursor: pointer;
-    background: #FFF;
+    font-weight: bold;
 }
+
+
 
 .MenuProcesses{
     background: #EEEEEE none repeat scroll 0 0;
@@ -210,6 +203,8 @@ footer {
     text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
 
+.MenuPPlOpc.selected{background: rgba(0, 0, 0, 0.1);box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.05);}
+
 .MenuPPlOpcUser{
     color: #FFF;
     font-size:16px;
@@ -226,7 +221,7 @@ footer {
 }
 
 .HomeButtons{
-    margin: 24px 0;
+    margin: 30px 0 24px 0;
     margin-left: auto;
     margin-right: auto;
 }
@@ -635,4 +630,20 @@ input, textarea, select {
     margin: 10px 25px;
     text-align: center;
     cursor: pointer;
+}
+
+/* Footer Logos*/
+.partner-logo {
+  width: 8.5%;
+  display: inline-block;
+}
+
+.partner-logo img{
+  width: 100%;
+}
+
+.our-partners-title {
+  color: #34495e;
+  font-weight: bold;
+  text-align: left;
 }
