@@ -652,7 +652,139 @@ function UploadTrialProjectTemplate($File, $id_user) {
 }
 
 function UploadTrialLocationTemplate($File, $id_user) {
-    die("En Desarrollo Upload Trial Location Template...");
+//PARAMETROS
+    $Modulo = "Trial location";
+    $Cols = 8;
+    $MaxRecordsFile = 10000;
+    $MaxSizeFile = 5; // ESTE VALOR ES EN MB
+
+    $connection = Doctrine_Manager::getInstance()->connection();
+    ini_set("memory_limit", "2048M");
+    set_time_limit(900000000000);
+    $UploadDir = sfConfig::get("sf_upload_dir");
+    $uploadstriallocation = $UploadDir . "/filetriallocation";
+    if (!is_dir($uploadstriallocation)) {
+        mkdir($uploadstriallocation, 0777);
+    }
+
+    //ARCHIVO
+    $FileSize = $File['size'];
+    $FileType = $File['type'];
+    $FileName = $File['name'];
+    $FileTmpName = $File['tmp_name'];
+    $FileSizeMB = round(($FileSize / 1048576), 2);
+
+    if ($FileName != '') {
+        $extension = explode(".", $FileName);
+        $FileExt = strtoupper($extension[1]);
+        if ((!($FileExt == "XLS")) || ($FileSizeMB < 0) || ($FileSizeMB > 5) || ($DataFileSizeMB > 5)) {
+            $Forma = "FileErrorTemplates";
+            die(include("../lib/html/HTML.php"));
+        }
+
+        move_uploaded_file($FileTmpName, "$uploadstriallocation/$FileName");
+        $inputFileName = "$uploadstriallocation/$FileName";
+
+
+        $ExcelFileInfo = PHPExcel_IOFactory::load($inputFileName);
+        $ArrayData = $ExcelFileInfo->getActiveSheet()->toArray(null, true, true, true);
+        unset($ArrayData[1]);
+        $NumRows = count($ArrayData);
+        $NumCols = count($ArrayData[2]);
+
+
+        $TotalRecord = $NumRows;
+        if ($Cols != $NumCols) {
+            $Forma = "FileErrorTemplatesCols";
+            die(include("../lib/html/HTML.php"));
+        }
+
+        if ($TotalRecord > $MaxRecordsFile) {
+            $Forma = "FileErrorTemplatesRecords";
+            die(include("../lib/html/HTML.php"));
+        }
+
+        $Forma = "Body";
+        include("../lib/html/HTML.php");
+        $error_filas = "";
+        $grabados = 0;
+        $errores = 0;
+        $row = 2;
+        foreach ($ArrayData AS $ArrayRow) {
+            $banderaerrorfila = false;
+            $trlcname = trim($ArrayRow['A']);
+            $trlclatitude = trim($ArrayRow['B']);
+            $trlclongitude = trim($ArrayRow['C']);
+            $trlcaltitude = trim($ArrayRow['D']);
+            $Country = trim($ArrayRow['E']);
+            $DistrictSatate = trim($ArrayRow['F']);
+            $SubdistrictDivision = trim($ArrayRow['G']);
+            $Village = trim($ArrayRow['H']);
+
+            $Fields = '{"' . $trlcname . '","' . $trlclatitude . '","' . $trlclongitude . '","' . $trlcaltitude . '","' . $Country . '","' . $DistrictSatate . '","' . $SubdistrictDivision . '","' . $Village . '"}';
+
+            $Fields = str_replace("'", "''", $Fields);
+            $Fields = utf8_encode($Fields);
+            $QUERY = "SELECT fc_checkfieldsbatchtriallocation('$Fields'::text[]) AS info;";
+            $st = $connection->execute($QUERY);
+            $Result = $st->fetchAll();
+            if (count($Result) > 0) {
+                $info = null;
+                foreach ($Result AS $Value) {
+                    $info = $Value['info'];
+                    if ($info != "OK")
+                        $banderaerrorfila = true;
+                }
+            }
+
+            if ($banderaerrorfila)
+                $error_filas .= "<b>Fila $row:</b> (" . substr($info, 2, (strlen($info) - 1)) . ") <br>";
+
+            if (!$banderaerrorfila) {
+                $trlcname = utf8_encode($trlcname);
+                $id_triallocation = TbTriallocationTable::addTriallocation($trlcname, $trlclatitude, $trlclongitude, $trlcaltitude);
+                if ($id_triallocation != '' && $Country != '') {
+                    $id_countrytriallocation = GetIdAdministrativedivision($Country, 1);
+                    TbTriallocationadministrativedivisionTable::addTriallocationadministrativedivision($id_triallocation, $id_countrytriallocation);
+                }
+                if ($id_triallocation != '' && $DistrictSatate != '') {
+                    $id_districttriallocation = GetIdAdministrativedivision($DistrictSatate, 2);
+                    TbTriallocationadministrativedivisionTable::addTriallocationadministrativedivision($id_triallocation, $id_districttriallocation);
+                }
+                if ($id_triallocation != '' && $SubdistrictDivision != '') {
+                    $id_subdistricttriallocation = GetIdAdministrativedivision($SubdistrictDivision, 3);
+                    TbTriallocationadministrativedivisionTable::addTriallocationadministrativedivision($id_triallocation, $id_subdistricttriallocation);
+                }
+                if ($id_triallocation != '' && $Village != '') {
+                    $id_villagetriallocation = GetIdAdministrativedivision($Village, 4);
+                    TbTriallocationadministrativedivisionTable::addTriallocationadministrativedivision($id_triallocation, $id_villagetriallocation);
+                }
+                $grabados++;
+            } else {
+                $errores++;
+            }
+
+            $fila_actual = ($row - 1);
+            $porcentaje = $fila_actual * 100 / $TotalRecord; //saco mi valor en porcentaje
+            echo "<script>callprogress(" . round($porcentaje) . ",$fila_actual,$TotalRecord);</script>";
+            flush();
+            ob_flush();
+            echo "<script>counter($grabados,$errores);</script>";
+            flush();
+            ob_flush();
+            $row++;
+        }
+
+        echo "<script>FinishedProcess();</script>";
+        if ($errores > 0)
+            echo "<script>errores('$error_filas');</script>";
+        die();
+    }
+
+
+    $this->MaxRecordsFile = $MaxRecordsFile;
+    $this->MaxSizeFile = $MaxSizeFile;
+    $this->Cols = $Cols;
 }
 
 function UploadTrialVarietiesTemplate($File, $id_user) {
