@@ -9,6 +9,10 @@
     </div>
     <div class="col-md-9 sf_admin_form" style="margin-top: 13px; width: 930px;">
         <span class="Title">Batch upload another</span>
+        <div id="div_loading" class="loading" align="center" style="display:none;">
+            <?php echo image_tag('loading.gif'); ?>
+            <br>Copying files to the server, please wait...
+        </div>
         <div class="Session" style="margin-top: 10px; margin-bottom: 10px;">
             <div class="container">
                 <div>Download templates:</div>
@@ -35,7 +39,7 @@
                     <fieldset style="margin-top: 5px;">
                         <div class="form-group control-type-text">
                             <div class="col-sm-2">Upload Template:</div>
-                            <div class=" col-sm-4 control-type-text">
+                            <div class=" col-sm-3 control-type-text">
                                 <select class="form-control" size="1" id="SelectTemplate" name="SelectTemplate">
                                     <option value="">Choose...</option>
                                     <option value="Trial Project Template" title="Trial Project Template">Trial Project Template</option>
@@ -49,13 +53,13 @@
                     <fieldset style="margin-top: 5px;">
                         <div class="form-group control-type-text">
                             <div class="col-sm-2">Template File:</div>
-                            <div class=" col-sm-4 control-type-text">
+                            <div class=" col-sm-6 control-type-text">
                                 <input type="file" value="" id="TemplateFile" name="TemplateFile">
                             </div>
                         </div>
                     </fieldset>
                     <div class="col-sm-10" style="padding-left: 0px; padding-top: 15px;">
-                        <button neme="Execute" id="Execute" title=" Execute " type="button" class="btn btn-action"><span aria-hidden="true" class="glyphicon glyphicon-cog"></span>&ensp;Execute&ensp;</button>
+                        <button neme="ExecuteBatchuploadanother" id="ExecuteBatchuploadanother" title=" Execute " type="button" class="btn btn-action"><span aria-hidden="true" class="glyphicon glyphicon-cog"></span>&ensp;Execute&ensp;</button>
                         <input type="hidden" name="FormAction" id="FormAction" value="">
                     </div>
                 </form>
