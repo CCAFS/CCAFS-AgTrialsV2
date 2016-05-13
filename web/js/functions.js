@@ -1,13 +1,13 @@
-$(document).ready(function() {
+$(document).ready(function () {
     //ADICIONAMOS UN NUEVO VILLAGE
-    $('#AddVillage').click(function() {
+    $('#AddVillage').click(function () {
         var id_subdistricttriallocation = $('#id_subdistricttriallocation').attr('value');
         var VillageName = $('#villagetriallocation').attr('value');
         $.ajax({
             type: "GET",
             url: "/administrativedivision/AddVillage/",
             data: "id_subdistricttriallocation=" + id_subdistricttriallocation + "&VillageName=" + VillageName,
-            success: function(data) {
+            success: function (data) {
                 $('#id_villagetriallocation').attr('value', data);
                 $('#AddVillage').html("");
                 $('#CheckVillagetriallocation').html("<img width='18' height='18' src='/images/success.png'>");
@@ -16,12 +16,25 @@ $(document).ready(function() {
     });
 
     //MANEJO DE CULTIVOS
-    $('#nuevocrop').click(function() {
+    $('#nuevocrop').click(function () {
         var filacrop = $('#filacrop').attr('value');
         filacrop = (filacrop * 1) + 1;
         $('#DivCrop' + filacrop).show();
         $('#filacrop').attr('value', filacrop);
     });
+
+    $('#ExecuteBatchuploadanother').click(function () {
+        var TemplateFile = $('#TemplateFile').attr('value');
+        var SelectTemplate = $('#SelectTemplate').attr('value');
+        if ((TemplateFile == '') || (SelectTemplate == '')) {
+            jAlert('Please, Select Upload Template or Template File', 'Error');
+        } else {
+            $('#div_loading').show();
+            $('#FormAction').attr('value', 'Execute');
+            $('#batchuploadanother').submit();
+        }
+    });
+
 });
 
 
@@ -241,10 +254,10 @@ function SetValueSelect(Id, Value) {
 //VALIDAMOS EL CULTIVO SELECCIONADO
 function ValidaCrop(i) {
     $('#InfoVariety' + i).attr('value', '');
-    $("#InfoVarietySelected" + i).load("/trial/DeleteVarietySelected/?i=" + i, function() {
+    $("#InfoVarietySelected" + i).load("/trial/DeleteVarietySelected/?i=" + i, function () {
         $("#InfoVarietySelected" + i).html("");
     });
-    $("#InfoVariablesMeasuredSelected" + i).load("/trial/DeleteVariablesMeasuredSelected/?i=" + i, function() {
+    $("#InfoVariablesMeasuredSelected" + i).load("/trial/DeleteVariablesMeasuredSelected/?i=" + i, function () {
         $("#InfoVariablesMeasured" + i).html("");
     });
 }
@@ -258,7 +271,7 @@ function FilterVariety(Campo, i) {
     if (id_crop !== '') {
         if (Value !== '') {
             $("#DivFilterVariety" + i).show();
-            $("#InfoVariety" + i).load("/trial/FilterVariety/?txt=" + Value + '&id_crop=' + id_crop + "&i=" + i, function() {
+            $("#InfoVariety" + i).load("/trial/FilterVariety/?txt=" + Value + '&id_crop=' + id_crop + "&i=" + i, function () {
                 $("#DivFilterVariety" + i).hide();
                 $("#DivFilterVarietyOK" + i).show();
                 $("#DivClearFilterVariety" + i).show();
@@ -278,8 +291,8 @@ function FilterVariety(Campo, i) {
 
 //ADICIONAMOS LA VARIEDAD AL ARREGLO DE VARIEDADES
 function SelectVariety(id_variety, i) {
-    $("#InfoVarietySelected" + i).load("/trial/VarietySelected/?id_variety=" + id_variety + "&i=" + i, function() {
-        $("#InfoVarietySelected" + i).load("/trial/LoadVarietySelected/?i=" + i, function() {
+    $("#InfoVarietySelected" + i).load("/trial/VarietySelected/?id_variety=" + id_variety + "&i=" + i, function () {
+        $("#InfoVarietySelected" + i).load("/trial/LoadVarietySelected/?i=" + i, function () {
             //SI EXISTEN VARIEDADES Y VARIABLES MEDIDAS MOSTRAMOS U OCULTAMOS EL TEMPLATE DE DATOS
             if (($("#InfoVarietySelected" + i).is(':empty')) || ($("#InfoVariablesMeasuredSelected" + i).is(':empty'))) {
                 $('#TemplateData' + i).attr('value', '');
@@ -307,8 +320,8 @@ function ClearFilterVariety(i) {
 
 //REMOVEMOS LA VARIEDAD AL ARREGLO DE VARIEDADES
 function RemoveVariety(id_variety, i) {
-    $("#InfoVarietySelected" + i).load("/trial/RemoveVariety/?id_variety=" + id_variety + "&i=" + i, function() {
-        $("#InfoVarietySelected" + i).load("/trial/LoadVarietySelected/?i=" + i, function() {
+    $("#InfoVarietySelected" + i).load("/trial/RemoveVariety/?id_variety=" + id_variety + "&i=" + i, function () {
+        $("#InfoVarietySelected" + i).load("/trial/LoadVarietySelected/?i=" + i, function () {
 
             //SI EXISTEN VARIEDADES Y VARIABLES MEDIDAS MOSTRAMOS U OCULTAMOS EL TEMPLATE DE DATOS
             if (($("#InfoVarietySelected" + i).is(':empty')) || ($("#InfoVariablesMeasuredSelected" + i).is(':empty'))) {
@@ -334,7 +347,7 @@ function FilterVariablesMeasured(Campo, i) {
         if (Value !== '') {
             $("#DivFilterVariablesMeasured" + i).show();
             jQuery("#InfoVariablesMeasured" + i).addClass("DivListSelect");
-            $("#InfoVariablesMeasured" + i).load("/trial/FilterVariablesMeasured/?txt=" + Value + '&id_crop=' + id_crop + "&i=" + i, function() {
+            $("#InfoVariablesMeasured" + i).load("/trial/FilterVariablesMeasured/?txt=" + Value + '&id_crop=' + id_crop + "&i=" + i, function () {
                 $("#DivFilterVariablesMeasured" + i).hide();
                 $("#DivFilterVariablesMeasuredOK" + i).show();
                 $("#DivClearFilterVariablesMeasured" + i).show();
@@ -355,9 +368,9 @@ function FilterVariablesMeasured(Campo, i) {
 
 //ADICIONAMOS LA Variables Measured AL ARREGLO DE VARIEDADES
 function SelectVariablesMeasured(id_variablesmeasured, i) {
-    $("#InfoVariablesMeasuredSelected" + i).load("/trial/VariablesMeasuredSelected/?id_variablesmeasured=" + id_variablesmeasured + "&i=" + i, function() {
+    $("#InfoVariablesMeasuredSelected" + i).load("/trial/VariablesMeasuredSelected/?id_variablesmeasured=" + id_variablesmeasured + "&i=" + i, function () {
         jQuery("#InfoVariablesMeasuredSelected" + i).addClass("DivListSelect");
-        $("#InfoVariablesMeasuredSelected" + i).load("/trial/LoadVariablesMeasuredSelected/?i=" + i, function() {
+        $("#InfoVariablesMeasuredSelected" + i).load("/trial/LoadVariablesMeasuredSelected/?i=" + i, function () {
             //SI EXISTEN VARIEDADES Y VARIABLES MEDIDAS MOSTRAMOS U OCULTAMOS EL TEMPLATE DE DATOS
             if (($("#DivVarietySelected" + i).is(':empty')) || ($("#InfoVariablesMeasuredSelected" + i).is(':empty'))) {
                 $('#TemplateData' + i).attr('value', '');
@@ -385,8 +398,8 @@ function ClearFilterVariablesMeasured(i) {
 
 //REMOVEMOS LA Variables Measured AL ARREGLO DE VARIEDADES
 function RemoveVariablesMeasured(id_variablesmeasured, i) {
-    $("#InfoVariablesMeasuredSelected" + i).load("/trial/RemoveVariablesMeasured/?id_variablesmeasured=" + id_variablesmeasured + "&i=" + i, function() {
-        $("#InfoVariablesMeasuredSelected" + i).load("/trial/LoadVariablesMeasuredSelected/?i=" + i, function() {
+    $("#InfoVariablesMeasuredSelected" + i).load("/trial/RemoveVariablesMeasured/?id_variablesmeasured=" + id_variablesmeasured + "&i=" + i, function () {
+        $("#InfoVariablesMeasuredSelected" + i).load("/trial/LoadVariablesMeasuredSelected/?i=" + i, function () {
             if ($("#InfoVariablesMeasuredSelected" + i).is(':empty')) {
                 jQuery("#InfoVariablesMeasuredSelected" + i).removeClass("DivListSelect");
             }
