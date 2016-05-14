@@ -66,15 +66,15 @@ $(document).ready(function () {
         }
     });
 
-
-    $('a.page-scroll').on('click', function(e){
-        e.preventDefault();
-        var $target = $($(this).attr('href'));
-        $('html, body').animate({
-            scrollTop: $target.offset().top 
-        }, 500);
-        return false;
-    });
+//
+//    $('a.page-scroll').on('click', function(e){
+//        e.preventDefault();
+//        var $target = $($(this).attr('href'));
+//        $('html, body').animate({
+//            scrollTop: $target.offset().top 
+//        }, 500);
+//        return false;
+//    });
 
 });
 
