@@ -1,7 +1,7 @@
 <script>
     $(document).ready(function () {
         //inicio: VALIDAMOS EL ENVIO DEL FORMULARIO
-        $("#SubmitSignin").click(function (event) {
+        $("#SubmitSignin").click(function () {
             $('#div_loading').show();
             $('#FormSignin').submit();
         });
