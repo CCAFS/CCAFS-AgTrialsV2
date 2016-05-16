@@ -198,7 +198,8 @@
                     <fieldset style="margin-top: 10px; margin-left: 13px; padding-top: 10px;">
                         <span>Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</span></br>
                         <span>Compressed File must have <b>.zip</b> extension and must be smaller than <b>20 MB</b> maximum size.</span></br>
-                        <span>Exact number of columns <b>'20'</b> for Template File.</span></br>
+                        <span>Exact number of columns <b>'12'</b> for Trial Template File.</span></br>
+                        <span>Exact number of columns <b>'17'</b> for Trial Info Template File.</span></br>
                         <span>Max. <b>300</b> trials with result templates files data.</span></br>
                         <span>Max. <b>1000</b> trials without result templates files data.</span></br>
                         <span>Don't close the window during the process.</span>
