@@ -969,7 +969,7 @@ function ReadTrialInfoDataTemplate($ArrTrialInfo) {
             error_reporting(E_ALL ^ E_NOTICE);
             $NumRows = $ExcelFileTrialInfoData->sheets[0]['numRows'];
             $NumCols = $ExcelFileTrialInfoData->sheets[0]['numCols'];
-            $TotalRecord = $NumRows;
+            $TotalRecord = $NumRows - 1;
             //AQUI CAPTURAMOS LAS VARIABLES MEDIDAS
             $Arr_variablesmeasured_id = null;
             for ($col = 3; $col <= $NumCols; $col++) {
