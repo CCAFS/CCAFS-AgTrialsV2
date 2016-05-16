@@ -44,52 +44,53 @@
     .ProgressBarFill { height: 3.5em; background: #86A273; display: block; overflow: visible; }
     .FinishedProcess { font-size: 13px; color: red; font-family: Verdana; font-weight:bold; text-align: center;}
 </style>
-<div class="page-header">
-    <h1 class="title-module"><?php echo $Modulo; ?></h1>
+<div style="margin-top: 10px;">
+    <span class="Title"><?php echo $Modulo; ?></span>
 </div>
-<br>
-<fieldset>
-    <table class="Forma">
-        <tr class="TRTDCenter">
-            <td class="TRTDCenter"><font color='#0000A0' face='Verdana' size='2'><B>*** Information processing <?php echo $Modulo; ?> template file ***</B></font></td>
-        </tr>
-        <tr><td>&ensp;</td></tr>
-        <tr class="TRTDCenter">
-            <td class="TRTDCenter">
-                <div class="ProgressBar TRTDCenter">
-                    <div class="ProgressBarText TRTDCenter">
-                        <b><span class="TRTDCenter" id="getprogress"></span>&nbsp;% Completed</b></br>
-                        <span class="TRTDCenter" id="getprogressrecord"></span>
+<div class="Session" style="margin-top: 10px; margin-bottom: 10px; border-bottom-width: 0px; padding: 10px; border-top-width: 10px;">
+    <fieldset>
+        <table class="Forma">
+            <tr class="TRTDCenter">
+                <td class="TRTDCenter"><font color='#0000A0' face='Verdana' size='2'><B>*** Information processing <?php echo $Modulo; ?> template file ***</B></font></td>
+            </tr>
+            <tr><td>&ensp;</td></tr>
+            <tr class="TRTDCenter">
+                <td class="TRTDCenter">
+                    <div class="ProgressBar TRTDCenter">
+                        <div class="ProgressBarText TRTDCenter">
+                            <b><span class="TRTDCenter" id="getprogress"></span>&nbsp;% Completed</b></br>
+                            <span class="TRTDCenter" id="getprogressrecord"></span>
+                        </div>
+                        <div class="TRTDCenter" id="getProgressBarFill"></div>
                     </div>
-                    <div class="TRTDCenter" id="getProgressBarFill"></div>
-                </div>
-            </td>
-        </tr>
-        <tr><td></td></tr>
-        <tr class="TRTDCenter">
-            <td class="TRTDCenter">
-                <span id="error" style="display:none;">
-                    <img src='/images/view-icon.png'> <a href="#" id="view" onclick = "mostrar();
-                            return false">View errors</a>
-                    <div id="errores" style="display:none; overflow:auto; width:800px; height:330px; align:left; border:1px;"></div>
-                </span>
-            </td>
-        </tr>
+                </td>
+            </tr>
+            <tr><td></td></tr>
+            <tr class="TRTDCenter">
+                <td class="TRTDCenter">
+                    <span id="error" style="display:none;">
+                        <img src='/images/view-icon.png'> <a href="#" id="view" onclick = "mostrar();
+                                return false">View errors</a>
+                        <div id="errores" style="display:none; overflow:auto; width:800px; height:330px; align:left; border:1px;"></div>
+                    </span>
+                </td>
+            </tr>
 
-        <tr><td>&nbsp;</td></tr>
-        <tr class="TRTDCenter">
-            <td class="TRTDCenter">
-                <div class="FinishedProcess" id="FinishedProcess"><img src='/images/loading.gif'><br><font color='#0000A0' face='Verdana'>Processing may take a few minutes, wait a moment. <br> Don't close the window during the process.</font></div>
-                <div id="Downloadresultcheckbatch" style="display:none;">
-                    <button title='Download result check batch' onclick="window.location.href = '<?php echo $Downloadresultcheckbatch; ?>'" id='Downloadresultcheckbatch' name='Downloadresultcheckbatch' type='button' class='btn btn-action'><span class='glyphicon glyphicon-download' aria-hidden='true'></span>&ensp;Download result check batch</button>
-                </div>
-            </td>
-        </tr>
-        <tr><td>&ensp;</td></tr>
-    </table>
-</fieldset>
-<fieldset>
-    <div class="form-group control-type-text" style="margin-left: 0px; margin-right: 0px;">
-        <button class="btn btn-action" type="button" title=" Back " id="Back" neme="Back" onclick="history.back();"> <span class ="glyphicon glyphicon-step-backward" aria-hidden="true"></span>&ensp;Back&ensp;</button>
-    </div>
-</fieldset>
+            <tr><td>&nbsp;</td></tr>
+            <tr class="TRTDCenter">
+                <td class="TRTDCenter">
+                    <div class="FinishedProcess" id="FinishedProcess"><img src='/images/loading.gif'><br><font color='#0000A0' face='Verdana'>Processing may take a few minutes, wait a moment. <br> Don't close the window during the process.</font></div>
+                    <div id="Downloadresultcheckbatch" style="display:none;">
+                        <button title='Download result check batch' onclick="window.location.href = '<?php echo $Downloadresultcheckbatch; ?>'" id='Downloadresultcheckbatch' name='Downloadresultcheckbatch' type='button' class='btn btn-action'><span class='glyphicon glyphicon-download' aria-hidden='true'></span>&ensp;Download result check batch</button>
+                    </div>
+                </td>
+            </tr>
+            <tr><td>&ensp;</td></tr>
+        </table>
+    </fieldset>
+    <fieldset>
+        <div class="form-group control-type-text" style="margin-left: 0px; margin-right: 0px;">
+            <button class="btn btn-action" type="button" title=" Back " id="Back" neme="Back" onclick="history.back();"> <span class ="glyphicon glyphicon-step-backward" aria-hidden="true"></span>&ensp;Back&ensp;</button>
+        </div>
+    </fieldset>
+</div>

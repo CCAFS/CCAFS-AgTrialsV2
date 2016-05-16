@@ -22,17 +22,18 @@
  * @version   :  ~
  */
 ?>
-<div class="page-header">
-    <h1 class="title-module">Batch Upload Trials (Error Upload Compressed File)</h1>
+<div style="margin-top: 10px;">
+    <span class="Title">Batch Upload Trials (Error Upload Compressed File)</span>
 </div>
-<br>
-<fieldset>
-    <legend>&ensp;<b>Remember</b>&ensp;</legend>
-    <span><img src='/images/attention-icon.png'>Only is permitted file <b>.zip</b> and must be smaller than <b><?php echo $MaxSizeFileZip; ?> MB</b> maximum size</span><br>
-</fieldset>
-<br><br>
-<fieldset>
-    <div class="form-group control-type-text" style="margin-left: 0px; margin-right: 0px;">
-        <button class="btn btn-action" type="button" title=" Back " id="Back" neme="Back" onclick="history.back();"> <span class ="glyphicon glyphicon-step-backward" aria-hidden="true"></span>&ensp;Back&ensp;</button>
-    </div>
-</fieldset>
+<div class="Session" style="margin-top: 10px; margin-bottom: 10px; border-bottom-width: 0px; padding: 10px; border-top-width: 10px;">
+    <fieldset>
+        <legend>&ensp;<b>Remember</b>&ensp;</legend>
+        <span><img src='/images/attention-icon.png'>Only is permitted file <b>.zip</b> and must be smaller than <b><?php echo $MaxSizeFileZip; ?> MB</b> maximum size</span><br>
+    </fieldset>
+    <br><br>
+    <fieldset>
+        <div class="form-group control-type-text" style="margin-left: 0px; margin-right: 0px;">
+            <button class="btn btn-action" type="button" title=" Back " id="Back" neme="Back" onclick="history.back();"> <span class ="glyphicon glyphicon-step-backward" aria-hidden="true"></span>&ensp;Back&ensp;</button>
+        </div>
+    </fieldset>
+</div>

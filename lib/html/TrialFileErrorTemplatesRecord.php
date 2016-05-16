@@ -22,25 +22,26 @@
  * @version   :  ~
  */
 ?>
-<div class="page-header">
-    <h1 class="title-module">Batch Upload Trials (Error Exceeds the maximum allowed records)</h1>
+<div style="margin-top: 10px;">
+    <span class="Title">Batch Upload Trials (Error Exceeds the maximum allowed records)</span>
 </div>
-<br>
-<fieldset>
-    <legend align= "left">&ensp;<b>Error</b>&ensp;</legend>
-    <span><img src='/images/attention-icon.png'><b>Trial Template File:</b> Exceeds the maximum allowed records <?php echo "($TotalRecord / $MaxRecord)"; ?></span><br>
-</fieldset>
-<br><br>
-<fieldset>
-    <legend>&ensp;<b>Remember</b>&ensp;</legend>
-    <span><img src='/images/attention-icon.png'> Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size </span><br>
-    <span><img src='/images/attention-icon.png'> Compressed File must have <b>.zip</b> extension and must be smaller than <b>20 MB</b> maximum size </span><br>
-    <span><img src='/images/attention-icon.png'> Max. <b>300</b> trials with result templates files data </span><br>
-    <span><img src='/images/attention-icon.png'> Max. <b>1000</b> trials without result templates files data </span><br>
-</fieldset>
-<br><br>
-<fieldset>
-    <div class="form-group control-type-text" style="margin-left: 0px; margin-right: 0px;">
-        <button class="btn btn-action" type="button" title=" Back " id="Back" neme="Back" onclick="history.back();"> <span class ="glyphicon glyphicon-step-backward" aria-hidden="true"></span>&ensp;Back&ensp;</button>
-    </div>
-</fieldset>
+<div class="Session" style="margin-top: 10px; margin-bottom: 10px; border-bottom-width: 0px; padding: 10px; border-top-width: 10px;">
+    <fieldset>
+        <legend align= "left">&ensp;<b>Error</b>&ensp;</legend>
+        <span><img src='/images/attention-icon.png'><b>Trial Template File:</b> Exceeds the maximum allowed records <?php echo "($TotalRecord / $MaxRecord)"; ?></span><br>
+    </fieldset>
+    <br><br>
+    <fieldset>
+        <legend>&ensp;<b>Remember</b>&ensp;</legend>
+        <span><img src='/images/attention-icon.png'> Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size </span><br>
+        <span><img src='/images/attention-icon.png'> Compressed File must have <b>.zip</b> extension and must be smaller than <b>20 MB</b> maximum size </span><br>
+        <span><img src='/images/attention-icon.png'> Max. <b>300</b> trials with result templates files data </span><br>
+        <span><img src='/images/attention-icon.png'> Max. <b>1000</b> trials without result templates files data </span><br>
+    </fieldset>
+    <br><br>
+    <fieldset>
+        <div class="form-group control-type-text" style="margin-left: 0px; margin-right: 0px;">
+            <button class="btn btn-action" type="button" title=" Back " id="Back" neme="Back" onclick="history.back();"> <span class ="glyphicon glyphicon-step-backward" aria-hidden="true"></span>&ensp;Back&ensp;</button>
+        </div>
+    </fieldset>
+</div>
