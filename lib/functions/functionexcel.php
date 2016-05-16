@@ -1,26 +1,28 @@
 <?php
+
 /*
-*  This file is part of AgTrials
-*
-*  AgTrials is free software: you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation, either version 3 of the License, or
-*  at your option) any later version.
-*
-*  AgTrials is distributed in the hope that it will be useful,
-*  but WITHOUT ANY WARRANTY; without even the implied warranty of
-*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-*  GNU General Public License for more details.
-*
-*  You should have received a copy of the GNU General Public License
-*  along with DMSP.  If not, see <http://www.gnu.org/licenses/>.
-*
-* Copyright 2012 (C) Climate Change, Agriculture and Food Security (CCAFS)
-* 
-* Created on : OCT - 2014
-* @author    :  Herlin R. Espinosa G. - herlin25@gmail.com
-* @version   :  ~
-*/
+ *  This file is part of AgTrials
+ *
+ *  AgTrials is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  at your option) any later version.
+ *
+ *  AgTrials is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with DMSP.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Copyright 2012 (C) Climate Change, Agriculture and Food Security (CCAFS)
+ * 
+ * Created on : OCT - 2014
+ * @author    :  Herlin R. Espinosa G. - herlin25@gmail.com
+ * @version   :  ~
+ */
+
 //inicio: CREACION DE PLANTILLA DE TRIAL
 function CreateTemplateTrial() {
     $connection = Doctrine_Manager::getInstance()->connection();
@@ -641,7 +643,7 @@ function ReadTrialTemplate($TrialTemplateFile) {
         error_reporting(E_ALL ^ E_NOTICE);
         $NumRows = $ExcelFileTrial->sheets[0]['numRows'];
         $NumCols = $ExcelFileTrial->sheets[0]['numCols'];
-        $TotalRecord = $NumRows - 1;
+        $TotalRecord = $NumRows;
 
         if (($TotalRecord > 1000) && ($TrialTemplateFileName != '')) {
             $Forma = "TrialFileErrorTemplatesRecord";
@@ -661,7 +663,7 @@ function ReadTrialTemplate($TrialTemplateFile) {
         $Grabados = 0;
         $Errores = 0;
         $ArrTrial = null;
-        for ($row = 2; $row <= $NumRows; ++$row) {
+        for ($row = 2; $row <= 1001; ++$row) {
             $banderaerrorfila = false;
             $ExpCode = trim($ExcelFileTrial->sheets[0]['cells'][$row][1]);
             $IdProject = trim($ExcelFileTrial->sheets[0]['cells'][$row][2]);
@@ -706,8 +708,6 @@ function ReadTrialTemplate($TrialTemplateFile) {
                 $AccessInformation = 'Public domain';
                 $UserGroupPermissionsList = '';
             }
-
-
 
             //AQUI VALIDAMOS LOS TODOS LOS CAMPOS
             $Fields = '{"' . $ExpCode . '","' . $IdProject . '","' . $IdTrialManager . '","' . $IdRoleContactPerson . '","' . $ImplementingPeriodStartDate . '","' . $ImplementingPeriodEndDate . '","' . $IdTrialLocation . '","' . $TrialName . '","' . $TrialObjectives . '","' . null . '","' . $AccessInformation . '","' . $UserGroupPermissionsList . '"}';
@@ -795,14 +795,14 @@ function ReadTrialInfoTemplate($TrialInfoTemplateFile, $ArrTrial) {
     error_reporting(E_ALL ^ E_NOTICE);
     $NumRows = $ExcelFileTrialInfo->sheets[0]['numRows'];
     $NumCols = $ExcelFileTrialInfo->sheets[0]['numCols'];
-    $TotalRecord = $NumRows - 1;
+    $TotalRecord = $NumRows;
 
     $ErrorresFilas = "";
     $Grabados = 0;
     $Errores = 0;
     $ArrTrialInfo = null;
 
-    for ($row = 2; $row <= $NumRows; ++$row) {
+    for ($row = 2; $row <= 101; ++$row) {
         $banderaerrorfila = false;
         $ExpCodeInfo = trim($ExcelFileTrialInfo->sheets[0]['cells'][$row][1]);
         $NumberReplicates = trim($ExcelFileTrialInfo->sheets[0]['cells'][$row][2]);
