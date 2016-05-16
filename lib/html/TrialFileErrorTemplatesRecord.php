@@ -41,7 +41,7 @@
     <br><br>
     <fieldset>
         <div class="form-group control-type-text" style="margin-left: 0px; margin-right: 0px;">
-            <button class="btn btn-action" type="button" title=" Back " id="Back" neme="Back" onclick="history.back();"> <span class ="glyphicon glyphicon-step-backward" aria-hidden="true"></span>&ensp;Back&ensp;</button>
+            <button onclick="window.location.href = '/batchuploadtrials'" neme="Back" id="Back" title=" Back " type="button" class="btn btn-action"> <span aria-hidden="true" class="glyphicon glyphicon-step-backward"></span>&ensp;Back&ensp;</button>
         </div>
     </fieldset>
 </div>
