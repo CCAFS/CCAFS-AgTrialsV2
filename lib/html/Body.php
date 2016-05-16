@@ -47,14 +47,8 @@
         document.getElementById("FinishedProcess").innerHTML = 'Process Finished Successfully';
     }
 </script>
-<style type="text/css">
-    .ProgressBar { width: 22em; height: 3.5em; border: 1px solid black; background: #CEDAC0; display: block; }
-    .ProgressBarText { width: 305px; height: 3.5em; position: absolute; font-size: 13px; color: #000000; font-family: Verdana; font-weight:bold; text-align: center; font-weight: normal; }
-    .ProgressBarFill { height: 3.5em; background: #86A273; display: block; overflow: visible; }
-    .FinishedProcess { font-size: 13px; color: red; font-family: Verdana; font-weight:bold; text-align: center;}
-</style>
-<div class="page-header">
-    <h1 class="title-module">Batch Upload <?php echo $Modulo; ?></h1>
+<div style="margin-top: 10px;">
+    <span class="Title">Batch Upload <?php echo $Modulo; ?></span>
 </div>
 <br>
 <fieldset>
