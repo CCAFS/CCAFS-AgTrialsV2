@@ -28,6 +28,7 @@ generator:
 
         object_actions:
           _edit:        ~
+          _show:       ~
         batch_actions:  {}
       #Configuracion para Filtro Registros
       filter:  ~
@@ -42,3 +43,7 @@ generator:
       #Configuracion para Nuevo Registro
       new:
         title:          New trial
+        
+      #Configuracion para la Vista del Registro
+      show:
+        title:          View Trial
