@@ -645,6 +645,7 @@ function ReadTrialTemplate($TrialTemplateFile) {
         $NumCols = $ExcelFileTrial->sheets[0]['numCols'];
         $TotalRecord = $NumRows;
 
+
         if (($TotalRecord > 1000) && ($TrialTemplateFileName != '')) {
             $Forma = "TrialFileErrorTemplatesRecord";
             $MaxRecord = 1000;
@@ -663,7 +664,7 @@ function ReadTrialTemplate($TrialTemplateFile) {
         $Grabados = 0;
         $Errores = 0;
         $ArrTrial = null;
-        for ($row = 2; $row <= 1001; ++$row) {
+        for ($row = 2; $row <= ($TotalRecord + 1); ++$row) {
             $banderaerrorfila = false;
             $ExpCode = trim($ExcelFileTrial->sheets[0]['cells'][$row][1]);
             $IdProject = trim($ExcelFileTrial->sheets[0]['cells'][$row][2]);
@@ -802,7 +803,7 @@ function ReadTrialInfoTemplate($TrialInfoTemplateFile, $ArrTrial) {
     $Errores = 0;
     $ArrTrialInfo = null;
 
-    for ($row = 2; $row <= 101; ++$row) {
+    for ($row = 2; $row <= ($TotalRecord + 1); ++$row) {
         $banderaerrorfila = false;
         $ExpCodeInfo = trim($ExcelFileTrialInfo->sheets[0]['cells'][$row][1]);
         $NumberReplicates = trim($ExcelFileTrialInfo->sheets[0]['cells'][$row][2]);
@@ -968,7 +969,7 @@ function ReadTrialInfoDataTemplate($ArrTrialInfo) {
             error_reporting(E_ALL ^ E_NOTICE);
             $NumRows = $ExcelFileTrialInfoData->sheets[0]['numRows'];
             $NumCols = $ExcelFileTrialInfoData->sheets[0]['numCols'];
-            $TotalRecord = $NumRows - 1;
+            $TotalRecord = $NumRows;
             //AQUI CAPTURAMOS LAS VARIABLES MEDIDAS
             $Arr_variablesmeasured_id = null;
             for ($col = 3; $col <= $NumCols; $col++) {
@@ -987,7 +988,7 @@ function ReadTrialInfoDataTemplate($ArrTrialInfo) {
 
             //AQUI CAPTURAMOS LAS VARIEDADES
             $Arr_variety_id = null;
-            for ($row = 2; $row <= $NumRows; ++$row) {
+            for ($row = 2; $row <= ($TotalRecord + 1); ++$row) {
                 $Vrtname = $ExcelFileTrialInfoData->sheets[0]['cells'][$row][2];
                 $Vrtname = mb_convert_encoding($Vrtname, 'UTF-8');
                 $Vrtname = mb_strtoupper($Vrtname, 'UTF-8');
