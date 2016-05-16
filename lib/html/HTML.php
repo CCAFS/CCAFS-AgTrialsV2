@@ -240,12 +240,28 @@ if (sfContext::getInstance()->getUser()->isAuthenticated()) {
         </div>
         <footer>
             <div class="container">
-                <div class="FooterContainer">
-                    Copyright &copy; The CGIAR Research Program on Climate Change, Agriculture and Food Security (<a href="http://ccafs.cgiar.org/" target="_new" title="CCAFS">CCAFS</a>). All rights reserved. <br>&nbsp;
-                </div>
+                <p>
+                    Please report any system problems and send us your feedback here. </br>
+                    @ Copyright 2016 </br>
+                    Current version 2.0 
+                </p>
+                </br>
+                <h4 class="our-partners-title">Our partners</h4>
+                <div class="FooterPartners"> 
+                    <div class="partner-logo"><img alt="CIAT" src="/images/logos/logo_01.png"></div>
+                    <div class="partner-logo"><img alt="CIP" src="/images/logos/logo_02.png"></div>
+                    <div class="partner-logo"><img alt="ICARDA" src="/images/logos/logo_03.png"></div>
+                    <div class="partner-logo"><img alt="ILRI" src="/images/logos/logo_04.png"></div>
+                    <div class="partner-logo"><img alt="IRRI" src="/images/logos/logo_05.png"></div>
+                    <div class="partner-logo"><img alt="Bioversity" src="/images/logos/logo_06.png"></div>
+                    <div class="partner-logo"><img alt="Africa Rice" src="/images/logos/logo_07.png"></div>
+                    <div class="partner-logo"><img alt="IITA" src="/images/logos/logo_08.png"></div>
+                    <div class="partner-logo"><img alt="CIMMYT" src="/images/logos/logo_09.png"></div>
+                    <div class="partner-logo"><img alt="ICRISAT" src="/images/logos/logo_10.png"></div>
+                    <div class="partner-logo"><img alt="" src="/images/logos/logo_11.png"></div>
+                </div>  
             </div>
         </footer>
-
     </body>
 </html>
 
