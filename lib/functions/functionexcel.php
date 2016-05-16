@@ -988,7 +988,7 @@ function ReadTrialInfoDataTemplate($ArrTrialInfo) {
 
             //AQUI CAPTURAMOS LAS VARIEDADES
             $Arr_variety_id = null;
-            for ($row = 2; $row <= ($TotalRecord + 1); ++$row) {
+            for ($row = 2; $row <= $NumRows; ++$row) {
                 $Vrtname = $ExcelFileTrialInfoData->sheets[0]['cells'][$row][2];
                 $Vrtname = mb_convert_encoding($Vrtname, 'UTF-8');
                 $Vrtname = mb_strtoupper($Vrtname, 'UTF-8');
