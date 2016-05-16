@@ -128,7 +128,7 @@ class trialActions extends autoTrialActions {
             $this->dispatcher->notify(new sfEvent($this, 'admin.delete_object', array('object' => $this->getRoute()->getObject())));
             $this->getRoute()->getObject()->delete();
             $this->getUser()->setFlash('notice', 'The item was deleted successfully.');
-            $this->redirect('@tb_trial');
+            $this->redirect('trial/new');
         } else {
             echo "<script> alert('*** ERROR *** \\n\\n Not permissions to DELETE!'); window.history.back();</script>";
             Die();
