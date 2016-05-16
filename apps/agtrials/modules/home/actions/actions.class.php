@@ -46,8 +46,9 @@ class homeActions extends sfActions {
 
         //REALIZAMOS LA CONSULTA DE LOS ULTIMOS TRIALS
         $QUERY = "SELECT T.id_trial AS id, T.trltrialname AS name, T.created_at AS date, TL.trlcname AS location ";
-        $QUERY .= "FROM tb_trial T INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
-        $QUERY .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
+        $QUERY .= "FROM tb_trial T ";
+        $QUERY .= "LEFT JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
+        $QUERY .= "LEFT JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
         $QUERY .= "ORDER BY T.created_at DESC LIMIT 4 ";
 
         $st = $connection->execute($QUERY);
