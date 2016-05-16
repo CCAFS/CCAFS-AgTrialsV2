@@ -438,7 +438,7 @@ class trialActions extends autoTrialActions {
         //inicio: LLAMAMOS LA FUNCION DE LECTURA DEL TrialInfoTemplate
         $TrialInfoTemplateFile = $request->getFiles('TrialInfoTemplateFile');
         $ArrTrialInfo = null;
-        if (($TrialInfoTemplateFile != '') && (count($ArrTrial) > 0)) {
+        if (($TrialInfoTemplateFile['name'] != '') && (count($ArrTrial) > 0)) {
             $InfoReadTrialInfoTemplate = ReadTrialInfoTemplate($TrialInfoTemplateFile, $ArrTrial);
             $ArrTrialInfo = $InfoReadTrialInfoTemplate['ArrTrialInfo'];
         }
