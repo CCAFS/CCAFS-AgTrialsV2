@@ -43,6 +43,12 @@ require_once '../lib/PHPExcel1.8.0/Classes/PHPExcel/IOFactory.php';
  */
 class trialActions extends autoTrialActions {
 
+    public function executeShow(sfWebRequest $request) {
+        $this->tb_trial = Doctrine::getTable('TbTrial')->find($request->getParameter('id_trial'));
+        $this->forward404Unless($this->tb_trial);
+        $this->form = $this->configuration->getForm($this->tb_trial);
+    }
+
     public function executeNew(sfWebRequest $request) {
         $this->form = $this->configuration->getForm();
         $this->tb_trial = $this->form->getObject();
