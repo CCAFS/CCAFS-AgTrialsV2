@@ -264,6 +264,24 @@ function GetInfoTrialLocation($id_triallocation) {
     return $ArrInfo;
 }
 
+function GetInfoTrialCropInfo($id_trial) {
+    if ($id_trial != '') {
+        $connection = Doctrine_Manager::getInstance()->connection();
+        $QUERY = "SELECT T1.id_trialinfo,T1.id_crop,T2.crpname,T1.trnfnumberofreplicates,T3.xpdsname,T1.trnftreatmentnumber,T1.trnftreatmentnameandcode,T1.trnfplantingsowingstartdate, ";
+        $QUERY .= "T1.trnfplantingsowingenddate,T1.trnfphysiologicalmaturitystardate,T1.trnfphysiologicalmaturityenddate,T1.trnfharveststartdate,T1.trnfharvestenddate, ";
+        $QUERY .= "T1.trnfdatafile,T1.trnfdataorresultsfile,T1.trnfsuppplementalinformationfile,T1.trnfweatherdatafile,T1.trnfsoildatafile ";
+        $QUERY .= "FROM tb_trialinfo T1 ";
+        $QUERY .= "INNER JOIN tb_crop T2 ON T1.id_crop = T2.id_crop ";
+        $QUERY .= "LEFT JOIN tb_experimentaldesign T3 ON T1.id_experimentaldesign = T3.id_experimentaldesign ";
+        $QUERY .= "WHERE T1.id_trial = $id_trial ";
+        $QUERY .= "ORDER BY T1.id_trialinfo";
+        $st = $connection->execute($QUERY);
+        $TrialInfo = $st->fetchAll(PDO::FETCH_ASSOC);
+        $ArrInfo = $TrialInfo;
+    }
+    return $ArrInfo;
+}
+
 function GetVariety($id_trialinfo) {
     $HTML = "";
     if ($id_trialinfo != '') {
