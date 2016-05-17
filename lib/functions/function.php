@@ -231,6 +231,21 @@ function GetInfoTrialManager($id_contactperson) {
     return $ArrInfo;
 }
 
+function GetInfoRoleContactperson($id_rolecontactperson) {
+    $Rolecontactperson = "";
+    if ($id_rolecontactperson != '') {
+        $connection = Doctrine_Manager::getInstance()->connection();
+        $QUERY = "SELECT T.rcpname AS rolecontactperson ";
+        $QUERY .= "FROM tb_rolecontactperson T WHERE T.id_rolecontactperson = $id_rolecontactperson ";
+        $st = $connection->execute($QUERY);
+        $Resultado00 = $st->fetchAll();
+        foreach ($Resultado00 AS $fila) {
+            $Rolecontactperson = $fila['rolecontactperson'];
+        }
+    }
+    return $Rolecontactperson;
+}
+
 function GetInfoTrialLocation($id_triallocation) {
     if ($id_triallocation != '') {
         $connection = Doctrine_Manager::getInstance()->connection();
