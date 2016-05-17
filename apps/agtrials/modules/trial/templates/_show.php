@@ -6,8 +6,9 @@ $PartCountry = explode(",", $InfoTrialLocation['country'], 2);
 $PartDistrict = explode(",", $InfoTrialLocation['district'], 2);
 $PartSubdistrict = explode(",", $InfoTrialLocation['subdistrict'], 2);
 $PartVillage = explode(",", $InfoTrialLocation['village'], 2);
-$user = sfContext::getInstance()->getUser();
-$ArrTrialInfo = $user->getAttribute('TrialInfo');
+$ArrTrialInfo = GetInfoTrialCropInfo($form->getObject()->get('id_trial'));
+print_r($ArrTrialInfo);
+die("Stop");
 ?>
 
 
