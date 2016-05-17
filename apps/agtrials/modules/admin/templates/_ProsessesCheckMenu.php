@@ -4,6 +4,10 @@
         <ul class="subMenu">
             <li><a class="page-scroll" href="/checktriallocation">Trial location</a></li>
             <li><a class="page-scroll" href="/checkbatchtriallocation">Batch trial location</a></li>
+            <li><a class="page-scroll" href="/checkvariablesmeasured">Variables measured</a></li>
+            <li><a class="page-scroll" href="/checkbatchvariablesmeasured">Batch variables measured</a></li>
+            <li><a class="page-scroll" href="/checkvariety">Variety</a></li>
+            <li><a class="page-scroll" href="/checkbatchvariety">Batch variety</a></li>
         </ul>
     </div>
 </div>
