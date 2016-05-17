@@ -63,16 +63,7 @@
 </style>
 <div class="row">
     <div class="col-md-2 left-column">
-        <div class="MenuTrials">
-            <div onclick="window.location.href = '/batchuploadanother'" class="MenuTrialsButton"> Batch upload another </div>
-            <div onclick="window.location.href = '#'" class="MenuTrialsButton selected"> Prosesses Check
-                <ul class="subMenu">
-                    <li><a class="page-scroll" href="/checktriallocation">Trial location</a></li>
-                    <li><a class="page-scroll" href="/checkbatchtriallocation">Batch trial location</a></li>
-                </ul>
-            </div>
-            <div onclick="window.location.href = '/batchuploadtrials'" class="MenuTrialsButton"> Batch Upload Trials</div>            
-        </div>
+        <?php include_partial('admin/ProsessesCheckMenu') ?>
     </div>
     <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
         <span class="Title">Check Trial location</span>

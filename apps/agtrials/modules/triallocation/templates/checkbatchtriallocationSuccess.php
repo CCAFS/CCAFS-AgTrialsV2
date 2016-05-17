@@ -23,50 +23,39 @@
 </script>
 <div class="row">
     <div class="col-md-2 left-column">
-        <div class="MenuTrials">
-            <div onclick="window.location.href = '/batchuploadanother'" class="MenuTrialsButton"> Batch upload another </div>
-            <div onclick="window.location.href = '#'" class="MenuTrialsButton selected"> Prosesses Check
-                <ul class="subMenu">
-                    <li><a class="page-scroll" href="/checktriallocation">Trial location</a></li>
-                    <li><a class="page-scroll" href="/checkbatchtriallocation">Batch trial location</a></li>
-                </ul>
-            </div>
-            <div onclick="window.location.href = '/batchuploadtrials'" class="MenuTrialsButton"> Batch Upload Trials</div>            
-        </div>
+        <?php include_partial('admin/ProsessesCheckMenu') ?>
     </div>
     <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
         <span class="Title">Check batch trial location</span>
         <div class="Session" style="margin-top: 10px; margin-bottom: 10px;">
             <form class="form-horizontal" id="checkbatchtriallocation" name="checkbatchtriallocation" action="<?php echo url_for('@checkbatchtriallocation'); ?>" enctype="multipart/form-data" method="post">
                 <fieldset>
-                    <legend align= "left">&ensp;<b>Attention</b>&ensp;</legend>
-                    <span><?php echo image_tag('attention-icon.png'); ?> Check trial location template file must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size </span></br>
-                    <span><?php echo image_tag('attention-icon.png'); ?> Exact number of columns <b>'1'</b> for Template File</span></br>
-                    <span><?php echo image_tag('attention-icon.png'); ?> Max. <b>50000 Records</b> for Template File </span></br>
-                    <span><?php echo image_tag('attention-icon.png'); ?> Don't close the window during the process </span>
+                    <span>Check trial location template file must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size </span></br>
+                    <span>Exact number of columns <b>'1'</b> for Template File</span></br>
+                    <span>Max. <b>50000 Records</b> for Template File </span></br>
+                    <span>Don't close the window during the process </span>
                 </fieldset>
                 <br>
-                <fieldset>
-                    <legend align= "left">&ensp;<b>Download Template</b>&ensp;</legend>
-                    <button class="btn btn-action" type="button" name="Downloadcheckbatchtriallocation" id="Downloadcheckbatchtriallocation"  onclick="window.location.href = '/downloadcheckbatchtriallocation'" title="Check trial location template file"><span aria-hidden="true" class="glyphicon glyphicon-download"></span>&ensp;Check trial location template file</button>      
-                </fieldset>
-                <br>
-                <br>
-                <fieldset>
-                    <legend align= "left">&ensp;<b>Upload Template</b>&ensp;</legend>
-                    <div class="form-group control-type-text">
-                        <label class="col-sm-5 control-label" style="width: 260px;">Country</label>
-                        <div class="col-sm-4 control-type-text">
-                            <?php echo select_from_country_triallocation("id_country", null, "class='form-control'"); ?>
-                        </div>
+                <div>Download templates:</div>
+                <div class="row RowDownloadTemplate">
+                    <div onclick="window.location.href = '/downloadcheckbatchtriallocation'" class="DownloadTemplate">
+                        <img width="60" height="50" border="0" src="/images/DownloadTemplate.png">
+                        <div>Check trial location template file</div>
                     </div>
-                    <div class="form-group control-type-text">
-                        <label class="col-sm-5 control-label" style="width: 260px;">Check trial location template file</label>
-                        <div class="col-sm-4 control-type-text">
-                            <input type="file" name="checkbatchtriallocationfile" id="checkbatchtriallocationfile">
-                        </div>
+                </div>
+                <br>
+                <div class="form-group control-type-text">
+                    <div class="col-sm-2">Country:</div>
+                    <div class=" col-sm-3 control-type-text">
+                        <?php echo select_from_country_triallocation("id_country", null, "class='form-control'"); ?>
                     </div>
-                </fieldset>
+                </div>
+                <div class="form-group control-type-text">
+                    <div class="col-sm-2">Template file:</div>
+                    <div class=" col-sm-3 control-type-text">
+                        <input type="file" name="checkbatchtriallocationfile" id="checkbatchtriallocationfile">
+                    </div>
+                </div>
                 <br>
                 <fieldset>
                     <div class="form-group control-type-text" style="margin-left: 0px; margin-right: 0px;">
