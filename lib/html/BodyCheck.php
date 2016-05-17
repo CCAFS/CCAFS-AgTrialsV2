@@ -1,5 +1,4 @@
 <?php
-sfContext::getInstance()->getConfiguration()->loadHelpers('Partial');
 /*
  *  This file is part of AgTrials
  *
@@ -22,6 +21,7 @@ sfContext::getInstance()->getConfiguration()->loadHelpers('Partial');
  * @author    :  Herlin R. Espinosa G. - herlin25@gmail.com
  * @version   :  ~
  */
+sfContext::getInstance()->getConfiguration()->loadHelpers('Partial');
 ?>
 
 <script language="javascript">
