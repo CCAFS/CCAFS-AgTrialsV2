@@ -1,4 +1,6 @@
 <?php
+use_javascript('trial.js');
+$id_trial = $form->getObject()->get('id_trial');
 $InfoProject = GetInfoProject($form->getObject()->get('id_project'));
 $InfoTrialManager = GetInfoTrialManager($form->getObject()->get('id_contactperson'));
 $InfoTrialLocation = GetInfoTrialLocation($form->getObject()->get('id_triallocation'));
@@ -7,8 +9,6 @@ $PartDistrict = explode(",", $InfoTrialLocation['district'], 2);
 $PartSubdistrict = explode(",", $InfoTrialLocation['subdistrict'], 2);
 $PartVillage = explode(",", $InfoTrialLocation['village'], 2);
 $ArrTrialInfo = GetInfoTrialCropInfo($form->getObject()->get('id_trial'));
-print_r($ArrTrialInfo);
-die("Stop");
 ?>
 
 
@@ -475,7 +475,6 @@ die("Stop");
                 <span class="Title1">Trial Design</span>
             </div>
             <hr class="LineModule">
-            <!--inicio: VISUALIZACION DE INFORMACION GUARDA-->
             <?php
             if (count($ArrTrialInfo)) {
                 foreach ($ArrTrialInfo AS $TrialInfo) {
@@ -487,67 +486,67 @@ die("Stop");
                                 <div class="col-sm-12 form-group control-type-text">
                                     <div class="col-sm-2">Crop:</div> 
                                     <div class="col-sm-4 control-type-text">
-                                        <input class="form-control" name="crpname" id="crpname" type="text" value="<?php echo $TrialInfo['crpname']; ?>" disabled="true">
+                                        <input class="form-control" type="text" value="<?php echo $TrialInfo['crpname']; ?>" disabled="true">
                                     </div>
                                 </div>
                                 <div class="col-sm-12 form-group control-type-text">
                                     <div class="col-sm-2">Number of Replicates:</div> 
                                     <div class="col-sm-1 control-type-text">
-                                        <input class="form-control" name="trnfnumberofreplicates" id="trnfnumberofreplicates" type="text" value="<?php echo $TrialInfo['trnfnumberofreplicates']; ?>" disabled="true">
+                                        <input class="form-control" type="text" value="<?php echo $TrialInfo['trnfnumberofreplicates']; ?>" disabled="true">
                                     </div>                                
                                 </div>
                                 <div class="col-sm-12 form-group control-type-text">
                                     <div class="col-sm-2">Experimental Design:</div> 
                                     <div class="col-sm-4 control-type-text">
-                                        <input class="form-control" name="xpdsname" id="xpdsname" type="text" value="<?php echo $TrialInfo['xpdsname']; ?>" disabled="true">                                    
+                                        <input class="form-control" type="text" value="<?php echo $TrialInfo['xpdsname']; ?>" disabled="true">                                    
                                     </div>
                                 </div>
                                 <div class="col-sm-12 form-group control-type-text">
                                     <div class="col-sm-2">Treatment Number:</div> 
                                     <div class=" col-sm-1 control-type-text">
-                                        <input class="form-control" name="trnftreatmentnumber" id="trnftreatmentnumber" type="text" value="<?php echo $TrialInfo['trnftreatmentnumber']; ?>" disabled="true">
+                                        <input class="form-control" type="text" value="<?php echo $TrialInfo['trnftreatmentnumber']; ?>" disabled="true">
                                     </div>
                                 </div>
                                 <div class="col-sm-12 form-group control-type-text">
                                     <div class="col-sm-2">Treatment Name and Code:</div> 
                                     <div class=" col-sm-4 control-type-text">
-                                        <input class="form-control" name="trnftreatmentnameandcode" id="trnftreatmentnameandcode" type="text" value="<?php echo $TrialInfo['trnftreatmentnameandcode']; ?>" disabled="true">                                   
+                                        <input class="form-control" type="text" value="<?php echo $TrialInfo['trnftreatmentnameandcode']; ?>" disabled="true">                                   
                                     </div>
                                 </div>
                                 <div class="col-sm-6 form-group control-type-text">
                                     <div class="col-sm-4">Planting/Sowing Start Date:</div> 
                                     <div class=" col-sm-4 control-type-text">
-                                        <input class="form-control" placeholder="yyyy-mm-dd" name="trnfplantingsowingstartdate" id="trnfplantingsowingstartdate" type="text" value="<?php echo $TrialInfo['trnfplantingsowingstartdate']; ?>" disabled="true">                                
+                                        <input class="form-control" placeholder="yyyy-mm-dd" value="<?php echo $TrialInfo['trnfplantingsowingstartdate']; ?>" disabled="true">                                
                                     </div>
                                 </div>
                                 <div class="col-sm-6 form-group control-type-text">
                                     <div class="col-sm-4">Planting/Sowing End Date:</div> 
                                     <div class=" col-sm-4 control-type-text">
-                                        <input class="form-control" placeholder="yyyy-mm-dd" name="trnfplantingsowingenddate" id="trnfplantingsowingenddate" type="text" value="<?php echo $TrialInfo['trnfplantingsowingenddate']; ?>" disabled="true">
+                                        <input class="form-control" placeholder="yyyy-mm-dd" type="text" value="<?php echo $TrialInfo['trnfplantingsowingenddate']; ?>" disabled="true">
                                     </div>
                                 </div>
                                 <div class="col-sm-6 form-group control-type-text">
                                     <div class="col-sm-4">Physiological Maturity Start Date:</div> 
                                     <div class=" col-sm-4 control-type-text">
-                                        <input class="form-control" placeholder="yyyy-mm-dd" name="trnfphysiologicalmaturitystardate" id="trnfphysiologicalmaturitystardate" type="text" value="<?php echo $TrialInfo['trnfphysiologicalmaturitystardate']; ?>" disabled="true">                                
+                                        <input class="form-control" placeholder="yyyy-mm-dd" type="text" value="<?php echo $TrialInfo['trnfphysiologicalmaturitystardate']; ?>" disabled="true">                                
                                     </div>
                                 </div>
                                 <div class="col-sm-6 form-group control-type-text">
                                     <div class="col-sm-4">Physiological Maturity End Date:</div> 
                                     <div class=" col-sm-4 control-type-text">
-                                        <input class="form-control" placeholder="yyyy-mm-dd" name="trnfphysiologicalmaturityenddate" id="trnfphysiologicalmaturityenddate" type="text" value="<?php echo $TrialInfo['trnfphysiologicalmaturityenddate']; ?>" disabled="true">
+                                        <input class="form-control" placeholder="yyyy-mm-dd" type="text" value="<?php echo $TrialInfo['trnfphysiologicalmaturityenddate']; ?>" disabled="true">
                                     </div>
                                 </div>
                                 <div class="col-sm-6 form-group control-type-text">
                                     <div class="col-sm-4">Harvest Start Date:</div> 
                                     <div class=" col-sm-4 control-type-text">
-                                        <input class="form-control" placeholder="yyyy-mm-dd" name="trnfharveststartdate" id="trnfharveststartdate" type="text" value="<?php echo $TrialInfo['trnfharveststartdate']; ?>" disabled="true">                                
+                                        <input class="form-control" placeholder="yyyy-mm-dd" type="text" value="<?php echo $TrialInfo['trnfharveststartdate']; ?>" disabled="true">                                
                                     </div>
                                 </div>
                                 <div class="col-sm-6 form-group control-type-text">
                                     <div class="col-sm-4">Harvest End Date:</div> 
                                     <div class=" col-sm-4 control-type-text">
-                                        <input class="form-control" placeholder="yyyy-mm-dd" name="trnfharvestenddate" id="trnfharvestenddate" type="text" value="<?php echo $TrialInfo['trnfharvestenddate']; ?>" disabled="true">
+                                        <input class="form-control" placeholder="yyyy-mm-dd" type="text" value="<?php echo $TrialInfo['trnfharvestenddate']; ?>" disabled="true">
                                     </div>
                                 </div>
                             </fieldset>
@@ -639,7 +638,6 @@ die("Stop");
                 }
             }
             ?>
-            <!--fin: VISUALIZACION DE INFORMACION GUARDA-->
         </div>
 
     </div>
