@@ -16,13 +16,13 @@ body {
 }
 
 .Menu1 {
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#27ae60+64,17aa55+100 */
-background: #27ae60; /* Old browsers */
-background: -moz-linear-gradient(top,  #27ae60 64%, #17aa55 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  #27ae60 64%,#17aa55 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  #27ae60 64%,#17aa55 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#27ae60', endColorstr='#17aa55',GradientType=0 ); /* IE6-9 */
-   
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#27ae60+64,17aa55+100 */
+    background: #27ae60; /* Old browsers */
+    background: -moz-linear-gradient(top,  #27ae60 64%, #17aa55 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #27ae60 64%,#17aa55 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #27ae60 64%,#17aa55 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#27ae60', endColorstr='#17aa55',GradientType=0 ); /* IE6-9 */
+
 }
 
 header {
@@ -36,6 +36,7 @@ header {
     border-radius: 3px;
     border-top-width: 0px;
     padding: 5px 0px;
+    width: 200px;
     /* margin-top: 49px; */
 }
 
@@ -636,18 +637,18 @@ input, textarea, select {
 
 /* Footer Logos*/
 .partner-logo {
-  width: 8.5%;
-  display: inline-block;
+    width: 8.5%;
+    display: inline-block;
 }
 
 .partner-logo img{
-  width: 100%;
+    width: 100%;
 }
 
 .our-partners-title {
-  color: #34495e;
-  font-weight: bold;
-  text-align: left;
+    color: #34495e;
+    font-weight: bold;
+    text-align: left;
 }
 
 /* Trial subMenu */
@@ -658,28 +659,28 @@ ul.subMenu {
 }
 
 ul.subMenu li{
-  text-decoration: none;
-  font-weight: lighter;
-  list-style: none;
-  font-size: 0.9em;
-  line-height: 1.65em;
+    text-decoration: none;
+    font-weight: lighter;
+    list-style: none;
+    font-size: 0.9em;
+    line-height: 1.65em;
 }
 ul.subMenu li a{
-    
-color: #93c47d;
+
+    color: #93c47d;
 }
 
 
 .left-column {
-  margin: 0;
-  padding: 0;
-  position: relative;
-  margin-top: 49px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    margin-top: 49px;
 }
 
 .positionFixedTop {
-  z-index: 999;
-  position: fixed;
-  top: 0;
-  width: 198px;
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    width: 198px;
 }
