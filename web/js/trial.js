@@ -95,9 +95,9 @@ $(document).ready(function() {
     var CamposTrialLocation = {
         'trlcname': 'Name',
         'countrytriallocation': 'Country',
-        'districttriallocation': 'District/Satate/Province Level',
-        'subdistricttriallocation': 'Sub-district/Division Level',
-        'villagetriallocation': 'Village Level',
+//        'districttriallocation': 'District/Satate/Province Level',
+//        'subdistricttriallocation': 'Sub-district/Division Level',
+//        'villagetriallocation': 'Village Level',
         'trlclatitude': 'Latitude',
         'trlclongitude': 'Longitude',
         'trlcaltitude': 'Altitude'
