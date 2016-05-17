@@ -301,7 +301,7 @@ class triallocationActions extends autoTriallocationActions {
     public function executeCheckbatchtriallocation(sfWebRequest $request) {
         //PARAMETROS
         $connection = Doctrine_Manager::getInstance()->connection();
-        $Modulo = "Check batch trial location";
+        $Modulo = "Check Batch Trial Location";
         $Downloadresultcheckbatch = "/downloadresultcheckbatchtriallocation";
         $Cols = 1;
         $MaxRecordsFile = 50000;

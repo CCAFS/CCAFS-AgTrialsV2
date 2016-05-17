@@ -218,7 +218,7 @@ class variablesmeasuredActions extends autoVariablesmeasuredActions {
     public function executeCheckbatchvariablesmeasured(sfWebRequest $request) {
         //PARAMETROS
         $connection = Doctrine_Manager::getInstance()->connection();
-        $Modulo = "Check batch variables measured";
+        $Modulo = "Check Batch Variables Measured";
         $Downloadresultcheckbatch = "/downloadresultcheckbatchvariablesmeasured";
         $Cols = 1;
         $MaxRecordsFile = 50000;
