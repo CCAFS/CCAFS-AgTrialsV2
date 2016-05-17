@@ -29,9 +29,7 @@
 </head>
 
 <body onunload="GUnload()">
-    <div class="page-header">
-        <h1 class="title-module">Trial location coordinates</h1>
-    </div>
+    <span class="Title">Trial Location Coordinates</span>
     <form><input name="altitude" id="altitude" type="hidden"></form>
     <div id="map" style="width: 820px; height: 538px"></div>
     <script type="text/javascript">
@@ -74,11 +72,11 @@
                 title: "Choose your Trial Location"
             });
 
-            google.maps.event.addListener(marker, 'mouseout', function() {
+            google.maps.event.addListener(marker, 'mouseout', function () {
                 getElevation(marker);
             });
 
-            google.maps.event.addListener(marker, 'click', function() {
+            google.maps.event.addListener(marker, 'click', function () {
                 openInfoWindow(marker);
             });
 
@@ -100,7 +98,7 @@
                 'locations': locations
             }
             // Initiate the location request
-            elevationService.getElevationForLocations(positionalRequest, function(results, status) {
+            elevationService.getElevationForLocations(positionalRequest, function (results, status) {
                 if (status == google.maps.ElevationStatus.OK) {
                     if (results[0]) {
                         var Elevation = parseFloat(results[0].elevation.toFixed(1));
@@ -109,7 +107,7 @@
                 }
             });
         }
-        $(document).ready(function() {
+        $(document).ready(function () {
             initialize();
         });
     </script>

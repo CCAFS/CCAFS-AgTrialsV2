@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" media="screen" href="/jquery.alerts/jquery.alerts.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="/css/bootstrap-personalized.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
-<span class="Title">Check Trial Location</span>
+<span class="Title">View Trial Location</span>
 <div class="Session" style="margin-top: 10px; margin-bottom: 10px;">
     <fieldset>
         <div class="row form-group control-type-text" style="margin-bottom: 0px;">
