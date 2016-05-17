@@ -53,7 +53,7 @@
                             <?php echo select_from_country_triallocation("id_country", null, "class='form-control'"); ?>
                         </div>
                         <br><br>
-                        <div class="col-sm-8 control-type-text" style="margin-top: 13px;" id="Alphabet"></div>
+                        <div class="col-sm-12 control-type-text" style="margin-top: 13px;" id="Alphabet"></div>
                     </div>
                 </fieldset>
                 <fieldset>

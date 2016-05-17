@@ -53,7 +53,7 @@
                             <?php echo select_from_crop_variablesmeasured("id_crop", null, "class='form-control'"); ?>
                         </div>
                         <br><br>
-                        <div class="col-sm-10 control-type-text" style="margin-top: 13px;" id="Alphabet"></div>
+                        <div class="col-sm-12 control-type-text" style="margin-top: 13px;" id="Alphabet"></div>
                     </div>
                 </fieldset>
                 <fieldset>
