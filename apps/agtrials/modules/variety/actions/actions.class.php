@@ -184,7 +184,7 @@ class varietyActions extends autoVarietyActions {
     public function executeCheckbatchvariety(sfWebRequest $request) {
         //PARAMETROS
         $connection = Doctrine_Manager::getInstance()->connection();
-        $Modulo = "Check batch variety";
+        $Modulo = "Check Batch Variety";
         $Downloadresultcheckbatch = "/downloadresultcheckbatchvariety";
         $Cols = 1;
         $MaxRecordsFile = 50000;

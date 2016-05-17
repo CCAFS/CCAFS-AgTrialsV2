@@ -1,6 +1,6 @@
 <script>
-    $(document).ready(function() {
-        $('#uploadsubmit').click(function() {
+    $(document).ready(function () {
+        $('#uploadsubmit').click(function () {
             var id_crop = $('#id_crop').attr('value');
             var checkbatchvarietyfile = $('#checkbatchvarietyfile').attr('value');
             if (id_crop == '') {
@@ -21,43 +21,48 @@
         });
     });
 </script>
-<div class="page-header">
-    <h1 class="title-module">Check batch variety</h1>
+<div class="row">
+    <div class="col-md-2 left-column">
+        <?php include_partial('admin/ProsessesCheckMenu') ?>
+    </div>
+    <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
+        <span class="Title">Check Batch Variety</span>
+        <div class="Session" style="margin-top: 10px; margin-bottom: 10px;">
+            <form class="form-horizontal" id="checkbatchvariety" name="checkbatchvariety" action="<?php echo url_for('@checkbatchvariety'); ?>" enctype="multipart/form-data" method="post">
+                <fieldset>
+                    <span>Check Batch Variety template file must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size </span></br>
+                    <span>Exact number of columns <b>'1'</b> for Template File</span></br>
+                    <span>Max. <b>50000 Records</b> for Template File </span></br>
+                    <span>Don't close the window during the process </span>
+                </fieldset>
+                <br>
+                <div>Download templates:</div>
+                <div class="row RowDownloadTemplate">
+                    <div onclick="window.location.href = '/downloadcheckbatchvariety'" class="DownloadTemplate">
+                        <img width="60" height="50" border="0" src="/images/DownloadTemplate.png">
+                        <div>Check variety template file</div>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group control-type-text">
+                    <div class="col-sm-2">Crop:</div>
+                    <div class=" col-sm-3 control-type-text">
+                        <?php echo select_from_table("id_crop", "TbCrop", "id_crop", "crpname", null, null, "class='form-control'"); ?>
+                    </div>
+                </div>
+                <div class="form-group control-type-text">
+                    <div class="col-sm-2">Template file:</div>
+                    <div class=" col-sm-3 control-type-text">
+                        <input type="file" name="checkbatchvarietyfile" id="checkbatchvarietyfile">
+                    </div>
+                </div>
+                <br>
+                <fieldset>
+                    <div class="form-group control-type-text" style="margin-left: 0px; margin-right: 0px;">
+                        <button class="btn btn-action" type="button" title=" Execute " id="uploadsubmit" neme="Execute"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&ensp;Execute&ensp;</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
 </div>
-<form class="form-horizontal" id="checkbatchvariety" name="checkbatchvariety" action="<?php echo url_for('@checkbatchvariety'); ?>" enctype="multipart/form-data" method="post">
-    <fieldset>
-        <legend align= "left">&ensp;<b>Attention</b>&ensp;</legend>
-        <span><?php echo image_tag('attention-icon.png'); ?> Check variety template file must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size </span></br>
-        <span><?php echo image_tag('attention-icon.png'); ?> Exact number of columns <b>'1'</b> for Template File</span></br>
-        <span><?php echo image_tag('attention-icon.png'); ?> Max. <b>50000 Records</b> for Template File </span></br>
-        <span><?php echo image_tag('attention-icon.png'); ?> Don't close the window during the process </span>
-    </fieldset>
-    <br>
-    <fieldset>
-        <legend align= "left">&ensp;<b>Download Template</b>&ensp;</legend>
-        <button class="btn btn-action" type="button" name="Downloadcheckbatchvariety" id="Downloadcheckbatchvariety"  onclick="window.location.href = '/downloadcheckbatchvariety'" title="Check variety template file"><span aria-hidden="true" class="glyphicon glyphicon-download"></span>&ensp;Check variety template file</button>      
-    </fieldset>
-    <br>
-    <br>
-    <fieldset>
-        <legend align= "left">&ensp;<b>Upload Template</b>&ensp;</legend>
-        <div class="form-group control-type-text">
-            <label class="col-sm-5 control-label" style="width: 220px;">Crop</label>
-            <div class="col-sm-4 control-type-text">
-                <?php echo select_from_table("id_crop", "TbCrop", "id_crop", "crpname", null, null, "class='form-control'"); ?>
-            </div>
-        </div>
-        <div class="form-group control-type-text">
-            <label class="col-sm-5 control-label" style="width: 220px;">Check variety template file</label>
-            <div class="col-sm-4 control-type-text">
-                <input type="file" name="checkbatchvarietyfile" id="checkbatchvarietyfile">
-            </div>
-        </div>
-    </fieldset>
-    <br>
-    <fieldset>
-        <div class="form-group control-type-text" style="margin-left: 0px; margin-right: 0px;">
-            <button class="btn btn-action" type="button" title=" Execute " id="uploadsubmit" neme="Execute"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&ensp;Execute&ensp;</button>
-        </div>
-    </fieldset>
-</form>

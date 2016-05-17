@@ -37,30 +37,7 @@
         });
     }
 </script>
-<style type="text/css">
-    .table-fixed thead {
-        width: 98.5%;
-    }
-    .table-fixed tbody {
-        max-height: 370px;
-        overflow-y: auto;
-        width: 100%;
-    }
-    .table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
-        display: block;
-    }
-    .table-fixed tbody td, .table-fixed thead > tr> th {
-        float: left;
-        border-bottom-width: 0;
-    }
-
-    .table-fixed tbody tr:after {
-        content: ' ';
-        display: block;
-        visibility: hidden;
-        clear: both;
-    }
-</style>
+<link rel="stylesheet" type="text/css" media="screen" href="/css/prosessescheck.css"/>
 <div class="row">
     <div class="col-md-2 left-column">
         <?php include_partial('admin/ProsessesCheckMenu') ?>
