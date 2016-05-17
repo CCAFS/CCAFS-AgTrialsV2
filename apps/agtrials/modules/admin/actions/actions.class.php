@@ -61,8 +61,4 @@ class adminActions extends sfActions {
         }
     }
 
-    public function executeCheckanother(sfWebRequest $request) {
-        
-    }
-
 }
