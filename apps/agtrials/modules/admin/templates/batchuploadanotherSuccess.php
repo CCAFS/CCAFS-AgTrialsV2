@@ -1,11 +1,7 @@
 <div class="row">
     <div class="col-md-2 left-column">
-        <div class="MenuTrials">
-            <div onclick="window.location.href = '/batchuploadanother'" class="MenuTrialsButton selected"> Batch upload another </div>
-            <div onclick="window.location.href = '/checktriallocation'" class="MenuTrialsButton"> Prosesses Check</div>
-        </div>
+        <?php include_partial('admin/ProsessesMenu') ?>
     </div>
-
     <div class="col-md-9 sf_admin_form" style="margin-top: 13px; width: 930px;">
         <span class="Title">Batch upload another</span>
         <div id="div_loading" class="loading" align="center" style="display:none;">
