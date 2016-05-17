@@ -30,10 +30,10 @@
         <div class="Session" style="margin-top: 10px; margin-bottom: 10px;">
             <form class="form-horizontal" id="checkbatchtriallocation" name="checkbatchtriallocation" action="<?php echo url_for('@checkbatchtriallocation'); ?>" enctype="multipart/form-data" method="post">
                 <fieldset>
-                    <span>Check trial location template file must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size </span></br>
-                    <span>Exact number of columns <b>'1'</b> for Template File</span></br>
-                    <span>Max. <b>50000 Records</b> for Template File </span></br>
-                    <span>Don't close the window during the process </span>
+                    <span>Check trial location template file must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</span></br>
+                    <span>Exact number of columns <b>'1'</b> for Template File.</span></br>
+                    <span>Max. <b>50000 Records</b> for Template File.</span></br>
+                    <span>Don't close the window during the process.</span>
                 </fieldset>
                 <br>
                 <div>Download templates:</div>

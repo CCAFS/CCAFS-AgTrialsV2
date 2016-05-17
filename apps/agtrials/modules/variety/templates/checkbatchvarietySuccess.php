@@ -30,10 +30,10 @@
         <div class="Session" style="margin-top: 10px; margin-bottom: 10px;">
             <form class="form-horizontal" id="checkbatchvariety" name="checkbatchvariety" action="<?php echo url_for('@checkbatchvariety'); ?>" enctype="multipart/form-data" method="post">
                 <fieldset>
-                    <span>Check Batch Variety template file must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size </span></br>
-                    <span>Exact number of columns <b>'1'</b> for Template File</span></br>
-                    <span>Max. <b>50000 Records</b> for Template File </span></br>
-                    <span>Don't close the window during the process </span>
+                    <span>Check variety template file must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</span></br>
+                    <span>Exact number of columns <b>'1'</b> for Template File.</span></br>
+                    <span>Max. <b>50000 Records</b> for Template File.</span></br>
+                    <span>Don't close the window during the process.</span>
                 </fieldset>
                 <br>
                 <div>Download templates:</div>
