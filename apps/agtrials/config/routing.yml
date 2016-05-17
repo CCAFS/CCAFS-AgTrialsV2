@@ -279,11 +279,6 @@ batchuploadanother:
   url:   /batchuploadanother/*
   param: { module: admin, action: batchuploadanother }
   
-checkanother:
-  url:   /checkanother/*
-  param: { module: admin, action: checkanother }
-  
-  
   
 # default rules
 homepage:
