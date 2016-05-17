@@ -48,24 +48,24 @@
     <div class="container">
         <h1 class="HomeTit">Latest Trials</h1><br>
         <div class="row HomePart41">
-            <div class="LatestTrials" onclick="window.location.href = '/trial/<?php echo $Trials[1]['id']; ?>/show'">  
+            <div class="LatestTrials" onclick="window.location.href = '/trial/<?php echo $Trials[1]['id']; ?>'">  
                 <div class="IconTrial"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></div>
                 <span class="NameTrial"><?php echo CutString($Trials[1]['name'], 50); ?></span><br>
                 <span class="DateLocationTrial"><?php echo $Trials[1]['date'] . " " . $Trials[1]['location']; ?></span>
             </div>
-            <div class="LatestTrials" style="margin-left: 15px;" onclick="window.location.href = '/trial/<?php echo $Trials[2]['id']; ?>/show'">  
+            <div class="LatestTrials" style="margin-left: 15px;" onclick="window.location.href = '/trial/<?php echo $Trials[2]['id']; ?>'">  
                 <div class="IconTrial"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></div>
                 <span class="NameTrial"><?php echo CutString($Trials[2]['name'], 50); ?></span><br>
                 <span class="DateLocationTrial"><?php echo $Trials[2]['date'] . " " . $Trials[2]['location']; ?></span>
             </div>
         </div>
         <div class="row HomePart41">
-            <div class="LatestTrials" onclick="window.location.href = '/trial/<?php echo $Trials[3]['id']; ?>/show'">  
+            <div class="LatestTrials" onclick="window.location.href = '/trial/<?php echo $Trials[3]['id']; ?>'">  
                 <div class="IconTrial"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></div>
                 <span class="NameTrial"><?php echo CutString($Trials[3]['name'], 50); ?></span><br>
                 <span class="DateLocationTrial"><?php echo $Trials[3]['date'] . " " . $Trials[3]['location']; ?></span>
             </div>
-            <div class="LatestTrials" style="margin-left: 15px;" onclick="window.location.href = '/trial/<?php echo $Trials[4]['id']; ?>/show'">  
+            <div class="LatestTrials" style="margin-left: 15px;" onclick="window.location.href = '/trial/<?php echo $Trials[4]['id']; ?>'">  
                 <div class="IconTrial"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></div>
                 <span class="NameTrial"><?php echo CutString($Trials[4]['name'], 50); ?></span><br>
                 <span class="DateLocationTrial"><?php echo $Trials[4]['date'] . " " . $Trials[4]['location']; ?></span>
