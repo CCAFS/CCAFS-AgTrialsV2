@@ -52,6 +52,18 @@ header {
     background: #FFF;
 }
 
+.MenuButtonLeft{
+    font-size:14px;
+    font-weight: lighter;
+    border-radius: 5px;
+    width: 90%;
+    margin: 5px 5%;
+    padding: 8px;
+    text-align: left;
+    cursor: pointer;
+    background: #FFF;
+}
+
 .MenuTrialsButton.selected{
     color: #2A9A60;
     font-weight: bold;
