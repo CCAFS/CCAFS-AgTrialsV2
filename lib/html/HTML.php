@@ -161,7 +161,7 @@ if (sfContext::getInstance()->getUser()->isAuthenticated()) {
                             <?php if (sfContext::getInstance()->getUser()->isAuthenticated()) { ?>
                                 <li class="dropdown" id="fat-menu">
                                     <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#" id="drop3">
-                                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span><?php echo $CompleteName; ?><span class="caret"></span>
+                                        <span class="glyphicon glyphicon-user" aria-hidden="true">&ensp;</span><?php echo $CompleteName; ?><span class="caret"></span>
                                     </a>
                                     <ul aria-labelledby="drop3" class="dropdown-menu">
                                         <li><a href="/user">Profile</a></li>
