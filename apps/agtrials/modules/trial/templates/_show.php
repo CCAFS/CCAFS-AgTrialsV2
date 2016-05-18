@@ -642,3 +642,6 @@ $ArrTrialInfo = GetInfoTrialCropInfo($form->getObject()->get('id_trial'));
 
     </div>
 </div>
+<div class="BotonAcciones">
+    <?php include_partial('trial/form_actions', array('tb_trial' => $tb_trial, 'form' => $form, 'configuration' => $configuration, 'helper' => $helper)) ?>
+</div>
