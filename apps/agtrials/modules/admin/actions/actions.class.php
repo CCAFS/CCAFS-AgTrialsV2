@@ -66,8 +66,7 @@ class adminActions extends sfActions {
         $QUERY = "SELECT C.crpname AS label, COUNT(T.id_trial) AS data FROM tb_trial T INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial INNER JOIN tb_crop C ON C.id_crop = TI.id_crop GROUP BY C.crpname ORDER BY 2 DESC LIMIT 10 ";
         $st = $connection->execute($QUERY);
         $Results = $st->fetchAll(PDO::FETCH_ASSOC);
-        $a = 0;
-        $ArrLabel;
+        $ArrLabel = null;
         $ArrData = null;
         $ArrLabel[0] = "";
         $a = 1;
@@ -82,6 +81,34 @@ class adminActions extends sfActions {
         $Technology['data'] = $ArrData;
         $JSONByTechnology = json_encode($Technology);
         die($JSONByTechnology);
+    }
+
+    public function executeByCountry(sfWebRequest $request) {
+        $connection = Doctrine_Manager::getInstance()->connection();
+        $QUERY = "SELECT fc_triallocationadministrativedivisionname(TL.id_triallocation ,1) AS label, COUNT(*) AS data ";
+        $QUERY .= "FROM tb_trial T ";
+        $QUERY .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
+        $QUERY .= "GROUP BY 1 ";
+        $QUERY .= "ORDER BY 2 DESC ";
+        $QUERY .= "LIMIT 10 ";
+
+        $st = $connection->execute($QUERY);
+        $Results = $st->fetchAll(PDO::FETCH_ASSOC);
+        $ArrLabel = null;
+        $ArrData = null;
+        $ArrLabel[0] = "";
+        $a = 1;
+        $b = 0;
+        foreach ($Results AS $Valor) {
+            $ArrLabel[$a] = $Valor['label'];
+            $ArrData[$b] = $Valor['data'];
+            $a++;
+            $b++;
+        }
+        $Country['label'] = $ArrLabel;
+        $Country['data'] = $ArrData;
+        $JSONByCountry = json_encode($Country);
+        die($JSONByCountry);
     }
 
 }

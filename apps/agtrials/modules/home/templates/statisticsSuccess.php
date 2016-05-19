@@ -4,28 +4,38 @@
 <script>
     $(document).ready(function () {
         $('#ByTechnology').click(function () {
-            ByTechnology();
+            $('#TitleStatistics').html("");
             $('#TitleStatistics').html("Statistics by Crop");
+            $('#chart').html("");
+            ByTechnology();
         });
 
         $('#ByCountry').click(function () {
-            ByCountry();
+            $('#TitleStatistics').html("");
             $('#TitleStatistics').html("Statistics by Country");
+            $('#chart').html("");
+            ByCountry();
         });
 
         $('#ByInstitution').click(function () {
-            ByInstitution();
+            $('#TitleStatistics').html("");
             $('#TitleStatistics').html("Statistics by Institution");
+            $('#chart').html("");
+            ByInstitution();
         });
 
         $('#ByProject').click(function () {
-            ByProject();
+            $('#TitleStatistics').html("");
             $('#TitleStatistics').html("Statistics by Project");
+            $('#chart').html("");
+            ByProject();
         });
 
         $('#ByTrialLocation').click(function () {
-            ByTrialLocation();
+            $('#TitleStatistics').html("");
             $('#TitleStatistics').html("Statistics by Trial Location");
+            $('#chart').html("");
+            ByTrialLocation();
         });
     });
 </script>
