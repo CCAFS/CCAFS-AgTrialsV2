@@ -61,4 +61,29 @@ class adminActions extends sfActions {
         }
     }
 
+    public function executeByTechnology(sfWebRequest $request) {
+        $connection = Doctrine_Manager::getInstance()->connection();
+        $QUERY = "SELECT C.crpname AS label, COUNT(T.id_trial) AS data FROM tb_trial T INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial INNER JOIN tb_crop C ON C.id_crop = TI.id_crop GROUP BY C.crpname ORDER BY 2 DESC LIMIT 10 ";
+        $st = $connection->execute($QUERY);
+        $Results = $st->fetchAll(PDO::FETCH_ASSOC);
+        $a = 0;
+        $ArrLabel;
+        $ArrData = null;
+        $ArrLabel[0] = "";
+        $a = 1;
+        $b = 0;
+        foreach ($Results AS $Valor) {
+            $ArrLabel[$a] = $Valor['label'];
+            $ArrData[$b] = $Valor['data'];
+            $a++;
+            $b++;
+        }
+
+        $Technology['label'] = $ArrLabel;
+        $Technology['data'] = $ArrData;
+
+        $JSONByTechnology = json_encode($Technology);
+        die($JSONByTechnology);
+    }
+
 }
