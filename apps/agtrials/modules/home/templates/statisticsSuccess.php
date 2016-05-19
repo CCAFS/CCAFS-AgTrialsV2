@@ -7,6 +7,26 @@
             ByTechnology();
             $('#TitleStatistics').html("Statistics by Crop");
         });
+
+        $('#ByCountry').click(function () {
+            ByCountry();
+            $('#TitleStatistics').html("Statistics by Country");
+        });
+
+        $('#ByInstitution').click(function () {
+            ByInstitution();
+            $('#TitleStatistics').html("Statistics by Institution");
+        });
+
+        $('#ByProject').click(function () {
+            ByProject();
+            $('#TitleStatistics').html("Statistics by Project");
+        });
+
+        $('#ByTrialLocation').click(function () {
+            ByTrialLocation();
+            $('#TitleStatistics').html("Statistics by Trial Location");
+        });
     });
 </script>
 <div class="row">

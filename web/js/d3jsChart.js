@@ -1,6 +1,5 @@
 function ByTechnology() {
     d3.json("/admin/ByTechnology", function (info) {
-
         var Max = 400000;
         var Interval = 8000;
 

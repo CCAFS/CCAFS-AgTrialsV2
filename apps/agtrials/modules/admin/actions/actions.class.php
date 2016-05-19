@@ -78,10 +78,8 @@ class adminActions extends sfActions {
             $a++;
             $b++;
         }
-
         $Technology['label'] = $ArrLabel;
         $Technology['data'] = $ArrData;
-
         $JSONByTechnology = json_encode($Technology);
         die($JSONByTechnology);
     }
