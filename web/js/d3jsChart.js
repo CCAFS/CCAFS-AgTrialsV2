@@ -24,11 +24,21 @@ function ByTechnology() {
         var xscale = d3.scale.linear().domain([0, Max]).range([0, Interval]);
         var yscale = d3.scale.linear().domain([0, label.length]).range([0, 480]);
         var colorScale = d3.scale.quantize().domain([0, label.length]).range(colors);
-        var canvas = d3.select('#chart').append('svg').attr({'width': 850, 'height': 500});
+        var canvas = d3.select('#chart').append('svg').attr({'width': 850, 'height': 550});
+
+        canvas.append("text")
+                .attr("class", "title")
+                .attr("x", (850 / 2))
+                .attr("y", 20)
+                .attr("text-anchor", "middle")
+                .style("font-size", "16px")
+                .style("text-decoration", "none")
+                .text("Top 10 Trials By Crop");
 
         var grids = canvas.append('g')
                 .attr('id', 'grid')
-                .attr('transform', 'translate(150,10)')
+                .attr('transform', 'translate(150,60)')
+                .attr("text-anchor", "middle")
                 .selectAll('line')
                 .data(grid)
                 .enter()
@@ -65,17 +75,17 @@ function ByTechnology() {
                 .tickValues(d3.range(17));
 
         var y_xis = canvas.append('g')
-                .attr("transform", "translate(150,0)")
+                .attr("transform", "translate(150,50)")
                 .attr('id', 'yaxis')
                 .call(yAxis);
 
         var x_xis = canvas.append('g')
-                .attr("transform", "translate(148,480)")
+                .attr("transform", "translate(148,530)")
                 .attr('id', 'xaxis')
                 .call(xAxis);
 
         var chart = canvas.append('g')
-                .attr("transform", "translate(150,5)")
+                .attr("transform", "translate(150,55)")
                 .attr('id', 'bars')
                 .selectAll('rect')
                 .data(data)
@@ -91,7 +101,6 @@ function ByTechnology() {
                 .attr('width', function (d) {
                     return 0;
                 });
-
 
         var transit = d3.select("svg").selectAll("rect")
                 .data(data)
