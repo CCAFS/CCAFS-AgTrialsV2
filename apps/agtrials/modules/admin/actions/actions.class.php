@@ -111,4 +111,90 @@ class adminActions extends sfActions {
         die($JSONByCountry);
     }
 
+    public function executeByInstitution(sfWebRequest $request) {
+        $connection = Doctrine_Manager::getInstance()->connection();
+
+        $QUERY = "SELECT I.insname AS label, COUNT(*) AS data ";
+        $QUERY .= "FROM tb_trial T ";
+        $QUERY .= "INNER JOIN tb_contactperson CP ON T.id_contactperson = CP.id_contactperson ";
+        $QUERY .= "INNER JOIN tb_institution I ON CP.id_institution = I.id_institution ";
+        $QUERY .= "GROUP BY 1 ";
+        $QUERY .= "ORDER BY 2 DESC ";
+        $QUERY .= "LIMIT 10 ";
+
+        $st = $connection->execute($QUERY);
+        $Results = $st->fetchAll(PDO::FETCH_ASSOC);
+        $ArrLabel = null;
+        $ArrData = null;
+        $ArrLabel[0] = "";
+        $a = 1;
+        $b = 0;
+        foreach ($Results AS $Valor) {
+            $ArrLabel[$a] = $Valor['label'];
+            $ArrData[$b] = $Valor['data'];
+            $a++;
+            $b++;
+        }
+        $Institution['label'] = $ArrLabel;
+        $Institution['data'] = $ArrData;
+        $JSONByInstitution = json_encode($Institution);
+        die($JSONByInstitution);
+    }
+
+    public function executeByProject(sfWebRequest $request) {
+        $connection = Doctrine_Manager::getInstance()->connection();
+        $QUERY = "SELECT fc_triallocationadministrativedivisionname(TL.id_triallocation ,1) AS label, COUNT(*) AS data ";
+        $QUERY .= "FROM tb_trial T ";
+        $QUERY .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
+        $QUERY .= "GROUP BY 1 ";
+        $QUERY .= "ORDER BY 2 DESC ";
+        $QUERY .= "LIMIT 10 ";
+
+        $st = $connection->execute($QUERY);
+        $Results = $st->fetchAll(PDO::FETCH_ASSOC);
+        $ArrLabel = null;
+        $ArrData = null;
+        $ArrLabel[0] = "";
+        $a = 1;
+        $b = 0;
+        foreach ($Results AS $Valor) {
+            $ArrLabel[$a] = $Valor['label'];
+            $ArrData[$b] = $Valor['data'];
+            $a++;
+            $b++;
+        }
+        $Project['label'] = $ArrLabel;
+        $Project['data'] = $ArrData;
+        $JSONByProject = json_encode($Project);
+        die($JSONByProject);
+    }
+
+    public function executeByTrialLocation(sfWebRequest $request) {
+        $connection = Doctrine_Manager::getInstance()->connection();
+        $QUERY = "SELECT fc_triallocationadministrativedivisionname(TL.id_triallocation ,1) AS label, COUNT(*) AS data ";
+        $QUERY .= "FROM tb_trial T ";
+        $QUERY .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
+        $QUERY .= "GROUP BY 1 ";
+        $QUERY .= "ORDER BY 2 DESC ";
+        $QUERY .= "LIMIT 10 ";
+
+        $st = $connection->execute($QUERY);
+        $Results = $st->fetchAll(PDO::FETCH_ASSOC);
+        $ArrLabel = null;
+        $ArrData = null;
+        $ArrLabel[0] = "";
+        $a = 1;
+        $b = 0;
+        foreach ($Results AS $Valor) {
+            $ArrLabel[$a] = $Valor['label'];
+            $ArrData[$b] = $Valor['data'];
+            $a++;
+            $b++;
+        }
+        $TrialLocation['label'] = $ArrLabel;
+        $TrialLocation['data'] = $ArrData;
+        $JSONByTrialLocation = json_encode($TrialLocation);
+        die($JSONByTrialLocation);
+    }
+
 }
