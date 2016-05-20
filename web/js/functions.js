@@ -274,12 +274,12 @@ function CheckError(Form, event, BanderaFaltantes, MensajeFaltantes) {
 //inicio: FUNCION PARA MOSTRAR LA VENTANA DEL MENSAJE
 function Mensaje(msg) {
     var tamano = msg.length;
-//    if (tamano > 750)
-//        msg = "<div style='width: 540px; height: 400px; overflow-y: scroll;'>" + msg + "</div>";
-//    else
-//        msg = "<div style='width: 540px; height: auto; overflow-y: scroll;'>" + msg + "</div>";
+    if (tamano > 750)
+        msg = "<div style='width: 540px; height: 400px; overflow-y: scroll;'>" + msg + "</div>";
+    else
+        msg = "<div style='width: 540px; height: auto; overflow-y: scroll;'>" + msg + "</div>";
+    alerts.show({ css: 'error', title: 'Required Fields', message: msg });
 
-    alert('Required Fields', msg);
 }
 //FIN: FUNCION PARA MOSTRAR LA VENTANA DEL MENSAJE
 

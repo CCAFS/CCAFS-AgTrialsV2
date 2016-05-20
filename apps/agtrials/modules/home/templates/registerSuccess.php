@@ -2,6 +2,7 @@
 <script src="/autocomplete/lib/jquery.1.7.1.js"></script>
 <script src="/autocomplete/lib/jquery.ui.1.8.16.js"></script>
 <script src="/autocomplete/autocomplete.js"></script>
+
 <script>
     $(document).ready(function () {
         //DEFINICION DE CAMPOS OBLIGATORIOS
@@ -18,14 +19,14 @@
         };
 
         //inicio: VALIDAMOS EL ENVIO DEL FORMULARIO
-        $("#SubmitRegister").click(function (event) {
+        $("#SubmitRegister").click(function () {
             var Ico = "<img src='/images/bullet-black-icon.png'> ";
             var BanderaFaltantes = false;
             var MensajeFaltantes = "";
             $.each(CamposObligatorios, function (Id, Campo) {
-                if ($('#' + Id).val() == '') {
+                if ($('#' + Id).val() === '') {
                     BanderaFaltantes = true;
-                    MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
+                    MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                     CampoObligatorio(Id);
                 } else {
                     CampoNormalObligatorio(Id);
@@ -35,7 +36,6 @@
             //VERIFICACION MENSAJE DE ALERTA
             if (BanderaFaltantes) {
                 Mensaje(MensajeFaltantes);
-                event.preventDefault();
             } else {
                 $('#div_loading').show();
                 $('#FormRegister').submit();
@@ -202,4 +202,4 @@
             <button class="btn btn-action" type="button" title=" Submit " id="SubmitRegister" neme="SubmitRegister"><span class="glyphicon glyphicon-saved" aria-hidden="true"></span>&ensp;Submit&ensp;</button>
         </div>
     </form>
-</div>       
+</div>      

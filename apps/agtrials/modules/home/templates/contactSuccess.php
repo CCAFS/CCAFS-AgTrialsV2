@@ -30,7 +30,6 @@
             //VERIFICACION MENSAJE DE ALERTA
             if (BanderaFaltantes) {
                 Mensaje(MensajeFaltantes);
-                event.preventDefault();
             } else {
                 $('#div_loading').show();
                 $('#FormContact').submit();
