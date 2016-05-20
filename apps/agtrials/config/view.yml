@@ -15,8 +15,5 @@ default:
   stylesheets:    [/bootstrapAdminThemePlugin/css/bootstrap.min.css,/jquery-ui-1.11.4/jquery-ui.min.css,/jQuery-Modal-Alert/modal-alerts.css,bootstrap-personalized.css,main.css]
   javascripts:    [/js/jquery-ui-1.11.3/jquery-1.11.3.min.js,/bootstrapAdminThemePlugin/js/bootstrap.min.js,/jQuery-Modal-Alert/modal-alerts.js,functions.js,modulesvalidate.js]
 
-#  stylesheets:    [/bootstrapAdminThemePlugin/css/bootstrap.min.css,/jquery-ui-1.11.4/jquery-ui.min.css,/jAlert-master/src/jAlert-v4.css,bootstrap-personalized.css,main.css]
-#  javascripts:    [/js/jquery-ui-1.11.3/jquery-1.11.3.min.js,/bootstrapAdminThemePlugin/js/bootstrap.min.js,jquery-2.2.3.min.js,/jAlert-master/src/jAlert-v4.min.js,/jAlert-master/src/jAlert-functions.min.js,functions.js,modulesvalidate.js]
-
   has_layout:     true
   layout:         layout
