@@ -122,7 +122,7 @@ $(document).ready(function() {
         var MensajeFaltantes = "";
 
         //inicio: VALIDACION (Project/Trial Groups Name)
-        if ($('#prjname').attr('value') === '') {
+        if ($('#prjname').val() === '') {
             BanderaFaltantes = true;
             MensajeFaltantes += Ico1 + "<b>Project/Trial Groups</b> \n &ensp;&ensp;&ensp; " + Ico2 + "Name \n";
             CampoObligatorio('prjname');
@@ -134,7 +134,7 @@ $(document).ready(function() {
         //inicio: VALIDACION (Lead of Project)
         var MensajeLeadofProject = "";
         $.each(CamposLeadofProject, function(Id, Campo) {
-            if ($('#' + Id).attr('value') === '') {
+            if ($('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeLeadofProject += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " \n";
                 CampoObligatorio(Id);
@@ -150,7 +150,7 @@ $(document).ready(function() {
         //inicio: VALIDACION (Project Implementing Institutions)
         var MensajeProjectImplementingInstitutions = "";
         $.each(CamposProjectImplementingInstitutions, function(Id, Campo) {
-            if ($('#' + Id).attr('value') === '') {
+            if ($('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeProjectImplementingInstitutions += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " \n";
                 CampoObligatorio(Id);
@@ -166,7 +166,7 @@ $(document).ready(function() {
         //inicio: VALIDACION (Project Implementing period)
         var MensajeProjectImplementingperiod = "";
         $.each(CamposProjectImplementingperiod, function(Id, Campo) {
-            if ($('#' + Id).attr('value') === '') {
+            if ($('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeProjectImplementingperiod += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " \n";
                 CampoObligatorio(Id);
@@ -182,7 +182,7 @@ $(document).ready(function() {
         //inicio: VALIDACION (Funding for project)
         var MensajeFundingforproject = "";
         $.each(CamposFundingforproject, function(Id, Campo) {
-            if ($('#' + Id).attr('value') === '') {
+            if ($('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeFundingforproject += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " \n";
                 CampoObligatorio(Id);
@@ -198,7 +198,7 @@ $(document).ready(function() {
         //inicio: VALIDACION (Project information)
         var MensajeProjectinformation = "";
         $.each(CamposProjectinformation, function(Id, Campo) {
-            if ($('#' + Id).attr('value') === '') {
+            if ($('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeProjectinformation += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " \n";
                 CampoObligatorio(Id);
@@ -224,7 +224,7 @@ $(document).ready(function() {
                     SelectNormalObligatorio(Id);
                 }
             } else {
-                if ($('#' + Id).attr('value') === '') {
+                if ($('#' + Id).val() === '') {
                     BanderaFaltantes = true;
                     MensajeTrialManager += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " \n";
                     CampoObligatorio(Id);
@@ -241,7 +241,7 @@ $(document).ready(function() {
         //inicio: VALIDACION (Trial Implementing period)
         var MensajeTrialImplementingperiod = "";
         $.each(CamposTrialImplementingperiod, function(Id, Campo) {
-            if ($('#' + Id).attr('value') === '') {
+            if ($('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeTrialImplementingperiod += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " \n";
                 CampoObligatorio(Id);
@@ -257,7 +257,7 @@ $(document).ready(function() {
         //inicio: VALIDACION (Trial Location)
         var MensajeTrialLocation = "";
         $.each(CamposTrialLocation, function(Id, Campo) {
-            if ($('#' + Id).attr('value') === '') {
+            if ($('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeTrialLocation += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " \n";
                 CampoObligatorio(Id);
@@ -273,7 +273,7 @@ $(document).ready(function() {
         //inicio: VALIDACION (Trial Characteristics)
         var MensajeTrialCharacteristics = "";
         $.each(CamposTrialCharacteristics, function(Id, Campo) {
-            if ($('#' + Id).attr('value') === '') {
+            if ($('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeTrialCharacteristics += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " \n";
                 CampoObligatorio(Id);

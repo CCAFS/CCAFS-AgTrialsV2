@@ -12,7 +12,7 @@
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         $.each(FieldContactperson, function(Id, Campo) {
-            if ($('#' + Id).attr('value') == '') {
+            if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
                 CampoObligatorio(Id);
@@ -33,7 +33,7 @@
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         $.each(FieldCrop, function(Id, Campo) {
-            if ($('#' + Id).attr('value') == '') {
+            if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
                 CampoObligatorio(Id);
@@ -54,7 +54,7 @@
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         $.each(FieldDonor, function(Id, Campo) {
-            if ($('#' + Id).attr('value') == '') {
+            if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
                 CampoObligatorio(Id);
@@ -75,7 +75,7 @@
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         $.each(FieldExperimentaldesign, function(Id, Campo) {
-            if ($('#' + Id).attr('value') == '') {
+            if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
                 CampoObligatorio(Id);
@@ -137,7 +137,7 @@
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         $.each(FieldProject, function(Id, Campo) {
-            if ($('#' + Id).attr('value') == '') {
+            if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
                 CampoObligatorio(Id);
@@ -158,7 +158,7 @@
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         $.each(FieldRolecontactperson, function(Id, Campo) {
-            if ($('#' + Id).attr('value') == '') {
+            if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
                 CampoObligatorio(Id);
@@ -179,7 +179,7 @@
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         $.each(FieldTraitclass, function(Id, Campo) {
-            if ($('#' + Id).attr('value') == '') {
+            if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
                 CampoObligatorio(Id);
@@ -204,7 +204,7 @@
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         $.each(FieldTriallocation, function(Id, Campo) {
-            if ($('#' + Id).attr('value') == '') {
+            if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
                 CampoObligatorio(Id);
@@ -228,7 +228,7 @@
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         $.each(FieldVariablesmeasured, function(Id, Campo) {
-            if ($('#' + Id).attr('value') == '') {
+            if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
                 CampoObligatorio(Id);
@@ -251,7 +251,7 @@
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         $.each(FieldVariety, function(Id, Campo) {
-            if ($('#' + Id).attr('value') == '') {
+            if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
                 CampoObligatorio(Id);
@@ -273,7 +273,7 @@
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         $.each(FieldGuardGroup, function(Id, Campo) {
-            if ($('#' + Id).attr('value') == '') {
+            if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
                 CampoObligatorio(Id);

@@ -12,7 +12,7 @@
             var BanderaFaltantes = false;
             var MensajeFaltantes = "";
             $.each(CamposObligatorios, function (Id, Campo) {
-                if ($('#' + Id).attr('value') == '') {
+                if ($('#' + Id).val() == '') {
                     BanderaFaltantes = true;
                     MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
                     CampoObligatorio(Id);
@@ -39,8 +39,8 @@
         });
 
         function ValidaPassword() {
-            var newpassword = $('#newpassword').attr('value')
-            var confirmnewpassword = $('#confirmnewpassword').attr('value')
+            var newpassword = $('#newpassword').val();
+            var confirmnewpassword = $('#confirmnewpassword').val();
             if ((newpassword != '') && (confirmnewpassword != '')) {
                 if (newpassword != confirmnewpassword) {
                     jError('The password does not match!', 'Error', null);

@@ -36,7 +36,7 @@ if (!(strpos($sfGuardUser->email_address, "none")))
             var BanderaFaltantes = false;
             var MensajeFaltantes = "";
             $.each(CamposObligatorios, function (Id, Campo) {
-                if ($('#' + Id).attr('value') == '') {
+                if ($('#' + Id).val() == '') {
                     BanderaFaltantes = true;
                     MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
                     CampoObligatorio(Id);
@@ -56,7 +56,7 @@ if (!(strpos($sfGuardUser->email_address, "none")))
         });
 
         $('#email_address').blur(function () {
-            if ($('#email_address').attr('value') != '' && ($("#email_address").val().indexOf('@', 0) == -1 || $("#email_address").val().indexOf('.', 0) == -1)) {
+            if ($('#email_address').val() != '' && ($("#email_address").val().indexOf('@', 0) == -1 || $("#email_address").val().indexOf('.', 0) == -1)) {
                 $('#email_address').attr('value', '');
                 jError('Email address', 'Error', null);
             }
