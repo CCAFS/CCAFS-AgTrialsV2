@@ -6,7 +6,7 @@ function ByTechnology() {
 
         var label = info.label
         var data = info.data
-        var colors = ['#0000b4', '#0082ca', '#0094ff', '#0d4bcf', '#0066AE', '#074285', '#00187B', '#285964', '#405F83', '#416545', '#4D7069', '#6E9985', '#7EBC89', '#0283AF', '#79BCBF', '#99C19E'];
+        var colors = ['#0d4bcf', '#0066AE', '#074285', '#00187B', '#285964', '#405F83', '#416545', '#4D7069', '#6E9985', '#7EBC89', '#0283AF', '#79BCBF', '#99C19E'];
 //                console.log(label);
 //                console.log(data);
 
@@ -140,7 +140,7 @@ function ByCountry() {
 
         var label = info.label
         var data = info.data
-        var colors = ['#0000b4', '#0082ca', '#0094ff', '#0d4bcf', '#0066AE', '#074285', '#00187B', '#285964', '#405F83', '#416545', '#4D7069', '#6E9985', '#7EBC89', '#0283AF', '#79BCBF', '#99C19E'];
+        var colors = ['#0d4bcf', '#0066AE', '#074285', '#00187B', '#285964', '#405F83', '#416545', '#4D7069', '#6E9985', '#7EBC89', '#0283AF', '#79BCBF', '#99C19E'];
 
         var grid = d3.range(25).map(function (i) {
             return {'x1': 0, 'y1': 0, 'x2': 0, 'y2': 470};
@@ -272,7 +272,7 @@ function ByInstitution() {
 
         var label = info.label
         var data = info.data
-        var colors = ['#0000b4', '#0082ca', '#0094ff', '#0d4bcf', '#0066AE', '#074285', '#00187B', '#285964', '#405F83', '#416545', '#4D7069', '#6E9985', '#7EBC89', '#0283AF', '#79BCBF', '#99C19E'];
+        var colors = ['#0d4bcf', '#0066AE', '#074285', '#00187B', '#285964', '#405F83', '#416545', '#4D7069', '#6E9985', '#7EBC89', '#0283AF', '#79BCBF', '#99C19E'];
 
         var grid = d3.range(25).map(function (i) {
             return {'x1': 0, 'y1': 0, 'x2': 0, 'y2': 470};
@@ -404,7 +404,7 @@ function ByProject() {
 
         var label = info.label
         var data = info.data
-        var colors = ['#0000b4', '#0082ca', '#0094ff', '#0d4bcf', '#0066AE', '#074285', '#00187B', '#285964', '#405F83', '#416545', '#4D7069', '#6E9985', '#7EBC89', '#0283AF', '#79BCBF', '#99C19E'];
+        var colors = ['#0d4bcf', '#0066AE', '#074285', '#00187B', '#285964', '#405F83', '#416545', '#4D7069', '#6E9985', '#7EBC89', '#0283AF', '#79BCBF', '#99C19E'];
 
         var grid = d3.range(25).map(function (i) {
             return {'x1': 0, 'y1': 0, 'x2': 0, 'y2': 470};
@@ -536,7 +536,7 @@ function ByTrialLocation() {
 
         var label = info.label
         var data = info.data
-        var colors = ['#0000b4', '#0082ca', '#0094ff', '#0d4bcf', '#0066AE', '#074285', '#00187B', '#285964', '#405F83', '#416545', '#4D7069', '#6E9985', '#7EBC89', '#0283AF', '#79BCBF', '#99C19E'];
+        var colors = ['#0d4bcf', '#0066AE', '#074285', '#00187B', '#285964', '#405F83', '#416545', '#4D7069', '#6E9985', '#7EBC89', '#0283AF', '#79BCBF', '#99C19E'];
 
         var grid = d3.range(25).map(function (i) {
             return {'x1': 0, 'y1': 0, 'x2': 0, 'y2': 470};
