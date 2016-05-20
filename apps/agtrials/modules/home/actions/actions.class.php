@@ -72,7 +72,52 @@ class homeActions extends sfActions {
     }
 
     public function executeContact(sfWebRequest $request) {
-        
+
+        $firstname = sfContext::getInstance()->getRequest()->getParameterHolder()->get('firstname');
+        $lastname = sfContext::getInstance()->getRequest()->getParameterHolder()->get('lastname');
+        $emailaddress = sfContext::getInstance()->getRequest()->getParameterHolder()->get('emailaddress');
+        $phonenumber = sfContext::getInstance()->getRequest()->getParameterHolder()->get('telephone');
+        $country = sfContext::getInstance()->getRequest()->getParameterHolder()->get('country');
+        $message = sfContext::getInstance()->getRequest()->getParameterHolder()->get('message');
+        $securitycode = trim(sfContext::getInstance()->getRequest()->getParameterHolder()->get('securitycode'));
+        $code = trim(sfContext::getInstance()->getRequest()->getParameterHolder()->get('code'));
+
+        if ($securitycode == $code) {
+            if (isset($firstname) && isset($lastname) && isset($emailaddress) && isset($message)) {
+                $emailaddress = strtolower($emailaddress);
+                $sent = date("d-M-Y") . " " . date("h:i:s");
+                //ENVIO DE CORREO
+                $destinatario = trim("noreplyagtrials@gmail.com");
+                if (($destinatario != '') && ($code != '')) {
+                    $sent = date("d-M-Y") . " " . date("h:i:s");
+                    $destinatario = trim($emailaddress);
+                    $asunto = "New Contact";
+                    $cuerpo = "<html>";
+                    $cuerpo .= "<body>";
+                    $cuerpo .= "<h1>New Contact</h1>";
+                    $cuerpo .= "<p>";
+                    $cuerpo .= "<b>First name: </b>$firstname<br>";
+                    $cuerpo .= "<b>Last name: </b>$lastname<br>";
+                    $cuerpo .= "<b>Email address: </b>$emailaddress<br>";
+                    $cuerpo .= "<b>Phone number: </b>$phonenumber<br>";
+                    $cuerpo .= "<b>Country: </b>$country<br>";
+                    $cuerpo .= "<b>Message: </b>$message<br>";
+                    $cuerpo .= "<b>Security Code: </b>$code<br><br>";
+                    $cuerpo .= "</p>";
+                    $cuerpo .= "<b>Send:</b> $sent ";
+                    $cuerpo .= "</body>";
+                    $cuerpo .= "</html>";
+
+                    $SendPHPMailer = SendPHPMailer();
+                    $SendPHPMailer->AddAddress($destinatario);
+                    $SendPHPMailer->Subject = $asunto;
+                    $SendPHPMailer->Body = $cuerpo;
+                    $SendPHPMailer->Send();
+                    
+                    $this->Notice = "Thank you for contact us, Your e-mail has been received and will be answered as soon as possible.";
+                }
+            }
+        }
     }
 
     public function executeRegister(sfWebRequest $request) {
