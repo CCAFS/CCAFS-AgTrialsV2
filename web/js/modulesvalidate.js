@@ -14,7 +14,7 @@
         $.each(FieldContactperson, function(Id, Campo) {
             if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
-                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
+                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 CampoObligatorio(Id);
             } else {
                 CampoNormalObligatorio(Id);
@@ -35,7 +35,7 @@
         $.each(FieldCrop, function(Id, Campo) {
             if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
-                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
+                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 CampoObligatorio(Id);
             } else {
                 CampoNormalObligatorio(Id);
@@ -56,7 +56,7 @@
         $.each(FieldDonor, function(Id, Campo) {
             if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
-                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
+                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 CampoObligatorio(Id);
             } else {
                 CampoNormalObligatorio(Id);
@@ -77,7 +77,7 @@
         $.each(FieldExperimentaldesign, function(Id, Campo) {
             if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
-                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
+                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 CampoObligatorio(Id);
             } else {
                 CampoNormalObligatorio(Id);
@@ -105,7 +105,7 @@
 
             if (Valor == '') {
                 BanderaFaltantes = true;
-                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
+                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 if (Id == 'tb_institution[id_country]')
                     SelectObligatorio(Id);
                 else
@@ -139,7 +139,7 @@
         $.each(FieldProject, function(Id, Campo) {
             if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
-                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
+                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 CampoObligatorio(Id);
             } else {
                 CampoNormalObligatorio(Id);
@@ -160,7 +160,7 @@
         $.each(FieldRolecontactperson, function(Id, Campo) {
             if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
-                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
+                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 CampoObligatorio(Id);
             } else {
                 CampoNormalObligatorio(Id);
@@ -181,7 +181,7 @@
         $.each(FieldTraitclass, function(Id, Campo) {
             if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
-                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
+                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 CampoObligatorio(Id);
             } else {
                 CampoNormalObligatorio(Id);
@@ -206,7 +206,7 @@
         $.each(FieldTriallocation, function(Id, Campo) {
             if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
-                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
+                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 CampoObligatorio(Id);
             } else {
                 CampoNormalObligatorio(Id);
@@ -230,7 +230,7 @@
         $.each(FieldVariablesmeasured, function(Id, Campo) {
             if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
-                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
+                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 CampoObligatorio(Id);
             } else {
                 CampoNormalObligatorio(Id);
@@ -253,7 +253,7 @@
         $.each(FieldVariety, function(Id, Campo) {
             if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
-                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
+                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 CampoObligatorio(Id);
             } else {
                 CampoNormalObligatorio(Id);
@@ -275,7 +275,7 @@
         $.each(FieldGuardGroup, function(Id, Campo) {
             if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
-                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
+                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 CampoObligatorio(Id);
             } else {
                 CampoNormalObligatorio(Id);

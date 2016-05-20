@@ -124,7 +124,7 @@ $(document).ready(function() {
         //inicio: VALIDACION (Project/Trial Groups Name)
         if ($('#prjname').val() === '') {
             BanderaFaltantes = true;
-            MensajeFaltantes += Ico1 + "<b>Project/Trial Groups</b> \n &ensp;&ensp;&ensp; " + Ico2 + "Name \n";
+            MensajeFaltantes += Ico1 + "<b>Project/Trial Groups</b> <br> &ensp;&ensp;&ensp; " + Ico2 + "Name <br>";
             CampoObligatorio('prjname');
         } else {
             CampoNormalObligatorio('prjname');
@@ -136,14 +136,14 @@ $(document).ready(function() {
         $.each(CamposLeadofProject, function(Id, Campo) {
             if ($('#' + Id).val() === '') {
                 BanderaFaltantes = true;
-                MensajeLeadofProject += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " \n";
+                MensajeLeadofProject += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
                 CampoObligatorio(Id);
             } else {
                 CampoNormalObligatorio(Id);
             }
         });
         if (MensajeLeadofProject !== '') {
-            MensajeFaltantes += Ico1 + "<b>Lead of Project</b> \n" + MensajeLeadofProject;
+            MensajeFaltantes += Ico1 + "<b>Lead of Project</b> <br>" + MensajeLeadofProject;
         }
         //fin: VALIDACION (Lead of Project)
 
@@ -152,14 +152,14 @@ $(document).ready(function() {
         $.each(CamposProjectImplementingInstitutions, function(Id, Campo) {
             if ($('#' + Id).val() === '') {
                 BanderaFaltantes = true;
-                MensajeProjectImplementingInstitutions += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " \n";
+                MensajeProjectImplementingInstitutions += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
                 CampoObligatorio(Id);
             } else {
                 CampoNormalObligatorio(Id);
             }
         });
         if (MensajeProjectImplementingInstitutions !== '') {
-            MensajeFaltantes += Ico1 + "<b>Project Implementing Institutions</b> \n" + MensajeProjectImplementingInstitutions;
+            MensajeFaltantes += Ico1 + "<b>Project Implementing Institutions</b> <br>" + MensajeProjectImplementingInstitutions;
         }
         //fin: VALIDACION (Project Implementing Institutions)
 
@@ -168,14 +168,14 @@ $(document).ready(function() {
         $.each(CamposProjectImplementingperiod, function(Id, Campo) {
             if ($('#' + Id).val() === '') {
                 BanderaFaltantes = true;
-                MensajeProjectImplementingperiod += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " \n";
+                MensajeProjectImplementingperiod += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
                 CampoObligatorio(Id);
             } else {
                 CampoNormalObligatorio(Id);
             }
         });
         if (MensajeProjectImplementingperiod !== '') {
-            MensajeFaltantes += Ico1 + "<b>Project Implementing Period</b> \n" + MensajeProjectImplementingperiod;
+            MensajeFaltantes += Ico1 + "<b>Project Implementing Period</b> <br>" + MensajeProjectImplementingperiod;
         }
         //fin: VALIDACION (Project Implementing period)
 
@@ -184,14 +184,14 @@ $(document).ready(function() {
         $.each(CamposFundingforproject, function(Id, Campo) {
             if ($('#' + Id).val() === '') {
                 BanderaFaltantes = true;
-                MensajeFundingforproject += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " \n";
+                MensajeFundingforproject += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
                 CampoObligatorio(Id);
             } else {
                 CampoNormalObligatorio(Id);
             }
         });
         if (MensajeFundingforproject !== '') {
-            MensajeFaltantes += Ico1 + "<b>Funding for Project</b> \n" + MensajeFundingforproject;
+            MensajeFaltantes += Ico1 + "<b>Funding for Project</b> <br>" + MensajeFundingforproject;
         }
         //fin: VALIDACION (Funding for project)
 
@@ -200,14 +200,14 @@ $(document).ready(function() {
         $.each(CamposProjectinformation, function(Id, Campo) {
             if ($('#' + Id).val() === '') {
                 BanderaFaltantes = true;
-                MensajeProjectinformation += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " \n";
+                MensajeProjectinformation += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
                 CampoObligatorio(Id);
             } else {
                 CampoNormalObligatorio(Id);
             }
         });
         if (MensajeProjectinformation !== '') {
-            MensajeFaltantes += Ico1 + "<b>Project Information</b> \n" + MensajeProjectinformation;
+            MensajeFaltantes += Ico1 + "<b>Project Information</b> <br>" + MensajeProjectinformation;
         }
         //fin: VALIDACION (Project information)
 
@@ -218,7 +218,7 @@ $(document).ready(function() {
                 var id_rolecontactperson = GetValueSelect(Id);
                 if (id_rolecontactperson === '') {
                     BanderaFaltantes = true;
-                    MensajeTrialManager += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " \n";
+                    MensajeTrialManager += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
                     SelectObligatorio(Id);
                 } else {
                     SelectNormalObligatorio(Id);
@@ -226,7 +226,7 @@ $(document).ready(function() {
             } else {
                 if ($('#' + Id).val() === '') {
                     BanderaFaltantes = true;
-                    MensajeTrialManager += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " \n";
+                    MensajeTrialManager += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
                     CampoObligatorio(Id);
                 } else {
                     CampoNormalObligatorio(Id);
@@ -234,7 +234,7 @@ $(document).ready(function() {
             }
         });
         if (MensajeTrialManager !== '') {
-            MensajeFaltantes += Ico1 + "<b>Trial Manager</b> \n" + MensajeTrialManager;
+            MensajeFaltantes += Ico1 + "<b>Trial Manager</b> <br>" + MensajeTrialManager;
         }
         //fin: VALIDACION (Trial Manager)
 
@@ -243,14 +243,14 @@ $(document).ready(function() {
         $.each(CamposTrialImplementingperiod, function(Id, Campo) {
             if ($('#' + Id).val() === '') {
                 BanderaFaltantes = true;
-                MensajeTrialImplementingperiod += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " \n";
+                MensajeTrialImplementingperiod += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
                 CampoObligatorio(Id);
             } else {
                 CampoNormalObligatorio(Id);
             }
         });
         if (MensajeTrialImplementingperiod !== '') {
-            MensajeFaltantes += Ico1 + "<b>Trial Implementing Period</b> \n" + MensajeTrialImplementingperiod;
+            MensajeFaltantes += Ico1 + "<b>Trial Implementing Period</b> <br>" + MensajeTrialImplementingperiod;
         }
         //fin: VALIDACION (Trial Implementing period)
 
@@ -259,14 +259,14 @@ $(document).ready(function() {
         $.each(CamposTrialLocation, function(Id, Campo) {
             if ($('#' + Id).val() === '') {
                 BanderaFaltantes = true;
-                MensajeTrialLocation += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " \n";
+                MensajeTrialLocation += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
                 CampoObligatorio(Id);
             } else {
                 CampoNormalObligatorio(Id);
             }
         });
         if (MensajeTrialLocation !== '') {
-            MensajeFaltantes += Ico1 + "<b>Trial Location</b> \n" + MensajeTrialLocation;
+            MensajeFaltantes += Ico1 + "<b>Trial Location</b> <br>" + MensajeTrialLocation;
         }
         //fin: VALIDACION (Trial Location)
 
@@ -275,14 +275,14 @@ $(document).ready(function() {
         $.each(CamposTrialCharacteristics, function(Id, Campo) {
             if ($('#' + Id).val() === '') {
                 BanderaFaltantes = true;
-                MensajeTrialCharacteristics += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " \n";
+                MensajeTrialCharacteristics += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
                 CampoObligatorio(Id);
             } else {
                 CampoNormalObligatorio(Id);
             }
         });
         if (MensajeTrialCharacteristics !== '') {
-            MensajeFaltantes += Ico1 + "<b>Trial Characteristics</b> \n" + MensajeTrialCharacteristics;
+            MensajeFaltantes += Ico1 + "<b>Trial Characteristics</b> <br>" + MensajeTrialCharacteristics;
         }
         //fin: VALIDACION (Trial Characteristics)
 
