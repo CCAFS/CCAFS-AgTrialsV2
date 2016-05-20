@@ -1,6 +1,7 @@
 function ByTechnology() {
     d3.json("/admin/ByTechnology", function (info) {
-        var Max = 400000;
+
+        var Max = 40000;
         var Interval = 8000;
 
         var label = info.label
@@ -21,7 +22,7 @@ function ByTechnology() {
             }
         });
 
-        var xscale = d3.scale.linear().domain([0, Max]).range([0, Interval]);
+        var xscale = d3.scale.linear().domain([0, Max]).range([0, 722]);
         var yscale = d3.scale.linear().domain([0, label.length]).range([0, 480]);
         var colorScale = d3.scale.quantize().domain([0, label.length]).range(colors);
         var canvas = d3.select('#chart').append('svg').attr({'width': 850, 'height': 550});
@@ -77,11 +78,13 @@ function ByTechnology() {
 
         canvas.append('g')
                 .attr("transform", "translate(150,50)")
+                .style("font-size", "12px")
                 .attr('id', 'yaxis')
                 .call(yAxis);
 
         canvas.append('g')
                 .attr("transform", "translate(148,530)")
+                .style("font-size", "12px")
                 .attr('id', 'xaxis')
                 .call(xAxis);
 
@@ -131,7 +134,8 @@ function ByTechnology() {
 
 function ByCountry() {
     d3.json("/admin/ByCountry", function (info) {
-        var Max = 30000;
+
+        var Max = 15000;
         var Interval = 2000;
 
         var label = info.label
@@ -150,7 +154,7 @@ function ByCountry() {
             }
         });
 
-        var xscale = d3.scale.linear().domain([0, Max]).range([0, Interval]);
+        var xscale = d3.scale.linear().domain([0, Max]).range([0, 722]);
         var yscale = d3.scale.linear().domain([0, label.length]).range([0, 480]);
         var colorScale = d3.scale.quantize().domain([0, label.length]).range(colors);
         var canvas = d3.select('#chart').append('svg').attr({'width': 850, 'height': 550});
@@ -206,11 +210,13 @@ function ByCountry() {
 
         canvas.append('g')
                 .attr("transform", "translate(150,50)")
+                .style("font-size", "12px")
                 .attr('id', 'yaxis')
                 .call(yAxis);
 
         canvas.append('g')
                 .attr("transform", "translate(148,530)")
+                .style("font-size", "12px")
                 .attr('id', 'xaxis')
                 .call(xAxis);
 
@@ -260,8 +266,9 @@ function ByCountry() {
 
 function ByInstitution() {
     d3.json("/admin/ByInstitution", function (info) {
-        var Max = 230000;
-        var Interval = 5000;
+
+        var Max = 40000;
+        var Interval = 8000;
 
         var label = info.label
         var data = info.data
@@ -279,7 +286,7 @@ function ByInstitution() {
             }
         });
 
-        var xscale = d3.scale.linear().domain([0, Max]).range([0, Interval]);
+        var xscale = d3.scale.linear().domain([0, Max]).range([0, 722]);
         var yscale = d3.scale.linear().domain([0, label.length]).range([0, 480]);
         var colorScale = d3.scale.quantize().domain([0, label.length]).range(colors);
         var canvas = d3.select('#chart').append('svg').attr({'width': 850, 'height': 550});
@@ -341,6 +348,7 @@ function ByInstitution() {
 
         canvas.append('g')
                 .attr("transform", "translate(148,530)")
+                .style("font-size", "12px")
                 .attr('id', 'xaxis')
                 .call(xAxis);
 
@@ -390,8 +398,9 @@ function ByInstitution() {
 
 function ByProject() {
     d3.json("/admin/ByProject", function (info) {
-        var Max = 30000;
-        var Interval = 2000;
+
+        var Max = 40000;
+        var Interval = 8000;
 
         var label = info.label
         var data = info.data
@@ -409,7 +418,7 @@ function ByProject() {
             }
         });
 
-        var xscale = d3.scale.linear().domain([0, Max]).range([0, Interval]);
+        var xscale = d3.scale.linear().domain([0, Max]).range([0, 722]);
         var yscale = d3.scale.linear().domain([0, label.length]).range([0, 480]);
         var colorScale = d3.scale.quantize().domain([0, label.length]).range(colors);
         var canvas = d3.select('#chart').append('svg').attr({'width': 850, 'height': 550});
@@ -465,11 +474,13 @@ function ByProject() {
 
         canvas.append('g')
                 .attr("transform", "translate(150,50)")
+                .style("font-size", "12px")
                 .attr('id', 'yaxis')
                 .call(yAxis);
 
         canvas.append('g')
                 .attr("transform", "translate(148,530)")
+                .style("font-size", "12px")
                 .attr('id', 'xaxis')
                 .call(xAxis);
 
@@ -519,8 +530,9 @@ function ByProject() {
 
 function ByTrialLocation() {
     d3.json("/admin/ByTrialLocation", function (info) {
-        var Max = 30000;
-        var Interval = 2000;
+
+        var Max = 1500;
+        var Interval = 100;
 
         var label = info.label
         var data = info.data
@@ -534,11 +546,11 @@ function ByTrialLocation() {
             if (i > 0) {
                 return i * Interval;
             } else if (i === 0) {
-                return "100";
+                return "0";
             }
         });
 
-        var xscale = d3.scale.linear().domain([0, Max]).range([0, Interval]);
+        var xscale = d3.scale.linear().domain([0, Max]).range([0, 722]);
         var yscale = d3.scale.linear().domain([0, label.length]).range([0, 480]);
         var colorScale = d3.scale.quantize().domain([0, label.length]).range(colors);
         var canvas = d3.select('#chart').append('svg').attr({'width': 850, 'height': 550});
@@ -594,11 +606,13 @@ function ByTrialLocation() {
 
         canvas.append('g')
                 .attr("transform", "translate(150,50)")
+                .style("font-size", "12px")
                 .attr('id', 'yaxis')
                 .call(yAxis);
 
         canvas.append('g')
                 .attr("transform", "translate(148,530)")
+                .style("font-size", "12px")
                 .attr('id', 'xaxis')
                 .call(xAxis);
 
