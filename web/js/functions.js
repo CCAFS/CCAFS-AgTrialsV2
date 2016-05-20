@@ -1,8 +1,8 @@
 $(document).ready(function () {
     //ADICIONAMOS UN NUEVO VILLAGE
     $('#AddVillage').click(function () {
-        var id_subdistricttriallocation = $('#id_subdistricttriallocation').attr('value');
-        var VillageName = $('#villagetriallocation').attr('value');
+        var id_subdistricttriallocation = $('#id_subdistricttriallocation').val();
+        var VillageName = $('#villagetriallocation').val();
         $.ajax({
             type: "GET",
             url: "/administrativedivision/AddVillage/",
@@ -17,15 +17,15 @@ $(document).ready(function () {
 
     //MANEJO DE CULTIVOS
     $('#nuevocrop').click(function () {
-        var filacrop = $('#filacrop').attr('value');
+        var filacrop = $('#filacrop').val();
         filacrop = (filacrop * 1) + 1;
         $('#DivCrop' + filacrop).show();
         $('#filacrop').attr('value', filacrop);
     });
 
     $('#ExecuteBatchuploadanother').click(function () {
-        var TemplateFile = $('#TemplateFile').attr('value');
-        var SelectTemplate = $('#SelectTemplate').attr('value');
+        var TemplateFile = $('#TemplateFile').val();
+        var SelectTemplate = $('#SelectTemplate').val();
         if ((TemplateFile === '') || (SelectTemplate === '')) {
             jAlert('Please, Select Upload Template or Template File', 'Error');
         } else {
@@ -36,7 +36,7 @@ $(document).ready(function () {
     });
 
     $('#SelectTemplate').change(function () {
-        var SelectTemplate = $('#SelectTemplate').attr('value');
+        var SelectTemplate = $('#SelectTemplate').val();
         if (SelectTemplate !== '') {
             $('#DivTemplatesInformation').show();
             if (SelectTemplate === 'Trial Project Template')
@@ -55,26 +55,26 @@ $(document).ready(function () {
             $('#DivTemplatesInformation').hide();
         }
     });
-    
+
     // Funcion que que el Menu siga al scroll y ese sea siempre visible
     var menuOffset = $('.MenuTrials').offset();
-    $(window).scroll(function() {
-        if($(window).scrollTop() >= menuOffset.top) {
+    $(window).scroll(function () {
+        if ($(window).scrollTop() >= menuOffset.top) {
             $('.MenuTrials').addClass('positionFixedTop');
         } else {
             $('.MenuTrials').removeClass('positionFixedTop');
         }
     });
 
-//
-//    $('a.page-scroll').on('click', function(e){
-//        e.preventDefault();
-//        var $target = $($(this).attr('href'));
-//        $('html, body').animate({
-//            scrollTop: $target.offset().top 
-//        }, 500);
-//        return false;
-//    });
+
+    $('a.page-scroll').on('click', function (e) {
+        e.preventDefault();
+        var $target = $($(this).attr('href'));
+        $('html, body').animate({
+            scrollTop: $target.offset().top
+        }, 500);
+        return false;
+    });
 
 });
 
@@ -274,11 +274,12 @@ function CheckError(Form, event, BanderaFaltantes, MensajeFaltantes) {
 //inicio: FUNCION PARA MOSTRAR LA VENTANA DEL MENSAJE
 function Mensaje(msg) {
     var tamano = msg.length;
-    if (tamano > 750)
-        msg = "<div style='width: 540px; height: 400px; overflow-y: scroll;'>" + msg + "</div>";
-    else
-        msg = "<div style='width: 540px; height: auto; overflow-y: scroll;'>" + msg + "</div>";
-    jError(msg, 'Required Fields', null);
+//    if (tamano > 750)
+//        msg = "<div style='width: 540px; height: 400px; overflow-y: scroll;'>" + msg + "</div>";
+//    else
+//        msg = "<div style='width: 540px; height: auto; overflow-y: scroll;'>" + msg + "</div>";
+
+    alert('Required Fields', msg);
 }
 //FIN: FUNCION PARA MOSTRAR LA VENTANA DEL MENSAJE
 

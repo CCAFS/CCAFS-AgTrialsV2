@@ -1,8 +1,8 @@
 <script>
     $(document).ready(function () {
         $('#uploadsubmit').click(function () {
-            var id_crop = $('#id_crop').attr('value');
-            var checkbatchvarietyfile = $('#checkbatchvarietyfile').attr('value');
+            var id_crop = $('#id_crop').val();
+            var checkbatchvarietyfile = $('#checkbatchvarietyfile').val();
             if (id_crop == '') {
                 jAlert('Select Crop', 'Incomplete Information', null);
             } else if (checkbatchvarietyfile == '') {

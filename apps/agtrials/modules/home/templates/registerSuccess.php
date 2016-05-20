@@ -43,7 +43,7 @@
         });
 
         $('#emailaddress').blur(function () {
-            var emailaddress = $('#emailaddress').attr('value');
+            var emailaddress = $('#emailaddress').val();
             if ($('#emailaddress').attr('value') != '' && ($("#emailaddress").val().indexOf('@', 0) == -1 || $("#emailaddress").val().indexOf('.', 0) == -1)) {
                 $('#ErrorEmailAddress').html('Email address Error');
             } else {
@@ -72,8 +72,8 @@
         });
 
         $('#code').blur(function () {
-            var code = $('#code').attr('value');
-            var securitycode = $('#securitycode').attr('value');
+            var code = $('#code').val();
+            var securitycode = $('#securitycode').val();
             if (code != securitycode) {
                 $('#CodeError').html("Sorry, the code you entered was invalid");
                 $('#code').attr('value', '');

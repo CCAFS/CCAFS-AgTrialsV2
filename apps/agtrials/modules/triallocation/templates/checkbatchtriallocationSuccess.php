@@ -1,8 +1,8 @@
 <script>
     $(document).ready(function () {
         $('#uploadsubmit').click(function () {
-            var id_country = $('#id_country').attr('value');
-            var checkbatchtriallocationfile = $('#checkbatchtriallocationfile').attr('value');
+            var id_country = $('#id_country').val();
+            var checkbatchtriallocationfile = $('#checkbatchtriallocationfile').val();
             if (id_country == '') {
                 jAlert('Select Country', 'Incomplete Information', null);
             } else if (checkbatchtriallocationfile == '') {

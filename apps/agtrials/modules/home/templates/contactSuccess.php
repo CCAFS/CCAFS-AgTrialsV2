@@ -15,10 +15,12 @@
             var Ico = "<img src='/images/bullet-black-icon.png'> ";
             var BanderaFaltantes = false;
             var MensajeFaltantes = "";
+            var CampoValor = "";
             $.each(CamposObligatorios, function (Id, Campo) {
-                if ($('#' + Id).attr('value') == '') {
+                CampoValor = $("#" + Id).val();
+                if (CampoValor === '') {
                     BanderaFaltantes = true;
-                    MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
+                    MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                     CampoObligatorio(Id);
                 } else {
                     CampoNormalObligatorio(Id);
@@ -47,8 +49,8 @@
         });
 
         $('#code').blur(function () {
-            var code = $('#code').attr('value');
-            var securitycode = $('#securitycode').attr('value');
+            var code = $('#code').val();
+            var securitycode = $('#securitycode').val();
             if (code != securitycode) {
                 $('#code_error').html("Sorry, the code you entered was invalid");
                 $('#code').attr('value', '');

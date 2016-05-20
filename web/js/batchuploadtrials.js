@@ -1,6 +1,6 @@
     $(document).ready(function() {
         $('#id_crop_batchupload').change(function() {
-            var id_crop = $('#id_crop_batchupload').attr('value');
+            var id_crop = $('#id_crop_batchupload').val();
             $('#varieties').val("");
             $('#variablesmeasured').val("");
             $.ajax({
@@ -39,7 +39,7 @@
         });
 
         $('#TrialTemplateFile').blur(function() {
-            var TrialTemplateFile = $('#TrialTemplateFile').attr('value');
+            var TrialTemplateFile = $('#TrialTemplateFile').val();
             if (TrialTemplateFile != '') {
                 var fragmento = TrialTemplateFile.split('.');
                 var length = fragmento.length;
@@ -53,7 +53,7 @@
         });
 
         $('#TrialInfoTemplateFile').blur(function() {
-            var TrialInfoTemplateFile = $('#TrialInfoTemplateFile').attr('value');
+            var TrialInfoTemplateFile = $('#TrialInfoTemplateFile').val();
             if (TrialInfoTemplateFile != '') {
                 var fragmento = TrialInfoTemplateFile.split('.');
                 var length = fragmento.length;
@@ -67,7 +67,7 @@
         });
 
         $('#CompressedFileTrialInfoDataTemplates').blur(function() {
-            var CompressedFileTrialInfoDataTemplates = $('#CompressedFileTrialInfoDataTemplates').attr('value');
+            var CompressedFileTrialInfoDataTemplates = $('#CompressedFileTrialInfoDataTemplates').val();
             if (CompressedFileTrialInfoDataTemplates != '') {
                 var fragmento = CompressedFileTrialInfoDataTemplates.split('.');
                 var length = fragmento.length;
@@ -81,8 +81,8 @@
         });
 
         function ValidaFiles() {
-            var TrialTemplateFile = $('#TrialTemplateFile').attr('value');
-            var TrialInfoTemplateFile = $('#TrialInfoTemplateFile').attr('value');
+            var TrialTemplateFile = $('#TrialTemplateFile').val();
+            var TrialInfoTemplateFile = $('#TrialInfoTemplateFile').val();
             if ((TrialTemplateFile == '') || (TrialInfoTemplateFile == '')) {
                 jAlert('Please, Select Templates Files', 'Error');
             } else {

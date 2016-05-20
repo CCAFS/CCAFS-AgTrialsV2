@@ -101,7 +101,7 @@
             if (Id == 'tb_institution[id_country]')
                 Valor = $('select[id=tb_institution[id_country]]').val();
             else
-                Valor = $('#' + Id).attr('value');
+                Valor = $('#' + Id).val();
 
             if (Valor == '') {
                 BanderaFaltantes = true;

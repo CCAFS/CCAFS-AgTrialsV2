@@ -1,7 +1,7 @@
 <script>
     $(document).ready(function () {
         $('#id_crop').change(function () {
-            var id_crop = $('#id_crop').attr('value');
+            var id_crop = $('#id_crop').val();
             $('#InfoResult').html("");
             $('#DataResult').html("");
             $.ajax({

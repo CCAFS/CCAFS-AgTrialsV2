@@ -1,7 +1,7 @@
 <script>
     $(document).ready(function () {
         $('#id_country').change(function () {
-            var id_country = $('#id_country').attr('value');
+            var id_country = $('#id_country').val();
             $('#InfoResult').html("");
             $('#DataResult').html("");
             $.ajax({
