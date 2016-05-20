@@ -7,6 +7,7 @@
             $('#TitleStatistics').html("");
             $('#TitleStatistics').html("Statistics by Crop");
             $('#chart').html("");
+            $('#div_loading').show();
             ByTechnology();
         });
 
@@ -14,6 +15,7 @@
             $('#TitleStatistics').html("");
             $('#TitleStatistics').html("Statistics by Country");
             $('#chart').html("");
+            $('#div_loading').show();
             ByCountry();
         });
 
@@ -45,6 +47,10 @@
     </div>
     <div class="col-md-9 sf_admin_form" style="margin-top: 13px; width: 930px;">
         <span id="TitleStatistics" class="Title">Statistics</span>
+        <div id="div_loading" class="loading" align="center" style="display:none;">
+            <?php echo image_tag('loading.gif'); ?>
+            <br>Loading chart...
+        </div>
         <div class="Session" style="margin-top: 10px; margin-bottom: 10px;">
             <div id="chart"></div>
         </div>

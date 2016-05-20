@@ -123,6 +123,8 @@ function ByTechnology() {
                 .text(function (d) {
                     return d;
                 }).style({'fill': '#333', 'font-size': '13px'});
+
+        $('#div_loading').hide();
     });
 }
 
@@ -249,5 +251,7 @@ function ByCountry() {
                 .text(function (d) {
                     return d;
                 }).style({'fill': '#333', 'font-size': '13px'});
+
+        $('#div_loading').hide();
     });
 }
