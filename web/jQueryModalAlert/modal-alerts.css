@@ -70,7 +70,7 @@ div.alerts-dialog > div:first-child img.icon {
     top: 14px;
 }
 div.alerts-dialog > div:last-child a {
-    background-color: #aa0000;
+    background-color: #819e6d;
     border-radius: 5px;
     color: #fff !important;
     display: inline-block;
@@ -83,7 +83,7 @@ div.alerts-dialog > div:last-child a {
     transition: all 100ms linear;
 }
 div.alerts-dialog > div:last-child a:hover {
-    background-color: #d50000;
+    background-color: #547c38;
     box-shadow: 0px 1px 1px rgba( 0, 0, 0, 0.15 ) inset;
 }
 div.alerts-dialog > div:last-child a:active {
