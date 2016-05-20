@@ -23,6 +23,7 @@
             $('#TitleStatistics').html("");
             $('#TitleStatistics').html("Statistics by Institution");
             $('#chart').html("");
+            $('#div_loading').show();
             ByInstitution();
         });
 
@@ -30,6 +31,7 @@
             $('#TitleStatistics').html("");
             $('#TitleStatistics').html("Statistics by Project");
             $('#chart').html("");
+            $('#div_loading').show();
             ByProject();
         });
 
@@ -37,6 +39,7 @@
             $('#TitleStatistics').html("");
             $('#TitleStatistics').html("Statistics by Trial Location");
             $('#chart').html("");
+            $('#div_loading').show();
             ByTrialLocation();
         });
     });
