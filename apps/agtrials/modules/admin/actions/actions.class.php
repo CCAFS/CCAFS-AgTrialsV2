@@ -130,7 +130,7 @@ class adminActions extends sfActions {
         $a = 1;
         $b = 0;
         foreach ($Results AS $Valor) {
-            $ArrLabel[$a] = $Valor['label'];
+            $ArrLabel[$a] = CutString($Valor['label'], 45);
             $ArrData[$b] = $Valor['data'];
             $a++;
             $b++;
@@ -159,7 +159,7 @@ class adminActions extends sfActions {
         $a = 1;
         $b = 0;
         foreach ($Results AS $Valor) {
-            $ArrLabel[$a] = $Valor['label'];
+            $ArrLabel[$a] = CutString($Valor['label'], 43);
             $ArrData[$b] = $Valor['data'];
             $a++;
             $b++;
@@ -188,7 +188,7 @@ class adminActions extends sfActions {
         $a = 1;
         $b = 0;
         foreach ($Results AS $Valor) {
-            $ArrLabel[$a] = $Valor['label'];
+            $ArrLabel[$a] = CutString($Valor['label'], 43);
             $ArrData[$b] = $Valor['data'];
             $a++;
             $b++;
