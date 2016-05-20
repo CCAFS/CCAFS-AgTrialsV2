@@ -18,7 +18,7 @@ function ByTechnology() {
             if (i > 0) {
                 return i * Interval;
             } else if (i === 0) {
-                return "100";
+                return "0";
             }
         });
 
@@ -150,7 +150,7 @@ function ByCountry() {
             if (i > 0) {
                 return i * Interval;
             } else if (i === 0) {
-                return "100";
+                return "0";
             }
         });
 
@@ -282,14 +282,14 @@ function ByInstitution() {
             if (i > 0) {
                 return i * Interval;
             } else if (i === 0) {
-                return "100";
+                return "0";
             }
         });
 
         var xscale = d3.scale.linear().domain([0, Max]).range([0, 722]);
         var yscale = d3.scale.linear().domain([0, label.length]).range([0, 480]);
         var colorScale = d3.scale.quantize().domain([0, label.length]).range(colors);
-        var canvas = d3.select('#chart').append('svg').attr({'width': 850, 'height': 550});
+        var canvas = d3.select('#chart').append('svg').attr({'width': 890, 'height': 550});
 
         canvas.append("text")
                 .attr("class", "title")
@@ -303,7 +303,7 @@ function ByInstitution() {
 
         canvas.append('g')
                 .attr('id', 'grid')
-                .attr('transform', 'translate(150,60)')
+                .attr('transform', 'translate(280,60)')
                 .attr("text-anchor", "middle")
                 .selectAll('line')
                 .data(grid)
@@ -341,19 +341,19 @@ function ByInstitution() {
                 .tickValues(d3.range(17));
 
         canvas.append('g')
-                .attr("transform", "translate(150,50)")
-                .style("font-size", "8px")
+                .attr("transform", "translate(280,50)")
+                .style("font-size", "10px")
                 .attr('id', 'yaxis')
                 .call(yAxis);
 
         canvas.append('g')
-                .attr("transform", "translate(148,530)")
+                .attr("transform", "translate(278,530)")
                 .style("font-size", "12px")
                 .attr('id', 'xaxis')
                 .call(xAxis);
 
         canvas.append('g')
-                .attr("transform", "translate(150,55)")
+                .attr("transform", "translate(280,55)")
                 .attr('id', 'bars')
                 .selectAll('rect')
                 .data(data)
@@ -414,14 +414,14 @@ function ByProject() {
             if (i > 0) {
                 return i * Interval;
             } else if (i === 0) {
-                return "100";
+                return "0";
             }
         });
 
         var xscale = d3.scale.linear().domain([0, Max]).range([0, 722]);
         var yscale = d3.scale.linear().domain([0, label.length]).range([0, 480]);
         var colorScale = d3.scale.quantize().domain([0, label.length]).range(colors);
-        var canvas = d3.select('#chart').append('svg').attr({'width': 850, 'height': 550});
+        var canvas = d3.select('#chart').append('svg').attr({'width': 890, 'height': 550});
 
         canvas.append("text")
                 .attr("class", "title")
@@ -435,7 +435,7 @@ function ByProject() {
 
         canvas.append('g')
                 .attr('id', 'grid')
-                .attr('transform', 'translate(150,60)')
+                .attr('transform', 'translate(280,60)')
                 .attr("text-anchor", "middle")
                 .selectAll('line')
                 .data(grid)
@@ -473,19 +473,19 @@ function ByProject() {
                 .tickValues(d3.range(17));
 
         canvas.append('g')
-                .attr("transform", "translate(150,50)")
+                .attr("transform", "translate(280,50)")
                 .style("font-size", "12px")
                 .attr('id', 'yaxis')
                 .call(yAxis);
 
         canvas.append('g')
-                .attr("transform", "translate(148,530)")
+                .attr("transform", "translate(278,530)")
                 .style("font-size", "12px")
                 .attr('id', 'xaxis')
                 .call(xAxis);
 
         canvas.append('g')
-                .attr("transform", "translate(150,55)")
+                .attr("transform", "translate(280,55)")
                 .attr('id', 'bars')
                 .selectAll('rect')
                 .data(data)
