@@ -143,9 +143,10 @@ class adminActions extends sfActions {
 
     public function executeByProject(sfWebRequest $request) {
         $connection = Doctrine_Manager::getInstance()->connection();
-        $QUERY = "SELECT fc_triallocationadministrativedivisionname(TL.id_triallocation ,1) AS label, COUNT(*) AS data ";
+
+        $QUERY = "SELECT P.prjname AS label, COUNT(*) AS data ";
         $QUERY .= "FROM tb_trial T ";
-        $QUERY .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
+        $QUERY .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
         $QUERY .= "GROUP BY 1 ";
         $QUERY .= "ORDER BY 2 DESC ";
         $QUERY .= "LIMIT 10 ";
@@ -171,7 +172,8 @@ class adminActions extends sfActions {
 
     public function executeByTrialLocation(sfWebRequest $request) {
         $connection = Doctrine_Manager::getInstance()->connection();
-        $QUERY = "SELECT fc_triallocationadministrativedivisionname(TL.id_triallocation ,1) AS label, COUNT(*) AS data ";
+
+        $QUERY = "SELECT TL.trlcname AS label, COUNT(*) AS data ";
         $QUERY .= "FROM tb_trial T ";
         $QUERY .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
         $QUERY .= "GROUP BY 1 ";
