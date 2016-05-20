@@ -14,7 +14,7 @@
             $.each(CamposObligatorios, function (Id, Campo) {
                 if ($('#' + Id).val() == '') {
                     BanderaFaltantes = true;
-                    MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " \n";
+                    MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                     CampoObligatorio(Id);
                 } else {
                     CampoNormalObligatorio(Id);
