@@ -48,7 +48,7 @@
     <div class="col-md-2 left-column">
         <?php include_partial('admin/StatisticsMenu') ?>
     </div>
-    <div class="col-md-9 sf_admin_form" style="margin-top: 13px; width: 930px;">
+    <div class="col-md-9 sf_admin_form" style="margin-top: 13px; width: 950px;">
         <span id="TitleStatistics" class="Title">Statistics</span>
         <div id="div_loading" class="loading" align="center" style="display:none;">
             <?php echo image_tag('loading.gif'); ?>
