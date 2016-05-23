@@ -31,6 +31,19 @@
                 $('#FormSearchTrials').submit();
             }
         });
+
+        $("#ButtonClear").click(function () {
+            $('#searchterms').val('');
+            $('#id_project').val('');
+            $('#id_contactperson').val('');
+            $('#searchprjname').val('');
+            $('#searchcontactperson').val('');
+            $('#id_crop').val('');
+            $('#searchcrpname').val('');
+            $('#id_trial').val('');
+            $('#searchtrltrialname').val('');
+        });
+
     });
 </script>
 <div class="row">
@@ -49,12 +62,13 @@
             <?php echo image_tag('loading.gif'); ?>
             <br>Please Wait...
         </div>
+        <?php echo $Resuslts; ?>
         <form class="form-horizontal" id="FormSearchTrials" name="FormSearchTrials" action="" enctype="multipart/form-data" method="post" autocomplete="off">
             <div class="Session"style="margin-top: 10px; margin-bottom: 10px;">
                 <div class="form-group control-type-text">
                     <div class="col-sm-12">Search terms:</div>      
                     <div class="col-sm-11 control-type-text">
-                        <input class="form-control" type="text"  name="searchterms" id="searchterms" size="36" maxlength="255" value="">
+                        <input class="form-control" type="text"  name="searchterms" id="searchterms" size="36" maxlength="255" value="<?php echo $searchterms; ?>">
                     </div>
                 </div>
                 <div class="form-group control-type-text">
@@ -63,29 +77,29 @@
                         <div class="form-group control-type-text col-sm-3">
                             <div class="col-sm-12">Project:</div>      
                             <div class="col-sm-12 control-type-text">
-                                <input name="id_project" id="id_project" type="hidden"value="" /> 
-                                <input class="form-control SearchInput" name="searchprjname" id="searchprjname" type="text" size="17" maxlength="150" value="" />
+                                <input name="id_project" id="id_project" type="hidden"value="<?php echo $id_project; ?>" /> 
+                                <input class="form-control SearchInput" name="searchprjname" id="searchprjname" type="text" size="17" maxlength="150" value="<?php echo $searchprjname; ?>" />
                             </div>
                         </div>
                         <div class="form-group control-type-text col-sm-3">
                             <div class="col-sm-12">Contact person:</div>      
                             <div class="col-sm-12 control-type-text">
-                                <input name="id_contactperson" id="id_contactperson" type="hidden"value="" /> 
-                                <input class="form-control SearchInput" name="searchcontactperson" id="searchcontactperson" type="text" size="17" maxlength="150" value="" />                    
+                                <input name="id_contactperson" id="id_contactperson" type="hidden"value="<?php echo $id_contactperson; ?>" /> 
+                                <input class="form-control SearchInput" name="searchcontactperson" id="searchcontactperson" type="text" size="17" maxlength="150" value="<?php echo $searchcontactperson; ?>" />                    
                             </div>
                         </div>
                         <div class="form-group control-type-text col-sm-3">
                             <div class="col-sm-12">Crop / Technology:</div>      
                             <div class="col-sm-12 control-type-text">
-                                <input name="id_crop" id="id_crop" type="hidden"value="" /> 
-                                <input class="form-control SearchInput" name="searchcrpname" id="searchcrpname" type="text" size="17" maxlength="150" value="" />
+                                <input name="id_crop" id="id_crop" type="hidden"value="<?php echo $id_crop; ?>" /> 
+                                <input class="form-control SearchInput" name="searchcrpname" id="searchcrpname" type="text" size="17" maxlength="150" value="<?php echo $searchcrpname; ?>" />
                             </div>
                         </div>
                         <div class="form-group control-type-text col-sm-3">
                             <div class="col-sm-12">Trial name:</div>      
                             <div class="col-sm-12 control-type-text">
-                                <input name="id_trial" id="id_trial" type="hidden"value="" /> 
-                                <input class="form-control SearchInput" name="searchtrltrialname" id="searchtrltrialname" type="text" size="17" maxlength="150" value="" />   
+                                <input name="id_trial" id="id_trial" type="hidden"value="<?php echo $id_trial; ?>" /> 
+                                <input class="form-control SearchInput" name="searchtrltrialname" id="searchtrltrialname" type="text" size="17" maxlength="150" value="<?php echo $searchtrltrialname; ?>" />   
                             </div>
                         </div>
                     </fieldset>
@@ -99,6 +113,7 @@
             <fieldset style="margin-top: 10px; margin-left: 13px;">
                 <div class="form-group control-type-text" style="margin-left: 0px;">
                     <button class="btn btn-action" type="button" title=" Search " id="SubmitSearch" neme="SubmitSearch"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&ensp;Search&ensp;</button>
+                    <button class="btn btn-action" type="button" title=" Clear " id="ButtonClear" neme="ButtonClear"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span>&ensp;Clear&ensp;</button>
                     <input type="hidden" value="" id="FormAction" name="FormAction"/>
                 </div>
             </fieldset>
