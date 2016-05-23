@@ -1097,4 +1097,17 @@ class trialActions extends autoTrialActions {
         
     }
 
+    public function executeAutocompletesearhtrial(sfWebRequest $request) {
+        $this->getResponse()->setContentType('application/json');
+        $connection = Doctrine_Manager::getInstance()->connection();
+        $term = $request->getParameter('term');
+        $QUERY = "SELECT T1.id_trial AS value, T1.trltrialname AS label ";
+        $QUERY .= "FROM tb_trial T1 ";
+        $QUERY .= "WHERE T1.trltrialname ILIKE ('%$term%') ";
+        $QUERY .= "ORDER BY T1.trltrialname";
+        $st = $connection->execute($QUERY);
+        $R_datos = $st->fetchAll(PDO::FETCH_ASSOC);
+        return $this->renderText(json_encode($R_datos));
+    }
+
 }

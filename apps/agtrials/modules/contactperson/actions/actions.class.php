@@ -1,26 +1,27 @@
 <?php
+
 /*
-*  This file is part of AgTrials
-*
-*  AgTrials is free software: you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation, either version 3 of the License, or
-*  at your option) any later version.
-*
-*  AgTrials is distributed in the hope that it will be useful,
-*  but WITHOUT ANY WARRANTY; without even the implied warranty of
-*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-*  GNU General Public License for more details.
-*
-*  You should have received a copy of the GNU General Public License
-*  along with DMSP.  If not, see <http://www.gnu.org/licenses/>.
-*
-* Copyright 2012 (C) Climate Change, Agriculture and Food Security (CCAFS)
-* 
-* Created on : OCT - 2014
-* @author    :  Herlin R. Espinosa G. - herlin25@gmail.com
-* @version   :  ~
-*/
+ *  This file is part of AgTrials
+ *
+ *  AgTrials is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  at your option) any later version.
+ *
+ *  AgTrials is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with DMSP.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Copyright 2012 (C) Climate Change, Agriculture and Food Security (CCAFS)
+ * 
+ * Created on : OCT - 2014
+ * @author    :  Herlin R. Espinosa G. - herlin25@gmail.com
+ * @version   :  ~
+ */
 
 
 require_once dirname(__FILE__) . '/../lib/contactpersonGeneratorConfiguration.class.php';
@@ -47,6 +48,19 @@ class contactpersonActions extends autoContactpersonActions {
         $QUERY .= "INNER JOIN tb_administrativedivision T3 ON T2.id_country = T3.id_administrativedivision ";
         $QUERY .= "WHERE UPPER(T.cnprfirstname) LIKE UPPER('$term%') ";
         $QUERY .= "ORDER BY T.cnprfirstname";
+        $st = $connection->execute($QUERY);
+        $R_datos = $st->fetchAll(PDO::FETCH_ASSOC);
+        return $this->renderText(json_encode($R_datos));
+    }
+
+    public function executeAutocompletesearhcontactperson(sfWebRequest $request) {
+        $this->getResponse()->setContentType('application/json');
+        $connection = Doctrine_Manager::getInstance()->connection();
+        $term = $request->getParameter('term');
+        $QUERY = "SELECT T1.id_contactperson AS value, fc_completename(T1.cnprfirstname,T1.cnprmiddlename,T1.cnprlastname) AS label ";
+        $QUERY .= "FROM tb_contactperson T1 ";
+        $QUERY .= "WHERE fc_completename(T1.cnprfirstname,T1.cnprmiddlename,T1.cnprlastname) ILIKE ('%$term%') ";
+        $QUERY .= "ORDER BY 2";
         $st = $connection->execute($QUERY);
         $R_datos = $st->fetchAll(PDO::FETCH_ASSOC);
         return $this->renderText(json_encode($R_datos));

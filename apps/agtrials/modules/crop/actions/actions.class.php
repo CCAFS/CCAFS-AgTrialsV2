@@ -35,5 +35,18 @@ require_once dirname(__FILE__) . '/../lib/cropGeneratorHelper.class.php';
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
 class cropActions extends autoCropActions {
-    
+
+    public function executeAutocompletesearhcrop(sfWebRequest $request) {
+        $this->getResponse()->setContentType('application/json');
+        $connection = Doctrine_Manager::getInstance()->connection();
+        $term = $request->getParameter('term');
+        $QUERY = "SELECT T1.id_crop AS value, T1.crpname AS label ";
+        $QUERY .= "FROM tb_crop T1 ";
+        $QUERY .= "WHERE T1.crpname ILIKE ('$term%') ";
+        $QUERY .= "ORDER BY T1.crpname";
+        $st = $connection->execute($QUERY);
+        $R_datos = $st->fetchAll(PDO::FETCH_ASSOC);
+        return $this->renderText(json_encode($R_datos));
+    }
+
 }

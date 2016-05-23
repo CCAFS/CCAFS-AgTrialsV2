@@ -1,8 +1,8 @@
-$(function() {
+$(function () {
     //AUTOCOMPLETE PROJECT
     $("#prjname").autocomplete({
         source: "/project/autocompleteproject/",
-        select: function(e, ui) {
+        select: function (e, ui) {
             e.preventDefault();
             $("#id_project").val(ui.item.value);
             $("#prjname").val(ui.item.label);
@@ -27,7 +27,7 @@ $(function() {
             $("#prjabstract").val(ui.item.prjabstract);
             $("#prjkeywords").val(ui.item.prjkeywords);
         },
-        focus: function(e, ui) {
+        focus: function (e, ui) {
             e.preventDefault();
             $("#id_project").val(ui.item.value);
             $("#prjname").val(ui.item.label);
@@ -57,7 +57,7 @@ $(function() {
     //AUTOCOMPLETE CONTACT PERSON (Lead of Project)
     $("#cnprfirstname").autocomplete({
         source: "/contactperson/autocompletecontactperson/",
-        select: function(e, ui) {
+        select: function (e, ui) {
             e.preventDefault();
             $("#id_leadofproject").val(ui.item.value);
             $("#cnprfirstname").val(ui.item.label);
@@ -70,7 +70,7 @@ $(function() {
             $("#cnpremail").val(ui.item.cnpremail);
             $("#cnprtelephone").val(ui.item.cnprtelephone);
         },
-        focus: function(e, ui) {
+        focus: function (e, ui) {
             e.preventDefault();
             $("#id_leadofproject").val(ui.item.value);
             $("#cnprfirstname").val(ui.item.label);
@@ -88,7 +88,7 @@ $(function() {
     //AUTOCOMPLETE CONTACT PERSON (Trial Manager)
     $("#cnprfirstnametrialmanager").autocomplete({
         source: "/contactperson/autocompletecontactperson/",
-        select: function(e, ui) {
+        select: function (e, ui) {
             e.preventDefault();
             $("#id_contactperson").val(ui.item.value);
             $("#cnprfirstnametrialmanager").val(ui.item.label);
@@ -101,7 +101,7 @@ $(function() {
             $("#cnpremailtrialmanager").val(ui.item.cnpremail);
             $("#cnprtelephonetrialmanager").val(ui.item.cnprtelephone);
         },
-        focus: function(e, ui) {
+        focus: function (e, ui) {
             e.preventDefault();
             $("#id_contactperson").val(ui.item.value);
             $("#cnprfirstnametrialmanager").val(ui.item.label);
@@ -119,14 +119,14 @@ $(function() {
     //AUTOCOMPLETE INSTITUTION (Lead of Project)
     $("#insnameleadofproject").autocomplete({
         source: "/institution/autocompleteinstitution/",
-        select: function(e, ui) {
+        select: function (e, ui) {
             e.preventDefault();
             $("#id_institutionleadofproject").val(ui.item.value);
             $("#insnameleadofproject").val(ui.item.label);
             $("#id_countryinstitutionleadofproject").val(ui.item.id_countryinstitution);
             $("#namecountryinstitutionleadofproject").val(ui.item.namecountryinstitution);
         },
-        focus: function(e, ui) {
+        focus: function (e, ui) {
             e.preventDefault();
             $("#id_institutionleadofproject").val(ui.item.value);
             $("#insnameleadofproject").val(ui.item.label);
@@ -138,14 +138,14 @@ $(function() {
     //AUTOCOMPLETE INSTITUTION (Project Implementing Institutions)
     $("#insnameprojectimplementinginstitutions").autocomplete({
         source: "/institution/autocompleteinstitution/",
-        select: function(e, ui) {
+        select: function (e, ui) {
             e.preventDefault();
             $("#id_projectimplementinginstitutions").val(ui.item.value);
             $("#insnameprojectimplementinginstitutions").val(ui.item.label);
             $("#id_countryprojectimplementinginstitutions").val(ui.item.id_countryinstitution);
             $("#namecountryprojectimplementinginstitutions").val(ui.item.namecountryinstitution);
         },
-        focus: function(e, ui) {
+        focus: function (e, ui) {
             e.preventDefault();
             $("#id_projectimplementinginstitutions").val(ui.item.value);
             $("#insnameprojectimplementinginstitutions").val(ui.item.label);
@@ -157,14 +157,14 @@ $(function() {
     //AUTOCOMPLETE INSTITUTION (Trial Manager)
     $("#insnametrialmanager").autocomplete({
         source: "/institution/autocompleteinstitution/",
-        select: function(e, ui) {
+        select: function (e, ui) {
             e.preventDefault();
             $("#id_institutiontrialmanager").val(ui.item.value);
             $("#insnametrialmanager").val(ui.item.label);
             $("#id_countryinstitutiontrialmanager").val(ui.item.id_countryinstitution);
             $("#namecountryinstitutiontrialmanager").val(ui.item.namecountryinstitution);
         },
-        focus: function(e, ui) {
+        focus: function (e, ui) {
             e.preventDefault();
             $("#id_institutiontrialmanager").val(ui.item.value);
             $("#insnametrialmanager").val(ui.item.label);
@@ -176,12 +176,12 @@ $(function() {
     //AUTOCOMPLETE COUNTRY (Institution - Lead of Project)
     $("#namecountryinstitutionleadofproject").autocomplete({
         source: "/administrativedivision/autocompletecountry/",
-        select: function(e, ui) {
+        select: function (e, ui) {
             e.preventDefault();
             $("#id_countryinstitutionleadofproject").val(ui.item.value);
             $("#namecountryinstitutionleadofproject").val(ui.item.label);
         },
-        focus: function(e, ui) {
+        focus: function (e, ui) {
             e.preventDefault();
             $("#id_countryinstitutionleadofproject").val(ui.item.value);
             $("#namecountryinstitutionleadofproject").val(ui.item.label);
@@ -191,12 +191,12 @@ $(function() {
     //AUTOCOMPLETE COUNTRY (Project Implementing Institutions)
     $("#namecountryprojectimplementinginstitutions").autocomplete({
         source: "/administrativedivision/autocompletecountry/",
-        select: function(e, ui) {
+        select: function (e, ui) {
             e.preventDefault();
             $("#id_countryprojectimplementinginstitutions").val(ui.item.value);
             $("#namecountryprojectimplementinginstitutions").val(ui.item.label);
         },
-        focus: function(e, ui) {
+        focus: function (e, ui) {
             e.preventDefault();
             $("#id_countryprojectimplementinginstitutions").val(ui.item.value);
             $("#namecountryprojectimplementinginstitutions").val(ui.item.label);
@@ -206,12 +206,12 @@ $(function() {
     //AUTOCOMPLETE COUNTRY (Trial Manager)
     $("#namecountryinstitutiontrialmanager").autocomplete({
         source: "/administrativedivision/autocompletecountry/",
-        select: function(e, ui) {
+        select: function (e, ui) {
             e.preventDefault();
             $("#id_countryinstitutiontrialmanager").val(ui.item.value);
             $("#namecountryinstitutiontrialmanager").val(ui.item.label);
         },
-        focus: function(e, ui) {
+        focus: function (e, ui) {
             e.preventDefault();
             $("#id_countryinstitutiontrialmanager").val(ui.item.value);
             $("#namecountryinstitutiontrialmanager").val(ui.item.label);
@@ -221,19 +221,19 @@ $(function() {
     //AUTOCOMPLETE COUNTRY (Trial Location)
     $("#countrytriallocation").autocomplete({
         source: "/administrativedivision/autocompletecountry/",
-        select: function(e, ui) {
+        select: function (e, ui) {
             e.preventDefault();
             $("#id_countrytriallocation").val(ui.item.value);
             $("#countrytriallocation").val(ui.item.label);
         },
-        focus: function(e, ui) {
+        focus: function (e, ui) {
             e.preventDefault();
             $("#id_countrytriallocation").val(ui.item.value);
             $("#countrytriallocation").val(ui.item.label);
         }
     });
 
-    $("#countrytriallocation").blur(function() {
+    $("#countrytriallocation").blur(function () {
         var id_countrytriallocation = $("#id_countrytriallocation").val();
         var countrytriallocation = $("#countrytriallocation").val();
         $("#id_districttriallocation").val("");
@@ -263,7 +263,7 @@ $(function() {
 
     //AUTOCOMPLETE DISTRICT(Trial Location)
     $("#districttriallocation").autocomplete({
-        source: function(request, response) {
+        source: function (request, response) {
             $.ajax({
                 url: "/administrativedivision/autocompletedistrict/",
                 dataType: "json",
@@ -271,17 +271,17 @@ $(function() {
                     term: request.term,
                     id_parent: $("#id_countrytriallocation").val()
                 },
-                success: function(data) {
+                success: function (data) {
                     response(data);
                 }
             });
         },
-        select: function(e, ui) {
+        select: function (e, ui) {
             e.preventDefault();
             $("#id_districttriallocation").val(ui.item.value);
             $("#districttriallocation").val(ui.item.label);
         },
-        focus: function(e, ui) {
+        focus: function (e, ui) {
             e.preventDefault();
             $("#id_districttriallocation").val(ui.item.value);
             $("#districttriallocation").val(ui.item.label);
@@ -289,7 +289,7 @@ $(function() {
     });
 
     //LIMPIAR CAMPOS ABAJO DE DISTRICT 
-    $("#districttriallocation").blur(function() {
+    $("#districttriallocation").blur(function () {
         var id_districttriallocation = $("#id_districttriallocation").val();
         var districttriallocation = $("#districttriallocation").val();
         $("#id_subdistricttriallocation").val("");
@@ -314,7 +314,7 @@ $(function() {
 
     //AUTOCOMPLETE SUBDISTRICT(Trial Location)
     $("#subdistricttriallocation").autocomplete({
-        source: function(request, response) {
+        source: function (request, response) {
             $.ajax({
                 url: "/administrativedivision/autocompletesubdistrict/",
                 dataType: "json",
@@ -322,24 +322,24 @@ $(function() {
                     term: request.term,
                     id_parent: $("#id_districttriallocation").val()
                 },
-                success: function(data) {
+                success: function (data) {
                     response(data);
                 }
             });
         },
-        select: function(e, ui) {
+        select: function (e, ui) {
             e.preventDefault();
             $("#id_subdistricttriallocation").val(ui.item.value);
             $("#subdistricttriallocation").val(ui.item.label);
         },
-        focus: function(e, ui) {
+        focus: function (e, ui) {
             e.preventDefault();
             $("#id_subdistricttriallocation").val(ui.item.value);
             $("#subdistricttriallocation").val(ui.item.label);
         }
     });
 
-    $("#subdistricttriallocation").blur(function() {
+    $("#subdistricttriallocation").blur(function () {
         var id_subdistricttriallocation = $("#id_subdistricttriallocation").val();
         var subdistricttriallocation = $("#subdistricttriallocation").val();
         $("#id_villagetriallocation").val("");
@@ -359,7 +359,7 @@ $(function() {
 
     //AUTOCOMPLETE VILLAGE (Trial Location)
     $("#villagetriallocation").autocomplete({
-        source: function(request, response) {
+        source: function (request, response) {
             $.ajax({
                 url: "/administrativedivision/autocompletevillage/",
                 dataType: "json",
@@ -367,24 +367,24 @@ $(function() {
                     term: request.term,
                     id_parent: $("#id_subdistricttriallocation").val()
                 },
-                success: function(data) {
+                success: function (data) {
                     response(data);
                 }
             });
         },
-        select: function(e, ui) {
+        select: function (e, ui) {
             e.preventDefault();
             $("#id_villagetriallocation").val(ui.item.value);
             $("#villagetriallocation").val(ui.item.label);
         },
-        focus: function(e, ui) {
+        focus: function (e, ui) {
             e.preventDefault();
             $("#id_villagetriallocation").val(ui.item.value);
             $("#villagetriallocation").val(ui.item.label);
         }
     });
 
-    $("#villagetriallocation").blur(function() {
+    $("#villagetriallocation").blur(function () {
         var id_villagetriallocation = $("#id_villagetriallocation").val();
         var villagetriallocation = $("#villagetriallocation").val();
         if ((id_villagetriallocation != '') && (villagetriallocation != '')) {
@@ -403,12 +403,12 @@ $(function() {
     //AUTOCOMPLETE DONOR
     $("#dnrname").autocomplete({
         source: "/donor/autocompletedonor/",
-        select: function(e, ui) {
+        select: function (e, ui) {
             e.preventDefault();
             $("#id_donor").val(ui.item.value);
             $("#dnrname").val(ui.item.label);
         },
-        focus: function(e, ui) {
+        focus: function (e, ui) {
             e.preventDefault();
             $("#id_donor").val(ui.item.value);
             $("#dnrname").val(ui.item.label);
@@ -418,7 +418,7 @@ $(function() {
     //AUTOCOMPLETE TRIAL LOCATION
     $("#trlcname").autocomplete({
         source: "/triallocation/autocompletetriallocation/",
-        select: function(e, ui) {
+        select: function (e, ui) {
             e.preventDefault();
             $("#id_countrytriallocation").val("");
             $("#countrytriallocation").val("");
@@ -480,7 +480,7 @@ $(function() {
             $("#trlclongitude").val(ui.item.trlclongitude);
             $("#trlcaltitude").val(ui.item.trlcaltitude);
         },
-        focus: function(e, ui) {
+        focus: function (e, ui) {
             e.preventDefault();
             $("#id_countrytriallocation").val("");
             $("#countrytriallocation").val("");
@@ -547,12 +547,12 @@ $(function() {
     //AUTOCOMPLETE INSTITUTION (Register)
     $("#institution").autocomplete({
         source: "/institution/autocompleteinstitution/",
-        select: function(e, ui) {
+        select: function (e, ui) {
             e.preventDefault();
             $("#id_institution").val(ui.item.value);
             $("#institution").val(ui.item.label + ' - ' + ui.item.namecountryinstitution);
         },
-        focus: function(e, ui) {
+        focus: function (e, ui) {
             e.preventDefault();
             $("#id_institution").val(ui.item.value);
             $("#institution").val(ui.item.label + ' - ' + ui.item.namecountryinstitution);
@@ -562,15 +562,74 @@ $(function() {
     //AUTOCOMPLETE COUNTRY (Register)
     $("#country").autocomplete({
         source: "/administrativedivision/autocompletecountry/",
-        select: function(e, ui) {
+        select: function (e, ui) {
             e.preventDefault();
             $("#id_country").val(ui.item.value);
             $("#country").val(ui.item.label);
         },
-        focus: function(e, ui) {
+        focus: function (e, ui) {
             e.preventDefault();
             $("#id_country").val(ui.item.value);
             $("#country").val(ui.item.label);
         }
     });
+
+//    AUTOCOMPLETE PARA LAS BUSQUEDAS DE ENSAYOS
+    $("#searchprjname").autocomplete({
+        source: "/project/autocompletesearchproject/",
+        select: function (e, ui) {
+            e.preventDefault();
+            $("#id_project").val(ui.item.value);
+            $("#searchprjname").val(ui.item.label);
+        },
+        focus: function (e, ui) {
+            e.preventDefault();
+            $("#id_project").val(ui.item.value);
+            $("#searchprjname").val(ui.item.label);
+        }
+    });
+
+    $("#searchcontactperson").autocomplete({
+        source: "/contactperson/autocompletesearhcontactperson/",
+        select: function (e, ui) {
+            e.preventDefault();
+            $("#id_contactperson").val(ui.item.value);
+            $("#searchcontactperson").val(ui.item.label);
+        },
+        focus: function (e, ui) {
+            e.preventDefault();
+            $("#id_contactperson").val(ui.item.value);
+            $("#searchcontactperson").val(ui.item.label);
+        }
+    });
+
+    $("#searchcrpname").autocomplete({
+        source: "/crop/autocompletesearhcrop/",
+        select: function (e, ui) {
+            e.preventDefault();
+            $("#id_crop").val(ui.item.value);
+            $("#searchcrpname").val(ui.item.label);
+        },
+        focus: function (e, ui) {
+            e.preventDefault();
+            $("#id_crop").val(ui.item.value);
+            $("#searchcrpname").val(ui.item.label);
+        }
+    });
+
+    $("#searchtrltrialname").autocomplete({
+        source: "/trial/autocompletesearhtrial/",
+        select: function (e, ui) {
+            e.preventDefault();
+            $("#id_trial").val(ui.item.value);
+            $("#searchtrltrialname").val(ui.item.label);
+        },
+        focus: function (e, ui) {
+            e.preventDefault();
+            $("#id_trial").val(ui.item.value);
+            $("#searchtrltrialname").val(ui.item.label);
+        }
+    });
+
+
 });
