@@ -1107,53 +1107,7 @@ class trialActions extends autoTrialActions {
     }
 
     public function executeSearchtrials($request) {
-//
-//        if ($request->getParameter('FormAction') != '') {
-//            $connection = Doctrine_Manager::getInstance()->connection();
-//            $Where = "WHERE true ";
-//            $searchterms = $request->getParameter('searchterms');
-//            $id_project = $request->getParameter('id_project');
-//            $searchprjname = $request->getParameter('searchprjname');
-//            $id_contactperson = $request->getParameter('id_contactperson');
-//            $searchcontactperson = $request->getParameter('searchcontactperson');
-//            $id_crop = $request->getParameter('id_crop');
-//            $searchcrpname = $request->getParameter('searchcrpname');
-//            $id_trial = $request->getParameter('id_trial');
-//            $searchtrltrialname = $request->getParameter('searchtrltrialname');
-//
-//            if ($searchterms != '')
-//                $Where .= "AND P.prjkeywords ILIKE '%$searchterms%' ";
-//            if ($id_project != '')
-//                $Where .= "AND T.id_project = $id_project ";
-//            if ($id_contactperson != '')
-//                $Where .= "AND T.id_contactperson = $id_contactperson ";
-//            if ($id_crop != '')
-//                $Where .= "AND TI.id_crop = $id_crop ";
-//            if ($id_trial != '')
-//                $Where .= "AND T.id_trial = $id_trial ";
-//
-//            $QUERY00 = "SELECT T.id_trial,T.trltrialname,P.id_project,P.prjname,TL.id_triallocation,TL.trlcname,C.id_crop,C.crpname ";
-//            $QUERY00 .= "FROM tb_trial T ";
-//            $QUERY00 .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
-//            $QUERY00 .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
-//            $QUERY00 .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
-//            $QUERY00 .= "INNER JOIN tb_crop c ON TI.id_crop = C.id_crop ";
-//            $QUERY00 .= "$Where ";
-//            $QUERY00 .= "ORDER BY T.trltrialname,P.prjname ";
-//            $st = $connection->execute($QUERY00);
-//            $R_datos = $st->fetchAll(PDO::FETCH_ASSOC);
-//            $this->Resuslts = json_encode($R_datos);
-//
-//            $this->searchterms = $searchterms;
-//            $this->id_project = $id_project;
-//            $this->searchprjname = $searchprjname;
-//            $this->id_contactperson = $id_contactperson;
-//            $this->searchcontactperson = $searchcontactperson;
-//            $this->id_crop = $id_crop;
-//            $this->searchcrpname = $searchcrpname;
-//            $this->id_trial = $id_trial;
-//            $this->searchtrltrialname = $searchtrltrialname;
-//        }
+        
     }
 
     public function executeResultsearchtrials($request) {

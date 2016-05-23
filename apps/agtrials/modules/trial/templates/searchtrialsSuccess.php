@@ -31,10 +31,7 @@
 
 
                 $('#ResusltsSearch').DataTable({
-                    "processing": true,
-                    "serverSide": true,
                     "bDestroy": true,
-                    "bJQueryUI": true,
                     "ajax": {
                         'type': 'POST',
                         'url': 'trial/resultsearchtrials/',
