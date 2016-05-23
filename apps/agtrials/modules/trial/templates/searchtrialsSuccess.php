@@ -28,10 +28,15 @@
             if (BanderaFaltantes) {
                 Mensaje(MensajeFaltantes);
             } else {
-
-
                 $('#ResusltsSearch').DataTable({
                     "bDestroy": true,
+                    "language": {
+                        "lengthMenu": "Display _MENU_ records per page",
+                        "zeroRecords": "Nothing found - sorry",
+                        "info": "Showing page _PAGE_ of _PAGES_",
+                        "infoEmpty": "No records available",
+                        "infoFiltered": "(filtered from _MAX_ total records)"
+                    },
                     "ajax": {
                         'type': 'POST',
                         'url': 'trial/resultsearchtrials/',
@@ -78,10 +83,6 @@
     <!-- Right Content -->
     <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
         <span class="Title">Search Trials</span>
-        <div id="div_loading" class="loading" align="center" style="display:none;">
-            <?php echo image_tag('loading.gif'); ?>
-            <br>Please Wait...
-        </div>
         <form class="form-horizontal" id="FormSearchTrials" name="FormSearchTrials" action="" enctype="multipart/form-data" method="post" autocomplete="off">
             <div class="Session"style="margin-top: 10px; margin-bottom: 10px;">
                 <div class="form-group control-type-text">
