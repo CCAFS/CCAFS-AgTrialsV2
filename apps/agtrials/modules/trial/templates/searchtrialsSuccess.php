@@ -42,10 +42,15 @@
                             id_crop: id_crop,
                             id_trial: id_trial
                         }
+                    },
+                    "fnRowCallback": function (nRow, aData) {
+                        $('td:eq(0)', nRow).html('<a target="_blank" href="/trial/' + aData[4] + '">' + aData[0] + '</a>');
+                        return nRow;
                     }
                 });
             }
         });
+
 
         $("#ButtonClear").click(function () {
             $('#searchterms').val('');

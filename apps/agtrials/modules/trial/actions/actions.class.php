@@ -1143,7 +1143,7 @@ class trialActions extends autoTrialActions {
         $st = $connection->execute($QUERY00);
         $Results = $st->fetchAll();
         foreach ($Results AS $Row) {
-            $ResultsJSON['data'][] = array($Row['trltrialname'], $Row['prjname'], $Row['trlcname'], $Row['crpname']);
+            $ResultsJSON['data'][] = array($Row['trltrialname'], $Row['prjname'], $Row['trlcname'], $Row['crpname'], $Row['id_trial']);
         }
         die(json_encode($ResultsJSON));
     }
