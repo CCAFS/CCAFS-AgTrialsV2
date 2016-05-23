@@ -70,6 +70,7 @@ class projectActions extends autoProjectActions {
         $QUERY .= "FROM tb_project T1 ";
         $QUERY .= "INNER JOIN tb_trial T2 ON T1.id_project = T2.id_project ";
         $QUERY .= "WHERE UPPER(T1.prjname) LIKE UPPER('$term%') ";
+        $QUERY .= "GROUP BY T1.id_project,T1.prjname ";
         $QUERY .= "ORDER BY T1.prjname ";
         $st = $connection->execute($QUERY);
         $R_datos = $st->fetchAll(PDO::FETCH_ASSOC);

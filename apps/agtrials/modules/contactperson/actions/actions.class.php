@@ -59,6 +59,7 @@ class contactpersonActions extends autoContactpersonActions {
         $term = $request->getParameter('term');
         $QUERY = "SELECT T1.id_contactperson AS value, fc_completename(T1.cnprfirstname,T1.cnprmiddlename,T1.cnprlastname) AS label ";
         $QUERY .= "FROM tb_contactperson T1 ";
+        $QUERY .= "INNER JOIN tb_trial T2 ON T1.id_contactperson = T2.id_contactperson ";
         $QUERY .= "WHERE fc_completename(T1.cnprfirstname,T1.cnprmiddlename,T1.cnprlastname) ILIKE ('%$term%') ";
         $QUERY .= "ORDER BY 2";
         $st = $connection->execute($QUERY);

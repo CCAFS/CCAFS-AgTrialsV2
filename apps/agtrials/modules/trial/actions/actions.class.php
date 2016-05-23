@@ -1093,10 +1093,6 @@ class trialActions extends autoTrialActions {
         die();
     }
 
-    public function executeSearchtrials($request) {
-        
-    }
-
     public function executeAutocompletesearhtrial(sfWebRequest $request) {
         $this->getResponse()->setContentType('application/json');
         $connection = Doctrine_Manager::getInstance()->connection();
@@ -1108,6 +1104,31 @@ class trialActions extends autoTrialActions {
         $st = $connection->execute($QUERY);
         $R_datos = $st->fetchAll(PDO::FETCH_ASSOC);
         return $this->renderText(json_encode($R_datos));
+    }
+
+    public function executeSearchtrials($request) {
+
+        if ($request->getParameter('FormAction') != '') {
+            $Where = "WHERE true";
+            $searchterms = $request->getParameter('searchterms');
+            $id_project = $request->getParameter('id_project');
+            $id_contactperson = $request->getParameter('id_contactperson');
+            $id_crop = $request->getParameter('id_crop');
+            $id_trial = $request->getParameter('id_trial');
+
+            if ($searchterms != '')
+                $Where .= " AND P.prjkeywords ILIKE '%$searchterms%'";
+            if ($id_project != '')
+                $Where .= " AND T.id_project = $id_project";
+            if ($id_contactperson != '')
+                $Where .= " AND T.id_contactperson = $id_contactperson";
+            if ($id_crop != '')
+                $Where .= " AND TI.id_crop = $id_crop";
+            if ($id_trial != '')
+                $Where .= " AND T.id_trial = $id_trial";
+
+            die("Where: $Where");
+        }
     }
 
 }
