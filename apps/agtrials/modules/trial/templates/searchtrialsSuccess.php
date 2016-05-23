@@ -2,6 +2,8 @@
 <script src="/autocomplete/lib/jquery.1.7.1.js"></script>
 <script src="/autocomplete/lib/jquery.ui.1.8.16.js"></script>
 <script src="/autocomplete/autocomplete.js"></script>
+<script type="text/javascript" src="/datatables/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="/datatables/jquery.dataTables.min.css" />
 <script>
     $(document).ready(function () {
 
@@ -26,9 +28,25 @@
             if (BanderaFaltantes) {
                 Mensaje(MensajeFaltantes);
             } else {
-                $('#FormAction').val('true');
-                $('#div_loading').show();
-                $('#FormSearchTrials').submit();
+
+
+                $('#ResusltsSearch').DataTable({
+                    "processing": true,
+                    "serverSide": true,
+                    "bDestroy": true,
+                    "bJQueryUI": true,
+                    "ajax": {
+                        'type': 'POST',
+                        'url': 'trial/resultsearchtrials/',
+                        'data': {
+                            searchterms: searchterms,
+                            id_project: id_project,
+                            id_contactperson: id_contactperson,
+                            id_crop: id_crop,
+                            id_trial: id_trial
+                        }
+                    }
+                });
             }
         });
 
@@ -62,7 +80,6 @@
             <?php echo image_tag('loading.gif'); ?>
             <br>Please Wait...
         </div>
-        <?php echo $Resuslts; ?>
         <form class="form-horizontal" id="FormSearchTrials" name="FormSearchTrials" action="" enctype="multipart/form-data" method="post" autocomplete="off">
             <div class="Session"style="margin-top: 10px; margin-bottom: 10px;">
                 <div class="form-group control-type-text">
@@ -119,6 +136,18 @@
             </fieldset>
         </form>
 
+        <div class="col-sm-12 control-type-text">
+            <table id="ResusltsSearch" class="display" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Project</th>
+                        <th>Location</th>
+                        <th>Crop</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
 
     </div>
 </div>

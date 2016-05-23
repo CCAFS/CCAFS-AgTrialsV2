@@ -61,6 +61,7 @@ class contactpersonActions extends autoContactpersonActions {
         $QUERY .= "FROM tb_contactperson T1 ";
         $QUERY .= "INNER JOIN tb_trial T2 ON T1.id_contactperson = T2.id_contactperson ";
         $QUERY .= "WHERE fc_completename(T1.cnprfirstname,T1.cnprmiddlename,T1.cnprlastname) ILIKE ('%$term%') ";
+        $QUERY .= "GROUP BY T1.id_contactperson,T1.cnprfirstname,T1.cnprmiddlename,T1.cnprlastname ";
         $QUERY .= "ORDER BY 2";
         $st = $connection->execute($QUERY);
         $R_datos = $st->fetchAll(PDO::FETCH_ASSOC);
