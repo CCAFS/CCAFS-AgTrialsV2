@@ -70,6 +70,10 @@
             $('#searchtrltrialname').val('');
             $('#DivTableResusltsSearch').hide();
         });
+
+        $("#ShowHideDivAdvancedSearch").on('click', function () {
+            $("#DivAdvancedSearch").toggle();
+        });
     });
 </script>
 <div class="row">
@@ -85,7 +89,7 @@
     <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
         <span class="Title">Search Trials</span>
         <form class="form-horizontal" id="FormSearchTrials" name="FormSearchTrials" action="" enctype="multipart/form-data" method="post" autocomplete="off">
-            <div class="Session" style="margin-top: 10px; margin-bottom: 10px;">
+            <div class="Session" style="margin-top: 10px;  margin-bottom: 0px; margin-bottom: 10px; padding-bottom: 0px;">
                 <div class="form-group control-type-text">
                     <div class="col-sm-12" style="color: #93c47d; font-size: 16px;">Search terms:</div>      
                     <div class="col-sm-11 control-type-text">
@@ -124,10 +128,11 @@
                             </div>
                         </div>
                     </fieldset>
+                    <div id="ShowHideDivAdvancedSearch" class="col-sm-12" style="color: #93c47d; font-size: 14px; padding-bottom: 8px; cursor: pointer;">Advanced Search</div>
                 </div>
             </div>
 
-            <div id="DivAdvancedSearch" class="Session col-sm-12 control-type-text" style="margin-top: 10px; margin-bottom: 10px;">
+            <div id="DivAdvancedSearch" class="Session col-sm-12 control-type-text" style="margin-top: 10px; margin-bottom: 10px; display:none;">
                 <div class="col-sm-12" style="color: #93c47d; font-size: 16px; padding-bottom: 8px;">Advanced Search:</div>   
                 <div class="col-sm-12">
                     <div class="form-group control-type-text col-sm-4">
