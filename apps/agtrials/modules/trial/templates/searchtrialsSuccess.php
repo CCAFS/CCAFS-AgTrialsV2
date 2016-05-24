@@ -1,3 +1,4 @@
+<?php use_javascript('trial.js'); ?>
 <script>
     $(document).ready(function () {
         //inicio: VALIDAMOS EL ENVIO DEL FORMULARIO
