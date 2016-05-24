@@ -1,6 +1,5 @@
 <script>
     $(document).ready(function () {
-
         //inicio: VALIDAMOS EL ENVIO DEL FORMULARIO
         $("#SubmitSearch").click(function () {
             var searchterms = $('#searchterms').val();
@@ -20,11 +19,11 @@
             if (BanderaFaltantes) {
                 Mensaje(MensajeFaltantes);
             } else {
+                $('#DivTableResusltsSearch').show();
                 $('#TableResusltsSearch').DataTable({
                     "bDestroy": true,
                     "language": {
                         "lengthMenu": "Display _MENU_ records per page",
-                        "zeroRecords": "Nothing found - sorry",
                         "info": "Showing page _PAGE_ of _PAGES_",
                         "infoEmpty": "No records available",
                         "infoFiltered": "(filtered from _MAX_ total records)"
@@ -57,6 +56,7 @@
             $('#searchcrpname').val('');
             $('#id_trial').val('');
             $('#searchtrltrialname').val('');
+            $('#DivTableResusltsSearch').hide();
         });
     });
 </script>
@@ -128,7 +128,7 @@
             </fieldset>
         </form>
 
-        <div class="col-sm-12 control-type-text">
+        <div id="DivTableResusltsSearch" class="col-sm-12 control-type-text" style="display:none;">
             <table id="TableResusltsSearch" class="display" cellspacing="0" width="100%">
                 <thead>
                     <tr>
