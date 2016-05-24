@@ -1,52 +1,52 @@
-$(document).ready(function() {
-    $("#prjprojectimplementingperiodstartdate").datepicker({dateFormat: 'yy-mm-dd'});
-    $("#prjprojectimplementingperiodenddate").datepicker({dateFormat: 'yy-mm-dd'});
-    $("#prjprojectimplementingperiodstartdate").on("dp.change", function(e) {
-        $('#prjprojectimplementingperiodenddate').data("datepicker").minDate(e.date);
+jQuery(document).ready(function() {
+    jQuery("#prjprojectimplementingperiodstartdate").datepicker({dateFormat: 'yy-mm-dd'});
+    jQuery("#prjprojectimplementingperiodenddate").datepicker({dateFormat: 'yy-mm-dd'});
+    jQuery("#prjprojectimplementingperiodstartdate").on("dp.change", function(e) {
+        jQuery('#prjprojectimplementingperiodenddate').data("datepicker").minDate(e.date);
     });
-    $("#prjprojectimplementingperiodenddate").on("dp.change", function(e) {
-        $('#prjprojectimplementingperiodstartdate').data("datepicker").maxDate(e.date);
+    jQuery("#prjprojectimplementingperiodenddate").on("dp.change", function(e) {
+        jQuery('#prjprojectimplementingperiodstartdate').data("datepicker").maxDate(e.date);
     });
 
-    $("#trlimplementingperiodstartdate").datepicker({dateFormat: 'yy-mm-dd'});
-    $("#trlimplementingperiodenddate").datepicker({dateFormat: 'yy-mm-dd'});
-    $("#trlimplementingperiodstartdate").on("dp.change", function(e) {
-        $('#trlimplementingperiodenddate').data("datepicker").minDate(e.date);
+    jQuery("#trlimplementingperiodstartdate").datepicker({dateFormat: 'yy-mm-dd'});
+    jQuery("#trlimplementingperiodenddate").datepicker({dateFormat: 'yy-mm-dd'});
+    jQuery("#trlimplementingperiodstartdate").on("dp.change", function(e) {
+        jQuery('#trlimplementingperiodenddate').data("datepicker").minDate(e.date);
     });
-    $("#trlimplementingperiodenddate").on("dp.change", function(e) {
-        $('#trlimplementingperiodstartdate').data("datepicker").maxDate(e.date);
+    jQuery("#trlimplementingperiodenddate").on("dp.change", function(e) {
+        jQuery('#trlimplementingperiodstartdate').data("datepicker").maxDate(e.date);
     });
 
     for (var i = 1; i <= 10; i++) {
-        $("#trnfplantingsowingstartdate" + i).datepicker({dateFormat: 'yy-mm-dd'});
-        $("#trnfplantingsowingenddate" + i).datepicker({dateFormat: 'yy-mm-dd'});
-        $("#trnfphysiologicalmaturitystardate" + i).datepicker({dateFormat: 'yy-mm-dd'});
-        $("#trnfphysiologicalmaturityenddate" + i).datepicker({dateFormat: 'yy-mm-dd'});
-        $("#trnfharveststartdate" + i).datepicker({dateFormat: 'yy-mm-dd'});
-        $("#trnfharvestenddate" + i).datepicker({dateFormat: 'yy-mm-dd'});
+        jQuery("#trnfplantingsowingstartdate" + i).datepicker({dateFormat: 'yy-mm-dd'});
+        jQuery("#trnfplantingsowingenddate" + i).datepicker({dateFormat: 'yy-mm-dd'});
+        jQuery("#trnfphysiologicalmaturitystardate" + i).datepicker({dateFormat: 'yy-mm-dd'});
+        jQuery("#trnfphysiologicalmaturityenddate" + i).datepicker({dateFormat: 'yy-mm-dd'});
+        jQuery("#trnfharveststartdate" + i).datepicker({dateFormat: 'yy-mm-dd'});
+        jQuery("#trnfharvestenddate" + i).datepicker({dateFormat: 'yy-mm-dd'});
     }
 
-    $("#tb_trial_trltrialpermissions_open_to_all_users").click(function() {
-        $("#PermissionsUsers").css("display", "none");
-        $("#tbtrial_groups").css("display", "none");
+    jQuery("#tb_trial_trltrialpermissions_open_to_all_users").click(function() {
+        jQuery("#PermissionsUsers").css("display", "none");
+        jQuery("#tbtrial_groups").css("display", "none");
     });
 
-    $("#tb_trial_trltrialpermissions_open_to_specified_users").click(function() {
-        $("#PermissionsUsers").css("display", "block");
-        $("#PermissionsGroups").css("display", "none");
+    jQuery("#tb_trial_trltrialpermissions_open_to_specified_users").click(function() {
+        jQuery("#PermissionsUsers").css("display", "block");
+        jQuery("#PermissionsGroups").css("display", "none");
     });
 
-    $("#tb_trial_trltrialpermissions_open_to_specified_groups").click(function() {
-        $("#PermissionsUsers").css("display", "none");
-        $("#PermissionsGroups").css("display", "block");
+    jQuery("#tb_trial_trltrialpermissions_open_to_specified_groups").click(function() {
+        jQuery("#PermissionsUsers").css("display", "none");
+        jQuery("#PermissionsGroups").css("display", "block");
     });
 
-    $("#tb_trial_trltrialpermissions_public_domain").click(function() {
-        $("#PermissionsUsers").css("display", "none");
-        $("#PermissionsGroups").css("display", "none");
+    jQuery("#tb_trial_trltrialpermissions_public_domain").click(function() {
+        jQuery("#PermissionsUsers").css("display", "none");
+        jQuery("#PermissionsGroups").css("display", "none");
     });
 
-    $("#tb_trial_trltriallicense").focus(function() {
+    jQuery("#tb_trial_trltriallicense").focus(function() {
         this.select();
     });
 
@@ -109,20 +109,20 @@ $(document).ready(function() {
     };
 
 
-    $("#FormTrial").find(':input').each(function() {
+    jQuery("#FormTrial").find(':input').each(function() {
 //        if (this.id !== '')
 //            CampoNormal(this.id);
     });
 
     //inicio: VALIDAMOS EL ENVIO DEL FORMULARIO
-    $("#FormTrial").submit(function(event) {
+    jQuery("#FormTrial").submit(function(event) {
         var Ico1 = "<img width='13' height='13' src='/images/Arrow-icon.png'> ";
         var Ico2 = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
 
         //inicio: VALIDACION (Project/Trial Groups Name)
-        if ($('#prjname').val() === '') {
+        if (jQuery('#prjname').val() === '') {
             BanderaFaltantes = true;
             MensajeFaltantes += Ico1 + "<b>Project/Trial Groups</b> <br> &ensp;&ensp;&ensp; " + Ico2 + "Name <br>";
             CampoObligatorio('prjname');
@@ -133,8 +133,8 @@ $(document).ready(function() {
 
         //inicio: VALIDACION (Lead of Project)
         var MensajeLeadofProject = "";
-        $.each(CamposLeadofProject, function(Id, Campo) {
-            if ($('#' + Id).val() === '') {
+        jQuery.each(CamposLeadofProject, function(Id, Campo) {
+            if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeLeadofProject += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
                 CampoObligatorio(Id);
@@ -149,8 +149,8 @@ $(document).ready(function() {
 
         //inicio: VALIDACION (Project Implementing Institutions)
         var MensajeProjectImplementingInstitutions = "";
-        $.each(CamposProjectImplementingInstitutions, function(Id, Campo) {
-            if ($('#' + Id).val() === '') {
+        jQuery.each(CamposProjectImplementingInstitutions, function(Id, Campo) {
+            if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeProjectImplementingInstitutions += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
                 CampoObligatorio(Id);
@@ -165,8 +165,8 @@ $(document).ready(function() {
 
         //inicio: VALIDACION (Project Implementing period)
         var MensajeProjectImplementingperiod = "";
-        $.each(CamposProjectImplementingperiod, function(Id, Campo) {
-            if ($('#' + Id).val() === '') {
+        jQuery.each(CamposProjectImplementingperiod, function(Id, Campo) {
+            if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeProjectImplementingperiod += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
                 CampoObligatorio(Id);
@@ -181,8 +181,8 @@ $(document).ready(function() {
 
         //inicio: VALIDACION (Funding for project)
         var MensajeFundingforproject = "";
-        $.each(CamposFundingforproject, function(Id, Campo) {
-            if ($('#' + Id).val() === '') {
+        jQuery.each(CamposFundingforproject, function(Id, Campo) {
+            if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeFundingforproject += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
                 CampoObligatorio(Id);
@@ -197,8 +197,8 @@ $(document).ready(function() {
 
         //inicio: VALIDACION (Project information)
         var MensajeProjectinformation = "";
-        $.each(CamposProjectinformation, function(Id, Campo) {
-            if ($('#' + Id).val() === '') {
+        jQuery.each(CamposProjectinformation, function(Id, Campo) {
+            if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeProjectinformation += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
                 CampoObligatorio(Id);
@@ -213,7 +213,7 @@ $(document).ready(function() {
 
         //inicio: VALIDACION (Trial Manager)
         var MensajeTrialManager = "";
-        $.each(CamposTrialManager, function(Id, Campo) {
+        jQuery.each(CamposTrialManager, function(Id, Campo) {
             if (Id === 'tb_trial[id_rolecontactperson]') {
                 var id_rolecontactperson = GetValueSelect(Id);
                 if (id_rolecontactperson === '') {
@@ -224,7 +224,7 @@ $(document).ready(function() {
                     SelectNormalObligatorio(Id);
                 }
             } else {
-                if ($('#' + Id).val() === '') {
+                if (jQuery('#' + Id).val() === '') {
                     BanderaFaltantes = true;
                     MensajeTrialManager += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
                     CampoObligatorio(Id);
@@ -240,8 +240,8 @@ $(document).ready(function() {
 
         //inicio: VALIDACION (Trial Implementing period)
         var MensajeTrialImplementingperiod = "";
-        $.each(CamposTrialImplementingperiod, function(Id, Campo) {
-            if ($('#' + Id).val() === '') {
+        jQuery.each(CamposTrialImplementingperiod, function(Id, Campo) {
+            if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeTrialImplementingperiod += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
                 CampoObligatorio(Id);
@@ -256,8 +256,8 @@ $(document).ready(function() {
 
         //inicio: VALIDACION (Trial Location)
         var MensajeTrialLocation = "";
-        $.each(CamposTrialLocation, function(Id, Campo) {
-            if ($('#' + Id).val() === '') {
+        jQuery.each(CamposTrialLocation, function(Id, Campo) {
+            if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeTrialLocation += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
                 CampoObligatorio(Id);
@@ -272,8 +272,8 @@ $(document).ready(function() {
 
         //inicio: VALIDACION (Trial Characteristics)
         var MensajeTrialCharacteristics = "";
-        $.each(CamposTrialCharacteristics, function(Id, Campo) {
-            if ($('#' + Id).val() === '') {
+        jQuery.each(CamposTrialCharacteristics, function(Id, Campo) {
+            if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeTrialCharacteristics += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
                 CampoObligatorio(Id);
@@ -311,9 +311,9 @@ function GoToLicence() {
 
 //DESCARGA DE ARCHIVOS TRIALS
 function DownloadFileTrial(id_trial, id_crop, typefile) {
-    var License = $("#tb_trial_trltriallicense").val();
+    var License = jQuery("#tb_trial_trltriallicense").val();
     var Icon = "<img width='13' height='13' src='/images/bullet-black-icon.png'> ";
-    $.ajax({
+    jQuery.ajax({
         type: "GET",
         url: "/trial/ValidatePermissionsDownload/",
         data: "id_trial=" + id_trial,
@@ -340,6 +340,6 @@ function DownloadFileTrial(id_trial, id_crop, typefile) {
 
 //DESCARGAMOS EL TEMPLATE DE DATOS
 function DownloadDataTemplateCrop(i) {
-    var replication = $("#trnfnumberofreplicates" + i).val();
+    var replication = jQuery("#trnfnumberofreplicates" + i).val();
     window.location = "/DownloadDataTemplate?i=" + i + "&replication=" + replication;
 }
