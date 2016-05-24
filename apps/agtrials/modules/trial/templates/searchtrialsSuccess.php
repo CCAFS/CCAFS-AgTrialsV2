@@ -8,6 +8,13 @@
             var id_contactperson = $('#id_contactperson').val();
             var id_crop = $('#id_crop').val();
             var id_trial = $('#id_trial').val();
+
+            //CAMPOS BUSQUEDA AVANZADA
+            var trnfplantingsowingstartdate = $('#trnfplantingsowingstartdate1').val();
+            var trnfplantingsowingenddate = $('#trnfplantingsowingenddate1').val();
+            var trnfharveststartdate = $('#trnfharveststartdate1').val();
+            var trnfharvestenddate = $('#trnfharvestenddate1').val();
+
             var Ico = "<img src='/images/bullet-black-icon.png'> ";
             var BanderaFaltantes = false;
             var MensajeFaltantes = "";
@@ -37,7 +44,11 @@
                             id_project: id_project,
                             id_contactperson: id_contactperson,
                             id_crop: id_crop,
-                            id_trial: id_trial
+                            id_trial: id_trial,
+                            trnfplantingsowingstartdate: trnfplantingsowingstartdate,
+                            trnfplantingsowingenddate: trnfplantingsowingenddate,
+                            trnfharveststartdate: trnfharveststartdate,
+                            trnfharvestenddate: trnfharvestenddate
                         }
                     },
                     "fnRowCallback": function (nRow, aData) {
@@ -122,13 +133,13 @@
                     <div class="form-group control-type-text col-sm-4">
                         <div class="col-sm-12">Planting/Sowing Start Date:</div>      
                         <div class="col-sm-12 control-type-text">
-                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfplantingsowingstartdate1" name="trnfplantingsowingstartdate1" placeholder="yyyy-mm-dd" class="DateInput form-control hasDatepicker">                    
+                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfplantingsowingstartdate1" name="trnfplantingsowingstartdate1" placeholder="yyyy-mm-dd" class="DateInput form-control">                    
                         </div>
                     </div>
                     <div class="form-group control-type-text col-sm-4">
                         <div class="col-sm-12">Planting/Sowing End Date:</div>      
                         <div class="col-sm-12 control-type-text">
-                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfplantingsowingenddate1" name="trnfplantingsowingenddate1" placeholder="yyyy-mm-dd" class="DateInput form-control hasDatepicker">
+                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfplantingsowingenddate1" name="trnfplantingsowingenddate1" placeholder="yyyy-mm-dd" class="DateInput form-control">
                         </div>
                     </div>
                 </div>
@@ -136,13 +147,13 @@
                     <div class="form-group control-type-text col-sm-4">
                         <div class="col-sm-12">Harvest Start Date:</div>      
                         <div class="col-sm-12 control-type-text">
-                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfharveststartdate1" name="trnfharveststartdate1" placeholder="yyyy-mm-dd" class="DateInput form-control hasDatepicker">                    
+                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfharveststartdate1" name="trnfharveststartdate1" placeholder="yyyy-mm-dd" class="DateInput form-control">                    
                         </div>
                     </div>
                     <div class="form-group control-type-text col-sm-4">
                         <div class="col-sm-12">Harvest End Date:</div>      
                         <div class="col-sm-12 control-type-text">
-                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfharvestenddate1" name="trnfharvestenddate1" placeholder="yyyy-mm-dd" class="DateInput form-control hasDatepicker">
+                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfharvestenddate1" name="trnfharvestenddate1" placeholder="yyyy-mm-dd" class="DateInput form-control">
                         </div>
                     </div>
                 </div>

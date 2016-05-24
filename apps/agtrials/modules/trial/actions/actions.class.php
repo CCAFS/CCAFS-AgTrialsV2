@@ -1119,6 +1119,11 @@ class trialActions extends autoTrialActions {
         $id_crop = $request->getParameter('id_crop');
         $id_trial = $request->getParameter('id_trial');
 
+        $trnfplantingsowingstartdate = $request->getParameter('trnfplantingsowingstartdate');
+        $trnfplantingsowingenddate = $request->getParameter('trnfplantingsowingenddate');
+        $trnfharveststartdate = $request->getParameter('trnfharveststartdate');
+        $trnfharvestenddate = $request->getParameter('trnfharvestenddate');
+
         $Where = "WHERE true ";
 
         if ($searchterms != '')
@@ -1131,6 +1136,15 @@ class trialActions extends autoTrialActions {
             $Where .= "AND TI.id_crop = $id_crop ";
         if ($id_trial != '')
             $Where .= "AND T.id_trial = $id_trial ";
+
+        if ($trnfplantingsowingstartdate != '')
+            $Where .= "AND TI.trnfplantingsowingstartdate = '$trnfplantingsowingstartdate' ";
+        if ($trnfplantingsowingenddate != '')
+            $Where .= "AND TI.trnfplantingsowingenddate = '$trnfplantingsowingenddate' ";
+        if ($trnfharveststartdate != '')
+            $Where .= "AND TI.trnfharveststartdate = '$trnfharveststartdate' ";
+        if ($trnfharvestenddate != '')
+            $Where .= "AND TI.trnfharvestenddate = '$trnfharvestenddate' ";
 
         $QUERY00 = "SELECT T.id_trial,T.trltrialname,P.id_project,P.prjname,TL.id_triallocation,TL.trlcname,C.id_crop,C.crpname ";
         $QUERY00 .= "FROM tb_trial T ";
