@@ -1,6 +1,3 @@
-<script type="text/javascript" src="/autocomplete/autocomplete.js"></script>
-<script type="text/javascript" src="/datatables/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/datatables/jquery.dataTables.min.css"/>
 <script>
     $(document).ready(function () {
 

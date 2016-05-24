@@ -21,10 +21,9 @@ if (isset($session_group_id)) {
     }
 }
 ?>
-<script src="/autocomplete/lib/jquery.1.7.1.js"></script>
-<script src="/autocomplete/lib/jquery.ui.1.8.16.js"></script>
-<script src="/autocomplete/autocomplete.js"></script>
 <link href="/autocompletemultiple/autocomplete.css" rel="stylesheet" type="text/css" />
+<script src="/autocompletemultiple/lib/jquery.1.7.1.js"></script>
+<script src="/autocompletemultiple/lib/jquery.ui.1.8.16.js"></script>
 <script src="/autocompletemultiple/autocomplete.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function () {
