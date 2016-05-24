@@ -36,7 +36,7 @@ if (sfContext::getInstance()->getUser()->isAuthenticated()) {
 <meta name="language" content="en" />
 <meta name="robots" content="index, follow" />
 <title>The Global Agricultural Trial Repository - CGIAR - CCAFS - CIAT</title>
-<script type="text/javascript" src="/js/jquery-ui-1.11.3/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="/bootstrapAdminThemePlugin/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/jquery.alerts/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="/jquery.alerts/jquery.alerts.mod.js"></script>

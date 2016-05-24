@@ -1,9 +1,5 @@
-<script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="/jquery-ui-1.11.4/jquery-ui.min.js"></script>
-<script type="text/javascript" src="/datatables/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="/autocomplete/autocomplete.js"></script>
-
-<link rel="stylesheet" type="text/css" href="/jquery-ui-1.11.4/jquery-ui.min.css" />
+<script type="text/javascript" src="/datatables/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/datatables/jquery.dataTables.min.css"/>
 <script>
     $(document).ready(function () {
@@ -107,7 +103,7 @@
                         <div class="form-group control-type-text col-sm-3">
                             <div class="col-sm-12">Crop / Technology:</div>      
                             <div class="col-sm-12 control-type-text">
-                                <input name="id_crop" id="id_crop" type="text" value="<?php echo $id_crop; ?>" /> 
+                                <input name="id_crop" id="id_crop" type="hidden" value="<?php echo $id_crop; ?>" /> 
                                 <input class="form-control SearchInput" name="searchcrpname" id="searchcrpname" type="text" size="17" maxlength="150" value="<?php echo $searchcrpname; ?>" />
                             </div>
                         </div>
