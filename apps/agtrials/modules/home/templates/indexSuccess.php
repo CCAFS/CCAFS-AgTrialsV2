@@ -71,7 +71,5 @@
                 <span class="DateLocationTrial"><?php echo $Trials[4]['date'] . " " . $Trials[4]['location']; ?></span>
             </div>
         </div>
-
     </div>
-    
 </div>
