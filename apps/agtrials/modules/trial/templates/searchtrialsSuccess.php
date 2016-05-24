@@ -73,15 +73,15 @@
     <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
         <span class="Title">Search Trials</span>
         <form class="form-horizontal" id="FormSearchTrials" name="FormSearchTrials" action="" enctype="multipart/form-data" method="post" autocomplete="off">
-            <div class="Session"style="margin-top: 10px; margin-bottom: 10px;">
+            <div class="Session" style="margin-top: 10px; margin-bottom: 10px;">
                 <div class="form-group control-type-text">
-                    <div class="col-sm-12">Search terms:</div>      
+                    <div class="col-sm-12" style="color: #93c47d; font-size: 16px;">Search terms:</div>      
                     <div class="col-sm-11 control-type-text">
                         <input class="form-control" type="text"  name="searchterms" id="searchterms" size="36" maxlength="255" value="<?php echo $searchterms; ?>">
                     </div>
                 </div>
                 <div class="form-group control-type-text">
-                    <div class="col-sm-12">Filter by:</div>   
+                    <div class="col-sm-12" style="color: #93c47d; font-size: 16px; padding-bottom: 8px;">Filter by:</div>   
                     <fieldset style="padding-left: 15px;">
                         <div class="form-group control-type-text col-sm-3">
                             <div class="col-sm-12">Project:</div>      
@@ -112,13 +112,41 @@
                             </div>
                         </div>
                     </fieldset>
-                    <fieldset style="padding-left: 15px;">
-
-
-                    </fieldset>
                 </div>
-
             </div>
+
+            <div id="DivAdvancedSearch" class="Session col-sm-12 control-type-text" style="margin-top: 10px; margin-bottom: 10px;">
+                <div class="col-sm-12" style="color: #93c47d; font-size: 16px; padding-bottom: 8px;">Advanced Search:</div>   
+                <div class="col-sm-12">
+                    <div class="form-group control-type-text col-sm-4">
+                        <div class="col-sm-12">Planting/Sowing Start Date:</div>      
+                        <div class="col-sm-12 control-type-text">
+                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfplantingsowingstartdate1" name="trnfplantingsowingstartdate1" placeholder="yyyy-mm-dd" class="DateInput form-control hasDatepicker">                    
+                        </div>
+                    </div>
+                    <div class="form-group control-type-text col-sm-4">
+                        <div class="col-sm-12">Planting/Sowing End Date:</div>      
+                        <div class="col-sm-12 control-type-text">
+                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfplantingsowingenddate1" name="trnfplantingsowingenddate1" placeholder="yyyy-mm-dd" class="DateInput form-control hasDatepicker">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group control-type-text col-sm-4">
+                        <div class="col-sm-12">Harvest Start Date:</div>      
+                        <div class="col-sm-12 control-type-text">
+                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfharveststartdate1" name="trnfharveststartdate1" placeholder="yyyy-mm-dd" class="DateInput form-control hasDatepicker">                    
+                        </div>
+                    </div>
+                    <div class="form-group control-type-text col-sm-4">
+                        <div class="col-sm-12">Harvest End Date:</div>      
+                        <div class="col-sm-12 control-type-text">
+                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfharvestenddate1" name="trnfharvestenddate1" placeholder="yyyy-mm-dd" class="DateInput form-control hasDatepicker">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <fieldset style="margin-top: 10px; margin-left: 13px;">
                 <div class="form-group control-type-text" style="margin-left: 0px;">
                     <button class="btn btn-action" type="button" title=" Search " id="SubmitSearch" neme="SubmitSearch"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&ensp;Search&ensp;</button>

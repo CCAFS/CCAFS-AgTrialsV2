@@ -27,7 +27,7 @@ jQuery(document).ready(function () {
         var TemplateFile = jQuery('#TemplateFile').val();
         var SelectTemplate = jQuery('#SelectTemplate').val();
         if ((TemplateFile === '') || (SelectTemplate === '')) {
-            jAlert('Please, Select Upload Template or Template File', 'Error');
+            alerts.show({css: 'error', title: 'Invalid Date', message: 'Please, Select Upload Template or Template File.! '});
         } else {
             jQuery('#div_loading').show();
             jQuery('#Form').attr('value', 'Execute');
@@ -135,8 +135,8 @@ function ValidaFecha(Fecha) {
     var ErrorFecha = false;
 
     if ((LenFecha != 10) && (Valor != '')) {
-        jAlert('error', ' The value must be in the format (yyyy-mm-dd).! ', 'Invalid Date', null);
-        jQuery('#' + Campo).attr('value', '');
+        alerts.show({css: 'error', title: 'Invalid Date', message: 'The value must be in the format (yyyy-mm-dd).! '});
+        jQuery('#' + Campo).val('');
     } else if (Valor != '') {
         var PartFecha = Valor.split("-");
         if (isNaN(PartFecha[0]))
@@ -147,8 +147,8 @@ function ValidaFecha(Fecha) {
             ErrorFecha = true;
 
         if (ErrorFecha) {
-            jAlert('error', ' The value must be in the format (yyyy-mm-dd).! ', 'Invalid Date', null);
-            jQuery('#' + Campo).attr('value', '');
+            alerts.show({css: 'error', title: 'Invalid Date', message: 'The value must be in the format (yyyy-mm-dd).! '});
+            jQuery('#' + Campo).val('');
         }
     }
 }
@@ -172,8 +172,8 @@ function ValidaValorNumerico(campo) {
     var nombre = campo.id;
     if (valor != '') {
         if (isNaN(valor)) {
-            jAlert('error', ' El valor del campo debe ser numerico.! ', 'Campo Invalido', null);
-            jQuery('#' + nombre).attr('value', '');
+            alerts.show({css: 'error', title: 'Invalid Field', message: 'The value of the field must be numeric.! '});
+            jQuery('#' + nombre).val('');
         }
     }
 }
@@ -183,12 +183,12 @@ function ValidaAno(campo) {
     var nombre = campo.id;
     if (valor != '') {
         if (isNaN(valor)) {
-            jAlert('error', ' El valor del campo debe ser numerico de 4 digitos.! ', 'Campo Invalido', null);
-            jQuery('#' + nombre).attr('value', '');
+            alerts.show({css: 'error', title: 'Invalid Field', message: 'The field value must be 4-digit numeric.! '});
+            jQuery('#' + nombre).val('');
         } else {
             if ((valor < 1990) || (valor > 2050)) {
-                jAlert('error', ' El valor del campo no es correcto.! ', 'Campo Invalido', null);
-                jQuery('#' + nombre).attr('value', '');
+                alerts.show({css: 'error', title: 'Invalid Field', message: 'The field value is not correct.! '});
+                jQuery('#' + nombre).val('');
             }
         }
     }
@@ -199,8 +199,8 @@ function ValidaURL(campo) {
     var nombre = campo.id;
     if (valor != '') {
         if (!(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/|www\.)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?jQuery/.test(valor))) {
-            jAlert('error', ' El valor del campo debe ser una URL válida! ', 'Campo Invalido', null);
-            jQuery('#' + nombre).attr('value', '');
+            alerts.show({css: 'error', title: 'Invalid Field', message: 'The field value must be a valid URL.! '});
+            jQuery('#' + nombre).val('');
         }
     }
 }
@@ -212,8 +212,8 @@ function ValidaEmail(campo) {
     if (valor != '') {
         var filter = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
         if (!(filter.test(valor))) {
-            jQuery('#' + field).attr('value', '');
-            jAlert('error', 'Error E-mail.  E.j. account@dominio.com', 'Invalid E-mail', null);
+            jQuery('#' + field).val('');
+            alerts.show({css: 'error', title: 'Invalid E-mail', message: 'Error E-mail.  e.g. account@dominio.com.! '});
         }
     }
 }
@@ -225,8 +225,8 @@ function ValidarNumero(campo) {
     if (valor != '') {
         var filter = /^\d*jQuery/;
         if (!(filter.test(valor))) {
-            jQuery('#' + field).attr('value', '');
-            jAlert('error', 'Error Número Incorrecto  e.j. 25', 'Número Invalido', null);
+            jQuery('#' + field).val('');
+            alerts.show({css: 'error', title: 'Invalid Number', message: 'Error Wrong Number e.g. 25.! '});
         }
     }
 }
@@ -278,8 +278,8 @@ function Mensaje(msg) {
         msg = "<div style='width: 540px; height: 400px; overflow-y: scroll;'>" + msg + "</div>";
     else
         msg = "<div style='width: 540px; height: auto; overflow-y: scroll;'>" + msg + "</div>";
-    alerts.show({ css: 'error', title: 'Required Fields', message: msg });
 
+    alerts.show({css: 'error', title: 'Required Fields', message: msg});
 }
 //FIN: FUNCION PARA MOSTRAR LA VENTANA DEL MENSAJE
 
@@ -295,7 +295,7 @@ function SetValueSelect(Id, Value) {
 //inicio: MANEJO DE CULTIVOS (VARIEDADES Y VARIABLES MEDIDAS)
 //VALIDAMOS EL CULTIVO SELECCIONADO
 function ValidaCrop(i) {
-    jQuery('#InfoVariety' + i).attr('value', '');
+    jQuery('#InfoVariety' + i).val('');
     jQuery("#InfoVarietySelected" + i).load("/trial/DeleteVarietySelected/?i=" + i, function () {
         jQuery("#InfoVarietySelected" + i).html("");
     });
@@ -324,8 +324,8 @@ function FilterVariety(Campo, i) {
             jQuery("#DivClearFilterVariety" + i).hide();
         }
     } else {
-        jAlert('Before adding, specify the Crop!', 'Info', 'Important', null);
-        jQuery('#Variety' + i).attr('value', '');
+        alerts.show({css: 'error', title: 'Important', message: 'Before adding, specify the Crop.! '});
+        jQuery('#Variety' + i).val('');
         jQuery("#InfoVariety" + i).html("");
         jQuery("#DivVariety" + i).removeClass("DivListSelect");
     }
@@ -337,11 +337,11 @@ function SelectVariety(id_variety, i) {
         jQuery("#InfoVarietySelected" + i).load("/trial/LoadVarietySelected/?i=" + i, function () {
             //SI EXISTEN VARIEDADES Y VARIABLES MEDIDAS MOSTRAMOS U OCULTAMOS EL TEMPLATE DE DATOS
             if ((jQuery("#InfoVarietySelected" + i).is(':empty')) || (jQuery("#InfoVariablesMeasuredSelected" + i).is(':empty'))) {
-                jQuery('#TemplateData' + i).attr('value', '');
+                jQuery('#TemplateData' + i).val('');
                 jQuery("#DivData" + i).hide();
                 jQuery("#DivData" + i).removeClass("DivListSelect");
             } else {
-                jQuery('#TemplateData' + i).attr('value', '');
+                jQuery('#TemplateData' + i).val('');
                 jQuery("#DivData" + i).show();
                 jQuery("#DivData" + i).addClass("DivListSelect");
             }
@@ -352,7 +352,7 @@ function SelectVariety(id_variety, i) {
 
 //CERRAMOS LA LISTA DE VARIEDADES Y LIMPIAMOS EL FILTRO
 function ClearFilterVariety(i) {
-    jQuery('#Variety' + i).attr('value', '');
+    jQuery('#Variety' + i).val('');
     jQuery("#InfoVariety" + i).html("");
     jQuery("#DivFilterVarietyOK" + i).hide();
     jQuery("#DivClearFilterVariety" + i).hide();
@@ -367,11 +367,11 @@ function RemoveVariety(id_variety, i) {
 
             //SI EXISTEN VARIEDADES Y VARIABLES MEDIDAS MOSTRAMOS U OCULTAMOS EL TEMPLATE DE DATOS
             if ((jQuery("#InfoVarietySelected" + i).is(':empty')) || (jQuery("#InfoVariablesMeasuredSelected" + i).is(':empty'))) {
-                jQuery('#TemplateData' + i).attr('value', '');
+                jQuery('#TemplateData' + i).val('');
                 jQuery("#DivData" + i).hide();
                 jQuery("#DivData" + i).removeClass("DivListSelect");
             } else {
-                jQuery('#TemplateData' + i).attr('value', '');
+                jQuery('#TemplateData' + i).val('');
                 jQuery("#DivData" + i).show();
                 jQuery("#DivData" + i).addClass("DivListSelect");
             }
@@ -401,8 +401,8 @@ function FilterVariablesMeasured(Campo, i) {
             jQuery("#InfoVariablesMeasured" + i).removeClass("DivListSelect");
         }
     } else {
-        jAlert('Before adding, specify the Crop!', 'Info', 'Important', null);
-        jQuery('#VariablesMeasured' + i).attr('value', '');
+        alerts.show({css: 'error', title: 'Important', message: 'Before adding, specify the Crop.! '});
+        jQuery('#VariablesMeasured' + i).val('');
         jQuery("#InfoVariablesMeasured" + i).html("");
         jQuery("#InfoVariablesMeasured" + i).removeClass("DivListSelect");
     }
@@ -415,11 +415,11 @@ function SelectVariablesMeasured(id_variablesmeasured, i) {
         jQuery("#InfoVariablesMeasuredSelected" + i).load("/trial/LoadVariablesMeasuredSelected/?i=" + i, function () {
             //SI EXISTEN VARIEDADES Y VARIABLES MEDIDAS MOSTRAMOS U OCULTAMOS EL TEMPLATE DE DATOS
             if ((jQuery("#DivVarietySelected" + i).is(':empty')) || (jQuery("#InfoVariablesMeasuredSelected" + i).is(':empty'))) {
-                jQuery('#TemplateData' + i).attr('value', '');
+                jQuery('#TemplateData' + i).val('');
                 jQuery("#DivData" + i).hide();
                 jQuery("#DivData" + i).removeClass("DivListSelect");
             } else {
-                jQuery('#TemplateData' + i).attr('value', '');
+                jQuery('#TemplateData' + i).val('');
                 jQuery("#DivData" + i).show();
                 jQuery("#DivData" + i).addClass("DivListSelect");
             }
@@ -430,7 +430,7 @@ function SelectVariablesMeasured(id_variablesmeasured, i) {
 
 //CERRAMOS LA LISTA DE Variables Measured Y LIMPIAMOS EL FILTRO
 function ClearFilterVariablesMeasured(i) {
-    jQuery('#VariablesMeasured' + i).attr('value', '');
+    jQuery('#VariablesMeasured' + i).val('');
     jQuery("#InfoVariablesMeasured" + i).html("");
     jQuery("#InfoVariablesMeasured" + i).removeClass("DivListSelect");
     jQuery("#DivFilterVariablesMeasuredOK" + i).hide();
@@ -447,11 +447,11 @@ function RemoveVariablesMeasured(id_variablesmeasured, i) {
             }
             //SI EXISTEN VARIEDADES Y VARIABLES MEDIDAS MOSTRAMOS U OCULTAMOS EL TEMPLATE DE DATOS
             if ((jQuery("#DivVarietySelected" + i).is(':empty')) || (jQuery("#InfoVariablesMeasuredSelected" + i).is(':empty'))) {
-                jQuery('#TemplateData' + i).attr('value', '');
+                jQuery('#TemplateData' + i).val('');
                 jQuery("#DivData" + i).hide();
                 jQuery("#DivData" + i).removeClass("DivListSelect");
             } else {
-                jQuery('#TemplateData' + i).attr('value', '');
+                jQuery('#TemplateData' + i).val('');
                 jQuery("#DivData" + i).show();
                 jQuery("#DivData" + i).addClass("DivListSelect");
             }
@@ -461,21 +461,21 @@ function RemoveVariablesMeasured(id_variablesmeasured, i) {
 
 function DeleteNewCrop(i) {
     if (confirm('Really remove the crop?')) {
-        jQuery('#id_crop' + i).attr('value', '');
-        jQuery('#trnfnumberofreplicates' + i).attr('value', '');
-        jQuery('#id_experimentaldesign' + i).attr('value', '');
-        jQuery('#trnftreatmentnumber' + i).attr('value', '');
-        jQuery('#trnftreatmentnameandcode' + i).attr('value', '');
-        jQuery('#trnfplantingsowingstartdate' + i).attr('value', '');
-        jQuery('#trnfplantingsowingenddate' + i).attr('value', '');
-        jQuery('#trnfphysiologicalmaturitystardate' + i).attr('value', '');
-        jQuery('#trnfphysiologicalmaturityenddate' + i).attr('value', '');
-        jQuery('#trnfharveststartdate' + i).attr('value', '');
-        jQuery('#trnfharvestenddate' + i).attr('value', '');
-        jQuery('#trnfdataorresultsfile' + i).attr('value', '');
-        jQuery('#trnfsuppplementalinformationfile' + i).attr('value', '');
-        jQuery('#trnfweatherdatafile' + i).attr('value', '');
-        jQuery('#trnfsoildatafile' + i).attr('value', '');
+        jQuery('#id_crop' + i).val('');
+        jQuery('#trnfnumberofreplicates' + i).val('');
+        jQuery('#id_experimentaldesign' + i).val('');
+        jQuery('#trnftreatmentnumber' + i).val('');
+        jQuery('#trnftreatmentnameandcode' + i).val('');
+        jQuery('#trnfplantingsowingstartdate' + i).val('');
+        jQuery('#trnfplantingsowingenddate' + i).val('');
+        jQuery('#trnfphysiologicalmaturitystardate' + i).val('');
+        jQuery('#trnfphysiologicalmaturityenddate' + i).val('');
+        jQuery('#trnfharveststartdate' + i).val('');
+        jQuery('#trnfharvestenddate' + i).val('');
+        jQuery('#trnfdataorresultsfile' + i).val('');
+        jQuery('#trnfsuppplementalinformationfile' + i).val('');
+        jQuery('#trnfweatherdatafile' + i).val('');
+        jQuery('#trnfsoildatafile' + i).val('');
         jQuery('#DivCrop' + i).hide();
     }
 }
