@@ -1162,4 +1162,75 @@ class trialActions extends autoTrialActions {
         die(json_encode($ResultsJSON));
     }
 
+    public function executeReloadField($request) {
+        sfContext::getInstance()->getUser()->getAttributeHolder()->remove('WhereList');
+        $ArrayFields = explode(",", $request->getParameter('ArrayFields'));
+        $ArrayValuesFields = explode(",", $request->getParameter('ArrayValuesFields'));
+        $countries_id = sfContext::getInstance()->getUser()->getAttribute('countries_id');
+        $varieties_id = sfContext::getInstance()->getUser()->getAttribute('varieties_id');
+        $variablesmeasured_id = sfContext::getInstance()->getUser()->getAttribute('variablesmeasured_id');
+
+        $InfoField['id_trialgroup'] = array("id_trialgroup_list", "tb_trialgroup", "id_trialgroup", "trgrname");
+        $InfoField['id_contactperson'] = array("id_contactperson_list", "tb_contactperson", "id_contactperson", "(cnprfirstname||' '||cnprlastname)");
+        $InfoField['id_trialsite'] = array("id_trialsite_list", "tb_trialsite", "id_trialsite", "trstname");
+        $InfoField['id_crop'] = array("id_crop_list", "tb_crop", "id_crop", "crpname");
+
+        for ($a = 0; $a < count($ArrayFields); $a++) {
+            if ($ArrayValuesFields[$a] != '') {
+                $Where .= " AND T2.{$ArrayFields[$a]} = {$ArrayValuesFields[$a]} ";
+            }
+        }
+
+        $Country_id = "";
+        if (count($countries_id) > 0) {
+            foreach ($countries_id AS $valor) {
+                $Country_id .= "$valor,";
+            }
+        }
+        $Country_id = substr($Country_id, 0, (strlen($Country_id) - 1));
+        if ($Country_id != "")
+            $WhereCountries = " AND T2.id_country IN ($Country_id) ";
+
+
+        $Variety_id = "";
+        if (count($varieties_id) > 0) {
+            foreach ($varieties_id AS $valor) {
+                $Variety_id .= "$valor,";
+            }
+        }
+        $Variety_id = substr($Variety_id, 0, (strlen($Variety_id) - 1));
+        if ($Variety_id != "")
+            $WhereVariety = " AND TV.id_variety IN ($Variety_id)";
+
+        $Variablesmeasured_id = "";
+        if (count($variablesmeasured_id) > 0) {
+            foreach ($variablesmeasured_id AS $valor) {
+                $Variablesmeasured_id .= "$valor,";
+            }
+        }
+        $Variablesmeasured_id = substr($Variablesmeasured_id, 0, (strlen($Variablesmeasured_id) - 1));
+        if ($Variablesmeasured_id != "")
+            $WhereListVariablesMeasured = " AND TVM.id_variablesmeasured IN ($Variablesmeasured_id)";
+
+        sfContext::getInstance()->getUser()->setAttribute('WhereList', $Where);
+        sfContext::getInstance()->getUser()->setAttribute('WhereCountries', $WhereCountries);
+        sfContext::getInstance()->getUser()->setAttribute('WhereVariety', $WhereVariety);
+        sfContext::getInstance()->getUser()->setAttribute('WhereListVariablesMeasured', $WhereListVariablesMeasured);
+
+        $Where = $Where . $WhereCountries . $WhereVariety . $WhereListVariablesMeasured;
+
+
+        foreach ($InfoField AS $Field => $ArrayInfoField) {
+            $Key = array_search($Field, $ArrayFields); // $clave = 2;
+            $name = $InfoField[$Field][0];
+            $table = $InfoField[$Field][1];
+            $idfield = $InfoField[$Field][2];
+            $namefield = $InfoField[$Field][3];
+            $value = $ArrayValuesFields[$Key];
+            $ArrayHTML[$Field . "_list"] = select_from_table_ReloadField($name, $table, $idfield, $namefield, $Where, $value);
+        }
+        $JSONHTML = json_encode($ArrayHTML);
+        die($JSONHTML);
+    }
+
 }

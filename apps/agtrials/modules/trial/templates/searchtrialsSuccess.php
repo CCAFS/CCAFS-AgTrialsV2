@@ -68,6 +68,12 @@
             $('#searchcrpname').val('');
             $('#id_trial').val('');
             $('#searchtrltrialname').val('');
+
+            $('#trnfplantingsowingstartdate1').val('');
+            $('#trnfplantingsowingenddate1').val('');
+            $('#trnfharveststartdate1').val('');
+            $('#trnfharvestenddate1').val('');
+
             $('#DivTableResusltsSearch').hide();
         });
 
@@ -99,36 +105,48 @@
                 <div class="form-group control-type-text">
                     <div class="col-sm-12" style="color: #93c47d; font-size: 16px; padding-bottom: 8px;">Filter by:</div>   
                     <fieldset style="padding-left: 15px;">
-                        <div class="form-group control-type-text col-sm-3">
+                        <div class="form-group control-type-text col-sm-3" style="width: 250px;">
                             <div class="col-sm-12">Project:</div>      
-                            <div class="col-sm-12 control-type-text">
+                            <div class="col-sm-11 control-type-text" style="padding-right: 2px;">
                                 <input name="id_project" id="id_project" type="hidden" value="<?php echo $id_project; ?>" /> 
                                 <input class="form-control SearchInput" name="searchprjname" id="searchprjname" type="text" size="17" maxlength="150" value="<?php echo $searchprjname; ?>" />
                             </div>
+                            <div class="DivColIcon">
+                                <span id="CheckProject"></span>                                
+                            </div>
                         </div>
-                        <div class="form-group control-type-text col-sm-3">
+                        <div class="form-group control-type-text col-sm-3" style="width: 250px;">
                             <div class="col-sm-12">Contact person:</div>      
-                            <div class="col-sm-12 control-type-text">
+                            <div class="col-sm-11 control-type-text" style="padding-right: 2px;">
                                 <input name="id_contactperson" id="id_contactperson" type="hidden" value="<?php echo $id_contactperson; ?>" /> 
                                 <input class="form-control SearchInput" name="searchcontactperson" id="searchcontactperson" type="text" size="17" maxlength="150" value="<?php echo $searchcontactperson; ?>" />                    
                             </div>
+                            <div class="DivColIcon">
+                                <span id="CheckContactperson"></span>                                
+                            </div>
                         </div>
-                        <div class="form-group control-type-text col-sm-3">
+                        <div class="form-group control-type-text col-sm-3" style="width: 250px;">
                             <div class="col-sm-12">Crop / Technology:</div>      
-                            <div class="col-sm-12 control-type-text">
+                            <div class="col-sm-11 control-type-text" style="padding-right: 2px;">
                                 <input name="id_crop" id="id_crop" type="hidden" value="<?php echo $id_crop; ?>" /> 
                                 <input class="form-control SearchInput" name="searchcrpname" id="searchcrpname" type="text" size="17" maxlength="150" value="<?php echo $searchcrpname; ?>" />
                             </div>
+                            <div class="DivColIcon">
+                                <span id="CheckCrop"></span>                                
+                            </div>
                         </div>
-                        <div class="form-group control-type-text col-sm-3">
+                        <div class="form-group control-type-text col-sm-3" style="width: 250px;">
                             <div class="col-sm-12">Trial name:</div>      
-                            <div class="col-sm-12 control-type-text">
+                            <div class="col-sm-11 control-type-text" style="padding-right: 2px;">
                                 <input name="id_trial" id="id_trial" type="hidden" value="<?php echo $id_trial; ?>" /> 
                                 <input class="form-control SearchInput" name="searchtrltrialname" id="searchtrltrialname" type="text" size="17" maxlength="150" value="<?php echo $searchtrltrialname; ?>" />   
                             </div>
+                            <div class="DivColIcon">
+                                <span id="CheckTrialname"></span>                                
+                            </div>
                         </div>
                     </fieldset>
-                    <div id="ShowHideDivAdvancedSearch" class="col-sm-12" style="color: #93c47d; font-size: 14px; padding-bottom: 8px; cursor: pointer;">Advanced Search</div>
+                    <div id="ShowHideDivAdvancedSearch" class="col-sm-2" style="color: #93c47d; font-size: 14px; padding-bottom: 8px; cursor: pointer;">Advanced Search</div>
                 </div>
             </div>
 

@@ -1,19 +1,19 @@
-jQuery(document).ready(function() {
+jQuery(document).ready(function () {
     jQuery("#prjprojectimplementingperiodstartdate").datepicker({dateFormat: 'yy-mm-dd'});
     jQuery("#prjprojectimplementingperiodenddate").datepicker({dateFormat: 'yy-mm-dd'});
-    jQuery("#prjprojectimplementingperiodstartdate").on("dp.change", function(e) {
+    jQuery("#prjprojectimplementingperiodstartdate").on("dp.change", function (e) {
         jQuery('#prjprojectimplementingperiodenddate').data("datepicker").minDate(e.date);
     });
-    jQuery("#prjprojectimplementingperiodenddate").on("dp.change", function(e) {
+    jQuery("#prjprojectimplementingperiodenddate").on("dp.change", function (e) {
         jQuery('#prjprojectimplementingperiodstartdate').data("datepicker").maxDate(e.date);
     });
 
     jQuery("#trlimplementingperiodstartdate").datepicker({dateFormat: 'yy-mm-dd'});
     jQuery("#trlimplementingperiodenddate").datepicker({dateFormat: 'yy-mm-dd'});
-    jQuery("#trlimplementingperiodstartdate").on("dp.change", function(e) {
+    jQuery("#trlimplementingperiodstartdate").on("dp.change", function (e) {
         jQuery('#trlimplementingperiodenddate').data("datepicker").minDate(e.date);
     });
-    jQuery("#trlimplementingperiodenddate").on("dp.change", function(e) {
+    jQuery("#trlimplementingperiodenddate").on("dp.change", function (e) {
         jQuery('#trlimplementingperiodstartdate').data("datepicker").maxDate(e.date);
     });
 
@@ -26,27 +26,27 @@ jQuery(document).ready(function() {
         jQuery("#trnfharvestenddate" + i).datepicker({dateFormat: 'yy-mm-dd'});
     }
 
-    jQuery("#tb_trial_trltrialpermissions_open_to_all_users").click(function() {
+    jQuery("#tb_trial_trltrialpermissions_open_to_all_users").click(function () {
         jQuery("#PermissionsUsers").css("display", "none");
         jQuery("#tbtrial_groups").css("display", "none");
     });
 
-    jQuery("#tb_trial_trltrialpermissions_open_to_specified_users").click(function() {
+    jQuery("#tb_trial_trltrialpermissions_open_to_specified_users").click(function () {
         jQuery("#PermissionsUsers").css("display", "block");
         jQuery("#PermissionsGroups").css("display", "none");
     });
 
-    jQuery("#tb_trial_trltrialpermissions_open_to_specified_groups").click(function() {
+    jQuery("#tb_trial_trltrialpermissions_open_to_specified_groups").click(function () {
         jQuery("#PermissionsUsers").css("display", "none");
         jQuery("#PermissionsGroups").css("display", "block");
     });
 
-    jQuery("#tb_trial_trltrialpermissions_public_domain").click(function() {
+    jQuery("#tb_trial_trltrialpermissions_public_domain").click(function () {
         jQuery("#PermissionsUsers").css("display", "none");
         jQuery("#PermissionsGroups").css("display", "none");
     });
 
-    jQuery("#tb_trial_trltriallicense").focus(function() {
+    jQuery("#tb_trial_trltriallicense").focus(function () {
         this.select();
     });
 
@@ -109,13 +109,13 @@ jQuery(document).ready(function() {
     };
 
 
-    jQuery("#FormTrial").find(':input').each(function() {
+    jQuery("#FormTrial").find(':input').each(function () {
 //        if (this.id !== '')
 //            CampoNormal(this.id);
     });
 
     //inicio: VALIDAMOS EL ENVIO DEL FORMULARIO
-    jQuery("#FormTrial").submit(function(event) {
+    jQuery("#FormTrial").submit(function (event) {
         var Ico1 = "<img width='13' height='13' src='/images/Arrow-icon.png'> ";
         var Ico2 = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
@@ -133,7 +133,7 @@ jQuery(document).ready(function() {
 
         //inicio: VALIDACION (Lead of Project)
         var MensajeLeadofProject = "";
-        jQuery.each(CamposLeadofProject, function(Id, Campo) {
+        jQuery.each(CamposLeadofProject, function (Id, Campo) {
             if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeLeadofProject += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
@@ -149,7 +149,7 @@ jQuery(document).ready(function() {
 
         //inicio: VALIDACION (Project Implementing Institutions)
         var MensajeProjectImplementingInstitutions = "";
-        jQuery.each(CamposProjectImplementingInstitutions, function(Id, Campo) {
+        jQuery.each(CamposProjectImplementingInstitutions, function (Id, Campo) {
             if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeProjectImplementingInstitutions += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
@@ -165,7 +165,7 @@ jQuery(document).ready(function() {
 
         //inicio: VALIDACION (Project Implementing period)
         var MensajeProjectImplementingperiod = "";
-        jQuery.each(CamposProjectImplementingperiod, function(Id, Campo) {
+        jQuery.each(CamposProjectImplementingperiod, function (Id, Campo) {
             if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeProjectImplementingperiod += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
@@ -181,7 +181,7 @@ jQuery(document).ready(function() {
 
         //inicio: VALIDACION (Funding for project)
         var MensajeFundingforproject = "";
-        jQuery.each(CamposFundingforproject, function(Id, Campo) {
+        jQuery.each(CamposFundingforproject, function (Id, Campo) {
             if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeFundingforproject += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
@@ -197,7 +197,7 @@ jQuery(document).ready(function() {
 
         //inicio: VALIDACION (Project information)
         var MensajeProjectinformation = "";
-        jQuery.each(CamposProjectinformation, function(Id, Campo) {
+        jQuery.each(CamposProjectinformation, function (Id, Campo) {
             if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeProjectinformation += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
@@ -213,7 +213,7 @@ jQuery(document).ready(function() {
 
         //inicio: VALIDACION (Trial Manager)
         var MensajeTrialManager = "";
-        jQuery.each(CamposTrialManager, function(Id, Campo) {
+        jQuery.each(CamposTrialManager, function (Id, Campo) {
             if (Id === 'tb_trial[id_rolecontactperson]') {
                 var id_rolecontactperson = GetValueSelect(Id);
                 if (id_rolecontactperson === '') {
@@ -240,7 +240,7 @@ jQuery(document).ready(function() {
 
         //inicio: VALIDACION (Trial Implementing period)
         var MensajeTrialImplementingperiod = "";
-        jQuery.each(CamposTrialImplementingperiod, function(Id, Campo) {
+        jQuery.each(CamposTrialImplementingperiod, function (Id, Campo) {
             if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeTrialImplementingperiod += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
@@ -256,7 +256,7 @@ jQuery(document).ready(function() {
 
         //inicio: VALIDACION (Trial Location)
         var MensajeTrialLocation = "";
-        jQuery.each(CamposTrialLocation, function(Id, Campo) {
+        jQuery.each(CamposTrialLocation, function (Id, Campo) {
             if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeTrialLocation += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
@@ -272,7 +272,7 @@ jQuery(document).ready(function() {
 
         //inicio: VALIDACION (Trial Characteristics)
         var MensajeTrialCharacteristics = "";
-        jQuery.each(CamposTrialCharacteristics, function(Id, Campo) {
+        jQuery.each(CamposTrialCharacteristics, function (Id, Campo) {
             if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeTrialCharacteristics += "&ensp;&ensp;&ensp; " + Ico2 + Campo + " <br>";
@@ -293,6 +293,50 @@ jQuery(document).ready(function() {
             event.preventDefault();
         }
     });
+
+    jQuery("#searchprjname").blur(function () {
+        if ((jQuery('#id_project').val() !== '') && (jQuery('#searchprjname').val() !== '')) {
+            jQuery('#CheckProject').html("<img width='18' height='18' src='/images/success.png'>");
+        } else {
+            jQuery('#id_project').val('')
+            jQuery('#searchprjname').val('')
+            jQuery('#CheckProject').html("");
+        }
+    });
+
+    jQuery("#searchcontactperson").blur(function () {
+        if ((jQuery('#id_contactperson').val() !== '') && (jQuery('#searchcontactperson').val() !== '')) {
+            jQuery('#CheckContactperson').html("<img width='18' height='18' src='/images/success.png'>");
+        } else {
+            jQuery('#id_contactperson').val('')
+            jQuery('#searchcontactperson').val('')
+            jQuery('#CheckContactperson').html("");
+        }
+    });
+//    *********** aqui voy ********************
+    jQuery("#searchprjname").blur(function () {
+        if ((jQuery('#id_project').val() !== '') && (jQuery('#searchprjname').val() !== '')) {
+            jQuery('#CheckProject').html("<img width='18' height='18' src='/images/success.png'>");
+        } else {
+            jQuery('#id_project').val('')
+            jQuery('#searchprjname').val('')
+            jQuery('#CheckProject').html("");
+        }
+    });
+
+    jQuery("#searchprjname").blur(function () {
+        if ((jQuery('#id_project').val() !== '') && (jQuery('#searchprjname').val() !== '')) {
+            jQuery('#CheckProject').html("<img width='18' height='18' src='/images/success.png'>");
+        } else {
+            jQuery('#id_project').val('')
+            jQuery('#searchprjname').val('')
+            jQuery('#CheckProject').html("");
+        }
+    });
+
+
+
+
 });
 //fin: FUNCIONES PARA EL CAMBIO DE COLOR
 
@@ -300,7 +344,7 @@ jQuery(document).ready(function() {
 
 function GoToLicence() {
     var Texto = "<span><b>IMPORTANT: Read this before you build your license </b></br></br>We now ask you to designate the intellectual property rights of the agricultural evaluation data you are registering through this application. Now you will be taken to a license generator developed by Creative Commons. It will ask you a series of questions whose responses determine the data sharing and use policy for your data set. At this point, the application will develop lines of computer code designating the intellectual property rights. Copy these lines of code from the pop-up window back into the main window of the application.</span>";
-    jConfirm(Texto, 'Creative Commons', function(r) {
+    jConfirm(Texto, 'Creative Commons', function (r) {
         if (r) {
             window.open('https://creativecommons.org/choose/', '_blank');
         }
@@ -317,7 +361,7 @@ function DownloadFileTrial(id_trial, id_crop, typefile) {
         type: "GET",
         url: "/trial/ValidatePermissionsDownload/",
         data: "id_trial=" + id_trial,
-        success: function(data) {
+        success: function (data) {
             if (data === 'Un-Authenticated') {
                 jAlert(Icon + " <b>Sorry!</b> You must be authenticated. <br>" + Icon + " Please contact the Trial Manager.", 'Info', 'Important', null);
             } else if (data === 'Not-Permissions') {
@@ -325,7 +369,7 @@ function DownloadFileTrial(id_trial, id_crop, typefile) {
             } else {
                 if (License !== '') {
                     License += "<br><br><b>Do you agree with the license?</b>";
-                    jConfirm(License, 'Agreement Licence', function(r) {
+                    jConfirm(License, 'Agreement Licence', function (r) {
                         if (r) {
                             window.location = "/DownloadFileTrial?id_trial=" + id_trial + "&id_crop=" + id_crop + "&typefile=" + typefile;
                         }
