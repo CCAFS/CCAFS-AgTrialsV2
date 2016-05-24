@@ -1,77 +1,77 @@
-$(document).ready(function () {
+jQuery(document).ready(function () {
     //ADICIONAMOS UN NUEVO VILLAGE
-    $('#AddVillage').click(function () {
-        var id_subdistricttriallocation = $('#id_subdistricttriallocation').val();
-        var VillageName = $('#villagetriallocation').val();
-        $.ajax({
+    jQuery('#AddVillage').click(function () {
+        var id_subdistricttriallocation = jQuery('#id_subdistricttriallocation').val();
+        var VillageName = jQuery('#villagetriallocation').val();
+        jQuery.ajax({
             type: "GET",
             url: "/administrativedivision/AddVillage/",
             data: "id_subdistricttriallocation=" + id_subdistricttriallocation + "&VillageName=" + VillageName,
             success: function (data) {
-                $('#id_villagetriallocation').attr('value', data);
-                $('#AddVillage').html("");
-                $('#CheckVillagetriallocation').html("<img width='18' height='18' src='/images/success.png'>");
+                jQuery('#id_villagetriallocation').attr('value', data);
+                jQuery('#AddVillage').html("");
+                jQuery('#CheckVillagetriallocation').html("<img width='18' height='18' src='/images/success.png'>");
             }
         });
     });
 
     //MANEJO DE CULTIVOS
-    $('#nuevocrop').click(function () {
-        var filacrop = $('#filacrop').val();
+    jQuery('#nuevocrop').click(function () {
+        var filacrop = jQuery('#filacrop').val();
         filacrop = (filacrop * 1) + 1;
-        $('#DivCrop' + filacrop).show();
-        $('#filacrop').attr('value', filacrop);
+        jQuery('#DivCrop' + filacrop).show();
+        jQuery('#filacrop').attr('value', filacrop);
     });
 
-    $('#ExecuteBatchuploadanother').click(function () {
-        var TemplateFile = $('#TemplateFile').val();
-        var SelectTemplate = $('#SelectTemplate').val();
+    jQuery('#ExecuteBatchuploadanother').click(function () {
+        var TemplateFile = jQuery('#TemplateFile').val();
+        var SelectTemplate = jQuery('#SelectTemplate').val();
         if ((TemplateFile === '') || (SelectTemplate === '')) {
             jAlert('Please, Select Upload Template or Template File', 'Error');
         } else {
-            $('#div_loading').show();
-            $('#Form').attr('value', 'Execute');
-            $('#batchuploadanother').submit();
+            jQuery('#div_loading').show();
+            jQuery('#Form').attr('value', 'Execute');
+            jQuery('#batchuploadanother').submit();
         }
     });
 
-    $('#SelectTemplate').change(function () {
-        var SelectTemplate = $('#SelectTemplate').val();
+    jQuery('#SelectTemplate').change(function () {
+        var SelectTemplate = jQuery('#SelectTemplate').val();
         if (SelectTemplate !== '') {
-            $('#DivTemplatesInformation').show();
+            jQuery('#DivTemplatesInformation').show();
             if (SelectTemplate === 'Trial Project Template')
-                $('#DivTemplatesInformationInfo').html("Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</br>Exact number of columns <b>'8'</b> for Template File.</br>Max. <b>10000 Records</b> for Template File.</br>Don't close the window during the process.");
+                jQuery('#DivTemplatesInformationInfo').html("Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</br>Exact number of columns <b>'8'</b> for Template File.</br>Max. <b>10000 Records</b> for Template File.</br>Don't close the window during the process.");
 
             if (SelectTemplate === 'Trial Location Template')
-                $('#DivTemplatesInformationInfo').html("Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</br>Exact number of columns <b>'8'</b> for Template File.</br>Max. <b>10000 Records</b> for Template File.</br>Don't close the window during the process.");
+                jQuery('#DivTemplatesInformationInfo').html("Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</br>Exact number of columns <b>'8'</b> for Template File.</br>Max. <b>10000 Records</b> for Template File.</br>Don't close the window during the process.");
 
             if (SelectTemplate === 'Trial Varieties Template')
-                $('#DivTemplatesInformationInfo').html("Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</br>Exact number of columns <b>'5'</b> for Template File.</br>Max. <b>10000 Records</b> for Template File.</br>Don't close the window during the process.");
+                jQuery('#DivTemplatesInformationInfo').html("Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</br>Exact number of columns <b>'5'</b> for Template File.</br>Max. <b>10000 Records</b> for Template File.</br>Don't close the window during the process.");
 
             if (SelectTemplate === 'Trial Variables Measured Template')
-                $('#DivTemplatesInformationInfo').html("Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</br>Exact number of columns <b>'7'</b> for Template File.</br>Max. <b>10000 Records</b> for Template File.</br>Don't close the window during the process.");
+                jQuery('#DivTemplatesInformationInfo').html("Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</br>Exact number of columns <b>'7'</b> for Template File.</br>Max. <b>10000 Records</b> for Template File.</br>Don't close the window during the process.");
 
         } else {
-            $('#DivTemplatesInformation').hide();
+            jQuery('#DivTemplatesInformation').hide();
         }
     });
 
     // Funcion que que el Menu siga al scroll y ese sea siempre visible
-    var menuOffset = $('.MenuTrials').offset();
-    $(window).scroll(function () {
-        if ($(window).scrollTop() >= menuOffset.top) {
-            $('.MenuTrials').addClass('positionFixedTop');
+    var menuOffset = jQuery('.MenuTrials').offset();
+    jQuery(window).scroll(function () {
+        if (jQuery(window).scrollTop() >= menuOffset.top) {
+            jQuery('.MenuTrials').addClass('positionFixedTop');
         } else {
-            $('.MenuTrials').removeClass('positionFixedTop');
+            jQuery('.MenuTrials').removeClass('positionFixedTop');
         }
     });
 
 
-    $('a.page-scroll').on('click', function (e) {
+    jQuery('a.page-scroll').on('click', function (e) {
         e.preventDefault();
-        var $target = $($(this).attr('href'));
-        $('html, body').animate({
-            scrollTop: $target.offset().top
+        var jQuerytarget = jQuery(jQuery(this).attr('href'));
+        jQuery('html, body').animate({
+            scrollTop: jQuerytarget.offset().top
         }, 500);
         return false;
     });
@@ -92,38 +92,38 @@ function ValidaEscrituraFecha(Fecha) {
     if (LenFecha <= 4) {
         if (isNaN(Valor)) {
             Valor = Valor.substring(0, (LenFecha - 1));
-            $('#' + Campo).attr('value', Valor);
+            jQuery('#' + Campo).attr('value', Valor);
         }
         LenFecha = Valor.length;
         if (LenFecha == 4) {
-            $('#' + Campo).attr('value', Valor + "-");
+            jQuery('#' + Campo).attr('value', Valor + "-");
         }
     } else if (LenFecha <= 7) {
         var Valor2 = Valor.substring(5, (LenFecha))
         if (isNaN(Valor2)) {
             Valor = Valor.substring(0, (LenFecha - 1));
-            $('#' + Campo).attr('value', Valor);
+            jQuery('#' + Campo).attr('value', Valor);
         }
         if ((Valor2 >= 0) && (Valor2 <= 12)) {
             LenFecha = Valor.length;
             if (LenFecha == 7) {
-                $('#' + Campo).attr('value', Valor + "-");
+                jQuery('#' + Campo).attr('value', Valor + "-");
             }
         } else {
             Valor = Valor.substring(0, (LenFecha - 2));
-            $('#' + Campo).attr('value', Valor);
+            jQuery('#' + Campo).attr('value', Valor);
         }
     } else if (LenFecha <= 10) {
         var Valor3 = Valor.substring(8, (LenFecha))
         if (isNaN(Valor3)) {
             Valor = Valor.substring(0, (LenFecha - 1))
-            $('#' + Campo).attr('value', Valor);
+            jQuery('#' + Campo).attr('value', Valor);
         }
         if ((Valor3 >= 0) && (Valor3 <= 31)) {
             LenFecha = Valor.length;
         } else {
             Valor = Valor.substring(0, (LenFecha - 2));
-            $('#' + Campo).attr('value', Valor);
+            jQuery('#' + Campo).attr('value', Valor);
         }
     }
 }
@@ -136,7 +136,7 @@ function ValidaFecha(Fecha) {
 
     if ((LenFecha != 10) && (Valor != '')) {
         jAlert('error', ' The value must be in the format (yyyy-mm-dd).! ', 'Invalid Date', null);
-        $('#' + Campo).attr('value', '');
+        jQuery('#' + Campo).attr('value', '');
     } else if (Valor != '') {
         var PartFecha = Valor.split("-");
         if (isNaN(PartFecha[0]))
@@ -148,7 +148,7 @@ function ValidaFecha(Fecha) {
 
         if (ErrorFecha) {
             jAlert('error', ' The value must be in the format (yyyy-mm-dd).! ', 'Invalid Date', null);
-            $('#' + Campo).attr('value', '');
+            jQuery('#' + Campo).attr('value', '');
         }
     }
 }
@@ -163,7 +163,7 @@ function ValidaEscrituraNumero(Dato) {
     }
     if (isNaN(Valor)) {
         Valor = Dato.value.substring(0, (LenNumero - 1));
-        $('#' + Campo).attr('value', Valor);
+        jQuery('#' + Campo).attr('value', Valor);
     }
 }
 
@@ -173,7 +173,7 @@ function ValidaValorNumerico(campo) {
     if (valor != '') {
         if (isNaN(valor)) {
             jAlert('error', ' El valor del campo debe ser numerico.! ', 'Campo Invalido', null);
-            $('#' + nombre).attr('value', '');
+            jQuery('#' + nombre).attr('value', '');
         }
     }
 }
@@ -184,11 +184,11 @@ function ValidaAno(campo) {
     if (valor != '') {
         if (isNaN(valor)) {
             jAlert('error', ' El valor del campo debe ser numerico de 4 digitos.! ', 'Campo Invalido', null);
-            $('#' + nombre).attr('value', '');
+            jQuery('#' + nombre).attr('value', '');
         } else {
             if ((valor < 1990) || (valor > 2050)) {
                 jAlert('error', ' El valor del campo no es correcto.! ', 'Campo Invalido', null);
-                $('#' + nombre).attr('value', '');
+                jQuery('#' + nombre).attr('value', '');
             }
         }
     }
@@ -198,9 +198,9 @@ function ValidaURL(campo) {
     var valor = campo.value;
     var nombre = campo.id;
     if (valor != '') {
-        if (!(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/|www\.)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test(valor))) {
+        if (!(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/|www\.)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?jQuery/.test(valor))) {
             jAlert('error', ' El valor del campo debe ser una URL válida! ', 'Campo Invalido', null);
-            $('#' + nombre).attr('value', '');
+            jQuery('#' + nombre).attr('value', '');
         }
     }
 }
@@ -212,7 +212,7 @@ function ValidaEmail(campo) {
     if (valor != '') {
         var filter = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
         if (!(filter.test(valor))) {
-            $('#' + field).attr('value', '');
+            jQuery('#' + field).attr('value', '');
             jAlert('error', 'Error E-mail.  E.j. account@dominio.com', 'Invalid E-mail', null);
         }
     }
@@ -223,9 +223,9 @@ function ValidarNumero(campo) {
     var field = campo.id;
 // creamos nuestra regla con expresiones regulares.
     if (valor != '') {
-        var filter = /^\d*$/;
+        var filter = /^\d*jQuery/;
         if (!(filter.test(valor))) {
-            $('#' + field).attr('value', '');
+            jQuery('#' + field).attr('value', '');
             jAlert('error', 'Error Número Incorrecto  e.j. 25', 'Número Invalido', null);
         }
     }
@@ -238,28 +238,28 @@ var ColorFondoObligatorio = '#FFFFFF';
 var ColorFondoNormal = '#FFFFFF';
 
 function CampoObligatorio(Id) {
-    $('#' + Id).css({'background-color': ColorFondoObligatorio});
-    $('#' + Id).css({'border': '1px solid ' + ColorBordeObligatorio});
+    jQuery('#' + Id).css({'background-color': ColorFondoObligatorio});
+    jQuery('#' + Id).css({'border': '1px solid ' + ColorBordeObligatorio});
 }
 
 function CampoNormalObligatorio(Id) {
-    $('#' + Id).css({'background-color': ColorFondoNormal});
-    $('#' + Id).css({'border': '1px solid ' + ColorBordeObligatorio});
+    jQuery('#' + Id).css({'background-color': ColorFondoNormal});
+    jQuery('#' + Id).css({'border': '1px solid ' + ColorBordeObligatorio});
 }
 
 function CampoNormal(Id) {
-    $('#' + Id).css({'background-color': ColorFondoNormal});
-    $('#' + Id).css({'border': '1px solid ' + ColorBordeNormal});
+    jQuery('#' + Id).css({'background-color': ColorFondoNormal});
+    jQuery('#' + Id).css({'border': '1px solid ' + ColorBordeNormal});
 }
 
 function SelectObligatorio(Id) {
-    $("select[id='" + Id + "']").css({'background-color': ColorFondoObligatorio});
-    $("select[id='" + Id + "']").css({'border': '1px solid ' + ColorBordeObligatorio});
+    jQuery("select[id='" + Id + "']").css({'background-color': ColorFondoObligatorio});
+    jQuery("select[id='" + Id + "']").css({'border': '1px solid ' + ColorBordeObligatorio});
 }
 
 function SelectNormalObligatorio(Id) {
-    $("select[id='" + Id + "']").css({'background-color': ColorFondoNormal});
-    $("select[id='" + Id + "']").css({'border': '1px solid ' + ColorBordeObligatorio});
+    jQuery("select[id='" + Id + "']").css({'background-color': ColorFondoNormal});
+    jQuery("select[id='" + Id + "']").css({'border': '1px solid ' + ColorBordeObligatorio});
 }
 //inicio: FUNCION PARA VERIFICAR SI HUBO UN ERROR
 function CheckError(Form, event, BanderaFaltantes, MensajeFaltantes) {
@@ -267,7 +267,7 @@ function CheckError(Form, event, BanderaFaltantes, MensajeFaltantes) {
         Mensaje(MensajeFaltantes);
         event.preventDefault();
     } else {
-        $('#' + Form).submit();
+        jQuery('#' + Form).submit();
     }
 }
 
@@ -284,23 +284,23 @@ function Mensaje(msg) {
 //FIN: FUNCION PARA MOSTRAR LA VENTANA DEL MENSAJE
 
 function GetValueSelect(Id) {
-    var value = $("select[id='" + Id + "']").val();
+    var value = jQuery("select[id='" + Id + "']").val();
     return value;
 }
 
 function SetValueSelect(Id, Value) {
-    $("select[id='" + Id + "']").val(Value);
+    jQuery("select[id='" + Id + "']").val(Value);
 }
 
 //inicio: MANEJO DE CULTIVOS (VARIEDADES Y VARIABLES MEDIDAS)
 //VALIDAMOS EL CULTIVO SELECCIONADO
 function ValidaCrop(i) {
-    $('#InfoVariety' + i).attr('value', '');
-    $("#InfoVarietySelected" + i).load("/trial/DeleteVarietySelected/?i=" + i, function () {
-        $("#InfoVarietySelected" + i).html("");
+    jQuery('#InfoVariety' + i).attr('value', '');
+    jQuery("#InfoVarietySelected" + i).load("/trial/DeleteVarietySelected/?i=" + i, function () {
+        jQuery("#InfoVarietySelected" + i).html("");
     });
-    $("#InfoVariablesMeasuredSelected" + i).load("/trial/DeleteVariablesMeasuredSelected/?i=" + i, function () {
-        $("#InfoVariablesMeasured" + i).html("");
+    jQuery("#InfoVariablesMeasuredSelected" + i).load("/trial/DeleteVariablesMeasuredSelected/?i=" + i, function () {
+        jQuery("#InfoVariablesMeasured" + i).html("");
     });
 }
 
@@ -308,41 +308,41 @@ function ValidaCrop(i) {
 function FilterVariety(Campo, i) {
     //var id = Campo.id;
     var Value = Campo.value;
-    var id_crop = $("#id_crop" + i).val();
+    var id_crop = jQuery("#id_crop" + i).val();
     var Value = Value.replace(" ", "*quot*");
     if (id_crop !== '') {
         if (Value !== '') {
-            $("#DivFilterVariety" + i).show();
-            $("#InfoVariety" + i).load("/trial/FilterVariety/?txt=" + Value + '&id_crop=' + id_crop + "&i=" + i, function () {
-                $("#DivFilterVariety" + i).hide();
-                $("#DivFilterVarietyOK" + i).show();
-                $("#DivClearFilterVariety" + i).show();
+            jQuery("#DivFilterVariety" + i).show();
+            jQuery("#InfoVariety" + i).load("/trial/FilterVariety/?txt=" + Value + '&id_crop=' + id_crop + "&i=" + i, function () {
+                jQuery("#DivFilterVariety" + i).hide();
+                jQuery("#DivFilterVarietyOK" + i).show();
+                jQuery("#DivClearFilterVariety" + i).show();
             });
         } else {
-            $("#InfoVariety" + i).html("");
-            $("#DivFilterVarietyOK" + i).hide();
-            $("#DivClearFilterVariety" + i).hide();
+            jQuery("#InfoVariety" + i).html("");
+            jQuery("#DivFilterVarietyOK" + i).hide();
+            jQuery("#DivClearFilterVariety" + i).hide();
         }
     } else {
         jAlert('Before adding, specify the Crop!', 'Info', 'Important', null);
-        $('#Variety' + i).attr('value', '');
-        $("#InfoVariety" + i).html("");
+        jQuery('#Variety' + i).attr('value', '');
+        jQuery("#InfoVariety" + i).html("");
         jQuery("#DivVariety" + i).removeClass("DivListSelect");
     }
 }
 
 //ADICIONAMOS LA VARIEDAD AL ARREGLO DE VARIEDADES
 function SelectVariety(id_variety, i) {
-    $("#InfoVarietySelected" + i).load("/trial/VarietySelected/?id_variety=" + id_variety + "&i=" + i, function () {
-        $("#InfoVarietySelected" + i).load("/trial/LoadVarietySelected/?i=" + i, function () {
+    jQuery("#InfoVarietySelected" + i).load("/trial/VarietySelected/?id_variety=" + id_variety + "&i=" + i, function () {
+        jQuery("#InfoVarietySelected" + i).load("/trial/LoadVarietySelected/?i=" + i, function () {
             //SI EXISTEN VARIEDADES Y VARIABLES MEDIDAS MOSTRAMOS U OCULTAMOS EL TEMPLATE DE DATOS
-            if (($("#InfoVarietySelected" + i).is(':empty')) || ($("#InfoVariablesMeasuredSelected" + i).is(':empty'))) {
-                $('#TemplateData' + i).attr('value', '');
-                $("#DivData" + i).hide();
+            if ((jQuery("#InfoVarietySelected" + i).is(':empty')) || (jQuery("#InfoVariablesMeasuredSelected" + i).is(':empty'))) {
+                jQuery('#TemplateData' + i).attr('value', '');
+                jQuery("#DivData" + i).hide();
                 jQuery("#DivData" + i).removeClass("DivListSelect");
             } else {
-                $('#TemplateData' + i).attr('value', '');
-                $("#DivData" + i).show();
+                jQuery('#TemplateData' + i).attr('value', '');
+                jQuery("#DivData" + i).show();
                 jQuery("#DivData" + i).addClass("DivListSelect");
             }
         });
@@ -352,27 +352,27 @@ function SelectVariety(id_variety, i) {
 
 //CERRAMOS LA LISTA DE VARIEDADES Y LIMPIAMOS EL FILTRO
 function ClearFilterVariety(i) {
-    $('#Variety' + i).attr('value', '');
-    $("#InfoVariety" + i).html("");
-    $("#DivFilterVarietyOK" + i).hide();
-    $("#DivClearFilterVariety" + i).hide();
-    $("#Variety" + i).focus();
+    jQuery('#Variety' + i).attr('value', '');
+    jQuery("#InfoVariety" + i).html("");
+    jQuery("#DivFilterVarietyOK" + i).hide();
+    jQuery("#DivClearFilterVariety" + i).hide();
+    jQuery("#Variety" + i).focus();
 
 }
 
 //REMOVEMOS LA VARIEDAD AL ARREGLO DE VARIEDADES
 function RemoveVariety(id_variety, i) {
-    $("#InfoVarietySelected" + i).load("/trial/RemoveVariety/?id_variety=" + id_variety + "&i=" + i, function () {
-        $("#InfoVarietySelected" + i).load("/trial/LoadVarietySelected/?i=" + i, function () {
+    jQuery("#InfoVarietySelected" + i).load("/trial/RemoveVariety/?id_variety=" + id_variety + "&i=" + i, function () {
+        jQuery("#InfoVarietySelected" + i).load("/trial/LoadVarietySelected/?i=" + i, function () {
 
             //SI EXISTEN VARIEDADES Y VARIABLES MEDIDAS MOSTRAMOS U OCULTAMOS EL TEMPLATE DE DATOS
-            if (($("#InfoVarietySelected" + i).is(':empty')) || ($("#InfoVariablesMeasuredSelected" + i).is(':empty'))) {
-                $('#TemplateData' + i).attr('value', '');
-                $("#DivData" + i).hide();
+            if ((jQuery("#InfoVarietySelected" + i).is(':empty')) || (jQuery("#InfoVariablesMeasuredSelected" + i).is(':empty'))) {
+                jQuery('#TemplateData' + i).attr('value', '');
+                jQuery("#DivData" + i).hide();
                 jQuery("#DivData" + i).removeClass("DivListSelect");
             } else {
-                $('#TemplateData' + i).attr('value', '');
-                $("#DivData" + i).show();
+                jQuery('#TemplateData' + i).attr('value', '');
+                jQuery("#DivData" + i).show();
                 jQuery("#DivData" + i).addClass("DivListSelect");
             }
         });
@@ -383,44 +383,44 @@ function RemoveVariety(id_variety, i) {
 function FilterVariablesMeasured(Campo, i) {
     //var id = Campo.id;
     var Value = Campo.value;
-    var id_crop = $("#id_crop" + i).val();
+    var id_crop = jQuery("#id_crop" + i).val();
     var Value = Value.replace(" ", "*quot*");
     if (id_crop !== '') {
         if (Value !== '') {
-            $("#DivFilterVariablesMeasured" + i).show();
+            jQuery("#DivFilterVariablesMeasured" + i).show();
             jQuery("#InfoVariablesMeasured" + i).addClass("DivListSelect");
-            $("#InfoVariablesMeasured" + i).load("/trial/FilterVariablesMeasured/?txt=" + Value + '&id_crop=' + id_crop + "&i=" + i, function () {
-                $("#DivFilterVariablesMeasured" + i).hide();
-                $("#DivFilterVariablesMeasuredOK" + i).show();
-                $("#DivClearFilterVariablesMeasured" + i).show();
+            jQuery("#InfoVariablesMeasured" + i).load("/trial/FilterVariablesMeasured/?txt=" + Value + '&id_crop=' + id_crop + "&i=" + i, function () {
+                jQuery("#DivFilterVariablesMeasured" + i).hide();
+                jQuery("#DivFilterVariablesMeasuredOK" + i).show();
+                jQuery("#DivClearFilterVariablesMeasured" + i).show();
             });
         } else {
-            $("#InfoVariablesMeasured" + i).html("");
-            $("#DivFilterVariablesMeasuredOK" + i).hide();
-            $("#DivClearFilterVariablesMeasured" + i).hide();
+            jQuery("#InfoVariablesMeasured" + i).html("");
+            jQuery("#DivFilterVariablesMeasuredOK" + i).hide();
+            jQuery("#DivClearFilterVariablesMeasured" + i).hide();
             jQuery("#InfoVariablesMeasured" + i).removeClass("DivListSelect");
         }
     } else {
         jAlert('Before adding, specify the Crop!', 'Info', 'Important', null);
-        $('#VariablesMeasured' + i).attr('value', '');
-        $("#InfoVariablesMeasured" + i).html("");
+        jQuery('#VariablesMeasured' + i).attr('value', '');
+        jQuery("#InfoVariablesMeasured" + i).html("");
         jQuery("#InfoVariablesMeasured" + i).removeClass("DivListSelect");
     }
 }
 
 //ADICIONAMOS LA Variables Measured AL ARREGLO DE VARIEDADES
 function SelectVariablesMeasured(id_variablesmeasured, i) {
-    $("#InfoVariablesMeasuredSelected" + i).load("/trial/VariablesMeasuredSelected/?id_variablesmeasured=" + id_variablesmeasured + "&i=" + i, function () {
+    jQuery("#InfoVariablesMeasuredSelected" + i).load("/trial/VariablesMeasuredSelected/?id_variablesmeasured=" + id_variablesmeasured + "&i=" + i, function () {
         jQuery("#InfoVariablesMeasuredSelected" + i).addClass("DivListSelect");
-        $("#InfoVariablesMeasuredSelected" + i).load("/trial/LoadVariablesMeasuredSelected/?i=" + i, function () {
+        jQuery("#InfoVariablesMeasuredSelected" + i).load("/trial/LoadVariablesMeasuredSelected/?i=" + i, function () {
             //SI EXISTEN VARIEDADES Y VARIABLES MEDIDAS MOSTRAMOS U OCULTAMOS EL TEMPLATE DE DATOS
-            if (($("#DivVarietySelected" + i).is(':empty')) || ($("#InfoVariablesMeasuredSelected" + i).is(':empty'))) {
-                $('#TemplateData' + i).attr('value', '');
-                $("#DivData" + i).hide();
+            if ((jQuery("#DivVarietySelected" + i).is(':empty')) || (jQuery("#InfoVariablesMeasuredSelected" + i).is(':empty'))) {
+                jQuery('#TemplateData' + i).attr('value', '');
+                jQuery("#DivData" + i).hide();
                 jQuery("#DivData" + i).removeClass("DivListSelect");
             } else {
-                $('#TemplateData' + i).attr('value', '');
-                $("#DivData" + i).show();
+                jQuery('#TemplateData' + i).attr('value', '');
+                jQuery("#DivData" + i).show();
                 jQuery("#DivData" + i).addClass("DivListSelect");
             }
         });
@@ -430,29 +430,29 @@ function SelectVariablesMeasured(id_variablesmeasured, i) {
 
 //CERRAMOS LA LISTA DE Variables Measured Y LIMPIAMOS EL FILTRO
 function ClearFilterVariablesMeasured(i) {
-    $('#VariablesMeasured' + i).attr('value', '');
-    $("#InfoVariablesMeasured" + i).html("");
+    jQuery('#VariablesMeasured' + i).attr('value', '');
+    jQuery("#InfoVariablesMeasured" + i).html("");
     jQuery("#InfoVariablesMeasured" + i).removeClass("DivListSelect");
-    $("#DivFilterVariablesMeasuredOK" + i).hide();
-    $("#DivClearFilterVariablesMeasured" + i).hide();
-    $("#VariablesMeasured" + i).focus();
+    jQuery("#DivFilterVariablesMeasuredOK" + i).hide();
+    jQuery("#DivClearFilterVariablesMeasured" + i).hide();
+    jQuery("#VariablesMeasured" + i).focus();
 }
 
 //REMOVEMOS LA Variables Measured AL ARREGLO DE VARIEDADES
 function RemoveVariablesMeasured(id_variablesmeasured, i) {
-    $("#InfoVariablesMeasuredSelected" + i).load("/trial/RemoveVariablesMeasured/?id_variablesmeasured=" + id_variablesmeasured + "&i=" + i, function () {
-        $("#InfoVariablesMeasuredSelected" + i).load("/trial/LoadVariablesMeasuredSelected/?i=" + i, function () {
-            if ($("#InfoVariablesMeasuredSelected" + i).is(':empty')) {
+    jQuery("#InfoVariablesMeasuredSelected" + i).load("/trial/RemoveVariablesMeasured/?id_variablesmeasured=" + id_variablesmeasured + "&i=" + i, function () {
+        jQuery("#InfoVariablesMeasuredSelected" + i).load("/trial/LoadVariablesMeasuredSelected/?i=" + i, function () {
+            if (jQuery("#InfoVariablesMeasuredSelected" + i).is(':empty')) {
                 jQuery("#InfoVariablesMeasuredSelected" + i).removeClass("DivListSelect");
             }
             //SI EXISTEN VARIEDADES Y VARIABLES MEDIDAS MOSTRAMOS U OCULTAMOS EL TEMPLATE DE DATOS
-            if (($("#DivVarietySelected" + i).is(':empty')) || ($("#InfoVariablesMeasuredSelected" + i).is(':empty'))) {
-                $('#TemplateData' + i).attr('value', '');
-                $("#DivData" + i).hide();
+            if ((jQuery("#DivVarietySelected" + i).is(':empty')) || (jQuery("#InfoVariablesMeasuredSelected" + i).is(':empty'))) {
+                jQuery('#TemplateData' + i).attr('value', '');
+                jQuery("#DivData" + i).hide();
                 jQuery("#DivData" + i).removeClass("DivListSelect");
             } else {
-                $('#TemplateData' + i).attr('value', '');
-                $("#DivData" + i).show();
+                jQuery('#TemplateData' + i).attr('value', '');
+                jQuery("#DivData" + i).show();
                 jQuery("#DivData" + i).addClass("DivListSelect");
             }
         });
@@ -461,22 +461,22 @@ function RemoveVariablesMeasured(id_variablesmeasured, i) {
 
 function DeleteNewCrop(i) {
     if (confirm('Really remove the crop?')) {
-        $('#id_crop' + i).attr('value', '');
-        $('#trnfnumberofreplicates' + i).attr('value', '');
-        $('#id_experimentaldesign' + i).attr('value', '');
-        $('#trnftreatmentnumber' + i).attr('value', '');
-        $('#trnftreatmentnameandcode' + i).attr('value', '');
-        $('#trnfplantingsowingstartdate' + i).attr('value', '');
-        $('#trnfplantingsowingenddate' + i).attr('value', '');
-        $('#trnfphysiologicalmaturitystardate' + i).attr('value', '');
-        $('#trnfphysiologicalmaturityenddate' + i).attr('value', '');
-        $('#trnfharveststartdate' + i).attr('value', '');
-        $('#trnfharvestenddate' + i).attr('value', '');
-        $('#trnfdataorresultsfile' + i).attr('value', '');
-        $('#trnfsuppplementalinformationfile' + i).attr('value', '');
-        $('#trnfweatherdatafile' + i).attr('value', '');
-        $('#trnfsoildatafile' + i).attr('value', '');
-        $('#DivCrop' + i).hide();
+        jQuery('#id_crop' + i).attr('value', '');
+        jQuery('#trnfnumberofreplicates' + i).attr('value', '');
+        jQuery('#id_experimentaldesign' + i).attr('value', '');
+        jQuery('#trnftreatmentnumber' + i).attr('value', '');
+        jQuery('#trnftreatmentnameandcode' + i).attr('value', '');
+        jQuery('#trnfplantingsowingstartdate' + i).attr('value', '');
+        jQuery('#trnfplantingsowingenddate' + i).attr('value', '');
+        jQuery('#trnfphysiologicalmaturitystardate' + i).attr('value', '');
+        jQuery('#trnfphysiologicalmaturityenddate' + i).attr('value', '');
+        jQuery('#trnfharveststartdate' + i).attr('value', '');
+        jQuery('#trnfharvestenddate' + i).attr('value', '');
+        jQuery('#trnfdataorresultsfile' + i).attr('value', '');
+        jQuery('#trnfsuppplementalinformationfile' + i).attr('value', '');
+        jQuery('#trnfweatherdatafile' + i).attr('value', '');
+        jQuery('#trnfsoildatafile' + i).attr('value', '');
+        jQuery('#DivCrop' + i).hide();
     }
 }
 

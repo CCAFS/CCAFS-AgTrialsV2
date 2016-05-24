@@ -12,8 +12,9 @@ default:
     language:     en
     robots:       index, follow
 
-  stylesheets:    [/bootstrapAdminThemePlugin/css/bootstrap.min.css,/jquery-ui-1.11.4/jquery-ui.min.css,/jQueryModalAlert/modal-alerts.css,bootstrap-personalized.css,main.css,/datatables/jquery.dataTables.min.css]
-  javascripts:    [/js/jquery-ui-1.11.3/jquery-1.11.3.min.js,/bootstrapAdminThemePlugin/js/bootstrap.min.js,/jQueryModalAlert/modal-alerts.js,functions.js,modulesvalidate.js,/datatables/jquery.dataTables.min.js]
+  stylesheets:    [/jquery-ui-1.11.4/jquery-ui.min.css,/bootstrapAdminThemePlugin/css/bootstrap.min.css,/jQueryModalAlert/modal-alerts.css,/datatables/jquery.dataTables.min.css,bootstrap-personalized.css,main.css]
+  javascripts:    [jquery-1.11.3.min.js,/jquery-ui-1.11.4/jquery-ui.min.js,/bootstrapAdminThemePlugin/js/bootstrap.min.js,/jQueryModalAlert/modal-alerts.js,/datatables/jquery.dataTables.min.js,functions.js,modulesvalidate.js]
+
 
   has_layout:     true
   layout:         layout

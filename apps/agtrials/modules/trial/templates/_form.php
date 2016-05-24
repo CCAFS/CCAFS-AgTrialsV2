@@ -21,7 +21,6 @@ if (isset($session_group_id)) {
     }
 }
 ?>
-<link rel="stylesheet" href="/autocomplete/css/autocomplete.css">
 <script src="/autocomplete/lib/jquery.1.7.1.js"></script>
 <script src="/autocomplete/lib/jquery.ui.1.8.16.js"></script>
 <script src="/autocomplete/autocomplete.js"></script>

@@ -11,10 +11,3 @@ default:
     keywords:     Trial, Site, Bibliography, CGIAR, CCAFS, CIAT, Crop, Technology, Variety/Race, Variables measured
     language:     en
     robots:       index, follow
-
-  stylesheets:    []
-
-  javascripts:    []
-
-  has_layout:     true
-  layout:         layout

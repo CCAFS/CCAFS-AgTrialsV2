@@ -1,9 +1,10 @@
-<link rel="stylesheet" href="/autocomplete/css/autocomplete.css">
-<script src="/autocomplete/lib/jquery.1.7.1.js"></script>
-<script src="/autocomplete/lib/jquery.ui.1.8.16.js"></script>
-<script src="/autocomplete/autocomplete.js"></script>
+<script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/jquery-ui-1.11.4/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/datatables/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" type="text/css" media="screen" href="/datatables/jquery.dataTables.min.css" />
+<script type="text/javascript" src="/autocomplete/autocomplete.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/jquery-ui-1.11.4/jquery-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="/datatables/jquery.dataTables.min.css"/>
 <script>
     $(document).ready(function () {
 
@@ -14,11 +15,9 @@
             var id_contactperson = $('#id_contactperson').val();
             var id_crop = $('#id_crop').val();
             var id_trial = $('#id_trial').val();
-
             var Ico = "<img src='/images/bullet-black-icon.png'> ";
             var BanderaFaltantes = false;
             var MensajeFaltantes = "";
-
             if ((searchterms == '') && (id_project === '') && (id_contactperson === '') && (id_crop === '') && (id_trial === '')) {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + " Select a search criterion!<br>";
@@ -28,7 +27,7 @@
             if (BanderaFaltantes) {
                 Mensaje(MensajeFaltantes);
             } else {
-                $('#ResusltsSearch').DataTable({
+                $('#TableResusltsSearch').DataTable({
                     "bDestroy": true,
                     "language": {
                         "lengthMenu": "Display _MENU_ records per page",
@@ -55,8 +54,6 @@
                 });
             }
         });
-
-
         $("#ButtonClear").click(function () {
             $('#searchterms').val('');
             $('#id_project').val('');
@@ -68,7 +65,6 @@
             $('#id_trial').val('');
             $('#searchtrltrialname').val('');
         });
-
     });
 </script>
 <div class="row">
@@ -97,28 +93,28 @@
                         <div class="form-group control-type-text col-sm-3">
                             <div class="col-sm-12">Project:</div>      
                             <div class="col-sm-12 control-type-text">
-                                <input name="id_project" id="id_project" type="hidden"value="<?php echo $id_project; ?>" /> 
+                                <input name="id_project" id="id_project" type="hidden" value="<?php echo $id_project; ?>" /> 
                                 <input class="form-control SearchInput" name="searchprjname" id="searchprjname" type="text" size="17" maxlength="150" value="<?php echo $searchprjname; ?>" />
                             </div>
                         </div>
                         <div class="form-group control-type-text col-sm-3">
                             <div class="col-sm-12">Contact person:</div>      
                             <div class="col-sm-12 control-type-text">
-                                <input name="id_contactperson" id="id_contactperson" type="hidden"value="<?php echo $id_contactperson; ?>" /> 
+                                <input name="id_contactperson" id="id_contactperson" type="hidden" value="<?php echo $id_contactperson; ?>" /> 
                                 <input class="form-control SearchInput" name="searchcontactperson" id="searchcontactperson" type="text" size="17" maxlength="150" value="<?php echo $searchcontactperson; ?>" />                    
                             </div>
                         </div>
                         <div class="form-group control-type-text col-sm-3">
                             <div class="col-sm-12">Crop / Technology:</div>      
                             <div class="col-sm-12 control-type-text">
-                                <input name="id_crop" id="id_crop" type="hidden"value="<?php echo $id_crop; ?>" /> 
+                                <input name="id_crop" id="id_crop" type="text" value="<?php echo $id_crop; ?>" /> 
                                 <input class="form-control SearchInput" name="searchcrpname" id="searchcrpname" type="text" size="17" maxlength="150" value="<?php echo $searchcrpname; ?>" />
                             </div>
                         </div>
                         <div class="form-group control-type-text col-sm-3">
                             <div class="col-sm-12">Trial name:</div>      
                             <div class="col-sm-12 control-type-text">
-                                <input name="id_trial" id="id_trial" type="hidden"value="<?php echo $id_trial; ?>" /> 
+                                <input name="id_trial" id="id_trial" type="hidden" value="<?php echo $id_trial; ?>" /> 
                                 <input class="form-control SearchInput" name="searchtrltrialname" id="searchtrltrialname" type="text" size="17" maxlength="150" value="<?php echo $searchtrltrialname; ?>" />   
                             </div>
                         </div>
@@ -140,7 +136,7 @@
         </form>
 
         <div class="col-sm-12 control-type-text">
-            <table id="ResusltsSearch" class="display" cellspacing="0" width="100%">
+            <table id="TableResusltsSearch" class="display" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -151,6 +147,9 @@
                 </thead>
             </table>
         </div>
-
     </div>
 </div>
+
+<script type="text/javascript">
+    $('#TableResusltsSearch').removeClass('display').addClass('table table-striped table-bordered');
+</script>
