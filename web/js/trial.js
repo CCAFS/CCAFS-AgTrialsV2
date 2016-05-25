@@ -294,7 +294,14 @@ jQuery(document).ready(function () {
         }
     });
 
-    
+    jQuery("#searchterms").blur(function () {
+        ValidSearchterms();
+    });
+
+    jQuery("#searchtermsoptions").change(function () {
+        ValidSearchterms();
+    });
+
     jQuery("#searchprjname").blur(function () {
         if ((jQuery('#id_project').val() !== '') && (jQuery('#searchprjname').val() !== '')) {
             jQuery('#CheckProject').html("<img width='18' height='18' src='/images/success.png'>");
@@ -363,9 +370,29 @@ jQuery(document).ready(function () {
         });
     });
 
-
-
-
+    function ValidSearchterms() {
+        var searchterms = jQuery('#searchterms').val();
+        var searchtermsoptions = jQuery('#searchtermsoptions').val();
+        searchterms = searchterms.replace('+', '%2B');
+        if (jQuery('#searchterms').val() !== '') {
+            jQuery('#CheckSearchterms').html("<img width='18' height='18' src='/images/success.png'>");
+        } else {
+            jQuery('#searchterms').val('')
+            jQuery('#CheckSearchterms').html("");
+        }
+        jQuery.ajax({
+            type: "GET",
+            url: "/trial/ValidSearchterms/",
+            data: "searchterms=" + searchterms + "&searchtermsoptions=" + searchtermsoptions,
+            success: function (data) {
+                if (data) {
+                    jQuery('#searchterms').val('')
+                    jQuery('#CheckSearchterms').html("");
+                    alerts.show({css: 'error', title: 'Search Terms', message: 'Not found information, for terms written.!'});
+                }
+            }
+        });
+    }
 });
 //fin: FUNCIONES PARA EL CAMBIO DE COLOR
 

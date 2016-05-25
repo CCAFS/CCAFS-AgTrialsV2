@@ -1119,41 +1119,12 @@ class trialActions extends autoTrialActions {
     }
 
     public function executeResultsearchtrials($request) {
+        $SearchWhere = sfContext::getInstance()->getUser()->getAttribute('SearchWhere');
+        $Where = "";
+        foreach ($SearchWhere AS $value) {
+            $Where .= $value;
+        }
         $connection = Doctrine_Manager::getInstance()->connection();
-
-        $searchterms = $request->getParameter('searchterms');
-        $id_project = $request->getParameter('id_project');
-        $id_contactperson = $request->getParameter('id_contactperson');
-        $id_crop = $request->getParameter('id_crop');
-        $id_trial = $request->getParameter('id_trial');
-
-        $trnfplantingsowingstartdate = $request->getParameter('trnfplantingsowingstartdate');
-        $trnfplantingsowingenddate = $request->getParameter('trnfplantingsowingenddate');
-        $trnfharveststartdate = $request->getParameter('trnfharveststartdate');
-        $trnfharvestenddate = $request->getParameter('trnfharvestenddate');
-
-        $Where = "WHERE true ";
-
-        if ($searchterms != '')
-            $Where .= "AND P.prjkeywords ILIKE '%$searchterms%' ";
-        if ($id_project != '')
-            $Where .= "AND T.id_project = $id_project ";
-        if ($id_contactperson != '')
-            $Where .= "AND T.id_contactperson = $id_contactperson ";
-        if ($id_crop != '')
-            $Where .= "AND TI.id_crop = $id_crop ";
-        if ($id_trial != '')
-            $Where .= "AND T.id_trial = $id_trial ";
-
-        if ($trnfplantingsowingstartdate != '')
-            $Where .= "AND TI.trnfplantingsowingstartdate = '$trnfplantingsowingstartdate' ";
-        if ($trnfplantingsowingenddate != '')
-            $Where .= "AND TI.trnfplantingsowingenddate = '$trnfplantingsowingenddate' ";
-        if ($trnfharveststartdate != '')
-            $Where .= "AND TI.trnfharveststartdate = '$trnfharveststartdate' ";
-        if ($trnfharvestenddate != '')
-            $Where .= "AND TI.trnfharvestenddate = '$trnfharvestenddate' ";
-
         $QUERY00 = "SELECT T.id_trial,T.trltrialname,P.id_project,P.prjname,TL.id_triallocation,TL.trlcname,C.id_crop,C.crpname ";
         $QUERY00 .= "FROM tb_trial T ";
         $QUERY00 .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
@@ -1209,6 +1180,56 @@ class trialActions extends autoTrialActions {
                 break;
         }
         die(sfContext::getInstance()->getUser()->setAttribute('SearchWhere', $SearchWhere));
+    }
+
+    public function executeValidSearchterms($request) {
+        $SearchWhere = sfContext::getInstance()->getUser()->getAttribute('SearchWhere');
+        $Where = "";
+        foreach ($SearchWhere AS $value) {
+            $Where .= $value;
+        }
+
+        $ListProjects = "";
+        $connection = Doctrine_Manager::getInstance()->connection();
+        $searchterms = $request->getParameter('searchterms');
+        $searchtermsoptions = $request->getParameter('searchtermsoptions');
+        if ($searchterms != '') {
+            $Arr_Searchterms = explode("+", $searchterms);
+            $WhereSearchterms = "";
+            foreach ($Arr_Searchterms AS $value) {
+                $value = trim($value);
+                $WhereSearchterms .= "P.prjname  ILIKE '%$value%' $searchtermsoptions ";
+            }
+            $WhereSearchterms = substr($WhereSearchterms, 0, strlen($WhereSearchterms) - 4);
+            $WhereSearchterms = "AND ($WhereSearchterms)";
+
+            $QUERY = "SELECT P.id_project AS value ";
+            $QUERY .= "FROM tb_project P ";
+            $QUERY .= "INNER JOIN tb_trial T ON P.id_project = T.id_project ";
+            $QUERY .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
+            $QUERY .= "WHERE TRUE ";
+            $QUERY .= "$WhereSearchterms ";
+            $QUERY .= "$Where ";
+            $QUERY .= "GROUP BY P.id_project,P.prjname ";
+            $QUERY .= "ORDER BY P.prjname ";
+            $st = $connection->execute($QUERY);
+            $Projects = $st->fetchAll(PDO::FETCH_ASSOC);
+            if (count($Projects) > 0) {
+                foreach ($Projects AS $Project) {
+                    $ListProjects .= $Project['value'] . ",";
+                }
+                $ListProjects = substr($ListProjects, 0, strlen($ListProjects) - 1);
+            }
+        }
+        if ($ListProjects != '') {
+            $SearchWhere['searchterms'] = "AND P.id_project IN ($ListProjects) ";
+            $ReturnFlag = FALSE;
+        } else {
+            unset($SearchWhere['searchterms']);
+            $ReturnFlag = TRUE;
+        }
+        sfContext::getInstance()->getUser()->setAttribute('SearchWhere', $SearchWhere);
+        die($ReturnFlag);
     }
 
 }

@@ -25,7 +25,7 @@
 
             //VERIFICACION MENSAJE DE ALERTA
             if (BanderaFaltantes) {
-                Mensaje(MensajeFaltantes);
+                alerts.show({css: 'error', title: 'Importat!', message: MensajeFaltantes});
             } else {
                 jQuery('#DivTableResusltsSearch').show();
                 jQuery('#TableResusltsSearch').DataTable({
@@ -62,6 +62,7 @@
         });
         jQuery("#ButtonClear").click(function () {
             jQuery('#searchterms').val('');
+            jQuery('#CheckSearchterms').html("");
             jQuery('#id_project').val('');
             jQuery('#searchprjname').val('');
             jQuery('#CheckProject').html("");
@@ -112,8 +113,17 @@
             <div class="Session" style="margin-top: 10px;  margin-bottom: 0px; margin-bottom: 10px; padding-bottom: 0px;">
                 <div class="form-group control-type-text">
                     <div class="col-sm-12" style="color: #93c47d; font-size: 16px;">Search terms:</div>      
-                    <div class="col-sm-11 control-type-text">
+                    <div class="col-sm-10 control-type-text" style="padding-right: 2px;">
                         <input class="form-control" type="text"  name="searchterms" id="searchterms" size="36" maxlength="255" value="<?php echo $searchterms; ?>">
+                    </div>
+                    <div class="col-sm-2" style="width: 70px; padding-left: 5px; padding-right: 5px;">
+                        <select name="searchtermsoptions" id="searchtermsoptions" size="1" class="form-control">
+                            <option value="OR">OR &ensp;</option>
+                            <option value="AND">AND</option>
+                        </select>
+                    </div>
+                    <div class="DivColIcon">
+                        <span id="CheckSearchterms"></span>                                
                     </div>
                 </div>
                 <div class="form-group control-type-text">
