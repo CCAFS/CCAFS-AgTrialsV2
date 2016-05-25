@@ -63,15 +63,22 @@ class projectActions extends autoProjectActions {
     }
 
     public function executeAutocompletesearchproject(sfWebRequest $request) {
+        $SearchWhere = sfContext::getInstance()->getUser()->getAttribute('SearchWhere');
+        $Where = "";
+        foreach ($SearchWhere AS $value) {
+            $Where .= $value;
+        }
         $this->getResponse()->setContentType('application/json');
         $connection = Doctrine_Manager::getInstance()->connection();
         $term = $request->getParameter('term');
-        $QUERY = "SELECT T1.id_project AS value, T1.prjname AS label ";
-        $QUERY .= "FROM tb_project T1 ";
-        $QUERY .= "INNER JOIN tb_trial T2 ON T1.id_project = T2.id_project ";
-        $QUERY .= "WHERE UPPER(T1.prjname) LIKE UPPER('$term%') ";
-        $QUERY .= "GROUP BY T1.id_project,T1.prjname ";
-        $QUERY .= "ORDER BY T1.prjname ";
+        $QUERY = "SELECT P.id_project AS value, P.prjname AS label ";
+        $QUERY .= "FROM tb_project P ";
+        $QUERY .= "INNER JOIN tb_trial T ON P.id_project = T.id_project ";
+        $QUERY .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
+        $QUERY .= "WHERE UPPER(P.prjname) LIKE UPPER('$term%') ";
+        $QUERY .= "$Where ";
+        $QUERY .= "GROUP BY P.id_project,P.prjname ";
+        $QUERY .= "ORDER BY P.prjname ";
         $st = $connection->execute($QUERY);
         $R_datos = $st->fetchAll(PDO::FETCH_ASSOC);
         return $this->renderText(json_encode($R_datos));

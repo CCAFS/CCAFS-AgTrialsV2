@@ -294,6 +294,7 @@ jQuery(document).ready(function () {
         }
     });
 
+    
     jQuery("#searchprjname").blur(function () {
         if ((jQuery('#id_project').val() !== '') && (jQuery('#searchprjname').val() !== '')) {
             jQuery('#CheckProject').html("<img width='18' height='18' src='/images/success.png'>");
@@ -302,6 +303,13 @@ jQuery(document).ready(function () {
             jQuery('#searchprjname').val('')
             jQuery('#CheckProject').html("");
         }
+        jQuery.ajax({
+            type: "GET",
+            url: "/trial/AssingWhere/",
+            data: "field=id_project&value=" + jQuery('#id_project').val(),
+            success: function () {
+            }
+        });
     });
 
     jQuery("#searchcontactperson").blur(function () {
@@ -312,26 +320,47 @@ jQuery(document).ready(function () {
             jQuery('#searchcontactperson').val('')
             jQuery('#CheckContactperson').html("");
         }
-    });
-//    *********** aqui voy ********************
-    jQuery("#searchprjname").blur(function () {
-        if ((jQuery('#id_project').val() !== '') && (jQuery('#searchprjname').val() !== '')) {
-            jQuery('#CheckProject').html("<img width='18' height='18' src='/images/success.png'>");
-        } else {
-            jQuery('#id_project').val('')
-            jQuery('#searchprjname').val('')
-            jQuery('#CheckProject').html("");
-        }
+        jQuery.ajax({
+            type: "GET",
+            url: "/trial/AssingWhere/",
+            data: "field=id_contactperson&value=" + jQuery('#id_contactperson').val(),
+            success: function () {
+            }
+        });
     });
 
-    jQuery("#searchprjname").blur(function () {
-        if ((jQuery('#id_project').val() !== '') && (jQuery('#searchprjname').val() !== '')) {
-            jQuery('#CheckProject').html("<img width='18' height='18' src='/images/success.png'>");
+    jQuery("#searchcrpname").blur(function () {
+        if ((jQuery('#id_crop').val() !== '') && (jQuery('#searchcrpname').val() !== '')) {
+            jQuery('#CheckCrop').html("<img width='18' height='18' src='/images/success.png'>");
         } else {
-            jQuery('#id_project').val('')
-            jQuery('#searchprjname').val('')
-            jQuery('#CheckProject').html("");
+            jQuery('#id_crop').val('')
+            jQuery('#searchcrpname').val('')
+            jQuery('#CheckCrop').html("");
         }
+        jQuery.ajax({
+            type: "GET",
+            url: "/trial/AssingWhere/",
+            data: "field=id_crop&value=" + jQuery('#id_crop').val(),
+            success: function () {
+            }
+        });
+    });
+
+    jQuery("#searchtrltrialname").blur(function () {
+        if ((jQuery('#id_trial').val() !== '') && (jQuery('#searchtrltrialname').val() !== '')) {
+            jQuery('#CheckTrialname').html("<img width='18' height='18' src='/images/success.png'>");
+        } else {
+            jQuery('#id_trial').val('')
+            jQuery('#searchtrltrialname').val('')
+            jQuery('#CheckTrialname').html("");
+        }
+        jQuery.ajax({
+            type: "GET",
+            url: "/trial/AssingWhere/",
+            data: "field=id_trial&value=" + jQuery('#id_trial').val(),
+            success: function () {
+            }
+        });
     });
 
 

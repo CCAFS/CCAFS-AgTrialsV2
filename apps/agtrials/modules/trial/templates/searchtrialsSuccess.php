@@ -75,6 +75,14 @@
             $('#trnfharvestenddate1').val('');
 
             $('#DivTableResusltsSearch').hide();
+
+            jQuery.ajax({
+                type: "GET",
+                url: "/trial/AssingWhere/",
+                data: "field=reset&value=",
+                success: function () {
+                }
+            });
         });
 
         $("#ShowHideDivAdvancedSearch").on('click', function () {

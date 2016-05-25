@@ -54,14 +54,21 @@ class contactpersonActions extends autoContactpersonActions {
     }
 
     public function executeAutocompletesearhcontactperson(sfWebRequest $request) {
+        $SearchWhere = sfContext::getInstance()->getUser()->getAttribute('SearchWhere');
+        $Where = "";
+        foreach ($SearchWhere AS $value) {
+            $Where .= $value;
+        }
         $this->getResponse()->setContentType('application/json');
         $connection = Doctrine_Manager::getInstance()->connection();
         $term = $request->getParameter('term');
-        $QUERY = "SELECT T1.id_contactperson AS value, fc_completename(T1.cnprfirstname,T1.cnprmiddlename,T1.cnprlastname) AS label ";
-        $QUERY .= "FROM tb_contactperson T1 ";
-        $QUERY .= "INNER JOIN tb_trial T2 ON T1.id_contactperson = T2.id_contactperson ";
-        $QUERY .= "WHERE fc_completename(T1.cnprfirstname,T1.cnprmiddlename,T1.cnprlastname) ILIKE ('%$term%') ";
-        $QUERY .= "GROUP BY T1.id_contactperson,T1.cnprfirstname,T1.cnprmiddlename,T1.cnprlastname ";
+        $QUERY = "SELECT CP.id_contactperson AS value, fc_completename(CP.cnprfirstname,CP.cnprmiddlename,CP.cnprlastname) AS label ";
+        $QUERY .= "FROM tb_contactperson CP ";
+        $QUERY .= "INNER JOIN tb_trial T ON CP.id_contactperson = T.id_contactperson ";
+        $QUERY .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
+        $QUERY .= "WHERE fc_completename(CP.cnprfirstname,CP.cnprmiddlename,CP.cnprlastname) ILIKE ('%$term%') ";
+        $QUERY .= "$Where ";
+        $QUERY .= "GROUP BY CP.id_contactperson,CP.cnprfirstname,CP.cnprmiddlename,CP.cnprlastname ";
         $QUERY .= "ORDER BY 2";
         $st = $connection->execute($QUERY);
         $R_datos = $st->fetchAll(PDO::FETCH_ASSOC);

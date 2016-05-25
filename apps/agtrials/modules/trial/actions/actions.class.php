@@ -1094,20 +1094,28 @@ class trialActions extends autoTrialActions {
     }
 
     public function executeAutocompletesearhtrial(sfWebRequest $request) {
+        $SearchWhere = sfContext::getInstance()->getUser()->getAttribute('SearchWhere');
+        $Where = "";
+        foreach ($SearchWhere AS $value) {
+            $Where .= $value;
+        }
         $this->getResponse()->setContentType('application/json');
         $connection = Doctrine_Manager::getInstance()->connection();
         $term = $request->getParameter('term');
-        $QUERY = "SELECT T1.id_trial AS value, T1.trltrialname AS label ";
-        $QUERY .= "FROM tb_trial T1 ";
-        $QUERY .= "WHERE T1.trltrialname ILIKE ('%$term%') ";
-        $QUERY .= "ORDER BY T1.trltrialname";
+        $QUERY = "SELECT T.id_trial AS value, T.trltrialname AS label ";
+        $QUERY .= "FROM tb_trial T ";
+        $QUERY .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
+        $QUERY .= "WHERE T.trltrialname ILIKE ('%$term%') ";
+        $QUERY .= "$Where ";
+        $QUERY .= "GROUP BY T.id_trial,T.trltrialname ";
+        $QUERY .= "ORDER BY T.trltrialname";
         $st = $connection->execute($QUERY);
         $R_datos = $st->fetchAll(PDO::FETCH_ASSOC);
         return $this->renderText(json_encode($R_datos));
     }
 
     public function executeSearchtrials($request) {
-        
+        sfContext::getInstance()->getUser()->getAttributeHolder()->remove('SearchWhere');
     }
 
     public function executeResultsearchtrials($request) {
@@ -1162,75 +1170,45 @@ class trialActions extends autoTrialActions {
         die(json_encode($ResultsJSON));
     }
 
-    public function executeReloadField($request) {
-        sfContext::getInstance()->getUser()->getAttributeHolder()->remove('WhereList');
-        $ArrayFields = explode(",", $request->getParameter('ArrayFields'));
-        $ArrayValuesFields = explode(",", $request->getParameter('ArrayValuesFields'));
-        $countries_id = sfContext::getInstance()->getUser()->getAttribute('countries_id');
-        $varieties_id = sfContext::getInstance()->getUser()->getAttribute('varieties_id');
-        $variablesmeasured_id = sfContext::getInstance()->getUser()->getAttribute('variablesmeasured_id');
+    public function executeAssingWhere($request) {
+        $SearchWhere = sfContext::getInstance()->getUser()->getAttribute('SearchWhere');
+        $field = $request->getParameter('field');
+        $value = $request->getParameter('value');
 
-        $InfoField['id_trialgroup'] = array("id_trialgroup_list", "tb_trialgroup", "id_trialgroup", "trgrname");
-        $InfoField['id_contactperson'] = array("id_contactperson_list", "tb_contactperson", "id_contactperson", "(cnprfirstname||' '||cnprlastname)");
-        $InfoField['id_trialsite'] = array("id_trialsite_list", "tb_trialsite", "id_trialsite", "trstname");
-        $InfoField['id_crop'] = array("id_crop_list", "tb_crop", "id_crop", "crpname");
-
-        for ($a = 0; $a < count($ArrayFields); $a++) {
-            if ($ArrayValuesFields[$a] != '') {
-                $Where .= " AND T2.{$ArrayFields[$a]} = {$ArrayValuesFields[$a]} ";
-            }
+        switch ($field) {
+            case 'id_project':
+                if ($value != '') {
+                    $SearchWhere['id_project'] = "AND T.id_project = $value ";
+                } else {
+                    unset($SearchWhere['id_project']);
+                }
+                break;
+            case 'id_contactperson':
+                if ($value != '') {
+                    $SearchWhere['id_contactperson'] = "AND T.id_contactperson = $value ";
+                } else {
+                    unset($SearchWhere['id_contactperson']);
+                }
+                break;
+            case 'id_crop':
+                if ($value != '') {
+                    $SearchWhere['id_crop'] = "AND TI.id_crop = $value ";
+                } else {
+                    unset($SearchWhere['id_crop']);
+                }
+                break;
+            case 'id_trial':
+                if ($value != '') {
+                    $SearchWhere['id_trial'] = "AND T.id_trial = $value ";
+                } else {
+                    unset($SearchWhere['id_trial']);
+                }
+                break;
+            case 'reset':
+                unset($SearchWhere);
+                break;
         }
-
-        $Country_id = "";
-        if (count($countries_id) > 0) {
-            foreach ($countries_id AS $valor) {
-                $Country_id .= "$valor,";
-            }
-        }
-        $Country_id = substr($Country_id, 0, (strlen($Country_id) - 1));
-        if ($Country_id != "")
-            $WhereCountries = " AND T2.id_country IN ($Country_id) ";
-
-
-        $Variety_id = "";
-        if (count($varieties_id) > 0) {
-            foreach ($varieties_id AS $valor) {
-                $Variety_id .= "$valor,";
-            }
-        }
-        $Variety_id = substr($Variety_id, 0, (strlen($Variety_id) - 1));
-        if ($Variety_id != "")
-            $WhereVariety = " AND TV.id_variety IN ($Variety_id)";
-
-        $Variablesmeasured_id = "";
-        if (count($variablesmeasured_id) > 0) {
-            foreach ($variablesmeasured_id AS $valor) {
-                $Variablesmeasured_id .= "$valor,";
-            }
-        }
-        $Variablesmeasured_id = substr($Variablesmeasured_id, 0, (strlen($Variablesmeasured_id) - 1));
-        if ($Variablesmeasured_id != "")
-            $WhereListVariablesMeasured = " AND TVM.id_variablesmeasured IN ($Variablesmeasured_id)";
-
-        sfContext::getInstance()->getUser()->setAttribute('WhereList', $Where);
-        sfContext::getInstance()->getUser()->setAttribute('WhereCountries', $WhereCountries);
-        sfContext::getInstance()->getUser()->setAttribute('WhereVariety', $WhereVariety);
-        sfContext::getInstance()->getUser()->setAttribute('WhereListVariablesMeasured', $WhereListVariablesMeasured);
-
-        $Where = $Where . $WhereCountries . $WhereVariety . $WhereListVariablesMeasured;
-
-
-        foreach ($InfoField AS $Field => $ArrayInfoField) {
-            $Key = array_search($Field, $ArrayFields); // $clave = 2;
-            $name = $InfoField[$Field][0];
-            $table = $InfoField[$Field][1];
-            $idfield = $InfoField[$Field][2];
-            $namefield = $InfoField[$Field][3];
-            $value = $ArrayValuesFields[$Key];
-            $ArrayHTML[$Field . "_list"] = select_from_table_ReloadField($name, $table, $idfield, $namefield, $Where, $value);
-        }
-        $JSONHTML = json_encode($ArrayHTML);
-        die($JSONHTML);
+        die(sfContext::getInstance()->getUser()->setAttribute('SearchWhere', $SearchWhere));
     }
 
 }

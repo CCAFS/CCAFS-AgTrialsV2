@@ -37,13 +37,22 @@ require_once dirname(__FILE__) . '/../lib/cropGeneratorHelper.class.php';
 class cropActions extends autoCropActions {
 
     public function executeAutocompletesearhcrop(sfWebRequest $request) {
+        $SearchWhere = sfContext::getInstance()->getUser()->getAttribute('SearchWhere');
+        $Where = "";
+        foreach ($SearchWhere AS $value) {
+            $Where .= $value;
+        }
         $this->getResponse()->setContentType('application/json');
         $connection = Doctrine_Manager::getInstance()->connection();
         $term = $request->getParameter('term');
-        $QUERY = "SELECT T1.id_crop AS value, T1.crpname AS label ";
-        $QUERY .= "FROM tb_crop T1 ";
-        $QUERY .= "WHERE T1.crpname ILIKE ('$term%') ";
-        $QUERY .= "ORDER BY T1.crpname";
+        $QUERY = "SELECT C.id_crop AS value, C.crpname AS label ";
+        $QUERY .= "FROM tb_trial T ";
+        $QUERY .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
+        $QUERY .= "INNER JOIN tb_crop C ON TI.id_crop = C.id_crop ";
+        $QUERY .= "WHERE C.crpname ILIKE ('$term%') ";
+        $QUERY .= "$Where ";
+        $QUERY .= "GROUP BY C.id_crop,C.crpname ";
+        $QUERY .= "ORDER BY C.crpname";
         $st = $connection->execute($QUERY);
         $R_datos = $st->fetchAll(PDO::FETCH_ASSOC);
         return $this->renderText(json_encode($R_datos));
