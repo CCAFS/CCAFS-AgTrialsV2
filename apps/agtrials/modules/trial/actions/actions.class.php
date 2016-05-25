@@ -1185,6 +1185,7 @@ class trialActions extends autoTrialActions {
         $SearchWhere = sfContext::getInstance()->getUser()->getAttribute('SearchWhere');
         $field = $request->getParameter('field');
         $value = $request->getParameter('value');
+        $value2 = $request->getParameter('value2');
 
         switch ($field) {
             case 'id_project':
@@ -1213,6 +1214,13 @@ class trialActions extends autoTrialActions {
                     $SearchWhere['id_trial'] = "AND T.id_trial = $value ";
                 } else {
                     unset($SearchWhere['id_trial']);
+                }
+                break;
+            case 'created_at':
+                if (($value != '') && ($value2 != '')) {
+                    $SearchWhere['created_at'] = "AND TI.created_at BETWEEN '$value' AND '$value2' ";
+                } else {
+                    unset($SearchWhere['created_at']);
                 }
                 break;
             case 'reset':

@@ -178,16 +178,13 @@ jQuery(document).ready(function () {
             jQuery('#searchtrnfplantingsowingfrom').val('')
             jQuery('#CheckSowingFrom').html("");
         }
-
-        if ((jQuery('#searchtrnfplantingsowingfrom').val() !== '') && (jQuery('#searchtrnfplantingsowingto').val() !== '')) {
-            jQuery.ajax({
-                type: "GET",
-                url: "/trial/AssingWhere/",
-                data: "field=created_at&value=" + jQuery('#searchtrnfplantingsowingfrom').val() + '&value2=' + jQuery('#searchtrnfplantingsowingto').val(),
-                success: function () {
-                }
-            });
-        }
+        jQuery.ajax({
+            type: "GET",
+            url: "/trial/AssingWhere/",
+            data: "field=created_at&value=" + jQuery('#searchtrnfplantingsowingfrom').val() + '&value2=' + jQuery('#searchtrnfplantingsowingto').val(),
+            success: function () {
+            }
+        });
     });
 
     jQuery("#searchtrnfplantingsowingto").blur(function () {
@@ -197,15 +194,13 @@ jQuery(document).ready(function () {
             jQuery('#searchtrnfplantingsowingto').val('')
             jQuery('#CheckSowingTo').html("");
         }
-        if ((jQuery('#searchtrnfplantingsowingfrom').val() !== '') && (jQuery('#searchtrnfplantingsowingto').val() !== '')) {
-            jQuery.ajax({
-                type: "GET",
-                url: "/trial/AssingWhere/",
-                data: "field=created_at&value=" + jQuery('#searchtrnfplantingsowingfrom').val() + '&value2=' + jQuery('#searchtrnfplantingsowingto').val(),
-                success: function () {
-                }
-            });
-        }
+        jQuery.ajax({
+            type: "GET",
+            url: "/trial/AssingWhere/",
+            data: "field=created_at&value=" + jQuery('#searchtrnfplantingsowingfrom').val() + '&value2=' + jQuery('#searchtrnfplantingsowingto').val(),
+            success: function () {
+            }
+        });
     });
 
     function ValidSearchterms() {
