@@ -1,19 +1,19 @@
 <?php use_javascript('trial.js'); ?>
 <script>
-    $(document).ready(function () {
+    jQuery(document).ready(function () {
         //inicio: VALIDAMOS EL ENVIO DEL FORMULARIO
-        $("#SubmitSearch").click(function () {
-            var searchterms = $('#searchterms').val();
-            var id_project = $('#id_project').val();
-            var id_contactperson = $('#id_contactperson').val();
-            var id_crop = $('#id_crop').val();
-            var id_trial = $('#id_trial').val();
+        jQuery("#SubmitSearch").click(function () {
+            var searchterms = jQuery('#searchterms').val();
+            var id_project = jQuery('#id_project').val();
+            var id_contactperson = jQuery('#id_contactperson').val();
+            var id_crop = jQuery('#id_crop').val();
+            var id_trial = jQuery('#id_trial').val();
 
             //CAMPOS BUSQUEDA AVANZADA
-            var trnfplantingsowingstartdate = $('#trnfplantingsowingstartdate1').val();
-            var trnfplantingsowingenddate = $('#trnfplantingsowingenddate1').val();
-            var trnfharveststartdate = $('#trnfharveststartdate1').val();
-            var trnfharvestenddate = $('#trnfharvestenddate1').val();
+            var trnfplantingsowingstartdate = jQuery('#trnfplantingsowingstartdate1').val();
+            var trnfplantingsowingenddate = jQuery('#trnfplantingsowingenddate1').val();
+            var trnfharveststartdate = jQuery('#trnfharveststartdate1').val();
+            var trnfharvestenddate = jQuery('#trnfharvestenddate1').val();
 
             var Ico = "<img src='/images/bullet-black-icon.png'> ";
             var BanderaFaltantes = false;
@@ -27,8 +27,8 @@
             if (BanderaFaltantes) {
                 Mensaje(MensajeFaltantes);
             } else {
-                $('#DivTableResusltsSearch').show();
-                $('#TableResusltsSearch').DataTable({
+                jQuery('#DivTableResusltsSearch').show();
+                jQuery('#TableResusltsSearch').DataTable({
                     "bDestroy": true,
                     "language": {
                         "lengthMenu": "Display _MENU_ records per page",
@@ -36,6 +36,8 @@
                         "infoEmpty": "No records available",
                         "infoFiltered": "(filtered from _MAX_ total records)"
                     },
+                    dom: 'Bfrtip',
+                    buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
                     "ajax": {
                         'type': 'POST',
                         'url': 'trial/resultsearchtrials/',
@@ -52,29 +54,33 @@
                         }
                     },
                     "fnRowCallback": function (nRow, aData) {
-                        $('td:eq(0)', nRow).html('<a target="_blank" href="/trial/' + aData[4] + '">' + aData[0] + '</a>');
+                        jQuery('td:eq(0)', nRow).html('<a target="_blank" href="/trial/' + aData[4] + '">' + aData[0] + '</a>');
                         return nRow;
                     }
                 });
             }
         });
-        $("#ButtonClear").click(function () {
-            $('#searchterms').val('');
-            $('#id_project').val('');
-            $('#id_contactperson').val('');
-            $('#searchprjname').val('');
-            $('#searchcontactperson').val('');
-            $('#id_crop').val('');
-            $('#searchcrpname').val('');
-            $('#id_trial').val('');
-            $('#searchtrltrialname').val('');
+        jQuery("#ButtonClear").click(function () {
+            jQuery('#searchterms').val('');
+            jQuery('#id_project').val('');
+            jQuery('#searchprjname').val('');
+            jQuery('#CheckProject').html("");
+            jQuery('#id_contactperson').val('');
+            jQuery('#searchcontactperson').val('');
+            jQuery('#CheckContactperson').html("");
+            jQuery('#id_crop').val('');
+            jQuery('#searchcrpname').val('');
+            jQuery('#CheckCrop').html("");
+            jQuery('#id_trial').val('');
+            jQuery('#searchtrltrialname').val('');
+            jQuery('#CheckTrialname').html("");
 
-            $('#trnfplantingsowingstartdate1').val('');
-            $('#trnfplantingsowingenddate1').val('');
-            $('#trnfharveststartdate1').val('');
-            $('#trnfharvestenddate1').val('');
+            jQuery('#trnfplantingsowingstartdate1').val('');
+            jQuery('#trnfplantingsowingenddate1').val('');
+            jQuery('#trnfharveststartdate1').val('');
+            jQuery('#trnfharvestenddate1').val('');
 
-            $('#DivTableResusltsSearch').hide();
+            jQuery('#DivTableResusltsSearch').hide();
 
             jQuery.ajax({
                 type: "GET",
@@ -85,8 +91,8 @@
             });
         });
 
-        $("#ShowHideDivAdvancedSearch").on('click', function () {
-            $("#DivAdvancedSearch").toggle();
+        jQuery("#ShowHideDivAdvancedSearch").on('click', function () {
+            jQuery("#DivAdvancedSearch").toggle();
         });
     });
 </script>
@@ -154,7 +160,7 @@
                             </div>
                         </div>
                     </fieldset>
-                    <div id="ShowHideDivAdvancedSearch" class="col-sm-2" style="color: #93c47d; font-size: 14px; padding-bottom: 8px; cursor: pointer;">Advanced Search</div>
+                    <div id="ShowHideDivAdvancedSearch" class="col-sm-3" style="color: #93c47d; font-size: 14px; padding-bottom: 8px; cursor: pointer; width: 160px;"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Advanced Search</div>
                 </div>
             </div>
 
