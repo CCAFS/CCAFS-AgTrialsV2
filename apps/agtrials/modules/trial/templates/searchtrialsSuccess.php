@@ -21,8 +21,8 @@ use_javascript('searchtrials.js');
                     <div class="col-sm-10 control-type-text" style="padding-right: 2px;">
                         <input class="form-control" type="text"  name="searchterms" id="searchterms" size="36" maxlength="255" value="<?php echo $searchterms; ?>">
                     </div>
-                    <div class="col-sm-2" style="width: 70px; padding-left: 5px; padding-right: 5px;">
-                        <select name="searchtermsoptions" id="searchtermsoptions" size="1" class="form-control">
+                    <div class="col-sm-2" style="width: 70px; padding-left: 5px; padding-right: 5px; height: 34px;">
+                        <select name="searchtermsoptions" id="searchtermsoptions" size="1" class="form-control" style="height: 33px;">
                             <option value="OR">OR &ensp;</option>
                             <option value="AND">AND</option>
                         </select>
@@ -80,53 +80,41 @@ use_javascript('searchtrials.js');
             </div>
 
             <div id="DivAdvancedSearch" class="Session col-sm-12 control-type-text" style="margin-top: 10px; margin-bottom: 10px; display:none;">
-                <div class="col-sm-12" style="color: #93c47d; font-size: 16px; padding-bottom: 0px;">Advanced Search:</div>   
-                <table class="TableModule">
-                    <tbody>
-                        <tr>
-                            <td>Planting/Sowing:</td>
-                            <td>&ensp;&ensp;</td>
-                            <td>
-                                <div class="form-group control-type-text col-sm-10">
-                                    <div class="col-sm-12">From date</div>      
-                                    <div class="col-sm-12 control-type-text">
-                                        <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfplantingsowingenddate1" name="trnfplantingsowingenddate1" placeholder="yyyy-mm-dd" class="DateInput form-control">
-                                    </div>
-                                </div>
-                            </td>
-                            <td>&ensp;&ensp;</td>
-                            <td>
-                                <div class="form-group control-type-text col-sm-10">
-                                    <div class="col-sm-12">To date</div>      
-                                    <div class="col-sm-12 control-type-text">
-                                        <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfplantingsowingenddate1" name="trnfplantingsowingenddate1" placeholder="yyyy-mm-dd" class="DateInput form-control">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Harvest date:</td>
-                            <td>&ensp;&ensp;</td>
-                            <td>
-                                <div class="form-group control-type-text col-sm-10">
-                                    <div class="col-sm-12">From date</div>      
-                                    <div class="col-sm-12 control-type-text">
-                                        <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfplantingsowingenddate1" name="trnfplantingsowingenddate1" placeholder="yyyy-mm-dd" class="DateInput form-control">
-                                    </div>
-                                </div>
-                            </td>
-                            <td>&ensp;&ensp;</td>
-                            <td>
-                                <div class="form-group control-type-text col-sm-10">
-                                    <div class="col-sm-12">To date</div>      
-                                    <div class="col-sm-12 control-type-text">
-                                        <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfplantingsowingenddate1" name="trnfplantingsowingenddate1" placeholder="yyyy-mm-dd" class="DateInput form-control">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="col-sm-12" style="color: #93c47d; font-size: 16px; padding-bottom: 8px;">Advanced Search:</div>   
+                <div class="col-sm-12">
+                    <div class="form-group control-type-text col-sm-3"style="height: 60px; padding-top: 20px;">
+                        <div class="col-sm-12">Planting/Sowing:</div>      
+                    </div>
+                    <div class="form-group control-type-text col-sm-4">
+                        <div class="col-sm-12">From date</div>      
+                        <div class="col-sm-12 control-type-text">
+                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfplantingsowingstartdate1" name="trnfplantingsowingstartdate1" placeholder="yyyy-mm-dd" class="DateInput form-control">                    
+                        </div>
+                    </div>
+                    <div class="form-group control-type-text col-sm-4">
+                        <div class="col-sm-12">To date</div>      
+                        <div class="col-sm-12 control-type-text">
+                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfplantingsowingenddate1" name="trnfplantingsowingenddate1" placeholder="yyyy-mm-dd" class="DateInput form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group control-type-text col-sm-3"style="height: 60px; padding-top: 20px;">
+                        <div class="col-sm-12">Harvest:</div>      
+                    </div>
+                    <div class="form-group control-type-text col-sm-4">
+                        <div class="col-sm-12">From date</div>      
+                        <div class="col-sm-12 control-type-text">
+                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfplantingsowingstartdate1" name="trnfplantingsowingstartdate1" placeholder="yyyy-mm-dd" class="DateInput form-control">                    
+                        </div>
+                    </div>
+                    <div class="form-group control-type-text col-sm-4">
+                        <div class="col-sm-12">To date</div>      
+                        <div class="col-sm-12 control-type-text">
+                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfplantingsowingenddate1" name="trnfplantingsowingenddate1" placeholder="yyyy-mm-dd" class="DateInput form-control">
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <fieldset style="margin-top: 10px; margin-left: 13px;">
