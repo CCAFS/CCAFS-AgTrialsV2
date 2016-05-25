@@ -299,7 +299,8 @@ jQuery(document).ready(function () {
     });
 
     jQuery("#searchtermsoptions").change(function () {
-        ValidSearchterms();
+        if (jQuery('#searchterms').val() !== '')
+            ValidSearchterms();
     });
 
     jQuery("#searchprjname").blur(function () {
