@@ -88,13 +88,13 @@ use_javascript('searchtrials.js');
                     <div class="form-group control-type-text col-sm-4">
                         <div class="col-sm-12">From date</div>      
                         <div class="col-sm-12 control-type-text">
-                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchtrnfplantingsowingstartdate" name="searchtrnfplantingsowingstartdate" placeholder="yyyy-mm-dd" class="DateInput form-control">                    
+                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchtrnfplantingsowingfrom" name="searchtrnfplantingsowingfrom" placeholder="yyyy-mm-dd" class="DateInput form-control">                    
                         </div>
                     </div>
                     <div class="form-group control-type-text col-sm-4">
                         <div class="col-sm-12">To date</div>      
                         <div class="col-sm-12 control-type-text">
-                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfplantingsowingstartdate2" name="trnfplantingsowingstartdate2" placeholder="yyyy-mm-dd" class="DateInput form-control">
+                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchtrnfplantingsowingto" name="searchtrnfplantingsowingto" placeholder="yyyy-mm-dd" class="DateInput form-control">
                         </div>
                     </div>
                 </div>
@@ -105,13 +105,13 @@ use_javascript('searchtrials.js');
                     <div class="form-group control-type-text col-sm-4">
                         <div class="col-sm-12">From date</div>      
                         <div class="col-sm-12 control-type-text">
-                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfharveststartdate1" name="trnfharveststartdate1" placeholder="yyyy-mm-dd" class="DateInput form-control">                    
+                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchtrnfharvestfrom" name="searchtrnfharvestfrom" placeholder="yyyy-mm-dd" class="DateInput form-control">                    
                         </div>
                     </div>
                     <div class="form-group control-type-text col-sm-4">
                         <div class="col-sm-12">To date</div>      
                         <div class="col-sm-12 control-type-text">
-                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfharveststartdate2" name="trnfharveststartdate2" placeholder="yyyy-mm-dd" class="DateInput form-control">
+                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchtrnfharvestto" name="searchtrnfharvestto" placeholder="yyyy-mm-dd" class="DateInput form-control">
                         </div>
                     </div>
                 </div>

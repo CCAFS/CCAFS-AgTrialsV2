@@ -631,17 +631,52 @@ $(function () {
         }
     });
 
-    $("#searchtrnfplantingsowingstartdate").autocomplete({
+    $("#searchtrnfplantingsowingfrom").autocomplete({
         source: "/trial/autocompletesearchplantingsowing/",
         select: function (e, ui) {
             e.preventDefault();
-            $("#searchtrnfplantingsowingstartdate").val(ui.item.label);
+            $("#searchtrnfplantingsowingfrom").val(ui.item.label);
         },
         focus: function (e, ui) {
             e.preventDefault();
-            $("#searchtrnfplantingsowingstartdate").val(ui.item.label);
+            $("#searchtrnfplantingsowingfrom").val(ui.item.label);
         }
     });
 
+    $("#searchtrnfplantingsowingto").autocomplete({
+        source: "/trial/autocompletesearchplantingsowing/",
+        select: function (e, ui) {
+            e.preventDefault();
+            $("#searchtrnfplantingsowingto").val(ui.item.label);
+        },
+        focus: function (e, ui) {
+            e.preventDefault();
+            $("#searchtrnfplantingsowingto").val(ui.item.label);
+        }
+    });
+
+    $("#searchtrnfharvestfrom").autocomplete({
+        source: "/trial/autocompletesearchplantingsowing/",
+        select: function (e, ui) {
+            e.preventDefault();
+            $("#searchtrnfharvestfrom").val(ui.item.label);
+        },
+        focus: function (e, ui) {
+            e.preventDefault();
+            $("#searchtrnfharvestfrom").val(ui.item.label);
+        }
+    });
+
+    $("#searchtrnfharvestto").autocomplete({
+        source: "/trial/autocompletesearchharvest/",
+        select: function (e, ui) {
+            e.preventDefault();
+            $("#searchtrnfharvestto").val(ui.item.label);
+        },
+        focus: function (e, ui) {
+            e.preventDefault();
+            $("#searchtrnfharvestto").val(ui.item.label);
+        }
+    });
 
 });
