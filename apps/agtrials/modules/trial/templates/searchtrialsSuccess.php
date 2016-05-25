@@ -85,16 +85,22 @@ use_javascript('searchtrials.js');
                     <div class="form-group control-type-text col-sm-3"style="height: 60px; padding-top: 20px;">
                         <div class="col-sm-12">Planting/Sowing:</div>      
                     </div>
-                    <div class="form-group control-type-text col-sm-4">
+                    <div class="form-group control-type-text col-sm-3">
                         <div class="col-sm-12">From date</div>      
-                        <div class="col-sm-12 control-type-text">
+                        <div class="col-sm-12 control-type-text" style="padding-right: 2px; width: 150px;">
                             <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchtrnfplantingsowingfrom" name="searchtrnfplantingsowingfrom" placeholder="yyyy-mm-dd" class="DateInput form-control">                    
                         </div>
+                        <div class="DivColIcon">
+                            <span id="CheckSowingFrom"></span>                                
+                        </div>
                     </div>
-                    <div class="form-group control-type-text col-sm-4">
+                    <div class="form-group control-type-text col-sm-3">
                         <div class="col-sm-12">To date</div>      
-                        <div class="col-sm-12 control-type-text">
+                        <div class="col-sm-12 control-type-text" style="padding-right: 2px; width: 150px;">
                             <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchtrnfplantingsowingto" name="searchtrnfplantingsowingto" placeholder="yyyy-mm-dd" class="DateInput form-control">
+                        </div>
+                        <div class="DivColIcon">
+                            <span id="CheckSowingTo"></span>                                
                         </div>
                     </div>
                 </div>
@@ -102,16 +108,22 @@ use_javascript('searchtrials.js');
                     <div class="form-group control-type-text col-sm-3"style="height: 60px; padding-top: 20px;">
                         <div class="col-sm-12">Harvest:</div>      
                     </div>
-                    <div class="form-group control-type-text col-sm-4">
+                    <div class="form-group control-type-text col-sm-3">
                         <div class="col-sm-12">From date</div>      
-                        <div class="col-sm-12 control-type-text">
+                        <div class="col-sm-12 control-type-text" style="padding-right: 2px; width: 150px;">
                             <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchtrnfharvestfrom" name="searchtrnfharvestfrom" placeholder="yyyy-mm-dd" class="DateInput form-control">                    
                         </div>
+                        <div class="DivColIcon">
+                            <span id="CheckHarvestFrom"></span>                                
+                        </div>
                     </div>
-                    <div class="form-group control-type-text col-sm-4">
+                    <div class="form-group control-type-text col-sm-3">
                         <div class="col-sm-12">To date</div>      
-                        <div class="col-sm-12 control-type-text">
+                        <div class="col-sm-12 control-type-text" style="padding-right: 2px; width: 150px;">
                             <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchtrnfharvestto" name="searchtrnfharvestto" placeholder="yyyy-mm-dd" class="DateInput form-control">
+                        </div>
+                        <div class="DivColIcon">
+                            <span id="CheckHarvestTo"></span>                                
                         </div>
                     </div>
                 </div>
