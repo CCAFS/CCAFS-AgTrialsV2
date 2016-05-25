@@ -203,6 +203,38 @@ jQuery(document).ready(function () {
         });
     });
 
+    jQuery("#searchtrnfharvestfrom").blur(function () {
+        if (jQuery('#searchtrnfharvestfrom').val() !== '') {
+            jQuery('#CheckHarvestFrom').html("<img width='18' height='18' src='/images/success.png'>");
+        } else {
+            jQuery('#searchtrnfharvestfrom').val('')
+            jQuery('#CheckHarvestFrom').html("");
+        }
+        jQuery.ajax({
+            type: "GET",
+            url: "/trial/AssingWhere/",
+            data: "field=trnfplantingsowingstartdate&value=" + jQuery('#searchtrnfharvestfrom').val() + '&value2=' + jQuery('#searchtrnfharvestto').val(),
+            success: function () {
+            }
+        });
+    });
+
+    jQuery("#searchtrnfharvestto").blur(function () {
+        if (jQuery('#searchtrnfharvestto').val() !== '') {
+            jQuery('#CheckHarvestTo').html("<img width='18' height='18' src='/images/success.png'>");
+        } else {
+            jQuery('#searchtrnfharvestto').val('')
+            jQuery('#CheckHarvestTo').html("");
+        }
+        jQuery.ajax({
+            type: "GET",
+            url: "/trial/AssingWhere/",
+            data: "field=created_at&value=" + jQuery('#searchtrnfharvestfrom').val() + '&value2=' + jQuery('#searchtrnfharvestto').val(),
+            success: function () {
+            }
+        });
+    });
+
     function ValidSearchterms() {
         var searchterms = jQuery('#searchterms').val();
         var searchtermsoptions = jQuery('#searchtermsoptions').val();
