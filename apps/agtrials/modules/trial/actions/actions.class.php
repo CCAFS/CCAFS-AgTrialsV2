@@ -1188,7 +1188,7 @@ class trialActions extends autoTrialActions {
         foreach ($SearchWhere AS $value) {
             $Where .= $value;
         }
-
+        $ReturnFlag = FALSE;
         $ListProjects = "";
         $connection = Doctrine_Manager::getInstance()->connection();
         $searchterms = $request->getParameter('searchterms');
@@ -1223,10 +1223,10 @@ class trialActions extends autoTrialActions {
         }
         if ($ListProjects != '') {
             $SearchWhere['searchterms'] = "AND P.id_project IN ($ListProjects) ";
-            $ReturnFlag = FALSE;
         } else {
             unset($SearchWhere['searchterms']);
-            $ReturnFlag = TRUE;
+            if ($searchterms !== '')
+                $ReturnFlag = TRUE;
         }
         sfContext::getInstance()->getUser()->setAttribute('SearchWhere', $SearchWhere);
         die($ReturnFlag);
