@@ -1,102 +1,7 @@
-<?php use_javascript('trial.js'); ?>
-<script>
-    jQuery(document).ready(function () {
-        //inicio: VALIDAMOS EL ENVIO DEL FORMULARIO
-        jQuery("#SubmitSearch").click(function () {
-            var searchterms = jQuery('#searchterms').val();
-            var id_project = jQuery('#id_project').val();
-            var id_contactperson = jQuery('#id_contactperson').val();
-            var id_crop = jQuery('#id_crop').val();
-            var id_trial = jQuery('#id_trial').val();
-
-            //CAMPOS BUSQUEDA AVANZADA
-            var trnfplantingsowingstartdate = jQuery('#trnfplantingsowingstartdate1').val();
-            var trnfplantingsowingenddate = jQuery('#trnfplantingsowingenddate1').val();
-            var trnfharveststartdate = jQuery('#trnfharveststartdate1').val();
-            var trnfharvestenddate = jQuery('#trnfharvestenddate1').val();
-
-            var Ico = "<img src='/images/bullet-black-icon.png'> ";
-            var BanderaFaltantes = false;
-            var MensajeFaltantes = "";
-            if ((searchterms == '') && (id_project === '') && (id_contactperson === '') && (id_crop === '') && (id_trial === '')) {
-                BanderaFaltantes = true;
-                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + " Select a search criterion!<br>";
-            }
-
-            //VERIFICACION MENSAJE DE ALERTA
-            if (BanderaFaltantes) {
-                alerts.show({css: 'error', title: 'Importat!', message: MensajeFaltantes});
-            } else {
-                jQuery('#DivTableResusltsSearch').show();
-                jQuery('#TableResusltsSearch').DataTable({
-                    "bDestroy": true,
-                    "language": {
-                        "lengthMenu": "Display _MENU_ records per page",
-                        "info": "Showing page _PAGE_ of _PAGES_",
-                        "infoEmpty": "No records available",
-                        "infoFiltered": "(filtered from _MAX_ total records)"
-                    },
-                    dom: 'Bfrtip',
-                    buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
-                    "ajax": {
-                        'type': 'POST',
-                        'url': 'trial/resultsearchtrials/',
-                        'data': {
-                            searchterms: searchterms,
-                            id_project: id_project,
-                            id_contactperson: id_contactperson,
-                            id_crop: id_crop,
-                            id_trial: id_trial,
-                            trnfplantingsowingstartdate: trnfplantingsowingstartdate,
-                            trnfplantingsowingenddate: trnfplantingsowingenddate,
-                            trnfharveststartdate: trnfharveststartdate,
-                            trnfharvestenddate: trnfharvestenddate
-                        }
-                    },
-                    "fnRowCallback": function (nRow, aData) {
-                        jQuery('td:eq(0)', nRow).html('<a target="_blank" href="/trial/' + aData[4] + '">' + aData[0] + '</a>');
-                        return nRow;
-                    }
-                });
-            }
-        });
-        jQuery("#ButtonClear").click(function () {
-            jQuery('#searchterms').val('');
-            jQuery('#CheckSearchterms').html("");
-            jQuery('#id_project').val('');
-            jQuery('#searchprjname').val('');
-            jQuery('#CheckProject').html("");
-            jQuery('#id_contactperson').val('');
-            jQuery('#searchcontactperson').val('');
-            jQuery('#CheckContactperson').html("");
-            jQuery('#id_crop').val('');
-            jQuery('#searchcrpname').val('');
-            jQuery('#CheckCrop').html("");
-            jQuery('#id_trial').val('');
-            jQuery('#searchtrltrialname').val('');
-            jQuery('#CheckTrialname').html("");
-
-            jQuery('#trnfplantingsowingstartdate1').val('');
-            jQuery('#trnfplantingsowingenddate1').val('');
-            jQuery('#trnfharveststartdate1').val('');
-            jQuery('#trnfharvestenddate1').val('');
-
-            jQuery('#DivTableResusltsSearch').hide();
-
-            jQuery.ajax({
-                type: "GET",
-                url: "/trial/AssingWhere/",
-                data: "field=reset&value=",
-                success: function () {
-                }
-            });
-        });
-
-        jQuery("#ShowHideDivAdvancedSearch").on('click', function () {
-            jQuery("#DivAdvancedSearch").toggle();
-        });
-    });
-</script>
+<?php
+use_javascript('trial.js');
+use_javascript('searchtrials.js');
+?>
 <div class="row">
     <!-- Left Menu -->
     <div class="col-md-2 left-column">
@@ -175,35 +80,53 @@
             </div>
 
             <div id="DivAdvancedSearch" class="Session col-sm-12 control-type-text" style="margin-top: 10px; margin-bottom: 10px; display:none;">
-                <div class="col-sm-12" style="color: #93c47d; font-size: 16px; padding-bottom: 8px;">Advanced Search:</div>   
-                <div class="col-sm-12">
-                    <div class="form-group control-type-text col-sm-4">
-                        <div class="col-sm-12">Planting/Sowing Start Date:</div>      
-                        <div class="col-sm-12 control-type-text">
-                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfplantingsowingstartdate1" name="trnfplantingsowingstartdate1" placeholder="yyyy-mm-dd" class="DateInput form-control">                    
-                        </div>
-                    </div>
-                    <div class="form-group control-type-text col-sm-4">
-                        <div class="col-sm-12">Planting/Sowing End Date:</div>      
-                        <div class="col-sm-12 control-type-text">
-                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfplantingsowingenddate1" name="trnfplantingsowingenddate1" placeholder="yyyy-mm-dd" class="DateInput form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="form-group control-type-text col-sm-4">
-                        <div class="col-sm-12">Harvest Start Date:</div>      
-                        <div class="col-sm-12 control-type-text">
-                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfharveststartdate1" name="trnfharveststartdate1" placeholder="yyyy-mm-dd" class="DateInput form-control">                    
-                        </div>
-                    </div>
-                    <div class="form-group control-type-text col-sm-4">
-                        <div class="col-sm-12">Harvest End Date:</div>      
-                        <div class="col-sm-12 control-type-text">
-                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfharvestenddate1" name="trnfharvestenddate1" placeholder="yyyy-mm-dd" class="DateInput form-control">
-                        </div>
-                    </div>
-                </div>
+                <div class="col-sm-12" style="color: #93c47d; font-size: 16px; padding-bottom: 0px;">Advanced Search:</div>   
+                <table class="TableModule">
+                    <tbody>
+                        <tr>
+                            <td>Planting/Sowing:</td>
+                            <td>&ensp;&ensp;</td>
+                            <td>
+                                <div class="form-group control-type-text col-sm-10">
+                                    <div class="col-sm-12">From date</div>      
+                                    <div class="col-sm-12 control-type-text">
+                                        <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfplantingsowingenddate1" name="trnfplantingsowingenddate1" placeholder="yyyy-mm-dd" class="DateInput form-control">
+                                    </div>
+                                </div>
+                            </td>
+                            <td>&ensp;&ensp;</td>
+                            <td>
+                                <div class="form-group control-type-text col-sm-10">
+                                    <div class="col-sm-12">To date</div>      
+                                    <div class="col-sm-12 control-type-text">
+                                        <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfplantingsowingenddate1" name="trnfplantingsowingenddate1" placeholder="yyyy-mm-dd" class="DateInput form-control">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Harvest date:</td>
+                            <td>&ensp;&ensp;</td>
+                            <td>
+                                <div class="form-group control-type-text col-sm-10">
+                                    <div class="col-sm-12">From date</div>      
+                                    <div class="col-sm-12 control-type-text">
+                                        <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfplantingsowingenddate1" name="trnfplantingsowingenddate1" placeholder="yyyy-mm-dd" class="DateInput form-control">
+                                    </div>
+                                </div>
+                            </td>
+                            <td>&ensp;&ensp;</td>
+                            <td>
+                                <div class="form-group control-type-text col-sm-10">
+                                    <div class="col-sm-12">To date</div>      
+                                    <div class="col-sm-12 control-type-text">
+                                        <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfplantingsowingenddate1" name="trnfplantingsowingenddate1" placeholder="yyyy-mm-dd" class="DateInput form-control">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
             <fieldset style="margin-top: 10px; margin-left: 13px;">
