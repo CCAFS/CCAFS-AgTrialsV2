@@ -1114,6 +1114,26 @@ class trialActions extends autoTrialActions {
         return $this->renderText(json_encode($R_datos));
     }
 
+    public function executeAutocompletesearchplantingsowing(sfWebRequest $request) {
+        $SearchWhere = sfContext::getInstance()->getUser()->getAttribute('SearchWhere');
+        $Where = "";
+        foreach ($SearchWhere AS $value) {
+            $Where .= $value;
+        }
+        $this->getResponse()->setContentType('application/json');
+        $connection = Doctrine_Manager::getInstance()->connection();
+        $term = $request->getParameter('term');
+        $QUERY = "SELECT DISTINCT substring(TI.created_at::text from 0 for 11) AS value, substring(TI.created_at::text from 0 for 11) AS label ";
+        $QUERY .= "FROM tb_trial T ";
+        $QUERY .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
+        $QUERY .= "WHERE TI.created_at::text ILIKE ('%$term%') ";
+        $QUERY .= "$Where ";
+        $QUERY .= "GROUP BY TI.created_at ";
+        $st = $connection->execute($QUERY);
+        $R_datos = $st->fetchAll(PDO::FETCH_ASSOC);
+        return $this->renderText(json_encode($R_datos));
+    }
+
     public function executeSearchtrials($request) {
         sfContext::getInstance()->getUser()->getAttributeHolder()->remove('SearchWhere');
     }

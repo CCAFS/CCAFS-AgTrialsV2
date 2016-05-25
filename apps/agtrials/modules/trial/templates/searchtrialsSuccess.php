@@ -88,7 +88,7 @@ use_javascript('searchtrials.js');
                     <div class="form-group control-type-text col-sm-4">
                         <div class="col-sm-12">From date</div>      
                         <div class="col-sm-12 control-type-text">
-                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="trnfplantingsowingstartdate1" name="trnfplantingsowingstartdate1" placeholder="yyyy-mm-dd" class="DateInput form-control">                    
+                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchtrnfplantingsowingstartdate" name="searchtrnfplantingsowingstartdate" placeholder="yyyy-mm-dd" class="DateInput form-control">                    
                         </div>
                     </div>
                     <div class="form-group control-type-text col-sm-4">

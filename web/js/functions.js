@@ -8,7 +8,7 @@ jQuery(document).ready(function () {
             url: "/administrativedivision/AddVillage/",
             data: "id_subdistricttriallocation=" + id_subdistricttriallocation + "&VillageName=" + VillageName,
             success: function (data) {
-                jQuery('#id_villagetriallocation').attr('value', data);
+                jQuery('#id_villagetriallocation').val(data);
                 jQuery('#AddVillage').html("");
                 jQuery('#CheckVillagetriallocation').html("<img width='18' height='18' src='/images/success.png'>");
             }
@@ -20,7 +20,7 @@ jQuery(document).ready(function () {
         var filacrop = jQuery('#filacrop').val();
         filacrop = (filacrop * 1) + 1;
         jQuery('#DivCrop' + filacrop).show();
-        jQuery('#filacrop').attr('value', filacrop);
+        jQuery('#filacrop').val(filacrop);
     });
 
     jQuery('#ExecuteBatchuploadanother').click(function () {
@@ -30,7 +30,7 @@ jQuery(document).ready(function () {
             alerts.show({css: 'error', title: 'Invalid Date', message: 'Please, Select Upload Template or Template File.! '});
         } else {
             jQuery('#div_loading').show();
-            jQuery('#Form').attr('value', 'Execute');
+            jQuery('#Form').val('Execute');
             jQuery('#batchuploadanother').submit();
         }
     });
@@ -78,8 +78,6 @@ jQuery(document).ready(function () {
 
 });
 
-
-
 function openWindow(url) {
     window.open(url, '_blank');
     window.focus();
@@ -92,38 +90,38 @@ function ValidaEscrituraFecha(Fecha) {
     if (LenFecha <= 4) {
         if (isNaN(Valor)) {
             Valor = Valor.substring(0, (LenFecha - 1));
-            jQuery('#' + Campo).attr('value', Valor);
+            jQuery('#' + Campo).val(Valor);
         }
         LenFecha = Valor.length;
         if (LenFecha == 4) {
-            jQuery('#' + Campo).attr('value', Valor + "-");
+            jQuery('#' + Campo).val(Valor + "-");
         }
     } else if (LenFecha <= 7) {
         var Valor2 = Valor.substring(5, (LenFecha))
         if (isNaN(Valor2)) {
             Valor = Valor.substring(0, (LenFecha - 1));
-            jQuery('#' + Campo).attr('value', Valor);
+            jQuery('#' + Campo).val(Valor);
         }
         if ((Valor2 >= 0) && (Valor2 <= 12)) {
             LenFecha = Valor.length;
             if (LenFecha == 7) {
-                jQuery('#' + Campo).attr('value', Valor + "-");
+                jQuery('#' + Campo).val(Valor + "-");
             }
         } else {
             Valor = Valor.substring(0, (LenFecha - 2));
-            jQuery('#' + Campo).attr('value', Valor);
+            jQuery('#' + Campo).val(Valor);
         }
     } else if (LenFecha <= 10) {
         var Valor3 = Valor.substring(8, (LenFecha))
         if (isNaN(Valor3)) {
             Valor = Valor.substring(0, (LenFecha - 1))
-            jQuery('#' + Campo).attr('value', Valor);
+            jQuery('#' + Campo).val(Valor);
         }
         if ((Valor3 >= 0) && (Valor3 <= 31)) {
             LenFecha = Valor.length;
         } else {
             Valor = Valor.substring(0, (LenFecha - 2));
-            jQuery('#' + Campo).attr('value', Valor);
+            jQuery('#' + Campo).val(Valor);
         }
     }
 }
@@ -163,7 +161,7 @@ function ValidaEscrituraNumero(Dato) {
     }
     if (isNaN(Valor)) {
         Valor = Dato.value.substring(0, (LenNumero - 1));
-        jQuery('#' + Campo).attr('value', Valor);
+        jQuery('#' + Campo).val(Valor);
     }
 }
 

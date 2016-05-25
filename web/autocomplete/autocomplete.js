@@ -631,5 +631,17 @@ $(function () {
         }
     });
 
+    $("#searchtrnfplantingsowingstartdate").autocomplete({
+        source: "/trial/autocompletesearchplantingsowing/",
+        select: function (e, ui) {
+            e.preventDefault();
+            $("#searchtrnfplantingsowingstartdate").val(ui.item.label);
+        },
+        focus: function (e, ui) {
+            e.preventDefault();
+            $("#searchtrnfplantingsowingstartdate").val(ui.item.label);
+        }
+    });
+
 
 });
