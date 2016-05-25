@@ -1123,12 +1123,12 @@ class trialActions extends autoTrialActions {
         $this->getResponse()->setContentType('application/json');
         $connection = Doctrine_Manager::getInstance()->connection();
         $term = $request->getParameter('term');
-        $QUERY = "SELECT DISTINCT substring(TI.created_at::text from 0 for 11) AS value, substring(TI.created_at::text from 0 for 11) AS label ";
+        $QUERY = "SELECT DISTINCT substring(TI.trnfplantingsowingstartdate::text from 0 for 11) AS value, substring(TI.trnfplantingsowingstartdate::text from 0 for 11) AS label ";
         $QUERY .= "FROM tb_trial T ";
         $QUERY .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
-        $QUERY .= "WHERE TI.created_at::text ILIKE ('%$term%') ";
+        $QUERY .= "WHERE TI.trnfplantingsowingstartdate::text ILIKE ('%$term%') ";
         $QUERY .= "$Where ";
-        $QUERY .= "GROUP BY TI.created_at ";
+        $QUERY .= "GROUP BY TI.trnfplantingsowingstartdate ";
         $st = $connection->execute($QUERY);
         $R_datos = $st->fetchAll(PDO::FETCH_ASSOC);
         return $this->renderText(json_encode($R_datos));
@@ -1216,17 +1216,18 @@ class trialActions extends autoTrialActions {
                     unset($SearchWhere['id_trial']);
                 }
                 break;
-            case 'created_at':
+            case 'trnfplantingsowingstartdate':
                 if (($value != '') && ($value2 != '')) {
-                    $SearchWhere['created_at'] = "AND TI.created_at BETWEEN '$value' AND '$value2' ";
+                    $SearchWhere['trnfplantingsowingstartdate'] = "AND TI.trnfplantingsowingstartdate BETWEEN '$value 00:00:00' AND '$value2 23:59:59' ";
                 } else {
-                    unset($SearchWhere['created_at']);
+                    unset($SearchWhere['trnfplantingsowingstartdate']);
                 }
                 break;
             case 'reset':
                 unset($SearchWhere);
                 break;
         }
+        print_r($SearchWhere);
         die(sfContext::getInstance()->getUser()->setAttribute('SearchWhere', $SearchWhere));
     }
 

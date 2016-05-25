@@ -656,7 +656,7 @@ $(function () {
     });
 
     $("#searchtrnfharvestfrom").autocomplete({
-        source: "/trial/autocompletesearchplantingsowing/",
+        source: "/trial/autocompletesearchharvest/",
         select: function (e, ui) {
             e.preventDefault();
             $("#searchtrnfharvestfrom").val(ui.item.label);
