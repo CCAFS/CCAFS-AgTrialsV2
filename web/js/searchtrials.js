@@ -237,6 +237,38 @@ jQuery(document).ready(function () {
         });
     });
 
+    jQuery("#searchcreatedatfrom").blur(function () {
+        if (jQuery('#searchcreatedatfrom').val() !== '') {
+            jQuery('#CheckCreatedatFrom').html("<img width='18' height='18' src='/images/success.png'>");
+        } else {
+            jQuery('#searchtrnfharvestfrom').val('')
+            jQuery('#CheckCreatedatFrom').html("");
+        }
+        jQuery.ajax({
+            type: "GET",
+            url: "/trial/AssingWhere/",
+            data: "field=created_at&value=" + jQuery('#searchcreatedatfrom').val() + '&value2=' + jQuery('#searchcreatedatto').val(),
+            success: function () {
+            }
+        });
+    });
+
+    jQuery("#searchcreatedatto").blur(function () {
+        if (jQuery('#searchcreatedatto').val() !== '') {
+            jQuery('#CheckCreatedatTo').html("<img width='18' height='18' src='/images/success.png'>");
+        } else {
+            jQuery('#searchcreatedatto').val('')
+            jQuery('#CheckCreatedatTo').html("");
+        }
+        jQuery.ajax({
+            type: "GET",
+            url: "/trial/AssingWhere/",
+            data: "field=created_at&value=" + jQuery('#searchcreatedatfrom').val() + '&value2=' + jQuery('#searchcreatedatto').val(),
+            success: function () {
+            }
+        });
+    });
+
     function ValidSearchterms() {
         var searchterms = jQuery('#searchterms').val();
         var searchtermsoptions = jQuery('#searchtermsoptions').val();

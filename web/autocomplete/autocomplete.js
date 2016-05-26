@@ -679,4 +679,27 @@ $(function () {
         }
     });
 
+    $("#searchcreatedatfrom").autocomplete({
+        source: "/trial/autocompletesearchcreatedat/",
+        select: function (e, ui) {
+            e.preventDefault();
+            $("#searchcreatedatfrom").val(ui.item.label);
+        },
+        focus: function (e, ui) {
+            e.preventDefault();
+            $("#searchcreatedatfrom").val(ui.item.label);
+        }
+    });
+
+    $("#searchcreatedatto").autocomplete({
+        source: "/trial/autocompletesearchcreatedat/",
+        select: function (e, ui) {
+            e.preventDefault();
+            $("#searchcreatedatto").val(ui.item.label);
+        },
+        focus: function (e, ui) {
+            e.preventDefault();
+            $("#searchcreatedatto").val(ui.item.label);
+        }
+    });
 });

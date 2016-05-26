@@ -127,6 +127,29 @@ use_javascript('searchtrials.js');
                         </div>
                     </div>
                 </div>
+                <div class="col-sm-12">
+                    <div class="form-group control-type-text col-sm-3"style="height: 60px; padding-top: 20px;">
+                        <div class="col-sm-12">Create at:</div>      
+                    </div>
+                    <div class="form-group control-type-text col-sm-3">
+                        <div class="col-sm-12">From date</div>      
+                        <div class="col-sm-12 control-type-text" style="padding-right: 2px; width: 150px;">
+                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchcreatedatfrom" name="searchcreatedatfrom" placeholder="yyyy-mm-dd" class="DateInput form-control">                    
+                        </div>
+                        <div class="DivColIcon">
+                            <span id="CheckCreatedatFrom"></span>                                
+                        </div>
+                    </div>
+                    <div class="form-group control-type-text col-sm-3">
+                        <div class="col-sm-12">To date</div>      
+                        <div class="col-sm-12 control-type-text" style="padding-right: 2px; width: 150px;">
+                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchcreatedatto" name="searchcreatedatto" placeholder="yyyy-mm-dd" class="DateInput form-control">
+                        </div>
+                        <div class="DivColIcon">
+                            <span id="CheckCreatedatTo"></span>                                
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <fieldset style="margin-top: 10px; margin-left: 13px;">
