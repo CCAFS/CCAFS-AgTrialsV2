@@ -25,12 +25,11 @@ foreach ($Resultado00 AS $fila) {
 $maps = json_encode($puntos);
 ?>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript" src="/js/GoogleMapsV3/GoogleMapsV3Index.js"></script>
+<script type="text/javascript" src="/js/GoogleMapsV3/GoogleMapsV3Searchtrials.js"></script>
 <script type="text/javascript" src="/js/GoogleMapsV3/GoogleMapsV3-MarkerClusterer.js"></script>
 <script type="text/javascript" src="/js/GoogleMapsV3/GoogleMapsV3-MarkerManager.js"></script>
 <script type="text/javascript" >var markers = <?php echo $maps; ?></script>
-
-<div class="Mapa">
+<div>
     <input type="hidden" id="mgr-cb" name="mgr-cb" />
     <input type="hidden" id="mc-cb" name="mc-cb" checked/>
     <div id="map" style="width:100%; height:100%; text-align: center;">Loading Map...</div>
