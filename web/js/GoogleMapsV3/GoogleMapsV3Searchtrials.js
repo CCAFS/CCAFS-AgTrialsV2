@@ -68,7 +68,7 @@ function toggleMarkerClusterer() {
             mc.addMarkers(markers.info);
         } else {
             mc = new MarkerClusterer(map, markers.info, {
-                maxZoom: 5
+                maxZoom: 10
             });
         }
     } else {
