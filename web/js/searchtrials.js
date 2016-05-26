@@ -12,11 +12,13 @@ jQuery(document).ready(function () {
         var searchtrnfplantingsowingto = jQuery('#searchtrnfplantingsowingto').val();
         var searchtrnfharvestfrom = jQuery('#searchtrnfharvestfrom').val();
         var searchtrnfharvestto = jQuery('#searchtrnfharvestto').val();
+        var searchcreatedatfrom = jQuery('#searchcreatedatfrom').val();
+        var searchcreatedatto = jQuery('#searchcreatedatto').val();
 
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
-        if ((searchterms === '') && (id_project === '') && (id_contactperson === '') && (id_crop === '') && (id_trial === '') && (searchtrnfplantingsowingfrom === '') && (searchtrnfplantingsowingto === '') && (searchtrnfharvestfrom === '') && (searchtrnfharvestto === '')) {
+        if ((searchterms === '') && (id_project === '') && (id_contactperson === '') && (id_crop === '') && (id_trial === '') && (searchtrnfplantingsowingfrom === '') && (searchtrnfplantingsowingto === '') && (searchtrnfharvestfrom === '') && (searchtrnfharvestto === '') && (searchcreatedatfrom === '') && (searchcreatedatto === '')) {
             BanderaFaltantes = true;
             MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + " Select a search criterion!<br>";
         }
@@ -31,7 +33,10 @@ jQuery(document).ready(function () {
             MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + " Incomplete information to Harvest!<br>";
         }
 
-
+        if (((searchcreatedatfrom !== '') && (searchcreatedatto === '')) || ((searchcreatedatfrom === '') && (searchcreatedatto !== ''))) {
+            BanderaFaltantes = true;
+            MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + " Incomplete information to Created at!<br>";
+        }
 
         //VERIFICACION MENSAJE DE ALERTA
         if (BanderaFaltantes) {
@@ -76,10 +81,18 @@ jQuery(document).ready(function () {
         jQuery('#searchtrltrialname').val('');
         jQuery('#CheckTrialname').html("");
 
-        jQuery('#trnfplantingsowingstartdate1').val('');
-        jQuery('#trnfplantingsowingenddate1').val('');
-        jQuery('#trnfharveststartdate1').val('');
-        jQuery('#trnfharvestenddate1').val('');
+        jQuery('#searchtrnfplantingsowingfrom').val('');
+        jQuery('#CheckSowingFrom').html("");
+        jQuery('#searchtrnfplantingsowingto').val('');
+        jQuery('#CheckSowingTo').html("");
+        jQuery('#searchtrnfharvestfrom').val('');
+        jQuery('#CheckHarvestFrom').html("");
+        jQuery('#searchtrnfharvestto').val('');
+        jQuery('#CheckHarvestTo').html("");
+        jQuery('#searchcreatedatfrom').val('');
+        jQuery('#CheckCreatedatFrom').html("");
+        jQuery('#searchcreatedatto').val('');
+        jQuery('#CheckCreatedatTo').html("");
 
         jQuery('#DivTableResusltsSearch').hide();
 
