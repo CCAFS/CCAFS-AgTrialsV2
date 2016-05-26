@@ -1168,7 +1168,7 @@ class trialActions extends autoTrialActions {
         $QUERY .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
         $QUERY .= "WHERE T.created_at::text ILIKE ('%$term%') ";
         $QUERY .= "$Where ";
-        $QUERY .= "GROUP BY TI.created_at ";
+        $QUERY .= "GROUP BY T.created_at ";
         $st = $connection->execute($QUERY);
         $R_datos = $st->fetchAll(PDO::FETCH_ASSOC);
         return $this->renderText(json_encode($R_datos));
