@@ -1311,4 +1311,8 @@ class trialActions extends autoTrialActions {
         die($ReturnFlag);
     }
 
+    public function executeMapsearchtrials(sfWebRequest $request) {
+        $this->setLayout(false);
+    }
+
 }

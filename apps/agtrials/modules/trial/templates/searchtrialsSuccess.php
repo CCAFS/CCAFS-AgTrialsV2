@@ -183,7 +183,7 @@ use_javascript('searchtrials.js');
             </div>
             <div class="tab-pane active" id="ViewMap">
                 <div id="DivTableResusltsSearchMaps" class="col-sm-12 control-type-text" style="display:none;">
-                    
+                    <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="/trial/mapsearchtrials"></iframe>
                 </div>
             </div>
         </div>
