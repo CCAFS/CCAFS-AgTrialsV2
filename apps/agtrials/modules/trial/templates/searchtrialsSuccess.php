@@ -76,81 +76,82 @@ use_javascript('searchtrials.js');
                         </div>
                     </fieldset>
                     <div id="ShowHideDivAdvancedSearch" class="col-sm-3" style="color: #93c47d; font-size: 14px; padding-bottom: 8px; cursor: pointer; width: 160px;"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Advanced Search</div>
+                    <div id="DivAdvancedSearch" class="Session col-sm-12 control-type-text" style="margin-top: 10px; margin-bottom: 10px; display:none;">
+                        <div class="col-sm-12">
+                            <div class="form-group control-type-text col-sm-3"style="height: 60px; padding-top: 20px;">
+                                <div class="col-sm-12">Planting/Sowing:</div>      
+                            </div>
+                            <div class="form-group control-type-text col-sm-3">
+                                <div class="col-sm-12">From date</div>      
+                                <div class="col-sm-12 control-type-text" style="padding-right: 2px; width: 150px;">
+                                    <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchtrnfplantingsowingfrom" name="searchtrnfplantingsowingfrom" placeholder="yyyy-mm-dd" class="DateInput form-control">                    
+                                </div>
+                                <div class="DivColIcon">
+                                    <span id="CheckSowingFrom"></span>                                
+                                </div>
+                            </div>
+                            <div class="form-group control-type-text col-sm-3">
+                                <div class="col-sm-12">To date</div>      
+                                <div class="col-sm-12 control-type-text" style="padding-right: 2px; width: 150px;">
+                                    <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchtrnfplantingsowingto" name="searchtrnfplantingsowingto" placeholder="yyyy-mm-dd" class="DateInput form-control">
+                                </div>
+                                <div class="DivColIcon">
+                                    <span id="CheckSowingTo"></span>                                
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group control-type-text col-sm-3"style="height: 60px; padding-top: 20px;">
+                                <div class="col-sm-12">Harvest:</div>      
+                            </div>
+                            <div class="form-group control-type-text col-sm-3">
+                                <div class="col-sm-12">From date</div>      
+                                <div class="col-sm-12 control-type-text" style="padding-right: 2px; width: 150px;">
+                                    <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchtrnfharvestfrom" name="searchtrnfharvestfrom" placeholder="yyyy-mm-dd" class="DateInput form-control">                    
+                                </div>
+                                <div class="DivColIcon">
+                                    <span id="CheckHarvestFrom"></span>                                
+                                </div>
+                            </div>
+                            <div class="form-group control-type-text col-sm-3">
+                                <div class="col-sm-12">To date</div>      
+                                <div class="col-sm-12 control-type-text" style="padding-right: 2px; width: 150px;">
+                                    <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchtrnfharvestto" name="searchtrnfharvestto" placeholder="yyyy-mm-dd" class="DateInput form-control">
+                                </div>
+                                <div class="DivColIcon">
+                                    <span id="CheckHarvestTo"></span>                                
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group control-type-text col-sm-3"style="height: 60px; padding-top: 20px;">
+                                <div class="col-sm-12">Create at:</div>      
+                            </div>
+                            <div class="form-group control-type-text col-sm-3">
+                                <div class="col-sm-12">From date</div>      
+                                <div class="col-sm-12 control-type-text" style="padding-right: 2px; width: 150px;">
+                                    <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchcreatedatfrom" name="searchcreatedatfrom" placeholder="yyyy-mm-dd" class="DateInput form-control">                    
+                                </div>
+                                <div class="DivColIcon">
+                                    <span id="CheckCreatedatFrom"></span>                                
+                                </div>
+                            </div>
+                            <div class="form-group control-type-text col-sm-3">
+                                <div class="col-sm-12">To date</div>      
+                                <div class="col-sm-12 control-type-text" style="padding-right: 2px; width: 150px;">
+                                    <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchcreatedatto" name="searchcreatedatto" placeholder="yyyy-mm-dd" class="DateInput form-control">
+                                </div>
+                                <div class="DivColIcon">
+                                    <span id="CheckCreatedatTo"></span>                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
 
-            <div id="DivAdvancedSearch" class="Session col-sm-12 control-type-text" style="margin-top: 10px; margin-bottom: 10px; display:none;">
-                <div class="col-sm-12" style="color: #93c47d; font-size: 16px; padding-bottom: 8px;">Advanced Search:</div>   
-                <div class="col-sm-12">
-                    <div class="form-group control-type-text col-sm-3"style="height: 60px; padding-top: 20px;">
-                        <div class="col-sm-12">Planting/Sowing:</div>      
-                    </div>
-                    <div class="form-group control-type-text col-sm-3">
-                        <div class="col-sm-12">From date</div>      
-                        <div class="col-sm-12 control-type-text" style="padding-right: 2px; width: 150px;">
-                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchtrnfplantingsowingfrom" name="searchtrnfplantingsowingfrom" placeholder="yyyy-mm-dd" class="DateInput form-control">                    
-                        </div>
-                        <div class="DivColIcon">
-                            <span id="CheckSowingFrom"></span>                                
-                        </div>
-                    </div>
-                    <div class="form-group control-type-text col-sm-3">
-                        <div class="col-sm-12">To date</div>      
-                        <div class="col-sm-12 control-type-text" style="padding-right: 2px; width: 150px;">
-                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchtrnfplantingsowingto" name="searchtrnfplantingsowingto" placeholder="yyyy-mm-dd" class="DateInput form-control">
-                        </div>
-                        <div class="DivColIcon">
-                            <span id="CheckSowingTo"></span>                                
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="form-group control-type-text col-sm-3"style="height: 60px; padding-top: 20px;">
-                        <div class="col-sm-12">Harvest:</div>      
-                    </div>
-                    <div class="form-group control-type-text col-sm-3">
-                        <div class="col-sm-12">From date</div>      
-                        <div class="col-sm-12 control-type-text" style="padding-right: 2px; width: 150px;">
-                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchtrnfharvestfrom" name="searchtrnfharvestfrom" placeholder="yyyy-mm-dd" class="DateInput form-control">                    
-                        </div>
-                        <div class="DivColIcon">
-                            <span id="CheckHarvestFrom"></span>                                
-                        </div>
-                    </div>
-                    <div class="form-group control-type-text col-sm-3">
-                        <div class="col-sm-12">To date</div>      
-                        <div class="col-sm-12 control-type-text" style="padding-right: 2px; width: 150px;">
-                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchtrnfharvestto" name="searchtrnfharvestto" placeholder="yyyy-mm-dd" class="DateInput form-control">
-                        </div>
-                        <div class="DivColIcon">
-                            <span id="CheckHarvestTo"></span>                                
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="form-group control-type-text col-sm-3"style="height: 60px; padding-top: 20px;">
-                        <div class="col-sm-12">Create at:</div>      
-                    </div>
-                    <div class="form-group control-type-text col-sm-3">
-                        <div class="col-sm-12">From date</div>      
-                        <div class="col-sm-12 control-type-text" style="padding-right: 2px; width: 150px;">
-                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchcreatedatfrom" name="searchcreatedatfrom" placeholder="yyyy-mm-dd" class="DateInput form-control">                    
-                        </div>
-                        <div class="DivColIcon">
-                            <span id="CheckCreatedatFrom"></span>                                
-                        </div>
-                    </div>
-                    <div class="form-group control-type-text col-sm-3">
-                        <div class="col-sm-12">To date</div>      
-                        <div class="col-sm-12 control-type-text" style="padding-right: 2px; width: 150px;">
-                            <input type="text" value="" onblur="ValidaFecha(this);" onkeyup="ValidaEscrituraFecha(this);" maxlength="10" size="11" id="searchcreatedatto" name="searchcreatedatto" placeholder="yyyy-mm-dd" class="DateInput form-control">
-                        </div>
-                        <div class="DivColIcon">
-                            <span id="CheckCreatedatTo"></span>                                
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <fieldset style="margin-top: 10px; margin-left: 13px;">
                 <div class="form-group control-type-text" style="margin-left: 0px;">
