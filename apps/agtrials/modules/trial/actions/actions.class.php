@@ -1131,6 +1131,7 @@ class trialActions extends autoTrialActions {
         $QUERY .= "GROUP BY TI.trnfplantingsowingstartdate ";
         $st = $connection->execute($QUERY);
         $R_datos = $st->fetchAll(PDO::FETCH_ASSOC);
+        usort($R_datos, 'SortDataArrayAutocomplete');
         return $this->renderText(json_encode($R_datos));
     }
 
@@ -1151,6 +1152,7 @@ class trialActions extends autoTrialActions {
         $QUERY .= "GROUP BY TI.trnfharveststartdate ";
         $st = $connection->execute($QUERY);
         $R_datos = $st->fetchAll(PDO::FETCH_ASSOC);
+        usort($R_datos, 'SortDataArrayAutocomplete');
         return $this->renderText(json_encode($R_datos));
     }
 
@@ -1171,6 +1173,7 @@ class trialActions extends autoTrialActions {
         $QUERY .= "GROUP BY T.created_at ";
         $st = $connection->execute($QUERY);
         $R_datos = $st->fetchAll(PDO::FETCH_ASSOC);
+        usort($R_datos, 'SortDataArrayAutocomplete');
         return $this->renderText(json_encode($R_datos));
     }
 

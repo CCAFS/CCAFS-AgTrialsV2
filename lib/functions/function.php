@@ -1074,4 +1074,8 @@ function UploadTrialVariablesMeasuredTemplate($File, $id_user) {
     $this->Cols = $Cols;
 }
 
+function SortDataArrayAutocomplete($a, $b) {
+    return strtotime($a['label']) - strtotime($b['label']);
+}
+
 ?>
