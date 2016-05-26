@@ -68,3 +68,5 @@
 * html .ui-autocomplete {
     height: 150px;
 }
+
+.ui-autocomplete-loading{background:url('/images/success.png') no-repeat right center;}
