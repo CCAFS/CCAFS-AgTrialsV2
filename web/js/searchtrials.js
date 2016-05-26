@@ -43,6 +43,9 @@ jQuery(document).ready(function () {
             alerts.show({css: 'error', title: 'Importat!', message: MensajeFaltantes});
         } else {
             jQuery('#DivTableResusltsSearch').show();
+            jQuery('#ButtonResusltsSearch').show();
+            jQuery('#DivTableResusltsSearchMaps').show();
+
             jQuery('#TableResusltsSearch').DataTable({
                 "bDestroy": true,
                 "language": {
@@ -51,8 +54,6 @@ jQuery(document).ready(function () {
                     "infoEmpty": "No records available",
                     "infoFiltered": "(filtered from _MAX_ total records)"
                 },
-                dom: 'Bfrtip',
-                buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
                 "ajax": {
                     'type': 'POST',
                     'url': 'trial/resultsearchtrials/',
@@ -61,7 +62,10 @@ jQuery(document).ready(function () {
                 "fnRowCallback": function (nRow, aData) {
                     jQuery('td:eq(0)', nRow).html('<a target="_blank" href="/trial/' + aData[4] + '">' + aData[0] + '</a>');
                     return nRow;
-                }
+                },
+                "drawCallback": function (settings) {
+                    console.log(settings.json);
+                },
             });
         }
     });
@@ -94,7 +98,10 @@ jQuery(document).ready(function () {
         jQuery('#searchcreatedatto').val('');
         jQuery('#CheckCreatedatTo').html("");
 
+        jQuery('#ButtonResusltsSearch').hide();
         jQuery('#DivTableResusltsSearch').hide();
+        jQuery('#DivTableResusltsSearchMaps').hide();
+
 
         jQuery.ajax({
             type: "GET",

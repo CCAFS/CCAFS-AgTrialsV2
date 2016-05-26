@@ -157,22 +157,35 @@ use_javascript('searchtrials.js');
                 <div class="form-group control-type-text" style="margin-left: 0px;">
                     <button class="btn btn-action" type="button" title=" Search " id="SubmitSearch" neme="SubmitSearch"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&ensp;Search&ensp;</button>
                     <button class="btn btn-action" type="button" title=" Clear " id="ButtonClear" neme="ButtonClear"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span>&ensp;Clear&ensp;</button>
+                    <span id="ButtonResusltsSearch" style="display:none;">
+                        &ensp;&ensp;&ensp;&ensp;
+                        <button href="#ViewList" data-toggle="tab" class="btn btn-action" type="button" title=" List " id="ButtonList" neme="ButtonList"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&ensp;List&ensp;</button>
+                        <button href="#ViewMap" data-toggle="tab" class="btn btn-action" type="button" title=" Map " id="ButtonMap" neme="ButtonMap"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>&ensp;Map&ensp;</button>
+                    </span>                    
                     <input type="hidden" value="" id="FormAction" name="FormAction"/>
                 </div>
             </fieldset>
         </form>
-
-        <div id="DivTableResusltsSearch" class="col-sm-12 control-type-text" style="display:none;">
-            <table id="TableResusltsSearch" class="display" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Project</th>
-                        <th>Location</th>
-                        <th>Crop</th>
-                    </tr>
-                </thead>
-            </table>
+        <div id="my-tab-content" class="tab-content">
+            <div class="tab-pane active" id="ViewList">
+                <div id="DivTableResusltsSearch" class="col-sm-12 control-type-text" style="display:none;">
+                    <table id="TableResusltsSearch" class="display" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Project</th>
+                                <th>Location</th>
+                                <th>Crop</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane active" id="ViewMap">
+                <div id="DivTableResusltsSearchMaps" class="col-sm-12 control-type-text" style="display:none;">
+                    
+                </div>
+            </div>
         </div>
     </div>
 </div>
