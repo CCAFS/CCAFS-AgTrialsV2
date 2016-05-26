@@ -159,8 +159,8 @@ use_javascript('searchtrials.js');
                     <button class="btn btn-action" type="button" title=" Clear " id="ButtonClear" neme="ButtonClear"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span>&ensp;Clear&ensp;</button>
                     <span id="ButtonResusltsSearch" style="display:none;">
                         &ensp;&ensp;&ensp;&ensp;
-                        <button href="#ViewList" data-toggle="tab" class="btn btn-action" type="button" title=" List " id="ButtonList" neme="ButtonList"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&ensp;List&ensp;</button>
-                        <button href="#ViewMap" data-toggle="tab" class="btn btn-action" type="button" title=" Map " id="ButtonMap" neme="ButtonMap"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>&ensp;Map&ensp;</button>
+                        <button class="btn btn-action" type="button" title=" List " id="ButtonList" neme="ButtonList"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&ensp;List&ensp;</button>
+                        <button class="btn btn-action" type="button" title=" Map " id="ButtonMap" neme="ButtonMap"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>&ensp;Map&ensp;</button>
                     </span>                    
                     <input type="hidden" value="" id="FormAction" name="FormAction"/>
                 </div>

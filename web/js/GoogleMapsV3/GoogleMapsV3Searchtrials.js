@@ -51,7 +51,7 @@ function toggleMarkerManager() {
     } else {
         mgr = new MarkerManager(map, {
             trackMarkers: true,
-            maxZoom: 15
+            maxZoom: 10
         });
         google.maps.event.addListener(mgr, 'loaded', function() {
             mgr.addMarkers(markers.info, 0, 5);
@@ -115,7 +115,7 @@ function initialize() {
 
     map = new google.maps.Map(document.getElementById('map'), {
         center: new google.maps.LatLng(0, 10),
-        zoom: 1,
+        zoom: 2,
         mapTypeId: google.maps.MapTypeId.TERRAIN
     });
 

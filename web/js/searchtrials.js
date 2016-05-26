@@ -44,7 +44,7 @@ jQuery(document).ready(function () {
         } else {
             jQuery('#DivTableResusltsSearch').show();
             jQuery('#ButtonResusltsSearch').show();
-            jQuery('#DivTableResusltsSearchMaps').show();
+            //jQuery('#DivTableResusltsSearchMaps').show();
 
             jQuery('#TableResusltsSearch').DataTable({
                 "bDestroy": true,
@@ -110,6 +110,15 @@ jQuery(document).ready(function () {
             success: function () {
             }
         });
+    });
+
+    jQuery("#ButtonList").click(function () {
+        jQuery('#DivTableResusltsSearch').show();
+        jQuery('#DivTableResusltsSearchMaps').hide();
+    });
+    jQuery("#ButtonMap").click(function () {
+        jQuery('#DivTableResusltsSearch').hide();
+        jQuery('#DivTableResusltsSearchMaps').show();
     });
 
     jQuery("#ShowHideDivAdvancedSearch").on('click', function () {
