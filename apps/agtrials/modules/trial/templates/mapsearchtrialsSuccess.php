@@ -31,7 +31,7 @@ foreach ($Resultado00 AS $fila) {
 }
 $maps = json_encode($puntos);
 ?>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ3AuoynudzyBkbJ6uTVbC3PdQDObXjfc"></script>
 <script type="text/javascript" src="/js/GoogleMapsV3/GoogleMapsV3Searchtrials.js"></script>
 <script type="text/javascript" src="/js/GoogleMapsV3/GoogleMapsV3-MarkerClusterer.js"></script>
 <script type="text/javascript" src="/js/GoogleMapsV3/GoogleMapsV3-MarkerManager.js"></script>

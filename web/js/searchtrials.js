@@ -63,9 +63,6 @@ jQuery(document).ready(function () {
                     jQuery('td:eq(0)', nRow).html('<a target="_blank" href="/trial/' + aData[4] + '">' + aData[0] + '</a>');
                     return nRow;
                 },
-                "drawCallback": function (settings) {
-                    console.log(settings.json);
-                },
             });
         }
     });
@@ -119,7 +116,7 @@ jQuery(document).ready(function () {
     jQuery("#ButtonMap").click(function () {
         jQuery('#DivTableResusltsSearch').hide();
         jQuery('#DivTableResusltsSearchMaps').show();
-        $("#DivTableResusltsSearchMaps").load("/trial/mapsearchtrials/");
+        jQuery("#DivTableResusltsSearchMaps").load("/trial/mapsearchtrials/");
     });
 
     jQuery("#ShowHideDivAdvancedSearch").on('click', function () {
