@@ -42,8 +42,14 @@
             ByTrialLocation();
         });
     });
+
+    window.onload = load;
+    function load() {
+        ByTechnology();
+    }
+
 </script>
-<div class="row">
+<div class="row" onload="ByTechnology();">
     <div class="col-md-2 left-column">
         <?php include_partial('admin/StatisticsMenu') ?>
     </div>
