@@ -8,7 +8,7 @@
     </div>
     <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
         <span class="Title">Experimental design</span>
-        <?php echo form_tag_for($form, '@tb_experimentaldesign', array('class' => 'form-horizontal', 'id' => 'FormDonor', 'enctype' => 'multipart/form-data')) ?>
+        <?php echo form_tag_for($form, '@tb_experimentaldesign', array('class' => 'form-horizontal', 'id' => 'FormExperimentaldesign', 'enctype' => 'multipart/form-data')) ?>
         <div class="Session" style="margin-top: 10px; margin-bottom: 10px;">
             <?php echo $form->renderHiddenFields(false) ?>
             <?php if ($form->hasGlobalErrors()): ?>
