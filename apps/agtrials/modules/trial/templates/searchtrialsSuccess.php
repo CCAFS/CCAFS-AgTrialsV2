@@ -189,5 +189,5 @@ use_javascript('searchtrials.js');
 </div>
 
 <script type="text/javascript">
-                                $('#TableResusltsSearch').removeClass('display').addClass('table table-striped table-bordered');
+    $('#TableResusltsSearch').removeClass('display').addClass('table table-striped table-bordered');
 </script>

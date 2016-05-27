@@ -45,7 +45,7 @@ function k(a,b,c){
     b&&b.length&&this.C(b,!1)
     }
     j=k.prototype;
-j.Q="/js/GoogleMapsV3/images/m";
+j.Q="/GoogleMapsV3/images/m";
 j.P="png";
 j.extend=function(a,b){
     return function(a){

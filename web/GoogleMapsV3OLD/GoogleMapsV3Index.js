@@ -4,6 +4,8 @@
  */
 
 
+
+
 /**
  * The MarkerClusterer object.
  * @type {MarkerCluster}
@@ -51,7 +53,7 @@ function toggleMarkerManager() {
     } else {
         mgr = new MarkerManager(map, {
             trackMarkers: true,
-            maxZoom: 10
+            maxZoom: 15
         });
         google.maps.event.addListener(mgr, 'loaded', function() {
             mgr.addMarkers(markers.info, 0, 5);
@@ -68,7 +70,7 @@ function toggleMarkerClusterer() {
             mc.addMarkers(markers.info);
         } else {
             mc = new MarkerClusterer(map, markers.info, {
-                maxZoom: 10
+                maxZoom: 5
             });
         }
     } else {
@@ -114,8 +116,8 @@ function Legend(controlDiv, map) {
 function initialize() {
 
     map = new google.maps.Map(document.getElementById('map'), {
-        center: new google.maps.LatLng(70, -140),
-        zoom: 2,
+        center: new google.maps.LatLng(30, 0),
+        zoom: 1,
         mapTypeId: google.maps.MapTypeId.TERRAIN
     });
 

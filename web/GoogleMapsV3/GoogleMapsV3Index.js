@@ -101,12 +101,12 @@ function Legend(controlDiv, map) {
 
     // Add the text
     controlText.innerHTML = '<b>Agrupación puntos</b><br />' +
-            '<span title="Punto"><img width="12" height="12" src="/js/GoogleMapsV3/images/m0.png"/> 1<br />' +
-            '<span title="De 2 a 10 Puntos"><img width="16" height="16" src="/js/GoogleMapsV3/images/m1.png"/> 2 - 10<br />' +
-            '<span title="De 11 a 100 Puntos"><img width="16" height="16" src="/js/GoogleMapsV3/images/m2.png"/> 11 - 100<br />' +
-            '<span title="De 101 a 1000 Puntos"><img width="16" height="16" src="/js/GoogleMapsV3/images/m3.png"/> 101 - 1000<br />' +
-            '<span title="De 1001 a 10000 Puntos"><img width="16" height="16" src="/js/GoogleMapsV3/images/m4.png"/> 1001 - 10000<br />' +
-            '<span title="Mayor a 10000 Puntos"><img width="16" height="16" src="/js/GoogleMapsV3/images/m5.png"/> > 100000<br />';
+            '<span title="Punto"><img width="12" height="12" src="/GoogleMapsV3/images/m0.png"/> 1<br />' +
+            '<span title="De 2 a 10 Puntos"><img width="16" height="16" src="/GoogleMapsV3/images/m1.png"/> 2 - 10<br />' +
+            '<span title="De 11 a 100 Puntos"><img width="16" height="16" src="/GoogleMapsV3/images/m2.png"/> 11 - 100<br />' +
+            '<span title="De 101 a 1000 Puntos"><img width="16" height="16" src="/GoogleMapsV3/images/m3.png"/> 101 - 1000<br />' +
+            '<span title="De 1001 a 10000 Puntos"><img width="16" height="16" src="/GoogleMapsV3/images/m4.png"/> 1001 - 10000<br />' +
+            '<span title="Mayor a 10000 Puntos"><img width="16" height="16" src="/GoogleMapsV3/images/m5.png"/> > 100000<br />';
     //controlUI.appendChild(controlText);
 }
 
@@ -116,7 +116,7 @@ function Legend(controlDiv, map) {
 function initialize() {
 
     map = new google.maps.Map(document.getElementById('map'), {
-        center: new google.maps.LatLng(30, 0),
+        center: new google.maps.LatLng(0, 10),
         zoom: 1,
         mapTypeId: google.maps.MapTypeId.TERRAIN
     });
