@@ -116,7 +116,7 @@ jQuery(document).ready(function () {
     jQuery("#ButtonMap").click(function () {
         jQuery('#DivTableResusltsSearch').hide();
         jQuery('#DivTableResusltsSearchMaps').show();
-        jQuery("#DivTableResusltsSearchMaps").load("/trial/mapsearchtrials/");
+        jQuery("#ResusltsSearchMaps").attr('src', "/trial/mapsearchtrials/");
     });
 
     jQuery("#ShowHideDivAdvancedSearch").on('click', function () {
