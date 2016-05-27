@@ -2,7 +2,6 @@
 <link rel="stylesheet" type="text/css" media="screen" href="/mqThickboxPlugin/css/thickbox.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="/bootstrapAdminThemePlugin/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="/jquery-ui-1.11.4/jquery-ui.min.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="/jquery.alerts/jquery.alerts.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="/css/bootstrap-personalized.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
 <span class="Title">View Trial Location</span>
@@ -76,9 +75,9 @@
         <div class="row form-group control-type-text" style="margin-left: 15px;">
             <head>
                 <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
-                <script src="https://maps.googleapis.com/maps/api/js?v=3.20"></script>
+                <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ3AuoynudzyBkbJ6uTVbC3PdQDObXjfc"></script>
             </head>
-            <body onunload="GUnload()">
+            <body onunload="GUnload();">
                 <div id="map" style="width: 855px; height: 330px"></div>
                 <script type="text/javascript">
 
