@@ -1,4 +1,4 @@
-<script type="text/javascript"  src="//d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript"  src="http://d3js.org/d3.v3.min.js"></script>
 <script type="text/javascript"  src="/js/d3jsChart.js"></script>
 <script>
     $(document).ready(function () {
