@@ -1,3 +1,25 @@
+/*
+ *  This file is part of AgTrials
+ *
+ *  AgTrials is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  at your option) any later version.
+ *
+ *  AgTrials is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with DMSP.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Copyright 2012 (C) Climate Change, Agriculture and Food Security (CCAFS)
+ * 
+ * Created on :  @2016
+ * @author    :  Herlin R. Espinosa G. - herlin25@gmail.com
+ * @version   :  ~
+ */
 jQuery(document).ready(function () {
     jQuery("#prjprojectimplementingperiodstartdate").datepicker({dateFormat: 'yy-mm-dd'});
     jQuery("#prjprojectimplementingperiodenddate").datepicker({dateFormat: 'yy-mm-dd'});

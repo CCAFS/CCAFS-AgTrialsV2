@@ -1,4 +1,26 @@
-+function($) {
+/*
+ *  This file is part of AgTrials
+ *
+ *  AgTrials is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  at your option) any later version.
+ *
+ *  AgTrials is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with DMSP.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Copyright 2012 (C) Climate Change, Agriculture and Food Security (CCAFS)
+ * 
+ * Created on :  @2016
+ * @author    :  Herlin R. Espinosa G. - herlin25@gmail.com
+ * @version   :  ~
+ */
++function ($) {
 
     //inicio: VALIDAMOS EL ENVIO DEL FORMULARIO DE CONTACT PERSON
     var FieldContactperson = {
@@ -7,11 +29,11 @@
         'tb_contactperson_id_institution': 'Institutions',
         'tb_contactperson_cnpremail': 'Email'
     };
-    $("#FormContactperson").submit(function(event) {
+    $("#FormContactperson").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
-        $.each(FieldContactperson, function(Id, Campo) {
+        $.each(FieldContactperson, function (Id, Campo) {
             if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
@@ -28,11 +50,11 @@
     var FieldCrop = {
         'tb_crop_crpname': 'Name'
     };
-    $("#FormCrop").submit(function(event) {
+    $("#FormCrop").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
-        $.each(FieldCrop, function(Id, Campo) {
+        $.each(FieldCrop, function (Id, Campo) {
             if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
@@ -49,11 +71,11 @@
     var FieldDonor = {
         'tb_donor_dnrname': 'Name'
     };
-    $("#FormDonor").submit(function(event) {
+    $("#FormDonor").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
-        $.each(FieldDonor, function(Id, Campo) {
+        $.each(FieldDonor, function (Id, Campo) {
             if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
@@ -70,11 +92,11 @@
     var FieldExperimentaldesign = {
         'tb_experimentaldesign_xpdsname': 'Name'
     };
-    $("#FormExperimentaldesign").submit(function(event) {
+    $("#FormExperimentaldesign").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
-        $.each(FieldExperimentaldesign, function(Id, Campo) {
+        $.each(FieldExperimentaldesign, function (Id, Campo) {
             if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
@@ -92,12 +114,12 @@
         'tb_institution_insname': 'Name',
         'tb_institution[id_country]': 'Country'
     };
-    $("#FormInstitution").submit(function(event) {
+    $("#FormInstitution").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         var Valor = '';
-        $.each(FieldInstitution, function(Id, Campo) {
+        $.each(FieldInstitution, function (Id, Campo) {
             if (Id == 'tb_institution[id_country]')
                 Valor = $('select[id=tb_institution[id_country]]').val();
             else
@@ -132,11 +154,11 @@
         'tb_project_prjabstract': 'Abstract',
         'tb_project_prjkeywords': 'Keywords'
     };
-    $("#FormProject").submit(function(event) {
+    $("#FormProject").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
-        $.each(FieldProject, function(Id, Campo) {
+        $.each(FieldProject, function (Id, Campo) {
             if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
@@ -153,11 +175,11 @@
     var FieldRolecontactperson = {
         'tb_rolecontactperson_rcpname': 'Name'
     };
-    $("#FormRolecontactperson").submit(function(event) {
+    $("#FormRolecontactperson").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
-        $.each(FieldRolecontactperson, function(Id, Campo) {
+        $.each(FieldRolecontactperson, function (Id, Campo) {
             if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
@@ -174,11 +196,11 @@
     var FieldTraitclass = {
         'tb_traitclass_trclname': 'Name'
     };
-    $("#FormTraitclass").submit(function(event) {
+    $("#FormTraitclass").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
-        $.each(FieldTraitclass, function(Id, Campo) {
+        $.each(FieldTraitclass, function (Id, Campo) {
             if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
@@ -199,11 +221,11 @@
         'countrytriallocation': 'Country',
         'districttriallocation': 'District/Satate/Province Level',
     };
-    $("#FormTriallocation").submit(function(event) {
+    $("#FormTriallocation").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
-        $.each(FieldTriallocation, function(Id, Campo) {
+        $.each(FieldTriallocation, function (Id, Campo) {
             if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
@@ -223,11 +245,11 @@
         'tb_variablesmeasured_vrmsname': 'Name',
         'tb_variablesmeasured_vrmsunit': 'Unit'
     };
-    $("#FormVariablesmeasured").submit(function(event) {
+    $("#FormVariablesmeasured").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
-        $.each(FieldVariablesmeasured, function(Id, Campo) {
+        $.each(FieldVariablesmeasured, function (Id, Campo) {
             if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
@@ -246,11 +268,11 @@
         'tb_variety_vrtorigin': 'Origin',
         'tb_variety_vrtname': 'Name'
     };
-    $("#FormVariety").submit(function(event) {
+    $("#FormVariety").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
-        $.each(FieldVariety, function(Id, Campo) {
+        $.each(FieldVariety, function (Id, Campo) {
             if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
@@ -268,11 +290,11 @@
         'sf_guard_group_name': 'Name',
         'sf_guard_group_description': 'Description'
     };
-    $("#FormGuardGroup").submit(function(event) {
+    $("#FormGuardGroup").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
-        $.each(FieldGuardGroup, function(Id, Campo) {
+        $.each(FieldGuardGroup, function (Id, Campo) {
             if ($('#' + Id).val() == '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
