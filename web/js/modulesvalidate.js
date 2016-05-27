@@ -22,6 +22,7 @@
  */
 jQuery(document).ready(function () {
 
+
     //inicio: VALIDAMOS EL ENVIO DEL FORMULARIO DE CONTACT PERSON
     var FieldContactperson = {
         'tb_contactperson_cnprfirstname': 'First name',
@@ -29,6 +30,7 @@ jQuery(document).ready(function () {
         'tb_contactperson_id_institution': 'Institutions',
         'tb_contactperson_cnpremail': 'Email'
     };
+
     jQuery("#FormContactperson").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
@@ -124,7 +126,6 @@ jQuery(document).ready(function () {
                 Valor = jQuery('select[id=tb_institution[id_country]]').val();
             else
                 Valor = jQuery('#' + Id).val();
-
             if (Valor === '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";

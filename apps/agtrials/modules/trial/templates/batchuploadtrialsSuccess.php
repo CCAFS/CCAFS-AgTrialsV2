@@ -1,4 +1,4 @@
-<?php use_javascript('batchuploadtrials.js') ?>
+<?php use_javascript('batchuploadtrials.js'); ?>
 <div class="row">
     <div class="col-md-2 left-column">
         <div class="MenuTrials">
