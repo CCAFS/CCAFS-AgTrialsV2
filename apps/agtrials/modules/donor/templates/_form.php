@@ -7,7 +7,7 @@
         <?php include_partial('admin/ModuleMenu') ?>
     </div>
     <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
-        <span class="Title">Contact person</span>
+        <span class="Title">Donor</span>
         <?php echo form_tag_for($form, '@tb_donor', array('class' => 'form-horizontal', 'id' => 'FormDonor', 'enctype' => 'multipart/form-data')) ?>
         <div class="Session" style="margin-top: 10px; margin-bottom: 10px;">
             <?php echo $form->renderHiddenFields(false) ?>
