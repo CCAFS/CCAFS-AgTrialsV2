@@ -114,7 +114,7 @@ function Legend(controlDiv, map) {
 function initialize() {
 
     map = new google.maps.Map(document.getElementById('map'), {
-        center: new google.maps.LatLng(70, -140),
+        center: new google.maps.LatLng(0, 10),
         zoom: 2,
         mapTypeId: google.maps.MapTypeId.TERRAIN
     });
