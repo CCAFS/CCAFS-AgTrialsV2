@@ -62,11 +62,11 @@ $(document).ready(function () {
 
     $('#TrialTemplateFile').blur(function () {
         var TrialTemplateFile = $('#TrialTemplateFile').val();
-        if (TrialTemplateFile != '') {
+        if (TrialTemplateFile !== '') {
             var fragmento = TrialTemplateFile.split('.');
             var length = fragmento.length;
             var extension = fragmento[length - 1];
-            if (!((extension == 'XLS') || (extension == 'xls'))) {
+            if (!((extension === 'XLS') || (extension === 'xls'))) {
                 $('#TrialTemplateFile').attr('value', '');
                 $("#TrialTemplateFile").val('');
                 jAlert('Permitted file (.XLS)', 'Invalid File');
@@ -76,11 +76,11 @@ $(document).ready(function () {
 
     $('#TrialInfoTemplateFile').blur(function () {
         var TrialInfoTemplateFile = $('#TrialInfoTemplateFile').val();
-        if (TrialInfoTemplateFile != '') {
+        if (TrialInfoTemplateFile !== '') {
             var fragmento = TrialInfoTemplateFile.split('.');
             var length = fragmento.length;
             var extension = fragmento[length - 1];
-            if (!((extension == 'XLS') || (extension == 'xls'))) {
+            if (!((extension === 'XLS') || (extension === 'xls'))) {
                 $('#TrialInfoTemplateFile').attr('value', '');
                 $("#TrialInfoTemplateFile").val('');
                 jAlert('Permitted file (.XLS)', 'Invalid File');
@@ -90,11 +90,11 @@ $(document).ready(function () {
 
     $('#CompressedFileTrialInfoDataTemplates').blur(function () {
         var CompressedFileTrialInfoDataTemplates = $('#CompressedFileTrialInfoDataTemplates').val();
-        if (CompressedFileTrialInfoDataTemplates != '') {
+        if (CompressedFileTrialInfoDataTemplates !== '') {
             var fragmento = CompressedFileTrialInfoDataTemplates.split('.');
             var length = fragmento.length;
             var extension = fragmento[length - 1];
-            if (!((extension == 'zip') || (extension == 'ZIP'))) {
+            if (!((extension === 'zip') || (extension === 'ZIP'))) {
                 $('#CompressedFileTrialInfoDataTemplates').attr('value', '');
                 $("#CompressedFileTrialInfoDataTemplates").val('');
                 jAlert('Permitted file compressed(.Zip)', 'Invalid File');
@@ -105,7 +105,7 @@ $(document).ready(function () {
     function ValidaFiles() {
         var TrialTemplateFile = $('#TrialTemplateFile').val();
         var TrialInfoTemplateFile = $('#TrialInfoTemplateFile').val();
-        if ((TrialTemplateFile == '') || (TrialInfoTemplateFile == '')) {
+        if ((TrialTemplateFile === '') || (TrialInfoTemplateFile === '')) {
             jAlert('Please, Select Templates Files', 'Error');
         } else {
             $('#div_loading').show();
