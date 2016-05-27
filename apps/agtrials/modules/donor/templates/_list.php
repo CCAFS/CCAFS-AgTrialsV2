@@ -9,7 +9,6 @@
         <thead>
             <tr>
                 <?php include_partial('donor/list_th', array('sort' => $sort)) ?>
-                <th class="LabelList LabelListAction"><?php echo __('Actions', array(), 'sf_admin') ?></th>
             </tr>
         </thead>
         <tfoot>
