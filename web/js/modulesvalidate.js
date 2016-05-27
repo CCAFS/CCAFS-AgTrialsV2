@@ -20,7 +20,7 @@
  * @author    :  Herlin R. Espinosa G. - herlin25@gmail.com
  * @version   :  ~
  */
-+function ($) {
+jQuery(document).ready(function () {
 
     //inicio: VALIDAMOS EL ENVIO DEL FORMULARIO DE CONTACT PERSON
     var FieldContactperson = {
@@ -29,12 +29,12 @@
         'tb_contactperson_id_institution': 'Institutions',
         'tb_contactperson_cnpremail': 'Email'
     };
-    $("#FormContactperson").submit(function (event) {
+    jQuery("#FormContactperson").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         $.each(FieldContactperson, function (Id, Campo) {
-            if ($('#' + Id).val() == '') {
+            if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 CampoObligatorio(Id);
@@ -50,12 +50,12 @@
     var FieldCrop = {
         'tb_crop_crpname': 'Name'
     };
-    $("#FormCrop").submit(function (event) {
+    jQuery("#FormCrop").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         $.each(FieldCrop, function (Id, Campo) {
-            if ($('#' + Id).val() == '') {
+            if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 CampoObligatorio(Id);
@@ -71,12 +71,12 @@
     var FieldDonor = {
         'tb_donor_dnrname': 'Name'
     };
-    $("#FormDonor").submit(function (event) {
+    jQuery("#FormDonor").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         $.each(FieldDonor, function (Id, Campo) {
-            if ($('#' + Id).val() == '') {
+            if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 CampoObligatorio(Id);
@@ -92,12 +92,12 @@
     var FieldExperimentaldesign = {
         'tb_experimentaldesign_xpdsname': 'Name'
     };
-    $("#FormExperimentaldesign").submit(function (event) {
+    jQuery("#FormExperimentaldesign").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         $.each(FieldExperimentaldesign, function (Id, Campo) {
-            if ($('#' + Id).val() == '') {
+            if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 CampoObligatorio(Id);
@@ -114,26 +114,26 @@
         'tb_institution_insname': 'Name',
         'tb_institution[id_country]': 'Country'
     };
-    $("#FormInstitution").submit(function (event) {
+    jQuery("#FormInstitution").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         var Valor = '';
         $.each(FieldInstitution, function (Id, Campo) {
-            if (Id == 'tb_institution[id_country]')
-                Valor = $('select[id=tb_institution[id_country]]').val();
+            if (Id === 'tb_institution[id_country]')
+                Valor = jQuery('select[id=tb_institution[id_country]]').val();
             else
-                Valor = $('#' + Id).val();
+                Valor = jQuery('#' + Id).val();
 
-            if (Valor == '') {
+            if (Valor === '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
-                if (Id == 'tb_institution[id_country]')
+                if (Id === 'tb_institution[id_country]')
                     SelectObligatorio(Id);
                 else
                     CampoObligatorio(Id);
             } else {
-                if (Id == 'tb_institution[id_country]')
+                if (Id === 'tb_institution[id_country]')
                     SelectNormalObligatorio(Id);
                 else
                     CampoNormalObligatorio(Id);
@@ -154,12 +154,12 @@
         'tb_project_prjabstract': 'Abstract',
         'tb_project_prjkeywords': 'Keywords'
     };
-    $("#FormProject").submit(function (event) {
+    jQuery("#FormProject").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         $.each(FieldProject, function (Id, Campo) {
-            if ($('#' + Id).val() == '') {
+            if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 CampoObligatorio(Id);
@@ -175,12 +175,12 @@
     var FieldRolecontactperson = {
         'tb_rolecontactperson_rcpname': 'Name'
     };
-    $("#FormRolecontactperson").submit(function (event) {
+    jQuery("#FormRolecontactperson").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         $.each(FieldRolecontactperson, function (Id, Campo) {
-            if ($('#' + Id).val() == '') {
+            if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 CampoObligatorio(Id);
@@ -196,12 +196,12 @@
     var FieldTraitclass = {
         'tb_traitclass_trclname': 'Name'
     };
-    $("#FormTraitclass").submit(function (event) {
+    jQuery("#FormTraitclass").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         $.each(FieldTraitclass, function (Id, Campo) {
-            if ($('#' + Id).val() == '') {
+            if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 CampoObligatorio(Id);
@@ -219,14 +219,14 @@
         'tb_triallocation_trlclatitude': 'Latitude',
         'tb_triallocation_trlclongitude': 'Longitude',
         'countrytriallocation': 'Country',
-        'districttriallocation': 'District/Satate/Province Level',
+        'districttriallocation': 'District/Satate/Province Level'
     };
-    $("#FormTriallocation").submit(function (event) {
+    jQuery("#FormTriallocation").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         $.each(FieldTriallocation, function (Id, Campo) {
-            if ($('#' + Id).val() == '') {
+            if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 CampoObligatorio(Id);
@@ -245,12 +245,12 @@
         'tb_variablesmeasured_vrmsname': 'Name',
         'tb_variablesmeasured_vrmsunit': 'Unit'
     };
-    $("#FormVariablesmeasured").submit(function (event) {
+    jQuery("#FormVariablesmeasured").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         $.each(FieldVariablesmeasured, function (Id, Campo) {
-            if ($('#' + Id).val() == '') {
+            if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 CampoObligatorio(Id);
@@ -268,12 +268,12 @@
         'tb_variety_vrtorigin': 'Origin',
         'tb_variety_vrtname': 'Name'
     };
-    $("#FormVariety").submit(function (event) {
+    jQuery("#FormVariety").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         $.each(FieldVariety, function (Id, Campo) {
-            if ($('#' + Id).val() == '') {
+            if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 CampoObligatorio(Id);
@@ -290,12 +290,12 @@
         'sf_guard_group_name': 'Name',
         'sf_guard_group_description': 'Description'
     };
-    $("#FormGuardGroup").submit(function (event) {
+    jQuery("#FormGuardGroup").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
         $.each(FieldGuardGroup, function (Id, Campo) {
-            if ($('#' + Id).val() == '') {
+            if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
                 CampoObligatorio(Id);
@@ -306,4 +306,4 @@
         CheckError('FormGuardGroup', event, BanderaFaltantes, MensajeFaltantes);
     });
     //fin: VALIDAMOS EL ENVIO DEL FORMULARIO DE Guard Group
-};
+});

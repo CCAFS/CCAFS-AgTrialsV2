@@ -26,13 +26,13 @@ function ByTechnology() {
         var Max = 40000;
         var Interval = 8000;
 
-        var label = info.label
-        var data = info.data
+        var label = info.label;
+        var data = info.data;
         var colors = ['#0d4bcf', '#0066AE', '#074285', '#00187B', '#285964', '#405F83', '#416545', '#4D7069', '#6E9985', '#7EBC89', '#0283AF', '#79BCBF', '#99C19E'];
 //                console.log(label);
 //                console.log(data);
 
-        var grid = d3.range(25).map(function (i) {
+        var grid = d3.range(25).map(function () {
             return {'x1': 0, 'y1': 0, 'x2': 0, 'y2': 470};
         });
 
@@ -78,7 +78,7 @@ function ByTechnology() {
                     },
                     'y2': function (d) {
                         return d.y2;
-                    },
+                    }
                 })
                 .style({'stroke': '#adadad', 'stroke-width': '1px'});
 
@@ -160,11 +160,11 @@ function ByCountry() {
         var Max = 15000;
         var Interval = 2000;
 
-        var label = info.label
-        var data = info.data
+        var label = info.label;
+        var data = info.data;
         var colors = ['#0d4bcf', '#0066AE', '#074285', '#00187B', '#285964', '#405F83', '#416545', '#4D7069', '#6E9985', '#7EBC89', '#0283AF', '#79BCBF', '#99C19E'];
 
-        var grid = d3.range(25).map(function (i) {
+        var grid = d3.range(25).map(function () {
             return {'x1': 0, 'y1': 0, 'x2': 0, 'y2': 470};
         });
 
@@ -210,7 +210,7 @@ function ByCountry() {
                     },
                     'y2': function (d) {
                         return d.y2;
-                    },
+                    }
                 })
                 .style({'stroke': '#adadad', 'stroke-width': '1px'});
 
@@ -292,11 +292,11 @@ function ByInstitution() {
         var Max = 40000;
         var Interval = 8000;
 
-        var label = info.label
-        var data = info.data
+        var label = info.label;
+        var data = info.data;
         var colors = ['#0d4bcf', '#0066AE', '#074285', '#00187B', '#285964', '#405F83', '#416545', '#4D7069', '#6E9985', '#7EBC89', '#0283AF', '#79BCBF', '#99C19E'];
 
-        var grid = d3.range(25).map(function (i) {
+        var grid = d3.range(25).map(function () {
             return {'x1': 0, 'y1': 0, 'x2': 0, 'y2': 470};
         });
 
@@ -342,7 +342,7 @@ function ByInstitution() {
                     },
                     'y2': function (d) {
                         return d.y2;
-                    },
+                    }
                 })
                 .style({'stroke': '#adadad', 'stroke-width': '1px'});
 
@@ -424,11 +424,11 @@ function ByProject() {
         var Max = 40000;
         var Interval = 8000;
 
-        var label = info.label
-        var data = info.data
+        var label = info.label;
+        var data = info.data;
         var colors = ['#0d4bcf', '#0066AE', '#074285', '#00187B', '#285964', '#405F83', '#416545', '#4D7069', '#6E9985', '#7EBC89', '#0283AF', '#79BCBF', '#99C19E'];
 
-        var grid = d3.range(25).map(function (i) {
+        var grid = d3.range(25).map(function () {
             return {'x1': 0, 'y1': 0, 'x2': 0, 'y2': 470};
         });
 
@@ -474,7 +474,7 @@ function ByProject() {
                     },
                     'y2': function (d) {
                         return d.y2;
-                    },
+                    }
                 })
                 .style({'stroke': '#adadad', 'stroke-width': '1px'});
 
@@ -556,11 +556,11 @@ function ByTrialLocation() {
         var Max = 1500;
         var Interval = 100;
 
-        var label = info.label
-        var data = info.data
+        var label = info.label;
+        var data = info.data;
         var colors = ['#0d4bcf', '#0066AE', '#074285', '#00187B', '#285964', '#405F83', '#416545', '#4D7069', '#6E9985', '#7EBC89', '#0283AF', '#79BCBF', '#99C19E'];
 
-        var grid = d3.range(25).map(function (i) {
+        var grid = d3.range(25).map(function () {
             return {'x1': 0, 'y1': 0, 'x2': 0, 'y2': 470};
         });
 
@@ -606,7 +606,7 @@ function ByTrialLocation() {
                     },
                     'y2': function (d) {
                         return d.y2;
-                    },
+                    }
                 })
                 .style({'stroke': '#adadad', 'stroke-width': '1px'});
 

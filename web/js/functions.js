@@ -115,18 +115,18 @@ function ValidaEscrituraFecha(Fecha) {
             jQuery('#' + Campo).val(Valor);
         }
         LenFecha = Valor.length;
-        if (LenFecha == 4) {
+        if (LenFecha === 4) {
             jQuery('#' + Campo).val(Valor + "-");
         }
     } else if (LenFecha <= 7) {
-        var Valor2 = Valor.substring(5, (LenFecha))
+        var Valor2 = Valor.substring(5, (LenFecha));
         if (isNaN(Valor2)) {
             Valor = Valor.substring(0, (LenFecha - 1));
             jQuery('#' + Campo).val(Valor);
         }
         if ((Valor2 >= 0) && (Valor2 <= 12)) {
             LenFecha = Valor.length;
-            if (LenFecha == 7) {
+            if (LenFecha === 7) {
                 jQuery('#' + Campo).val(Valor + "-");
             }
         } else {
@@ -134,9 +134,9 @@ function ValidaEscrituraFecha(Fecha) {
             jQuery('#' + Campo).val(Valor);
         }
     } else if (LenFecha <= 10) {
-        var Valor3 = Valor.substring(8, (LenFecha))
+        var Valor3 = Valor.substring(8, (LenFecha));
         if (isNaN(Valor3)) {
-            Valor = Valor.substring(0, (LenFecha - 1))
+            Valor = Valor.substring(0, (LenFecha - 1));
             jQuery('#' + Campo).val(Valor);
         }
         if ((Valor3 >= 0) && (Valor3 <= 31)) {
@@ -154,10 +154,10 @@ function ValidaFecha(Fecha) {
     var LenFecha = Valor.length;
     var ErrorFecha = false;
 
-    if ((LenFecha != 10) && (Valor != '')) {
+    if ((LenFecha !== 10) && (Valor !== '')) {
         alerts.show({css: 'error', title: 'Invalid Date', message: 'The value must be in the format (yyyy-mm-dd).! '});
         jQuery('#' + Campo).val('');
-    } else if (Valor != '') {
+    } else if (Valor !== '') {
         var PartFecha = Valor.split("-");
         if (isNaN(PartFecha[0]))
             ErrorFecha = true;
@@ -178,7 +178,7 @@ function ValidaEscrituraNumero(Dato) {
     var Valor = Dato.value;
     var LenNumero = Valor.length;
     var Signo = Valor.substring(0, 1);
-    if (Signo == '-') {
+    if (Signo === '-') {
         Valor = Valor.substring(1, LenNumero) * 1;
     }
     if (isNaN(Valor)) {
@@ -190,7 +190,7 @@ function ValidaEscrituraNumero(Dato) {
 function ValidaValorNumerico(campo) {
     var valor = campo.value;
     var nombre = campo.id;
-    if (valor != '') {
+    if (valor !== '') {
         if (isNaN(valor)) {
             alerts.show({css: 'error', title: 'Invalid Field', message: 'The value of the field must be numeric.! '});
             jQuery('#' + nombre).val('');
@@ -201,7 +201,7 @@ function ValidaValorNumerico(campo) {
 function ValidaAno(campo) {
     var valor = campo.value;
     var nombre = campo.id;
-    if (valor != '') {
+    if (valor !== '') {
         if (isNaN(valor)) {
             alerts.show({css: 'error', title: 'Invalid Field', message: 'The field value must be 4-digit numeric.! '});
             jQuery('#' + nombre).val('');
@@ -217,7 +217,7 @@ function ValidaAno(campo) {
 function ValidaURL(campo) {
     var valor = campo.value;
     var nombre = campo.id;
-    if (valor != '') {
+    if (valor !== '') {
         if (!(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/|www\.)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?jQuery/.test(valor))) {
             alerts.show({css: 'error', title: 'Invalid Field', message: 'The field value must be a valid URL.! '});
             jQuery('#' + nombre).val('');
@@ -229,7 +229,7 @@ function ValidaEmail(campo) {
     var valor = campo.value;
     var field = campo.id;
     // creamos nuestra regla con expresiones regulares.
-    if (valor != '') {
+    if (valor !== '') {
         var filter = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
         if (!(filter.test(valor))) {
             jQuery('#' + field).val('');
@@ -242,7 +242,7 @@ function ValidarNumero(campo) {
     var valor = campo.value;
     var field = campo.id;
 // creamos nuestra regla con expresiones regulares.
-    if (valor != '') {
+    if (valor !== '') {
         var filter = /^\d*jQuery/;
         if (!(filter.test(valor))) {
             jQuery('#' + field).val('');
@@ -509,6 +509,4 @@ function ViewVariety(id_genebank) {
 function ViewVariablesMeasured(id_ontology) {
     window.open('http://www.cropontology-curationtool.org/terms/' + id_ontology + '/Stem%20rust/static-html', 'cropontology-curationtool', 'height=800,width=900,scrollbars=1');
 }
-
 //fin: MANEJO DE CULTIVOS (VARIEDADES Y VARIABLES MEDIDAS)
-
