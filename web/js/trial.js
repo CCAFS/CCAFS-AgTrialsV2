@@ -306,6 +306,10 @@ function GoToLicence() {
     });
 }
 
+function wopen(trial) {
+    window.open("/tbtrial/" + trial, "Trial", "width=800,height=800,scrollbars=1");
+}
+
 //DESCARGA DE ARCHIVOS TRIALS
 function DownloadFileTrial(id_trial, id_crop, typefile) {
     var License = jQuery("#tb_trial_trltriallicense").val();

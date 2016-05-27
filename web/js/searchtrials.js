@@ -98,6 +98,7 @@ jQuery(document).ready(function () {
         jQuery('#ButtonResusltsSearch').hide();
         jQuery('#DivTableResusltsSearch').hide();
         jQuery('#DivTableResusltsSearchMaps').hide();
+        jQuery("#ResusltsSearchMaps").attr('src', "");
 
 
         jQuery.ajax({
