@@ -1,4 +1,5 @@
 <?php
+use_javascript('trial.js');
 $SearchWhere = sfContext::getInstance()->getUser()->getAttribute('SearchWhere');
 $Where = "";
 foreach ($SearchWhere AS $value) {
@@ -31,6 +32,11 @@ foreach ($Resultado00 AS $fila) {
 }
 $maps = json_encode($puntos);
 ?>
+<script type="text/javascript">
+    function wopen(trial) {
+        window.open("/trial/" + trial, '_blank');
+    }
+</script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ3AuoynudzyBkbJ6uTVbC3PdQDObXjfc"></script>
 <script type="text/javascript" src="/GoogleMapsV3/GoogleMapsV3-Searchtrials.js"></script>
 <script type="text/javascript" src="/GoogleMapsV3/GoogleMapsV3-MarkerClusterer.js"></script>
