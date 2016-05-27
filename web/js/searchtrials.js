@@ -62,7 +62,7 @@ jQuery(document).ready(function () {
                 "fnRowCallback": function (nRow, aData) {
                     jQuery('td:eq(0)', nRow).html('<a target="_blank" href="/trial/' + aData[4] + '">' + aData[0] + '</a>');
                     return nRow;
-                },
+                }
             });
         }
     });
@@ -133,79 +133,38 @@ jQuery(document).ready(function () {
             ValidSearchterms();
     });
 
+    jQuery("#searchprjname").focus(function () {
+        ClearFieldAutocomplete("id_project", "searchprjname", "CheckProject");
+    });
+    jQuery("#searchcontactperson").focus(function () {
+        ClearFieldAutocomplete("id_contactperson", "searchcontactperson", "CheckContactperson");
+    });
+    jQuery("#searchcrpname").focus(function () {
+        ClearFieldAutocomplete("id_crop", "searchcrpname", "CheckCrop");
+    });
+    jQuery("#searchtrltrialname").focus(function () {
+        ClearFieldAutocomplete("id_trial", "searchtrltrialname", "CheckTrialname");
+    });
+
+
     jQuery("#searchprjname").blur(function () {
-        if ((jQuery('#id_project').val() !== '') && (jQuery('#searchprjname').val() !== '')) {
-            jQuery('#CheckProject').html("<img width='18' height='18' src='/images/success.png'>");
-        } else {
-            jQuery('#id_project').val('')
-            jQuery('#searchprjname').val('')
-            jQuery('#CheckProject').html("");
-        }
-        jQuery.ajax({
-            type: "GET",
-            url: "/trial/AssingWhere/",
-            data: "field=id_project&value=" + jQuery('#id_project').val(),
-            success: function () {
-            }
-        });
+        AssignFieldAutocomplete("id_project", "searchprjname", "CheckProject");
     });
-
     jQuery("#searchcontactperson").blur(function () {
-        if ((jQuery('#id_contactperson').val() !== '') && (jQuery('#searchcontactperson').val() !== '')) {
-            jQuery('#CheckContactperson').html("<img width='18' height='18' src='/images/success.png'>");
-        } else {
-            jQuery('#id_contactperson').val('')
-            jQuery('#searchcontactperson').val('')
-            jQuery('#CheckContactperson').html("");
-        }
-        jQuery.ajax({
-            type: "GET",
-            url: "/trial/AssingWhere/",
-            data: "field=id_contactperson&value=" + jQuery('#id_contactperson').val(),
-            success: function () {
-            }
-        });
+        AssignFieldAutocomplete("id_contactperson", "searchcontactperson", "CheckContactperson");
     });
-
     jQuery("#searchcrpname").blur(function () {
-        if ((jQuery('#id_crop').val() !== '') && (jQuery('#searchcrpname').val() !== '')) {
-            jQuery('#CheckCrop').html("<img width='18' height='18' src='/images/success.png'>");
-        } else {
-            jQuery('#id_crop').val('')
-            jQuery('#searchcrpname').val('')
-            jQuery('#CheckCrop').html("");
-        }
-        jQuery.ajax({
-            type: "GET",
-            url: "/trial/AssingWhere/",
-            data: "field=id_crop&value=" + jQuery('#id_crop').val(),
-            success: function () {
-            }
-        });
+        AssignFieldAutocomplete("id_crop", "searchcrpname", "CheckCrop");
     });
-
     jQuery("#searchtrltrialname").blur(function () {
-        if ((jQuery('#id_trial').val() !== '') && (jQuery('#searchtrltrialname').val() !== '')) {
-            jQuery('#CheckTrialname').html("<img width='18' height='18' src='/images/success.png'>");
-        } else {
-            jQuery('#id_trial').val('')
-            jQuery('#searchtrltrialname').val('')
-            jQuery('#CheckTrialname').html("");
-        }
-        jQuery.ajax({
-            type: "GET",
-            url: "/trial/AssingWhere/",
-            data: "field=id_trial&value=" + jQuery('#id_trial').val(),
-            success: function () {
-            }
-        });
+        AssignFieldAutocomplete("id_trial", "searchtrltrialname", "CheckTrialname");
     });
 
     jQuery("#searchtrnfplantingsowingfrom").blur(function () {
         if (jQuery('#searchtrnfplantingsowingfrom').val() !== '') {
             jQuery('#CheckSowingFrom').html("<img width='18' height='18' src='/images/success.png'>");
         } else {
-            jQuery('#searchtrnfplantingsowingfrom').val('')
+            jQuery('#searchtrnfplantingsowingfrom').val('');
             jQuery('#CheckSowingFrom').html("");
         }
         jQuery.ajax({
@@ -221,7 +180,7 @@ jQuery(document).ready(function () {
         if (jQuery('#searchtrnfplantingsowingto').val() !== '') {
             jQuery('#CheckSowingTo').html("<img width='18' height='18' src='/images/success.png'>");
         } else {
-            jQuery('#searchtrnfplantingsowingto').val('')
+            jQuery('#searchtrnfplantingsowingto').val('');
             jQuery('#CheckSowingTo').html("");
         }
         jQuery.ajax({
@@ -237,7 +196,7 @@ jQuery(document).ready(function () {
         if (jQuery('#searchtrnfharvestfrom').val() !== '') {
             jQuery('#CheckHarvestFrom').html("<img width='18' height='18' src='/images/success.png'>");
         } else {
-            jQuery('#searchtrnfharvestfrom').val('')
+            jQuery('#searchtrnfharvestfrom').val('');
             jQuery('#CheckHarvestFrom').html("");
         }
         jQuery.ajax({
@@ -253,7 +212,7 @@ jQuery(document).ready(function () {
         if (jQuery('#searchtrnfharvestto').val() !== '') {
             jQuery('#CheckHarvestTo').html("<img width='18' height='18' src='/images/success.png'>");
         } else {
-            jQuery('#searchtrnfharvestto').val('')
+            jQuery('#searchtrnfharvestto').val('');
             jQuery('#CheckHarvestTo').html("");
         }
         jQuery.ajax({
@@ -269,7 +228,7 @@ jQuery(document).ready(function () {
         if (jQuery('#searchcreatedatfrom').val() !== '') {
             jQuery('#CheckCreatedatFrom').html("<img width='18' height='18' src='/images/success.png'>");
         } else {
-            jQuery('#searchtrnfharvestfrom').val('')
+            jQuery('#searchtrnfharvestfrom').val('');
             jQuery('#CheckCreatedatFrom').html("");
         }
         jQuery.ajax({
@@ -285,7 +244,7 @@ jQuery(document).ready(function () {
         if (jQuery('#searchcreatedatto').val() !== '') {
             jQuery('#CheckCreatedatTo').html("<img width='18' height='18' src='/images/success.png'>");
         } else {
-            jQuery('#searchcreatedatto').val('')
+            jQuery('#searchcreatedatto').val('');
             jQuery('#CheckCreatedatTo').html("");
         }
         jQuery.ajax({
@@ -297,6 +256,34 @@ jQuery(document).ready(function () {
         });
     });
 
+    function ClearFieldAutocomplete(id, name, check) {
+        jQuery('#' + id).val('');
+        jQuery('#' + name).val('');
+        jQuery('#' + check).html('');
+        jQuery.ajax({
+            type: "GET",
+            url: "/trial/AssingWhere/",
+            data: "field=" + id + "&value=" + jQuery('#' + id).val(),
+            success: function () {}
+        });
+    }
+
+    function AssignFieldAutocomplete(id, name, check) {
+        if ((jQuery('#' + id).val() !== '') && (jQuery('#' + name).val() !== '')) {
+            jQuery('#' + check).html("<img width='18' height='18' src='/images/success.png'>");
+        } else {
+            jQuery('#' + id).val('');
+            jQuery('#' + name).val('');
+            jQuery('#' + check).html("");
+        }
+        jQuery.ajax({
+            type: "GET",
+            url: "/trial/AssingWhere/",
+            data: "field=" + id + "&value=" + jQuery('#' + id).val(),
+            success: function () {}
+        });
+    }
+
     function ValidSearchterms() {
         var searchterms = jQuery('#searchterms').val();
         var searchtermsoptions = jQuery('#searchtermsoptions').val();
@@ -304,7 +291,7 @@ jQuery(document).ready(function () {
         if (jQuery('#searchterms').val() !== '') {
             jQuery('#CheckSearchterms').html("<img width='18' height='18' src='/images/success.png'>");
         } else {
-            jQuery('#searchterms').val('')
+            jQuery('#searchterms').val('');
             jQuery('#CheckSearchterms').html("");
         }
         jQuery.ajax({
@@ -313,7 +300,7 @@ jQuery(document).ready(function () {
             data: "searchterms=" + searchterms + "&searchtermsoptions=" + searchtermsoptions,
             success: function (data) {
                 if (data) {
-                    jQuery('#searchterms').val('')
+                    jQuery('#searchterms').val('');
                     jQuery('#CheckSearchterms').html("");
                     alerts.show({css: 'error', title: 'Search Terms', message: 'Not found information, for terms written.!'});
                 }
