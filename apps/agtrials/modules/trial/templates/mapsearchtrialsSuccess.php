@@ -1,10 +1,17 @@
 <?php
+$SearchWhere = sfContext::getInstance()->getUser()->getAttribute('SearchWhere');
+$Where = "";
+foreach ($SearchWhere AS $value) {
+    $Where .= $value;
+}
 $connection = Doctrine_Manager::getInstance()->connection();
 $QUERY00 = "SELECT T.id_trial,CR.crpname,TL.trlclatitude,TL.trlclongitude ";
 $QUERY00 .= "FROM tb_trial T INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
+$QUERY00 .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
 $QUERY00 .= "INNER JOIN tb_crop CR ON TI.id_crop = CR.id_crop ";
 $QUERY00 .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
 $QUERY00 .= "WHERE TL.trlclatitude IS NOT NULL AND TL.trlclongitude IS NOT NULL ";
+$QUERY00 .= "$Where ";
 $st = $connection->execute($QUERY00);
 $Resultado00 = $st->fetchAll();
 $a = 0;

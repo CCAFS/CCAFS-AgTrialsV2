@@ -119,6 +119,7 @@ jQuery(document).ready(function () {
     jQuery("#ButtonMap").click(function () {
         jQuery('#DivTableResusltsSearch').hide();
         jQuery('#DivTableResusltsSearchMaps').show();
+        $("#DivTableResusltsSearchMaps").load("/trial/mapsearchtrials/");
     });
 
     jQuery("#ShowHideDivAdvancedSearch").on('click', function () {
