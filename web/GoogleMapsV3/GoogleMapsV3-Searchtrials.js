@@ -53,7 +53,7 @@ function toggleMarkerManager() {
             trackMarkers: true,
             maxZoom: 10
         });
-        google.maps.event.addListener(mgr, 'loaded', function() {
+        google.maps.event.addListener(mgr, 'loaded', function () {
             mgr.addMarkers(markers.info, 0, 5);
             mgr.refresh();
         });
@@ -140,10 +140,10 @@ function initialize() {
                     clickable: true,
                     draggable: false,
                     flat: true,
-					icon: '/images/GoogleMap/m0.png'
+                    icon: '/images/GoogleMap/m0.png'
                 });
-                google.maps.event.addListener(markers[level][i], 'click', (function(marker, i) {
-                    return function() {
+                google.maps.event.addListener(markers[level][i], 'click', (function (marker, i) {
+                    return function () {
                         var details = markers[level][i];
                         infowindow.setContent(details.context);
                         infowindow.open(map, markers[level][i]);
