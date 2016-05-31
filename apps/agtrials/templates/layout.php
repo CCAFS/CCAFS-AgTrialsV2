@@ -38,6 +38,8 @@ if (($Modulo == 'home') && ($Action == 'statistics'))
     $Statistics = "selected";
 if (($Modulo == 'home') && ($Action == 'contact'))
     $Contact = "selected";
+if (($Modulo == 'contactperson') || ($Modulo == 'crop'))
+    $Modules = "selected";
 
 if ($sf_user->isAuthenticated()) {
     $id_user = sfContext::getInstance()->getUser()->getGuardUser()->getId();
@@ -74,6 +76,7 @@ if ($sf_user->isAuthenticated()) {
                     <div class="MenuPPlOpc <?php echo $Trial ?>" onclick="window.location.href = '/trial/new'">Trial</div>
                     <?php if ($sf_user->isAuthenticated()) { ?>
                         <div class="MenuPPlOpc <?php echo $Processes ?>" onclick="window.location.href = '/batchuploadanother'">Processes</div>
+                        <div class="MenuPPlOpc <?php echo $Modules ?>" onclick="window.location.href = '/contactperson'">Modules</div>
                     <?php } ?>
                     <div class="MenuPPlOpc <?php echo $Statistics ?>" onclick="window.location.href = '/statistics'">Statistics</div>
                     <div class="MenuPPlOpc <?php echo $Contact ?>" onclick="window.location.href = '/contact'">Contact Us</div>
@@ -122,11 +125,11 @@ if ($sf_user->isAuthenticated()) {
         ?>
         <footer>
             <div class="container">
-                
+
                 <p>
-                Please report any system problems and send us your feedback here. <br />
-                @ Copyright 2016 <br />
-                Current version 2.0 
+                    Please report any system problems and send us your feedback here. <br />
+                    @ Copyright 2016 <br />
+                    Current version 2.0 
                 </p>
                 <br />
                 <h4 class="our-partners-title">Our partners</h4>
