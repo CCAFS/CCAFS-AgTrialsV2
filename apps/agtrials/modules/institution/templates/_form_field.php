@@ -1,3 +1,9 @@
+<?php
+$ArrFieldMandatory = array('insname');
+$Mandatory = "";
+if (in_array($name, $ArrFieldMandatory))
+    $Mandatory = "<span class='Mandatory'>*</span> ";
+?>
 <?php if ($field->isPartial()): ?>
     <?php include_partial('institution/' . $name, array('form' => $form, 'attributes' => $attributes instanceof sfOutputEscaper ? $attributes->getRawValue() : $attributes)) ?>
 <?php elseif ($field->isComponent()): ?>
@@ -5,7 +11,7 @@
 <?php else: ?>
     <?php if ($name == 'id_country') { ?>
         <div class="form-group <?php echo $class ?> <?php $form[$name]->hasError() and print 'has-error' ?>">
-            <div class="col-sm-2"><?php echo $label ?>:</div>
+            <div class="col-sm-2"><?php echo $Mandatory . $label ?>:</div>
             <div class="<?php echo $form[$name]->getWidget()->getOption('content-handler'); ?> col-sm-4 <?php echo $class ?>">
                 <div class="form-group control-type-text">
                     <div class="col-sm-12 control-type-text">

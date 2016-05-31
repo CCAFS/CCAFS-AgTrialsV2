@@ -1,10 +1,16 @@
+<?php
+$ArrFieldMandatory = array('id_crop', 'id_traitclass', 'vrmsname', 'vrmsunit');
+$Mandatory = "";
+if (in_array($name, $ArrFieldMandatory))
+    $Mandatory = "<span class='Mandatory'>*</span> ";
+?>
 <?php if ($field->isPartial()): ?>
     <?php include_partial('variablesmeasured/' . $name, array('form' => $form, 'attributes' => $attributes instanceof sfOutputEscaper ? $attributes->getRawValue() : $attributes)) ?>
 <?php elseif ($field->isComponent()): ?>
     <?php include_component('variablesmeasured', $name, array('form' => $form, 'attributes' => $attributes instanceof sfOutputEscaper ? $attributes->getRawValue() : $attributes)) ?>
 <?php else: ?>
     <div class="form-group <?php echo $class ?> <?php $form[$name]->hasError() and print 'has-error' ?>">
-        <div class="col-sm-2"><?php echo $label ?>:</div>
+        <div class="col-sm-2"><?php echo $Mandatory . $label ?>:</div>
         <div class="<?php echo $form[$name]->getWidget()->getOption('content-handler'); ?> col-sm-4 <?php echo $class ?>">
             <?php if ($form[$name]->getWidget()->hasOption('content-handler')): ?>
                 <div class="input-group">
