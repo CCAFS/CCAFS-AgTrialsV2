@@ -69,6 +69,11 @@ header {
     font-weight: bold;
 }
 
+.MenuButtonLeft.selected{
+    color: #2A9A60;
+    font-weight: bold;
+}
+
 
 
 .MenuProcesses{
