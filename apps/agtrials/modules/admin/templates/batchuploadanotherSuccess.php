@@ -1,3 +1,8 @@
+<script type="text/javascript">
+    function SelectedTemplate(value) {
+        $("#SelectTemplate").val(value);
+    }
+</script>
 <div class="row">
     <div class="col-md-2 left-column">
         <?php include_partial('admin/ProsessesMenu') ?>
@@ -12,19 +17,19 @@
             <div class="container">
                 <div>Download templates:</div>
                 <div class="row RowDownloadTemplate">
-                    <div class="DownloadTemplate" onclick="window.location.href = '/downloadestrutureproject'">
+                    <div class="DownloadTemplate" onclick="window.location.href = '/downloadestrutureproject'; SelectedTemplate('Trial Project Template');">
                         <img width="60" height="50" border="0" src="/images/DownloadTemplate.png">
                         <div>Trial Project Template</div>
                     </div>
-                    <div class="DownloadTemplate" onclick="window.location.href = '/downloadestruturetriallocation'">
+                    <div class="DownloadTemplate" onclick="window.location.href = '/downloadestruturetriallocation'; SelectedTemplate('Trial Location Template');">
                         <img width="60" height="50" border="0" src="/images/DownloadTemplate.png">
                         <div>Trial Location Template</div>
                     </div>
-                    <div class="DownloadTemplate" onclick="window.location.href = '/downloadestruturevariety'">
+                    <div class="DownloadTemplate" onclick="window.location.href = '/downloadestruturevariety'; SelectedTemplate('Trial Varieties Template');">
                         <img width="60" height="50" border="0" src="/images/DownloadTemplate.png">
                         <div>Trial Varieties Template</div>
                     </div>
-                    <div class="DownloadTemplate" onclick="window.location.href = '/downloadestruturevariablesmeasured'">
+                    <div class="DownloadTemplate" onclick="window.location.href = '/downloadestruturevariablesmeasured'; SelectedTemplate('Trial Variables Measured Template');">
                         <img width="60" height="50" border="0" src="/images/DownloadTemplate.png">
                         <div>Trial Variables Measured Template</div>
                     </div>
