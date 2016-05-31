@@ -1,9 +1,3 @@
-<?php
-$ArrFieldMandatory = array('trlcname', 'trlclatitude', 'trlclongitude', 'id_countrytriallocation');
-$Mandatory = "";
-if (in_array($name, $ArrFieldMandatory))
-    $Mandatory = "<span class='Mandatory'>*</span> ";
-?>
 <?php if ($field->isPartial()): ?>
     <?php include_partial('triallocation/' . $name, array('form' => $form, 'attributes' => $attributes instanceof sfOutputEscaper ? $attributes->getRawValue() : $attributes)) ?>
 <?php elseif ($field->isComponent()): ?>

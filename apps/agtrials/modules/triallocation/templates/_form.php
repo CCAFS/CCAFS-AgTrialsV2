@@ -15,13 +15,13 @@
             <fieldset>
                 <?php echo $form->renderHiddenFields() ?>
                 <div class="form-group control-type-text control-name-trlcname ">
-                    <div class="col-sm-2">Name:</div>
+                    <div class="col-sm-2"><span class='Mandatory'>*</span> Name:</div>
                     <div class=" col-sm-3 control-type-text control-name-trlcname">
                         <input type="text" id="tb_triallocation_trlcname" class="form-control" name="tb_triallocation[trlcname]" value="<?php echo $form->getObject()->get('trlcname'); ?>">                                
                     </div>
                 </div>
                 <div class="form-group control-type-text control-name-trlclatitude ">
-                    <div class="col-sm-2">Latitude:</div>
+                    <div class="col-sm-2"><span class='Mandatory'>*</span> Latitude:</div>
                     <div class=" col-sm-3 control-type-text control-name-trlclatitude">
                         <input type="text" id="tb_triallocation_trlclatitude" class="form-control" name="tb_triallocation[trlclatitude]" value="<?php echo $form->getObject()->get('trlclatitude'); ?>">
                     </div>
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="form-group control-type-text control-name-trlclongitude ">
-                    <div class="col-sm-2">Longitude:</div>
+                    <div class="col-sm-2"><span class='Mandatory'>*</span> Longitude:</div>
                     <div class=" col-sm-3 control-type-text control-name-trlclongitude">
                         <input type="text" id="tb_triallocation_trlclongitude" class="form-control" name="tb_triallocation[trlclongitude]" value="<?php echo $form->getObject()->get('trlclongitude'); ?>"> 
                     </div>
@@ -47,7 +47,7 @@
 
                 <?php $InfoTrialLocation = GetInfoTrialLocation($form->getObject()->get('id_triallocation')); ?>
                 <div class="form-group control-type-text control-name-location ">
-                    <div class="col-sm-2">Country:</div>
+                    <div class="col-sm-2"><span class='Mandatory'>*</span> Country:</div>
                     <div class=" col-sm-3 control-type-text control-name-location">
                         <?php $PartCountry = explode(",", $InfoTrialLocation['country'], 2); ?>
                         <input name="id_countrytriallocation" id="id_countrytriallocation" type="hidden" value="<?php echo $PartCountry[0]; ?>">
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="form-group control-type-text control-name-location ">
-                    <div class="col-sm-2">District/Satate:</div>
+                    <div class="col-sm-2"><span class='Mandatory'>*</span> District/Satate:</div>
                     <div class=" col-sm-3 control-type-text control-name-location">
                         <?php $PartDistrict = explode(",", $InfoTrialLocation['district'], 2); ?>
                         <input name="id_districttriallocation" id="id_districttriallocation" type="hidden" value="<?php echo $PartDistrict[0]; ?>">
