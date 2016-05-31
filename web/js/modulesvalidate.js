@@ -114,30 +114,19 @@ jQuery(document).ready(function () {
     //inicio: VALIDAMOS EL ENVIO DEL FORMULARIO DE EXPERIMENTAL DESIGN
     var FieldInstitution = {
         'tb_institution_insname': 'Name',
-        'tb_institution[id_country]': 'Country'
+        'id_country': 'Country'
     };
     jQuery("#FormInstitution").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
         var BanderaFaltantes = false;
         var MensajeFaltantes = "";
-        var Valor = '';
         $.each(FieldInstitution, function (Id, Campo) {
-            if (Id === 'tb_institution[id_country]')
-                Valor = jQuery('select[id=tb_institution[id_country]]').val();
-            else
-                Valor = jQuery('#' + Id).val();
-            if (Valor === '') {
+            if (jQuery('#' + Id).val() === '') {
                 BanderaFaltantes = true;
                 MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
-                if (Id === 'tb_institution[id_country]')
-                    SelectObligatorio(Id);
-                else
-                    CampoObligatorio(Id);
+                CampoObligatorio(Id);
             } else {
-                if (Id === 'tb_institution[id_country]')
-                    SelectNormalObligatorio(Id);
-                else
-                    CampoNormalObligatorio(Id);
+                CampoNormalObligatorio(Id);
             }
         });
         CheckError('FormInstitution', event, BanderaFaltantes, MensajeFaltantes);
