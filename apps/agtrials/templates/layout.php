@@ -21,6 +21,10 @@
  * @author    :  Herlin R. Espinosa G. - herlin25@gmail.com
  * @version   :  ~
  */
+
+
+$Modulos = array('contactperson', 'crop', 'donor', 'experimentaldesign', 'institution', 'project', 'rolecontactperson', 'traitclass', 'triallocation', 'variablesmeasured', 'variety');
+
 $Container = true;
 $Modulo = sfContext::getInstance()->getRequest()->getParameterHolder()->get('module');
 $Action = sfContext::getInstance()->getRequest()->getParameterHolder()->get('action');
@@ -38,7 +42,7 @@ if (($Modulo == 'home') && ($Action == 'statistics'))
     $Statistics = "selected";
 if (($Modulo == 'home') && ($Action == 'contact'))
     $Contact = "selected";
-if (($Modulo == 'contactperson') || ($Modulo == 'crop'))
+if (in_array($Modulo, $Modulos))
     $Modules = "selected";
 
 if ($sf_user->isAuthenticated()) {
