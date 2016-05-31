@@ -10,6 +10,7 @@
         <span class="Title">Variables measured</span>
         <?php echo form_tag_for($form, '@tb_variablesmeasured', array('class' => 'form-horizontal', 'id' => 'FormVariablesmeasured', 'enctype' => 'multipart/form-data')) ?>
         <div class="Session" style="margin-top: 10px; margin-bottom: 10px;">
+            <div class="form-group control-type-text" style="margin-left: 0px;">All fields marked with <span class="Mandatory">*</span> are required.</div>
             <?php echo $form->renderHiddenFields(false) ?>
             <?php if ($form->hasGlobalErrors()): ?>
                 <?php echo $form->renderGlobalErrors() ?>

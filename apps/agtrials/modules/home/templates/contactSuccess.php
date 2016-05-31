@@ -79,45 +79,46 @@
     <br>Please Wait...
 </div>
 <div class="Session" style="margin-top: 10px; margin-bottom: 10px; border-bottom-width: 0px; padding: 10px; border-top-width: 10px;">
+    <div class="form-group control-type-text" style="margin-left: 0px;">All fields marked with <span class="Mandatory">*</span> are required.</div>
     <form class="form-horizontal"  id="FormContact" name="FormContact" action="" method="post"  autocomplete="off">
         <div class="form-group control-type-text">
-            <div class="col-sm-2">First name:</div>
+            <div class="col-sm-2"><span class="Mandatory">*</span> First name:</div>
             <div class="col-sm-4 control-type-text">
                 <input class="form-control" type="text" name="firstname" id="firstname"/>
             </div>
         </div>
         <div class="form-group control-type-text">
-            <div class="col-sm-2">Last name:</div>
+            <div class="col-sm-2"><span class="Mandatory">*</span> Last name:</div>
             <div class="col-sm-4 control-type-text">
                 <input class="form-control" type="text" name="lastname" id="lastname"/>
             </div>
         </div>
         <div class="form-group control-type-text">
-            <div class="col-sm-2">E-mail:</div>
+            <div class="col-sm-2"><span class="Mandatory">*</span> E-mail:</div>
             <div class="col-sm-4 control-type-text">
                 <input class="form-control" type="text" name="emailaddress" id="emailaddress"/>
             </div>
         </div>
         <div class="form-group control-type-text">
-            <div class="col-sm-2">Telephone:</div>
+            <div class="col-sm-2"><span class="Mandatory">*</span> Telephone:</div>
             <div class="col-sm-4 control-type-text">
                 <input class="form-control" type="text" name="telephone" id="telephone"/>
             </div>
         </div>
         <div class="form-group control-type-text">
-            <div class="col-sm-2">Country:</div>
+            <div class="col-sm-2"><span class="Mandatory">*</span> Country:</div>
             <div class="col-sm-4 control-type-text">
                 <input class="form-control" type="text" name="country" id="country"/>
             </div>
         </div>
         <div class="form-group control-type-text">
-            <div class="col-sm-2">Message:</div>
+            <div class="col-sm-2"><span class="Mandatory">*</span> Message:</div>
             <div class="col-sm-4 control-type-text">
                 <textarea class="form-control" id="message" name="message" title="Message" rows="5" cols="50"></textarea>
             </div>
         </div>
         <div class="form-group control-type-text">
-            <div class="col-sm-2">Security Code:</div>
+            <div class="col-sm-2"><span class="Mandatory">*</span> Security Code:</div>
             <div class="col-sm-4 control-type-text">
                 <div id="CodeError"></div>
                 <div class="col-sm-6 control-type-text" style="padding-left: 0px;">

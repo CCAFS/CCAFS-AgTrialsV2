@@ -98,11 +98,11 @@
     <br>Please Wait...
 </div>
 <div class="Session" style="margin-top: 10px; margin-bottom: 10px; border-bottom-width: 0px; padding: 10px; border-top-width: 10px;">
-
+    <div class="form-group control-type-text" style="margin-left: 0px;">All fields marked with <span class="Mandatory">*</span> are required.</div>
     <form class="form-horizontal"  id="FormRegister" name="FormRegister" action="" method="post"  autocomplete="off">
         <fieldset>
             <div class="form-group control-type-text">
-                <div class="col-sm-2">Email address:</div>
+                <div class="col-sm-2"><span class="Mandatory">*</span> Email address:</div>
                 <div class="col-sm-4 control-type-text">
                     <div id="ErrorEmailAddress"></div>
                     <div class="col-sm-15 control-type-text">
@@ -111,26 +111,26 @@
                 </div>
             </div>
             <div class="form-group control-type-text">
-                <div class="col-sm-2">First name:</div>
+                <div class="col-sm-2"><span class="Mandatory">*</span> First name:</div>
                 <div class="col-sm-4 control-type-text">
                     <input class="form-control" type="text" name="firstname" id="firstname"/>
                 </div>
             </div>
             <div class="form-group control-type-text">
-                <div class="col-sm-2">Last name:</div>
+                <div class="col-sm-2"><span class="Mandatory">*</span> Last name:</div>
                 <div class="col-sm-4 control-type-text">
                     <input class="form-control" type="text" name="lastname" id="lastname"/>
                 </div>
             </div>
             <div class="form-group control-type-text">
-                <div class="col-sm-2">Institution or Affiliation:</div>
+                <div class="col-sm-2" style="width: 191px; padding-right: 0px;"><span class="Mandatory">*</span> Institution or Affiliation:</div>
                 <div class="col-sm-4 control-type-text">
                     <input name="id_institution" id="id_institution" type="hidden" value="" /> 
                     <input class="form-control SearchInput" name="institution" id="institution" type="text"/>
                 </div>
             </div>
             <div class="form-group control-type-text">
-                <div class="col-sm-2">Country:</div>
+                <div class="col-sm-2"><span class="Mandatory">*</span> Country:</div>
                 <div class="col-sm-4 control-type-text">
                     <input name="id_country" id="id_country" type="hidden"value="" /> 
                     <input class="form-control SearchInput" name="country" id="country" type="text" size="17" maxlength="150" value="" />
@@ -149,13 +149,13 @@
                 </div>
             </div>
             <div class="form-group control-type-text">
-                <div class="col-sm-2">Address:</div>
+                <div class="col-sm-2"><span class="Mandatory">*</span> Address:</div>
                 <div class="col-sm-4 control-type-text">
                     <input class="form-control" type="text" name="address" id="address"/>
                 </div>
             </div>
             <div class="form-group control-type-text">
-                <div class="col-sm-2">Telephone:</div>
+                <div class="col-sm-2"><span class="Mandatory">*</span> Telephone:</div>
                 <div class="col-sm-4 control-type-text">
                     <input class="form-control" type="text" name="telephone" id="telephone"/>
                 </div>
@@ -175,13 +175,13 @@
                 </p>
             </div>
             <div class="form-group control-type-text">
-                <div class="col-sm-2">Motivation:</div>
+                <div class="col-sm-2"><span class="Mandatory">*</span> Motivation:</div>
                 <div class="col-sm-4 control-type-text">
                     <textarea class="form-control" name="motivation" id="motivation" rows="3" cols="68"></textarea>
                 </div>
             </div>
             <div class="form-group control-type-text">
-                <div class="col-sm-2">Security Code:</div>
+                <div class="col-sm-2"><span class="Mandatory">*</span> Security Code:</div>
                 <div class="col-sm-4 control-type-text">
                     <div id="CodeError"></div>
                     <div class="col-sm-6 control-type-text" style="padding-left: 0px;">

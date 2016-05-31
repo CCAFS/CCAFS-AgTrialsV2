@@ -11,6 +11,7 @@
         <span class="Title">Trial location</span>
         <?php echo form_tag_for($form, '@tb_triallocation', array('class' => 'form-horizontal', 'id' => 'FormTriallocation', 'enctype' => 'multipart/form-data')) ?>
         <div class="Session" style="margin-top: 10px; margin-bottom: 10px;">
+            <div class="form-group control-type-text" style="margin-left: 0px;">All fields marked with <span class="Mandatory">*</span> are required.</div>
             <fieldset>
                 <?php echo $form->renderHiddenFields() ?>
                 <div class="form-group control-type-text control-name-trlcname ">

@@ -10,6 +10,7 @@
         <span class="Title">Institution</span>
         <?php echo form_tag_for($form, '@tb_institution', array('class' => 'form-horizontal', 'id' => 'FormInstitution', 'enctype' => 'multipart/form-data')) ?>
         <div class="Session" style="margin-top: 10px; margin-bottom: 10px;">
+            <div class="form-group control-type-text" style="margin-left: 0px;">All fields marked with <span class="Mandatory">*</span> are required.</div>
             <?php echo $form->renderHiddenFields(false) ?>
             <?php if ($form->hasGlobalErrors()): ?>
                 <?php echo $form->renderGlobalErrors() ?>

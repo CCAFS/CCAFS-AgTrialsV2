@@ -74,7 +74,9 @@ header {
     font-weight: bold;
 }
 
-
+.Mandatory{
+    color: red;
+}
 
 .MenuProcesses{
     background: #EEEEEE none repeat scroll 0 0;

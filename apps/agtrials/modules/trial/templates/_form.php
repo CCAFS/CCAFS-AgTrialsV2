@@ -34,7 +34,7 @@ if (isset($session_group_id)) {
         $('#group_id').autocompletegroups({
             selected: [<?php if ($selectedgroup) echo $selectedgroup; ?>]
         });
-    }); 
+    });
 </script>
 <div class="row">
     <div class="col-md-2 left-column">
@@ -61,15 +61,15 @@ if (isset($session_group_id)) {
     <div class="col-md-10 sf_admin_form">
         <?php echo form_tag_for($form, '@tb_trial', array('enctype' => 'multipart/form-data', 'id' => 'FormTrial', 'name' => 'FormTrial')); ?>
         <?php echo $form->renderHiddenFields(); ?>
-
         <div id="ProjectTrialGroups" class="label ui-helper-clearfix">
             <span class="Title">Project / Trial Groups</span>
         </div>
         <div class="Session">
+            <div class="form-group control-type-text" style="margin-left: 10px;">All fields marked with <span class="Mandatory">*</span> are required.</div>
             <div class="form-group control-type-text">
                 <table class="TableModule"> 
                     <tr>
-                        <td>Name of the Project:&ensp;</td>
+                        <td><span class="Mandatory">*</span> Name of the Project:&ensp;</td>
                         <td>
                             <div>
                                 <?php
@@ -96,7 +96,7 @@ if (isset($session_group_id)) {
                         <td>Name:</td>
                         <td>&ensp;&ensp;</td>
                         <td>
-                            <div class="DivName">First name</div>
+                            <div class="DivName"><span class="Mandatory">*</span> First name</div>
                             <div>
                                 <input name="id_leadofproject" id="id_leadofproject" type="hidden" value="<?php echo $InfoProject['id_leadofproject']; ?>">
                                 <input class="SearchInput form-control" name="cnprfirstname" id="cnprfirstname" type="text" size="36" maxlength="100" value="<?php echo $InfoProject['cnprfirstname']; ?>" <?php echo $DisabledFieldProject; ?>>
@@ -111,7 +111,7 @@ if (isset($session_group_id)) {
                         </td>
                         <td>&ensp;&ensp;</td>
                         <td>
-                            <div class="DivName">Last name</div>
+                            <div class="DivName"><span class="Mandatory">*</span> Last name</div>
                             <div><input class="form-control" name="cnprlastname" id="cnprlastname" type="text" size="36" maxlength="100" value="<?php echo $InfoProject['cnprlastname']; ?>" <?php echo $DisabledFieldProject; ?>></div>
                         </td>
                     </tr>
@@ -119,7 +119,7 @@ if (isset($session_group_id)) {
                         <td>Institution:</td>
                         <td>&ensp;&ensp;</td>
                         <td>
-                            <div class="DivName">Name</div>
+                            <div class="DivName"><span class="Mandatory">*</span> Name</div>
                             <div>
                                 <input name="id_institutionleadofproject" id="id_institutionleadofproject" type="hidden" value="<?php echo $InfoProject['id_institutionleadofproject']; ?>">
                                 <input class="SearchInput form-control" name="insnameleadofproject" id="insnameleadofproject" type="text" size="36" maxlength="150" value="<?php echo $InfoProject['insnameleadofproject']; ?>" <?php echo $DisabledFieldProject; ?>>
@@ -127,7 +127,7 @@ if (isset($session_group_id)) {
                         </td>
                         <td>&ensp;&ensp;</td>
                         <td>
-                            <div class="DivName">Country</div>
+                            <div class="DivName"><span class="Mandatory">*</span> Country</div>
                             <div>
                                 <input name="id_countryinstitutionleadofproject" id="id_countryinstitutionleadofproject" type="hidden" value="<?php echo $InfoProject['id_countryinstitutionleadofproject']; ?>">
                                 <input class="SearchInput form-control" name="namecountryinstitutionleadofproject" id="namecountryinstitutionleadofproject" type="text" size="32" maxlength="50" value="<?php echo $InfoProject['namecountryinstitutionleadofproject']; ?>" <?php echo $DisabledFieldProject; ?>>
@@ -135,7 +135,7 @@ if (isset($session_group_id)) {
                         </td>
                     </tr>
                     <tr>
-                        <td>Email:</td>
+                        <td><span class="Mandatory">*</span> Email:</td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div><input class="EmailInput form-control" name="cnpremail" id="cnpremail" type="text" size="36" maxlength="150" value="<?php echo $InfoProject['cnpremail']; ?>" onblur="ValidaEmail(this);" <?php echo $DisabledFieldProject; ?>></div>
@@ -161,7 +161,7 @@ if (isset($session_group_id)) {
                         <td> Institution:</td>
                         <td>&ensp;&ensp;</td>
                         <td>
-                            <div class="DivName">Name</div>
+                            <div class="DivName"><span class="Mandatory">*</span> Name</div>
                             <div>
                                 <input name="id_projectimplementinginstitutions" id="id_projectimplementinginstitutions" type="hidden" value="<?php echo $InfoProject['id_projectimplementinginstitutions']; ?>">
                                 <input class="SearchInput form-control" name="insnameprojectimplementinginstitutions" id="insnameprojectimplementinginstitutions" type="text" size="36" maxlength="150" value="<?php echo $InfoProject['insnameprojectimplementinginstitutions']; ?>" <?php echo $DisabledFieldProject; ?>>
@@ -169,7 +169,7 @@ if (isset($session_group_id)) {
                         </td>
                         <td>&ensp;&ensp;</td>
                         <td>
-                            <div class="DivName">Country</div>
+                            <div class="DivName"><span class="Mandatory">*</span> Country</div>
                             <div>
                                 <input name="id_countryprojectimplementinginstitutions" id="id_countryprojectimplementinginstitutions" type="hidden" value="<?php echo $InfoProject['id_countryprojectimplementinginstitutions']; ?>">
                                 <input class="SearchInput form-control" name="namecountryprojectimplementinginstitutions" id="namecountryprojectimplementinginstitutions" type="text" size="32" maxlength="150" value="<?php echo $InfoProject['namecountryprojectimplementinginstitutions']; ?>" <?php echo $DisabledFieldProject; ?>>
@@ -185,13 +185,13 @@ if (isset($session_group_id)) {
             <div class="form-group control-type-text">
                 <table class="TableModule">
                     <tr>
-                        <td> Start Date:&ensp;</td>
+                        <td><span class="Mandatory">*</span> Start Date:&ensp;</td>
                         <td>
                             <div>
                                 <input class="DateInput form-control" placeholder="yyyy-mm-dd" name="prjprojectimplementingperiodstartdate" id="prjprojectimplementingperiodstartdate" type="text" size="11" maxlength="10" onkeyup="ValidaEscrituraFecha(this);" onblur="ValidaFecha(this);" value="<?php echo $InfoProject['prjprojectimplementingperiodstartdate']; ?>" <?php echo $DisabledFieldProject; ?>></div>
                         </td>
                         <td>&ensp;&ensp;</td>
-                        <td> End Date:&ensp;</td>
+                        <td><span class="Mandatory">*</span> End Date:&ensp;</td>
                         <td>
                             <div>
                                 <input class="DateInput form-control" placeholder="yyyy-mm-dd" name="prjprojectimplementingperiodenddate" id="prjprojectimplementingperiodenddate" type="text" size="11" maxlength="10" onkeyup="ValidaEscrituraFecha(this);" onblur="ValidaFecha(this);" value="<?php echo $InfoProject['prjprojectimplementingperiodenddate']; ?>" <?php echo $DisabledFieldProject; ?>></div>
@@ -206,7 +206,7 @@ if (isset($session_group_id)) {
             <div class="form-group control-type-text">
                 <table class="TableModule">
                     <tr>
-                        <td> Donor Name:&ensp;</td>
+                        <td><span class="Mandatory">*</span> Donor Name:&ensp;</td>
                         <td>
                             <div>
                                 <input name="id_donor" id="id_donor" type="hidden" value="<?php echo $InfoProject['id_donor']; ?>">
@@ -223,13 +223,13 @@ if (isset($session_group_id)) {
             <div class="form-group control-type-text">
                 <table class="TableModule">
                     <tr>
-                        <td> Abstract:&ensp;</td>
+                        <td><span class="Mandatory">*</span> Abstract:&ensp;</td>
                         <td>
                             <div><textarea class="form-control" id="prjabstract" name="prjabstract" cols="36" rows="3" <?php echo $DisabledFieldProject; ?>><?php echo $InfoProject['prjabstract']; ?></textarea></div>
                         </td>
                     </tr>
                     <tr>
-                        <td> Keywords:&ensp;</td>
+                        <td><span class="Mandatory">*</span> Keywords:&ensp;</td>
                         <td>
                             <div><input class="form-control" name="prjkeywords" id="prjkeywords" type="text" size="40" value="<?php echo $InfoProject['prjkeywords']; ?>" <?php echo $DisabledFieldProject; ?>></div>
                         </td>
@@ -251,7 +251,7 @@ if (isset($session_group_id)) {
                         <td> Name:</td>
                         <td>&ensp;&ensp;</td>
                         <td>
-                            <div class="DivName">First name</div>
+                            <div class="DivName"><span class="Mandatory">*</span> First name</div>
                             <div>
                                 <?php
                                 $DisabledFieldTrialManager = "";
@@ -272,7 +272,7 @@ if (isset($session_group_id)) {
                         </td>
                         <td>&ensp;&ensp;</td>
                         <td>
-                            <div class="DivName">Last name</div>
+                            <div class="DivName"><span class="Mandatory">*</span> Last name</div>
                             <div><input class="form-control" name="cnprlastnametrialmanager" id="cnprlastnametrialmanager" type="text" size="36" maxlength="100" value="<?php echo $InfoTrialManager['cnprlastname']; ?>" <?php echo $DisabledFieldTrialManager; ?>></div>
                         </td>
                     </tr>
@@ -280,7 +280,7 @@ if (isset($session_group_id)) {
                         <td> Institution:</td>
                         <td>&ensp;&ensp;</td>
                         <td>
-                            <div class="DivName">Name</div>
+                            <div class="DivName"><span class="Mandatory">*</span> Name</div>
                             <div>
                                 <input name="id_institutiontrialmanager" id="id_institutiontrialmanager" type="hidden" value="<?php echo $InfoTrialManager['id_institution']; ?>">
                                 <input class="SearchInput form-control" name="insnametrialmanager" id="insnametrialmanager" type="text" size="36" maxlength="150" value="<?php echo $InfoTrialManager['insname']; ?>" <?php echo $DisabledFieldTrialManager; ?>>
@@ -288,7 +288,7 @@ if (isset($session_group_id)) {
                         </td>
                         <td>&ensp;&ensp;</td>
                         <td>
-                            <div class="DivName">Country</div>
+                            <div class="DivName"><span class="Mandatory">*</span> Country</div>
                             <div>
                                 <input name="id_countryinstitutiontrialmanager" id="id_countryinstitutiontrialmanager" type="hidden" value="<?php echo $InfoTrialManager['id_countryinstitution']; ?>">
                                 <input class="SearchInput form-control" name="namecountryinstitutiontrialmanager" id="namecountryinstitutiontrialmanager" type="text" size="32" maxlength="150" value="<?php echo $InfoTrialManager['namecountryinstitution']; ?>" <?php echo $DisabledFieldTrialManager; ?>>
@@ -296,7 +296,7 @@ if (isset($session_group_id)) {
                         </td>
                     </tr>
                     <tr>
-                        <td> Email:</td>
+                        <td><span class="Mandatory">*</span> Email:</td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div><input class="EmailInput form-control" name="cnpremailtrialmanager" id="cnpremailtrialmanager" type="text" size="36" maxlength="150" onblur="ValidaEmail(this);" value="<?php echo $InfoTrialManager['cnpremail']; ?>" <?php echo $DisabledFieldTrialManager; ?>></div>
@@ -310,7 +310,7 @@ if (isset($session_group_id)) {
                         </td>
                     </tr>
                     <tr>
-                        <td> Primary Role of Contact Person:</td>
+                        <td><span class="Mandatory">*</span> Primary Role of Contact Person:</td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <?php echo select_from_table("tb_trial[id_rolecontactperson]", "TbRolecontactperson", "id_rolecontactperson", "rcpname", null, $form->getObject()->get('id_rolecontactperson'), "class='form-control'"); ?>
@@ -325,12 +325,12 @@ if (isset($session_group_id)) {
             <div class="form-group control-type-text">
                 <table class="TableModule">
                     <tr>
-                        <td> Start Date:&ensp;</td>
+                        <td><span class="Mandatory">*</span> Start Date:&ensp;</td>
                         <td>
                             <div><input class="DateInput form-control" placeholder="yyyy-mm-dd" name="tb_trial[trlimplementingperiodstartdate]" id="trlimplementingperiodstartdate" type="text" size="11" maxlength="10" onkeyup="ValidaEscrituraFecha(this);" onblur="ValidaFecha(this);" value="<?php echo $form->getObject()->get('trlimplementingperiodstartdate'); ?>"></div>
                         </td>
                         <td>&ensp;&ensp;</td>
-                        <td> End Date:&ensp;</td>
+                        <td><span class="Mandatory">*</span> End Date:&ensp;</td>
                         <td>
                             <div><input class="DateInput form-control" placeholder="yyyy-mm-dd" name="tb_trial[trlimplementingperiodenddate]" id="trlimplementingperiodenddate" type="text" size="11" maxlength="10" onkeyup="ValidaEscrituraFecha(this);" onblur="ValidaFecha(this);" value="<?php echo $form->getObject()->get('trlimplementingperiodenddate'); ?>"></div>
                         </td>
@@ -344,7 +344,7 @@ if (isset($session_group_id)) {
             <div class="form-group control-type-text">
                 <table class="TableModule">
                     <tr>
-                        <td> Name:</td>
+                        <td><span class="Mandatory">*</span> Name:</td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div>
@@ -360,7 +360,7 @@ if (isset($session_group_id)) {
                         </td>
                     </tr>
                     <tr>
-                        <td> Country:</td>
+                        <td><span class="Mandatory">*</span> Country:</td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div class="DivRow">
@@ -429,7 +429,7 @@ if (isset($session_group_id)) {
                         <td>Coordinates:</td>
                         <td>&ensp;&ensp;</td>
                         <td>
-                            <div class="DivName">Latitude</div>
+                            <div class="DivName"><span class="Mandatory">*</span> Latitude</div>
                             <div>
                                 <div class="col-sm-10">
                                     <input class="form-control" name="trlclatitude" id="trlclatitude" type="text" size="36" onkeyup="ValidaEscrituraNumero(this);" onblur="ValidaValorNumerico(this);" value="<?php echo $InfoTrialLocation['trlclatitude']; ?>" <?php echo $DisabledFieldTrialLocation; ?>>
@@ -441,7 +441,7 @@ if (isset($session_group_id)) {
                         </td>
                         <td>&ensp;&ensp;</td>
                         <td>
-                            <div class="DivName">Longitude</div>
+                            <div class="DivName"><span class="Mandatory">*</span> Longitude</div>
                             <div>
                                 <div class="col-sm-10">
                                     <input class="form-control" name="trlclongitude" id="trlclongitude" type="text" size="36" onkeyup="ValidaEscrituraNumero(this);" onblur="ValidaValorNumerico(this);" value="<?php echo $InfoTrialLocation['trlclongitude']; ?>" <?php echo $DisabledFieldTrialLocation; ?>>
@@ -453,7 +453,7 @@ if (isset($session_group_id)) {
                         </td>
                         <td>&ensp;&ensp;</td>
                         <td>
-                            <div class="DivName">Altitude</div>
+                            <div class="DivName"><span class="Mandatory">*</span> Altitude</div>
                             <div>
                                 <div class="col-sm-10">
                                     <input class="form-control" name="trlcaltitude" id="trlcaltitude" type="text" size="36" onkeyup="ValidaEscrituraNumero(this);" onblur="ValidaValorNumerico(this);" value="<?php echo $InfoTrialLocation['trlcaltitude']; ?>" <?php echo $DisabledFieldTrialLocation; ?>>
@@ -471,7 +471,7 @@ if (isset($session_group_id)) {
             <div class="form-group control-type-text">
                 <table class="TableModule">
                     <tr>
-                        <td> Trial Name:</td>
+                        <td><span class="Mandatory">*</span> Trial Name:</td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div>
@@ -480,7 +480,7 @@ if (isset($session_group_id)) {
                         </td>
                     </tr>
                     <tr>
-                        <td> Trial Objectives:</td>
+                        <td><span class="Mandatory">*</span> Trial Objectives:</td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div>

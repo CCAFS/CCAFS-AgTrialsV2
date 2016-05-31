@@ -252,7 +252,7 @@ function ValidarNumero(campo) {
 }
 
 //inicio: FUNCIONES PARA EL CAMBIO DE COLOR
-var ColorBordeObligatorio = '#48732A';
+var ColorBordeObligatorio = '#FF0000';
 var ColorBordeNormal = '#BBBBBB';
 var ColorFondoObligatorio = '#FFFFFF';
 var ColorFondoNormal = '#FFFFFF';
