@@ -252,7 +252,8 @@ function ValidarNumero(campo) {
 }
 
 //inicio: FUNCIONES PARA EL CAMBIO DE COLOR
-var ColorBordeObligatorio = '#FF0000';
+var ColorBordeObligatorio = '#b03535';
+var ColorBoxshadowObligatorio = '#d45252';
 var ColorBordeNormal = '#BBBBBB';
 var ColorFondoObligatorio = '#FFFFFF';
 var ColorFondoNormal = '#FFFFFF';
@@ -260,26 +261,31 @@ var ColorFondoNormal = '#FFFFFF';
 function CampoObligatorio(Id) {
     jQuery('#' + Id).css({'background-color': ColorFondoObligatorio});
     jQuery('#' + Id).css({'border': '1px solid ' + ColorBordeObligatorio});
+    jQuery('#' + Id).css({'box-shadow': '0 0 5px ' + ColorBoxshadowObligatorio});
 }
 
 function CampoNormalObligatorio(Id) {
     jQuery('#' + Id).css({'background-color': ColorFondoNormal});
-    jQuery('#' + Id).css({'border': '1px solid ' + ColorBordeObligatorio});
+    jQuery('#' + Id).css({'border': '1px solid ' + ColorBordeNormal});
+    jQuery('#' + Id).css({'box-shadow': '0 0 0px '});
 }
 
 function CampoNormal(Id) {
     jQuery('#' + Id).css({'background-color': ColorFondoNormal});
     jQuery('#' + Id).css({'border': '1px solid ' + ColorBordeNormal});
+    jQuery('#' + Id).css({'box-shadow': '0 0 0px '});
 }
 
 function SelectObligatorio(Id) {
     jQuery("select[id='" + Id + "']").css({'background-color': ColorFondoObligatorio});
     jQuery("select[id='" + Id + "']").css({'border': '1px solid ' + ColorBordeObligatorio});
+    jQuery("select[id='" + Id + "']").css({'box-shadow': '0 0 5px ' + ColorBoxshadowObligatorio});
 }
 
 function SelectNormalObligatorio(Id) {
     jQuery("select[id='" + Id + "']").css({'background-color': ColorFondoNormal});
-    jQuery("select[id='" + Id + "']").css({'border': '1px solid ' + ColorBordeObligatorio});
+    jQuery("select[id='" + Id + "']").css({'border': '1px solid ' + ColorBordeNormal});
+    jQuery("select[id='" + Id + "']").css({'box-shadow': '0 0 0px '});
 }
 //inicio: FUNCION PARA VERIFICAR SI HUBO UN ERROR
 function CheckError(Form, event, BanderaFaltantes, MensajeFaltantes) {
