@@ -324,8 +324,10 @@ function GoToLicence() {
     $.confirm({
         icon: 'glyphicon glyphicon-subtitles',
         columnClass: 'col-md-6 col-md-offset-3',
+        closeIconClass: 'fa fa-close',
+        autoClose: 'confirm|62000',
         title: 'Creative Commons',
-        confirmButton: 'Okay',
+        confirmButton: 'Continue',
         cancelButton: 'Close',
         content: Texto,
         confirm: function () {
@@ -356,6 +358,8 @@ function DownloadFileTrial(id_trial, id_crop, typefile) {
                     $.confirm({
                         icon: "glyphicon glyphicon-subtitles",
                         columnClass: "col-md-8 col-md-offset-2",
+                        closeIconClass: 'fa fa-close',
+                        autoClose: 'cancel|31000',
                         title: "Agreement Licence",
                         confirmButton: "I accept the licence",
                         cancelButton: "I don't accept the licence",
