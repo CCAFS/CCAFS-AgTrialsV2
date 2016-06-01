@@ -320,17 +320,26 @@ jQuery(document).ready(function () {
 
 
 function GoToLicence() {
-    var Texto = "<span><b>IMPORTANT: Read this before you build your license </b></br></br>We now ask you to designate the intellectual property rights of the agricultural evaluation data you are registering through this application. Now you will be taken to a license generator developed by Creative Commons. It will ask you a series of questions whose responses determine the data sharing and use policy for your data set. At this point, the application will develop lines of computer code designating the intellectual property rights. Copy these lines of code from the pop-up window back into the main window of the application.</span>";
-    jConfirm(Texto, 'Creative Commons', function (r) {
-        if (r) {
+    var Texto = "<b>IMPORTANT: Read this before you build your license </b></br></br>We now ask you to designate the intellectual property rights of the agricultural evaluation data you are registering through this application. Now you will be taken to a license generator developed by Creative Commons. It will ask you a series of questions whose responses determine the data sharing and use policy for your data set. At this point, the application will develop lines of computer code designating the intellectual property rights. Copy these lines of code from the pop-up window back into the main window of the application.";
+    $.confirm({
+        icon: 'glyphicon glyphicon-subtitles',
+        columnClass: 'col-md-6 col-md-offset-3',
+        title: 'Creative Commons',
+        confirmButton: 'Okay',
+        cancelButton: 'Close',
+        content: Texto,
+        confirm: function () {
             window.open('https://creativecommons.org/choose/', '_blank');
+        },
+        cancel: function () {
+
         }
     });
 }
 
 //DESCARGA DE ARCHIVOS TRIALS
 function DownloadFileTrial(id_trial, id_crop, typefile) {
-    var License = jQuery("#tb_trial_trltriallicense").val();
+    var License = '<div><a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license"><img src="http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png" style="border-width:0; width: 88px; height: 31px;" alt="Creative Commons License"></a><br>This <span rel="dct:type" href="http://purl.org/dc/dcmitype/Text" xmlns:dct="http://purl.org/dc/terms/">work</span> is licensed under a <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.</div>';
     var Icon = "<img width='13' height='13' src='/images/bullet-black-icon.png'> ";
     jQuery.ajax({
         type: "GET",
@@ -338,16 +347,23 @@ function DownloadFileTrial(id_trial, id_crop, typefile) {
         data: "id_trial=" + id_trial,
         success: function (data) {
             if (data === 'Un-Authenticated') {
-                jAlert(Icon + " <b>Sorry!</b> You must be authenticated. <br>" + Icon + " Please contact the Trial Manager.", 'Info', 'Important', null);
+                alerts.show({css: 'error', title: 'Important!', message: Icon + " <b>Sorry!</b> You must be authenticated. <br>" + Icon + " Please contact the Trial Manager."});
             } else if (data === 'Not-Permissions') {
-                jAlert(Icon + " <b>Sorry!</b> You do not have the permissions to download the file. <br>" + Icon + " Please contact the Trial Manager.", 'Info', 'Important', null);
+                alerts.show({css: 'error', title: 'Important!', message: Icon + " <b>Sorry!</b> You do not have the permissions to download the file. <br>" + Icon + " Please contact the Trial Manager."});
             } else {
                 if (License !== '') {
                     License += "<br><br><b>Do you agree with the license?</b>";
-                    jConfirm(License, 'Agreement Licence', function (r) {
-                        if (r) {
+                    $.confirm({
+                        icon: "glyphicon glyphicon-subtitles",
+                        columnClass: "col-md-8 col-md-offset-2",
+                        title: "Agreement Licence",
+                        confirmButton: "I accept the licence",
+                        cancelButton: "I don't accept the licence",
+                        content: License,
+                        confirm: function () {
                             window.location = "/DownloadFileTrial?id_trial=" + id_trial + "&id_crop=" + id_crop + "&typefile=" + typefile;
-                        }
+                        },
+                        cancel: function () {}
                     });
                 } else {
                     window.location = "/DownloadFileTrial?id_trial=" + id_trial + "&id_crop=" + id_crop + "&typefile=" + typefile;

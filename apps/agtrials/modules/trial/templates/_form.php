@@ -25,6 +25,12 @@ if (isset($session_group_id)) {
 <script src="/autocompletemultiple/lib/jquery.1.7.1.js"></script>
 <script src="/autocompletemultiple/lib/jquery.ui.1.8.16.js"></script>
 <script src="/autocompletemultiple/autocomplete.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="/jqueryConfirm/jquery-confirm.min.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="/jqueryConfirm/jquery-confirm.min.css" />
+
+
+
 <script type="text/javascript">
     $(function () {
         $('#user_id').autocompleteusers({

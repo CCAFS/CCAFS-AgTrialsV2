@@ -458,7 +458,9 @@ $ArrTrialInfo = GetInfoTrialCropInfo($form->getObject()->get('id_trial'));
                     <tbody>
                         <tr>
                             <td>
-                                <div><?php echo $form->getObject()->get('trltriallicense'); ?></div>
+                                <div>
+                                    <?php echo $form->getObject()->get('trltriallicense'); ?>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
