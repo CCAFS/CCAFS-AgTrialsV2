@@ -114,7 +114,7 @@ jQuery(document).ready(function () {
     //inicio: VALIDAMOS EL ENVIO DEL FORMULARIO DE EXPERIMENTAL DESIGN
     var FieldInstitution = {
         'tb_institution_insname': 'Name',
-        'id_country': 'Country'
+        'country': 'Country'
     };
     jQuery("#FormInstitution").submit(function (event) {
         var Ico = "<img src='/images/bullet-black-icon.png'> ";
