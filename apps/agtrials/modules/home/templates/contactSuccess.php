@@ -36,7 +36,7 @@
             }
         });
 
-        $('#refreshcode').click(function () {
+        $('#RefreshCode').click(function () {
             $.ajax({
                 type: "GET",
                 url: "/home/refreshcode",

@@ -609,6 +609,7 @@ input, textarea, select {
     color:red;
     font-weight:bold;
     background-color: #FFFFFF;
+    height: 33px;
 
 }
 
