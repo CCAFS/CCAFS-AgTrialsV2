@@ -17,7 +17,7 @@
         var defaultOptions = {
             minLength: 1,
             url: '/administrativedivision/autousers',
-            title: 'Remove %s',
+            title: '',
             useCache: true,
             formName: 'users[user]',
             sendTitles: true,
@@ -48,7 +48,7 @@
         var defaultOptions = {
             minLength: 1,
             url: '/administrativedivision/autogroups',
-            title: 'Remove %s',
+            title: '',
             useCache: true,
             formName: 'groups[user]',
             sendTitles: true,
