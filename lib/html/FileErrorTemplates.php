@@ -21,26 +21,31 @@
  * @author    :  Herlin R. Espinosa G. - herlin25@gmail.com
  * @version   :  ~
  */
+sfContext::getInstance()->getConfiguration()->loadHelpers('Partial');
 ?>
-<div style="margin-top: 10px;">
-    <span class="Title">Batch Upload <?php echo $Modulo; ?> (Error in the Template Files)</span>
-</div>
-<div class="Session" style="margin-top: 10px; margin-bottom: 10px; border-bottom-width: 0px; padding: 10px; border-top-width: 10px;">
-    <fieldset>
-        <legend align= "left">&ensp;<b>Error</b>&ensp;</legend>
-        <span><img src='/images/attention-icon.png'><b> <?php echo $Modulo; ?> Template File:</b> <?php echo "$FileName ($FileSizeMB)MB"; ?></span><br>
-    </fieldset>
-    <br><br>
-    <fieldset>
-        <legend>&ensp;<b>Remember</b>&ensp;</legend>
-        <span><img src='/images/attention-icon.png'> Templates Files must have <b>.xls</b> extension and must be smaller than <b><?php echo $MaxSizeFile; ?> MB</b> maximum size </span><br>
-        <span><img src="/images/attention-icon.png"> Max. <b><?php echo $MaxRecordsFile; ?> Records</b> for Template File</span><br>
-        <span><img src="/images/attention-icon.png"> Exact number of columns <b>'<?php echo $Cols; ?>'</b> for Template File</span>
-    </fieldset>
-    <br><br>
-    <fieldset>
-        <div class="form-group control-type-text" style="margin-left: 0px; margin-right: 0px;">
-            <button class="btn btn-action" type="button" title=" Back " id="Back" neme="Back" onclick="history.back();"> <span class ="glyphicon glyphicon-step-backward" aria-hidden="true"></span>&ensp;Back&ensp;</button>
+<div class="row">
+    <div class="col-md-2 left-column">
+        <?php include_partial('admin/ProsessesMenu') ?>
+    </div>
+    <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
+        <span class="Title">Batch Upload <?php echo $Modulo; ?> (Error in the Template Files)</span>
+        <div class="Session" style="margin-top: 10px; margin-bottom: 10px; border-bottom-width: 0px; padding: 10px; border-top-width: 10px;">
+            <fieldset>
+                <legend align= "left">&ensp;<b>Error</b>&ensp;</legend>
+                <span><img src='/images/attention-icon.png'><b> <?php echo $Modulo; ?> Template File:</b> <?php echo "$FileName ($FileSizeMB)MB"; ?></span><br>
+            </fieldset>
+            <br><br>
+            <fieldset>
+                <legend>&ensp;<b>Remember</b>&ensp;</legend>
+                <span><img src='/images/attention-icon.png'> Templates Files must have <b>.xls</b> extension and must be smaller than <b><?php echo $MaxSizeFile; ?> MB</b> maximum size </span><br>
+                <span><img src="/images/attention-icon.png"> Max. <b><?php echo $MaxRecordsFile; ?> Records</b> for Template File</span><br>
+                <span><img src="/images/attention-icon.png"> Exact number of columns <b>'<?php echo $Cols; ?>'</b> for Template File</span>
+            </fieldset>
         </div>
-    </fieldset>
+        <fieldset>
+            <div class="form-group control-type-text" style="margin-left: 0px; margin-right: 0px;">
+                <button class="btn btn-action" type="button" title=" Back " id="Back" neme="Back" onclick="history.back();"> <span class ="glyphicon glyphicon-step-backward" aria-hidden="true"></span>&ensp;Back&ensp;</button>
+            </div>
+        </fieldset>
+    </div>
 </div>

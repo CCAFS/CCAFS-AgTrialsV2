@@ -74,70 +74,18 @@ if (sfContext::getInstance()->getUser()->isAuthenticated()) {
 
         </script>
         <style type="text/css">
-            .Banner{
-                font-family: Verdana;
-                font-weight:bold;
-                text-align: center;
-                font-size:25px;
-                width: 970px;
-            }
-
-            .Cuerpo {
-                border-collapse:collapse;
-                border:0px solid #B9E895;
-                top: 50%;
-                left: 50%;
-                width: 90%;
-                height: 10%;
-                margin: auto;
-                text-align: center;
-                width: 950px;
-            }
-
-            .Forma {
-                margin-left: auto;
-                margin-right: auto;
-                text-align: center;
-                width: 80%;
-            }
-
-            .TRTDCenter {
-                margin-left: auto;
-                margin-right: auto;
-                text-align: center;
-            }
-
-            .TRTDLeft {
-                margin-left: auto;
-                margin-right: auto;
-                text-align: left;
-            }
-
-
-
-            .Buttons{
-                margin-left: auto;
-                margin-right: auto;
-                text-align: center;
-                width: 15%;
-            }
-
-            .Pie {
-                width: 970px;
-                text-align: center;
-                margin: 0 auto;
-                font-size:11;
-            }
-
+            .Banner{ font-family: Verdana; font-weight:bold; text-align: center; font-size:25px; width: 970px; }
+            .Cuerpo { border-collapse:collapse; border:0px solid #B9E895; top: 50%; left: 50%; width: 90%; height: 10%; margin: auto; text-align: center; width: 950px; }
+            .Forma { margin-left: auto; margin-right: auto; text-align: center; width: 80%; }
+            .Center {text-align: center;}
+            .BatchTitle { font-size: 14px; font-weight: lighter; padding: 8px; text-align: center; color: #2a9a60; font-weight: bold;}
+            .ProgressBar { width: 22em; height: 3.5em; border: 1px solid black; background: #CEDAC0; display: block; margin: auto;}
+            .ProgressBarText { width: 305px; height: 3.5em; position: absolute; font-size: 14px; font-weight:bold; text-align: center; font-weight: normal; margin: auto; padding-top: 5px;}
+            .ProgressBarFill { height: 3.5em; background: #86A273; display: block; overflow: visible; height: 47px;}
+            .FinishedProcess { font-size: 13px; color: red; font-weight:bold; text-align: center;}
         </style>
     </head>
     <body>
-        <style type="text/css">
-            .ProgressBar { width: 22em; height: 3.5em; border: 1px solid black; background: #CEDAC0; display: block; }
-            .ProgressBarText { width: 305px; height: 3.5em; position: absolute; font-size: 13px; color: #000000; font-family: Verdana; font-weight:bold; text-align: center; font-weight: normal; }
-            .ProgressBarFill { height: 3.5em; background: #86A273; display: block; overflow: visible; }
-            .FinishedProcess { font-size: 13px; color: red; font-family: Verdana; font-weight:bold; text-align: center;}
-        </style>
         <header>
             <div class="container">
                 <div class="row">
@@ -192,6 +140,8 @@ if (sfContext::getInstance()->getUser()->isAuthenticated()) {
         </header>
         <div class="container">
             <?php
+            //include("BodyCheck.php");
+
             //AQUI LLAMAMOS LA FORMA PARA EL ERROR -> TrialFileErrorZip
             if ($Forma == "TrialFileErrorZip")
                 include("TrialFileErrorZip.php");
@@ -264,4 +214,3 @@ if (sfContext::getInstance()->getUser()->isAuthenticated()) {
         </footer>
     </body>
 </html>
-
