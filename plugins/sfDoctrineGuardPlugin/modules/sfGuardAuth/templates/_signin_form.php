@@ -1,19 +1,5 @@
-<script>
-    $(document).ready(function () {
-        //inicio: VALIDAMOS EL ENVIO DEL FORMULARIO
-        $("#SubmitSignin").click(function () {
-            $('#div_loading').show();
-            $('#FormSignin').submit();
-        });
-
-    });
-</script>
 <div style="margin-top: 10px;">
     <span class="Title">Sign In</span>
-</div>
-<div id="div_loading" class="loading" align="center" style="display:none;">
-    <?php echo image_tag('loading.gif'); ?>
-    <br>Please Wait...
 </div>
 <div class="Session" style="margin-top: 10px; margin-bottom: 10px; border-bottom-width: 0px; padding: 10px; border-top-width: 10px;">
     <form class="form-horizontal" id="FormSignin" name="FormSignin" action="<?php echo url_for('@sf_guard_signin') ?>" method="post">

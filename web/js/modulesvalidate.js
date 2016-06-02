@@ -22,7 +22,29 @@
  */
 jQuery(document).ready(function () {
 
+    //inicio: VALIDAMOS EL ENVIO DEL FORMULARIO DE CONTACT PERSON
+    var FieldSignin = {
+        'signin_username': 'Username',
+        'signin_password': 'Password'
+    };
 
+    jQuery("#SubmitSignin").click(function (event) {
+        var Ico = "<img src='/images/bullet-black-icon.png'> ";
+        var BanderaFaltantes = false;
+        var MensajeFaltantes = "";
+        $.each(FieldSignin, function (Id, Campo) {
+            if (jQuery('#' + Id).val() === '') {
+                BanderaFaltantes = true;
+                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
+                CampoObligatorio(Id);
+            } else {
+                CampoNormalObligatorio(Id);
+            }
+        });
+        CheckError('FormSignin', event, BanderaFaltantes, MensajeFaltantes);
+    });
+    //fin: VALIDAMOS EL ENVIO DEL FORMULARIO DE CONTACT PERSON
+    //
     //inicio: VALIDAMOS EL ENVIO DEL FORMULARIO DE CONTACT PERSON
     var FieldContactperson = {
         'tb_contactperson_cnprfirstname': 'First name',
