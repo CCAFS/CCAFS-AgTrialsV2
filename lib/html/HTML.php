@@ -140,8 +140,6 @@ if (sfContext::getInstance()->getUser()->isAuthenticated()) {
         </header>
         <div class="container">
             <?php
-            //include("BodyCheck.php");
-
             //AQUI LLAMAMOS LA FORMA PARA EL ERROR -> TrialFileErrorZip
             if ($Forma == "TrialFileErrorZip")
                 include("TrialFileErrorZip.php");

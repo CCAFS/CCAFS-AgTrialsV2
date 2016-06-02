@@ -21,19 +21,24 @@
  * @author    :  Herlin R. Espinosa G. - herlin25@gmail.com
  * @version   :  ~
  */
+sfContext::getInstance()->getConfiguration()->loadHelpers('Partial');
 ?>
-<div style="margin-top: 10px;">
-    <span class="Title">Batch Upload Trials (Error Un-compress File)</span>
-</div>
-<div class="Session" style="margin-top: 10px; margin-bottom: 10px; border-bottom-width: 0px; padding: 10px; border-top-width: 10px;">
-    <fieldset>
-        <legend align='left'>&ensp;<b>Error</b>&ensp;</legend>
-        <span><img src='/images/attention-icon.png'><b>Error:</b> <?php echo $ErrorInfo; ?> </span><br>
-    </fieldset>
-    <br><br>
-    <fieldset>
-        <div class="form-group control-type-text" style="margin-left: 0px; margin-right: 0px;">
-            <button onclick="window.location.href = '/batchuploadtrials'" neme="Back" id="Back" title=" Back " type="button" class="btn btn-action"> <span aria-hidden="true" class="glyphicon glyphicon-step-backward"></span>&ensp;Back&ensp;</button>       
+<div class="row">
+    <div class="col-md-2 left-column">
+        <?php include_partial('trial/MenuLateral') ?>
+    </div>
+    <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
+        <span class="Title">Batch Upload Trials (Error Un-compress File)</span>
+        <div class="Session" style="margin-top: 10px; margin-bottom: 10px; border-bottom-width: 0px; padding: 10px; border-top-width: 10px;">
+            <fieldset>
+                <legend align='left'>&ensp;<b>Error</b>&ensp;</legend>
+                <span><img src='/images/attention-icon.png'><b>Error:</b> <?php echo $ErrorInfo; ?> </span><br>
+            </fieldset>
         </div>
-    </fieldset>
+        <fieldset>
+            <div class="form-group control-type-text" style="margin-left: 0px; margin-right: 0px;">
+                <button onclick="window.location.href = '/batchuploadtrials'" neme="Back" id="Back" title=" Back " type="button" class="btn btn-action"> <span aria-hidden="true" class="glyphicon glyphicon-step-backward"></span>&ensp;Back&ensp;</button>
+            </div>
+        </fieldset>
+    </div>
 </div>
