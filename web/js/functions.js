@@ -49,7 +49,7 @@ jQuery(document).ready(function () {
         var TemplateFile = jQuery('#TemplateFile').val();
         var SelectTemplate = jQuery('#SelectTemplate').val();
         if ((TemplateFile === '') || (SelectTemplate === '')) {
-            alerts.show({css: 'error', title: 'Invalid Date', message: 'Please, Select Upload Template or Template File.! '});
+            alerts.show({css: 'error', title: 'Invalid Date', message: 'Please, Select Upload Template and Template File.! '});
         } else {
             jQuery('#div_loading').show();
             jQuery('#Form').val('Execute');

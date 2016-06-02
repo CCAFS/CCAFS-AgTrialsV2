@@ -56,13 +56,10 @@
                         <input type="file" name="checkbatchvariablesmeasuredfile" id="checkbatchvariablesmeasuredfile">
                     </div>
                 </div>
-                <br>
-                <fieldset>
-                    <div class="form-group control-type-text" style="margin-left: 0px; margin-right: 0px;">
-                        <button class="btn btn-action" type="button" title=" Execute " id="uploadsubmit" neme="Execute"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&ensp;Execute&ensp;</button>
-                    </div>
-                </fieldset>
-            </form>
         </div>
+        <div class="form-group control-type-text" style="margin-left: 10px; margin-right: 0px;">
+            <button class="btn btn-action" type="button" title=" Execute " id="uploadsubmit" neme="Execute"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&ensp;Execute&ensp;</button>
+        </div>
+        </form>
     </div>
 </div>

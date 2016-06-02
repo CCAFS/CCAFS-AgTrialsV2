@@ -145,10 +145,9 @@ if (!(strpos($sfGuardUser->email_address, "none")))
                     <input class="form-control" type="text" name="key" id="key" value="<?php echo $key; ?>" readonly/>                           
                 </div>
             </div>
-
         </fieldset>
-        <div>
-            <button class="btn btn-action" type="button" title=" Submit " id="SubmitUser" neme="SubmitUser"><span class="glyphicon glyphicon-saved" aria-hidden="true"></span>&ensp;Submit&ensp;</button>
-        </div>
     </form>
+</div>
+<div class="form-group control-type-text" style="margin-left: 10px; margin-right: 0px;">
+    <button class="btn btn-action" type="button" title=" Submit " id="SubmitUser" neme="SubmitUser"><span class="glyphicon glyphicon-saved" aria-hidden="true"></span>&ensp;Submit&ensp;</button>
 </div>

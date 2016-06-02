@@ -91,8 +91,8 @@
                 </div>
             </div>
         </fieldset>
-        <div>
-            <button class="btn btn-action" type="button" title=" Submit " id="SubmitChangepassword" neme="SubmitChangepassword"><span class="glyphicon glyphicon-saved" aria-hidden="true"></span>&ensp;Submit&ensp;</button>
-        </div>
     </form>
+</div>
+<div class="form-group control-type-text" style="margin-left: 10px; margin-right: 0px;">
+    <button class="btn btn-action" type="button" title=" Submit " id="SubmitChangepassword" neme="SubmitChangepassword"><span class="glyphicon glyphicon-saved" aria-hidden="true"></span>&ensp;Submit&ensp;</button>
 </div>

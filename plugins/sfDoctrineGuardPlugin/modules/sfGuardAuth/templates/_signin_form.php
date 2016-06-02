@@ -37,9 +37,9 @@
                 </div>
             </div>
         </fieldset>
-        <div>
-            <button class="btn btn-action" type="button" title=" Sign in " id="SubmitSignin" neme="SubmitSignin"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&ensp;Sign in&ensp;</button>
-            <button class="btn btn-action" type="button" title=" Forgot your password " id="ForgotPassword" neme="ForgotPassword" OnClick="window.location = '/forgotpassword'"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&ensp;Forgot your password&ensp;</button>
-        </div>
     </form>
+</div>
+<div class="form-group control-type-text" style="margin-left: 10px; margin-right: 0px;">
+    <button class="btn btn-action" type="button" title=" Sign in " id="SubmitSignin" neme="SubmitSignin"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&ensp;Sign in&ensp;</button>
+    <button class="btn btn-action" type="button" title=" Forgot your password " id="ForgotPassword" neme="ForgotPassword" OnClick="window.location = '/forgotpassword'"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&ensp;Forgot your password&ensp;</button>
 </div>

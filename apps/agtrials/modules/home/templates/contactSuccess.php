@@ -128,8 +128,8 @@
                 <span><img src="/images/actions-view-refresh-icon.png" id="RefreshCode" title="Refresh security code" alt="picture not loaded"/></span>
             </div>
         </div>
-        <div>
-            <button class="btn btn-action" type="button" title=" Submit " id="SubmitContact" neme="SubmitContact"><span class="glyphicon glyphicon-saved" aria-hidden="true"></span>&ensp;Submit&ensp;</button>
-        </div>
     </form>
-</div>        
+</div>    
+<div class="form-group control-type-text" style="margin-left: 10px; margin-right: 0px;">
+    <button class="btn btn-action" type="button" title=" Submit " id="SubmitContact" neme="SubmitContact"><span class="glyphicon glyphicon-saved" aria-hidden="true"></span>&ensp;Submit&ensp;</button>
+</div>
