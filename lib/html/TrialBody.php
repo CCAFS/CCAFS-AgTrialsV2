@@ -27,7 +27,7 @@ sfContext::getInstance()->getConfiguration()->loadHelpers('Partial');
     function ProgressTrial(vValor, vFila, vTotal) {
         document.getElementById("ProgressTrial").innerHTML = vValor;
         document.getElementById("ProgressTrialrecord").innerHTML = vFila + '/' + vTotal + ' Records';
-        document.getElementById("ProgressBarFill").innerHTML = '<div class="ProgressBarFill" style="width: ' + vValor + '%;"></div>';
+        document.getElementById("ProgressBarFillTrial").innerHTML = '<div class="ProgressBarFill" style="width: ' + vValor + '%;"></div>';
     }
     function CounterTrial(vGrabados, vErrores) {
         document.getElementById("RecordedTrial").innerHTML = vGrabados;
@@ -111,7 +111,7 @@ sfContext::getInstance()->getConfiguration()->loadHelpers('Partial');
                             <b><span id="ProgressTrial">0</span>&nbsp;% Completed</b></br>
                             <span id="ProgressTrialrecord">0/0 Records</span>
                         </div>
-                        <div id="getProgressBarFill"></div>
+                        <div id="ProgressBarFillTrial"></div>
                     </div>
                 </div>
                 <div class="col-md-12 Center" style="margin-top: 5px;">
