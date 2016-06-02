@@ -94,13 +94,6 @@ sfContext::getInstance()->getConfiguration()->loadHelpers('Partial');
         document.getElementById("FinishedProcess").innerHTML = 'Process Finished Successfully';
     }
 </script>
-<style type="text/css">
-    .ProgressBar { width: 22em; height: 3.5em; border: 1px solid black; background: #CEDAC0; display: block; }
-    .ProgressBarText { width: 305px; height: 3.5em; position: absolute; font-size: 13px; color: #000000; font-family: Verdana; font-weight:bold; text-align: center; font-weight: normal; }
-    .ProgressBarFill { height: 3.5em; background: #86A273; display: block; overflow: visible; }
-    .FinishedProcess { font-size: 13px; color: red; font-family: Verdana; font-weight:bold; text-align: center;}
-</style>
-
 <div class="row">
     <div class="col-md-2 left-column">
         <?php include_partial('trial/MenuLateral') ?>
@@ -109,144 +102,80 @@ sfContext::getInstance()->getConfiguration()->loadHelpers('Partial');
         <span class="Title">Batch Upload Trials</span>
         <div class="Session" style="margin-top: 10px; margin-bottom: 10px; border-bottom-width: 0px; padding: 10px; border-top-width: 10px;">
             <fieldset>
-                <table class="Forma">
-                    <tr class="TRTDCenter">
-                        <td class="TRTDCenter"><font color='#0000A0' face='Verdana' size='2'><B>*** Information Process Trial Template File ***</B></font></td>
-                    </tr>
-                    <tr><td></td></tr>
-                    <tr class="TRTDCenter">
-                        <td class="TRTDCenter">
-                            <div class="ProgressBar TRTDCenter">
-                                <div class="ProgressBarText TRTDCenter">
-                                    <b><span class="TRTDCenter" id="ProgressTrial">0</span>&nbsp;% Completed</b></br>
-                                    <span class="TRTDCenter" id="ProgressTrialrecord">0/0 Records</span>
-                                </div>
-                                <div class="TRTDCenter" id="ProgressBarFill"></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr><td></td></tr>
-                    <tr class="TRTDCenter">
-                        <td class="TRTDCenter">
-                            <ul>
-                                <li><font color='#000000' face='Verdana' size='2'>Recorded records: <b><span id="RecordedTrial">0</span></b></font></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr class="TRTDCenter">
-                        <td class="TRTDCenter">
-                            <ul>
-                                <li><font color='#000000' face='Verdana' size='2'>Records with error: <b><span id="RecordErrorTrial">0</span></b></font></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr class="TRTDCenter">
-                        <td class="TRTDCenter">
-                            <span id="SpanErrorTrial" style="display:none;">
-                                <img src='/images/view-icon.png'> <a href="#" id="ViewTrial" onclick = "MostrarTrial();
-                                        return false">View errors</a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr class="TRTDLeft">
-                        <td class="TRTDLeft">
-                            <div id="DivErroresTrial" style="display:none; white-space:nowrap; overflow:auto; max-width:800px; max-height:300px; align:left; border:1px;"></div>
-                        </td>
-                    </tr>
-
-                    <tr><td>&nbsp;</td></tr>
-                    <tr class="TRTDCenter">
-                        <td class="TRTDCenter"><font color='#0000A0' face='Verdana' size='2'><B>*** Information Process Trial Info (Crops) Template File ***</B></font></td>
-                    </tr>
-                    <tr><td></td></tr>
-                    <tr class="TRTDCenter">
-                        <td class="TRTDCenter">
-                            <div class="ProgressBar TRTDCenter">
-                                <div class="ProgressBarText TRTDCenter">
-                                    <b><span class="TRTDCenter" id="ProgressTrialInfo">0</span>&nbsp;% Completed</b></br>
-                                    <span class="TRTDCenter" id="ProgressTrialrecordInfo">0/0 Records</span>
-                                </div>
-                                <div class="TRTDCenter" id="ProgressBarFillInfo"></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr><td></td></tr>
-                    <tr class="TRTDCenter">
-                        <td class="TRTDCenter">
-                            <ul>
-                                <li><font color='#000000' face='Verdana' size='2'>Recorded records: <b><span id="RecordedTrialInfo">0</span></b></font></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr class="TRTDCenter">
-                        <td class="TRTDCenter">
-                            <ul>
-                                <li><font color='#000000' face='Verdana' size='2'>Records with error: <b><span id="RecordErrorTrialInfo">0</span></b></font></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr class="TRTDCenter">
-                        <td class="TRTDCenter">
-                            <span id="SpanErrorTrialInfo" style="display:none;">
-                                <img src='/images/view-icon.png'> <a href="#" id="ViewTrialInfo" onclick = "MostrarTrialInfo();
-                                        return false">View errors</a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr class="TRTDLeft">
-                        <td class="TRTDLeft">
-                            <div id="DivErroresTrialInfo" style="display:none; white-space:nowrap; overflow:auto; max-width:800px; max-height:300px; align:left; border:1px;"></div>
-                        </td>
-                    </tr>
-                    <tr><td>&nbsp;</td></tr>
-
-                    <tr class="TRTDCenter">
-                        <td class="TRTDCenter"><font color='#0000A0' face='Verdana' size='2'><B>*** Information Process Trial Info (Crops) Data Template File ***</B></font></td>
-                    </tr>
-                    <tr><td></td></tr>
-                    <tr class="TRTDCenter">
-                        <td class="TRTDCenter">
-                            <div class="ProgressBar TRTDCenter">
-                                <div class="ProgressBarText TRTDCenter">
-                                    <b><span class="TRTDCenter" id="ProgressTrialInfoData">0</span>&nbsp;% Completed</b></br>
-                                    <span class="TRTDCenter" id="ProgressTrialrecordInfoData">0/0 Records</span>
-                                </div>
-                                <div class="TRTDCenter" id="ProgressBarFillInfoData"></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="TRTDCenter">
-                        <td class="TRTDCenter">
-                            <span id="FileTrialInfoData"></span>
-                        </td>
-                    </tr>
-
-                    <tr class="TRTDCenter">
-                        <td class="TRTDCenter">
-                            <span id="SpanErrorTrialInfoData" style="display:none;">
-                                <img src='/images/view-icon.png'> <a href="#" id="ViewTrialInfoData" onclick = "MostrarTrialInfoData();
-                                        return false">View errors</a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr class="TRTDLeft">
-                        <td class="TRTDLeft">
-                            <div id="DivErroresTrialInfoData" style="display:none; white-space:nowrap; overflow:auto; max-width:800px; max-height:300px; align:left; border:1px;"></div>
-                        </td>
-                    </tr>
-                    <tr><td>&nbsp;</td></tr>
-                    <tr class="TRTDCenter">
-                        <td class="TRTDCenter">
-                            <div class="FinishedProcess" id="FinishedProcess"><img src='/images/loading.gif'><br><font color='#0000A0' face='Verdana'>Processing may take a few minutes, wait a moment. <br> Please, don't close the window during the process.</font></div>
-                        </td>
-                    </tr>
-                </table>
-            </fieldset>
-            <fieldset>
-                <div class="form-group control-type-text" style="margin-left: 0px; margin-right: 0px;">
-                    <button class="btn btn-action" type="button" title=" Back " id="Back" neme="Back" onclick="window.location.href = '/batchuploadtrials'"> <span class ="glyphicon glyphicon-step-backward" aria-hidden="true"></span>&ensp;Back&ensp;</button>
+                <div class="col-md-12 BatchTitle">
+                    Information Process Trial Template File
+                </div>
+                <div class="col-md-12">
+                    <div class="ProgressBar">
+                        <div class="ProgressBarText">
+                            <b><span id="ProgressTrial">0</span>&nbsp;% Completed</b></br>
+                            <span id="ProgressTrialrecord">0/0 Records</span>
+                        </div>
+                        <div id="getProgressBarFill"></div>
+                    </div>
+                </div>
+                <div class="col-md-12 Center" style="margin-top: 5px;">
+                    <div>Recorded Records: <b><span id="RecordedTrial"></span></b></div>
+                    <div>Records with error: <b><span id="RecordErrorTrial"></span></b></div>
+                </div>
+                <div class="col-md-12 Center">
+                    <span id="SpanErrorTrial" style="display:none;">
+                        <a href="#" id="ViewTrial" onclick = "MostrarTrial(); return false">View errors</a>
+                        <div id="DivErroresTrial" style="display:none; overflow:auto; width:800px; height:330px; align:left; border:1px; margin-top: 5px;"></div>
+                    </span>
+                </div>
+                <div class="col-md-12 BatchTitle" style="margin-top: 10px;">
+                    Information Process Trial Info (Crops) Template File
+                </div>
+                <div class="col-md-12">
+                    <div class="ProgressBar">
+                        <div class="ProgressBarText">
+                            <b><span id="ProgressTrialInfo">0</span>&nbsp;% Completed</b></br>
+                            <span id="ProgressTrialrecordInfo">0/0 Records</span>
+                        </div>
+                        <div id="ProgressBarFillInfo"></div>
+                    </div>
+                </div>
+                <div class="col-md-12 Center" style="margin-top: 5px;">
+                    <div>Recorded Records: <b><span id="RecordedTrialInfo">0</span></b></div>
+                    <div>Records with error: <b><span id="RecordErrorTrialInfo">0</span></b></div>
+                </div>
+                <div class="col-md-12 Center">
+                    <span id="SpanErrorTrialInfo" style="display:none;">
+                        <a href="#" id="ViewTrialInfo" onclick = "MostrarTrialInfo(); return false">View errors</a>
+                        <div id="DivErroresTrialInfo" style="display:none; overflow:auto; width:800px; height:330px; align:left; border:1px; margin-top: 5px;"></div>
+                    </span>
+                </div>
+                <div class="col-md-12 BatchTitle" style="margin-top: 10px;">
+                    Information Process Trial Info (Crops) Data Template File
+                </div>
+                <div class="col-md-12">
+                    <div class="ProgressBar">
+                        <div class="ProgressBarText">
+                            <b><span id="ProgressTrialInfoData">0</span>&nbsp;% Completed</b></br>
+                            <span id="ProgressTrialrecordInfoData">0/0 Records</span>
+                        </div>
+                        <div id="ProgressBarFillInfoData"></div>
+                    </div>
+                </div>
+                <div class="col-md-12 Center">
+                    <span id="FileTrialInfoData"></span>
+                </div>
+                <div class="col-md-12 Center">
+                    <span id="SpanErrorTrialInfoData" style="display:none;">
+                        <a href="#" id="ViewTrialInfoData" onclick = "MostrarTrialInfoData(); return false">View errors</a>
+                        <div id="DivErroresTrialInfoData" style="display:none; overflow:auto; width:800px; height:330px; align:left; border:1px; margin-top: 5px;"></div>
+                    </span>
+                </div>
+                <div class="col-md-12 Center"style="margin-top: 10px;">
+                    <div class="FinishedProcess" id="FinishedProcess"><img src='/images/loading.gif'><br><font color='#0000A0' face='Verdana'>Processing may take a few minutes, wait a moment. <br> Don't close the window during the process.</font></div>
                 </div>
             </fieldset>
         </div>
+        <fieldset>
+            <div class="form-group control-type-text" style="margin-left: 0px; margin-right: 0px;">
+                <button class="btn btn-action" type="button" title=" Back " id="Back" neme="Back" onclick="window.location.href = '/batchuploadtrials'"> <span class ="glyphicon glyphicon-step-backward" aria-hidden="true"></span>&ensp;Back&ensp;</button>
+            </div>
+        </fieldset>
     </div>
 </div>
