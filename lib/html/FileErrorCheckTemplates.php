@@ -36,7 +36,7 @@ sfContext::getInstance()->getConfiguration()->loadHelpers('Partial');
             </fieldset>
             <br><br>
             <fieldset>
-                <legend>&ensp;<b>Remember</b>&ensp;</legend>
+                <legend>&ensp;Remember&ensp;</legend>
                 <span><img src='/images/attention-icon.png'> Templates Files must have <b>.xls</b> extension and must be smaller than <b><?php echo $MaxSizeFile; ?> MB</b> maximum size </span><br>
                 <span><img src="/images/attention-icon.png"> Max. <b><?php echo $MaxRecordsFile; ?> Records</b> for Template File</span><br>
                 <span><img src="/images/attention-icon.png"> Exact number of columns <b>'<?php echo $Cols; ?>'</b> for Template File</span>

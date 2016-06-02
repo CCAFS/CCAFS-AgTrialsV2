@@ -31,7 +31,7 @@ sfContext::getInstance()->getConfiguration()->loadHelpers('Partial');
         <span class="Title">Batch Upload Trials (Error Upload Compressed File)</span>
         <div class="Session" style="margin-top: 10px; margin-bottom: 10px; border-bottom-width: 0px; padding: 10px; border-top-width: 10px;">
             <fieldset>
-                <legend>&ensp;<b>Remember</b>&ensp;</legend>
+                <legend>&ensp;Remember&ensp;</legend>
                 <span><img src='/images/attention-icon.png'>Only is permitted file <b>.zip</b> and must be smaller than <b><?php echo $MaxSizeFileZip; ?> MB</b> maximum size</span><br>
             </fieldset>
         </div>

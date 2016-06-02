@@ -31,8 +31,8 @@ sfContext::getInstance()->getConfiguration()->loadHelpers('Partial');
         <span class="Title">Batch Upload Trials (Error Un-compress File)</span>
         <div class="Session" style="margin-top: 10px; margin-bottom: 10px; border-bottom-width: 0px; padding: 10px; border-top-width: 10px;">
             <fieldset>
-                <legend align='left'>&ensp;<b>Error</b>&ensp;</legend>
-                <span><img src='/images/attention-icon.png'><b>Error:</b> <?php echo $ErrorInfo; ?> </span><br>
+                <legend align='left'>&ensp;Error&ensp;</legend>
+                <span><img src='/images/attention-icon.png'>Error: <?php echo $ErrorInfo; ?> </span><br>
             </fieldset>
         </div>
         <fieldset>

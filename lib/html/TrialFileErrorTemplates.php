@@ -39,7 +39,7 @@ sfContext::getInstance()->getConfiguration()->loadHelpers('Partial');
             </fieldset>
             <br><br>
             <fieldset>
-                <legend>&ensp;<b>Remember</b>&ensp;</legend>
+                <legend>&ensp;Remember&ensp;</legend>
                 <span><img src='/images/attention-icon.png'> Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size </span><br>
                 <span><img src='/images/attention-icon.png'> Compressed File must have <b>.zip</b> extension and must be smaller than <b>20 MB</b> maximum size </span><br>
                 <span><img src='/images/attention-icon.png'> Max. <b>300</b> trials with result templates files data </span><br>

@@ -30,10 +30,6 @@ sfContext::getInstance()->getConfiguration()->loadHelpers('Partial');
         document.getElementById("getprogressrecord").innerHTML = vFila + '/' + vTotal + ' Records';
         document.getElementById("getProgressBarFill").innerHTML = '<div class="ProgressBarFill" style="width: ' + vValor + '%;"></div>';
     }
-
-    function counter(vGrabados, vErrores) {
-
-    }
     function FinishedProcess() {
         document.getElementById("FinishedProcess").innerHTML = "<div>Process Finished Successfully</div><br>";
         document.getElementById("Downloadresultcheckbatch").style.display = 'block';
