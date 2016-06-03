@@ -5,7 +5,7 @@
  *
  * @package    AgTrials
  * @subpackage filter
- * @author     Herlin R. Espinosa G. - CIAT-CCAFS-DAPA
+ * @author     Herlin R. Espinosa G. - herlin25@gmail.com - CIAT-CCAFS-DAPA
  * @version    SVN: $Id: sfDoctrineFormFilterGeneratedTemplate.php 29570 2010-05-21 14:49:47Z Kris.Wallsmith $
  */
 abstract class BaseTbExperimentaldesignFormFilter extends BaseFormFilterDoctrine

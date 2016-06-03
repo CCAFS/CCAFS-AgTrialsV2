@@ -38,7 +38,7 @@ require_once '../lib/PHPExcel1.8.0/Classes/PHPExcel/IOFactory.php';
  *
  * @package    AgTrials
  * @subpackage trial
- * @author     Herlin R. Espinosa G. - CIAT-CCAFS-DAPA
+ * @author     Herlin R. Espinosa G. - herlin25@gmail.com - CIAT-CCAFS-DAPA
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
 class trialActions extends autoTrialActions {

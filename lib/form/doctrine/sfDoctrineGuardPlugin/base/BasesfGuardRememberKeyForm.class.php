@@ -7,7 +7,7 @@
  *
  * @package    AgTrials
  * @subpackage form
- * @author     Herlin R. Espinosa G. - CIAT-CCAFS-DAPA
+ * @author     Herlin R. Espinosa G. - herlin25@gmail.com - CIAT-CCAFS-DAPA
  * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
  */
 abstract class BasesfGuardRememberKeyForm extends BaseFormDoctrine

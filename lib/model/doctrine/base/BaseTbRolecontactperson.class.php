@@ -32,7 +32,7 @@ Doctrine_Manager::getInstance()->bindComponent('TbRolecontactperson', 'doctrine'
  * 
  * @package    AgTrials
  * @subpackage model
- * @author     Herlin R. Espinosa G. - CIAT-CCAFS-DAPA
+ * @author     Herlin R. Espinosa G. - herlin25@gmail.com - CIAT-CCAFS-DAPA
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 abstract class BaseTbRolecontactperson extends sfDoctrineRecord
