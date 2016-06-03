@@ -1,5 +1,5 @@
 <?php
-$ArrFieldMandatory = array('crpname');
+$ArrFieldMandatory = array('first_name', 'last_name', 'email_address', 'username');
 $Mandatory = "";
 if (in_array($name, $ArrFieldMandatory))
     $Mandatory = "<span class='Mandatory'>*</span> ";
