@@ -6,12 +6,9 @@ body {
 }
 
 input[type="checkbox"]{
-    width: 20px; /*Desired width*/
-    height: 20px; /*Desired height*/
-    cursor: pointer;
-    -webkit-appearance: none;
-    appearance: none;
-    margin-left: 5px;
+    width: 13px; /*Desired width*/
+    height: 13px; /*Desired height*/
+    margin-left: 8px;
     -ms-transform: scale(2); /* IE */
     -moz-transform: scale(2); /* FF */
     -webkit-transform: scale(2); /* Safari and Chrome */
