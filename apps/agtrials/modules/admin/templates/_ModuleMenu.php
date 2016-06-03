@@ -22,6 +22,8 @@ if ($Modulo == 'variablesmeasured')
     $Selectedvariablesmeasured = "selected";
 if ($Modulo == 'variety')
     $Selectedvariety = "selected";
+if ($Modulo == 'sfGuardUser')
+    $SelectedUsers = "selected";
 ?>
 <div class="MenuTrials">
     <div onclick="window.location.href = '/contactperson'" class="MenuButtonLeft <?php echo $Selectedcontactperson; ?>"> Contact person </div>
@@ -35,4 +37,5 @@ if ($Modulo == 'variety')
     <div onclick="window.location.href = '/triallocation'" class="MenuButtonLeft <?php echo $Selectedtriallocation; ?>"> Trial location </div>
     <div onclick="window.location.href = '/variablesmeasured'" class="MenuButtonLeft <?php echo $Selectedvariablesmeasured; ?>"> Variables measured </div>
     <div onclick="window.location.href = '/variety'" class="MenuButtonLeft <?php echo $Selectedvariety; ?>"> Variety </div>
+    <div onclick="window.location.href = '/sfGuardUser'" class="MenuButtonLeft <?php echo $SelectedUsers; ?>"> Users </div>
 </div>
