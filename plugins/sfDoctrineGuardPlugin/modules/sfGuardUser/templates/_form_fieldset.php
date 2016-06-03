@@ -10,7 +10,7 @@
             'form' => $form,
             'field' => $field,
             'class' => 'control-type-' . strtolower($field->getType()) . ' control-name-' . $name,
-        ))
+        ));
         ?>
-<?php endforeach; ?>
+    <?php endforeach; ?>
 </fieldset>
