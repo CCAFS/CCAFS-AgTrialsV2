@@ -2,7 +2,7 @@ generator:
   class: sfDoctrineGenerator
   param:
     model_class:           sfGuardUser
-    theme:                 jroller
+    theme:                 bootstrap
     non_verbose_templates: true
     with_show:             false
     singular:              ~
@@ -31,6 +31,3 @@ generator:
 
       new:
         title: New User
-
-      show:
-        title: View User
