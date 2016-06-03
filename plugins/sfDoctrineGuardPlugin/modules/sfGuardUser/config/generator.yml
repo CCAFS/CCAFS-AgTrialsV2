@@ -12,7 +12,15 @@ generator:
 
     config:
       fields:
+        first_name: { label: "First name" }
+        last_name: { label: "Last name" }
+        email_address: { label: "Email address" }
+        username: { label: "Username" }
+        password: { label: "Password" }
         password_again: { label: "Password (again)" }
+        is_active: { label: "Active" }
+        permissions_list: { label: "Permissions" }
+        groups_list: { label: "Groupst" }
 
       list:
         title:   User list
