@@ -22,7 +22,42 @@
  */
 jQuery(document).ready(function () {
 
-    //inicio: VALIDAMOS EL ENVIO DEL FORMULARIO DE CONTACT PERSON
+    //inicio: VALIDAMOS EL ENVIO DEL FORMULARIO DE GuardUser
+    var FieldGuardUser = {
+        'sf_guard_user_first_name': 'First name:',
+        'sf_guard_user_last_name': 'Last name',
+        'sf_guard_user_email_address': 'Email address',
+        'sf_guard_user_username': 'Username',
+    };
+
+    jQuery("#SubmitGuardUser").click(function (event) {
+        var Ico = "<img src='/images/bullet-black-icon.png'> ";
+        var BanderaFaltantes = false;
+        var MensajeFaltantes = "";
+        $.each(FieldGuardUser, function (Id, Campo) {
+            if (jQuery('#' + Id).val() === '') {
+                BanderaFaltantes = true;
+                MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + Campo + " <br>";
+                CampoObligatorio(Id);
+            } else {
+                CampoNormalObligatorio(Id);
+            }
+        });
+        var password = jQuery('#sf_guard_user_password').val();
+        var passwordagain = jQuery('#sf_guard_user_password_again').val();
+        if (((password === '') && (passwordagain !== '')) || ((password !== '') && (passwordagain === '')) || (password !== passwordagain)) {
+            BanderaFaltantes = true;
+            MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + "The two passwords must be the same. <br>";
+            CampoObligatorio('sf_guard_user_password');
+            CampoObligatorio('sf_guard_user_password_again');
+            jQuery('#sf_guard_user_password').val('')
+            jQuery('#sf_guard_user_password_again').val('')
+        }
+        CheckError('FormSignin', event, BanderaFaltantes, MensajeFaltantes);
+    });
+    //fin: VALIDAMOS EL ENVIO DEL FORMULARIO DE GuardUser
+    //
+    //inicio: VALIDAMOS EL ENVIO DEL FORMULARIO DE Signin
     var FieldSignin = {
         'signin_username': 'Username',
         'signin_password': 'Password'
@@ -43,7 +78,7 @@ jQuery(document).ready(function () {
         });
         CheckError('FormSignin', event, BanderaFaltantes, MensajeFaltantes);
     });
-    //fin: VALIDAMOS EL ENVIO DEL FORMULARIO DE CONTACT PERSON
+    //fin: VALIDAMOS EL ENVIO DEL FORMULARIO DE Signin
     //
     //inicio: VALIDAMOS EL ENVIO DEL FORMULARIO DE CONTACT PERSON
     var FieldContactperson = {
