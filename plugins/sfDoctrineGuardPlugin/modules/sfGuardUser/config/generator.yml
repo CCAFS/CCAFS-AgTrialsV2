@@ -20,7 +20,7 @@ generator:
         password_again: { label: "Password (again)" }
         is_active: { label: "Active" }
         permissions_list: { label: "Permissions" }
-        groups_list: { label: "Groupst" }
+        groups_list: { label: "Groups" }
 
       list:
         title:   User list
