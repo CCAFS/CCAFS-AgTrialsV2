@@ -24,6 +24,9 @@ class BasesfGuardUserAdminForm extends BasesfGuardUserForm {
         $this->widgetSchema['permissions_list']->setLabel('Permissions');
 
         $this->widgetSchema['first_name'] = new sfWidgetFormInputText();
+        $this->widgetSchema['last_name'] = new sfWidgetFormInputText();
+        $this->widgetSchema['email_address'] = new sfWidgetFormInputText();
+        $this->widgetSchema['username'] = new sfWidgetFormInputText();
 
         $this->widgetSchema['password'] = new sfWidgetFormInputPassword();
         $this->validatorSchema['password']->setOption('required', false);
