@@ -31,9 +31,10 @@
         });
 
         $('#emailaddress').blur(function () {
+            var Icon = "<img width='13' height='13' src='/images/bullet-black-icon.png'> ";
             if ($('#emailaddress').val() != '' && ($("#emailaddress").val().indexOf('@', 0) == -1 || $("#emailaddress").val().indexOf('.', 0) == -1)) {
-                $('#emailaddress').attr('value', '');
-                jError('Email address', 'Error', null);
+                $('#emailaddress').val('');
+                alerts.show({css: 'error', title: 'Required Fields', message: Icon + " Invalid Email address"});
             }
         });
 

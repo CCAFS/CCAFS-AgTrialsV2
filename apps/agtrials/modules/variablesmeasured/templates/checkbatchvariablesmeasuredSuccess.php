@@ -11,7 +11,7 @@
                 var fragmento = checkbatchvariablesmeasuredfile.split('.');
                 var extension = fragmento[1];
                 if (!((extension == 'XLS') || (extension == 'xls'))) {
-                    $('#checkbatchvariablesmeasuredfile').attr('value', '');
+                    $('#checkbatchvariablesmeasuredfile').val('');
                     $("#checkbatchvariablesmeasuredfile").val('');
                     jAlert('Permitted file (.XLS)', 'Invalid File', null);
                 } else {

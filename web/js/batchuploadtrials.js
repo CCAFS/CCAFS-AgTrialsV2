@@ -41,7 +41,7 @@ $(document).ready(function () {
 
         } else {
             $('#div_loading').show();
-            $('#FormAction').attr('value', 'Step1');
+            $('#FormAction').val('Step1');
             $('#FormStep1').submit();
         }
     });
@@ -51,7 +51,7 @@ $(document).ready(function () {
 
         } else {
             $('#div_loading').show();
-            $('#FormAction').attr('value', 'SkipStep');
+            $('#FormAction').val('SkipStep');
             $('#FormStep1').submit();
         }
     });
@@ -67,7 +67,7 @@ $(document).ready(function () {
             var length = fragmento.length;
             var extension = fragmento[length - 1];
             if (!((extension === 'XLS') || (extension === 'xls'))) {
-                $('#TrialTemplateFile').attr('value', '');
+                $('#TrialTemplateFile').val('');
                 $("#TrialTemplateFile").val('');
                 jAlert('Permitted file (.XLS)', 'Invalid File');
             }
@@ -81,7 +81,7 @@ $(document).ready(function () {
             var length = fragmento.length;
             var extension = fragmento[length - 1];
             if (!((extension === 'XLS') || (extension === 'xls'))) {
-                $('#TrialInfoTemplateFile').attr('value', '');
+                $('#TrialInfoTemplateFile').val('');
                 $("#TrialInfoTemplateFile").val('');
                 jAlert('Permitted file (.XLS)', 'Invalid File');
             }
@@ -95,7 +95,7 @@ $(document).ready(function () {
             var length = fragmento.length;
             var extension = fragmento[length - 1];
             if (!((extension === 'zip') || (extension === 'ZIP'))) {
-                $('#CompressedFileTrialInfoDataTemplates').attr('value', '');
+                $('#CompressedFileTrialInfoDataTemplates').val('');
                 $("#CompressedFileTrialInfoDataTemplates").val('');
                 jAlert('Permitted file compressed(.Zip)', 'Invalid File');
             }
@@ -109,7 +109,7 @@ $(document).ready(function () {
             jAlert('Please, Select Templates Files', 'Error');
         } else {
             $('#div_loading').show();
-            $('#FormAction').attr('value', 'Execute');
+            $('#FormAction').val('Execute');
             $('#FormStep2').submit();
         }
     }

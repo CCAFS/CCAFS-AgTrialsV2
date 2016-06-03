@@ -49,7 +49,7 @@
                     success: function (data) {
                         $('#ErrorEmailAddress').html(data);
                         if (data != '')
-                            $('#emailaddress').attr('value', '');
+                            $('#emailaddress').val('');
                     }
                 });
             }
@@ -60,7 +60,7 @@
                 type: "GET",
                 url: "/home/refreshcode",
                 success: function (data) {
-                    $('#securitycode').attr('value', data);
+                    $('#securitycode').val(data);
                 }
             });
 
@@ -71,7 +71,7 @@
             var securitycode = $('#securitycode').val();
             if (code != securitycode) {
                 $('#CodeError').html("Sorry, the code you entered was invalid");
-                $('#code').attr('value', '');
+                $('#code').val('');
             } else {
                 $('#CodeError').html("");
             }

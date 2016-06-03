@@ -11,7 +11,7 @@
                 var fragmento = checkbatchtriallocationfile.split('.');
                 var extension = fragmento[1];
                 if (!((extension == 'XLS') || (extension == 'xls'))) {
-                    $('#checkbatchtriallocationfile').attr('value', '');
+                    $('#checkbatchtriallocationfile').val('');
                     $("#checkbatchtriallocationfile").val('');
                     jAlert('Permitted file (.XLS)', 'Invalid File', null);
                 } else {

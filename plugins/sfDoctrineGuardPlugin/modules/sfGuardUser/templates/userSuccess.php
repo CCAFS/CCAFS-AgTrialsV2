@@ -52,9 +52,10 @@ if (!(strpos($sfGuardUser->email_address, "none")))
         });
 
         $('#email_address').blur(function () {
+            var Icon = "<img width='13' height='13' src='/images/bullet-black-icon.png'> ";
             if ($('#email_address').val() != '' && ($("#email_address").val().indexOf('@', 0) == -1 || $("#email_address").val().indexOf('.', 0) == -1)) {
-                $('#email_address').attr('value', '');
-                jError('Email address', 'Error', null);
+                $('#email_address').val('');
+                alerts.show({css: 'error', title: 'Required Fields', message: Icon + " Invalid Email address"});
             }
         });
     });

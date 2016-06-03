@@ -39,13 +39,14 @@
         });
 
         function ValidaPassword() {
+            var Icon = "<img width='13' height='13' src='/images/bullet-black-icon.png'> ";
             var newpassword = $('#newpassword').val();
             var confirmnewpassword = $('#confirmnewpassword').val();
             if ((newpassword != '') && (confirmnewpassword != '')) {
                 if (newpassword != confirmnewpassword) {
-                    jError('The password does not match!', 'Error', null);
-                    $('#newpassword').attr('value', '');
-                    $('#confirmnewpassword').attr('value', '');
+                    alerts.show({css: 'error', title: 'Required Fields', message: Icon + " The two passwords must be the same"});
+                    $('#newpassword').val('');
+                    $('#confirmnewpassword').val('');
                 }
             }
         }

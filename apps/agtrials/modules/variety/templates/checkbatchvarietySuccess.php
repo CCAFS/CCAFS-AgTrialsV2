@@ -11,7 +11,7 @@
                 var fragmento = checkbatchvarietyfile.split('.');
                 var extension = fragmento[1];
                 if (!((extension == 'XLS') || (extension == 'xls'))) {
-                    $('#checkbatchvarietyfile').attr('value', '');
+                    $('#checkbatchvarietyfile').val('');
                     $("#checkbatchvarietyfile").val('');
                     jAlert('Permitted file (.XLS)', 'Invalid File', null);
                 } else {

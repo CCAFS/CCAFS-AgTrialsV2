@@ -41,7 +41,7 @@
                 type: "GET",
                 url: "/home/refreshcode",
                 success: function (data) {
-                    $('#securitycode').attr('value', data);
+                    $('#securitycode').val(data);
                 }
             });
 
@@ -52,7 +52,7 @@
             var securitycode = $('#securitycode').val();
             if (code != securitycode) {
                 $('#code_error').html("Sorry, the code you entered was invalid");
-                $('#code').attr('value', '');
+                $('#code').val('');
             } else {
                 $('#code_error').html("");
             }
