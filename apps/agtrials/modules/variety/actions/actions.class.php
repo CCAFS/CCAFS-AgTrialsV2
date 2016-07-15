@@ -37,6 +37,40 @@ require_once '../lib/functions/function.php';
  */
 class varietyActions extends autoVarietyActions {
 
+    public function executeDelete(sfWebRequest $request) {
+
+        //VERIFICAMOS LOS PERMISOS DE MODIFICACION
+        $id_user = $this->getUser()->getGuardUser()->getId();
+        $id_variety = $request->getParameter("id_variety");
+        $Query00 = Doctrine::getTable('TbVariety')->findOneByIdVariety($id_variety);
+        $id_user_registro = $Query00->getIdUser();
+        $user = $this->getUser();
+
+        //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
+        if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
+            $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Delete!");
+            $this->redirect("/variety");
+        }
+    }
+
+    public function executeEdit(sfWebRequest $request) {
+        $this->variety = $this->getRoute()->getObject();
+        $this->form = $this->configuration->getForm($this->variety);
+
+        //VERIFICAMOS LOS PERMISOS DE MODIFICACION
+        $id_user = $this->getUser()->getGuardUser()->getId();
+        $id_variety = $request->getParameter("id_variety");
+        $Query00 = Doctrine::getTable('TbVariety')->findOneByIdVariety($id_variety);
+        $id_user_registro = $Query00->getIdUser();
+        $user = $this->getUser();
+
+        //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
+        if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
+            $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Edit!");
+            $this->redirect("/variety");
+        }
+    }
+
     public function executeDownloadestruturevariety(sfWebRequest $request) {
         $connection = Doctrine_Manager::getInstance()->connection();
         error_reporting(E_ALL);

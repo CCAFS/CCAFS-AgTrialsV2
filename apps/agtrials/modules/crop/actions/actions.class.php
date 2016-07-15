@@ -25,6 +25,7 @@
 
 require_once dirname(__FILE__) . '/../lib/cropGeneratorConfiguration.class.php';
 require_once dirname(__FILE__) . '/../lib/cropGeneratorHelper.class.php';
+require_once '../lib/functions/function.php';
 
 /**
  * crop actions.
@@ -35,6 +36,40 @@ require_once dirname(__FILE__) . '/../lib/cropGeneratorHelper.class.php';
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
 class cropActions extends autoCropActions {
+
+    public function executeDelete(sfWebRequest $request) {
+
+        //VERIFICAMOS LOS PERMISOS DE MODIFICACION
+        $id_user = $this->getUser()->getGuardUser()->getId();
+        $id_crop = $request->getParameter("id_crop");
+        $Query00 = Doctrine::getTable('TbCrop')->findOneByIdCrop($id_crop);
+        $id_user_registro = $Query00->getIdUser();
+        $user = $this->getUser();
+
+        //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
+        if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
+            $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Delete!");
+            $this->redirect("/crop");
+        }
+    }
+
+    public function executeEdit(sfWebRequest $request) {
+        $this->crop = $this->getRoute()->getObject();
+        $this->form = $this->configuration->getForm($this->crop);
+
+        //VERIFICAMOS LOS PERMISOS DE MODIFICACION
+        $id_user = $this->getUser()->getGuardUser()->getId();
+        $id_crop = $request->getParameter("id_crop");
+        $Query00 = Doctrine::getTable('TbCrop')->findOneByIdCrop($id_crop);
+        $id_user_registro = $Query00->getIdUser();
+        $user = $this->getUser();
+
+        //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
+        if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
+            $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Edit!");
+            $this->redirect("/crop");
+        }
+    }
 
     public function executeAutocompletesearhcrop(sfWebRequest $request) {
         $SearchWhere = sfContext::getInstance()->getUser()->getAttribute('SearchWhere');

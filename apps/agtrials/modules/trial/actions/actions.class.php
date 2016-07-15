@@ -65,23 +65,31 @@ class trialActions extends autoTrialActions {
 
     public function executeEdit(sfWebRequest $request) {
 
-        //RESET VARIABLES DE SESION
-        sfContext::getInstance()->getUser()->getAttributeHolder()->remove('user_id');
-        sfContext::getInstance()->getUser()->getAttributeHolder()->remove('user_name');
-        sfContext::getInstance()->getUser()->getAttributeHolder()->remove('group_id');
-        sfContext::getInstance()->getUser()->getAttributeHolder()->remove('group_name');
-        sfContext::getInstance()->getUser()->getAttributeHolder()->remove('TrialInfo');
-        sfContext::getInstance()->getUser()->getAttributeHolder()->remove('ArrVariety');
-        sfContext::getInstance()->getUser()->getAttributeHolder()->remove('ArrVariablesMeasured');
-
-        $connection = Doctrine_Manager::getInstance()->connection();
-        $user = sfContext::getInstance()->getUser();
+        //VERIFICAMOS LOS PERMISOS DE MODIFICACION
         $id_user = $this->getUser()->getGuardUser()->getId();
         $id_trial = $request->getParameter("id_trial");
         $Query00 = Doctrine::getTable('TbTrial')->findOneByIdTrial($id_trial);
         $id_user_registro = $Query00->getIdUser();
-        //VERIFICAMOS LOS PERMISOS SOBRE EL REGISTRO
-        if ($id_user == $id_user_registro || (CheckUserPermission($id_user, "1"))) {
+        $user = $this->getUser();
+
+        //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
+        if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
+            $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Edit!");
+            $this->redirect("/trial/$id_trial");
+        } else {
+
+            //RESET VARIABLES DE SESION
+            sfContext::getInstance()->getUser()->getAttributeHolder()->remove('user_id');
+            sfContext::getInstance()->getUser()->getAttributeHolder()->remove('user_name');
+            sfContext::getInstance()->getUser()->getAttributeHolder()->remove('group_id');
+            sfContext::getInstance()->getUser()->getAttributeHolder()->remove('group_name');
+            sfContext::getInstance()->getUser()->getAttributeHolder()->remove('TrialInfo');
+            sfContext::getInstance()->getUser()->getAttributeHolder()->remove('ArrVariety');
+            sfContext::getInstance()->getUser()->getAttributeHolder()->remove('ArrVariablesMeasured');
+
+            $connection = Doctrine_Manager::getInstance()->connection();
+            $user = sfContext::getInstance()->getUser();
+
             //INICIO: AQUI CONSUILTAMOS LOS REGISTROS DE LA TABLA tb_trialpermissionuser
             $Trialpermissionuser = Doctrine::getTable('TbTrialpermissionuser')->findByIdTrial($id_trial);
             for ($cont = 0; $cont < count($Trialpermissionuser); $cont++) {
@@ -117,9 +125,6 @@ class trialActions extends autoTrialActions {
 
             $this->tb_trial = $this->getRoute()->getObject();
             $this->form = $this->configuration->getForm($this->tb_trial);
-        } else {
-            echo "<script> alert('*** ERROR *** \\n\\n Not permissions to EDIT!'); window.history.back();</script>";
-            Die();
         }
     }
 
@@ -136,8 +141,8 @@ class trialActions extends autoTrialActions {
             $this->getUser()->setFlash('notice', 'The item was deleted successfully.');
             $this->redirect('trial/new');
         } else {
-            echo "<script> alert('*** ERROR *** \\n\\n Not permissions to DELETE!'); window.history.back();</script>";
-            Die();
+            $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Delete!");
+            $this->redirect("/trial/$id_trial");
         }
     }
 

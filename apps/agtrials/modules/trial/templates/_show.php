@@ -35,6 +35,14 @@ $ArrTrialInfo = GetInfoTrialCropInfo($form->getObject()->get('id_trial'));
         </div>
     </div>
     <div class="col-md-10 sf_admin_form">
+        <?php $Notice = MessageNotice(); ?>
+        <?php if ($Notice != ""): ?>
+            </br>
+            <div class="alert alert-danger alert-block">
+                <a href="#" class="close fade" data-dismiss="alert">&times;</a>
+                <?php echo $Notice; ?>
+            </div>
+        <?php endif; ?>
         <div id="ProjectTrialGroups" class="label ui-helper-clearfix">
             <span class="Title">Project / Trial Groups</span>
         </div>

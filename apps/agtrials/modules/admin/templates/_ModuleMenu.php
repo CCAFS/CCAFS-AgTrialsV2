@@ -1,4 +1,7 @@
 <?php
+require_once '../lib/functions/function.php';
+$id_user = sfContext::getInstance()->getUser()->getGuardUser()->getId();
+
 $Modulo = sfContext::getInstance()->getRequest()->getParameterHolder()->get('module');
 if ($Modulo == 'contactperson')
     $Selectedcontactperson = "selected";
@@ -37,5 +40,7 @@ if ($Modulo == 'sfGuardUser')
     <div onclick="window.location.href = '/triallocation'" class="MenuButtonLeft <?php echo $Selectedtriallocation; ?>"> Trial location </div>
     <div onclick="window.location.href = '/variablesmeasured'" class="MenuButtonLeft <?php echo $Selectedvariablesmeasured; ?>"> Variables measured </div>
     <div onclick="window.location.href = '/variety'" class="MenuButtonLeft <?php echo $Selectedvariety; ?>"> Variety </div>
-    <div onclick="window.location.href = '/sfGuardUser'" class="MenuButtonLeft <?php echo $SelectedUsers; ?>"> Users </div>
+    <?php if (CheckUserPermission($id_user, 1)) { ?>
+        <div onclick="window.location.href = '/sfGuardUser'" class="MenuButtonLeft <?php echo $SelectedUsers; ?>"> Users </div>
+    <?php } ?>
 </div>

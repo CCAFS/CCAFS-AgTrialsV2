@@ -25,6 +25,7 @@
 
 require_once dirname(__FILE__) . '/../lib/experimentaldesignGeneratorConfiguration.class.php';
 require_once dirname(__FILE__) . '/../lib/experimentaldesignGeneratorHelper.class.php';
+require_once '../lib/functions/function.php';
 
 /**
  * experimentaldesign actions.
@@ -35,5 +36,39 @@ require_once dirname(__FILE__) . '/../lib/experimentaldesignGeneratorHelper.clas
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
 class experimentaldesignActions extends autoExperimentaldesignActions {
-    
+
+    public function executeDelete(sfWebRequest $request) {
+
+        //VERIFICAMOS LOS PERMISOS DE MODIFICACION
+        $id_user = $this->getUser()->getGuardUser()->getId();
+        $id_experimentaldesign = $request->getParameter("id_experimentaldesign");
+        $Query00 = Doctrine::getTable('TbExperimentaldesign')->findOneByIdExperimentaldesign($id_experimentaldesign);
+        $id_user_registro = $Query00->getIdUser();
+        $user = $this->getUser();
+
+        //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
+        if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
+            $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Delete!");
+            $this->redirect("/experimentaldesign");
+        }
+    }
+
+    public function executeEdit(sfWebRequest $request) {
+        $this->experimentaldesign = $this->getRoute()->getObject();
+        $this->form = $this->configuration->getForm($this->experimentaldesign);
+
+        //VERIFICAMOS LOS PERMISOS DE MODIFICACION
+        $id_user = $this->getUser()->getGuardUser()->getId();
+        $id_experimentaldesign = $request->getParameter("id_experimentaldesign");
+        $Query00 = Doctrine::getTable('TbExperimentaldesign')->findOneByIdExperimentaldesign($id_experimentaldesign);
+        $id_user_registro = $Query00->getIdUser();
+        $user = $this->getUser();
+
+        //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
+        if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
+            $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Edit!");
+            $this->redirect("/experimentaldesign");
+        }
+    }
+
 }

@@ -25,6 +25,7 @@
 
 require_once dirname(__FILE__) . '/../lib/rolecontactpersonGeneratorConfiguration.class.php';
 require_once dirname(__FILE__) . '/../lib/rolecontactpersonGeneratorHelper.class.php';
+require_once '../lib/functions/function.php';
 
 /**
  * rolecontactperson actions.
@@ -35,5 +36,39 @@ require_once dirname(__FILE__) . '/../lib/rolecontactpersonGeneratorHelper.class
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
 class rolecontactpersonActions extends autoRolecontactpersonActions {
-    
+
+    public function executeDelete(sfWebRequest $request) {
+
+        //VERIFICAMOS LOS PERMISOS DE MODIFICACION
+        $id_user = $this->getUser()->getGuardUser()->getId();
+        $id_rolecontactperson = $request->getParameter("id_rolecontactperson");
+        $Query00 = Doctrine::getTable('TbRolecontactperson')->findOneByIdRolecontactperson($id_rolecontactperson);
+        $id_user_registro = $Query00->getIdUser();
+        $user = $this->getUser();
+
+        //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
+        if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
+            $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Delete!");
+            $this->redirect("/rolecontactperson");
+        }
+    }
+
+    public function executeEdit(sfWebRequest $request) {
+        $this->rolecontactperson = $this->getRoute()->getObject();
+        $this->form = $this->configuration->getForm($this->rolecontactperson);
+
+        //VERIFICAMOS LOS PERMISOS DE MODIFICACION
+        $id_user = $this->getUser()->getGuardUser()->getId();
+        $id_rolecontactperson = $request->getParameter("id_rolecontactperson");
+        $Query00 = Doctrine::getTable('TbRolecontactperson')->findOneByIdRolecontactperson($id_rolecontactperson);
+        $id_user_registro = $Query00->getIdUser();
+        $user = $this->getUser();
+
+        //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
+        if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
+            $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Edit!");
+            $this->redirect("/rolecontactperson");
+        }
+    }
+
 }

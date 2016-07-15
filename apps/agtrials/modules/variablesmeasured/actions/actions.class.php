@@ -37,6 +37,40 @@ require_once '../lib/functions/function.php';
  */
 class variablesmeasuredActions extends autoVariablesmeasuredActions {
 
+    public function executeDelete(sfWebRequest $request) {
+
+        //VERIFICAMOS LOS PERMISOS DE MODIFICACION
+        $id_user = $this->getUser()->getGuardUser()->getId();
+        $id_variablesmeasured = $request->getParameter("id_variablesmeasured");
+        $Query00 = Doctrine::getTable('TbVariablesmeasured')->findOneByIdVariablesmeasured($id_variablesmeasured);
+        $id_user_registro = $Query00->getIdUser();
+        $user = $this->getUser();
+
+        //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
+        if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
+            $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Delete!");
+            $this->redirect("/variablesmeasured");
+        }
+    }
+
+    public function executeEdit(sfWebRequest $request) {
+        $this->variablesmeasured = $this->getRoute()->getObject();
+        $this->form = $this->configuration->getForm($this->variablesmeasured);
+
+        //VERIFICAMOS LOS PERMISOS DE MODIFICACION
+        $id_user = $this->getUser()->getGuardUser()->getId();
+        $id_variablesmeasured = $request->getParameter("id_variablesmeasured");
+        $Query00 = Doctrine::getTable('TbVariablesmeasured')->findOneByIdVariablesmeasured($id_variablesmeasured);
+        $id_user_registro = $Query00->getIdUser();
+        $user = $this->getUser();
+
+        //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
+        if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
+            $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Edit!");
+            $this->redirect("/variablesmeasured");
+        }
+    }
+
     public function executeDownloadestruturevariablesmeasured(sfWebRequest $request) {
         $connection = Doctrine_Manager::getInstance()->connection();
         error_reporting(E_ALL);
@@ -111,7 +145,7 @@ class variablesmeasuredActions extends autoVariablesmeasuredActions {
         $objPHPExcel->getActiveSheet()->setCellValue('A1', 'Id Trait Class');
         $objPHPExcel->getActiveSheet()->setCellValue('B1', 'Name');
 
-        $QUERY00 = "SELECT id_traitclass AS id, trclname AS name FROM tb_traitclass ORDER BY trclname";
+        $QUERY00 = "SELECT id_variablesmeasured AS id, trclname AS name FROM tb_variablesmeasured ORDER BY trclname";
         $st = $connection->execute($QUERY00);
         $Resultado00 = $st->fetchAll();
         $i = 2;
@@ -181,7 +215,7 @@ class variablesmeasuredActions extends autoVariablesmeasuredActions {
         $QUERY01 = "SELECT VM.id_variablesmeasured,VM.vrmsname,C.crpname,TC.trclname,VM.vrmnmethod,VM.vrmsunit,VM.id_ontology ";
         $QUERY01 .= "FROM tb_variablesmeasured VM ";
         $QUERY01 .= "INNER JOIN tb_crop C ON VM.id_crop = C.id_crop ";
-        $QUERY01 .= "INNER JOIN tb_traitclass TC ON VM.id_traitclass = TC.id_traitclass ";
+        $QUERY01 .= "INNER JOIN tb_variablesmeasured TC ON VM.id_variablesmeasured = TC.id_variablesmeasured ";
         $QUERY01 .= "WHERE C.id_crop = $id_crop ";
         $QUERY01 .= "AND UPPER(VM.vrmsname) LIKE '$Letter%' ";
         $QUERY01 .= "ORDER BY VM.vrmsname ";

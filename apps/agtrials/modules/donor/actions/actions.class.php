@@ -25,6 +25,8 @@
 
 require_once dirname(__FILE__) . '/../lib/donorGeneratorConfiguration.class.php';
 require_once dirname(__FILE__) . '/../lib/donorGeneratorHelper.class.php';
+require_once '../lib/functions/function.php';
+
 
 /**
  * donor actions.
@@ -35,6 +37,40 @@ require_once dirname(__FILE__) . '/../lib/donorGeneratorHelper.class.php';
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
 class donorActions extends autoDonorActions {
+
+    public function executeDelete(sfWebRequest $request) {
+
+        //VERIFICAMOS LOS PERMISOS DE MODIFICACION
+        $id_user = $this->getUser()->getGuardUser()->getId();
+        $id_donor = $request->getParameter("id_donor");
+        $Query00 = Doctrine::getTable('TbDonor')->findOneByIdDonor($id_donor);
+        $id_user_registro = $Query00->getIdUser();
+        $user = $this->getUser();
+
+        //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
+        if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
+            $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Delete!");
+            $this->redirect("/donor");
+        }
+    }
+
+    public function executeEdit(sfWebRequest $request) {
+        $this->donor = $this->getRoute()->getObject();
+        $this->form = $this->configuration->getForm($this->donor);
+
+        //VERIFICAMOS LOS PERMISOS DE MODIFICACION
+        $id_user = $this->getUser()->getGuardUser()->getId();
+        $id_donor = $request->getParameter("id_donor");
+        $Query00 = Doctrine::getTable('TbDonor')->findOneByIdDonor($id_donor);
+        $id_user_registro = $Query00->getIdUser();
+        $user = $this->getUser();
+
+        //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
+        if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
+            $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Edit!");
+            $this->redirect("/donor");
+        }
+    }
 
     public function executeAutocompletedonor(sfWebRequest $request) {
         $this->getResponse()->setContentType('application/json');

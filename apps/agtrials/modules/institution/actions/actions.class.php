@@ -37,6 +37,40 @@ require_once '../lib/functions/function.php';
  */
 class institutionActions extends autoInstitutionActions {
 
+    public function executeDelete(sfWebRequest $request) {
+
+        //VERIFICAMOS LOS PERMISOS DE MODIFICACION
+        $id_user = $this->getUser()->getGuardUser()->getId();
+        $id_institution = $request->getParameter("id_institution");
+        $Query00 = Doctrine::getTable('TbInstitution')->findOneByIdInstitution($id_institution);
+        $id_user_registro = $Query00->getIdUser();
+        $user = $this->getUser();
+
+        //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
+        if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
+            $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Delete!");
+            $this->redirect("/institution");
+        }
+    }
+
+    public function executeEdit(sfWebRequest $request) {
+        $this->institution = $this->getRoute()->getObject();
+        $this->form = $this->configuration->getForm($this->institution);
+
+        //VERIFICAMOS LOS PERMISOS DE MODIFICACION
+        $id_user = $this->getUser()->getGuardUser()->getId();
+        $id_institution = $request->getParameter("id_institution");
+        $Query00 = Doctrine::getTable('TbInstitution')->findOneByIdInstitution($id_institution);
+        $id_user_registro = $Query00->getIdUser();
+        $user = $this->getUser();
+
+        //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
+        if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
+            $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Edit!");
+            $this->redirect("/institution");
+        }
+    }
+
     public function executeAutocompleteinstitution(sfWebRequest $request) {
         $this->getResponse()->setContentType('application/json');
         $connection = Doctrine_Manager::getInstance()->connection();

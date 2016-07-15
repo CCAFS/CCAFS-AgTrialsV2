@@ -42,9 +42,38 @@ class triallocationActions extends autoTriallocationActions {
         $this->tb_triallocation = $this->form->getObject();
     }
 
+    public function executeDelete(sfWebRequest $request) {
+
+        //VERIFICAMOS LOS PERMISOS DE MODIFICACION
+        $id_user = $this->getUser()->getGuardUser()->getId();
+        $id_triallocation = $request->getParameter("id_triallocation");
+        $Query00 = Doctrine::getTable('TbTriallocation')->findOneByIdTriallocation($id_triallocation);
+        $id_user_registro = $Query00->getIdUser();
+        $user = $this->getUser();
+
+        //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
+        if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
+            $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Delete!");
+            $this->redirect("/triallocation");
+        }
+    }
+
     public function executeEdit(sfWebRequest $request) {
         $this->tb_triallocation = $this->getRoute()->getObject();
         $this->form = $this->configuration->getForm($this->tb_triallocation);
+
+        //VERIFICAMOS LOS PERMISOS DE MODIFICACION
+        $id_user = $this->getUser()->getGuardUser()->getId();
+        $id_triallocation = $request->getParameter("id_triallocation");
+        $Query00 = Doctrine::getTable('TbTriallocation')->findOneByIdTriallocation($id_triallocation);
+        $id_user_registro = $Query00->getIdUser();
+        $user = $this->getUser();
+
+        //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
+        if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
+            $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Edit!");
+            $this->redirect("/triallocation");
+        }
     }
 
     protected function processForm(sfWebRequest $request, sfForm $form) {
