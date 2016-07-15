@@ -1,10 +1,19 @@
 <?php use_helper('I18N', 'Date') ?>
 <?php include_partial('contactperson/assets') ?>
+
 <div class="row">
     <div class="col-md-2 left-column">
         <?php include_partial('admin/ModuleMenu') ?>
     </div>
+
     <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
+        <?php $Notice = MessageNotice(); ?>
+        <?php if ($Notice != ""): ?>
+            <div class="alert alert-danger alert-block">
+                <a href="#" class="close fade" data-dismiss="alert">&times;</a>
+                <?php echo $Notice; ?>
+            </div>
+        <?php endif; ?>
         <span class="Title">Contact person</span>
         <div class="pull-right">
             <a href="#filterPopup" class="btn btn-action" data-toggle="modal"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Filter</a>
@@ -20,6 +29,7 @@
                         These results are filtered. <a href="#filterPopup" data-toggle="modal">Modify filter</a>
                     </div>
                 <?php endif; ?>
+
                 <?php include_partial('contactperson/flashes') ?>
                 <?php include_partial('contactperson/list_header', array('pager' => $pager)) ?>
                 <div id="sf_admin_content">

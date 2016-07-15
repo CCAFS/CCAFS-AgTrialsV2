@@ -26,6 +26,7 @@
 
 require_once dirname(__FILE__) . '/../lib/contactpersonGeneratorConfiguration.class.php';
 require_once dirname(__FILE__) . '/../lib/contactpersonGeneratorHelper.class.php';
+require_once '../lib/functions/function.php';
 
 /**
  * contactperson actions.
@@ -36,6 +37,40 @@ require_once dirname(__FILE__) . '/../lib/contactpersonGeneratorHelper.class.php
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
 class contactpersonActions extends autoContactpersonActions {
+
+    public function executeDelete(sfWebRequest $request) {
+
+        //VERIFICAMOS LOS PERMISOS DE MODIFICACION
+        $id_user = $this->getUser()->getGuardUser()->getId();
+        $id_contactperson = $request->getParameter("id_contactperson");
+        $Query00 = Doctrine::getTable('TbContactperson')->findOneByIdContactperson($id_contactperson);
+        $id_user_registro = $Query00->getIdUser();
+        $user = $this->getUser();
+
+        //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
+        if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
+            $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Delete!");
+            $this->redirect("/contactperson");
+        }
+    }
+
+    public function executeEdit(sfWebRequest $request) {
+        $this->contactperson = $this->getRoute()->getObject();
+        $this->form = $this->configuration->getForm($this->contactperson);
+
+        //VERIFICAMOS LOS PERMISOS DE MODIFICACION
+        $id_user = $this->getUser()->getGuardUser()->getId();
+        $id_contactperson = $request->getParameter("id_contactperson");
+        $Query00 = Doctrine::getTable('TbContactperson')->findOneByIdContactperson($id_contactperson);
+        $id_user_registro = $Query00->getIdUser();
+        $user = $this->getUser();
+
+        //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
+        if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
+            $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Edit!");
+            $this->redirect("/contactperson");
+        }
+    }
 
     public function executeAutocompletecontactperson(sfWebRequest $request) {
         $this->getResponse()->setContentType('application/json');

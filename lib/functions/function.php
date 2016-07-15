@@ -1078,4 +1078,10 @@ function SortDataArrayAutocomplete($a, $b) {
     return strtotime($a['label']) - strtotime($b['label']);
 }
 
+function MessageNotice() {
+    $Notice = sfContext::getInstance()->getUser()->getAttribute('Notice');
+    sfContext::getInstance()->getUser()->setAttribute('Notice', "");
+    return $Notice;
+}
+
 ?>

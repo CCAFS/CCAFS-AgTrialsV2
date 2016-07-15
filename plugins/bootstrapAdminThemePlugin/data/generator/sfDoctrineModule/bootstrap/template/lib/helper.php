@@ -37,7 +37,7 @@ abstract class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorHelper 
 
   public function linkToList($params)
   {
-  return link_to('<span class="glyphicon glyphicon-list" aria-hidden="true"></span> List', '@'.$this->getUrlForAction('list'), array('class' => 'btn btn-action'));
+  return link_to('<span class="glyphicon glyphicon-list" aria-hidden="true"></span> Back to list', '@'.$this->getUrlForAction('list'), array('class' => 'btn btn-action'));
   }
 
   public function linkToSave($object, $params)
