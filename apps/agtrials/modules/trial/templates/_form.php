@@ -22,6 +22,10 @@ if (isset($session_group_id)) {
     }
 }
 ?>
+
+<script>$('.mitooltip').tooltip();</script>
+
+
 <link href="/autocompletemultiple/autocomplete.css" rel="stylesheet" type="text/css" />
 <script src="/autocompletemultiple/lib/jquery.1.7.1.js"></script>
 <script src="/autocompletemultiple/lib/jquery.ui.1.8.16.js"></script>
@@ -30,6 +34,10 @@ if (isset($session_group_id)) {
 <script type="text/javascript" src="/jqueryConfirm/jquery-confirm.min.js"></script>
 <link rel="stylesheet" type="text/css" media="screen" href="/jqueryConfirm/jquery-confirm.min.css" />
 
+<script type="text/javascript" src="/jquery.qtip/jquery.qtip.min.js"></script>
+<script type="text/javascript" src="/jquery.qtip/jquery.qtip.js"></script>
+<script type="text/javascript" src="/js/help.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="/jquery.qtip/jquery.qtip.min.css" />
 
 
 <script type="text/javascript">
@@ -42,6 +50,7 @@ if (isset($session_group_id)) {
             selected: [<?php if ($selectedgroup) echo $selectedgroup; ?>]
         });
     });
+
 </script>
 <div class="row">
     <div class="col-md-2 left-column">
@@ -76,7 +85,10 @@ if (isset($session_group_id)) {
             <div class="form-group control-type-text">
                 <table class="TableModule"> 
                     <tr>
-                        <td><span class="Mandatory">*</span> Name of the Project:&ensp;</td>
+                        <td><span class="Mandatory">*</span> 
+                            Name of the Project:&ensp;<span id="HelpNameProject" class="glyphicon glyphicon-question-sign"/>
+                        </td>
+
                         <td>
                             <div>
                                 <?php
@@ -100,7 +112,7 @@ if (isset($session_group_id)) {
             <div class="form-group control-type-text">
                 <table class="TableModule">
                     <tr>
-                        <td>Name:</td>
+                        <td>Name:&ensp;<span id="HelpProjectLeadName" class="glyphicon glyphicon-question-sign"/></td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div class="DivName"><span class="Mandatory">*</span> First name</div>
@@ -1140,5 +1152,4 @@ if (isset($session_group_id)) {
     </div>
 </div>
 </div>
-
 
