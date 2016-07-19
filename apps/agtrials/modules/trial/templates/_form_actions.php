@@ -1,8 +1,14 @@
 <?php
-$id_user = sfContext::getInstance()->getUser()->getGuardUser()->getId();
-$id_trial = $tb_trial->getIdTrial();
-$Query00 = Doctrine::getTable('TbTrial')->findOneByIdTrial($id_trial);
-$id_user_registro = $Query00->getIdUser();
+$NowAction = sfContext::getInstance()->getRequest()->getParameterHolder()->get('action');
+if (($NowAction == 'edit') || ($NowAction == 'delete') || ($NowAction == 'show')) {
+    $id_user = "";
+    if ($sf_user->isAuthenticated()) {
+        $id_user = sfContext::getInstance()->getUser()->getGuardUser()->getId();
+    }
+    $id_trial = $tb_trial->getIdTrial();
+    $Query00 = Doctrine::getTable('TbTrial')->findOneByIdTrial($id_trial);
+    $id_user_registro = $Query00->getIdUser();
+}
 ?>
 
 

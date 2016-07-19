@@ -12,6 +12,7 @@ if (isset($session_user_id)) {
     }
 }
 
+
 $session_group_id = $user->getAttribute('group_id');
 $session_group_name = $user->getAttribute('group_name');
 $selected = "";
@@ -243,6 +244,7 @@ if (isset($session_group_id)) {
                 </table>
             </div>
         </div>
+
         <div class="form-group control-type-text">
             <span class="Title">Trial Info</span>
         </div>

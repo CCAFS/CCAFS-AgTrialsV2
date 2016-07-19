@@ -53,6 +53,8 @@ class trialActions extends autoTrialActions {
         $this->form = $this->configuration->getForm();
         $this->tb_trial = $this->form->getObject();
 
+
+
         //RESET VARIABLES DE SESION
         sfContext::getInstance()->getUser()->getAttributeHolder()->remove('user_id');
         sfContext::getInstance()->getUser()->getAttributeHolder()->remove('user_name');

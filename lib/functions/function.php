@@ -411,13 +411,15 @@ function PermissionChangeTrialGroup($id_user, $id_trialgroup) {
 
 function CheckUserPermission($id_user, $permissions) {
     $Return = false;
-    $Arr_Permission = explode(",", $permissions);
-    $SfGuardUserPermission = Doctrine::getTable('SfGuardUserPermission')->findByUserId($id_user);
-    foreach ($SfGuardUserPermission AS $Permission) {
-        foreach ($Arr_Permission AS $id_permission) {
-            if ($Permission->permission_id == $id_permission) {
-                $Return = true;
-                break;
+    if ($id_user !== '') {
+        $Arr_Permission = explode(",", $permissions);
+        $SfGuardUserPermission = Doctrine::getTable('SfGuardUserPermission')->findByUserId($id_user);
+        foreach ($SfGuardUserPermission AS $Permission) {
+            foreach ($Arr_Permission AS $id_permission) {
+                if ($Permission->permission_id == $id_permission) {
+                    $Return = true;
+                    break;
+                }
             }
         }
     }

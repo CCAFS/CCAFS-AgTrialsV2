@@ -44,7 +44,7 @@
     </div>
 </div>
 
-<div class="row HomePart4">
+<!--<div class="row HomePart4">
     <div class="container">
         <h1 class="HomeTit">Latest Trials</h1><br>
         <div class="row HomePart41">
@@ -72,4 +72,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
