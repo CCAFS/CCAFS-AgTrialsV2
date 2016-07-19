@@ -86,9 +86,8 @@ if (isset($session_group_id)) {
                 <table class="TableModule"> 
                     <tr>
                         <td><span class="Mandatory">*</span> 
-                            Name of the Project:&ensp;<span id="HelpNameProject" class="glyphicon glyphicon-question-sign"/>
+                            Name of the Project:<?php echo Help('HelpNameProject'); ?>
                         </td>
-
                         <td>
                             <div>
                                 <?php
@@ -112,7 +111,7 @@ if (isset($session_group_id)) {
             <div class="form-group control-type-text">
                 <table class="TableModule">
                     <tr>
-                        <td>Name:&ensp;<span id="HelpProjectLeadName" class="glyphicon glyphicon-question-sign"/></td>
+                        <td>Name:&ensp;</td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div class="DivName"><span class="Mandatory">*</span> First name</div>

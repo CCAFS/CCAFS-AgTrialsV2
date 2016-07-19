@@ -1086,4 +1086,8 @@ function MessageNotice() {
     return $Notice;
 }
 
+function Help($FieldId) {
+    return "&ensp;<span id='$FieldId' class='glyphicon glyphicon-question-sign'/>";
+}
+
 ?>
