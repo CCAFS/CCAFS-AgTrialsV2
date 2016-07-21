@@ -257,12 +257,14 @@ class adminActions extends sfActions {
 
     public function executeSaveFieldsModule(sfWebRequest $request) {
         $connection = Doctrine_Manager::getInstance()->connection();
+        $id_user = $this->getUser()->getGuardUser()->getId();
+        $DateNow = date("Y-m-d") . " " . date("H:i:s");
         $id = $request->getParameter('id');
         $texthelp = $request->getParameter('texthelp');
 
         $texthelp = str_replace("'", "''", $texthelp);
 
-        $QUERY00 = "UPDATE tb_modulehelp SET mdhltexthelp = '$texthelp' WHERE id_modulehelp = $id";
+        $QUERY00 = "UPDATE tb_modulehelp SET mdhltexthelp = '$texthelp', id_user_update = $id_user, updated_at = '$DateNow' WHERE id_modulehelp = $id";
         $connection->execute($QUERY00);
         die();
     }
