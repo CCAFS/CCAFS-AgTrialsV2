@@ -4,19 +4,19 @@
             <div class="button" onclick="window.location.href = '/searchtrials'"> 
                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search Trials
             </div>
-            <span class="HomeButtonText">Text AgTrials Test</span>
+            <span class="HomeButtonText"><b>Simple</b> and <b>Advanced</b> Searches</span>
         </div>
         <div class="HomeButton" style=""> 
             <div class="button" onclick="window.location.href = '/trial/new'">             
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Trial
             </div>
-            <span class="HomeButtonText">Text</span>        
+            <span class="HomeButtonText">Upload your data to AgTrials</span>        
         </div>
         <div class="HomeButton" style=""> 
             <div class="button" onclick="window.location.href = '/batchuploadtrials'">             
                 <span class="glyphicon glyphicon-open" aria-hidden="true"></span> Upload Batch of Trials
             </div>
-            <span class="HomeButtonText">Text</span>        
+            <span class="HomeButtonText">Upload your data in batch mode</span>        
         </div>
     </div>
 </div>
