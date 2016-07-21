@@ -8,7 +8,7 @@
         <?php include_partial('admin/ProsessesMenu') ?>
     </div>
     <div class="col-md-9 sf_admin_form" style="margin-top: 13px; width: 930px;">
-        <span class="Title">Batch upload another</span>
+        <span class="Title">Batch uploads</span>
         <div id="div_loading" class="loading" align="center" style="display:none;">
             <?php echo image_tag('loading.gif'); ?>
             <br>Copying files to the server, please wait...
@@ -17,6 +17,7 @@
             <div class="container">
                 <div>Download templates:</div>
                 <div class="row RowDownloadTemplate">
+
                     <div class="DownloadTemplate" onclick="window.location.href = '/downloadestrutureproject'; SelectedTemplate('Trial Project Template');">
                         <img width="60" height="50" border="0" src="/images/DownloadTemplate.png">
                         <div>Trial Project Template</div>
