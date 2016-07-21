@@ -13,6 +13,8 @@ if ($Modulo == 'experimentaldesign')
     $Selectedexperimentaldesign = "selected";
 if ($Modulo == 'institution')
     $Selectedinstitution = "selected";
+if ($Modulo == 'admin')
+    $Selectedmodulehelp = "selected";
 if ($Modulo == 'project')
     $Selectedproject = "selected";
 if ($Modulo == 'rolecontactperson')
@@ -34,6 +36,7 @@ if ($Modulo == 'sfGuardUser')
     <div onclick="window.location.href = '/donor'" class="MenuButtonLeft <?php echo $Selecteddonor; ?>"> Donor </div>
     <div onclick="window.location.href = '/experimentaldesign'" class="MenuButtonLeft <?php echo $Selectedexperimentaldesign; ?>"> Experimental design </div>
     <div onclick="window.location.href = '/institution'" class="MenuButtonLeft <?php echo $Selectedinstitution; ?>"> Institution </div>
+    <div onclick="window.location.href = '/modulehelp'" class="MenuButtonLeft <?php echo $Selectedmodulehelp; ?>"> Module help </div>
     <div onclick="window.location.href = '/project'" class="MenuButtonLeft <?php echo $Selectedproject; ?>"> Project </div>
     <div onclick="window.location.href = '/rolecontactperson'" class="MenuButtonLeft <?php echo $Selectedrolecontactperson; ?>"> Role contact person </div>
     <div onclick="window.location.href = '/traitclass'" class="MenuButtonLeft <?php echo $Selectedtraitclass; ?>"> Trait class </div>

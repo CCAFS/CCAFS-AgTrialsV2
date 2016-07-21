@@ -1,6 +1,6 @@
 jQuery(document).ready(function () {
     $.ajax({
-        url: "/admin/ModuleHelp?HelpModule=Trial",
+        url: "/admin/InfoModuleHelp?HelpModule=Trial",
         type: "GET",
         dataType: "json",
         success: function (data) {

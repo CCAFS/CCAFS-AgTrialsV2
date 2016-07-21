@@ -199,7 +199,7 @@ class adminActions extends sfActions {
         die($JSONByTrialLocation);
     }
 
-    public function executeModuleHelp(sfWebRequest $request) {
+    public function executeInfoModuleHelp(sfWebRequest $request) {
         $this->getResponse()->setContentType('application/json');
         $connection = Doctrine_Manager::getInstance()->connection();
         $HelpModule = $request->getParameter('HelpModule');
@@ -212,6 +212,59 @@ class adminActions extends sfActions {
         $Results = $st->fetchAll(PDO::FETCH_ASSOC);
         $JSONByTrialLocation = json_encode($Results);
         die($JSONByTrialLocation);
+    }
+
+    public function executeModulehelp(sfWebRequest $request) {
+        
+    }
+
+    public function executeLoadFieldsModule(sfWebRequest $request) {
+        $connection = Doctrine_Manager::getInstance()->connection();
+        $ModuleHelp = $request->getParameter('ModuleHelp');
+        $HTML = "";
+        if ($ModuleHelp == 'Trial') {
+
+            $INFO = "<thead id='HeadTableResult'>";
+            $INFO .= "<tr>";
+            $INFO .= "<th class='col-sm-1'>Module</th>";
+            $INFO .= "<th class='col-sm-3'>Session</th>";
+            $INFO .= "<th class='col-sm-3'>Field</th>";
+            $INFO .= "<th style='width: 300px;'>Help text</th>";
+            $INFO .= "</tr>";
+            $INFO .= "</thead>";
+
+            $QUERY00 = "SELECT  T.id_modulehelp,T.mdhlmodule,T.mdhlsession,T.mdhlfield,T.mdhltexthelp ";
+            $QUERY00 .= "FROM tb_modulehelp T ";
+            $QUERY00 .= "WHERE T.mdhlmodule = '$ModuleHelp' ";
+            $QUERY00 .= "ORDER BY T.id_modulehelp ";
+            $st = $connection->execute($QUERY00);
+            $Results = $st->fetchAll(PDO::FETCH_ASSOC);
+            $INFO .= "<tbody id='DataResult'>";
+            foreach ($Results AS $Valor) {
+                $INFO .= "<tr>";
+                $INFO .= "<td class='col-sm-1'>{$Valor['mdhlmodule']}</td>";
+                $INFO .= "<td class='col-sm-3'>{$Valor['mdhlsession']}</td>";
+                $INFO .= "<td class='col-sm-3'>{$Valor['mdhlfield']}</td>";
+                $INFO .= "<td style='width: 300px;'><div><textarea rows='1' onchange='SaveFieldHelp({$Valor['id_modulehelp']});' cols='36' id='texthelp{$Valor['id_modulehelp']}' class='form-control' type='text'>{$Valor['mdhltexthelp']}</textarea></div><div style='color: #2a9a60;' id='Action{$Valor['id_modulehelp']}'></div></td>";
+                $INFO .= "</tr>";
+            }
+            $INFO .= "</tbody>";
+            $HTML = $INFO;
+        }
+
+        die($HTML);
+    }
+
+    public function executeSaveFieldsModule(sfWebRequest $request) {
+        $connection = Doctrine_Manager::getInstance()->connection();
+        $id = $request->getParameter('id');
+        $texthelp = $request->getParameter('texthelp');
+
+        $texthelp = str_replace("'", "''", $texthelp);
+
+        $QUERY00 = "UPDATE tb_modulehelp SET mdhltexthelp = '$texthelp' WHERE id_modulehelp = $id";
+        $connection->execute($QUERY00);
+        die();
     }
 
 }
