@@ -7,6 +7,7 @@ jQuery(document).ready(function () {
             for (var i in data) {
                 jQuery('#' + data[i].idhelp).qtip({
                     content: data[i].texthelp,
+                    style: {classes: 'qtip-green'}
                 });
             }
         }
