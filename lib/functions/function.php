@@ -1086,13 +1086,12 @@ function MessageNotice() {
     return $Notice;
 }
 
-function ModuleHelp($Module, $Field) {
+function ModuleHelp($IdHelp) {
     $HTMLHelp = "";
     $connection = Doctrine_Manager::getInstance()->connection();
     $QUERY00 = "SELECT 'Help'||T.mdhlmodule||T.id_modulehelp AS idhelp,T.mdhltexthelp AS texthelp ";
     $QUERY00 .= "FROM tb_modulehelp T ";
-    $QUERY00 .= "WHERE T.mdhlmodule = '$Module' ";
-    $QUERY00 .= "AND T.mdhlfield = '$Field' ";
+    $QUERY00 .= "WHERE ('Help'||T.mdhlmodule||T.id_modulehelp) = '$IdHelp' ";
     $QUERY00 .= "AND T.mdhltexthelp IS NOT NULL ";
 
     $st = $connection->execute($QUERY00);
