@@ -716,6 +716,14 @@ ul.subMenu li a{
     width: 198px;
 }
 
+.qtip-content{
+    font-size: 14px;
+    border-color: #27AE60;
+    background-color: #27AE60;
+    color: #FFF;
+    line-height: 18px;
+}
+
 
 /*ESTILO PARA LAS GRAFICAS DE D3JS*/
 .bar {

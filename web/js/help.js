@@ -6,7 +6,7 @@ jQuery(document).ready(function () {
         success: function (data) {
             for (var i in data) {
                 jQuery('#' + data[i].idhelp).qtip({
-                    content: data[i].texthelp
+                    content: data[i].texthelp,
                 });
             }
         }
