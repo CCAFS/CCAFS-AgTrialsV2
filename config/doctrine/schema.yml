@@ -925,6 +925,64 @@ TbInstitution:
       local: id_institution
       foreign: id_projectimplementinginstitutions
       type: many
+TbModulehelp:
+  connection: doctrine
+  tableName: tb_modulehelp
+  columns:
+    id_modulehelp:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      sequence: tb_modulehelp_id_modulehelp
+    mdhlmodule:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    mdhlsession:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    mdhlfield:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    mdhltexthelp:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    id_user:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    id_user_update:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
 TbProject:
   connection: doctrine
   tableName: tb_project

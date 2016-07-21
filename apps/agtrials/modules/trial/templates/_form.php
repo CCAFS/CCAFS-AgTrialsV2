@@ -86,7 +86,7 @@ if (isset($session_group_id)) {
                 <table class="TableModule"> 
                     <tr>
                         <td><span class="Mandatory">*</span> 
-                            Name of the Project:<?php echo Help('HelpNameProject'); ?>
+                            Name of the Project:<?php echo ModuleHelp('Trial', 'Name of the Project'); ?>
                         </td>
                         <td>
                             <div>

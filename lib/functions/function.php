@@ -1086,8 +1086,26 @@ function MessageNotice() {
     return $Notice;
 }
 
-function Help($FieldId) {
-    return "&ensp;<span id='$FieldId' class='glyphicon glyphicon-question-sign'/>";
+function ModuleHelp($Module, $Field) {
+    $HTMLHelp = "";
+    $connection = Doctrine_Manager::getInstance()->connection();
+    $QUERY00 = "SELECT 'Help'||T.mdhlmodule||T.id_modulehelp AS idhelp,T.mdhltexthelp AS texthelp ";
+    $QUERY00 .= "FROM tb_modulehelp T ";
+    $QUERY00 .= "WHERE T.mdhlmodule = '$Module' ";
+    $QUERY00 .= "AND T.mdhlfield = '$Field' ";
+    $QUERY00 .= "AND T.mdhltexthelp IS NOT NULL ";
+
+    $st = $connection->execute($QUERY00);
+    $Resultado00 = $st->fetchAll();
+    foreach ($Resultado00 AS $fila) {
+        $idhelp = $fila['idhelp'];
+        $texthelp = $fila['texthelp'];
+    }
+    if ($texthelp != '') {
+        $HTMLHelp = "&ensp;<span id='$idhelp' class='glyphicon glyphicon-question-sign'/>";
+    }
+
+    return $HTMLHelp;
 }
 
 ?>

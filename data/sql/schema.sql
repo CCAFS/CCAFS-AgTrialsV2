@@ -6,6 +6,7 @@ CREATE TABLE tb_crop (id_crop BIGINT, crpname TEXT NOT NULL, crpscientificname T
 CREATE TABLE tb_donor (id_donor BIGINT, dnrname TEXT, created_at TIMESTAMP, updated_at TIMESTAMP, id_user BIGINT, id_user_update BIGINT, PRIMARY KEY(id_donor));
 CREATE TABLE tb_experimentaldesign (id_experimentaldesign BIGINT, xpdsname TEXT, created_at TIMESTAMP, updated_at TIMESTAMP, id_user BIGINT, id_user_update BIGINT, PRIMARY KEY(id_experimentaldesign));
 CREATE TABLE tb_institution (id_institution BIGINT, insname TEXT, id_country BIGINT, created_at TIMESTAMP, updated_at TIMESTAMP, id_user BIGINT, id_user_update BIGINT, PRIMARY KEY(id_institution));
+CREATE TABLE tb_modulehelp (id_modulehelp BIGINT, mdhlmodule TEXT, mdhlsession TEXT, mdhlfield TEXT, mdhltexthelp TEXT, created_at TIMESTAMP, updated_at TIMESTAMP, id_user BIGINT, id_user_update BIGINT, PRIMARY KEY(id_modulehelp));
 CREATE TABLE tb_project (id_project BIGINT, prjname TEXT, id_leadofproject BIGINT, id_projectimplementinginstitutions BIGINT, prjprojectimplementingperiodstartdate DATE, prjprojectimplementingperiodenddate DATE, id_donor BIGINT, prjabstract TEXT, prjkeywords TEXT, created_at TIMESTAMP, updated_at TIMESTAMP, id_user BIGINT, id_user_update BIGINT, PRIMARY KEY(id_project));
 CREATE TABLE tb_projectdocument (id_projectdocument BIGINT, id_project BIGINT NOT NULL, prdcfile TEXT, prdcdescription TEXT, created_at TIMESTAMP, updated_at TIMESTAMP, id_user BIGINT, id_user_update BIGINT, PRIMARY KEY(id_projectdocument));
 CREATE TABLE tb_rolecontactperson (id_rolecontactperson BIGINT, rcpname TEXT, created_at TIMESTAMP, updated_at TIMESTAMP, id_user BIGINT, id_user_update BIGINT, PRIMARY KEY(id_rolecontactperson));
@@ -36,6 +37,7 @@ CREATE SEQUENCE tb_crop_id_crop_seq INCREMENT 1 START 1;
 CREATE SEQUENCE tb_donor_id_donor_seq INCREMENT 1 START 1;
 CREATE SEQUENCE tb_experimentaldesign_id_experimentaldesign_seq INCREMENT 1 START 1;
 CREATE SEQUENCE tb_institution_id_institution_seq INCREMENT 1 START 1;
+CREATE SEQUENCE tb_modulehelp_id_modulehelp_seq INCREMENT 1 START 1;
 CREATE SEQUENCE tb_project_id_project_seq INCREMENT 1 START 1;
 CREATE SEQUENCE tb_projectdocument_id_projectdocument_seq INCREMENT 1 START 1;
 CREATE SEQUENCE tb_rolecontactperson_id_rolecontactperson_seq INCREMENT 1 START 1;

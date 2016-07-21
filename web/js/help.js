@@ -1,21 +1,16 @@
 jQuery(document).ready(function () {
     $.ajax({
-        url: '/jquery.qtip/helpfile/trial.json',
-        type: 'GET',
-        dataType: 'json',
-        data: {}
-    })
-            .then(function (data) {
-                jQuery('#HelpNameProject').qtip({
-                    content: data.HelpNameProject
+        url: "/admin/ModuleHelp?HelpModule=Trial",
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+            for (var i in data) {
+                jQuery('#' + data[i].idhelp).qtip({
+                    content: data[i].texthelp
                 });
-
-                jQuery('#HelpProjectLeadName').qtip({
-                    content: data.HelpProjectLeadName
-                });
-
-            });
-
-
+            }
+        }
+    });
 });
+
 

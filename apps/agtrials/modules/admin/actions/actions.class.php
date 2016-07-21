@@ -199,4 +199,19 @@ class adminActions extends sfActions {
         die($JSONByTrialLocation);
     }
 
+    public function executeModuleHelp(sfWebRequest $request) {
+        $this->getResponse()->setContentType('application/json');
+        $connection = Doctrine_Manager::getInstance()->connection();
+        $HelpModule = $request->getParameter('HelpModule');
+
+        $QUERY00 = "SELECT 'Help'||T.mdhlmodule||T.id_modulehelp AS IdHelp, T.mdhltexthelp AS TextHelp ";
+        $QUERY00 .= "FROM tb_modulehelp T ";
+        $QUERY00 .= "WHERE T.mdhlmodule = '$HelpModule' ";
+        $QUERY00 .= "AND T.mdhltexthelp IS NOT NULL ";
+        $st = $connection->execute($QUERY00);
+        $Results = $st->fetchAll(PDO::FETCH_ASSOC);
+        $JSONByTrialLocation = json_encode($Results);
+        die($JSONByTrialLocation);
+    }
+
 }
