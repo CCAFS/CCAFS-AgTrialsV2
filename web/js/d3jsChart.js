@@ -589,7 +589,7 @@ function ByTrialLocation() {
 
         canvas.append('g')
                 .attr('id', 'grid')
-                .attr('transform', 'translate(150,60)')
+                .attr('transform', 'translate(270,60)') //LINEAS INTERNAS DEL GRAFICO
                 .attr("text-anchor", "middle")
                 .selectAll('line')
                 .data(grid)
@@ -627,19 +627,19 @@ function ByTrialLocation() {
                 .tickValues(d3.range(17));
 
         canvas.append('g')
-                .attr("transform", "translate(150,50)")
+                .attr("transform", "translate(270,50)") //COLUMNA IZQUIERDA
                 .style("font-size", "10px")
                 .attr('id', 'yaxis')
                 .call(yAxis);
 
         canvas.append('g')
-                .attr("transform", "translate(148,530)")
+                .attr("transform", "translate(268,530)") // FILA DE ABAJO
                 .style("font-size", "12px")
                 .attr('id', 'xaxis')
                 .call(xAxis);
 
         canvas.append('g')
-                .attr("transform", "translate(150,55)")
+                .attr("transform", "translate(270,55)") //COLUMNA DERECHA GRAFIVO
                 .attr('id', 'bars')
                 .selectAll('rect')
                 .data(data)
