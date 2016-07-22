@@ -5,46 +5,46 @@
         $('#ByTechnology').click(function () {
             $('#TitleStatistics').html("");
             $('#TitleStatistics').html("Statistics by Crop");
-            SelectOption('#ByTechnology');
             $('#chart').html("");
             $('#div_loading').show();
             ByTechnology();
+            SelectOption('#ByTechnology');
         });
 
         $('#ByCountry').click(function () {
             $('#TitleStatistics').html("");
             $('#TitleStatistics').html("Statistics by Country");
-            SelectOption('#ByCountry');
             $('#chart').html("");
             $('#div_loading').show();
             ByCountry();
+            SelectOption('#ByCountry');
         });
 
         $('#ByInstitution').click(function () {
             $('#TitleStatistics').html("");
             $('#TitleStatistics').html("Statistics by Institution");
-            SelectOption('#ByInstitution');
             $('#chart').html("");
             $('#div_loading').show();
             ByInstitution();
+            SelectOption('#ByInstitution');
         });
 
         $('#ByProject').click(function () {
             $('#TitleStatistics').html("");
             $('#TitleStatistics').html("Statistics by Project");
-            SelectOption('#ByProject');
             $('#chart').html("");
             $('#div_loading').show();
             ByProject();
+            SelectOption('#ByProject');
         });
 
         $('#ByTrialLocation').click(function () {
             $('#TitleStatistics').html("");
             $('#TitleStatistics').html("Statistics by Trial Location");
-            SelectOption('#ByTrialLocation');
             $('#chart').html("");
             $('#div_loading').show();
             ByTrialLocation();
+            SelectOption('#ByTrialLocation');
         });
     });
 
