@@ -173,8 +173,9 @@ class adminActions extends sfActions {
     public function executeByTrialLocation(sfWebRequest $request) {
         $connection = Doctrine_Manager::getInstance()->connection();
 
-        $QUERY = "SELECT TL.trlcname AS label, COUNT(*) AS data ";
+        $QUERY = "SELECT fc_triallocationadministrativedivisionname(T.id_triallocation, 1)||'-'||TL.trlcname AS label, COUNT(*) AS data ";
         $QUERY .= "FROM tb_trial T ";
+        $QUERY .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
         $QUERY .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
         $QUERY .= "GROUP BY 1 ";
         $QUERY .= "ORDER BY 2 DESC ";
