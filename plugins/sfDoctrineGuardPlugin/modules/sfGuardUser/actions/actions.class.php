@@ -2,6 +2,7 @@
 
 require_once dirname(__FILE__) . '/../lib/sfGuardUserGeneratorConfiguration.class.php';
 require_once dirname(__FILE__) . '/../lib/sfGuardUserGeneratorHelper.class.php';
+require_once dirname(__FILE__) . '/../../../../../lib/functions/connectionblog.php';
 require_once dirname(__FILE__) . '/../../../../../lib/functions/function.php';
 require_once dirname(__FILE__) . '/../../../../../lib/PHPMailer/PHPMailer.php';
 
