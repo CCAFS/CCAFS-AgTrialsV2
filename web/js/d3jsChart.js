@@ -100,7 +100,7 @@ function ByTechnology() {
 
         canvas.append('g')
                 .attr("transform", "translate(150,50)")
-                .style("font-size", "12px")
+                .style("font-size", "10px")
                 .attr('id', 'yaxis')
                 .call(yAxis);
 
@@ -232,7 +232,7 @@ function ByCountry() {
 
         canvas.append('g')
                 .attr("transform", "translate(150,50)")
-                .style("font-size", "12px")
+                .style("font-size", "10px")
                 .attr('id', 'yaxis')
                 .call(yAxis);
 
@@ -496,7 +496,7 @@ function ByProject() {
 
         canvas.append('g')
                 .attr("transform", "translate(280,50)")
-                .style("font-size", "12px")
+                .style("font-size", "10px")
                 .attr('id', 'yaxis')
                 .call(yAxis);
 
@@ -628,7 +628,7 @@ function ByTrialLocation() {
 
         canvas.append('g')
                 .attr("transform", "translate(150,50)")
-                .style("font-size", "12px")
+                .style("font-size", "10px")
                 .attr('id', 'yaxis')
                 .call(yAxis);
 

@@ -5,6 +5,7 @@
         $('#ByTechnology').click(function () {
             $('#TitleStatistics').html("");
             $('#TitleStatistics').html("Statistics by Crop");
+            SelectOption('#ByTechnology');
             $('#chart').html("");
             $('#div_loading').show();
             ByTechnology();
@@ -13,6 +14,7 @@
         $('#ByCountry').click(function () {
             $('#TitleStatistics').html("");
             $('#TitleStatistics').html("Statistics by Country");
+            SelectOption('#ByCountry');
             $('#chart').html("");
             $('#div_loading').show();
             ByCountry();
@@ -21,6 +23,7 @@
         $('#ByInstitution').click(function () {
             $('#TitleStatistics').html("");
             $('#TitleStatistics').html("Statistics by Institution");
+            SelectOption('#ByInstitution');
             $('#chart').html("");
             $('#div_loading').show();
             ByInstitution();
@@ -29,6 +32,7 @@
         $('#ByProject').click(function () {
             $('#TitleStatistics').html("");
             $('#TitleStatistics').html("Statistics by Project");
+            SelectOption('#ByProject');
             $('#chart').html("");
             $('#div_loading').show();
             ByProject();
@@ -37,6 +41,7 @@
         $('#ByTrialLocation').click(function () {
             $('#TitleStatistics').html("");
             $('#TitleStatistics').html("Statistics by Trial Location");
+            SelectOption('#ByTrialLocation');
             $('#chart').html("");
             $('#div_loading').show();
             ByTrialLocation();
@@ -46,7 +51,18 @@
     window.onload = load;
     function load() {
         ByTechnology();
+        SelectOption('#ByTechnology');
     }
+
+    function SelectOption(IdSelected) {
+        $("#DivStatisticsMenu div").each(function ()
+        {
+            $(this).removeClass('selected');
+        })
+        $(IdSelected).addClass("selected");
+    }
+
+
 
 </script>
 <div class="row" onload="ByTechnology();">

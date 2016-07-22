@@ -63,7 +63,7 @@ class adminActions extends sfActions {
 
     public function executeByTechnology(sfWebRequest $request) {
         $connection = Doctrine_Manager::getInstance()->connection();
-        $QUERY = "SELECT C.crpname AS label, COUNT(T.id_trial) AS data FROM tb_trial T INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial INNER JOIN tb_crop C ON C.id_crop = TI.id_crop GROUP BY C.crpname ORDER BY 2 DESC LIMIT 10 ";
+        $QUERY = "SELECT UPPER(C.crpname) AS label, COUNT(T.id_trial) AS data FROM tb_trial T INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial INNER JOIN tb_crop C ON C.id_crop = TI.id_crop GROUP BY C.crpname ORDER BY 2 DESC LIMIT 10 ";
         $st = $connection->execute($QUERY);
         $Results = $st->fetchAll(PDO::FETCH_ASSOC);
         $ArrLabel = null;
@@ -85,7 +85,7 @@ class adminActions extends sfActions {
 
     public function executeByCountry(sfWebRequest $request) {
         $connection = Doctrine_Manager::getInstance()->connection();
-        $QUERY = "SELECT fc_triallocationadministrativedivisionname(TL.id_triallocation ,1) AS label, COUNT(*) AS data ";
+        $QUERY = "SELECT UPPER(fc_triallocationadministrativedivisionname(TL.id_triallocation ,1)) AS label, COUNT(*) AS data ";
         $QUERY .= "FROM tb_trial T ";
         $QUERY .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
         $QUERY .= "GROUP BY 1 ";
@@ -114,7 +114,7 @@ class adminActions extends sfActions {
     public function executeByInstitution(sfWebRequest $request) {
         $connection = Doctrine_Manager::getInstance()->connection();
 
-        $QUERY = "SELECT I.insname AS label, COUNT(*) AS data ";
+        $QUERY = "SELECT UPPER(I.insname) AS label, COUNT(*) AS data ";
         $QUERY .= "FROM tb_trial T ";
         $QUERY .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
         $QUERY .= "INNER JOIN tb_institution I ON P.id_projectimplementinginstitutions = I.id_institution ";
@@ -144,7 +144,7 @@ class adminActions extends sfActions {
     public function executeByProject(sfWebRequest $request) {
         $connection = Doctrine_Manager::getInstance()->connection();
 
-        $QUERY = "SELECT P.prjname AS label, COUNT(*) AS data ";
+        $QUERY = "SELECT UPPER(P.prjname) AS label, COUNT(*) AS data ";
         $QUERY .= "FROM tb_trial T ";
         $QUERY .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
         $QUERY .= "GROUP BY 1 ";
@@ -173,7 +173,7 @@ class adminActions extends sfActions {
     public function executeByTrialLocation(sfWebRequest $request) {
         $connection = Doctrine_Manager::getInstance()->connection();
 
-        $QUERY = "SELECT (coalesce(fc_triallocationadministrativedivisionname(T.id_triallocation, 1), '')||' '||coalesce( fc_triallocationadministrativedivisionname(T.id_triallocation, 2), '')||' '||TL.trlcname) AS label, COUNT(*) AS data ";
+        $QUERY = "SELECT UPPER((coalesce(fc_triallocationadministrativedivisionname(T.id_triallocation, 1), '')||', '||coalesce( fc_triallocationadministrativedivisionname(T.id_triallocation, 2), '')||', '||TL.trlcname)) AS label, COUNT(*) AS data ";
         $QUERY .= "FROM tb_trial T ";
         $QUERY .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
         $QUERY .= "GROUP BY 1 ";
