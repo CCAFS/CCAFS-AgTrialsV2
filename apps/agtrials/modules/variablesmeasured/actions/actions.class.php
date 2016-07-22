@@ -145,7 +145,7 @@ class variablesmeasuredActions extends autoVariablesmeasuredActions {
         $objPHPExcel->getActiveSheet()->setCellValue('A1', 'Id Trait Class');
         $objPHPExcel->getActiveSheet()->setCellValue('B1', 'Name');
 
-        $QUERY00 = "SELECT id_variablesmeasured AS id, trclname AS name FROM tb_variablesmeasured ORDER BY trclname";
+        $QUERY00 = "SELECT id_traitclass AS id, trclname AS name FROM tb_traitclass ORDER BY trclname";
         $st = $connection->execute($QUERY00);
         $Resultado00 = $st->fetchAll();
         $i = 2;
