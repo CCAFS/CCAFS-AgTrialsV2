@@ -167,9 +167,9 @@ class projectActions extends autoProjectActions {
         $objPHPExcel->getActiveSheet(1)->setTitle('Lead of Project');
         $QUERY01 = Doctrine_Query::create()
                 ->select("CP.*")
-                ->addSelect("INS.insname AS project")
+                ->addSelect("P.prjname AS project")
                 ->from("TbContactperson CP")
-                ->innerJoin("CP.TbProject INS")
+                ->innerJoin("CP.TbProject P")
                 ->orderBy('CP.cnprfirstname,CP.cnprmiddlename,CP.cnprlastname');
         $Resultado01 = $QUERY01->execute();
         $i = 2;
@@ -200,20 +200,20 @@ class projectActions extends autoProjectActions {
         $objPHPExcel->setActiveSheetIndex(2);
         $objPHPExcel->getActiveSheet(2)->setTitle('Implementing Projects');
         $QUERY01 = Doctrine_Query::create()
-                ->select("I.id_project,I.insname")
+                ->select("I.* ")
                 ->addSelect("ADM.dmdvname AS country")
-                ->from("TbProject I")
+                ->from("TbInstitution I")
                 ->innerJoin("I.TbAdministrativedivision ADM")
-                ->orderBy('ADM.dmdvname, I.insname');
+                ->orderBy('I.insname');
         $Resultado01 = $QUERY01->execute();
         $i = 2;
         $objPHPExcel->getActiveSheet()->setCellValue('A1', 'Id');
-        $objPHPExcel->getActiveSheet()->setCellValue('B1', 'Country');
-        $objPHPExcel->getActiveSheet()->setCellValue('C1', 'Name');
+        $objPHPExcel->getActiveSheet()->setCellValue('B1', 'Name');
+        $objPHPExcel->getActiveSheet()->setCellValue('C1', 'Country');
         foreach ($Resultado01 AS $fila) {
-            $objPHPExcel->getActiveSheet()->setCellValue('A' . $i, $fila->id_project);
-            $objPHPExcel->getActiveSheet()->setCellValue('B' . $i, $fila->country);
-            $objPHPExcel->getActiveSheet()->setCellValue('C' . $i, $fila->insname);
+            $objPHPExcel->getActiveSheet()->setCellValue('A' . $i, $fila->id_institution);
+            $objPHPExcel->getActiveSheet()->setCellValue('B' . $i, $fila->insname);
+            $objPHPExcel->getActiveSheet()->setCellValue('C' . $i, $fila->country);
             $i++;
         }
 
