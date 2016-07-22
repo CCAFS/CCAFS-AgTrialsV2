@@ -116,8 +116,8 @@ class adminActions extends sfActions {
 
         $QUERY = "SELECT I.insname AS label, COUNT(*) AS data ";
         $QUERY .= "FROM tb_trial T ";
-        $QUERY .= "INNER JOIN tb_contactperson CP ON T.id_contactperson = CP.id_contactperson ";
-        $QUERY .= "INNER JOIN tb_institution I ON CP.id_institution = I.id_institution ";
+        $QUERY .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
+        $QUERY .= "INNER JOIN tb_institution I ON P.id_projectimplementinginstitutions = I.id_institution ";
         $QUERY .= "GROUP BY 1 ";
         $QUERY .= "ORDER BY 2 DESC ";
         $QUERY .= "LIMIT 10 ";
