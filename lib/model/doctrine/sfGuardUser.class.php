@@ -16,7 +16,8 @@ class sfGuardUser extends PluginsfGuardUser {
     public function save(Doctrine_Connection $conn = null) {
         $EmailAddress = strtolower($this->getEmailAddress());
         $Username = $this->getUsername();
-        if (!(ereg("^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@+([_a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]{2,200}\.[a-zA-Z]{2,6}$", $EmailAddress))) {
+        if (!(preg_match("^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@+([_a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]{2,200}\.[a-zA-Z]{2,6}$", $EmailAddress))) {
+
             echo "<script> alert('*** Email Address Error! ***'); window.history.back();</script>";
             die();
         }

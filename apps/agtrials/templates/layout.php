@@ -95,7 +95,7 @@ if ($sf_user->isAuthenticated()) {
                                     <ul aria-labelledby="drop3" class="dropdown-menu">
                                         <li><a href="/user">Profile</a></li>
                                         <li><a href="/changepassword">Change password</a></li>
-                                        <li><a href="http://gisweb.ciat.cgiar.org/trialsitesblog/wp-login.php" target="_blank">Login Blog</a></li>
+                                        <li><a href="http://blog.agtrials.org/wp-login.php" target="_blank">Login Blog</a></li>
                                         <li class="divider" role="separator"></li>
                                         <li><a href="/logout">Log Out</a></li>
                                     </ul>
