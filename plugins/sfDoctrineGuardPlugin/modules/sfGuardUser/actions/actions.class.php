@@ -124,18 +124,18 @@ class sfGuardUserActions extends autoSfGuardUserActions {
             $sf_guard_user->setPassword($newpassword);
             $sf_guard_user->save();
 
-//            //VERIFICAMOS SI EXISTE LA CUANTA DEL BLOG SINO LA CREAMOS
-//            $username = $username;
-//            $password = $newpassword;
-//            $email = $sf_guard_user->getEmailAddress();
-//            $firstname = $sf_guard_user->getFirstName();
-//            $lastname = $sf_guard_user->getLastName();
-//            $user_id = wp_username_exists($username);
-//            if ($user_id == null) {
-//                wp_create_user($username, $password, $email, $firstname, $lastname);
-//            } else {
-//                wp_update_password($user_id, $password);
-//            }
+            //VERIFICAMOS SI EXISTE LA CUANTA DEL BLOG SINO LA CREAMOS
+            $username = $username;
+            $password = $newpassword;
+            $email = $sf_guard_user->getEmailAddress();
+            $firstname = $sf_guard_user->getFirstName();
+            $lastname = $sf_guard_user->getLastName();
+            $user_id = wp_username_exists($username);
+            if ($user_id == null) {
+                wp_create_user($username, $password, $email, $firstname, $lastname);
+            } else {
+                wp_update_password($user_id, $password);
+            }
             //ENVIO CORREO
             if ($EmailAddress != '') {
                 $sent = date("d-M-Y") . " " . date("h:i:s");
