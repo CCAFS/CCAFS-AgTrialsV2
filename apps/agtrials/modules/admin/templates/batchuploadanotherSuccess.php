@@ -1,6 +1,20 @@
 <script type="text/javascript">
     function SelectedTemplate(value) {
         $("#SelectTemplate").val(value);
+
+        jQuery('#DivTemplatesInformation').show();
+        if (value === 'Trial Project Template')
+            jQuery('#DivTemplatesInformationInfo').html("Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</br>Exact number of columns <b>'8'</b> for Template File.</br>Max. <b>10000 Records</b> for Template File.</br>Don't close the window during the process.");
+
+        if (value === 'Trial Location Template')
+            jQuery('#DivTemplatesInformationInfo').html("Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</br>Exact number of columns <b>'8'</b> for Template File.</br>Max. <b>10000 Records</b> for Template File.</br>Don't close the window during the process.");
+
+        if (value === 'Trial Varieties Template')
+            jQuery('#DivTemplatesInformationInfo').html("Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</br>Exact number of columns <b>'5'</b> for Template File.</br>Max. <b>10000 Records</b> for Template File.</br>Don't close the window during the process.");
+
+        if (value === 'Trial Variables Measured Template')
+            jQuery('#DivTemplatesInformationInfo').html("Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</br>Exact number of columns <b>'7'</b> for Template File.</br>Max. <b>10000 Records</b> for Template File.</br>Don't close the window during the process.");
+
     }
 </script>
 <div class="row">
