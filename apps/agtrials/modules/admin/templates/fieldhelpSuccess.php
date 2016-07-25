@@ -37,7 +37,7 @@
     <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
         <span class="Title">Module help</span>
         <div class="Session" style="margin-top: 10px; margin-bottom: 10px;">
-            <form class="form-horizontal" id="checktriallocation" name="checktriallocation" action="<?php echo url_for('@checktriallocation'); ?>" enctype="multipart/form-data" method="post">
+            <form class="form-horizontal" id="checktriallocation" name="fieldhelp" action="<?php echo url_for('@fieldhelp'); ?>" enctype="multipart/form-data" method="post">
                 <fieldset>
                     <div class="form-group control-type-text">
                         <div class="col-sm-1">Module:</div>

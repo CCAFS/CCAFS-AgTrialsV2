@@ -214,7 +214,7 @@ class adminActions extends sfActions {
         die($JSONByTrialLocation);
     }
 
-    public function executeModulehelp(sfWebRequest $request) {
+    public function executeFieldhelp(sfWebRequest $request) {
         
     }
 

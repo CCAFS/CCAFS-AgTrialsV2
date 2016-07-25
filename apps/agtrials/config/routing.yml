@@ -278,6 +278,10 @@ batchuploadanother:
   url:   /batchuploadanother/*
   param: { module: admin, action: batchuploadanother }
   
+fieldhelp:
+  url:   /fieldhelp/*
+  param: { module: admin, action: fieldhelp }
+  
 modulehelp:
   url:   /modulehelp/*
   param: { module: admin, action: modulehelp }
