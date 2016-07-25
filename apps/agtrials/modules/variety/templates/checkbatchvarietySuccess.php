@@ -26,6 +26,7 @@
         <?php include_partial('admin/ProsessesCheckMenu') ?>
     </div>
     <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
+        <?php include_partial('admin/VerifyVarietyMenu') ?>
         <span class="Title">Check Batch Variety</span>
         <div class="Session" style="margin-top: 10px; margin-bottom: 10px;">
             <form class="form-horizontal" id="checkbatchvariety" name="checkbatchvariety" action="<?php echo url_for('@checkbatchvariety'); ?>" enctype="multipart/form-data" method="post">

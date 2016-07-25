@@ -227,7 +227,7 @@ class adminActions extends sfActions {
             $INFO = "<thead id='HeadTableResult'>";
             $INFO .= "<tr>";
             $INFO .= "<th class='col-sm-1'>Module</th>";
-            $INFO .= "<th class='col-sm-3'>Session</th>";
+            $INFO .= "<th class='col-sm-3'>Section</th>";
             $INFO .= "<th class='col-sm-3'>Field</th>";
             $INFO .= "<th style='width: 300px;'>Help text</th>";
             $INFO .= "</tr>";

@@ -31,6 +31,7 @@ if ($Modulo == 'sfGuardUser')
     $SelectedUsers = "selected";
 ?>
 <div class="MenuTrials">
+    <span style="font-size:16px; font-weight: bold;  padding-left: 35px;">Database Tables</span>
     <div onclick="window.location.href = '/contactperson'" class="MenuButtonLeft <?php echo $Selectedcontactperson; ?>"> Contact person </div>
     <div onclick="window.location.href = '/crop'" class="MenuButtonLeft <?php echo $Selectedcrop; ?>"> Crop </div>
     <div onclick="window.location.href = '/donor'" class="MenuButtonLeft <?php echo $Selecteddonor; ?>"> Donor </div>
