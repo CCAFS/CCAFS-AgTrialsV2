@@ -43,6 +43,7 @@
         <?php include_partial('admin/ProsessesCheckMenu') ?>
     </div>
     <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
+        <?php include_partial('admin/VerifyTriallocationMenu') ?>
         <span class="Title">Check Trial Location</span>
         <div class="Session" style="margin-top: 10px; margin-bottom: 10px;">
             <form class="form-horizontal" id="checktriallocation" name="checktriallocation" action="<?php echo url_for('@checktriallocation'); ?>" enctype="multipart/form-data" method="post">

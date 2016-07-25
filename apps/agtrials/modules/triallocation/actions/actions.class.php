@@ -543,5 +543,5 @@ class triallocationActions extends autoTriallocationActions {
         }
         die();
     }
-
+    
 }

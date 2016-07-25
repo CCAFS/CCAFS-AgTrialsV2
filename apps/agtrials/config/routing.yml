@@ -202,8 +202,7 @@ downloadcheckbatchtriallocation:
 downloadresultcheckbatchtriallocation:
   url:   /downloadresultcheckbatchtriallocation/*
   param: { module: triallocation, action: downloadresultcheckbatchtriallocation }
-  
-  
+ 
   
 #INICIO: ENRRUTAMIENTO Batch Upload Variables measured
 downloadestruturevariablesmeasured:
