@@ -204,10 +204,10 @@ class adminActions extends sfActions {
         $connection = Doctrine_Manager::getInstance()->connection();
         $HelpModule = $request->getParameter('HelpModule');
 
-        $QUERY00 = "SELECT 'Help'||T.mdhlmodule||T.id_modulehelp AS IdHelp, T.mdhltexthelp AS TextHelp ";
-        $QUERY00 .= "FROM tb_modulehelp T ";
-        $QUERY00 .= "WHERE T.mdhlmodule = '$HelpModule' ";
-        $QUERY00 .= "AND T.mdhltexthelp IS NOT NULL ";
+        $QUERY00 = "SELECT 'Help'||T.flhlmodule||T.id_fieldhelp AS IdHelp, T.flhltexthelp AS TextHelp ";
+        $QUERY00 .= "FROM tb_fieldhelp T ";
+        $QUERY00 .= "WHERE T.flhlmodule = '$HelpModule' ";
+        $QUERY00 .= "AND T.flhltexthelp IS NOT NULL ";
         $st = $connection->execute($QUERY00);
         $Results = $st->fetchAll(PDO::FETCH_ASSOC);
         $JSONByTrialLocation = json_encode($Results);
@@ -233,19 +233,19 @@ class adminActions extends sfActions {
             $INFO .= "</tr>";
             $INFO .= "</thead>";
 
-            $QUERY00 = "SELECT  T.id_modulehelp,T.mdhlmodule,T.mdhlsession,T.mdhlfield,T.mdhltexthelp ";
-            $QUERY00 .= "FROM tb_modulehelp T ";
-            $QUERY00 .= "WHERE T.mdhlmodule = '$ModuleHelp' ";
-            $QUERY00 .= "ORDER BY T.id_modulehelp ";
+            $QUERY00 = "SELECT  T.id_fieldhelp,T.flhlmodule,T.flhlsession,T.flhlfield,T.flhltexthelp ";
+            $QUERY00 .= "FROM tb_fieldhelp T ";
+            $QUERY00 .= "WHERE T.flhlmodule = '$ModuleHelp' ";
+            $QUERY00 .= "ORDER BY T.id_fieldhelp ";
             $st = $connection->execute($QUERY00);
             $Results = $st->fetchAll(PDO::FETCH_ASSOC);
             $INFO .= "<tbody id='DataResult'>";
             foreach ($Results AS $Valor) {
                 $INFO .= "<tr>";
-                $INFO .= "<td class='col-sm-1'>{$Valor['mdhlmodule']}</td>";
-                $INFO .= "<td class='col-sm-3'>{$Valor['mdhlsession']}</td>";
-                $INFO .= "<td class='col-sm-3'>{$Valor['mdhlfield']}</td>";
-                $INFO .= "<td style='width: 300px;'><div><textarea rows='1' onchange='SaveFieldHelp({$Valor['id_modulehelp']});' cols='36' id='texthelp{$Valor['id_modulehelp']}' class='form-control' type='text'>{$Valor['mdhltexthelp']}</textarea></div><div style='color: #2a9a60;' id='Action{$Valor['id_modulehelp']}'></div></td>";
+                $INFO .= "<td class='col-sm-1'>{$Valor['flhlmodule']}</td>";
+                $INFO .= "<td class='col-sm-3'>{$Valor['flhlsession']}</td>";
+                $INFO .= "<td class='col-sm-3'>{$Valor['flhlfield']}</td>";
+                $INFO .= "<td style='width: 300px;'><div><textarea rows='1' onchange='SaveFieldHelp({$Valor['id_fieldhelp']});' cols='36' id='texthelp{$Valor['id_fieldhelp']}' class='form-control' type='text'>{$Valor['flhltexthelp']}</textarea></div><div style='color: #2a9a60;' id='Action{$Valor['id_fieldhelp']}'></div></td>";
                 $INFO .= "</tr>";
             }
             $INFO .= "</tbody>";
@@ -264,7 +264,7 @@ class adminActions extends sfActions {
 
         $texthelp = str_replace("'", "''", $texthelp);
 
-        $QUERY00 = "UPDATE tb_modulehelp SET mdhltexthelp = '$texthelp', id_user_update = $id_user, updated_at = '$DateNow' WHERE id_modulehelp = $id";
+        $QUERY00 = "UPDATE tb_fieldhelp SET flhltexthelp = '$texthelp', id_user_update = $id_user, updated_at = '$DateNow' WHERE id_fieldhelp = $id";
         $connection->execute($QUERY00);
         die();
     }

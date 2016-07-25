@@ -866,6 +866,64 @@ TbExperimentaldesign:
       local: id_experimentaldesign
       foreign: id_experimentaldesign
       type: many
+TbFieldhelp:
+  connection: doctrine
+  tableName: tb_fieldhelp
+  columns:
+    id_fieldhelp:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      sequence: tb_fieldhelp_id_fieldhelp
+    flhlmodule:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    flhlsession:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    flhlfield:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    flhltexthelp:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    id_user:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    id_user_update:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
 TbInstitution:
   connection: doctrine
   tableName: tb_institution
@@ -936,18 +994,6 @@ TbModulehelp:
       primary: true
       sequence: tb_modulehelp_id_modulehelp
     mdhlmodule:
-      type: string()
-      fixed: false
-      unsigned: false
-      notnull: false
-      primary: false
-    mdhlsession:
-      type: string()
-      fixed: false
-      unsigned: false
-      notnull: false
-      primary: false
-    mdhlfield:
       type: string()
       fixed: false
       unsigned: false

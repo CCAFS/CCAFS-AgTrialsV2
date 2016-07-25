@@ -1,20 +1,22 @@
 <?php
 
 /**
- * TbModulehelp filter form base class.
+ * TbFieldhelp filter form base class.
  *
  * @package    AgTrials
  * @subpackage filter
  * @author     Herlin R. Espinosa G. - herlin25@gmail.com - CIAT-CCAFS-DAPA
  * @version    SVN: $Id: sfDoctrineFormFilterGeneratedTemplate.php 29570 2010-05-21 14:49:47Z Kris.Wallsmith $
  */
-abstract class BaseTbModulehelpFormFilter extends BaseFormFilterDoctrine
+abstract class BaseTbFieldhelpFormFilter extends BaseFormFilterDoctrine
 {
   public function setup()
   {
     $this->setWidgets(array(
-      'mdhlmodule'     => new sfWidgetFormFilterInput(),
-      'mdhltexthelp'   => new sfWidgetFormFilterInput(),
+      'flhlmodule'     => new sfWidgetFormFilterInput(),
+      'flhlsession'    => new sfWidgetFormFilterInput(),
+      'flhlfield'      => new sfWidgetFormFilterInput(),
+      'flhltexthelp'   => new sfWidgetFormFilterInput(),
       'created_at'     => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
       'updated_at'     => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
       'id_user'        => new sfWidgetFormFilterInput(),
@@ -22,15 +24,17 @@ abstract class BaseTbModulehelpFormFilter extends BaseFormFilterDoctrine
     ));
 
     $this->setValidators(array(
-      'mdhlmodule'     => new sfValidatorPass(array('required' => false)),
-      'mdhltexthelp'   => new sfValidatorPass(array('required' => false)),
+      'flhlmodule'     => new sfValidatorPass(array('required' => false)),
+      'flhlsession'    => new sfValidatorPass(array('required' => false)),
+      'flhlfield'      => new sfValidatorPass(array('required' => false)),
+      'flhltexthelp'   => new sfValidatorPass(array('required' => false)),
       'created_at'     => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'updated_at'     => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'id_user'        => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'id_user_update' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
-    $this->widgetSchema->setNameFormat('tb_modulehelp_filters[%s]');
+    $this->widgetSchema->setNameFormat('tb_fieldhelp_filters[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -41,15 +45,17 @@ abstract class BaseTbModulehelpFormFilter extends BaseFormFilterDoctrine
 
   public function getModelName()
   {
-    return 'TbModulehelp';
+    return 'TbFieldhelp';
   }
 
   public function getFields()
   {
     return array(
-      'id_modulehelp'  => 'Number',
-      'mdhlmodule'     => 'Text',
-      'mdhltexthelp'   => 'Text',
+      'id_fieldhelp'   => 'Number',
+      'flhlmodule'     => 'Text',
+      'flhlsession'    => 'Text',
+      'flhlfield'      => 'Text',
+      'flhltexthelp'   => 'Text',
       'created_at'     => 'Date',
       'updated_at'     => 'Date',
       'id_user'        => 'Number',

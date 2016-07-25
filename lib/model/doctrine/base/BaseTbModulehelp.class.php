@@ -9,8 +9,6 @@ Doctrine_Manager::getInstance()->bindComponent('TbModulehelp', 'doctrine');
  * 
  * @property integer $id_modulehelp
  * @property string $mdhlmodule
- * @property string $mdhlsession
- * @property string $mdhlfield
  * @property string $mdhltexthelp
  * @property timestamp $created_at
  * @property timestamp $updated_at
@@ -19,8 +17,6 @@ Doctrine_Manager::getInstance()->bindComponent('TbModulehelp', 'doctrine');
  * 
  * @method integer      getIdModulehelp()   Returns the current record's "id_modulehelp" value
  * @method string       getMdhlmodule()     Returns the current record's "mdhlmodule" value
- * @method string       getMdhlsession()    Returns the current record's "mdhlsession" value
- * @method string       getMdhlfield()      Returns the current record's "mdhlfield" value
  * @method string       getMdhltexthelp()   Returns the current record's "mdhltexthelp" value
  * @method timestamp    getCreatedAt()      Returns the current record's "created_at" value
  * @method timestamp    getUpdatedAt()      Returns the current record's "updated_at" value
@@ -28,8 +24,6 @@ Doctrine_Manager::getInstance()->bindComponent('TbModulehelp', 'doctrine');
  * @method integer      getIdUserUpdate()   Returns the current record's "id_user_update" value
  * @method TbModulehelp setIdModulehelp()   Sets the current record's "id_modulehelp" value
  * @method TbModulehelp setMdhlmodule()     Sets the current record's "mdhlmodule" value
- * @method TbModulehelp setMdhlsession()    Sets the current record's "mdhlsession" value
- * @method TbModulehelp setMdhlfield()      Sets the current record's "mdhlfield" value
  * @method TbModulehelp setMdhltexthelp()   Sets the current record's "mdhltexthelp" value
  * @method TbModulehelp setCreatedAt()      Sets the current record's "created_at" value
  * @method TbModulehelp setUpdatedAt()      Sets the current record's "updated_at" value
@@ -55,22 +49,6 @@ abstract class BaseTbModulehelp extends sfDoctrineRecord
              'length' => 8,
              ));
         $this->hasColumn('mdhlmodule', 'string', null, array(
-             'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'notnull' => false,
-             'primary' => false,
-             'length' => '',
-             ));
-        $this->hasColumn('mdhlsession', 'string', null, array(
-             'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'notnull' => false,
-             'primary' => false,
-             'length' => '',
-             ));
-        $this->hasColumn('mdhlfield', 'string', null, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
