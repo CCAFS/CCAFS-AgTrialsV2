@@ -269,4 +269,8 @@ class adminActions extends sfActions {
         die();
     }
 
+    public function executeModulehelp(sfWebRequest $request) {
+        
+    }
+
 }

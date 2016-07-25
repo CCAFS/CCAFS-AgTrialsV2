@@ -3,6 +3,8 @@ require_once '../lib/functions/function.php';
 $id_user = sfContext::getInstance()->getUser()->getGuardUser()->getId();
 
 $Modulo = sfContext::getInstance()->getRequest()->getParameterHolder()->get('module');
+$Action = sfContext::getInstance()->getRequest()->getParameterHolder()->get('action');
+
 if ($Modulo == 'contactperson')
     $Selectedcontactperson = "selected";
 if ($Modulo == 'crop')
@@ -11,11 +13,11 @@ if ($Modulo == 'donor')
     $Selecteddonor = "selected";
 if ($Modulo == 'experimentaldesign')
     $Selectedexperimentaldesign = "selected";
-if ($Modulo == 'admin')
+if (($Modulo == 'admin') && ($Action == 'fieldhelp'))
     $Selectedfieldhelp = "selected";
 if ($Modulo == 'institution')
     $Selectedinstitution = "selected";
-if ($Modulo == 'admin')
+if (($Modulo == 'admin') && ($Action == 'modulehelp'))
     $Selectedmodulehelp = "selected";
 if ($Modulo == 'project')
     $Selectedproject = "selected";
