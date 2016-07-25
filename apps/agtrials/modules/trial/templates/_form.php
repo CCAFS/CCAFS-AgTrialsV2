@@ -86,7 +86,7 @@ if (isset($session_group_id)) {
                 <table class="TableModule"> 
                     <tr>
                         <td><span class="Mandatory">*</span> 
-                            Name of the Project:<?php echo ModuleHelp('HelpTrial1'); ?>
+                            Name of the Project:<?php echo FieldHelp('HelpTrial1'); ?>
                         </td>
                         <td>
                             <div>
@@ -111,7 +111,7 @@ if (isset($session_group_id)) {
             <div class="form-group control-type-text">
                 <table class="TableModule">
                     <tr>
-                        <td style="width: 100px;">Name:<?php echo ModuleHelp('HelpTrial2'); ?></td>
+                        <td style="width: 100px;">Name:<?php echo FieldHelp('HelpTrial2'); ?></td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div class="DivName"><span class="Mandatory">*</span> First name</div>
@@ -134,7 +134,7 @@ if (isset($session_group_id)) {
                         </td>
                     </tr>
                     <tr>
-                        <td>Institution:<?php echo ModuleHelp('HelpTrial3'); ?></td>
+                        <td>Institution:<?php echo FieldHelp('HelpTrial3'); ?></td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div class="DivName"><span class="Mandatory">*</span> Name</div>
@@ -153,14 +153,14 @@ if (isset($session_group_id)) {
                         </td>
                     </tr>
                     <tr>
-                        <td><span class="Mandatory">*</span> Email:<?php echo ModuleHelp('HelpTrial4'); ?></td>
+                        <td><span class="Mandatory">*</span> Email:<?php echo FieldHelp('HelpTrial4'); ?></td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div><input class="EmailInput form-control" name="cnpremail" id="cnpremail" type="text" size="36" maxlength="150" value="<?php echo $InfoProject['cnpremail']; ?>" onblur="ValidaEmail(this);" <?php echo $DisabledFieldProject; ?>></div>
                         </td>
                     </tr>
                     <tr>
-                        <td> Telephone:<?php echo ModuleHelp('HelpTrial5'); ?></td>
+                        <td> Telephone:<?php echo FieldHelp('HelpTrial5'); ?></td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div><input class="PhoneInput form-control" name="cnprtelephone" id="cnprtelephone" type="text" size="36" maxlength="20" value="<?php echo $InfoProject['cnprtelephone']; ?>" <?php echo $DisabledFieldProject; ?>></div>
@@ -176,7 +176,7 @@ if (isset($session_group_id)) {
             <div class="form-group control-type-text">
                 <table class="TableModule">
                     <tr>
-                        <td> Institution:<?php echo ModuleHelp('HelpTrial6'); ?></td>
+                        <td> Institution:<?php echo FieldHelp('HelpTrial6'); ?></td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div class="DivName"><span class="Mandatory">*</span> Name</div>
@@ -203,13 +203,13 @@ if (isset($session_group_id)) {
             <div class="form-group control-type-text">
                 <table class="TableModule">
                     <tr>
-                        <td><span class="Mandatory">*</span> Start Date:<?php echo ModuleHelp('HelpTrial7'); ?>&ensp;</td>
+                        <td><span class="Mandatory">*</span> Start Date:<?php echo FieldHelp('HelpTrial7'); ?>&ensp;</td>
                         <td>
                             <div>
                                 <input class="DateInput form-control" placeholder="yyyy-mm-dd" name="prjprojectimplementingperiodstartdate" id="prjprojectimplementingperiodstartdate" type="text" size="11" maxlength="10" onkeyup="ValidaEscrituraFecha(this);" onblur="ValidaFecha(this);" value="<?php echo $InfoProject['prjprojectimplementingperiodstartdate']; ?>" <?php echo $DisabledFieldProject; ?>></div>
                         </td>
                         <td>&ensp;&ensp;</td>
-                        <td><span class="Mandatory">*</span> End Date:<?php echo ModuleHelp('HelpTrial8'); ?>&ensp;</td>
+                        <td><span class="Mandatory">*</span> End Date:<?php echo FieldHelp('HelpTrial8'); ?>&ensp;</td>
                         <td>
                             <div>
                                 <input class="DateInput form-control" placeholder="yyyy-mm-dd" name="prjprojectimplementingperiodenddate" id="prjprojectimplementingperiodenddate" type="text" size="11" maxlength="10" onkeyup="ValidaEscrituraFecha(this);" onblur="ValidaFecha(this);" value="<?php echo $InfoProject['prjprojectimplementingperiodenddate']; ?>" <?php echo $DisabledFieldProject; ?>></div>
@@ -224,7 +224,7 @@ if (isset($session_group_id)) {
             <div class="form-group control-type-text">
                 <table class="TableModule">
                     <tr>
-                        <td><span class="Mandatory">*</span> Donor Name:<?php echo ModuleHelp('HelpTrial9'); ?>&ensp;</td>
+                        <td><span class="Mandatory">*</span> Donor Name:<?php echo FieldHelp('HelpTrial9'); ?>&ensp;</td>
                         <td>
                             <div>
                                 <input name="id_donor" id="id_donor" type="hidden" value="<?php echo $InfoProject['id_donor']; ?>">
@@ -241,13 +241,13 @@ if (isset($session_group_id)) {
             <div class="form-group control-type-text">
                 <table class="TableModule">
                     <tr>
-                        <td><span class="Mandatory">*</span> Abstract:<?php echo ModuleHelp('HelpTrial10'); ?>&ensp;</td>
+                        <td><span class="Mandatory">*</span> Abstract:<?php echo FieldHelp('HelpTrial10'); ?>&ensp;</td>
                         <td>
                             <div><textarea class="form-control" id="prjabstract" name="prjabstract" cols="36" rows="3" <?php echo $DisabledFieldProject; ?>><?php echo $InfoProject['prjabstract']; ?></textarea></div>
                         </td>
                     </tr>
                     <tr>
-                        <td><span class="Mandatory">*</span> Keywords:<?php echo ModuleHelp('HelpTrial11'); ?>&ensp;</td>
+                        <td><span class="Mandatory">*</span> Keywords:<?php echo FieldHelp('HelpTrial11'); ?>&ensp;</td>
                         <td>
                             <div><input class="form-control" name="prjkeywords" id="prjkeywords" type="text" size="40" value="<?php echo $InfoProject['prjkeywords']; ?>" <?php echo $DisabledFieldProject; ?>></div>
                         </td>
@@ -267,7 +267,7 @@ if (isset($session_group_id)) {
             <div class="form-group control-type-text">
                 <table class="TableModule">
                     <tr>
-                        <td> Name:<?php echo ModuleHelp('HelpTrial12'); ?></td>
+                        <td> Name:<?php echo FieldHelp('HelpTrial12'); ?></td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div class="DivName"><span class="Mandatory">*</span> First name</div>
@@ -296,7 +296,7 @@ if (isset($session_group_id)) {
                         </td>
                     </tr>
                     <tr>
-                        <td> Institution:<?php echo ModuleHelp('HelpTrial13'); ?></td>
+                        <td> Institution:<?php echo FieldHelp('HelpTrial13'); ?></td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div class="DivName"><span class="Mandatory">*</span> Name</div>
@@ -315,21 +315,21 @@ if (isset($session_group_id)) {
                         </td>
                     </tr>
                     <tr>
-                        <td><span class="Mandatory">*</span> Email:<?php echo ModuleHelp('HelpTrial14'); ?></td>
+                        <td><span class="Mandatory">*</span> Email:<?php echo FieldHelp('HelpTrial14'); ?></td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div><input class="EmailInput form-control" name="cnpremailtrialmanager" id="cnpremailtrialmanager" type="text" size="36" maxlength="150" onblur="ValidaEmail(this);" value="<?php echo $InfoTrialManager['cnpremail']; ?>" <?php echo $DisabledFieldTrialManager; ?>></div>
                         </td>
                     </tr>
                     <tr>
-                        <td> Telephone:<?php echo ModuleHelp('HelpTrial15'); ?></td>
+                        <td> Telephone:<?php echo FieldHelp('HelpTrial15'); ?></td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div><input class="PhoneInput form-control" name="cnprtelephonetrialmanager" id="cnprtelephonetrialmanager" type="text" size="36" maxlength="20" value="<?php echo $InfoTrialManager['cnprtelephone']; ?>" <?php echo $DisabledFieldTrialManager; ?>></div>
                         </td>
                     </tr>
                     <tr>
-                        <td><span class="Mandatory">*</span> Primary Role of Contact Person:<?php echo ModuleHelp('HelpTrial16'); ?></td>
+                        <td><span class="Mandatory">*</span> Primary Role of Contact Person:<?php echo FieldHelp('HelpTrial16'); ?></td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <?php echo select_from_table("tb_trial[id_rolecontactperson]", "TbRolecontactperson", "id_rolecontactperson", "rcpname", null, $form->getObject()->get('id_rolecontactperson'), "class='form-control'"); ?>
@@ -344,12 +344,12 @@ if (isset($session_group_id)) {
             <div class="form-group control-type-text">
                 <table class="TableModule">
                     <tr>
-                        <td><span class="Mandatory">*</span> Start Date:<?php echo ModuleHelp('HelpTrial17'); ?>&ensp;</td>
+                        <td><span class="Mandatory">*</span> Start Date:<?php echo FieldHelp('HelpTrial17'); ?>&ensp;</td>
                         <td>
                             <div><input class="DateInput form-control" placeholder="yyyy-mm-dd" name="tb_trial[trlimplementingperiodstartdate]" id="trlimplementingperiodstartdate" type="text" size="11" maxlength="10" onkeyup="ValidaEscrituraFecha(this);" onblur="ValidaFecha(this);" value="<?php echo $form->getObject()->get('trlimplementingperiodstartdate'); ?>"></div>
                         </td>
                         <td>&ensp;&ensp;</td>
-                        <td><span class="Mandatory">*</span> End Date:<?php echo ModuleHelp('HelpTrial18'); ?>&ensp;</td>
+                        <td><span class="Mandatory">*</span> End Date:<?php echo FieldHelp('HelpTrial18'); ?>&ensp;</td>
                         <td>
                             <div><input class="DateInput form-control" placeholder="yyyy-mm-dd" name="tb_trial[trlimplementingperiodenddate]" id="trlimplementingperiodenddate" type="text" size="11" maxlength="10" onkeyup="ValidaEscrituraFecha(this);" onblur="ValidaFecha(this);" value="<?php echo $form->getObject()->get('trlimplementingperiodenddate'); ?>"></div>
                         </td>
@@ -363,7 +363,7 @@ if (isset($session_group_id)) {
             <div class="form-group control-type-text">
                 <table class="TableModule">
                     <tr>
-                        <td><span class="Mandatory">*</span> Name:<?php echo ModuleHelp('HelpTrial19'); ?></td>
+                        <td><span class="Mandatory">*</span> Name:<?php echo FieldHelp('HelpTrial19'); ?></td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div>
@@ -379,7 +379,7 @@ if (isset($session_group_id)) {
                         </td>
                     </tr>
                     <tr>
-                        <td><span class="Mandatory">*</span> Country:<?php echo ModuleHelp('HelpTrial20'); ?></td>
+                        <td><span class="Mandatory">*</span> Country:<?php echo FieldHelp('HelpTrial20'); ?></td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div class="DivRow">
@@ -394,7 +394,7 @@ if (isset($session_group_id)) {
                         </td>
                     </tr>
                     <tr>
-                        <td> District/Satate/Province Level:<?php echo ModuleHelp('HelpTrial21'); ?></td>
+                        <td> District/Satate/Province Level:<?php echo FieldHelp('HelpTrial21'); ?></td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div class="DivRow">
@@ -411,7 +411,7 @@ if (isset($session_group_id)) {
                         </td>
                     </tr>
                     <tr>
-                        <td> Sub-district/Division Level:<?php echo ModuleHelp('HelpTrial22'); ?></td>
+                        <td> Sub-district/Division Level:<?php echo FieldHelp('HelpTrial22'); ?></td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div class="DivRow">
@@ -427,7 +427,7 @@ if (isset($session_group_id)) {
                         </td>
                     </tr>
                     <tr>
-                        <td> Village Level:<?php echo ModuleHelp('HelpTrial23'); ?></td>
+                        <td> Village Level:<?php echo FieldHelp('HelpTrial23'); ?></td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div class="DivRow">
@@ -445,7 +445,7 @@ if (isset($session_group_id)) {
                         </td>
                     </tr>
                     <tr>
-                        <td>Coordinates:<?php echo ModuleHelp('HelpTrial24'); ?></td>
+                        <td>Coordinates:<?php echo FieldHelp('HelpTrial24'); ?></td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div class="DivName"><span class="Mandatory">*</span> Latitude</div>
@@ -490,7 +490,7 @@ if (isset($session_group_id)) {
             <div class="form-group control-type-text">
                 <table class="TableModule">
                     <tr>
-                        <td><span class="Mandatory">*</span> Trial Name:<?php echo ModuleHelp('HelpTrial25'); ?></td>
+                        <td><span class="Mandatory">*</span> Trial Name:<?php echo FieldHelp('HelpTrial25'); ?></td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div>
@@ -499,7 +499,7 @@ if (isset($session_group_id)) {
                         </td>
                     </tr>
                     <tr>
-                        <td><span class="Mandatory">*</span> Trial Objectives:<?php echo ModuleHelp('HelpTrial26'); ?></td>
+                        <td><span class="Mandatory">*</span> Trial Objectives:<?php echo FieldHelp('HelpTrial26'); ?></td>
                         <td>&ensp;&ensp;</td>
                         <td>
                             <div>
@@ -527,10 +527,10 @@ if (isset($session_group_id)) {
                     <tr>
                         <td>
                             <div>
-                                <input type="radio" <?php echo CheckedOption($trltrialpermissions, 'Open to all users'); ?> checked="checked" id="tb_trial_trltrialpermissions_open_to_all_users" value="Open to all users" name="tb_trial[trltrialpermissions]"><span> Open to all users <?php echo ModuleHelp('HelpTrial27'); ?> </span><br>
-                                <input type="radio" <?php echo CheckedOption($trltrialpermissions, 'Open to specified users'); ?> id="tb_trial_trltrialpermissions_open_to_specified_users" value="Open to specified users" name="tb_trial[trltrialpermissions]"><span> Open to specified users <?php echo ModuleHelp('HelpTrial28'); ?> </span><br>
-                                <input type="radio" <?php echo CheckedOption($trltrialpermissions, 'Open to specified groups'); ?> id="tb_trial_trltrialpermissions_open_to_specified_groups" value="Open to specified groups" name="tb_trial[trltrialpermissions]"><span> Open to specified groups <?php echo ModuleHelp('HelpTrial29'); ?> </span><br>
-                                <input type="radio" <?php echo CheckedOption($trltrialpermissions, 'Public domain'); ?> id="tb_trial_trltrialpermissions_public_domain" value="Public domain" name="tb_trial[trltrialpermissions]"><span> Public domain <?php echo ModuleHelp('HelpTrial30'); ?> </span>
+                                <input type="radio" <?php echo CheckedOption($trltrialpermissions, 'Open to all users'); ?> checked="checked" id="tb_trial_trltrialpermissions_open_to_all_users" value="Open to all users" name="tb_trial[trltrialpermissions]"><span> Open to all users <?php echo FieldHelp('HelpTrial27'); ?> </span><br>
+                                <input type="radio" <?php echo CheckedOption($trltrialpermissions, 'Open to specified users'); ?> id="tb_trial_trltrialpermissions_open_to_specified_users" value="Open to specified users" name="tb_trial[trltrialpermissions]"><span> Open to specified users <?php echo FieldHelp('HelpTrial28'); ?> </span><br>
+                                <input type="radio" <?php echo CheckedOption($trltrialpermissions, 'Open to specified groups'); ?> id="tb_trial_trltrialpermissions_open_to_specified_groups" value="Open to specified groups" name="tb_trial[trltrialpermissions]"><span> Open to specified groups <?php echo FieldHelp('HelpTrial29'); ?> </span><br>
+                                <input type="radio" <?php echo CheckedOption($trltrialpermissions, 'Public domain'); ?> id="tb_trial_trltrialpermissions_public_domain" value="Public domain" name="tb_trial[trltrialpermissions]"><span> Public domain <?php echo FieldHelp('HelpTrial30'); ?> </span>
                             </div>
                         </td>
                         <td>&ensp;&ensp;</td>
@@ -564,7 +564,7 @@ if (isset($session_group_id)) {
                 </table>
             </div>
             <div id="License" class="form-group control-type-text">
-                <span class="Title1">License <?php echo ModuleHelp('HelpTrial31'); ?></span>
+                <span class="Title1">License <?php echo FieldHelp('HelpTrial31'); ?></span>
             </div>
             <div class="form-group control-type-text">
                 <table class="TableModule">
@@ -768,13 +768,13 @@ if (isset($session_group_id)) {
             <div id="DivCrop1" class="form-group control-type-text" style="margin-bottom: 0px;">
                 <fieldset>
                     <div class="col-sm-12 form-group control-type-text" style="margin-top: 10px;">
-                        <div class="col-sm-2">Crop: <?php echo ModuleHelp('HelpTrial32'); ?></div>      
+                        <div class="col-sm-2">Crop: <?php echo FieldHelp('HelpTrial32'); ?></div>      
                         <div class="col-sm-4 control-type-text">
                             <?php echo select_from_table("id_crop1", "TbCrop", "id_crop", "crpname", null, null, "onchange='ValidaCrop(1);' class='form-control'"); ?>
                         </div>
                     </div>
                     <div class="col-sm-12 form-group control-type-text">
-                        <div class="col-sm-2">Number of Replicates: <?php echo ModuleHelp('HelpTrial33'); ?></div>      
+                        <div class="col-sm-2">Number of Replicates: <?php echo FieldHelp('HelpTrial33'); ?></div>      
                         <div class=" col-sm-2 control-type-text">
                             <select class="form-control" size="1" id="trnfnumberofreplicates1" name="trnfnumberofreplicates1">
                                 <?php
@@ -786,13 +786,13 @@ if (isset($session_group_id)) {
                         </div>
                     </div>
                     <div class="col-sm-12 form-group control-type-text">
-                        <div class="col-sm-2">Experimental Design: <?php echo ModuleHelp('HelpTrial34'); ?></div>      
+                        <div class="col-sm-2">Experimental Design: <?php echo FieldHelp('HelpTrial34'); ?></div>      
                         <div class="col-sm-4 control-type-text">
                             <?php echo select_from_table("id_experimentaldesign1", "TbExperimentaldesign", "id_experimentaldesign", "xpdsname", null, null, "class='form-control'"); ?>
                         </div>
                     </div>
                     <div class="col-sm-12 form-group control-type-text">
-                        <div class="col-sm-2">Treatment Number: <?php echo ModuleHelp('HelpTrial35'); ?></div>      
+                        <div class="col-sm-2">Treatment Number: <?php echo FieldHelp('HelpTrial35'); ?></div>      
                         <div class=" col-sm-2 control-type-text">
                             <select class="form-control" size="1" id="trnftreatmentnumber1" name="trnftreatmentnumber1">
                                 <?php
@@ -804,40 +804,40 @@ if (isset($session_group_id)) {
                         </div>
                     </div>
                     <div class="col-sm-12 form-group control-type-text">
-                        <div class="col-sm-2">Treatment Name and Code: <?php echo ModuleHelp('HelpTrial36'); ?></div>      
+                        <div class="col-sm-2">Treatment Name and Code: <?php echo FieldHelp('HelpTrial36'); ?></div>      
                         <div class=" col-sm-4 control-type-text">
                             <input class="form-control" name="trnftreatmentnameandcode1" id="trnftreatmentnameandcode1" type="text" size="36" maxlength="255" value="">
                         </div>
                     </div>
                     <div class="col-sm-6 form-group control-type-text">
-                        <div class="col-sm-4">Planting/Sowing Start Date: <?php echo ModuleHelp('HelpTrial37'); ?></div>      
+                        <div class="col-sm-4">Planting/Sowing Start Date: <?php echo FieldHelp('HelpTrial37'); ?></div>      
                         <div class=" col-sm-4 control-type-text">
                             <input class="DateInput form-control" placeholder="yyyy-mm-dd" name="trnfplantingsowingstartdate1" id="trnfplantingsowingstartdate1" type="text" size="11" maxlength="10" onkeyup="ValidaEscrituraFecha(this);" onblur="ValidaFecha(this);" value="">                                </div>
                     </div>
                     <div class="col-sm-6 form-group control-type-text">
-                        <div class="col-sm-4">Planting/Sowing End Date: <?php echo ModuleHelp('HelpTrial38'); ?></div>      
+                        <div class="col-sm-4">Planting/Sowing End Date: <?php echo FieldHelp('HelpTrial38'); ?></div>      
                         <div class=" col-sm-4 control-type-text">
                             <input class="DateInput form-control" placeholder="yyyy-mm-dd" name="trnfplantingsowingenddate1" id="trnfplantingsowingenddate1" type="text" size="11" maxlength="10" onkeyup="ValidaEscrituraFecha(this);" onblur="ValidaFecha(this);" value="">
                         </div>
                     </div>
                     <div class="col-sm-6 form-group control-type-text">
-                        <div class="col-sm-4">Physiological Maturity Start Date: <?php echo ModuleHelp('HelpTrial39'); ?></div>      
+                        <div class="col-sm-4">Physiological Maturity Start Date: <?php echo FieldHelp('HelpTrial39'); ?></div>      
                         <div class=" col-sm-4 control-type-text">
                             <input class="DateInput form-control" placeholder="yyyy-mm-dd" name="trnfphysiologicalmaturitystardate1" id="trnfphysiologicalmaturitystardate1" type="text" size="11" maxlength="10" onkeyup="ValidaEscrituraFecha(this);" onblur="ValidaFecha(this);" value="">                                </div>
                     </div>
                     <div class="col-sm-6 form-group control-type-text">
-                        <div class="col-sm-4">Physiological Maturity End Date: <?php echo ModuleHelp('HelpTrial40'); ?></div>      
+                        <div class="col-sm-4">Physiological Maturity End Date: <?php echo FieldHelp('HelpTrial40'); ?></div>      
                         <div class=" col-sm-4 control-type-text">
                             <input class="DateInput form-control" placeholder="yyyy-mm-dd" name="trnfphysiologicalmaturityenddate1" id="trnfphysiologicalmaturityenddate1" type="text" size="11" maxlength="10" onkeyup="ValidaEscrituraFecha(this);" onblur="ValidaFecha(this);" value="">
                         </div>
                     </div>
                     <div class="col-sm-6 form-group control-type-text">
-                        <div class="col-sm-4">Harvest Start Date: <?php echo ModuleHelp('HelpTrial41'); ?></div>      
+                        <div class="col-sm-4">Harvest Start Date: <?php echo FieldHelp('HelpTrial41'); ?></div>      
                         <div class=" col-sm-4 control-type-text">
                             <input class="DateInput form-control" placeholder="yyyy-mm-dd" name="trnfharveststartdate1" id="trnfharveststartdate1" type="text" size="11" maxlength="10" onkeyup="ValidaEscrituraFecha(this);" onblur="ValidaFecha(this);" value="">                                </div>
                     </div>
                     <div class="col-sm-6 form-group control-type-text">
-                        <div class="col-sm-4">Harvest End Date: <?php echo ModuleHelp('HelpTrial42'); ?></div>      
+                        <div class="col-sm-4">Harvest End Date: <?php echo FieldHelp('HelpTrial42'); ?></div>      
                         <div class=" col-sm-4 control-type-text">
                             <input class="DateInput form-control" placeholder="yyyy-mm-dd" name="trnfharvestenddate1" id="trnfharvestenddate1" type="text" size="11" maxlength="10" onkeyup="ValidaEscrituraFecha(this);" onblur="ValidaFecha(this);" value="">
                         </div>
@@ -846,7 +846,7 @@ if (isset($session_group_id)) {
                 <fieldset>
                     <div class="panel panel-default">
                         <!-- Default panel contents -->
-                        <div class="panel-heading" style="color:#595959;"><b>Varieties <?php echo ModuleHelp('HelpTrial43'); ?></b></div>
+                        <div class="panel-heading" style="color:#595959;"><b>Varieties <?php echo FieldHelp('HelpTrial43'); ?></b></div>
                         <div class="panel-body" style="padding-top: 5px; padding-bottom: 5px; background: #EEEEEE;">
                             <div class="col-sm-1" style="padding-left: 0px; padding-right: 0px; width: 50px;">Search:</div> 
                             <div class=" col-sm-4 control-type-text">
@@ -875,7 +875,7 @@ if (isset($session_group_id)) {
                 <fieldset>
                     <div class="panel panel-default">
                         <!-- Default panel contents -->
-                        <div class="panel-heading Title1" style="color:#595959;">Variables Measured <?php echo ModuleHelp('HelpTrial44'); ?></div>
+                        <div class="panel-heading Title1" style="color:#595959;">Variables Measured <?php echo FieldHelp('HelpTrial44'); ?></div>
                         <div class="panel-body" style="padding-top: 5px; padding-bottom: 5px; background: #EEEEEE;">
                             <div class="col-sm-1" style="padding-left: 0px; padding-right: 0px; width: 50px;">Search:</div> 
                             <div class=" col-sm-4 control-type-text">
@@ -913,31 +913,31 @@ if (isset($session_group_id)) {
                                 </div>
                             </div>
                             <div class="col-sm-12 form-group control-type-text">
-                                <div class="col-sm-3">Upload Data Template: <?php echo ModuleHelp('HelpTrial45'); ?></div>
+                                <div class="col-sm-3">Upload Data Template: <?php echo FieldHelp('HelpTrial45'); ?></div>
                                 <div class=" col-sm-4 control-type-text">
                                     <input type="file" id="TemplateData1" name="TemplateData1">
                                 </div>
                             </div>
                             <div class="col-sm-12 form-group control-type-text">
-                                <div class="col-sm-3">Results File: <?php echo ModuleHelp('HelpTrial46'); ?></div>
+                                <div class="col-sm-3">Results File: <?php echo FieldHelp('HelpTrial46'); ?></div>
                                 <div class=" col-sm-4 control-type-text">
                                     <input type="file" id="trnfdataorresultsfile1" name="trnfdataorresultsfile1">        
                                 </div>
                             </div>
                             <div class="col-sm-12 form-group control-type-text">
-                                <div class="col-sm-3">Suppplemental Information File: <?php echo ModuleHelp('HelpTrial47'); ?></div>
+                                <div class="col-sm-3">Suppplemental Information File: <?php echo FieldHelp('HelpTrial47'); ?></div>
                                 <div class=" col-sm-4 control-type-text">
                                     <input type="file" id="trnfsuppplementalinformationfile1" name="trnfsuppplementalinformationfile1">        
                                 </div>
                             </div>
                             <div class="col-sm-12 form-group control-type-text">
-                                <div class="col-sm-3">Weather File: <?php echo ModuleHelp('HelpTrial48'); ?></div>
+                                <div class="col-sm-3">Weather File: <?php echo FieldHelp('HelpTrial48'); ?></div>
                                 <div class=" col-sm-4 control-type-text">
                                     <input type="file" id="trnfweatherdatafile1" name="trnfweatherdatafile1">        
                                 </div>
                             </div>
                             <div class="col-sm-12 form-group control-type-text">
-                                <div class="col-sm-3">Soil File: <?php echo ModuleHelp('HelpTrial49'); ?></div>
+                                <div class="col-sm-3">Soil File: <?php echo FieldHelp('HelpTrial49'); ?></div>
                                 <div class=" col-sm-4 control-type-text">
                                     <input type="file" id="trnfsoildatafile1" name="trnfsoildatafile1">        
                                 </div>

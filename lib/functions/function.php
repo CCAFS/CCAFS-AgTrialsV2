@@ -1086,7 +1086,7 @@ function MessageNotice() {
     return $Notice;
 }
 
-function ModuleHelp($IdHelp) {
+function FieldHelp($IdHelp) {
     $HTMLHelp = "";
     $connection = Doctrine_Manager::getInstance()->connection();
     $QUERY00 = "SELECT 'Help'||T.flhlmodule||T.id_fieldhelp AS idhelp,T.flhltexthelp AS texthelp ";
