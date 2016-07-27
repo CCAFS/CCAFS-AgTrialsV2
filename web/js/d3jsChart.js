@@ -57,7 +57,7 @@ function ByTechnology() {
                 .style("font-size", "16px")
                 .style("text-decoration", "none")
                 .style("font-weight", "bold")
-                .text("Top 10 Trials By Crop");
+                .text("Top 10 Crops by Number of Trials");
 
         canvas.append('g')
                 .attr('id', 'grid')
@@ -189,7 +189,7 @@ function ByCountry() {
                 .style("font-size", "16px")
                 .style("text-decoration", "none")
                 .style("font-weight", "bold")
-                .text("Top 10 Trials By Country");
+                .text("Top 10 Countries by Number of Trials");
 
         canvas.append('g')
                 .attr('id', 'grid')
@@ -321,7 +321,7 @@ function ByInstitution() {
                 .style("font-size", "16px")
                 .style("text-decoration", "none")
                 .style("font-weight", "bold")
-                .text("Top 10 Trials By Institution");
+                .text("Top 10 Institutions by Number of Trials");
 
         canvas.append('g')
                 .attr('id', 'grid')
@@ -453,7 +453,7 @@ function ByProject() {
                 .style("font-size", "16px")
                 .style("text-decoration", "none")
                 .style("font-weight", "bold")
-                .text("Top 10 Trials By Project");
+                .text("Top 10 Projects by Number of Trials");
 
         canvas.append('g')
                 .attr('id', 'grid')
@@ -585,7 +585,7 @@ function ByTrialLocation() {
                 .style("font-size", "16px")
                 .style("text-decoration", "none")
                 .style("font-weight", "bold")
-                .text("Top 10 Trials By Trial Location");
+                .text("Top 10 Locations by Number of Trials");
 
         canvas.append('g')
                 .attr('id', 'grid')
