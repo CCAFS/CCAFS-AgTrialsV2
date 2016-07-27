@@ -254,3 +254,9 @@ td a{
     color: #2A9A60;
     text-decoration: none;
 }
+
+.alert-info {
+    color: #595959;
+    background-color: #EEEEEE;
+    border-color: #595959;
+}

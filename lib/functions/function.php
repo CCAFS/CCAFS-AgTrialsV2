@@ -1107,4 +1107,28 @@ function FieldHelp($IdHelp) {
     return $HTMLHelp;
 }
 
+function ModuleHelp($Module) {
+    $HTMLHelp = "";
+    $connection = Doctrine_Manager::getInstance()->connection();
+    $QUERY00 = "SELECT T.mdhltexthelp AS texthelp ";
+    $QUERY00 .= "FROM tb_modulehelp T ";
+    $QUERY00 .= "WHERE T.mdhlmodule = '$Module' ";
+    $st = $connection->execute($QUERY00);
+    $Resultado00 = $st->fetchAll();
+    foreach ($Resultado00 AS $fila) {
+        $texthelp = $fila['texthelp'];
+    }
+    if ($texthelp != '') {
+
+        $HTMLHelp = '<div class="alert alert-info alert-dismissible fade in" role="alert">';
+        $HTMLHelp .= '<span style="font-size: 20px;" class="glyphicon glyphicon-info-sign">&ensp;</span>';
+        $HTMLHelp .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+        $HTMLHelp .= '<span aria-hidden="true">&times;</span>';
+        $HTMLHelp .= '</button>' . $texthelp;
+        $HTMLHelp .= '</div>';
+    }
+
+    return $HTMLHelp;
+}
+
 ?>

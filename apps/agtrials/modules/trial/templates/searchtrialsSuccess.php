@@ -13,6 +13,7 @@ use_javascript('searchtrials.js');
     </div>
     <!-- Right Content -->
     <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
+        <?php echo ModuleHelp('Search Trials'); ?>
         <span class="Title">Search Trials</span>
         <form class="form-horizontal" id="FormSearchTrials" name="FormSearchTrials" action="" enctype="multipart/form-data" method="post" autocomplete="off">
             <div class="Session" style="margin-top: 10px;  margin-bottom: 0px; margin-bottom: 10px; padding-bottom: 0px;">
