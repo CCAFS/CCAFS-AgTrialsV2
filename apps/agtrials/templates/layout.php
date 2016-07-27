@@ -139,16 +139,16 @@ if ($sf_user->isAuthenticated()) {
                 <br />
                 <h4 class="our-partners-title">Our partners</h4>
                 <div class="FooterPartners"> 
+                    <div class="partner-logo"><img src="/images/logos/logo_09.png" alt="CIMMYT" /></div>
                     <div class="partner-logo"><img src="/images/logos/logo_01.png" alt="CIAT" /></div>
+                    <div class="partner-logo"><img src="/images/logos/logo_08.png" alt="IITA" /></div>
+                    <div class="partner-logo"><img src="/images/logos/logo_10.png" alt="ICRISAT" /></div>
+                    <div class="partner-logo"><img src="/images/logos/logo_05.png" alt="IRRI" /></div>
                     <div class="partner-logo"><img src="/images/logos/logo_02.png" alt="CIP" /></div>
                     <div class="partner-logo"><img src="/images/logos/logo_03.png" alt="ICARDA" /></div>
                     <div class="partner-logo"><img src="/images/logos/logo_04.png" alt="ILRI" /></div>
-                    <div class="partner-logo"><img src="/images/logos/logo_05.png" alt="IRRI" /></div>
                     <div class="partner-logo"><img src="/images/logos/logo_06.png" alt="Bioversity" /></div>
                     <div class="partner-logo"><img src="/images/logos/logo_07.png" alt="Africa Rice" /></div>
-                    <div class="partner-logo"><img src="/images/logos/logo_08.png" alt="IITA" /></div>
-                    <div class="partner-logo"><img src="/images/logos/logo_09.png" alt="CIMMYT" /></div>
-                    <div class="partner-logo"><img src="/images/logos/logo_10.png" alt="ICRISAT" /></div>
                     <div class="partner-logo"><img src="/images/logos/logo_11.png" alt="" /></div>
                 </div>        
             </div>
