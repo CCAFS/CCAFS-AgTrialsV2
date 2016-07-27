@@ -6,8 +6,8 @@ if ($Modulo == 'variety' && $Action == 'checkvariety')
 if ($Modulo == 'variety' && $Action == 'checkbatchvariety')
     $selectedcheckbatchvariety = "selected-a";
 ?>
-
-<span class="Title">Explore and verify - Trial Location</span>
+<?php echo ModuleHelp('Explore and verify - Variety'); ?>
+<span class="Title">Explore and verify - Variety</span>
 <div class="Session" style="margin-top: 10px; margin-bottom: 10px;">
     <fieldset>
         <div class="row RowDownloadTemplate">

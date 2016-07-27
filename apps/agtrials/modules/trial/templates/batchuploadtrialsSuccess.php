@@ -9,6 +9,7 @@
     </div>
     <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
         <?php if ($Form == "Step1") { ?>
+            <?php echo ModuleHelp('Batch Upload Trials'); ?>
             <span class="Title">Batch Upload Trials</span>
             <div class="Session">
                 <form class="form-horizontal" id="FormStep1" name="FormStep1" action="" enctype="multipart/form-data" method="post" autocomplete="off">

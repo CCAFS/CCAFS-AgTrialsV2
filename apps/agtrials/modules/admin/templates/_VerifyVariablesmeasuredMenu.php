@@ -6,8 +6,8 @@ if ($Modulo == 'variablesmeasured' && $Action == 'checkvariablesmeasured')
 if ($Modulo == 'variablesmeasured' && $Action == 'checkbatchvariablesmeasured')
     $selectedcheckbatchvariablesmeasured = "selected-a";
 ?>
-
-<span class="Title">Explore and verify - Trial Location</span>
+<?php echo ModuleHelp('Explore and verify - Variables measured'); ?>
+<span class="Title">Explore and verify - Variables measured</span>
 <div class="Session" style="margin-top: 10px; margin-bottom: 10px;">
     <fieldset>
         <div class="row RowDownloadTemplate">

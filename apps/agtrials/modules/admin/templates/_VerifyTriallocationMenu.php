@@ -6,7 +6,7 @@ if ($Modulo == 'triallocation' && $Action == 'checktriallocation')
 if ($Modulo == 'triallocation' && $Action == 'checkbatchtriallocation')
     $selectedcheckbatchtriallocation = "selected-a";
 ?>
-
+<?php echo ModuleHelp('Explore and verify - Trial Location'); ?>
 <span class="Title">Explore and verify - Trial Location</span>
 <div class="Session" style="margin-top: 10px; margin-bottom: 10px;">
     <fieldset>

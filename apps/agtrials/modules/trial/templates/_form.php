@@ -77,6 +77,7 @@ if (isset($session_group_id)) {
     <div class="col-md-10 sf_admin_form">
         <?php echo form_tag_for($form, '@tb_trial', array('enctype' => 'multipart/form-data', 'id' => 'FormTrial', 'name' => 'FormTrial')); ?>
         <?php echo $form->renderHiddenFields(); ?>
+        <?php echo ModuleHelp('Trial'); ?>
         <div id="ProjectTrialGroups" class="label ui-helper-clearfix">
             <span class="Title">Project / Trial Groups</span>
         </div>

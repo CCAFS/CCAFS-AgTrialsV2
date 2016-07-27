@@ -22,6 +22,7 @@
         <?php include_partial('admin/ProsessesMenu') ?>
     </div>
     <div class="col-md-9 sf_admin_form" style="margin-top: 13px; width: 930px;">
+        <?php echo ModuleHelp('Batch uploads'); ?>
         <span class="Title">Batch uploads</span>
         <div id="div_loading" class="loading" align="center" style="display:none;">
             <?php echo image_tag('loading.gif'); ?>
