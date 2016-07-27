@@ -245,7 +245,7 @@ class adminActions extends sfActions {
                 $INFO .= "<td class='col-sm-1'>{$Valor['flhlmodule']}</td>";
                 $INFO .= "<td class='col-sm-3'>{$Valor['flhlsession']}</td>";
                 $INFO .= "<td class='col-sm-3'>{$Valor['flhlfield']}</td>";
-                $INFO .= "<td style='width: 300px;'><div><textarea rows='1' onchange='SaveFieldHelp({$Valor['id_fieldhelp']});' cols='36' id='texthelp{$Valor['id_fieldhelp']}' class='form-control' type='text'>{$Valor['flhltexthelp']}</textarea></div><div style='color: #2a9a60;' id='Action{$Valor['id_fieldhelp']}'></div></td>";
+                $INFO .= "<td style='width: 300px;'><div><textarea rows='1' onfocus='ClearAction({$Valor['id_fieldhelp']});' onchange='SaveFieldHelp({$Valor['id_fieldhelp']});' cols='36' id='texthelp{$Valor['id_fieldhelp']}' class='form-control' type='text'>{$Valor['flhltexthelp']}</textarea></div><div style='color: #2a9a60;' id='Action{$Valor['id_fieldhelp']}'></div></td>";
                 $INFO .= "</tr>";
             }
             $INFO .= "</tbody>";
@@ -271,6 +271,20 @@ class adminActions extends sfActions {
 
     public function executeModulehelp(sfWebRequest $request) {
         
+    }
+
+    public function executeSaveModuleHelp(sfWebRequest $request) {
+        $connection = Doctrine_Manager::getInstance()->connection();
+        $id_user = $this->getUser()->getGuardUser()->getId();
+        $DateNow = date("Y-m-d") . " " . date("H:i:s");
+        $id = $request->getParameter('id');
+        $texthelp = $request->getParameter('texthelp');
+
+        $texthelp = str_replace("'", "''", $texthelp);
+
+        $QUERY00 = "UPDATE tb_modulehelp SET mdhltexthelp = '$texthelp', id_user_update = $id_user, updated_at = '$DateNow' WHERE id_modulehelp = $id";
+        $connection->execute($QUERY00);
+        die();
     }
 
 }

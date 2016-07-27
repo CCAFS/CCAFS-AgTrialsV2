@@ -28,6 +28,10 @@
 
     }
 
+    function ClearAction(id) {
+        $('#Action' + id).html("");
+    }
+
 </script>
 <link rel="stylesheet" type="text/css" media="screen" href="/css/prosessescheck.css"/>
 <div class="row">
