@@ -55,9 +55,7 @@
                 <fieldset>
                     <div class="col-sm-12 form-group control-type-text">
                         <div class="panel panel-default">
-                            <div class="panel-heading Title" id="InfoResult"></div>
-                            <table id="TableResult" class="table table-striped table-fixed table-hover">
-                            </table>
+                            <table id="TableResult" class="table table-striped table-fixed table-hover"></table>
                         </div>
                     </div>
                 </fieldset>
