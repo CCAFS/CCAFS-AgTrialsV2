@@ -2,7 +2,6 @@
     $(document).ready(function () {
         $('#ModuleHelp').change(function () {
             var ModuleHelp = $('#ModuleHelp').val();
-            $('#InfoResult').html("");
             $('#DataResult').html("");
             $.ajax({
                 type: "GET",
@@ -51,8 +50,6 @@
                                 <option value="Trial" title="Trial">Trial</option>
                             </select>
                         </div>
-                        <br><br>
-                        <div class="col-sm-12 control-type-text" style="margin-top: 13px;" id="Alphabet"></div>
                     </div>
                 </fieldset>
                 <fieldset>

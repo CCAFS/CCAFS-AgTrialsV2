@@ -273,6 +273,33 @@ class adminActions extends sfActions {
         
     }
 
+    public function executeLoadHelpModule(sfWebRequest $request) {
+        $connection = Doctrine_Manager::getInstance()->connection();
+        $ModuleHelp = $request->getParameter('ModuleHelp');
+
+        $HTML = "<thead id='HeadTableResult'>";
+        $HTML .= "<tr>";
+        $HTML .= "<th class='col-sm-12'>Help text</th>";
+        $HTML .= "</tr>";
+        $HTML .= "</thead>";
+
+        $QUERY00 = "SELECT  T.id_modulehelp,T.mdhlmodule,T.mdhltexthelp ";
+        $QUERY00 .= "FROM tb_modulehelp T ";
+        $QUERY00 .= "WHERE T.mdhlmodule = '$ModuleHelp' ";
+        $QUERY00 .= "ORDER BY T.id_modulehelp ";
+        $st = $connection->execute($QUERY00);
+        $Results = $st->fetchAll(PDO::FETCH_ASSOC);
+        $HTML .= "<tbody id='DataResult'>";
+        foreach ($Results AS $Valor) {
+            $HTML .= "<tr>";
+            $HTML .= "<td class='col-sm-12'><div><textarea rows='1' onfocus='ClearAction({$Valor['id_modulehelp']});' onchange='SaveModuleHelp({$Valor['id_modulehelp']});' cols='36' id='texthelp_{$Valor['id_modulehelp']}' class='form-control' type='text'>{$Valor['mdhltexthelp']}</textarea></div><div style='color: #2a9a60;' id='Action{$Valor['id_modulehelp']}'></div></td>";
+            $HTML .= "</tr>";
+        }
+        $HTML .= "</tbody>";
+
+        die($HTML);
+    }
+
     public function executeSaveModuleHelp(sfWebRequest $request) {
         $connection = Doctrine_Manager::getInstance()->connection();
         $id_user = $this->getUser()->getGuardUser()->getId();
