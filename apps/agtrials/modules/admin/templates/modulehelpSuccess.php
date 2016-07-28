@@ -16,18 +16,37 @@ $HTML .= "<tbody id='DataResult'>";
 foreach ($Results AS $Valor) {
     $HTML .= "<tr>";
     $HTML .= "<td class='col-sm-3'>{$Valor['mdhlmodule']}</td>";
-    $HTML .= "<td class='col-sm-9'><div><textarea rows='1' onfocus='ClearAction({$Valor['id_modulehelp']});' onchange='SaveModuleHelp({$Valor['id_modulehelp']});' cols='36' id='texthelp{$Valor['id_modulehelp']}' class='form-control' type='text'>{$Valor['mdhltexthelp']}</textarea></div><div style='color: #2a9a60;' id='Action{$Valor['id_modulehelp']}'></div></td>";
+    $HTML .= "<td class='col-sm-9'><div><textarea rows='1' onfocus='ClearAction({$Valor['id_modulehelp']});' onchange='SaveModuleHelp({$Valor['id_modulehelp']});' cols='36' id='texthelp_{$Valor['id_modulehelp']}' class='form-control' type='text'>{$Valor['mdhltexthelp']}</textarea></div><div style='color: #2a9a60;' id='Action{$Valor['id_modulehelp']}'></div></td>";
     $HTML .= "</tr>";
 }
 $HTML .= "</tbody>";
 ?>
-<script>
-    function SaveModuleHelp(id) {
-        var texthelp = $('#texthelp' + id).val();
+<link rel="stylesheet" type="text/css" media="screen" href="/css/prosessescheck.css"/>
+<script type="text/javascript" src="/tinymce/tinymce.js"></script>
+
+<script type="text/javascript">
+
+    tinymce.init({
+        selector: "textarea",
+        menubar: false,
+        statusbar: false,
+        plugins: ["advlist autolink lists link tabfocus"],
+        toolbar: " bold italic underline strikethrough | bullist numlist | link",
+        setup: function (textarea) {
+            textarea.on('change', function () {
+                SaveModuleHelp(textarea.id, textarea.getContent());
+            });
+        }
+    });
+
+    function SaveModuleHelp(id, texthelp) {
+        var Arrtexthelp = id.split("_")
+        var id = Arrtexthelp[1];
+        var params = {texthelp: texthelp, id: id};
         $.ajax({
             type: "GET",
             url: "/admin/SaveModuleHelp/",
-            data: "id=" + id + "&texthelp=" + texthelp,
+            data: params,
             success: function () {
                 $('#Action' + id).html("Record updated!");
             }
@@ -39,7 +58,7 @@ $HTML .= "</tbody>";
     }
 
 </script>
-<link rel="stylesheet" type="text/css" media="screen" href="/css/prosessescheck.css"/>
+
 <div class="row">
     <div class="col-md-2 left-column">
         <?php include_partial('admin/ModuleMenu') ?>
