@@ -263,6 +263,7 @@ class adminActions extends sfActions {
         $texthelp = $request->getParameter('texthelp');
 
         $texthelp = str_replace("'", "''", $texthelp);
+        $texthelp = trim($texthelp);
 
         $QUERY00 = "UPDATE tb_fieldhelp SET flhltexthelp = '$texthelp', id_user_update = $id_user, updated_at = '$DateNow' WHERE id_fieldhelp = $id";
         $connection->execute($QUERY00);
@@ -308,6 +309,7 @@ class adminActions extends sfActions {
         $texthelp = $request->getParameter('texthelp');
 
         $texthelp = str_replace("'", "''", $texthelp);
+        $texthelp = trim($texthelp);
 
         $QUERY00 = "UPDATE tb_modulehelp SET mdhltexthelp = '$texthelp', id_user_update = $id_user, updated_at = '$DateNow' WHERE id_modulehelp = $id";
         $connection->execute($QUERY00);
