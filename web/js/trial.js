@@ -110,8 +110,8 @@ jQuery(document).ready(function () {
     };
     //DEFINICION DE CAMPOS OBLIGATORIOS PARA (Trial Implementingperiod)
     var CamposTrialImplementingperiod = {
-        'trlimplementingperiodstartdate': 'Start Date',
-        'trlimplementingperiodenddate': 'End Date'
+//        'trlimplementingperiodstartdate': 'Start Date',
+//        'trlimplementingperiodenddate': 'End Date'
     };
     //DEFINICION DE CAMPOS OBLIGATORIOS PARA (Trial Location)
     var CamposTrialLocation = {
