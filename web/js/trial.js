@@ -92,12 +92,12 @@ jQuery(document).ready(function () {
     };
     //DEFINICION DE CAMPOS OBLIGATORIOS PARA (Funding for project)
     var CamposFundingforproject = {
-        'dnrname': 'Donor Dame'
+//        'dnrname': 'Donor Dame'
     };
     //DEFINICION DE CAMPOS OBLIGATORIOS PARA (Project Information)
     var CamposProjectinformation = {
-        'prjabstract': 'Abstract',
-        'prjkeywords': 'Keywords'
+//        'prjabstract': 'Abstract',
+//        'prjkeywords': 'Keywords'
     };
     //DEFINICION DE CAMPOS OBLIGATORIOS PARA (Trial Manager)
     var CamposTrialManager = {
