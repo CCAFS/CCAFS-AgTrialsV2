@@ -62,6 +62,8 @@ if ($sf_user->isAuthenticated()) {
         <?php include_javascripts(); ?>
         <?php include_stylesheets(); ?>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+        <!-- Add IntroJs styles -->
+        <link href="/intro.js-2.2.0/minified/introjs.min.css" rel="stylesheet">
     </head>
     <body> 
         <header >
@@ -153,5 +155,7 @@ if ($sf_user->isAuthenticated()) {
                 </div>        
             </div>
         </footer>
+        <!-- Add IntroJs Javascript -->
+        <script type="text/javascript" src="/intro.js-2.2.0/minified/intro.min.js"></script>
     </body>
 </html>

@@ -1121,10 +1121,16 @@ function ModuleHelp($Module) {
     if ($texthelp != '') {
 
         $HTMLHelp = '<div class="alert alert-info alert-dismissible fade in" role="alert">';
-        $HTMLHelp .= '<span style="font-size: 20px;" class="glyphicon glyphicon-info-sign">&ensp;</span>';
+        $HTMLHelp .= '<span style="font-size: 1.7em;color: #8a8a8a;" class="glyphicon glyphicon-info-sign pull-left">&ensp;</span>';
         $HTMLHelp .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
         $HTMLHelp .= '<span aria-hidden="true">&times;</span>';
-        $HTMLHelp .= '</button>' . $texthelp;
+        $HTMLHelp .= '</button>';
+        $HTMLHelp .= '<a class="btn btn-sm btn-success pull-right" href="javascript:void(0);" onclick="javascript:introJs().start();">Guide Tour</a>';
+        
+        $HTMLHelp .= $texthelp;
+
+        
+        $HTMLHelp .= '<div class="clearfix"></div>';
         $HTMLHelp .= '</div>';
     }
 
