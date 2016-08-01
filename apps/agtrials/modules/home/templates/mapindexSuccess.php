@@ -31,7 +31,7 @@ $maps = json_encode($puntos);
 <script type="text/javascript" src="/GoogleMapsV3/GoogleMapsV3-MarkerManager.js"></script>
 <script type="text/javascript">
     function wopen(trial) {
-        window.open("/trial/" + trial, "Trial", "width=800,height=800,scrollbars=1");
+        window.open("/trial/" + trial, "_blank");
     }
 </script>
 
