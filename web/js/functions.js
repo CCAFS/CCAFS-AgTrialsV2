@@ -516,3 +516,7 @@ function ViewVariablesMeasured(id_ontology) {
     window.open('http://www.cropontology-curationtool.org/terms/' + id_ontology + '/Stem%20rust/static-html', 'cropontology-curationtool', 'height=800,width=900,scrollbars=1');
 }
 //fin: MANEJO DE CULTIVOS (VARIEDADES Y VARIABLES MEDIDAS)
+
+function wopen(trial) {
+    window.open("/trial/" + trial, "Trial", "width=800,height=800,scrollbars=1");
+}
