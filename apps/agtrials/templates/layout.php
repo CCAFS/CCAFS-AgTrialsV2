@@ -22,7 +22,7 @@
  * @version   :  ~
  */
 
-$Modulos = array('contactperson', 'crop', 'donor', 'experimentaldesign', 'institution', 'project', 'rolecontactperson', 'traitclass', 'triallocation', 'variablesmeasured', 'variety', 'sfGuardUser');
+$Modulos = array('contactperson', 'crop', 'donor', 'experimentaldesign', 'institution', 'project', 'rolecontactperson', 'traitclass', 'triallocation', 'variablesmeasured', 'variety', 'sfGuardUser', 'admin');
 $Actions = array('index', 'new', 'edit');
 $ActionProsesses = array('checktriallocation', 'checkbatchtriallocation', 'checkvariablesmeasured', 'checkbatchvariablesmeasured', 'checkvariety', 'checkbatchvariety');
 
