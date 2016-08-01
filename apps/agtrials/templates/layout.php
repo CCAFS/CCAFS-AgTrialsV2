@@ -22,9 +22,9 @@
  * @version   :  ~
  */
 
-$Modulos = array('contactperson', 'crop', 'donor', 'experimentaldesign', 'institution', 'project', 'rolecontactperson', 'traitclass', 'triallocation', 'variablesmeasured', 'variety', 'sfGuardUser', 'admin');
+$Modulos = array('contactperson', 'crop', 'donor', 'experimentaldesign', 'institution', 'project', 'rolecontactperson', 'traitclass', 'triallocation', 'variablesmeasured', 'variety', 'sfGuardUser');
 $Actions = array('index', 'new', 'edit');
-$ActionProsesses = array('checktriallocation', 'checkbatchtriallocation', 'checkvariablesmeasured', 'checkbatchvariablesmeasured', 'checkvariety', 'checkbatchvariety', 'modulehelp');
+$ActionProsesses = array('checktriallocation', 'checkbatchtriallocation', 'checkvariablesmeasured', 'checkbatchvariablesmeasured', 'checkvariety', 'checkbatchvariety');
 
 $Container = true;
 $Modulo = sfContext::getInstance()->getRequest()->getParameterHolder()->get('module');
