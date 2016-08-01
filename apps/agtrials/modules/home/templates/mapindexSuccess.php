@@ -29,7 +29,9 @@ $maps = json_encode($puntos);
 <script type="text/javascript" src="/GoogleMapsV3/GoogleMapsV3-Index.js"></script>
 <script type="text/javascript" src="/GoogleMapsV3/GoogleMapsV3-MarkerClusterer.js"></script>
 <script type="text/javascript" src="/GoogleMapsV3/GoogleMapsV3-MarkerManager.js"></script>
-<script type="text/javascript" src="/js/functions.js"></script>
+<script type="text/javascript">
+    window.open("/trial/" + trial, "Trial", "width=800,height=800,scrollbars=1");
+</script>
 
 <script type="text/javascript" >var markers = <?php echo $maps; ?></script>
 <div class="Mapa">
