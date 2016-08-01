@@ -17,7 +17,7 @@ use_javascript('searchtrials.js');
         <span class="Title">Search Trials</span>
         <form class="form-horizontal" id="FormSearchTrials" name="FormSearchTrials" action="" enctype="multipart/form-data" method="post" autocomplete="off">
             <div class="Session" style="margin-top: 10px;  margin-bottom: 0px; margin-bottom: 10px; padding-bottom: 0px;">
-                <div class="form-group control-type-text">
+                <div class="form-group control-type-text" data-step="1" data-intro="Search terms">
                     <div class="col-sm-12" style="color: #93c47d; font-size: 16px;">Search terms:</div>      
                     <div class="col-sm-10 control-type-text" style="padding-right: 2px;">
                         <input class="form-control" type="text"  name="searchterms" id="searchterms" size="36" maxlength="255" value="<?php echo $searchterms; ?>">
@@ -32,7 +32,7 @@ use_javascript('searchtrials.js');
                         <span id="CheckSearchterms"></span>                                
                     </div>
                 </div>
-                <div class="form-group control-type-text">
+                <div class="form-group control-type-text" data-step="2" data-intro="Filter by project, contact person, crop/technology and trial name.">
                     <div class="col-sm-12" style="color: #93c47d; font-size: 16px; padding-bottom: 8px;">Filter by:</div>   
                     <fieldset style="padding-left: 15px;">
                         <div class="form-group control-type-text col-sm-3" style="width: 250px;">
@@ -77,7 +77,7 @@ use_javascript('searchtrials.js');
                         </div>
                     </fieldset>
                     <div class="col-sm-12" style="text-align: right;">
-                        <div id="ShowHideDivAdvancedSearch" class="col-sm-3" style="font-size: 14px; text-align: right; padding-bottom: 8px; cursor: pointer; width: 160px; text-decoration: underline; margin-left: 715px;"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Advanced Search</div>
+                        <div id="ShowHideDivAdvancedSearch" class="col-sm-3" style="font-size: 14px; text-align: right; padding-bottom: 8px; cursor: pointer; width: 160px; text-decoration: underline; margin-left: 715px;" data-step="3" data-intro="Advanced Search"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Advanced Search</div>
                     </div>
                 </div>
             </div>
@@ -154,7 +154,7 @@ use_javascript('searchtrials.js');
                 </div>
             </div>
 
-            <fieldset style="margin-top: 10px; margin-left: 13px;">
+            <fieldset style="margin-top: 10px; margin-left: 13px;" data-step="4" data-intro="Buttons">
                 <div class="form-group control-type-text" style="margin-left: 0px;">
                     <button class="btn btn-action" type="button" title=" Search " id="SubmitSearch" neme="SubmitSearch"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&ensp;Search&ensp;</button>
                     <button class="btn btn-action" type="button" title=" Clear " id="ButtonClear" neme="ButtonClear"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span>&ensp;Clear&ensp;</button>
