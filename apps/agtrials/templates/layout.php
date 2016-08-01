@@ -23,7 +23,7 @@
  */
 
 $Modulos = array('contactperson', 'crop', 'donor', 'experimentaldesign', 'institution', 'project', 'rolecontactperson', 'traitclass', 'triallocation', 'variablesmeasured', 'variety', 'sfGuardUser', 'admin');
-$Actions = array('index', 'new', 'edit', 'modulehelp');
+$Actions = array('index', 'new', 'edit', 'modulehelp', 'fieldhelp');
 $ActionProsesses = array('batchuploadanother', 'checktriallocation', 'checkbatchtriallocation', 'checkvariablesmeasured', 'checkbatchvariablesmeasured', 'checkvariety', 'checkbatchvariety');
 
 $Container = true;
