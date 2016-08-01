@@ -23,8 +23,8 @@
  */
 
 $Modulos = array('contactperson', 'crop', 'donor', 'experimentaldesign', 'institution', 'project', 'rolecontactperson', 'traitclass', 'triallocation', 'variablesmeasured', 'variety', 'sfGuardUser', 'admin');
-$Actions = array('index', 'new', 'edit');
-$ActionProsesses = array('checktriallocation', 'checkbatchtriallocation', 'checkvariablesmeasured', 'checkbatchvariablesmeasured', 'checkvariety', 'checkbatchvariety', 'modulehelp');
+$Actions = array('index', 'new', 'edit', 'modulehelp');
+$ActionProsesses = array('checktriallocation', 'checkbatchtriallocation', 'checkvariablesmeasured', 'checkbatchvariablesmeasured', 'checkvariety', 'checkbatchvariety');
 
 $Container = true;
 $Modulo = sfContext::getInstance()->getRequest()->getParameterHolder()->get('module');
@@ -43,6 +43,7 @@ if (($Modulo == 'home') && ($Action == 'statistics'))
     $Statistics = "selected";
 if (($Modulo == 'home') && ($Action == 'contact'))
     $Contact = "selected";
+echo "$Modulo *** $Action";
 if (in_array($Modulo, $Modulos) && in_array($Action, $Actions))
     $Modules = "selected";
 
