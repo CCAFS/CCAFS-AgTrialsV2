@@ -35,7 +35,7 @@ if (($Modulo == 'home') && ($Action == 'index')) {
 }
 if ($Modulo == 'trial')
     $Trial = "selected";
-if (($Modulo == 'admin') || (in_array($Action, $ActionProsesses)))
+if ((in_array($Action, $ActionProsesses)))
     $Processes = "selected";
 if (($Modulo == 'home') && ($Action == 'about'))
     $About = "selected";
@@ -43,7 +43,6 @@ if (($Modulo == 'home') && ($Action == 'statistics'))
     $Statistics = "selected";
 if (($Modulo == 'home') && ($Action == 'contact'))
     $Contact = "selected";
-echo "$Modulo *** $Action";
 if (in_array($Modulo, $Modulos) && in_array($Action, $Actions))
     $Modules = "selected";
 
