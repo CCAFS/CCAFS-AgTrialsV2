@@ -382,3 +382,7 @@ function DownloadDataTemplateCrop(i) {
     var replication = jQuery("#trnfnumberofreplicates" + i).val();
     window.location = "/DownloadDataTemplate?i=" + i + "&replication=" + replication;
 }
+
+function wopen(trial) {
+    window.open("/trial/" + trial, "Trial", "width=800,height=800,scrollbars=1");
+}
