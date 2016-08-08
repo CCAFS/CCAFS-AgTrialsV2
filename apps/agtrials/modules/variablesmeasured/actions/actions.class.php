@@ -215,15 +215,19 @@ class variablesmeasuredActions extends autoVariablesmeasuredActions {
         $QUERY01 = "SELECT VM.id_variablesmeasured,VM.vrmsname,C.crpname,TC.trclname,VM.vrmnmethod,VM.vrmsunit,VM.id_ontology ";
         $QUERY01 .= "FROM tb_variablesmeasured VM ";
         $QUERY01 .= "INNER JOIN tb_crop C ON VM.id_crop = C.id_crop ";
-        $QUERY01 .= "INNER JOIN tb_variablesmeasured TC ON VM.id_variablesmeasured = TC.id_variablesmeasured ";
+        $QUERY01 .= "INNER JOIN tb_traitclass TC ON VM.id_traitclass = TC.id_traitclass ";
         $QUERY01 .= "WHERE C.id_crop = $id_crop ";
         $QUERY01 .= "AND UPPER(VM.vrmsname) LIKE '$Letter%' ";
         $QUERY01 .= "ORDER BY VM.vrmsname ";
+
+
         $st = $connection->execute($QUERY01);
         $Record = $st->fetchAll();
         $total = count($Record);
         $ListIdTrialSite = "";
         $HTMLInfoResult = "Found Results by '$Letter' <span class='badge' id='CountResults'>$total</span>";
+
+
         foreach ($Record AS $Value) {
             $View = "";
             $id_variablesmeasured = $Value['id_variablesmeasured'];
