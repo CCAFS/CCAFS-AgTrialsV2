@@ -406,9 +406,6 @@ class triallocationActions extends autoTriallocationActions {
 
             move_uploaded_file($FileTmpName, "$Uploadstriallocation/$FileName");
             $inputFileName = "$Uploadstriallocation/$FileName";
-            
-            die("S: $inputFileName");
-
 
             $ExcelFileInfo = PHPExcel_IOFactory::load($inputFileName);
             $ArrayData = $ExcelFileInfo->getActiveSheet()->toArray(null, true, true, true);
@@ -545,5 +542,5 @@ class triallocationActions extends autoTriallocationActions {
         }
         die();
     }
-    
+
 }
