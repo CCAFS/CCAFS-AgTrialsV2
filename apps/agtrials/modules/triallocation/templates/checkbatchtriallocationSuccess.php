@@ -3,17 +3,14 @@
         $('#uploadsubmit').click(function () {
             var id_country = $('#id_country').val();
             var checkbatchtriallocationfile = $('#checkbatchtriallocationfile').val();
-            if (id_country == '') {
-                jAlert('Select Country', 'Incomplete Information', null);
-            } else if (checkbatchtriallocationfile == '') {
-                jAlert('Select Check trial location template file', 'Invalid File', null);
+            if (checkbatchtriallocationfile == '') {
+                alerts.show({css: 'error', title: 'Important!', message: " Select Check trial location template file."});
             } else {
                 var fragmento = checkbatchtriallocationfile.split('.');
                 var extension = fragmento[1];
                 if (!((extension == 'XLS') || (extension == 'xls'))) {
-                    $('#checkbatchtriallocationfile').val('');
                     $("#checkbatchtriallocationfile").val('');
-                    jAlert('Permitted file (.XLS)', 'Invalid File', null);
+                    alerts.show({css: 'error', title: 'Important!', message: " Permitted file (.XLS)."});
                 } else {
                     $('#checkbatchtriallocation').submit();
                 }
@@ -32,7 +29,7 @@
             <form class="form-horizontal" id="checkbatchtriallocation" name="checkbatchtriallocation" action="<?php echo url_for('@checkbatchtriallocation'); ?>" enctype="multipart/form-data" method="post">
                 <fieldset>
                     <span>Check trial location template file must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</span></br>
-                    <span>Exact number of columns <b>'1'</b> for Template File.</span></br>
+                    <span>Exact number of columns <b>'2'</b> for Template File.</span></br>
                     <span>Max. <b>50000 Records</b> for Template File.</span></br>
                     <span>Don't close the window during the process.</span>
                 </fieldset>
@@ -46,13 +43,7 @@
                 </div>
                 <br>
                 <div class="form-group control-type-text">
-                    <div class="col-sm-2">Country:</div>
-                    <div class=" col-sm-3 control-type-text">
-                        <?php echo select_from_country_triallocation("id_country", null, "class='form-control'"); ?>
-                    </div>
-                </div>
-                <div class="form-group control-type-text">
-                    <div class="col-sm-2">Template file:</div>
+                    <div class="col-sm-3">Upload template file:</div>
                     <div class=" col-sm-3 control-type-text">
                         <input type="file" name="checkbatchtriallocationfile" id="checkbatchtriallocationfile">
                     </div>

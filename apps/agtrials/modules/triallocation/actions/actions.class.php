@@ -332,7 +332,7 @@ class triallocationActions extends autoTriallocationActions {
         $connection = Doctrine_Manager::getInstance()->connection();
         $Modulo = "Check Batch Trial Location";
         $Downloadresultcheckbatch = "/downloadresultcheckbatchtriallocation";
-        $Cols = 1;
+        $Cols = 2;
         $MaxRecordsFile = 50000;
         $MaxSizeFile = 5; // ESTE VALOR ES EN MB
         $GenerateFile = false;
@@ -370,33 +370,39 @@ class triallocationActions extends autoTriallocationActions {
                 ->setCategory("Result check batch trial location");
         $objPHPExcel->setActiveSheetIndex(0)
                 ->setCellValue('A1', 'Code')
-                ->setCellValue('B1', 'Correct Name');
+                ->setCellValue('B1', 'Country')
+                ->setCellValue('C1', 'Correct Name');
 
-        $objPHPExcel->getActiveSheet()->getStyle('A1:B1')->getFont()->setBold(true);
+        $objPHPExcel->getActiveSheet()->getStyle('A1:C1')->getFont()->setBold(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
 
         $objPHPExcel->getActiveSheet(0)->setTitle('Founds');
         $objPHPExcel->createSheet();
         $objPHPExcel->setActiveSheetIndex(1);
         $objPHPExcel->getActiveSheet(1)->setTitle('Posibles');
         $objPHPExcel->setActiveSheetIndex(1)
-                ->setCellValue('A1', 'Original Name')
-                ->setCellValue('B1', 'Posibles Names');
-        $objPHPExcel->getActiveSheet()->getStyle('A1:B1')->getFont()->setBold(true);
+                ->setCellValue('A1', 'Country')
+                ->setCellValue('B1', 'Original Name')
+                ->setCellValue('C1', 'Posibles Names');
+
+        $objPHPExcel->getActiveSheet()->getStyle('A1:C1')->getFont()->setBold(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
         $objPHPExcel->createSheet();
         $objPHPExcel->setActiveSheetIndex(2);
         $objPHPExcel->getActiveSheet(2)->setTitle('Not Founds');
         $objPHPExcel->setActiveSheetIndex(2)
-                ->setCellValue('A1', 'Name');
-        $objPHPExcel->getActiveSheet()->getStyle('A1')->getFont()->setBold(true);
+                ->setCellValue('A1', 'Country')
+                ->setCellValue('B1', 'Name');
+        $objPHPExcel->getActiveSheet()->getStyle('A1:B1')->getFont()->setBold(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
 
         if ($FileName != '') {
             $GenerateFile = true;
-            $id_country = $request->getParameter('id_country');
             $extension = explode(".", $FileName);
             $FileExt = strtoupper($extension[1]);
             if ((!($FileExt == "XLS")) || ($FileSizeMB < 0) || ($FileSizeMB > 5) || ($DataFileSizeMB > 5)) {
@@ -438,10 +444,23 @@ class triallocationActions extends autoTriallocationActions {
 
             foreach ($ArrayData AS $ArrayRow) {
                 $banderaerrorfila = false;
-                $trlcname = trim($ArrayRow['A']);
+                $country = trim($ArrayRow['A']);
+                $trlcname = trim($ArrayRow['B']);
+                $country = str_replace("'", "''", $country);
+
+
+                $QUERYC = "SELECT id_administrativedivision,dmdvname FROM tb_administrativedivision WHERE dmdvname ILIKE '%$country%' AND id_administrativedivisiontype = 1";
+                $ResultC = $connection->execute($QUERYC);
+                $DataResultC = $ResultC->fetchAll();
+                if (count($DataResultC) > 0) {
+                    foreach ($DataResultC AS $Value) {
+                        $id_country = $Value[0];
+                        $country = $Value[1];
+                    }
+                }
 
                 //AQUI REALIZAMOS LA VALIDACION Y/O BUSQUEDA DE POSIBLES VALORES
-                if ($trlcname != '') {
+                if (($id_country != '') && ($trlcname != '')) {
                     $trlcname = str_replace("'", "''", $trlcname);
                     $QUERY00 = "SELECT TL.id_triallocation,TL.trlcname,TL.trlclatitude,TL.trlclongitude,TL.trlcaltitude ";
                     $QUERY00 .= "FROM tb_triallocation TL ";
@@ -461,7 +480,8 @@ class triallocationActions extends autoTriallocationActions {
                         }
                         $objPHPExcel->setActiveSheetIndex(0)
                                 ->setCellValue("A$i", $id_triallocation)
-                                ->setCellValue("B$i", $trlcname);
+                                ->setCellValue("B$i", $country)
+                                ->setCellValue("C$i", $trlcname);
                         $i++;
                     } else {
                         $QUERY01 = "SELECT TL.id_triallocation,TL.trlcname ";
@@ -481,12 +501,14 @@ class triallocationActions extends autoTriallocationActions {
                             }
                             $ListPosibles = substr($ListPosibles, 0, strlen($ListPosibles) - 2);
                             $objPHPExcel->setActiveSheetIndex(1)
-                                    ->setCellValue("A$a", $trlcname)
-                                    ->setCellValue("B$a", $ListPosibles);
+                                    ->setCellValue("A$a", $country)
+                                    ->setCellValue("B$a", $trlcname)
+                                    ->setCellValue("C$a", $ListPosibles);
                             $a++;
                         } else {
                             $objPHPExcel->setActiveSheetIndex(2)
-                                    ->setCellValue("A$x", $trlcname);
+                                    ->setCellValue("A$x", $country)
+                                    ->setCellValue("B$x", $trlcname);
                             $x++;
                         }
                     }
