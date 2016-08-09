@@ -329,8 +329,8 @@ class variablesmeasuredActions extends autoVariablesmeasuredActions {
                 die(include("../lib/html/HTML.php"));
             }
 
-            move_uploaded_file($FileTmpName, "$uploadstriallocation/$FileName");
-            $inputFileName = "$uploadstriallocation/$FileName";
+            move_uploaded_file($FileTmpName, "$UploadsVariablesmeasured/$FileName");
+            $inputFileName = "$UploadsVariablesmeasured/$FileName";
 
 
             $ExcelFileInfo = PHPExcel_IOFactory::load($inputFileName);
@@ -416,9 +416,6 @@ class variablesmeasuredActions extends autoVariablesmeasuredActions {
                 $fila_actual = ( $row - 1);
                 $porcentaje = $fila_actual * 100 / $TotalRecord; //saco mi valor en porcentaje
                 echo "<script>callprogress(" . round($porcentaje) . ",$fila_actual,$TotalRecord);</script>";
-                flush();
-                ob_flush();
-                echo "<script>counter($grabados,$errores);</script>";
                 flush();
                 ob_flush();
                 $row++;
