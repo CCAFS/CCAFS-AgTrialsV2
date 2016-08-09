@@ -404,8 +404,8 @@ class triallocationActions extends autoTriallocationActions {
                 die(include("../lib/html/HTML.php"));
             }
 
-            move_uploaded_file($FileTmpName, "$uploadstriallocation/$FileName");
-            $inputFileName = "$uploadstriallocation/$FileName";
+            move_uploaded_file($FileTmpName, "$Uploadstriallocation/$FileName");
+            $inputFileName = "$Uploadstriallocation/$FileName";
             
             die("S: $inputFileName");
 
