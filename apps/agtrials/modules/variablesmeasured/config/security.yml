@@ -12,3 +12,9 @@ Index:
   
 Show:
   is_secure:   on        # La acción "Ver" es sólo para usuarios autenticados
+  
+checkbatchvariablesmeasured:
+  is_secure:   on        # La acción "Ver" es sólo para usuarios autenticados
+  
+checkvariablesmeasured:
+  is_secure:   on        # La acción "Ver" es sólo para usuarios autenticados
