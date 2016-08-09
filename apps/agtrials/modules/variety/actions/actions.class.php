@@ -292,8 +292,8 @@ class varietyActions extends autoVarietyActions {
                 die(include("../lib/html/HTML.php"));
             }
 
-            move_uploaded_file($FileTmpName, "$uploadstriallocation/$FileName");
-            $inputFileName = "$uploadstriallocation/$FileName";
+            move_uploaded_file($FileTmpName, "$UploadsVariety/$FileName");
+            $inputFileName = "$UploadsVariety/$FileName";
 
 
             $ExcelFileInfo = PHPExcel_IOFactory::load($inputFileName);
