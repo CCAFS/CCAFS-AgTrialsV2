@@ -26,6 +26,7 @@
 require_once dirname(__FILE__) . '/../lib/triallocationGeneratorConfiguration.class.php';
 require_once dirname(__FILE__) . '/../lib/triallocationGeneratorHelper.class.php';
 require_once '../lib/functions/function.php';
+require_once '../lib/functions/html.php';
 
 /**
  * triallocation actions.
@@ -517,9 +518,6 @@ class triallocationActions extends autoTriallocationActions {
                 $fila_actual = ( $row - 1);
                 $porcentaje = $fila_actual * 100 / $TotalRecord; //saco mi valor en porcentaje
                 echo "<script>callprogress(" . round($porcentaje) . ",$fila_actual,$TotalRecord);</script>";
-                flush();
-                ob_flush();
-                echo "<script>counter($grabados,$errores);</script>";
                 flush();
                 ob_flush();
                 $row++;
