@@ -12,3 +12,9 @@ Index:
   
 Show:
   is_secure:   on        # La acción "Ver" es sólo para usuarios autenticados
+  
+checkbatchtriallocation:
+  is_secure:   on        # La acción es sólo para usuarios autenticados
+  
+checktriallocation:
+  is_secure:   on        # La acción es sólo para usuarios autenticados

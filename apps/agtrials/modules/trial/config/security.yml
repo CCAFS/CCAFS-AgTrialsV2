@@ -10,9 +10,5 @@ Delete:
 Index:
   is_secure:   on        # La acción "Lista" es sólo para usuarios autenticados
 
-batchupload:
+batchuploadtrials:
   is_secure:   on        # La acción es sólo para usuarios autenticados
-  
-permissionstrials:
-  is_secure: on
-  credentials: [[ Administrator]]
