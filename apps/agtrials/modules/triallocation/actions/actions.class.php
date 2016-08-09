@@ -406,6 +406,8 @@ class triallocationActions extends autoTriallocationActions {
 
             move_uploaded_file($FileTmpName, "$uploadstriallocation/$FileName");
             $inputFileName = "$uploadstriallocation/$FileName";
+            
+            die("S: $inputFileName");
 
 
             $ExcelFileInfo = PHPExcel_IOFactory::load($inputFileName);
