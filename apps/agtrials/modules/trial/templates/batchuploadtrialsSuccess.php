@@ -1,4 +1,7 @@
-<?php use_javascript('batchuploadtrials.js'); ?>
+<?php 
+use_javascript('batchuploadtrials.js'); 
+use_javascript('introJs/batchUploadTrials.js');
+?>
 <div class="row">
     <div class="col-md-2 left-column">
         <div class="MenuTrials">
@@ -15,6 +18,7 @@
                 <form class="form-horizontal" id="FormStep1" name="FormStep1" action="" enctype="multipart/form-data" method="post" autocomplete="off">
                     <fieldset>
                         <div id="DivCrop1" class="form-group control-type-text" style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px;">
+                            <div id="crop-block">
                             <fieldset style="margin-top: 10px; margin-left: 13px;">
                                 <span>Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</span></br>
                                 <span>Compressed File must have <b>.zip</b> extension and must be smaller than <b>20 MB</b> maximum size.</span></br>
@@ -33,7 +37,8 @@
                                     </div>
                                 </div>
                             </fieldset>
-                            <fieldset>
+                            </div>
+                            <fieldset id="varieties-block">
                                 <div class="panel panel-default">
                                     <!-- Default panel contents -->
                                     <div class="panel-heading Title1" style="color:#595959;">Varieties</div>
@@ -62,7 +67,7 @@
                                     </table>
                                 </div>
                             </fieldset>
-                            <fieldset>
+                            <fieldset id="variablesMeasured-block">
                                 <div class="panel panel-default" style="margin-bottom: 5px;">
                                     <!-- Default panel contents -->
                                     <div class="panel-heading Title1" style="color:#595959;">Variables Measured</div>

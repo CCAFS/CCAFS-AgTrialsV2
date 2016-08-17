@@ -743,3 +743,8 @@ ul.subMenu li a{
 .x.axis path {
     display: none;
 }
+
+
+.introjs-tooltip {
+    max-width: 600px !important;
+}

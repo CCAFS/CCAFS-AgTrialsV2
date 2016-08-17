@@ -1125,7 +1125,7 @@ function ModuleHelp($Module) {
         $HTMLHelp .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
         $HTMLHelp .= '<span aria-hidden="true">&times;</span>';
         $HTMLHelp .= '</button>';
-        $HTMLHelp .= '<a class="btn btn-sm btn-success pull-right" href="javascript:void(0);" onclick="javascript:introJs().start();">Guide Tour</a>';
+        $HTMLHelp .= '<a class="btn btn-sm btn-success pull-right" href="javascript:void(0);" onclick="startIntro();">Guided Tour</a>';
         
         $HTMLHelp .= $texthelp;
 

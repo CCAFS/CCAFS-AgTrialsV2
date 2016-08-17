@@ -6,7 +6,7 @@ div.alerts-dialog {
     visibility: hidden;
     width: 565px;
     background-color: #fff;
-    z-index: 99991;
+    z-index: 9999999;
     position: fixed;
 }
 div.alerts-background {

@@ -1,4 +1,7 @@
-<?php use_javascript('trial.js') ?>
+<?php 
+use_javascript('trial.js');
+use_javascript('introJs/newTrial.js');
+?> 
 <?php use_helper('Thickbox') ?>
 <?php
 $user = sfContext::getInstance()->getUser();
@@ -22,6 +25,7 @@ if (isset($session_group_id)) {
     }
 }
 ?>
+
 
 <script>$('.mitooltip').tooltip();</script>
 
@@ -83,7 +87,7 @@ if (isset($session_group_id)) {
         </div>
         <div class="Session">
             <div class="form-group control-type-text" style="margin-left: 10px;">All fields marked with <span class="Mandatory">*</span> are required.</div>
-            <div class="form-group control-type-text">
+            <div id="nameofproject-block" class="form-group control-type-text">
                 <table class="TableModule"> 
                     <tr>
                         <td><span class="Mandatory">*</span> 
@@ -104,12 +108,14 @@ if (isset($session_group_id)) {
                     </tr>
                 </table>
             </div>
-            <div id="LeadofProject" class="form-group control-type-text Title0">
-                <span class="Title1">Project Lead</span>
-            </div>
-            <hr class="LineModule">
+            
 
-            <div class="form-group control-type-text">
+            <div id="projectleader-block" class="form-group control-type-text">
+                <div id="LeadofProject" class="form-group control-type-text Title0">
+                <span class="Title1">Project Lead</span>
+                </div>
+                <hr class="LineModule">
+
                 <table class="TableModule">
                     <tr>
                         <td style="width: 100px;">Name:<?php echo FieldHelp('HelpTrial2'); ?></td>
@@ -169,12 +175,14 @@ if (isset($session_group_id)) {
                     </tr>
                 </table>
             </div>
-            <div id="ProjectImplementingInstitutions" class="form-group control-type-text Title0">
-                <span class="Title1">Project Implementing Institutions</span>
-            </div>
-            <hr class="LineModule">
+            
 
-            <div class="form-group control-type-text">
+            <div id="projectinstitutions-block" class="form-group control-type-text">
+                <div id="ProjectImplementingInstitutions" class="form-group control-type-text Title0">
+                    <span class="Title1">Project Implementing Institutions</span>
+                </div>
+                <hr class="LineModule">
+
                 <table class="TableModule">
                     <tr>
                         <td> Institution:<?php echo FieldHelp('HelpTrial6'); ?></td>
@@ -197,11 +205,13 @@ if (isset($session_group_id)) {
                     </tr>
                 </table>
             </div>
-            <div id="ProjectImplementingPeriod" class="form-group control-type-text Title0">
-                <span class="Title1">Project Implementing Period</span>
-            </div>
-            <hr class="LineModule">
-            <div class="form-group control-type-text">
+           
+            <div id="projectperiod-block" class="form-group control-type-text">
+                 <div id="ProjectImplementingPeriod" class="form-group control-type-text Title0">
+                    <span class="Title1">Project Implementing Period</span>
+                </div>
+                <hr class="LineModule">
+
                 <table class="TableModule">
                     <tr>
                         <td><span class="Mandatory">*</span> Start Date:<?php echo FieldHelp('HelpTrial7'); ?>&ensp;</td>
@@ -218,11 +228,13 @@ if (isset($session_group_id)) {
                     </tr>
                 </table>
             </div>
-            <div id="FundingforProject" class="form-group control-type-text Title0">
+            
+            <div id="projectfunding-block" class="form-group control-type-text">
+                <div id="FundingforProject" class="form-group control-type-text Title0">
                 <span class="Title1">Funding for Project</span>
-            </div>
-            <hr class="LineModule">
-            <div class="form-group control-type-text">
+                </div>
+                <hr class="LineModule">
+
                 <table class="TableModule">
                     <tr>
                         <td><span class="Mandatory">*</span> Donor Name:<?php echo FieldHelp('HelpTrial9'); ?>&ensp;</td>
@@ -235,11 +247,13 @@ if (isset($session_group_id)) {
                     </tr>
                 </table>
             </div>
-            <div id="ProjectInformation" class="form-group control-type-text Title0">
-                <span class="Title1">Project Information</span>
-            </div>
-            <hr class="LineModule">
-            <div class="form-group control-type-text">
+            
+            <div id="projectinformation-block" class="form-group control-type-text">
+                <div id="ProjectInformation" class="form-group control-type-text Title0">
+                    <span class="Title1">Project Information</span>
+                </div>
+                <hr class="LineModule">
+
                 <table class="TableModule">
                     <tr>
                         <td><span class="Mandatory">*</span> Abstract:<?php echo FieldHelp('HelpTrial10'); ?>&ensp;</td>
@@ -261,11 +275,13 @@ if (isset($session_group_id)) {
             <span class="Title">Trial Info</span>
         </div>
         <div class="Session">
-            <div id="TrialManager" class="form-group control-type-text Title0" style="padding-top: 15px;">
-                <span class="Title1">Trial Manager</span>
-            </div>
-            <hr class="LineModule">
-            <div class="form-group control-type-text">
+            
+            <div id="projecttrialmanager-block" class="form-group control-type-text">
+                <div id="TrialManager" class="form-group control-type-text Title0" style="padding-top: 15px;">
+                    <span class="Title1">Trial Manager</span>
+                </div>
+                <hr class="LineModule">
+
                 <table class="TableModule">
                     <tr>
                         <td> Name:<?php echo FieldHelp('HelpTrial12'); ?></td>
@@ -338,11 +354,13 @@ if (isset($session_group_id)) {
                     </tr>
                 </table>
             </div>
-            <div id="TrialImplementingPeriod" class="form-group control-type-text Title0">
-                <span class="Title1">Trial Implementing Period</span>
-            </div>
-            <hr class="LineModule">
-            <div class="form-group control-type-text">
+            
+            <div id="projecttrialperiod-block" class="form-group control-type-text">
+                <div id="TrialImplementingPeriod" class="form-group control-type-text Title0">
+                    <span class="Title1">Trial Implementing Period</span>
+                </div>
+                <hr class="LineModule">
+
                 <table class="TableModule">
                     <tr>
                         <td><span class="Mandatory">*</span> Start Date:<?php echo FieldHelp('HelpTrial17'); ?>&ensp;</td>
@@ -357,11 +375,13 @@ if (isset($session_group_id)) {
                     </tr>
                 </table>
             </div>
-            <div id="TrialLocation" class="form-group control-type-text Title0">
-                <span class="Title1">Trial Location</span>
-            </div>
-            <hr class="LineModule">
-            <div class="form-group control-type-text">
+            
+            <div id="projecttriallocation-block" class="form-group control-type-text">
+                <div id="TrialLocation" class="form-group control-type-text Title0">
+                    <span class="Title1">Trial Location</span>
+                </div>
+                <hr class="LineModule">
+
                 <table class="TableModule">
                     <tr>
                         <td><span class="Mandatory">*</span> Name:<?php echo FieldHelp('HelpTrial19'); ?></td>
@@ -484,11 +504,13 @@ if (isset($session_group_id)) {
 
                 </table>
             </div>
-            <div id="TrialCharacteristics" class="form-group control-type-text Title0">
-                <span class="Title1">Trial Characteristics</span>
-            </div>
-            <hr class="LineModule">
-            <div class="form-group control-type-text">
+            
+            <div id="projecttrialchar-block" class="form-group control-type-text">
+                <div id="TrialCharacteristics" class="form-group control-type-text Title0">
+                    <span class="Title1">Trial Characteristics</span>
+                </div>
+                <hr class="LineModule">
+
                 <table class="TableModule">
                     <tr>
                         <td><span class="Mandatory">*</span> Trial Name:<?php echo FieldHelp('HelpTrial25'); ?></td>
@@ -510,11 +532,13 @@ if (isset($session_group_id)) {
                     </tr>
                 </table>
             </div>
-            <div id="AccesstoInformation" class="form-group control-type-text Title0">
-                <span class="Title1">Access to Information</span>
-            </div>
-            <hr class="LineModule">
-            <div class="form-group control-type-text">
+            
+            <div id="projectaccessinfo-block" class="form-group control-type-text">
+                <div id="AccesstoInformation" class="form-group control-type-text Title0">
+                    <span class="Title1">Access to Information</span>
+                </div>
+                <hr class="LineModule">
+
                 <table class="TableModule">
                     <?php
                     $trltrialpermissions = $form->getObject()->get('trltrialpermissions');
@@ -564,10 +588,11 @@ if (isset($session_group_id)) {
                     </tr>
                 </table>
             </div>
-            <div id="License" class="form-group control-type-text">
-                <span class="Title1">License <?php echo FieldHelp('HelpTrial31'); ?></span>
-            </div>
-            <div class="form-group control-type-text">
+            
+            <div id="projectlicense-block" class="form-group control-type-text">
+                <div id="License" class="form-group control-type-text">
+                    <span class="Title1">License <?php echo FieldHelp('HelpTrial31'); ?></span>
+                </div>
                 <table class="TableModule">
                     <tr>
                         <td>
@@ -587,11 +612,14 @@ if (isset($session_group_id)) {
                 </table>
             </div>
         </div>
-
+        <div class="clearfix"></div>
+        
         <div id="TrialCropInfo" id="TrialCropInfo" class="form-group control-type-text">
             <span class="Title">Trial Crop Info</span>
         </div>
-        <div class="Session">
+
+        <div id="projecttrialcropinfo-block" class="Session">
+
             <div id="TrialCharacteristics" class="form-group control-type-text Title0" style="padding-top: 15px;">
                 <span class="Title1">Trial Design</span>
             </div>
@@ -608,7 +636,7 @@ if (isset($session_group_id)) {
                     ?>
                     <div id="DivResults">
                         <div id="DivCrop1" class="form-group control-type-text" style="margin-bottom: 0px;">
-                            <fieldset>
+                            <fieldset class="cropInfo">
                                 <div class="col-sm-12 form-group control-type-text">
                                     <div class="col-sm-2">Crop:</div> 
                                     <div class="col-sm-4 control-type-text">
@@ -676,7 +704,7 @@ if (isset($session_group_id)) {
                                     </div>
                                 </div>
                             </fieldset>
-                            <fieldset>
+                            <fieldset class="varieties">
                                 <div class="panel panel-default">
                                     <div class="panel-heading Title1" style="color:#595959;">Varieties</div>
                                     <table class="table table-hover table-striped">
@@ -694,7 +722,7 @@ if (isset($session_group_id)) {
                                     </table>
                                 </div>
                             </fieldset>
-                            <fieldset>
+                            <fieldset class="variablesMeasured">
                                 <div class="panel panel-default">
                                     <div class="panel-heading Title1" style="color:#595959;">Variables Measured</div>
                                     <table class="table table-hover table-striped">
@@ -713,7 +741,7 @@ if (isset($session_group_id)) {
                                     </table>
                                 </div>
                             </fieldset>
-                            <fieldset>
+                            <fieldset class="dataInformation">
                                 <div class="panel panel-default" style="margin-bottom: 0px;">
                                     <div class="panel-heading Title1" style="color:#595959;">Data Information</div>
                                     <div class="panel-body" style="padding-top: 15px; padding-bottom: 5px; padding-left: 0px; background: #EEEEEE;">
@@ -767,7 +795,7 @@ if (isset($session_group_id)) {
 
             <!--inicio: INGRESO NUEVA INFORMACION POR CULTIVO-->
             <div id="DivCrop1" class="form-group control-type-text" style="margin-bottom: 0px;">
-                <fieldset>
+                <fieldset class="cropInfo">
                     <div class="col-sm-12 form-group control-type-text" style="margin-top: 10px;">
                         <div class="col-sm-2">Crop: <?php echo FieldHelp('HelpTrial32'); ?></div>      
                         <div class="col-sm-4 control-type-text">
@@ -844,7 +872,7 @@ if (isset($session_group_id)) {
                         </div>
                     </div>
                 </fieldset>
-                <fieldset>
+                <fieldset class="varieties">
                     <div class="panel panel-default">
                         <!-- Default panel contents -->
                         <div class="panel-heading" style="color:#595959;"><b>Varieties <?php echo FieldHelp('HelpTrial43'); ?></b></div>
@@ -873,7 +901,7 @@ if (isset($session_group_id)) {
                         </table>
                     </div>
                 </fieldset>
-                <fieldset>
+                <fieldset class="variablesMeasured">
                     <div class="panel panel-default">
                         <!-- Default panel contents -->
                         <div class="panel-heading Title1" style="color:#595959;">Variables Measured <?php echo FieldHelp('HelpTrial44'); ?></div>
@@ -903,7 +931,7 @@ if (isset($session_group_id)) {
                         </table>
                     </div>
                 </fieldset>
-                <fieldset>
+                <fieldset class="dataInformation">
                     <div class="panel panel-default" style="margin-bottom: 0px;">
                         <div class="panel-heading Title1" style="color:#595959;">Data Information</div>
                         <div class="panel-body" style="padding-top: 15px; padding-bottom: 5px; padding-left: 0px; background: #EEEEEE;">
@@ -953,7 +981,7 @@ if (isset($session_group_id)) {
                 ?>
                 <div id="DivCrop<?php echo $i; ?>" style="display:none; margin-bottom: 0px;"></br>
                     <p style=" border-bottom-color:#6CB662; border-bottom-style:dashed; border-bottom-width:2px; border-top-width:1px;"></p>
-                    <fieldset>
+                    <fieldset class="cropInfo">
                         <div class="col-sm-12 form-group control-type-text" style="margin-top: 10px;">
                             <div class="col-sm-2">Crop:</div>      
                             <div class="col-sm-4 control-type-text">
@@ -1030,7 +1058,7 @@ if (isset($session_group_id)) {
                             </div>
                         </div>
                     </fieldset>
-                    <fieldset>
+                    <fieldset class="varieties">
                         <div class="panel panel-default">
                             <!-- Default panel contents -->
                             <div class="panel-heading Title1" style="color:#595959;">Varieties</div>
@@ -1059,7 +1087,7 @@ if (isset($session_group_id)) {
                             </table>
                         </div>
                     </fieldset>
-                    <fieldset>
+                    <fieldset class="variablesMeasured">
                         <div class="panel panel-default">
                             <!-- Default panel contents -->
                             <div class="panel-heading Title1" style="color:#595959;">Variables Measured</div>
@@ -1089,7 +1117,7 @@ if (isset($session_group_id)) {
                             </table>
                         </div>
                     </fieldset>
-                    <fieldset>
+                    <fieldset class="dataInformation">
                         <div class="panel panel-default" style="margin-bottom: 5px;">
                             <div class="panel-heading Title1" style="color:#595959;">Data Information</div>
                             <div class="panel-body" style="padding-top: 15px; padding-bottom: 5px; padding-left: 0px; background: #EEEEEE;">
@@ -1140,15 +1168,18 @@ if (isset($session_group_id)) {
             <?php } ?>
             </br>
             <p style=" border-bottom-color:#6CB662; border-bottom-style:dashed; border-bottom-width:2px; border-top-width:1px;"></p>
+            
             <div class="col-sm-6 form-group control-type-text">
                 <button class="btn btn-action" type="button" name="nuevocrop" id="nuevocrop" title="Add New Crop"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span> Add New Crop</button>
                 <input type="hidden" value="1" id="filacrop" name="filacrop">
             </div>
+            <div class="clearfix"></div>
             <!--fin: INGRESO NUEVA INFORMACION POR CULTIVO-->
         </div>
     </div>
 
-    <div class="BotonAcciones">
+    <div class="clearfix"></div>
+    <div id="buttons-block" class="BotonAcciones">
         <?php include_partial('trial/form_actions', array('tb_trial' => $tb_trial, 'form' => $form, 'configuration' => $configuration, 'helper' => $helper)) ?>
     </div>
 </div>
