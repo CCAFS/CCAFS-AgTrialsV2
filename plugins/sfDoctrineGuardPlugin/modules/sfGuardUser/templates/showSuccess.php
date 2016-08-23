@@ -90,10 +90,10 @@
                         <div class=" col-sm-10 control-type-text">
                             <values>
                                 <?php
-//                        if ($SfGuardUserInformation->getIdCountry() != '') {
-//                            $TbCountry = Doctrine::getTable('TbCountry')->findOneByIdCountry($SfGuardUserInformation->getIdCountry());
-//                            echo $TbCountry->getCntname();
-//                        }
+                                if ($SfGuardUserInformation->getIdCountry() != '') {
+                                    $TbAdministrativedivision = Doctrine::getTable('TbAdministrativedivision')->findOneByIdAdministrativedivision($SfGuardUserInformation->getIdCountry());
+                                    echo $TbAdministrativedivision->getDmdvname();
+                                }
                                 ?>
                             </values>
                         </div>
@@ -139,5 +139,9 @@
 
             </fieldset>
         </div>
+        <ul class="sf_admin_actions_form">
+            <button onclick="location.href = '/guard/users'" type="button" class="btn btn-action"><span class="glyphicon glyphicon-list"></span> Back to list</button>
+            <button onclick="location.href = '/guard/users/<?php echo $form->getObject()->get('id'); ?>/edit'" type="button" class="btn btn-action"><span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button>
+        </ul>
     </div>
 </div>
