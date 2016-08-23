@@ -16,6 +16,12 @@ require_once dirname(__FILE__) . '/../../../../../lib/PHPMailer/PHPMailer.php';
  */
 class sfGuardUserActions extends autoSfGuardUserActions {
 
+    public function executeShow(sfWebRequest $request) {
+        $this->sfGuardUser = Doctrine::getTable('sfGuardUser')->find($request->getParameter('id'));
+        $this->forward404Unless($this->sfGuardUser);
+        $this->form = $this->configuration->getForm($this->sfGuardUser);
+    }
+
     public function executeIndex(sfWebRequest $request) {
         $id_user = $this->getUser()->getGuardUser()->getId();
         if (CheckUserPermission($id_user, 1)) {

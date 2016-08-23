@@ -523,6 +523,28 @@ function GetIdAdministrativedivision($Name, $Type) {
     return $IdAdministrativedivision;
 }
 
+function GetPermissionsUser($id_user) {
+    $Permissions = "";
+    $SfGuardUserPermission = Doctrine::getTable('SfGuardUserPermission')->findByUserId($id_user);
+    foreach ($SfGuardUserPermission AS $Permission) {
+        $SfGuardPermission = Doctrine::getTable('SfGuardPermission')->findOneById($Permission->permission_id);
+        $Permissions .= $SfGuardPermission->getName() . " - ";
+    }
+    $Permissions = substr($Permissions, 0, strlen($Permissions) - 2);
+    return $Permissions;
+}
+
+function GetGroupsUser($id_user) {
+    $Groups = "";
+    $SfGuardUserGroup = Doctrine::getTable('SfGuardUserGroup')->findByUserId($id_user);
+    foreach ($SfGuardUserGroup AS $Group) {
+        $SfGuardGroup = Doctrine::getTable('SfGuardGroup')->findOneById($Group->group_id);
+        $Groups .= $SfGuardGroup->getName() . " - ";
+    }
+    $Groups = substr($Groups, 0, strlen($Groups) - 2);
+    return $Groups;
+}
+
 function QuitarAcentos($cadena) {
     $no_permitidas = array("á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú", "ñ", "À", "Ã", "Ì", "Ò", "Ù", "Ã™", "Ã ", "Ã¨", "Ã¬", "Ã²", "Ã¹", "ç", "Ç", "Ã¢", "ê", "Ã®", "Ã´", "Ã»", "Ã‚", "ÃŠ", "ÃŽ", "Ã”", "Ã›", "ü", "Ã¶", "Ã–", "Ã¯", "Ã¤", "«", "Ò", "Ã", "Ã„", "Ã‹");
     $permitidas = array("a", "e", "i", "o", "u", "A", "E", "I", "O", "U", "n", "N", "A", "E", "I", "O", "U", "a", "e", "i", "o", "u", "c", "C", "a", "e", "i", "o", "u", "A", "E", "I", "O", "U", "u", "o", "O", "i", "a", "e", "U", "I", "A", "E");
@@ -1126,10 +1148,10 @@ function ModuleHelp($Module) {
         $HTMLHelp .= '<span aria-hidden="true">&times;</span>';
         $HTMLHelp .= '</button>';
         $HTMLHelp .= '<a class="btn btn-sm btn-success pull-right" href="javascript:void(0);" onclick="startIntro();">Guided Tour</a>';
-        
+
         $HTMLHelp .= $texthelp;
 
-        
+
         $HTMLHelp .= '<div class="clearfix"></div>';
         $HTMLHelp .= '</div>';
     }
