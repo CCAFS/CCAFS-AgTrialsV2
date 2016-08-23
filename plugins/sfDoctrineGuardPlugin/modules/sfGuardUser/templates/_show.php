@@ -106,7 +106,7 @@
                 </div>
                 <div class="sf_admin_form_row">
                     <label>Visits:</label>
-                    <values><?php echo $SfGuardUserInformation->getVisits(); ?></values>
+                    <values><?php echo $SfGuardUserInformation->getVisits(); ?></values> 
                 </div>
             <?php } ?>
                 </div>
