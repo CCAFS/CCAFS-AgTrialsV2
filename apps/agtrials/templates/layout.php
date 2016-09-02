@@ -98,6 +98,7 @@ if ($sf_user->isAuthenticated()) {
                                         <li><a href="/user">Profile</a></li>
                                         <li><a href="/changepassword">Change password</a></li>
                                         <li><a href="http://blog.agtrials.org/wp-login.php" target="_blank">Login Blog</a></li>
+                                        <li><a href="/api">API</a></li>
                                         <li class="divider" role="separator"></li>
                                         <li><a href="/logout">Log Out</a></li>
                                     </ul>
