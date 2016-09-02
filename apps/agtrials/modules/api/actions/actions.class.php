@@ -106,22 +106,22 @@ class apiActions extends sfActions {
         }
     }
 
-    public function executeApitrialgroups(sfWebRequest $request) {
+    public function executeApiproject(sfWebRequest $request) {
         $key = $request->getParameter('key');
         if (!CheckAPI($key)) {
             die("*** Error Key ***");
         } else {
             $connection = Doctrine_Manager::getInstance()->connection();
-            $QUERY00 = "SELECT TG.id_trialgroup AS id,INS.insname AS institution,fc_trialgroupcontactperson(TG.id_trialgroup) AS contactpersons,O.objname AS objective,PD.prdsname AS primarydiscipline,TG.trgrname AS trialgroup, ";
-            $QUERY00 .= "TG.trgrstartyear AS startyear,TG.trgrendyear AS endyear,TGT.trgptyname AS trialgrouptype ";
-            $QUERY00 .= "FROM tb_trialgroup TG ";
-            $QUERY00 .= "INNER JOIN tb_trial T ON TG.id_trialgroup = T.id_trialgroup ";
-            $QUERY00 .= "INNER JOIN tb_institution INS ON TG.id_institution = INS.id_institution ";
-            $QUERY00 .= "INNER JOIN tb_objective O ON TG.id_objective = O.id_objective ";
-            $QUERY00 .= "INNER JOIN tb_primarydiscipline PD ON TG.id_primarydiscipline = PD.id_primarydiscipline ";
-            $QUERY00 .= "INNER JOIN tb_trialgrouptype TGT ON TG.id_trialgrouptype = TGT.id_trialgrouptype ";
-            $QUERY00 .= "GROUP BY TG.id_trialgroup,INS.insname,fc_trialgroupcontactperson(TG.id_trialgroup),O.objname,PD.prdsname,TG.trgrname,TG.trgrstartyear,TG.trgrendyear,TGT.trgptyname ";
-            $QUERY00 .= "ORDER BY TG.trgrname ";
+
+            $QUERY00 = "SELECT  P.id_project AS id,P.prjname AS name,fc_completename(CP.cnprfirstname, CP.cnprmiddlename, CP.cnprlastname) AS leadofproject,INS.insname AS institution,DN.dnrname AS donor,P.prjabstract AS abstract,P.prjkeywords AS keywords ";
+            $QUERY00 .= "FROM tb_project  P ";
+            $QUERY00 .= "INNER JOIN tb_trial T ON  P. id_project = T. id_project ";
+            $QUERY00 .= "INNER JOIN tb_contactperson CP ON P.id_leadofproject = CP.id_contactperson ";
+            $QUERY00 .= "INNER JOIN tb_institution INS ON P.id_projectimplementinginstitutions = INS.id_institution ";
+            $QUERY00 .= "LEFT JOIN tb_donor DN ON P.id_donor = DN.id_donor ";
+            $QUERY00 .= "GROUP BY P.id_project,P.prjname,CP.cnprfirstname,CP.cnprmiddlename,CP.cnprlastname,INS.insname,DN.dnrname,P.prjabstract,P.prjkeywords ";
+            $QUERY00 .= "ORDER BY P.prjname ";
+
             $st = $connection->execute($QUERY00);
             $Result = $st->fetchAll(PDO::FETCH_ASSOC);
             $JSON = json_encode($Result);
@@ -137,15 +137,13 @@ class apiActions extends sfActions {
             die("*** Error Key ***");
         } else {
             $connection = Doctrine_Manager::getInstance()->connection();
-            $QUERY00 = "SELECT CP.id_contactperson AS id,INS.insname AS institution,CN.cntname AS country,CPT.ctprtpname AS contactpersontype,CP.cnprfirstname AS firstname, ";
-            $QUERY00 .= "CP.cnprlastname AS lastname,CP.cnpraddress AS address,CP.cnprphone AS phone,CP.cnpremail AS email ";
+            $QUERY00 = "SELECT CP.id_contactperson AS id,CP.cnprfirstname AS firstname,CP.cnprmiddlename AS middlename,CP.cnprlastname AS lastname,INS.insname AS institution ";
             $QUERY00 .= "FROM tb_contactperson CP ";
-            $QUERY00 .= "INNER JOIN tb_trial T ON CP.id_contactperson = T.id_contactperson ";
             $QUERY00 .= "INNER JOIN tb_institution INS ON CP.id_institution = INS.id_institution ";
-            $QUERY00 .= "INNER JOIN tb_country CN ON CP.id_country = CN.id_country ";
-            $QUERY00 .= "INNER JOIN tb_contactpersontype CPT ON CP.id_contactpersontype = CPT.id_contactpersontype ";
-            $QUERY00 .= "GROUP BY CP.id_contactperson,INS.insname,CN.cntname,CPT.ctprtpname,CP.cnprfirstname ";
-            $QUERY00 .= "ORDER BY CP.cnprfirstname,CP.cnprlastname ";
+            $QUERY00 .= "INNER JOIN tb_trial T ON CP.id_contactperson = T.id_contactperson ";
+            $QUERY00 .= "GROUP BY CP.id_contactperson,CP.cnprfirstname,CP.cnprmiddlename,CP.cnprlastname,INS.insname ";
+            $QUERY00 .= "ORDER BY CP.cnprfirstname,CP.cnprmiddlename,CP.cnprlastname,INS.insname ";
+
             $st = $connection->execute($QUERY00);
             $Result = $st->fetchAll(PDO::FETCH_ASSOC);
             $JSON = json_encode($Result);
@@ -161,11 +159,15 @@ class apiActions extends sfActions {
             die("*** Error Key ***");
         } else {
             $connection = Doctrine_Manager::getInstance()->connection();
-            $QUERY00 = "SELECT CN.id_country AS id,CN.cntname AS countryname,CN.cntiso AS iso,CN.cntiso3 AS iso3 ";
-            $QUERY00 .= "FROM tb_country CN ";
-            $QUERY00 .= "INNER JOIN tb_trial T ON CN.id_country = T.id_country ";
-            $QUERY00 .= "GROUP BY CN.id_country,CN.cntname,CN.cntiso,CN.cntiso3 ";
-            $QUERY00 .= "ORDER BY CN.cntname ";
+            $QUERY00 = "SELECT AD.id_administrativedivision AS id,AD.dmdvname AS countryname ";
+            $QUERY00 .= "FROM tb_administrativedivision AD ";
+            $QUERY00 .= "INNER JOIN tb_triallocationadministrativedivision TLAD ON AD.id_administrativedivision = TLAD.id_administrativedivision ";
+            $QUERY00 .= "INNER JOIN tb_triallocation TL ON TLAD.id_triallocation = TL.id_triallocation ";
+            $QUERY00 .= "INNER JOIN tb_trial T ON TL.id_triallocation = T.id_triallocation ";
+            $QUERY00 .= "WHERE AD.id_administrativedivisiontype = 1 ";
+            $QUERY00 .= "GROUP BY AD.id_administrativedivision,AD.dmdvname ";
+            $QUERY00 .= "ORDER BY AD.dmdvname ";
+
             $st = $connection->execute($QUERY00);
             $Result = $st->fetchAll(PDO::FETCH_ASSOC);
             $JSON = json_encode($Result);
@@ -175,7 +177,7 @@ class apiActions extends sfActions {
         }
     }
 
-    public function executeApitrialsites(sfWebRequest $request) {
+    public function executeApitriallocation(sfWebRequest $request) {
         $key = $request->getParameter('key');
         $date = $request->getParameter('date');
         $now = date("Y-m-d");
@@ -185,22 +187,16 @@ class apiActions extends sfActions {
         } else {
 
             if ($date != '')
-                $Where .= "AND TS.created_at BETWEEN '$date' AND '$now' ";
+                $Where .= "AND TL.created_at BETWEEN '$date' AND '$now' ";
 
             $connection = Doctrine_Manager::getInstance()->connection();
-            $QUERY00 = "SELECT TS.id_trialsite AS id,fc_trialsite_contactperson(TS.id_trialsite) AS contactpersons,INS.insname AS institution,CN.cntname AS country,LC.lctname AS location, ";
-            $QUERY00 .= "TS.trstname AS name,TS.trstlatitudedecimal AS latitude,TS.trstlongitudedecimal AS longitude,TS.trstaltitude AS altitude, ";
-            $QUERY00 .= "TS.trstph AS ph,S.soiname AS soil,TX.txnname AS taxonomyfao,TS.trststatus AS status,TS.trststatereason AS statereason,TS.created_at AS date ";
-            $QUERY00 .= "FROM tb_trialsite TS ";
-            $QUERY00 .= "INNER JOIN tb_trial T ON TS.id_trialsite = T.id_trialsite ";
-            $QUERY00 .= "INNER JOIN tb_location LC ON TS.id_location = LC.id_location  ";
-            $QUERY00 .= "INNER JOIN tb_institution INS ON TS.id_institution = INS.id_institution  ";
-            $QUERY00 .= "INNER JOIN tb_country CN ON TS.id_country = CN.id_country  ";
-            $QUERY00 .= "LEFT JOIN tb_soil S ON TS.id_soil = S.id_soil ";
-            $QUERY00 .= "LEFT JOIN tb_taxonomyfao TX ON TS.id_taxonomyfao = TX.id_taxonomyfao ";
+            $QUERY00 = "SELECT  TL.id_triallocation AS id,TL.trlcname AS name,TL.trlclatitude AS latitude,TL.trlclongitude AS longitude,TL.trlcaltitude AS altitude,fc_triallocationadministrativedivisionname(TL.id_triallocation, 1) AS country,fc_triallocationadministrativedivisionname(TL.id_triallocation, 2) AS districtsatate,fc_triallocationadministrativedivisionname(TL.id_triallocation, 3) AS subdistrictsatate,fc_triallocationadministrativedivisionname(TL.id_triallocation, 4) AS village ";
+            $QUERY00 .= "FROM tb_triallocation  TL ";
+            $QUERY00 .= "INNER JOIN tb_trial T ON  TL. id_triallocation = T. id_triallocation ";
             $QUERY00 .= "WHERE true $Where ";
-            $QUERY00 .= "GROUP BY TS.id_trialsite,fc_trialsite_contactperson(TS.id_trialsite),INS.insname,CN.cntname,LC.lctname,TS.trstname,TS.trstlatitudedecimal,TS.trstlongitudedecimal,TS.trstaltitude,TS.trstph,S.soiname,TX.txnname,TS.trststatus,TS.trststatereason ";
-            $QUERY00 .= "ORDER BY TS.trstname ";
+            $QUERY00 .= "GROUP BY TL.id_triallocation,TL.trlcname,TL.trlclatitude,TL.trlclongitude,TL.trlcaltitude ";
+            $QUERY00 .= "ORDER BY TL.trlcname ";
+
             $st = $connection->execute($QUERY00);
             $Result = $st->fetchAll(PDO::FETCH_ASSOC);
             $JSON = json_encode($Result);
@@ -218,7 +214,7 @@ class apiActions extends sfActions {
             $connection = Doctrine_Manager::getInstance()->connection();
             $QUERY00 = "SELECT CRP.id_crop AS id,CRP.crpname AS technologyname,CRP.crpscientificname AS scientificname ";
             $QUERY00 .= "FROM tb_crop CRP ";
-            $QUERY00 .= "INNER JOIN tb_trial T ON CRP.id_crop = T.id_crop ";
+            $QUERY00 .= "INNER JOIN tb_trialinfo T ON CRP.id_crop = T.id_crop ";
             $QUERY00 .= "GROUP BY CRP.id_crop,CRP.crpname,CRP.crpscientificname ";
             $QUERY00 .= "ORDER BY CRP.crpname ";
             $st = $connection->execute($QUERY00);
@@ -238,14 +234,13 @@ class apiActions extends sfActions {
         } else {
             if ($technology != '') {
                 $connection = Doctrine_Manager::getInstance()->connection();
-                $QUERY00 = "SELECT V.id_variety AS id,C.crpname AS technology,O.orgname AS origin,V.vrtname AS varietyname,V.vrtsynonymous AS synonymous,V.vrtdescription AS description ";
+                $QUERY00 = "SELECT V.id_variety AS id,C.crpname AS technology,V.vrtorigin  AS origin,V.vrtname AS varietyname,V.vrtsynonymous AS synonymous,V.vrtdescription AS description ";
                 $QUERY00 .= "FROM tb_variety V ";
-                $QUERY00 .= "INNER JOIN tb_trialvariety TV ON V.id_variety = TV.id_variety ";
+                $QUERY00 .= "INNER JOIN tb_trialinfodata  TID ON V.id_variety =  TID.id_variety ";
                 $QUERY00 .= "INNER JOIN tb_crop C ON V.id_crop = C.id_crop ";
-                $QUERY00 .= "LEFT JOIN tb_origin O ON V.id_origin = O.id_origin ";
                 $QUERY00 .= "WHERE V.id_crop IN($technology) ";
-                $QUERY00 .= "GROUP BY V.id_variety,C.crpname,O.orgname,V.vrtname,V.vrtsynonymous,V.vrtdescription ";
-                $QUERY00 .= "ORDER BY V.vrtname,C.crpname,O.orgname ";
+                $QUERY00 .= "GROUP BY V.id_variety,C.crpname,V.vrtorigin ,V.vrtname,V.vrtsynonymous,V.vrtdescription ";
+                $QUERY00 .= "ORDER BY V.vrtname,C.crpname,V.vrtorigin  ";
                 $st = $connection->execute($QUERY00);
                 $Result = $st->fetchAll(PDO::FETCH_ASSOC);
                 $JSON = json_encode($Result);
@@ -290,14 +285,16 @@ class apiActions extends sfActions {
         } else {
             if ($technology != '') {
                 $connection = Doctrine_Manager::getInstance()->connection();
+
                 $QUERY00 = "SELECT VM.id_variablesmeasured AS id,C.crpname AS technology,TC.trclname AS traitclass,VM.vrmsname AS variablesmeasuredname,VM.vrmsshortname AS shortname,VM.vrmsdefinition AS definition,VM.vrmsunit AS unit ";
                 $QUERY00 .= "FROM tb_variablesmeasured VM ";
-                $QUERY00 .= "INNER JOIN tb_trialvariablesmeasured TVM ON VM.id_variablesmeasured = TVM.id_variablesmeasured ";
+                $QUERY00 .= "INNER JOIN tb_trialinfodata  TID ON VM.id_variablesmeasured =  TID.id_variablesmeasured ";
                 $QUERY00 .= "INNER JOIN tb_crop C ON VM.id_crop = C.id_crop ";
                 $QUERY00 .= "INNER JOIN tb_traitclass TC ON VM.id_traitclass = TC.id_traitclass ";
-                $QUERY00 .= "WHERE VM.id_crop IN($technology) ";
+                $QUERY00 .= "WHERE VM.id_crop IN(10) ";
                 $QUERY00 .= "GROUP BY VM.id_variablesmeasured,C.crpname,TC.trclname,VM.vrmsname,VM.vrmsshortname,VM.vrmsdefinition,VM.vrmsunit ";
                 $QUERY00 .= "ORDER BY VM.vrmsname,C.crpname,TC.trclname ";
+
                 $st = $connection->execute($QUERY00);
                 $Result = $st->fetchAll(PDO::FETCH_ASSOC);
                 $JSON = json_encode($Result);
