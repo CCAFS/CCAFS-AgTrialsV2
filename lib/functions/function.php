@@ -1159,4 +1159,16 @@ function ModuleHelp($Module) {
     return $HTMLHelp;
 }
 
+function CheckAPI($key) {
+    $key = trim($key);
+    $QUERY00 = Doctrine_Query::create()
+            ->from("SfGuardUserInformation UI")
+            ->where("UI.key = '$key'");
+    $Resultado00 = $QUERY00->execute();
+    if (count($Resultado00) == 0)
+        return false;
+    else
+        return true;
+}
+
 ?>
