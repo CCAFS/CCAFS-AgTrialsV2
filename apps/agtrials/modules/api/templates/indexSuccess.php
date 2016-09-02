@@ -1,3 +1,8 @@
+<?php
+$sfGuardUser = Doctrine::getTable('sfGuardUser')->findOneBy("Username", sfContext::getInstance()->getUser()->getUsername());
+$sfGuardUserInformation = Doctrine::getTable('sfGuardUserInformation')->findOneByUserId($sfGuardUser->id);
+$key = $sfGuardUserInformation->key;
+?>
 <script language="JavaScript">
     function muestra_oculta(id) {
         if (document.getElementById) { //se obtiene el id
