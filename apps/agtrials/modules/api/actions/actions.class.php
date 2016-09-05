@@ -31,14 +31,16 @@ class apiActions extends sfActions {
         $date1 = $PartDates[0];
         $date2 = $PartDates[1];
 
-        $api = 'Retrieve Trials';
-        $apiurl = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
-        sfGuardUserApilogTable::addGuardUserApilog($user_id, $api, $apiurl);
 
         $user_id = CheckAPI($key);
         if ($user_id == "") {
             die("*** Error Key ***");
         } else {
+
+            $api = 'Retrieve Trials';
+            $apiurl = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+            sfGuardUserApilogTable::addGuardUserApilog($user_id, $api, $apiurl);
+
             $Limit = "";
             $Where = "";
             if ($latest != '')
