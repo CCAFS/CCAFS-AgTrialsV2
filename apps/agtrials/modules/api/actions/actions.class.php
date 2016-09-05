@@ -16,7 +16,7 @@ class apiActions extends sfActions {
         
     }
 
-    public function executeApitrials(sfWebRequest $request) {
+    public function executeApitrials(sfWebRequest $request) {  //// FALTA ACTUALIZAR ESTE.....//////
         $key = $request->getParameter('key');
         $trial = $request->getParameter('trial');
         $trialgroup = $request->getParameter('trialgroup');

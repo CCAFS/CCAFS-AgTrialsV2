@@ -27,6 +27,7 @@ CREATE TABLE sf_guard_group_permission (group_id BIGINT, permission_id BIGINT, c
 CREATE TABLE sf_guard_permission (name TEXT UNIQUE, description TEXT, id BIGINT, created_at TIMESTAMP NOT NULL, updated_at TIMESTAMP NOT NULL, PRIMARY KEY(id));
 CREATE TABLE sf_guard_remember_key (user_id BIGINT, remember_key TEXT, ip_address TEXT, id BIGINT, created_at TIMESTAMP NOT NULL, updated_at TIMESTAMP NOT NULL, PRIMARY KEY(id));
 CREATE TABLE sf_guard_user (first_name TEXT, last_name TEXT, email_address TEXT NOT NULL UNIQUE, username TEXT NOT NULL UNIQUE, algorithm TEXT DEFAULT 'sha1' NOT NULL, salt TEXT, password TEXT, is_active BOOLEAN DEFAULT 'true', is_super_admin BOOLEAN DEFAULT 'false', last_login TIMESTAMP, id BIGINT, created_at TIMESTAMP NOT NULL, updated_at TIMESTAMP NOT NULL, PRIMARY KEY(id));
+CREATE TABLE sf_guard_user_apilog (id BIGINT, user_id BIGINT NOT NULL, api TEXT, apiurl TEXT, created_at TIMESTAMP, PRIMARY KEY(id));
 CREATE TABLE sf_guard_user_downloads (id_download BIGINT, user_id BIGINT, id_trial BIGINT NOT NULL, id_crop BIGINT NOT NULL, usdwtype TEXT NOT NULL, usdwfile TEXT NOT NULL, usdwdate TIMESTAMP NOT NULL, usdwsize FLOAT, PRIMARY KEY(id_download));
 CREATE TABLE sf_guard_user_group (user_id BIGINT, group_id BIGINT, created_at TIMESTAMP NOT NULL, updated_at TIMESTAMP NOT NULL, PRIMARY KEY(user_id, group_id));
 CREATE TABLE sf_guard_user_permission (user_id BIGINT, permission_id BIGINT, created_at TIMESTAMP NOT NULL, updated_at TIMESTAMP NOT NULL, PRIMARY KEY(user_id, permission_id));
@@ -58,6 +59,7 @@ CREATE SEQUENCE sf_guard_group_id_seq INCREMENT 1 START 1;
 CREATE SEQUENCE sf_guard_permission_id_seq INCREMENT 1 START 1;
 CREATE SEQUENCE sf_guard_remember_key_id_seq INCREMENT 1 START 1;
 CREATE SEQUENCE sf_guard_user_id_seq INCREMENT 1 START 1;
+CREATE SEQUENCE sf_guard_user_apilog_id_seq INCREMENT 1 START 1;
 CREATE SEQUENCE sf_guard_user_downloads_id_download_seq INCREMENT 1 START 1;
 CREATE INDEX is_active_idx ON sf_guard_user (is_active);
 ALTER TABLE sf_guard_user_information ADD CONSTRAINT sf_guard_user_information_user_id_sf_guard_user_id FOREIGN KEY (user_id) REFERENCES sf_guard_user(id) NOT DEFERRABLE INITIALLY IMMEDIATE;

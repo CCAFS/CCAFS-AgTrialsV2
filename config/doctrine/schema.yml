@@ -311,6 +311,10 @@ sfGuardUser:
       local: id
       foreign: user_id
       type: many
+    SfGuardUserApilog:
+      local: id
+      foreign: user_id
+      type: many
     SfGuardForgotPassword:
       local: id
       foreign: user_id
@@ -319,6 +323,45 @@ sfGuardUser:
       local: id
       foreign: user_id
       type: many
+sfGuardUserApilog:
+  connection: doctrine
+  tableName: sf_guard_user_apilog
+  columns:
+    id:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      sequence: sf_guard_user_apilog_id
+    user_id:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    api:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    apiurl:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+  relations:
+    SfGuardUser:
+      local: user_id
+      foreign: id
+      type: one
 sfGuardUserDownloads:
   connection: doctrine
   tableName: sf_guard_user_downloads
