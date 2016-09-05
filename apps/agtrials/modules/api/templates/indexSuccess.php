@@ -28,15 +28,15 @@ $url = sfContext::getInstance()->getRequest()->getHost();
                 <div><strong>Returns:</strong> JSON Format</div>
             </fieldset>
             <br>
-<!--            <b>Retrieve Trials</b> <a href="#" onclick="muestra_oculta('ApiTrials')" title="">View Info</a>
+            <b>Retrieve Trials</b> <a href="#" onclick="muestra_oculta('ApiTrials')" title="">View Info</a>
             <div id="ApiTrials" class="InfoApi" style="display:none;">
                 <br>
                 <div><strong>URL:</strong> <code>http://<?php echo $url; ?>/api/apitrials?key=<?php echo $key; ?>&{Options}</code></div>
-                <div><strong>Options:</strong> <code>trialgroup=values&contactperson=values&country=values&trialsite=values&technology=values&latitude=value1|value2&longitude=value1|value2&varieties=values&variablesmeasureds=values&dates=yyyy-mm-dd|yyyy-mm-dd&latest=value &ensp;</code> </div>
+                <div><strong>Options:</strong> <code>trial=values&=project=values&contactperson=values&triallocation=values&technology=values&latitude=value1|value2&longitude=value1|value2&dates=yyyy-mm-dd|yyyy-mm-dd&latest=value &ensp;</code> </div>
                 <div><strong>Return:</strong> <code>id,trialgroup,contactperson,country,trialsite,latitude,longitude,crop,trialname,varieties,variablesmeasured,sowdate,harvestdate,trialtype,irrigation,url</code> </div>
-                <div><strong>Example:</strong> <code><a target="_blank" href="http://<?php echo $url; ?>/api/apitrials?key=<?php echo $key; ?>&trialgroup=71,86&country=47">http://<?php echo $url; ?>/api/apitrials?key=<?php echo $key; ?>&trialgroup=71,86&country=47</a></code> </div>
+                <div><strong>Example:</strong> <code><a target="_blank" href="http://<?php echo $url; ?>/api/apitrials?key=<?php echo $key; ?>&projects=4,86">http://<?php echo $url; ?>/api/apitrials?key=<?php echo $key; ?>&projects=4,86</a></code> </div>
                 <br>
-            </div>-->
+            </div>
             <br>
             <b>Retrieve Project</b> <a href="#" onclick="muestra_oculta('ApiProject')" title="">View Info</a>
             <div id="ApiProject" class="InfoApi" style="display:none;">

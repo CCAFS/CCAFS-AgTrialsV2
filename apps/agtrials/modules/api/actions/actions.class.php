@@ -19,15 +19,12 @@ class apiActions extends sfActions {
     public function executeApitrials(sfWebRequest $request) {  //// FALTA ACTUALIZAR ESTE.....//////
         $key = $request->getParameter('key');
         $trial = $request->getParameter('trial');
-        $trialgroup = $request->getParameter('trialgroup');
-        $contactperson = $request->getParameter('contactperson');
-        $country = $request->getParameter('country');
-        $trialsite = $request->getParameter('trialsite');
+        $projects = $request->getParameter('projects');
+        $contactperson = $request->getParameter('contactpersons');
+        $triallocation = $request->getParameter('triallocation');
         $technology = $request->getParameter('technology');
         $latitude = $request->getParameter('latitude');
         $longitude = $request->getParameter('longitude');
-        $varieties = $request->getParameter('varieties');
-        $variablesmeasureds = $request->getParameter('variablesmeasureds');
         $latest = $request->getParameter('latest');
         $dates = $request->getParameter('dates');
         $PartDates = explode("|", $dates);
@@ -50,14 +47,12 @@ class apiActions extends sfActions {
                 $Where .= "AND T.created_at BETWEEN '$date1' AND '$date2' ";
             if ($trial != '')
                 $Where .= "AND T.id_trial IN ($trial) ";
-            if ($trialgroup != '')
-                $Where .= "AND TG.id_trialgroup IN ($trialgroup) ";
+            if ($projects != '')
+                $Where .= "AND P.id_project IN ($projects) ";
             if ($contactperson != '')
                 $Where .= "AND CP.id_contactperson IN ($contactperson) ";
-            if ($country != '')
-                $Where .= "AND CN.id_country IN ($country) ";
             if ($trialsite != '')
-                $Where .= "AND TS.id_trialsite IN ($trialsite) ";
+                $Where .= "AND TL.id_triallocation IN ($triallocation) ";
             if ($technology != '')
                 $Where .= "AND C.id_crop IN ($technology) ";
             if ($latitude != '') {
@@ -67,7 +62,7 @@ class apiActions extends sfActions {
                 if (is_numeric($ArrLatitude[1]))
                     $latitude2 = $ArrLatitude[1];
                 if (($latitude1 != '') && ($latitude2 != ''))
-                    $Where .= "AND TS.trstlatitudedecimal BETWEEN '$latitude1' AND '$latitude2' ";
+                    $Where .= "AND TL.trlclatitude BETWEEN '$latitude1' AND '$latitude2' ";
             }
             if ($longitude != '') {
                 $ArrLongitude = explode("|", $longitude);
@@ -76,29 +71,22 @@ class apiActions extends sfActions {
                 if (is_numeric($ArrLongitude[1]))
                     $longitude2 = $ArrLongitude[1];
                 if (($longitude1 != '') && ($longitude2 != ''))
-                    $Where .= "AND TS.trstlongitudedecimal BETWEEN '$longitude1' AND '$longitude2' ";
+                    $Where .= "AND TL.trlclongitude BETWEEN '$longitude1' AND '$longitude2' ";
             }
-            if ($varieties != '')
-                $Where .= "AND TV.id_variety IN ($varieties) ";
-            if ($variablesmeasureds != '')
-                $Where .= "AND TVM.id_variablesmeasured IN ($variablesmeasureds) ";
 
             if ($Where != '' || $Limit != '') {
                 $connection = Doctrine_Manager::getInstance()->connection();
-                $QUERY00 = "SELECT T.id_trial AS id,TG.trgrname AS trialgroup,(CP.cnprfirstname||' '||CP.cnprlastname) AS contactperson,CN.cntname AS country,TS.trstname AS trialsite,TS.trstlatitudedecimal AS latitude,TS.trstlongitudedecimal AS longitude,C.crpname AS crop, ";
-                $QUERY00 .= "T.trlname AS trialname,fc_listtrialvariety(T.id_trial) AS varieties,fc_listtrialvariablesmeasured(T.id_trial) AS variablesmeasured,T.trlsowdate AS sowdate,T.trlharvestdate AS harvestdate,T.trltrialtype AS trialtype,T.trlirrigation AS irrigation,T.created_at AS recorddate,'http://www.agtrials.org/tbtrial/'||T.id_trial AS url ";
+
+                $QUERY00 = "SELECT T.id_trial AS id,P.prjname AS trialgroup,fc_completename(CP.cnprfirstname, CP.cnprmiddlename, CP.cnprlastname) AS contactperson,fc_triallocationadministrativedivisionname(TL.id_triallocation, 1) AS country,TL.trlcname AS trialsite,TL.trlclatitude AS latitude,TL.trlclongitude AS longitude,C.crpname AS crop, T.trltrialname AS trialname,fc_trialvariety(T.id_trial, 'name') AS varieties,T.trltrialname, fc_trialvariablesmeasured(T.id_trial, 'name') AS variablesmeasured,TI.trnfplantingsowingstartdate AS sowdate,TI.trnfphysiologicalmaturityenddate AS harvestdate,'' AS trialtype,'' AS irrigation,T.created_at AS recorddate,'http://www.agtrials.org/trial/'||T.id_trial AS url ";
                 $QUERY00 .= "FROM tb_trial T ";
-                $QUERY00 .= "INNER JOIN tb_trialgroup TG ON T.id_trialgroup = TG.id_trialgroup ";
-                $QUERY00 .= "INNER JOIN tb_contactperson CP ON T.id_contactperson = CP.id_contactperson ";
-                $QUERY00 .= "INNER JOIN tb_country CN ON T.id_country = CN.id_country ";
-                $QUERY00 .= "INNER JOIN tb_trialsite TS ON T.id_trialsite = TS.id_trialsite ";
-                $QUERY00 .= "INNER JOIN tb_crop C ON T.id_crop = C.id_crop ";
-                if ($variablesmeasureds != '')
-                    $QUERY00 .= "LEFT JOIN tb_trialvariablesmeasured TVM ON T.id_trial = TVM.id_trial ";
-                if ($varieties != '')
-                    $QUERY00 .= "LEFT JOIN tb_trialvariety TV ON T.id_trial = TV.id_trial ";
-                $QUERY00 .= "WHERE true $Where";
+                $QUERY00 .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
+                $QUERY00 .= "INNER JOIN tb_triallocation  TL ON T.id_triallocation = TL.id_triallocation ";
+                $QUERY00 .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
+                $QUERY00 .= "INNER JOIN tb_crop C ON TI.id_crop = C.id_crop ";
+                $QUERY00 .= "INNER JOIN tb_contactperson CP ON P.id_leadofproject = CP.id_contactperson ";
+                $QUERY00 .= "WHERE true $Where ";
                 $QUERY00 .= "ORDER BY T.id_trial $Limit";
+
                 $st = $connection->execute($QUERY00);
                 $Result = $st->fetchAll(PDO::FETCH_ASSOC);
                 $JSON = json_encode($Result);
@@ -415,7 +403,7 @@ class apiActions extends sfActions {
             $QUERY00 = "SELECT T.id_trial, TL.trlcname, TL.trlclatitude AS latitude, TL.trlclongitude AS longitude, INS.insname, fc_trialvariety(T.id_trial, 'name') AS trlvarieties, T.trltrialname, fc_trialvariablesmeasured(T.id_trial, 'name') AS trlvariablesmeasured, CR.crpname ";
             $QUERY00 .= "FROM tb_trial T ";
             $QUERY00 .= "INNER JOIN tb_triallocation  TL ON T.id_triallocation = TL.id_triallocation ";
-            $QUERY00 .= "LEFT JOIN tb_project P ON T.id_project = P.id_project ";
+            $QUERY00 .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
             $QUERY00 .= "INNER JOIN tb_institution INS ON P.id_projectimplementinginstitutions = INS.id_institution ";
             $QUERY00 .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
             $QUERY00 .= "INNER JOIN tb_crop CR ON TI.id_crop = CR.id_crop ";
