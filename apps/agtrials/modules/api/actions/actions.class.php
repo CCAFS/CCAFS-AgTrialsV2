@@ -34,7 +34,12 @@ class apiActions extends sfActions {
         $date1 = $PartDates[0];
         $date2 = $PartDates[1];
 
-        if (!CheckAPI($key)) {
+        $api = 'Retrieve Trials';
+        $apiurl = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+        sfGuardUserApilogTable::addGuardUserApilog($user_id, $api, $apiurl);
+
+        $user_id = CheckAPI($key);
+        if ($user_id == "") {
             die("*** Error Key ***");
         } else {
             $Limit = "";
@@ -108,11 +113,16 @@ class apiActions extends sfActions {
 
     public function executeApiproject(sfWebRequest $request) {
         $key = $request->getParameter('key');
-        if (!CheckAPI($key)) {
+        $user_id = CheckAPI($key);
+        if ($user_id == "") {
             die("*** Error Key ***");
         } else {
-            $connection = Doctrine_Manager::getInstance()->connection();
 
+            $api = 'Retrieve Project';
+            $apiurl = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+            sfGuardUserApilogTable::addGuardUserApilog($user_id, $api, $apiurl);
+
+            $connection = Doctrine_Manager::getInstance()->connection();
             $QUERY00 = "SELECT  P.id_project AS id,P.prjname AS name,fc_completename(CP.cnprfirstname, CP.cnprmiddlename, CP.cnprlastname) AS leadofproject,INS.insname AS institution,DN.dnrname AS donor,P.prjabstract AS abstract,P.prjkeywords AS keywords ";
             $QUERY00 .= "FROM tb_project  P ";
             $QUERY00 .= "INNER JOIN tb_trial T ON  P. id_project = T. id_project ";
@@ -133,9 +143,15 @@ class apiActions extends sfActions {
 
     public function executeApicontactperson(sfWebRequest $request) {
         $key = $request->getParameter('key');
-        if (!CheckAPI($key)) {
+        $user_id = CheckAPI($key);
+        if ($user_id == "") {
             die("*** Error Key ***");
         } else {
+
+            $api = 'Retrieve Contact person';
+            $apiurl = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+            sfGuardUserApilogTable::addGuardUserApilog($user_id, $api, $apiurl);
+
             $connection = Doctrine_Manager::getInstance()->connection();
             $QUERY00 = "SELECT CP.id_contactperson AS id,CP.cnprfirstname AS firstname,CP.cnprmiddlename AS middlename,CP.cnprlastname AS lastname,INS.insname AS institution ";
             $QUERY00 .= "FROM tb_contactperson CP ";
@@ -155,9 +171,15 @@ class apiActions extends sfActions {
 
     public function executeApicountry(sfWebRequest $request) {
         $key = $request->getParameter('key');
-        if (!CheckAPI($key)) {
+        $user_id = CheckAPI($key);
+        if ($user_id == "") {
             die("*** Error Key ***");
         } else {
+
+            $api = 'Retrieve Country';
+            $apiurl = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+            sfGuardUserApilogTable::addGuardUserApilog($user_id, $api, $apiurl);
+
             $connection = Doctrine_Manager::getInstance()->connection();
             $QUERY00 = "SELECT AD.id_administrativedivision AS id,AD.dmdvname AS countryname ";
             $QUERY00 .= "FROM tb_administrativedivision AD ";
@@ -182,9 +204,14 @@ class apiActions extends sfActions {
         $date = $request->getParameter('date');
         $now = date("Y-m-d");
         $Where = "";
-        if (!CheckAPI($key)) {
+        $user_id = CheckAPI($key);
+        if ($user_id == "") {
             die("*** Error Key ***");
         } else {
+
+            $api = 'Retrieve Trial location';
+            $apiurl = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+            sfGuardUserApilogTable::addGuardUserApilog($user_id, $api, $apiurl);
 
             if ($date != '')
                 $Where .= "AND TL.created_at BETWEEN '$date' AND '$now' ";
@@ -208,9 +235,15 @@ class apiActions extends sfActions {
 
     public function executeApitechnology(sfWebRequest $request) {
         $key = $request->getParameter('key');
-        if (!CheckAPI($key)) {
+        $user_id = CheckAPI($key);
+        if ($user_id == "") {
             die("*** Error Key ***");
         } else {
+
+            $api = 'Retrieve Technology';
+            $apiurl = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+            sfGuardUserApilogTable::addGuardUserApilog($user_id, $api, $apiurl);
+
             $connection = Doctrine_Manager::getInstance()->connection();
             $QUERY00 = "SELECT CRP.id_crop AS id,CRP.crpname AS technologyname,CRP.crpscientificname AS scientificname ";
             $QUERY00 .= "FROM tb_crop CRP ";
@@ -229,9 +262,15 @@ class apiActions extends sfActions {
     public function executeApivariety(sfWebRequest $request) {
         $key = $request->getParameter('key');
         $technology = $request->getParameter('technology');
-        if (!CheckAPI($key)) {
+        $user_id = CheckAPI($key);
+        if ($user_id == "") {
             die("*** Error Key ***");
         } else {
+
+            $api = 'Retrieve Variety';
+            $apiurl = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+            sfGuardUserApilogTable::addGuardUserApilog($user_id, $api, $apiurl);
+
             if ($technology != '') {
                 $connection = Doctrine_Manager::getInstance()->connection();
                 $QUERY00 = "SELECT V.id_variety AS id,C.crpname AS technology,V.vrtorigin  AS origin,V.vrtname AS varietyname,V.vrtsynonymous AS synonymous,V.vrtdescription AS description ";
@@ -256,9 +295,15 @@ class apiActions extends sfActions {
     public function executeApivarietytrials(sfWebRequest $request) {
         $key = $request->getParameter('key');
         $variety = $request->getParameter('variety');
-        if (!CheckAPI($key)) {
+        $user_id = CheckAPI($key);
+        if ($user_id == "") {
             die("*** Error Key ***");
         } else {
+
+            $api = 'Retrieve Variety trials';
+            $apiurl = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+            sfGuardUserApilogTable::addGuardUserApilog($user_id, $api, $apiurl);
+
             if ($variety != '') {
                 $connection = Doctrine_Manager::getInstance()->connection();
                 $id_variety = SearchIdVariety($variety);
@@ -280,9 +325,15 @@ class apiActions extends sfActions {
     public function executeApivariablesmeasured(sfWebRequest $request) {
         $key = $request->getParameter('key');
         $technology = $request->getParameter('technology');
-        if (!CheckAPI($key)) {
+        $user_id = CheckAPI($key);
+        if ($user_id == "") {
             die("*** Error Key ***");
         } else {
+
+            $api = 'Retrieve Variables measured';
+            $apiurl = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+            sfGuardUserApilogTable::addGuardUserApilog($user_id, $api, $apiurl);
+
             if ($technology != '') {
                 $connection = Doctrine_Manager::getInstance()->connection();
 
@@ -312,21 +363,27 @@ class apiActions extends sfActions {
         $date = $request->getParameter('date');
         $now = date("Y-m-d");
         $Where = "";
-        if (!CheckAPI($key)) {
+        $user_id = CheckAPI($key);
+        if ($user_id == "") {
             die("*** Error Key ***");
         } else {
 
+            $api = 'Retrieve AgMIP';
+            $apiurl = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+            sfGuardUserApilogTable::addGuardUserApilog($user_id, $api, $apiurl);
+
             if ($date != '')
-                $Where .= "AND TS.created_at BETWEEN '$date' AND '$now' ";
+                $Where .= "AND T.created_at BETWEEN '$date' AND '$now' ";
 
             $connection = Doctrine_Manager::getInstance()->connection();
-            $QUERY00 = "SELECT T.id_trial AS id, TG.trgrname AS suite_id, T.trlvarieties as cul_name, T.trlname as exname, T.trlsowdate as pdate, T.trlharvestdate as hdate, C.crpname as crid, ";
-            $QUERY00 .= "TS.trstlatitudedecimal AS fl_lat,TS.trstlongitudedecimal as fl_long ,TS.trstaltitude as flele, I.insname as institution ";
+
+            $QUERY00 = "SELECT T.id_trial AS id, P.prjname AS suite_id,fc_trialvariety(T.id_trial, 'name') as cul_name, T.trltrialname as exname, TI.trnfplantingsowingstartdate as pdate, TI.trnfharvestenddate as hdate, C.crpname as crid, TL.trlclatitude AS fl_lat, TL.trlclongitude as fl_long ,TL.trlcaltitude as flele, INS.insname as institution ";
             $QUERY00 .= "FROM tb_trial T ";
-            $QUERY00 .= "INNER JOIN tb_trialgroup TG ON T.id_trialgroup = TG.id_trialgroup ";
-            $QUERY00 .= "INNER JOIN tb_crop C ON T.id_crop = C.id_crop ";
-            $QUERY00 .= "INNER JOIN tb_trialsite TS ON T.id_trialsite = TS.id_trialsite ";
-            $QUERY00 .= "INNER JOIN tb_institution I ON TS.id_institution = I.id_institution ";
+            $QUERY00 .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
+            $QUERY00 .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
+            $QUERY00 .= "INNER JOIN tb_crop C ON TI.id_crop = C.id_crop ";
+            $QUERY00 .= "INNER JOIN tb_triallocation  TL ON T.id_triallocation = TL.id_triallocation ";
+            $QUERY00 .= "INNER JOIN tb_institution INS ON P.id_projectimplementinginstitutions = INS.id_institution ";
             $QUERY00 .= "WHERE true $Where ";
 
             $st = $connection->execute($QUERY00);
@@ -344,20 +401,30 @@ class apiActions extends sfActions {
         $crop = $request->getParameter('crop');
 
 
-        if (!CheckAPI($key)) {
+        $user_id = CheckAPI($key);
+        if ($user_id == "") {
             die("*** Error Key ***");
         } else {
+
+            $api = 'Retrieve map';
+            $apiurl = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+            sfGuardUserApilogTable::addGuardUserApilog($user_id, $api, $apiurl);
             $connection = Doctrine_Manager::getInstance()->connection();
 
-            $QUERY00 = "SELECT T.id_trial, TS.trstname, TS.trstlatitudedecimal AS latitude, TS.trstlongitudedecimal AS longitude, INS.insname, trlvarieties, trlname, trlvariablesmeasured, CR.crpname ";
+
+            $QUERY00 = "SELECT T.id_trial, TL.trlcname, TL.trlclatitude AS latitude, TL.trlclongitude AS longitude, INS.insname, fc_trialvariety(T.id_trial, 'name') AS trlvarieties, T.trltrialname, fc_trialvariablesmeasured(T.id_trial, 'name') AS trlvariablesmeasured, CR.crpname ";
             $QUERY00 .= "FROM tb_trial T ";
-            $QUERY00 .= "INNER JOIN tb_trialsite TS ON T.id_trialsite = TS.id_trialsite ";
-            $QUERY00 .= "INNER JOIN tb_institution INS ON TS.id_institution = INS.id_institution ";
-            $QUERY00 .= "INNER JOIN tb_crop CR ON T.id_crop = CR.id_crop ";
+            $QUERY00 .= "INNER JOIN tb_triallocation  TL ON T.id_triallocation = TL.id_triallocation ";
+            $QUERY00 .= "LEFT JOIN tb_project P ON T.id_project = P.id_project ";
+            $QUERY00 .= "INNER JOIN tb_institution INS ON P.id_projectimplementinginstitutions = INS.id_institution ";
+            $QUERY00 .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
+            $QUERY00 .= "INNER JOIN tb_crop CR ON TI.id_crop = CR.id_crop ";
+
             if ($crop != '')
-                $QUERY00 .= "WHERE T.id_crop IN ($crop) ";
+                $QUERY00 .= "WHERE TI.id_crop IN ($crop) ";
             if (is_numeric($limit))
                 $QUERY00 .= "LIMIT $limit ";
+
 
             $st = $connection->execute($QUERY00);
             $Result = $st->fetchAll(PDO::FETCH_ASSOC);
