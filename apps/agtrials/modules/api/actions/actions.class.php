@@ -23,6 +23,7 @@ class apiActions extends sfActions {
         $contactperson = $request->getParameter('contactpersons');
         $triallocation = $request->getParameter('triallocation');
         $technology = $request->getParameter('technology');
+        $country = $request->getParameter('country');
         $latitude = $request->getParameter('latitude');
         $longitude = $request->getParameter('longitude');
         $latest = $request->getParameter('latest');
@@ -30,6 +31,8 @@ class apiActions extends sfActions {
         $PartDates = explode("|", $dates);
         $date1 = $PartDates[0];
         $date2 = $PartDates[1];
+
+        $connection = Doctrine_Manager::getInstance()->connection();
 
 
         $user_id = CheckAPI($key);
@@ -53,10 +56,12 @@ class apiActions extends sfActions {
                 $Where .= "AND P.id_project IN ($projects) ";
             if ($contactperson != '')
                 $Where .= "AND CP.id_contactperson IN ($contactperson) ";
-            if ($trialsite != '')
+            if ($triallocation != '')
                 $Where .= "AND TL.id_triallocation IN ($triallocation) ";
             if ($technology != '')
                 $Where .= "AND C.id_crop IN ($technology) ";
+            if ($country != '')
+                $Where .= "AND TLAD.id_administrativedivision IN ('$country') ";
             if ($latitude != '') {
                 $ArrLatitude = explode("|", $latitude);
                 if (is_numeric($ArrLatitude[0]))
@@ -77,12 +82,12 @@ class apiActions extends sfActions {
             }
 
             if ($Where != '' || $Limit != '') {
-                $connection = Doctrine_Manager::getInstance()->connection();
 
-                $QUERY00 = "SELECT T.id_trial AS id,P.prjname AS trialgroup,fc_completename(CP.cnprfirstname, CP.cnprmiddlename, CP.cnprlastname) AS contactperson,fc_triallocationadministrativedivisionname(TL.id_triallocation, 1) AS country,TL.trlcname AS trialsite,TL.trlclatitude AS latitude,TL.trlclongitude AS longitude,C.crpname AS crop, T.trltrialname AS trialname,fc_trialvariety(T.id_trial, 'name') AS varieties,T.trltrialname, fc_trialvariablesmeasured(T.id_trial, 'name') AS variablesmeasured,TI.trnfplantingsowingstartdate AS sowdate,TI.trnfphysiologicalmaturityenddate AS harvestdate,'' AS trialtype,'' AS irrigation,T.created_at AS recorddate,'http://www.agtrials.org/trial/'||T.id_trial AS url ";
+                $QUERY00 = "SELECT T.id_trial AS id,P.prjname AS trialgroup,fc_completename(CP.cnprfirstname, CP.cnprmiddlename, CP.cnprlastname) AS contactperson,fc_triallocationadministrativedivisionname(TL.id_triallocation, 1) AS country,TL.trlcname AS trialsite,TL.trlclatitude AS latitude,TL.trlclongitude AS longitude,C.crpname AS crop, T.trltrialname AS trialname,fc_trialvariety(T.id_trial, 'name') AS varieties,T.trltrialname, fc_trialvariablesmeasured(T.id_trial, 'name') AS variablesmeasured,TI.trnfplantingsowingstartdate AS sowdate,TI.trnfphysiologicalmaturityenddate AS harvestdate,T.created_at AS recorddate,'http://www.agtrials.org/trial/'||T.id_trial AS url ";
                 $QUERY00 .= "FROM tb_trial T ";
                 $QUERY00 .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
                 $QUERY00 .= "INNER JOIN tb_triallocation  TL ON T.id_triallocation = TL.id_triallocation ";
+                $QUERY00 .= "INNER JOIN tb_triallocationadministrativedivision  TLAD ON TL.id_triallocation = TLAD.id_triallocation ";
                 $QUERY00 .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
                 $QUERY00 .= "INNER JOIN tb_crop C ON TI.id_crop = C.id_crop ";
                 $QUERY00 .= "INNER JOIN tb_contactperson CP ON P.id_leadofproject = CP.id_contactperson ";

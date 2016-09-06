@@ -34,8 +34,8 @@ $url = sfContext::getInstance()->getRequest()->getHost();
             <div id="ApiTrials" class="InfoApi" style="display:none;">
                 <br>
                 <div><strong>URL:</strong> <code>http://<?php echo $url; ?>/api/apitrials?key=<?php echo $key; ?>&{Options}</code></div>
-                <div><strong>Options:</strong> <code>trial=values&=project=values&contactperson=values&triallocation=values&technology=values&latitude=value1|value2&longitude=value1|value2&dates=yyyy-mm-dd|yyyy-mm-dd&latest=value &ensp;</code> </div>
-                <div><strong>Return:</strong> <code>id,trialgroup,contactperson,country,trialsite,latitude,longitude,crop,trialname,varieties,variablesmeasured,sowdate,harvestdate,trialtype,irrigation,url</code> </div>
+                <div><strong>Options:</strong> <code>trial=values&=project=values&contactperson=values&triallocation=values&technology=values&country=values&latitude=value1|value2&longitude=value1|value2&dates=yyyy-mm-dd|yyyy-mm-dd&latest=value &ensp;</code> </div>
+                <div><strong>Return:</strong> <code>id,trialgroup,contactperson,country,trialsite,latitude,longitude,crop,trialname,varieties,variablesmeasured,sowdate,harvestdate,url</code> </div>
                 <div><strong>Example:</strong> <code><a target="_blank" href="http://<?php echo $url; ?>/api/apitrials?key=<?php echo $key; ?>&projects=4,86">http://<?php echo $url; ?>/api/apitrials?key=<?php echo $key; ?>&projects=4,86</a></code> </div>
                 <br>
             </div>
