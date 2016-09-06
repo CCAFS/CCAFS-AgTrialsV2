@@ -1,2 +1,2 @@
 Index:
-  is_secure:   on        # La acción "Index" es sólo para usuarios autenticados
+  is_secure:   off        # La acción "Index" es sólo para usuarios autenticados
