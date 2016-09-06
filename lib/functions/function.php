@@ -1162,13 +1162,15 @@ function ModuleHelp($Module) {
 function CheckAPI($key) {
     $key = trim($key);
     $user_id = "";
-    $QUERY00 = Doctrine_Query::create()
-            ->from("SfGuardUserInformation UI")
-            ->where("UI.key = '$key'");
+    if ($key != "") {
+        $QUERY00 = Doctrine_Query::create()
+                ->from("SfGuardUserInformation UI")
+                ->where("UI.key = '$key'");
 
-    $Resultado00 = $QUERY00->execute();
-    foreach ($Resultado00 AS $fila) {
-        $user_id = $fila['user_id'];
+        $Resultado00 = $QUERY00->execute();
+        foreach ($Resultado00 AS $fila) {
+            $user_id = $fila['user_id'];
+        }
     }
 
     return $user_id;
