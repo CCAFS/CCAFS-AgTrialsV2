@@ -75,23 +75,21 @@ class projectActions extends autoProjectActions {
         $this->getResponse()->setContentType('application/json');
         $connection = Doctrine_Manager::getInstance()->connection();
         $term = $request->getParameter('term');
-        $QUERY = "SELECT T.id_project AS value, T.prjname AS label, ";
-        $QUERY .= "T2.id_contactperson AS id_leadofproject, T2.cnprfirstname AS cnprfirstname, T2.cnprmiddlename AS cnprmiddlename, T2.cnprlastname AS cnprlastname, T2.cnpremail AS cnpremail, ";
-        $QUERY .= "T2.cnprtelephone AS cnprtelephone,T3.id_project AS id_projectleadofproject, T3.insname AS insnameleadofproject, T4.id_administrativedivision AS id_countryprojectleadofproject, ";
-        $QUERY .= "T4.dmdvname AS namecountryprojectleadofproject,T5.id_project AS id_projectimplementingprojects, T5.insname AS insnameprojectimplementingprojects, ";
-        $QUERY .= "T6.id_administrativedivision AS id_countryprojectimplementingprojects,T6.dmdvname AS namecountryprojectimplementingprojects, ";
-        $QUERY .= "T.prjprojectimplementingperiodstartdate AS prjprojectimplementingperiodstartdate, T.prjprojectimplementingperiodenddate AS prjprojectimplementingperiodenddate, ";
-        $QUERY .= "T7.id_donor AS id_donor,T7.dnrname AS dnrname, ";
-        $QUERY .= "T.prjabstract AS prjabstract, T.prjkeywords AS prjkeywords ";
+
+        $QUERY = "SELECT T.id_project AS value, T.prjname AS label, T2.id_contactperson AS id_leadofproject, T2.cnprfirstname AS cnprfirstname, T2.cnprmiddlename AS cnprmiddlename, T2.cnprlastname AS cnprlastname, T2.cnpremail AS cnpremail, T2.cnprtelephone AS cnprtelephone, ";
+        $QUERY .= "T3.id_institution AS id_institutionleadofproject, T3.insname AS insnameleadofproject, T4.id_administrativedivision AS id_countryinstitutionleadofproject, T4.dmdvname AS namecountryinstitutionleadofproject, ";
+        $QUERY .= "T5.id_institution AS id_projectimplementinginstitutions,T5.insname AS insnameprojectimplementinginstitutions, T6.id_administrativedivision AS id_countryprojectimplementinginstitutions,T6.dmdvname AS namecountryprojectimplementinginstitutions, ";
+        $QUERY .= "T.prjprojectimplementingperiodstartdate AS prjprojectimplementingperiodstartdate, T.prjprojectimplementingperiodenddate AS prjprojectimplementingperiodenddate, T7.id_donor AS id_donor,T7.dnrname AS dnrname, T.prjabstract AS prjabstract, T.prjkeywords AS prjkeywords ";
         $QUERY .= "FROM tb_project T ";
         $QUERY .= "INNER JOIN tb_contactperson T2 ON T.id_leadofproject = T2.id_contactperson ";
-        $QUERY .= "INNER JOIN tb_project T3 ON T2.id_project = T3.id_project ";
+        $QUERY .= "INNER JOIN tb_institution T3 ON T2.id_institution = T3.id_institution ";
         $QUERY .= "INNER JOIN tb_administrativedivision T4 ON T3.id_country = T4.id_administrativedivision ";
-        $QUERY .= "INNER JOIN tb_project T5 ON T.id_projectimplementingprojects = T5.id_project ";
+        $QUERY .= "INNER JOIN tb_institution T5 ON T.id_projectimplementinginstitutions = T5.id_institution ";
         $QUERY .= "INNER JOIN tb_administrativedivision T6 ON T5.id_country = T6.id_administrativedivision ";
         $QUERY .= "LEFT JOIN tb_donor T7 ON T.id_donor = T7.id_donor ";
         $QUERY .= "WHERE UPPER(T.prjname) LIKE UPPER('$term%') ";
         $QUERY .= "ORDER BY T.prjname ";
+
         $st = $connection->execute($QUERY);
         $R_datos = $st->fetchAll(PDO::FETCH_ASSOC);
         return $this->renderText(json_encode($R_datos));
