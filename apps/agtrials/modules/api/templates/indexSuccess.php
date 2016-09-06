@@ -1,7 +1,9 @@
 <?php
-$sfGuardUser = Doctrine::getTable('sfGuardUser')->findOneBy("Username", sfContext::getInstance()->getUser()->getUsername());
-$sfGuardUserInformation = Doctrine::getTable('sfGuardUserInformation')->findOneByUserId($sfGuardUser->id);
-$key = $sfGuardUserInformation->key;
+if ($sf_user->isAuthenticated()) {
+    $sfGuardUser = Doctrine::getTable('sfGuardUser')->findOneBy("Username", sfContext::getInstance()->getUser()->getUsername());
+    $sfGuardUserInformation = Doctrine::getTable('sfGuardUserInformation')->findOneByUserId($sfGuardUser->id);
+    $key = $sfGuardUserInformation->key;
+}
 $url = sfContext::getInstance()->getRequest()->getHost();
 ?>
 <script language="JavaScript">
