@@ -46,9 +46,10 @@ class apiActions extends sfActions {
 
             $Limit = "";
             $Where = "";
-            if (($cursor != '') && ($cursor > 0)) {
-                $offset = (($cursor - 1) * 1000);
+            if (($cursor != '') && ($cursor > 1)) {
+                $offset = ((($cursor - 1) * 1000) + 1);
             } else {
+                $cursor = 1;
                 $offset = 0;
             }
             if (($date1 != '') && ($date2 != ''))
@@ -85,8 +86,6 @@ class apiActions extends sfActions {
             }
 
             if ($Where != '') {
-
-
                 $QUERYC = "SELECT COUNT(T.id_trial) AS count ";
                 $QUERYC .= "FROM tb_trial T ";
                 $QUERYC .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
@@ -103,7 +102,6 @@ class apiActions extends sfActions {
                 }
                 $cursormax = ceil(($Count / 1000));
 
-
                 $QUERY00 = "SELECT T.id_trial AS id,P.prjname AS trialgroup,fc_completename(CP.cnprfirstname, CP.cnprmiddlename, CP.cnprlastname) AS contactperson,fc_triallocationadministrativedivisionname(TL.id_triallocation, 1) AS country,TL.trlcname AS trialsite,TL.trlclatitude AS latitude,TL.trlclongitude AS longitude,C.crpname AS crop, T.trltrialname AS trialname,fc_trialvariety(T.id_trial, 'name') AS varieties,T.trltrialname, fc_trialvariablesmeasured(T.id_trial, 'name') AS variablesmeasured,TI.trnfplantingsowingstartdate AS sowdate,TI.trnfphysiologicalmaturityenddate AS harvestdate,T.created_at AS recorddate,'http://www.$url/trial/'||T.id_trial AS url ";
                 $QUERY00 .= "FROM tb_trial T ";
                 $QUERY00 .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
@@ -117,6 +115,7 @@ class apiActions extends sfActions {
 
                 $st = $connection->execute($QUERY00);
                 $Result = $st->fetchAll(PDO::FETCH_ASSOC);
+                $Arrcursor['cursor'] = $cursor;
                 $Arrcursor['cursormax'] = $cursormax;
                 array_push($Result, $Arrcursor);
                 $JSON = json_encode($Result);
