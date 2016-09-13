@@ -117,8 +117,8 @@ class apiActions extends sfActions {
 
                 $st = $connection->execute($QUERY00);
                 $Result = $st->fetchAll(PDO::FETCH_ASSOC);
-                $cursor['cursormax'] = $cursormax;
-                array_push($Result, $cursor);
+                $Arrcursor['cursormax'] = $cursormax;
+                array_push($Result, $Arrcursor);
                 $JSON = json_encode($Result);
                 header('Content-type: text/json');
                 header('Content-type: application/json');
