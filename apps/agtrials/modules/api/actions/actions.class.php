@@ -16,7 +16,7 @@ class apiActions extends sfActions {
         
     }
 
-    public function executeApitrials(sfWebRequest $request) { 
+    public function executeApitrials(sfWebRequest $request) {
         $url = sfContext::getInstance()->getRequest()->getHost();
         $key = $request->getParameter('key');
         $trial = $request->getParameter('trial');
@@ -27,8 +27,8 @@ class apiActions extends sfActions {
         $country = $request->getParameter('country');
         $latitude = $request->getParameter('latitude');
         $longitude = $request->getParameter('longitude');
-        $latest = $request->getParameter('latest');
         $dates = $request->getParameter('dates');
+        $cursor = $request->getParameter('cursor');
         $PartDates = explode("|", $dates);
         $date1 = $PartDates[0];
         $date2 = $PartDates[1];
@@ -40,15 +40,17 @@ class apiActions extends sfActions {
         if ($user_id == "") {
             die("*** Error Key ***");
         } else {
-
             $api = 'Retrieve Trials';
             $apiurl = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
             sfGuardUserApilogTable::addGuardUserApilog($user_id, $api, $apiurl);
 
             $Limit = "";
             $Where = "";
-            if ($latest != '')
-                $Limit = "LIMIT $latest ";
+            if (($cursor != '') && ($cursor > 0)) {
+                $offset = (($cursor - 1) * 1000);
+            } else {
+                $offset = 0;
+            }
             if (($date1 != '') && ($date2 != ''))
                 $Where .= "AND T.created_at BETWEEN '$date1' AND '$date2' ";
             if ($trial != '')
@@ -82,7 +84,25 @@ class apiActions extends sfActions {
                     $Where .= "AND TL.trlclongitude BETWEEN '$longitude1' AND '$longitude2' ";
             }
 
-            if ($Where != '' || $Limit != '') {
+            if ($Where != '') {
+
+
+                $QUERYC = "SELECT COUNT(T.id_trial) AS count ";
+                $QUERYC .= "FROM tb_trial T ";
+                $QUERYC .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
+                $QUERYC .= "INNER JOIN tb_triallocation  TL ON T.id_triallocation = TL.id_triallocation ";
+                $QUERYC .= "INNER JOIN tb_triallocationadministrativedivision  TLAD ON TL.id_triallocation = TLAD.id_triallocation ";
+                $QUERYC .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
+                $QUERYC .= "INNER JOIN tb_crop C ON TI.id_crop = C.id_crop ";
+                $QUERYC .= "INNER JOIN tb_contactperson CP ON P.id_leadofproject = CP.id_contactperson ";
+                $QUERYC .= "WHERE true $Where ";
+                $stC = $connection->execute($QUERYC);
+                $ResultC = $stC->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($ResultC AS $ValueC) {
+                    $Count = $ValueC['count'];
+                }
+                $cursormax = ceil(($Count / 1000));
+
 
                 $QUERY00 = "SELECT T.id_trial AS id,P.prjname AS trialgroup,fc_completename(CP.cnprfirstname, CP.cnprmiddlename, CP.cnprlastname) AS contactperson,fc_triallocationadministrativedivisionname(TL.id_triallocation, 1) AS country,TL.trlcname AS trialsite,TL.trlclatitude AS latitude,TL.trlclongitude AS longitude,C.crpname AS crop, T.trltrialname AS trialname,fc_trialvariety(T.id_trial, 'name') AS varieties,T.trltrialname, fc_trialvariablesmeasured(T.id_trial, 'name') AS variablesmeasured,TI.trnfplantingsowingstartdate AS sowdate,TI.trnfphysiologicalmaturityenddate AS harvestdate,T.created_at AS recorddate,'http://www.$url/trial/'||T.id_trial AS url ";
                 $QUERY00 .= "FROM tb_trial T ";
@@ -93,10 +113,12 @@ class apiActions extends sfActions {
                 $QUERY00 .= "INNER JOIN tb_crop C ON TI.id_crop = C.id_crop ";
                 $QUERY00 .= "INNER JOIN tb_contactperson CP ON P.id_leadofproject = CP.id_contactperson ";
                 $QUERY00 .= "WHERE true $Where ";
-                $QUERY00 .= "ORDER BY T.id_trial $Limit";
+                $QUERY00 .= "ORDER BY T.id_trial LIMIT 1000 OFFSET $offset";
 
                 $st = $connection->execute($QUERY00);
                 $Result = $st->fetchAll(PDO::FETCH_ASSOC);
+                $cursor['cursormax'] = $cursormax;
+                array_push($Result, $cursor);
                 $JSON = json_encode($Result);
                 header('Content-type: text/json');
                 header('Content-type: application/json');
