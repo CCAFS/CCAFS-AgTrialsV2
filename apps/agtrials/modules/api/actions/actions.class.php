@@ -65,7 +65,7 @@ class apiActions extends sfActions {
             if ($technology != '')
                 $Where .= "AND C.id_crop IN ($technology) ";
             if ($country != '')
-                $Where .= "AND TLAD.id_administrativedivision IN ('$country') ";
+                $Where .= "AND fc_triallocationadministrativedivisionid (TL.id_triallocation, 1)::INT IN ($country)  ";
             if ($latitude != '') {
                 $ArrLatitude = explode("|", $latitude);
                 if (is_numeric($ArrLatitude[0]))
@@ -90,7 +90,6 @@ class apiActions extends sfActions {
                 $QUERYC .= "FROM tb_trial T ";
                 $QUERYC .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
                 $QUERYC .= "INNER JOIN tb_triallocation  TL ON T.id_triallocation = TL.id_triallocation ";
-                $QUERYC .= "INNER JOIN tb_triallocationadministrativedivision  TLAD ON TL.id_triallocation = TLAD.id_triallocation ";
                 $QUERYC .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
                 $QUERYC .= "INNER JOIN tb_crop C ON TI.id_crop = C.id_crop ";
                 $QUERYC .= "INNER JOIN tb_contactperson CP ON P.id_leadofproject = CP.id_contactperson ";
@@ -106,12 +105,11 @@ class apiActions extends sfActions {
                 $QUERY00 .= "FROM tb_trial T ";
                 $QUERY00 .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
                 $QUERY00 .= "INNER JOIN tb_triallocation  TL ON T.id_triallocation = TL.id_triallocation ";
-                $QUERY00 .= "INNER JOIN tb_triallocationadministrativedivision  TLAD ON TL.id_triallocation = TLAD.id_triallocation ";
                 $QUERY00 .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
                 $QUERY00 .= "INNER JOIN tb_crop C ON TI.id_crop = C.id_crop ";
                 $QUERY00 .= "INNER JOIN tb_contactperson CP ON P.id_leadofproject = CP.id_contactperson ";
                 $QUERY00 .= "WHERE true $Where ";
-                $QUERY00 .= "ORDER BY T.id_trial LIMIT 1000 OFFSET $offset";
+                $QUERY00 .= "ORDER BY T.id_trial ASC LIMIT 1000 OFFSET $offset";
 
                 $st = $connection->execute($QUERY00);
                 $Result = $st->fetchAll(PDO::FETCH_ASSOC);
