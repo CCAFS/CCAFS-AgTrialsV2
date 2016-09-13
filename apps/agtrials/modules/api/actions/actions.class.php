@@ -16,7 +16,8 @@ class apiActions extends sfActions {
         
     }
 
-    public function executeApitrials(sfWebRequest $request) {  //// FALTA ACTUALIZAR ESTE.....//////
+    public function executeApitrials(sfWebRequest $request) { 
+        $url = sfContext::getInstance()->getRequest()->getHost();
         $key = $request->getParameter('key');
         $trial = $request->getParameter('trial');
         $projects = $request->getParameter('projects');
@@ -83,7 +84,7 @@ class apiActions extends sfActions {
 
             if ($Where != '' || $Limit != '') {
 
-                $QUERY00 = "SELECT T.id_trial AS id,P.prjname AS trialgroup,fc_completename(CP.cnprfirstname, CP.cnprmiddlename, CP.cnprlastname) AS contactperson,fc_triallocationadministrativedivisionname(TL.id_triallocation, 1) AS country,TL.trlcname AS trialsite,TL.trlclatitude AS latitude,TL.trlclongitude AS longitude,C.crpname AS crop, T.trltrialname AS trialname,fc_trialvariety(T.id_trial, 'name') AS varieties,T.trltrialname, fc_trialvariablesmeasured(T.id_trial, 'name') AS variablesmeasured,TI.trnfplantingsowingstartdate AS sowdate,TI.trnfphysiologicalmaturityenddate AS harvestdate,T.created_at AS recorddate,'http://www.agtrials.org/trial/'||T.id_trial AS url ";
+                $QUERY00 = "SELECT T.id_trial AS id,P.prjname AS trialgroup,fc_completename(CP.cnprfirstname, CP.cnprmiddlename, CP.cnprlastname) AS contactperson,fc_triallocationadministrativedivisionname(TL.id_triallocation, 1) AS country,TL.trlcname AS trialsite,TL.trlclatitude AS latitude,TL.trlclongitude AS longitude,C.crpname AS crop, T.trltrialname AS trialname,fc_trialvariety(T.id_trial, 'name') AS varieties,T.trltrialname, fc_trialvariablesmeasured(T.id_trial, 'name') AS variablesmeasured,TI.trnfplantingsowingstartdate AS sowdate,TI.trnfphysiologicalmaturityenddate AS harvestdate,T.created_at AS recorddate,'http://$url/trial/'||T.id_trial AS url ";
                 $QUERY00 .= "FROM tb_trial T ";
                 $QUERY00 .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
                 $QUERY00 .= "INNER JOIN tb_triallocation  TL ON T.id_triallocation = TL.id_triallocation ";
