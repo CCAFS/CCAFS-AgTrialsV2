@@ -21,15 +21,23 @@ class TbVarietyTable extends Doctrine_Table {
     }
 
     public static function addVariety($id_crop, $vrtorigin, $vrtname, $vrtsynonymous, $vrtdescription, $id_user) {
-        $Variety = new TbVariety();
-        $Variety->setIdCrop($id_crop);
-        $Variety->setVrtorigin($vrtorigin);
-        $Variety->setVrtname($vrtname);
-        $Variety->setVrtsynonymous($vrtsynonymous);
-        $Variety->setVrtdescription($vrtdescription);
-        $Variety->setIdUser($id_user);
-        $Variety->save();
-        return $Variety->getIdVariety();
+        $id_variety = "";
+        $QUERY00 = Doctrine_Query::create()
+                ->from("TbVariety T")
+                ->where("UPPER(T.vrtname) = UPPER('$vrtname')");
+        $Resultado00 = $QUERY00->execute();
+        if (count($Resultado00) < 1) {
+            $Variety = new TbVariety();
+            $Variety->setIdCrop($id_crop);
+            $Variety->setVrtorigin($vrtorigin);
+            $Variety->setVrtname($vrtname);
+            $Variety->setVrtsynonymous($vrtsynonymous);
+            $Variety->setVrtdescription($vrtdescription);
+            $Variety->setIdUser($id_user);
+            $Variety->save();
+            $id_variety = $Variety->getIdVariety();
+        }
+        return $id_variety;
     }
 
 }
