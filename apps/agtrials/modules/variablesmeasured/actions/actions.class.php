@@ -461,4 +461,17 @@ class variablesmeasuredActions extends autoVariablesmeasuredActions {
         die();
     }
 
+    public function executeAddVariablesMeasured(sfWebRequest $request) {
+        $id_user = $this->getUser()->getGuardUser()->getId();
+        $id_crop = $request->getParameter('id_crop');
+        $id_traitclass = $request->getParameter('id_traitclass');
+        $vrmsname = $request->getParameter('vrmsname');
+        $vrmsshortname = $request->getParameter('vrmsshortname');
+        $vrmsdefinition = $request->getParameter('vrmsdefinition');
+        $vrmnmethod = $request->getParameter('vrmnmethod');
+        $vrmsunit = $request->getParameter('vrmsunit');
+        TbVariablesmeasuredTable::addVariablesmeasured($id_crop, $id_traitclass, $vrmsname, $vrmsshortname, $vrmsdefinition, $vrmnmethod, $vrmsunit, $id_user);
+        Die();
+    }
+
 }

@@ -427,4 +427,15 @@ class varietyActions extends autoVarietyActions {
         die();
     }
 
+    public function executeAddVariety(sfWebRequest $request) {
+        $id_user = $this->getUser()->getGuardUser()->getId();
+        $id_crop = $request->getParameter('id_crop');
+        $vrtorigin = $request->getParameter('vrtorigin');
+        $vrtname = $request->getParameter('vrtname');
+        $vrtsynonymous = $request->getParameter('vrtsynonymous');
+        $vrtdescription = $request->getParameter('vrtdescription');
+        TbVarietyTable::addVariety($id_crop, $vrtorigin, $vrtname, $vrtsynonymous, $vrtdescription, $id_user);
+        Die();
+    }
+
 }

@@ -316,7 +316,160 @@ jQuery(document).ready(function () {
     });
 });
 //fin: FUNCIONES PARA EL CAMBIO DE COLOR
+function GetInfoRowVM(i) {
+    var id_crop = jQuery("#id_crop" + i).val();
+    var name = jQuery("#VariablesMeasured" + i).val();
+    jQuery("#id_crop_variablesmeasured").val(id_crop);
+    jQuery("#vrmsname").val(name);
+}
 
+
+function AddVariablesMeasured() {
+
+    var id_crop = jQuery('#id_crop_variablesmeasured').val();
+    var id_traitclass = jQuery('#id_traitclass').val();
+    var vrmsname = jQuery('#vrmsname').val();
+    var vrmsshortname = jQuery('#vrmsshortname').val();
+    var vrmsdefinition = jQuery('#vrmsdefinition').val();
+    var vrmnmethod = jQuery('#vrmnmethod').val();
+    var vrmsunit = jQuery('#vrmsunit').val();
+
+    var Ico2 = "<img src='/images/bullet-black-icon.png'> ";
+    var BanderaFaltantes = false;
+    var MensajeFaltantes = "";
+
+    //inicio: VALIDACION (Project/Trial Groups Name)
+    if (id_crop === '') {
+        BanderaFaltantes = true;
+        MensajeFaltantes += Ico2 + "Crop <br>";
+        CampoObligatorio('id_crop');
+    } else {
+        CampoNormalObligatorio('id_crop');
+    }
+    if (id_traitclass === '') {
+        BanderaFaltantes = true;
+        MensajeFaltantes += Ico2 + "Trait class <br>";
+        CampoObligatorio('id_traitclass');
+    } else {
+        CampoNormalObligatorio('id_traitclass');
+    }
+    if (vrmsname === '') {
+        BanderaFaltantes = true;
+        MensajeFaltantes += Ico2 + "Name <br>";
+        CampoObligatorio('vrmsname');
+    } else {
+        CampoNormalObligatorio('vrmsname');
+    }
+    if (vrmsunit === '') {
+        BanderaFaltantes = true;
+        MensajeFaltantes += Ico2 + "Unit <br>";
+        CampoObligatorio('vrmsunit');
+    } else {
+        CampoNormalObligatorio('vrmsunit');
+    }
+
+    if (BanderaFaltantes) {
+        Mensaje(MensajeFaltantes);
+    } else {
+        jQuery.ajax({
+            type: "GET",
+            url: "/variablesmeasured/AddVariablesMeasured/",
+            data: {id_crop: id_crop, id_traitclass: id_traitclass, vrmsname: vrmsname, vrmsshortname: vrmsshortname, vrmsdefinition: vrmsdefinition, vrmnmethod: vrmnmethod, vrmsunit: vrmsunit},
+            success: function () {
+                jQuery('#id_crop_variablesmeasured').val('');
+                jQuery('#id_traitclass').val('');
+                jQuery('#vrmsname').val('');
+                jQuery('#vrmsshortname').val('');
+                jQuery('#vrmsdefinition').val('');
+                jQuery('#vrmnmethod').val('');
+                jQuery('#vrmsunit').val('');
+                $.confirm({
+                    icon: 'glyphicon glyphicon-saved',
+                    columnClass: 'col-md-6 col-md-offset-3',
+                    closeIconClass: 'fa fa-close',
+                    autoClose: 'cancel|3000',
+                    title: '',
+                    confirmButton: ' ',
+                    cancelButton: 'Close',
+                    content: 'The item was created successfully.',
+                    cancel: function () {}
+                });
+            }
+        });
+    }
+}
+
+
+function GetInfoRowV(i) {
+    var id_crop = jQuery("#id_crop" + i).val();
+    var name = jQuery("#Variety" + i).val();
+    jQuery("#id_crop_variety").val(id_crop);
+    jQuery("#vrtname").val(name);
+}
+
+
+function AddVariety() {
+    var id_crop_variety = jQuery('#id_crop_variety').val();
+    var vrtorigin = jQuery('#vrtorigin').val();
+    var vrtname = jQuery('#vrtname').val();
+    var vrtsynonymous = jQuery('#vrtsynonymous').val();
+    var vrtdescription = jQuery('#vrtdescription').val();
+
+    var Ico2 = "<img src='/images/bullet-black-icon.png'> ";
+    var BanderaFaltantes = false;
+    var MensajeFaltantes = "";
+
+    //inicio: VALIDACION (Project/Trial Groups Name)
+    if (id_crop_variety === '') {
+        BanderaFaltantes = true;
+        MensajeFaltantes += Ico2 + "Crop <br>";
+        CampoObligatorio('id_crop_variety');
+    } else {
+        CampoNormalObligatorio('id_crop_variety');
+    }
+    if (vrtorigin === '') {
+        BanderaFaltantes = true;
+        MensajeFaltantes += Ico2 + "Origin <br>";
+        CampoObligatorio('vrtorigin');
+    } else {
+        CampoNormalObligatorio('vrtorigin');
+    }
+    if (vrtname === '') {
+        BanderaFaltantes = true;
+        MensajeFaltantes += Ico2 + "Name <br>";
+        CampoObligatorio('vrtname');
+    } else {
+        CampoNormalObligatorio('vrtname');
+    }
+
+    if (BanderaFaltantes) {
+        Mensaje(MensajeFaltantes);
+    } else {
+        jQuery.ajax({
+            type: "GET",
+            url: "/variety/AddVariety/",
+            data: {id_crop: id_crop_variety, vrtorigin: vrtorigin, vrtname: vrtname, vrtsynonymous: vrtsynonymous, vrtdescription: vrtdescription},
+            success: function () {
+                jQuery('#id_crop_variety').val('');
+                jQuery('#vrtorigin').val('');
+                jQuery('#vrtname').val('');
+                jQuery('#vrtsynonymous').val('');
+                jQuery('#vrtdescription').val('');
+                $.confirm({
+                    icon: 'glyphicon glyphicon-saved',
+                    columnClass: 'col-md-6 col-md-offset-3',
+                    closeIconClass: 'fa fa-close',
+                    autoClose: 'cancel|3000',
+                    title: '',
+                    confirmButton: ' ',
+                    cancelButton: 'Close',
+                    content: 'The item was created successfully.',
+                    cancel: function () {}
+                });
+            }
+        });
+    }
+}
 
 
 function GoToLicence() {

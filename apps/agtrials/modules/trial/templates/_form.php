@@ -422,7 +422,7 @@ if (isset($session_group_id)) {
                                 <div class="col-sm-10">
                                     <?php $PartDistrict = explode(",", $InfoTrialLocation['district'], 2); ?>
                                     <input name="id_districttriallocation" id="id_districttriallocation" type="hidden" value="<?php echo $PartDistrict[0]; ?>">
-                                    <input class="SearchInput form-control" name="districttriallocation" id="districttriallocation" type="text" size="36" maxlength="150" value="<?php echo $PartDistrict[1]; ?>" <?php echo $DisabledFieldTrialLocation; ?> ReadOnly>
+                                    <input class="SearchInput form-control" name="districttriallocation" id="districttriallocation" type="text" size="36" maxlength="150" value="<?php echo $PartDistrict[1]; ?>" <?php echo $DisabledFieldTrialLocation; ?> Readonly>
 
                                 </div>
                                 <div class="DivColIcon">
@@ -884,9 +884,9 @@ if (isset($session_group_id)) {
 
                             <div class="DivColIcon">
                                 <span id="DivFilterVariety1" style="display:none;"><?php echo image_tag('loading4.gif', array('size' => '18x18')); ?></span>
-                                <span id="DivFilterVarietyOK1" style="display:none;"><?php echo image_tag('success.png', array('size' => '18x18')); ?></span>
+                                <!--<span id="DivFilterVarietyOK1" style="display:none;"><?php echo image_tag('success.png', array('size' => '18x18')); ?></span>-->
                                 <span id="DivClearFilterVariety1" style="display:none;" class="Span-Action-Link" onclick="ClearFilterVariety(1);" title="Clear"><?php echo image_tag("/images/cross.png", array('size' => '18x18')); ?></span>
-                                <span><a onclick="javascript:openWindow('/variety/new')" title="Create new variety" href="#"><img src="/images/add-icon.png"></a></span>
+                                <span id="DivCreateNewVariety" title="Create new Variety" data-toggle="modal" onclick="GetInfoRowV(1);" data-target="#ModalCreateNewVariety"><?php echo image_tag("/images/add-icon.png", array('size' => '18x18')); ?></span>
                             </div>
                         </div>
                         <table class="table table-hover table-striped">
@@ -914,9 +914,9 @@ if (isset($session_group_id)) {
                             </div>
                             <div class="DivColIcon">
                                 <span id="DivFilterVariablesMeasured1" style="display:none;"><?php echo image_tag('loading4.gif', array('size' => '18x18')); ?></span>
-                                <span id="DivFilterVariablesMeasuredOK1" style="display:none;"><?php echo image_tag('success.png', array('size' => '18x18')); ?></span>
+                                <!--<span id="DivFilterVariablesMeasuredOK1" style="display:none;"><?php echo image_tag('success.png', array('size' => '18x18')); ?></span>-->
                                 <span id="DivClearFilterVariablesMeasured1" style="display:none;" class="Span-Action-Link" onclick="ClearFilterVariablesMeasured(1);" title="Clear"><?php echo image_tag("/images/cross.png", array('size' => '18x18')); ?></span>
-                                <span><a onclick="javascript:openWindow('/variablesmeasured/new')" title="Create new variables measured" href="#"><img src="/images/add-icon.png"></a></span>
+                                <span id="DivCreateNewVariablesMeasured" title="Create new variable measured" data-toggle="modal" onclick="GetInfoRowVM(1);" data-target="#ModalCreateNewVariablesMeasured"><?php echo image_tag("/images/add-icon.png", array('size' => '18x18')); ?></span>
                             </div>
                         </div>
                         <table class="table table-hover table-striped">
@@ -982,7 +982,7 @@ if (isset($session_group_id)) {
             <?php
             for ($i = 2; $i <= 10; $i++) {
                 ?>
-                <div id="DivCrop<?php echo $i; ?>" style="display:none; margin-bottom: 0px;"></br>
+                <div id="DivCrop<?php echo $i; ?>" style="display:none; margin-bottom: 0px;"> <br>
                     <p style=" border-bottom-color:#6CB662; border-bottom-style:dashed; border-bottom-width:2px; border-top-width:1px;"></p>
                     <fieldset class="cropInfo">
                         <div class="col-sm-12 form-group control-type-text" style="margin-top: 10px;">
@@ -1072,8 +1072,10 @@ if (isset($session_group_id)) {
                                 </div>
                                 <div class="DivColIcon">
                                     <span id="DivFilterVariety<?php echo $i; ?>" style="display:none;"><?php echo image_tag('loading4.gif', array('size' => '18x18')); ?></span>
-                                    <span id="DivFilterVarietyOK<?php echo $i; ?>" style="display:none;"><?php echo image_tag('success.png', array('size' => '18x18')); ?></span>
+                                    <!--<span id="DivFilterVarietyOK<?php echo $i; ?>" style="display:none;"><?php echo image_tag('success.png', array('size' => '18x18')); ?></span>-->
                                     <span id="DivClearFilterVariety<?php echo $i; ?>" style="display:none;" class="Span-Action-Link" onclick="ClearFilterVariety(<?php echo $i; ?>);" title="Clear"><?php echo image_tag("/images/cross.png", array('size' => '18x18')); ?></span>
+                                    <span id="DivCreateNewVariety" title="Create new Variety" data-toggle="modal" onclick="GetInfoRowV(<?php echo $i; ?>);" data-target="#ModalCreateNewVariety"><?php echo image_tag("/images/add-icon.png", array('size' => '18x18')); ?></span>
+
                                 </div>
                             </div>
                             <table class="table table-hover table-striped">
@@ -1101,8 +1103,10 @@ if (isset($session_group_id)) {
                                 </div>
                                 <div class="DivColIcon">
                                     <span id="DivFilterVariablesMeasured<?php echo $i; ?>" style="display:none;"><?php echo image_tag('loading4.gif', array('size' => '18x18')); ?></span>
-                                    <span id="DivFilterVariablesMeasuredOK<?php echo $i; ?>" style="display:none;"><?php echo image_tag('success.png', array('size' => '18x18')); ?></span>
+                                    <!--<span id="DivFilterVariablesMeasuredOK<?php echo $i; ?>" style="display:none;"><?php echo image_tag('success.png', array('size' => '18x18')); ?></span>-->
                                     <span id="DivClearFilterVariablesMeasured<?php echo $i; ?>" style="display:none;" class="Span-Action-Link" onclick="ClearFilterVariablesMeasured(<?php echo $i; ?>);" title="Clear"><?php echo image_tag("/images/cross.png", array('size' => '18x18')); ?></span>
+                                    <span id="DivCreateNewVariablesMeasured" title="Create new variable measured" data-toggle="modal" onclick="GetInfoRowVM(<?php echo $i; ?>);" data-target="#ModalCreateNewVariablesMeasured"><?php echo image_tag("/images/add-icon.png", array('size' => '18x18')); ?></span>
+
                                 </div>
                             </div>
                             <table class="table table-hover table-striped">
@@ -1186,5 +1190,119 @@ if (isset($session_group_id)) {
         <?php include_partial('trial/form_actions', array('tb_trial' => $tb_trial, 'form' => $form, 'configuration' => $configuration, 'helper' => $helper)) ?>
     </div>
 </div>
+
+<!-- Modal Create New Variables Measured-->
+<div class="container">
+    <div class="modal fade" id="ModalCreateNewVariablesMeasured" role="dialog">
+        <div class="modal-content">
+            <div style="margin-top: 13px;" class="col-md-12 sf_admin_form">
+                <span class="Title">New Variables measured</span>
+                <form id="FormCreateNewVariablesMeasured" class="form-horizontal" action="">
+                    <div style="margin-top: 10px; margin-bottom: 10px;" class="Session">
+                        <div style="margin-left: 0px;" class="form-group control-type-text">All fields marked with <span class="Mandatory">*</span> are required.</div>
+                        <fieldset>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3"><span class="Mandatory">*</span> Crop:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmsshortname">
+                                    <?php echo select_from_table("id_crop_variablesmeasured", "TbCrop", "id_crop", "crpname", null, null, "class='form-control' required='required'"); ?>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3"><span class="Mandatory">*</span> Trait class:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmsshortname">
+                                    <?php echo select_from_table("id_traitclass", "TbTraitclass", "id_traitclass", "trclname", null, null, "class='form-control' required='required'"); ?>                   
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3"><span class="Mandatory">*</span> Name:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmsshortname">
+                                    <input type="text" name="vrmsname" class="form-control" id="vrmsname"  required='required'>                                   
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3">Short name:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmsshortname">
+                                    <input type="text" name="vrmsshortname" class="form-control" id="vrmsshortname">                                   
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3">Definition:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmsdefinition">
+                                    <input type="text" name="vrmsdefinition" class="form-control" id="vrmsdefinition">                                   
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3">Method:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmnmethod">
+                                    <input type="text" name="vrmnmethod" class="form-control" id="vrmnmethod">                                    
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3"><span class="Mandatory">*</span> Unit:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmsunit">
+                                    <input type="text" name="vrmsunit" class="form-control" id="vrmsunit" required="required">                                   
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="modal-footer">
+                        <button title="Save" id="Save" name="Save" type="button" class="btn btn-action" onclick="AddVariablesMeasured();"><span class="glyphicon glyphicon-save" aria-hidden="true"></span> Save</button>
+                        <button title="Close" id="Close" name="Close" type="button" class="btn btn-action" data-dismiss="modal"> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
+<!-- Modal Create New Variety -->
+<div class="container">
+    <div class="modal fade" id="ModalCreateNewVariety" role="dialog">
+        <div class="modal-content">
+            <div style="margin-top: 13px;" class="col-md-12 sf_admin_form">
+                <span class="Title">New Variety</span>
+                <form id="FormCreateNewVariety" class="form-horizontal" action="">
+                    <div style="margin-top: 10px; margin-bottom: 10px;" class="Session">
+                        <div style="margin-left: 0px;" class="form-group control-type-text">All fields marked with <span class="Mandatory">*</span> are required.</div>
+                        <fieldset>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3"><span class="Mandatory">*</span> Crop:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmsshortname">
+                                    <?php echo select_from_table("id_crop_variety", "TbCrop", "id_crop", "crpname", null, null, "class='form-control' required='required'"); ?>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3"><span class="Mandatory">*</span> Origin:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmsshortname">
+                                    <input type="text" name="vrtorigin" class="form-control" id="vrtorigin">                                   
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3"><span class="Mandatory">*</span> Name:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmsshortname">
+                                    <input type="text" name="vrtname" class="form-control" id="vrtname">                                   
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3">Synonymous:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmsshortname">
+                                    <input type="text" name="vrtsynonymous" class="form-control" id="vrtsynonymous">                                   
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3">Description:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmsshortname">
+                                    <input type="text" name="vrtdescription" class="form-control" id="vrtdescription">                                   
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="modal-footer">
+                        <button title="Save" id="Save" name="Save" type="button" class="btn btn-action" onclick="AddVariety();"><span class="glyphicon glyphicon-save" aria-hidden="true"></span> Save</button>
+                        <button title="Close" id="Close" name="Close" type="button" class="btn btn-action" data-dismiss="modal"> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
