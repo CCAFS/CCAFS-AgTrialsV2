@@ -1,4 +1,4 @@
-<?php 
+<?php
 use_javascript('trial.js');
 use_javascript('introJs/newTrial.js');
 ?> 
@@ -108,11 +108,11 @@ if (isset($session_group_id)) {
                     </tr>
                 </table>
             </div>
-            
+
 
             <div id="projectleader-block" class="form-group control-type-text">
                 <div id="LeadofProject" class="form-group control-type-text Title0">
-                <span class="Title1">Project Lead</span>
+                    <span class="Title1">Project Lead</span>
                 </div>
                 <hr class="LineModule">
 
@@ -175,7 +175,7 @@ if (isset($session_group_id)) {
                     </tr>
                 </table>
             </div>
-            
+
 
             <div id="projectinstitutions-block" class="form-group control-type-text">
                 <div id="ProjectImplementingInstitutions" class="form-group control-type-text Title0">
@@ -205,9 +205,9 @@ if (isset($session_group_id)) {
                     </tr>
                 </table>
             </div>
-           
+
             <div id="projectperiod-block" class="form-group control-type-text">
-                 <div id="ProjectImplementingPeriod" class="form-group control-type-text Title0">
+                <div id="ProjectImplementingPeriod" class="form-group control-type-text Title0">
                     <span class="Title1">Project Implementing Period</span>
                 </div>
                 <hr class="LineModule">
@@ -228,10 +228,10 @@ if (isset($session_group_id)) {
                     </tr>
                 </table>
             </div>
-            
+
             <div id="projectfunding-block" class="form-group control-type-text">
                 <div id="FundingforProject" class="form-group control-type-text Title0">
-                <span class="Title1">Funding for Project</span>
+                    <span class="Title1">Funding for Project</span>
                 </div>
                 <hr class="LineModule">
 
@@ -247,7 +247,7 @@ if (isset($session_group_id)) {
                     </tr>
                 </table>
             </div>
-            
+
             <div id="projectinformation-block" class="form-group control-type-text">
                 <div id="ProjectInformation" class="form-group control-type-text Title0">
                     <span class="Title1">Project Information</span>
@@ -275,7 +275,7 @@ if (isset($session_group_id)) {
             <span class="Title">Trial Info</span>
         </div>
         <div class="Session">
-            
+
             <div id="projecttrialmanager-block" class="form-group control-type-text">
                 <div id="TrialManager" class="form-group control-type-text Title0" style="padding-top: 15px;">
                     <span class="Title1">Trial Manager</span>
@@ -354,7 +354,7 @@ if (isset($session_group_id)) {
                     </tr>
                 </table>
             </div>
-            
+
             <div id="projecttrialperiod-block" class="form-group control-type-text">
                 <div id="TrialImplementingPeriod" class="form-group control-type-text Title0">
                     <span class="Title1">Trial Implementing Period</span>
@@ -375,7 +375,7 @@ if (isset($session_group_id)) {
                     </tr>
                 </table>
             </div>
-            
+
             <div id="projecttriallocation-block" class="form-group control-type-text">
                 <div id="TrialLocation" class="form-group control-type-text Title0">
                     <span class="Title1">Trial Location</span>
@@ -504,7 +504,7 @@ if (isset($session_group_id)) {
 
                 </table>
             </div>
-            
+
             <div id="projecttrialchar-block" class="form-group control-type-text">
                 <div id="TrialCharacteristics" class="form-group control-type-text Title0">
                     <span class="Title1">Trial Characteristics</span>
@@ -532,7 +532,7 @@ if (isset($session_group_id)) {
                     </tr>
                 </table>
             </div>
-            
+
             <div id="projectaccessinfo-block" class="form-group control-type-text">
                 <div id="AccesstoInformation" class="form-group control-type-text Title0">
                     <span class="Title1">Access to Information</span>
@@ -588,7 +588,7 @@ if (isset($session_group_id)) {
                     </tr>
                 </table>
             </div>
-            
+
             <div id="projectlicense-block" class="form-group control-type-text">
                 <div id="License" class="form-group control-type-text">
                     <span class="Title1">License <?php echo FieldHelp('HelpTrial31'); ?></span>
@@ -613,7 +613,7 @@ if (isset($session_group_id)) {
             </div>
         </div>
         <div class="clearfix"></div>
-        
+
         <div id="TrialCropInfo" id="TrialCropInfo" class="form-group control-type-text">
             <span class="Title">Trial Crop Info</span>
         </div>
@@ -881,10 +881,12 @@ if (isset($session_group_id)) {
                             <div class=" col-sm-4 control-type-text">
                                 <input class="SearchInput form-control"  name="Variety1" id="Variety1" onkeyup="FilterVariety(this, 1);" type="text" size="36" maxlength="255" value="">
                             </div>
+
                             <div class="DivColIcon">
                                 <span id="DivFilterVariety1" style="display:none;"><?php echo image_tag('loading4.gif', array('size' => '18x18')); ?></span>
                                 <span id="DivFilterVarietyOK1" style="display:none;"><?php echo image_tag('success.png', array('size' => '18x18')); ?></span>
                                 <span id="DivClearFilterVariety1" style="display:none;" class="Span-Action-Link" onclick="ClearFilterVariety(1);" title="Clear"><?php echo image_tag("/images/cross.png", array('size' => '18x18')); ?></span>
+                                <span><a onclick="javascript:openWindow('/variety/new')" title="Create new variety" href="#"><img src="/images/add-icon.png"></a></span>
                             </div>
                         </div>
                         <table class="table table-hover table-striped">
@@ -914,6 +916,7 @@ if (isset($session_group_id)) {
                                 <span id="DivFilterVariablesMeasured1" style="display:none;"><?php echo image_tag('loading4.gif', array('size' => '18x18')); ?></span>
                                 <span id="DivFilterVariablesMeasuredOK1" style="display:none;"><?php echo image_tag('success.png', array('size' => '18x18')); ?></span>
                                 <span id="DivClearFilterVariablesMeasured1" style="display:none;" class="Span-Action-Link" onclick="ClearFilterVariablesMeasured(1);" title="Clear"><?php echo image_tag("/images/cross.png", array('size' => '18x18')); ?></span>
+                                <span><a onclick="javascript:openWindow('/variablesmeasured/new')" title="Create new variables measured" href="#"><img src="/images/add-icon.png"></a></span>
                             </div>
                         </div>
                         <table class="table table-hover table-striped">
@@ -1168,7 +1171,7 @@ if (isset($session_group_id)) {
             <?php } ?>
             </br>
             <p style=" border-bottom-color:#6CB662; border-bottom-style:dashed; border-bottom-width:2px; border-top-width:1px;"></p>
-            
+
             <div class="col-sm-6 form-group control-type-text">
                 <button class="btn btn-action" type="button" name="nuevocrop" id="nuevocrop" title="Add New Crop"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span> Add New Crop</button>
                 <input type="hidden" value="1" id="filacrop" name="filacrop">
