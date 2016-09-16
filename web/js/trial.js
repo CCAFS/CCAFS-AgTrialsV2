@@ -326,7 +326,7 @@ function GetInfoRowVM(i) {
 
 function AddVariablesMeasured() {
 
-    var id_crop = jQuery('#id_crop_variablesmeasured').val();
+    var id_crop_variablesmeasured = jQuery('#id_crop_variablesmeasured').val();
     var id_traitclass = jQuery('#id_traitclass').val();
     var vrmsname = jQuery('#vrmsname').val();
     var vrmsshortname = jQuery('#vrmsshortname').val();
@@ -339,12 +339,12 @@ function AddVariablesMeasured() {
     var MensajeFaltantes = "";
 
     //inicio: VALIDACION (Project/Trial Groups Name)
-    if (id_crop === '') {
+    if (id_crop_variablesmeasured === '') {
         BanderaFaltantes = true;
         MensajeFaltantes += Ico2 + "Crop <br>";
-        CampoObligatorio('id_crop');
+        CampoObligatorio('id_crop_variablesmeasured');
     } else {
-        CampoNormalObligatorio('id_crop');
+        CampoNormalObligatorio('id_crop_variablesmeasured');
     }
     if (id_traitclass === '') {
         BanderaFaltantes = true;
