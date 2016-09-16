@@ -194,7 +194,7 @@ td a{
     z-index: 1050;
     overflow: auto;
     width: 650px;
-    max-height: 550px;
+    max-height: 700px;
     margin: -250px 0 0 -280px;
     background-color: #ffffff;
     border: 1px solid #999;
@@ -259,4 +259,12 @@ td a{
     color: #595959;
     background-color: #EEEEEE;
     border-color: #ECF0F1;
+}
+
+#ModalCreateNewVariety{
+    height: 450px !important;
+}
+
+#ModalCreateNewVariablesMeasured{
+    height: 550px !important;
 }
