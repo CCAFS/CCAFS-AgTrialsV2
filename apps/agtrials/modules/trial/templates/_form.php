@@ -26,18 +26,13 @@ if (isset($session_group_id)) {
 }
 ?>
 
-
 <script>$('.mitooltip').tooltip();</script>
-
-
 <link href="/autocompletemultiple/autocomplete.css" rel="stylesheet" type="text/css" />
 <script src="/autocompletemultiple/lib/jquery.1.7.1.js"></script>
 <script src="/autocompletemultiple/lib/jquery.ui.1.8.16.js"></script>
 <script src="/autocompletemultiple/autocomplete.js" type="text/javascript"></script>
-
 <script type="text/javascript" src="/jqueryConfirm/jquery-confirm.min.js"></script>
 <link rel="stylesheet" type="text/css" media="screen" href="/jqueryConfirm/jquery-confirm.min.css" />
-
 <script type="text/javascript" src="/jquery.qtip/jquery.qtip.min.js"></script>
 <script type="text/javascript" src="/jquery.qtip/jquery.qtip.js"></script>
 <script type="text/javascript" src="/js/help.js"></script>
@@ -1204,19 +1199,19 @@ if (isset($session_group_id)) {
                             <div class="form-group col-md-12">
                                 <div class="col-sm-3"><span class="Mandatory">*</span> Crop:</div>
                                 <div class="col-sm-6 control-type-text control-name-vrmsshortname">
-                                    <?php echo select_from_table("id_crop_variablesmeasured", "TbCrop", "id_crop", "crpname", null, null, "class='form-control' required='required'"); ?>
+                                    <?php echo select_from_table("id_crop_variablesmeasured", "TbCrop", "id_crop", "crpname", null, null, "class='form-control'"); ?>
                                 </div>
                             </div>
                             <div class="form-group col-md-12">
                                 <div class="col-sm-3"><span class="Mandatory">*</span> Trait class:</div>
                                 <div class="col-sm-6 control-type-text control-name-vrmsshortname">
-                                    <?php echo select_from_table("id_traitclass", "TbTraitclass", "id_traitclass", "trclname", null, null, "class='form-control' required='required'"); ?>                   
+                                    <?php echo select_from_table("id_traitclass", "TbTraitclass", "id_traitclass", "trclname", null, null, "class='form-control'"); ?>                   
                                 </div>
                             </div>
                             <div class="form-group col-md-12">
                                 <div class="col-sm-3"><span class="Mandatory">*</span> Name:</div>
                                 <div class="col-sm-6 control-type-text control-name-vrmsshortname">
-                                    <input type="text" name="vrmsname" class="form-control" id="vrmsname"  required='required'>                                   
+                                    <input type="text" name="vrmsname" class="form-control" id="vrmsname">                                   
                                 </div>
                             </div>
                             <div class="form-group col-md-12">
@@ -1240,14 +1235,14 @@ if (isset($session_group_id)) {
                             <div class="form-group col-md-12">
                                 <div class="col-sm-3"><span class="Mandatory">*</span> Unit:</div>
                                 <div class="col-sm-6 control-type-text control-name-vrmsunit">
-                                    <input type="text" name="vrmsunit" class="form-control" id="vrmsunit" required="required">                                   
+                                    <input type="text" name="vrmsunit" class="form-control" id="vrmsunit">                                   
                                 </div>
                             </div>
                         </fieldset>
                     </div>
                     <div class="modal-footer">
-                        <button title="Save" id="Save" name="Save" type="button" class="btn btn-action" onclick="AddVariablesMeasured();"><span class="glyphicon glyphicon-save" aria-hidden="true"></span> Save</button>
-                        <button title="Close" id="Close" name="Close" type="button" class="btn btn-action" data-dismiss="modal"> Close</button>
+                        <button title="Save" id="SaveAddVariablesMeasured" name="SaveAddVariablesMeasured" type="button" class="btn btn-action" onclick="AddVariablesMeasured();"><span class="glyphicon glyphicon-save" aria-hidden="true"></span> Save</button>
+                        <button title="Close" id="CloseAddVariablesMeasured" name="CloseAddVariablesMeasured" type="button" class="btn btn-action" data-dismiss="modal"> Close</button>
                     </div>
                 </form>
             </div>
@@ -1255,7 +1250,7 @@ if (isset($session_group_id)) {
     </div>
 </div>
 
-<!-- Modal Create New Variety -->
+<!--Modal Create New Variety--> 
 <div class="container">
     <div class="modal fade" id="ModalCreateNewVariety" role="dialog">
         <div class="modal-content">
@@ -1268,7 +1263,7 @@ if (isset($session_group_id)) {
                             <div class="form-group col-md-12">
                                 <div class="col-sm-3"><span class="Mandatory">*</span> Crop:</div>
                                 <div class="col-sm-6 control-type-text control-name-vrmsshortname">
-                                    <?php echo select_from_table("id_crop_variety", "TbCrop", "id_crop", "crpname", null, null, "class='form-control' required='required'"); ?>
+                                    <?php echo select_from_table("id_crop_variety", "TbCrop", "id_crop", "crpname", null, null, "class='form-control'"); ?>
                                 </div>
                             </div>
                             <div class="form-group col-md-12">
@@ -1298,8 +1293,8 @@ if (isset($session_group_id)) {
                         </fieldset>
                     </div>
                     <div class="modal-footer">
-                        <button title="Save" id="Save" name="Save" type="button" class="btn btn-action" onclick="AddVariety();"><span class="glyphicon glyphicon-save" aria-hidden="true"></span> Save</button>
-                        <button title="Close" id="Close" name="Close" type="button" class="btn btn-action" data-dismiss="modal"> Close</button>
+                        <button title="Save" id="SaveAddVariety" name="SaveAddVariety" type="button" class="btn btn-action" onclick="AddVariety();"><span class="glyphicon glyphicon-save" aria-hidden="true"></span> Save</button>
+                        <button title="Close" id="CloseAddVariety" name="CloseAddVariety" type="button" class="btn btn-action" data-dismiss="modal"> Close</button>
                     </div>
                 </form>
             </div>

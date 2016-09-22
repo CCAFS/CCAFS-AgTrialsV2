@@ -374,7 +374,7 @@ function AddVariablesMeasured() {
         jQuery.ajax({
             type: "GET",
             url: "/variablesmeasured/AddVariablesMeasured/",
-            data: {id_crop: id_crop, id_traitclass: id_traitclass, vrmsname: vrmsname, vrmsshortname: vrmsshortname, vrmsdefinition: vrmsdefinition, vrmnmethod: vrmnmethod, vrmsunit: vrmsunit},
+            data: {id_crop: id_crop_variablesmeasured, id_traitclass: id_traitclass, vrmsname: vrmsname, vrmsshortname: vrmsshortname, vrmsdefinition: vrmsdefinition, vrmnmethod: vrmnmethod, vrmsunit: vrmsunit},
             success: function () {
                 jQuery('#id_crop_variablesmeasured').val('');
                 jQuery('#id_traitclass').val('');
