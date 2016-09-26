@@ -199,11 +199,11 @@ function GetInfoProject($id_project) {
         $QUERY .= "T7.id_donor AS id_donor,T7.dnrname AS dnrname, ";
         $QUERY .= "T.prjabstract AS prjabstract, T.prjkeywords AS prjkeywords ";
         $QUERY .= "FROM tb_project T ";
-        $QUERY .= "INNER JOIN tb_contactperson T2 ON T.id_leadofproject = T2.id_contactperson ";
-        $QUERY .= "INNER JOIN tb_institution T3 ON T2.id_institution = T3.id_institution ";
-        $QUERY .= "INNER JOIN tb_administrativedivision T4 ON T3.id_country = T4.id_administrativedivision ";
-        $QUERY .= "INNER JOIN tb_institution T5 ON T.id_projectimplementinginstitutions = T5.id_institution ";
-        $QUERY .= "INNER JOIN tb_administrativedivision T6 ON T5.id_country = T6.id_administrativedivision ";
+        $QUERY .= "LEFT JOIN tb_contactperson T2 ON T.id_leadofproject = T2.id_contactperson ";
+        $QUERY .= "LEFT JOIN tb_institution T3 ON T2.id_institution = T3.id_institution ";
+        $QUERY .= "LEFT JOIN tb_administrativedivision T4 ON T3.id_country = T4.id_administrativedivision ";
+        $QUERY .= "LEFT JOIN tb_institution T5 ON T.id_projectimplementinginstitutions = T5.id_institution ";
+        $QUERY .= "LEFT JOIN tb_administrativedivision T6 ON T5.id_country = T6.id_administrativedivision ";
         $QUERY .= "LEFT JOIN tb_donor T7 ON T.id_donor = T7.id_donor ";
         $QUERY .= "WHERE T.id_project = $id_project ";
         $QUERY .= "ORDER BY T.prjname ";
@@ -220,8 +220,8 @@ function GetInfoTrialManager($id_contactperson) {
         $QUERY = "SELECT T.id_contactperson AS id_contactperson, T.cnprfirstname AS cnprfirstname, T.cnprmiddlename AS cnprmiddlename, T.cnprlastname AS cnprlastname, T.cnpremail AS cnpremail, T.cnprtelephone AS cnprtelephone, ";
         $QUERY .= "T2.id_institution AS id_institution, T2.insname AS insname, T3.id_administrativedivision AS id_countryinstitution, T3.dmdvname AS namecountryinstitution ";
         $QUERY .= "FROM tb_contactperson T ";
-        $QUERY .= "INNER JOIN tb_institution T2 ON T.id_institution = T2.id_institution ";
-        $QUERY .= "INNER JOIN tb_administrativedivision T3 ON T2.id_country = T3.id_administrativedivision ";
+        $QUERY .= "LEFT JOIN tb_institution T2 ON T.id_institution = T2.id_institution ";
+        $QUERY .= "LEFT JOIN tb_administrativedivision T3 ON T2.id_country = T3.id_administrativedivision ";
         $QUERY .= "WHERE T.id_contactperson = $id_contactperson ";
         $QUERY .= "ORDER BY T.cnprfirstname";
         $st = $connection->execute($QUERY);
