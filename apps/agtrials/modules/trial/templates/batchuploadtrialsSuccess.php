@@ -1,5 +1,5 @@
-<?php 
-use_javascript('batchuploadtrials.js'); 
+<?php
+use_javascript('batchuploadtrials.js');
 use_javascript('introJs/batchUploadTrials.js');
 ?>
 <div class="row">
@@ -18,25 +18,27 @@ use_javascript('introJs/batchUploadTrials.js');
                 <form class="form-horizontal" id="FormStep1" name="FormStep1" action="" enctype="multipart/form-data" method="post" autocomplete="off">
                     <fieldset>
                         <div id="DivCrop1" class="form-group control-type-text" style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px;">
-                            <div id="crop-block">
-                            <fieldset style="margin-top: 10px; margin-left: 13px;">
-                                <span>Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</span></br>
-                                <span>Compressed File must have <b>.zip</b> extension and must be smaller than <b>20 MB</b> maximum size.</span></br>
-                                <span>Exact number of columns <b>'12'</b> for Trial Template File.</span></br>
-                                <span>Exact number of columns <b>'17'</b> for Trial Info Template File.</span></br>
-                                <span>Max. <b>300</b> trials with result templates files data.</span></br>
-                                <span>Max. <b>1000</b> trials without result templates files data.</span></br>
-                                <span>Don't close the window during the process.</span>
-                            </fieldset>
+                            <div id="information-block">
+                                <fieldset style="margin-top: 10px; margin-left: 13px;">
+                                    <span>Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</span></br>
+                                    <span>Compressed File must have <b>.zip</b> extension and must be smaller than <b>20 MB</b> maximum size.</span></br>
+                                    <span>Exact number of columns <b>'12'</b> for Trial Template File.</span></br>
+                                    <span>Exact number of columns <b>'17'</b> for Trial Info Template File.</span></br>
+                                    <span>Max. <b>300</b> trials with result templates files data.</span></br>
+                                    <span>Max. <b>1000</b> trials without result templates files data.</span></br>
+                                    <span>Don't close the window during the process.</span>
+                                </fieldset>
+                            </div>
                             <br>
-                            <fieldset style="margin-top: 10px; margin-left: 13px;">
-                                <div class="form-group control-type-text">
-                                    <div class="col-sm-2">Crop:</div>      
-                                    <div class="col-sm-4 control-type-text">
-                                        <?php echo select_from_table("id_crop1", "TbCrop", "id_crop", "crpname", null, null, "onchange='ValidaCrop(1);' class='form-control'"); ?>
+                            <div id="crop-block">
+                                <fieldset style="margin-top: 10px; margin-left: 13px;">
+                                    <div class="form-group control-type-text">
+                                        <div class="col-sm-2">Crop:</div>      
+                                        <div class="col-sm-4 control-type-text">
+                                            <?php echo select_from_table("id_crop1", "TbCrop", "id_crop", "crpname", null, null, "onchange='ValidaCrop(1);' class='form-control'"); ?>
+                                        </div>
                                     </div>
-                                </div>
-                            </fieldset>
+                                </fieldset>
                             </div>
                             <fieldset id="varieties-block">
                                 <div class="panel panel-default">
