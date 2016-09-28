@@ -72,7 +72,7 @@ function startIntro() {
             },
             {
                 element: '#buttons-block',
-                intro: "4"
+                intro: "Click on the save button when you have completed your information."
             }
         ]
     });
