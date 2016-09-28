@@ -1,6 +1,5 @@
 <?php
 use_javascript('batchuploadtrials.js');
-use_javascript('introJs/batchUploadTrials.js');
 ?>
 <div class="row">
     <div class="col-md-2 left-column">
@@ -12,6 +11,7 @@ use_javascript('introJs/batchUploadTrials.js');
     </div>
     <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
         <?php if ($Form == "Step1") { ?>
+            <?php use_javascript('introJs/batchUploadTrialsStep1.js'); ?>
             <?php echo ModuleHelp('Batch Upload Trials Step 1'); ?>
             <span class="Title">Batch Upload Trials</span>
             <div class="Session">
@@ -197,6 +197,7 @@ use_javascript('introJs/batchUploadTrials.js');
             </div>
 
         <?php } else if ($Form == "Step2") { ?>
+            <?php use_javascript('introJs/batchUploadTrialsStep2.js'); ?>
             <?php echo ModuleHelp('Batch Upload Trials Step 2'); ?>
             <span class="Title">Batch Upload Trials</span>
             <div id="div_loading" class="loading" align="center" style="display:none;">
@@ -205,34 +206,40 @@ use_javascript('introJs/batchUploadTrials.js');
             </div>
             <div class="Session">
                 <form class="form-horizontal" id="FormStep2" name="FormStep2" action="<?php echo url_for('@UploadTemplates'); ?>" enctype="multipart/form-data" method="post" autocomplete="off">
-                    <fieldset style="margin-top: 10px; margin-left: 13px; padding-top: 10px;">
-                        <span>Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</span></br>
-                        <span>Compressed File must have <b>.zip</b> extension and must be smaller than <b>20 MB</b> maximum size.</span></br>
-                        <span>Exact number of columns <b>'12'</b> for Trial Template File.</span></br>
-                        <span>Exact number of columns <b>'17'</b> for Trial Info Template File.</span></br>
-                        <span>Max. <b>300</b> trials with result templates files data.</span></br>
-                        <span>Max. <b>1000</b> trials without result templates files data.</span></br>
-                        <span>Don't close the window during the process.</span>
-                    </fieldset>
+                    <div id="information-block">
+                        <fieldset style="margin-top: 10px; margin-left: 13px; padding-top: 10px;">
+                            <span>Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</span></br>
+                            <span>Compressed File must have <b>.zip</b> extension and must be smaller than <b>20 MB</b> maximum size.</span></br>
+                            <span>Exact number of columns <b>'12'</b> for Trial Template File.</span></br>
+                            <span>Exact number of columns <b>'17'</b> for Trial Info Template File.</span></br>
+                            <span>Max. <b>300</b> trials with result templates files data.</span></br>
+                            <span>Max. <b>1000</b> trials without result templates files data.</span></br>
+                            <span>Don't close the window during the process.</span>
+                        </fieldset>
+                    </div>
                     <br>
                     <?php if ($Template) { ?>
+                    <div id="templatepack-block">
+                            <fieldset style="margin-top: 10px; margin-left: 13px;">
+                                <div class="form-group control-type-text">
+                                    <div class="col-sm-3">Template Pack:</div>
+                                    <div class=" col-sm-4 control-type-text">
+                                        <button class="btn btn-action" type="button" name="DownloadDataTemplate" id="DownloadDataTemplate"  onclick="window.location.href = '/trial/templatepack/'" title="Download Template Pack"><span aria-hidden="true" class="glyphicon glyphicon-download"></span> Download</button>      
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    <?php } ?>
+                    <div id="trialtemplatefile-block">
                         <fieldset style="margin-top: 10px; margin-left: 13px;">
                             <div class="form-group control-type-text">
-                                <div class="col-sm-3">Template Pack:</div>
+                                <div class="col-sm-3">Trial Template File:</div>
                                 <div class=" col-sm-4 control-type-text">
-                                    <button class="btn btn-action" type="button" name="DownloadDataTemplate" id="DownloadDataTemplate"  onclick="window.location.href = '/trial/templatepack/'" title="Download Template Pack"><span aria-hidden="true" class="glyphicon glyphicon-download"></span> Download</button>      
+                                    <input type="file" name="TrialTemplateFile" id="TrialTemplateFile" value=""/>
                                 </div>
                             </div>
                         </fieldset>
-                    <?php } ?>
-                    <fieldset style="margin-top: 10px; margin-left: 13px;">
-                        <div class="form-group control-type-text">
-                            <div class="col-sm-3">Trial Template File:</div>
-                            <div class=" col-sm-4 control-type-text">
-                                <input type="file" name="TrialTemplateFile" id="TrialTemplateFile" value=""/>
-                            </div>
-                        </div>
-                    </fieldset>
+                    </div>
                     <fieldset style="margin-top: 10px; margin-left: 13px;">
                         <div class="form-group control-type-text">
                             <div class="col-sm-3">Trial Info Template File:</div>
