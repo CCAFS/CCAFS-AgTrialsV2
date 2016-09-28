@@ -12,7 +12,7 @@ use_javascript('introJs/batchUploadTrials.js');
     </div>
     <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
         <?php if ($Form == "Step1") { ?>
-            <?php echo ModuleHelp('Batch Upload Trials'); ?>
+            <?php echo ModuleHelp('Batch Upload Trials Step 1'); ?>
             <span class="Title">Batch Upload Trials</span>
             <div class="Session">
                 <form class="form-horizontal" id="FormStep1" name="FormStep1" action="" enctype="multipart/form-data" method="post" autocomplete="off">
@@ -197,7 +197,7 @@ use_javascript('introJs/batchUploadTrials.js');
             </div>
 
         <?php } else if ($Form == "Step2") { ?>
-            <?php echo ModuleHelp('Batch Upload Trials'); ?>
+            <?php echo ModuleHelp('Batch Upload Trials Step 2'); ?>
             <span class="Title">Batch Upload Trials</span>
             <div id="div_loading" class="loading" align="center" style="display:none;">
                 <?php echo image_tag('loading.gif'); ?>
