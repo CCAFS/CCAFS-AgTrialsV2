@@ -4,7 +4,7 @@ function startIntro(){
     steps: [
       {
         element: '#nameofproject-block',
-        intro: 'nameofproject'
+        intro: 'The name that the data provider gives to identify the project'
       },
       {
         element: '#projectleader-block',
