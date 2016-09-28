@@ -3,6 +3,10 @@ function startIntro() {
     intro.setOptions({
         steps: [
             {
+                element: '#information-block',
+                intro: 'Information.'
+            },
+            {
                 element: '#crop-block',
                 intro: 'Choose a crop or agricultural technology that is the subject of your data.'
             },
