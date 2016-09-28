@@ -12,11 +12,11 @@ function startIntro() {
             },
             {
                 element: '#variablesMeasured-block',
-                intro: '3'
+                intro: 'Indicate the variables measured that are included in your data set.'
             },
             {
                 element: '#nuevocrop',
-                intro: 'The traits or variables measured in your trial'
+                intro: 'The traits or variables measured in your trial.'
             },
             {
                 element: '#buttons-block',
