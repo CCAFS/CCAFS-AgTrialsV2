@@ -3,16 +3,32 @@ function startIntro() {
     intro.setOptions({
         steps: [
             {
-                element: '#information-block',
+                element: '#Information-block',
                 intro: 'General information.'
             },
             {
-                element: '#templatepack-block',
+                element: '#TemplatePack-block',
                 intro: 'A.'
             },
             {
-                element: '#trialtemplatefile-block',
+                element: '#TrialTemplateFile-block',
                 intro: 'B.'
+            },
+            {
+                element: '#TrialInfoTemplateFile-block',
+                intro: 'C.'
+            },
+            {
+                element: '#ZipFileTrialInfoDataTemplates-block',
+                intro: 'D.'
+            },
+            {
+                element: '#ZipFiles-block',
+                intro: 'E.'
+            },
+            {
+                element: '#Buttons-block',
+                intro: 'F.'
             }
         ]
     });

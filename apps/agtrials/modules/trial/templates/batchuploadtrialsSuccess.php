@@ -206,7 +206,7 @@ use_javascript('batchuploadtrials.js');
             </div>
             <div class="Session">
                 <form class="form-horizontal" id="FormStep2" name="FormStep2" action="<?php echo url_for('@UploadTemplates'); ?>" enctype="multipart/form-data" method="post" autocomplete="off">
-                    <div id="information-block">
+                    <div id="Information-block">
                         <fieldset style="margin-top: 10px; margin-left: 13px; padding-top: 10px;">
                             <span>Templates Files must have <b>.xls</b> extension and must be smaller than <b>5 MB</b> maximum size.</span></br>
                             <span>Compressed File must have <b>.zip</b> extension and must be smaller than <b>20 MB</b> maximum size.</span></br>
@@ -219,7 +219,7 @@ use_javascript('batchuploadtrials.js');
                     </div>
                     <br>
                     <?php if ($Template) { ?>
-                    <div id="templatepack-block">
+                        <div id="TemplatePack-block">
                             <fieldset style="margin-top: 10px; margin-left: 13px;">
                                 <div class="form-group control-type-text">
                                     <div class="col-sm-3">Template Pack:</div>
@@ -230,7 +230,7 @@ use_javascript('batchuploadtrials.js');
                             </fieldset>
                         </div>
                     <?php } ?>
-                    <div id="trialtemplatefile-block">
+                    <div id="TrialTemplateFile-block">
                         <fieldset style="margin-top: 10px; margin-left: 13px;">
                             <div class="form-group control-type-text">
                                 <div class="col-sm-3">Trial Template File:</div>
@@ -240,37 +240,45 @@ use_javascript('batchuploadtrials.js');
                             </div>
                         </fieldset>
                     </div>
-                    <fieldset style="margin-top: 10px; margin-left: 13px;">
-                        <div class="form-group control-type-text">
-                            <div class="col-sm-3">Trial Info Template File:</div>
-                            <div class=" col-sm-4 control-type-text">
-                                <input type="file" name="TrialInfoTemplateFile" id="TrialInfoTemplateFile" value=""/>
+                    <div id="TrialInfoTemplateFile-block">
+                        <fieldset style="margin-top: 10px; margin-left: 13px;">
+                            <div class="form-group control-type-text">
+                                <div class="col-sm-3">Trial Info Template File:</div>
+                                <div class=" col-sm-4 control-type-text">
+                                    <input type="file" name="TrialInfoTemplateFile" id="TrialInfoTemplateFile" value=""/>
+                                </div>
                             </div>
-                        </div>
-                    </fieldset>
-                    <fieldset style="margin-top: 10px; margin-left: 13px;">
-                        <div class="form-group control-type-text">
-                            <div class="col-sm-3">Zip File Trial Info Data Templates:</div>
-                            <div class=" col-sm-4 control-type-text">
-                                <input type="file" name="CompressedFileTrialInfoDataTemplates" id="CompressedFileTrialInfoDataTemplates" value=""/>
+                        </fieldset>
+                    </div>
+                    <div id="ZipFileTrialInfoDataTemplates-block">
+                        <fieldset style="margin-top: 10px; margin-left: 13px;">
+                            <div class="form-group control-type-text">
+                                <div class="col-sm-3">Zip File Trial Info Data Templates:</div>
+                                <div class=" col-sm-4 control-type-text">
+                                    <input type="file" name="CompressedFileTrialInfoDataTemplates" id="CompressedFileTrialInfoDataTemplates" value=""/>
+                                </div>
                             </div>
-                        </div>
-                    </fieldset>
-                    <fieldset style="margin-top: 10px; margin-left: 13px;">
-                        <div class="form-group control-type-text">
-                            <div class="col-sm-3">Zip Files:</div>
-                            <div class=" col-sm-4 control-type-text">
-                                <input type="file" name="CompressedFiles" id="CompressedFiles" value=""/>
+                        </fieldset>
+                    </div>
+                    <div id="ZipFiles-block">
+                        <fieldset style="margin-top: 10px; margin-left: 13px;">
+                            <div class="form-group control-type-text">
+                                <div class="col-sm-3">Zip Files:</div>
+                                <div class=" col-sm-4 control-type-text">
+                                    <input type="file" name="CompressedFiles" id="CompressedFiles" value=""/>
+                                </div>
                             </div>
-                        </div>
-                    </fieldset>
-                    <fieldset style="margin-top: 10px; margin-left: 13px;">
-                        <div class="form-group control-type-text" style="margin-left: 0px;">
-                            <button class="btn btn-action" type="button" title=" Back " id="Back" neme="Back" onclick="history.back();"> <span class ="glyphicon glyphicon-step-backward" aria-hidden="true"></span>&ensp;Back&ensp;</button>
-                            <button class="btn btn-action" type="button" title=" Execute " id="Execute" neme="Execute"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&ensp;Execute&ensp;</button>
-                            <input type="hidden" value="" id="FormAction" name="FormAction"/>
-                        </div>
-                    </fieldset>
+                        </fieldset>
+                    </div>
+                    <div id="Buttons-block">
+                        <fieldset style="margin-top: 10px; margin-left: 13px;">
+                            <div class="form-group control-type-text" style="margin-left: 0px;">
+                                <button class="btn btn-action" type="button" title=" Back " id="Back" neme="Back" onclick="history.back();"> <span class ="glyphicon glyphicon-step-backward" aria-hidden="true"></span>&ensp;Back&ensp;</button>
+                                <button class="btn btn-action" type="button" title=" Execute " id="Execute" neme="Execute"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&ensp;Execute&ensp;</button>
+                                <input type="hidden" value="" id="FormAction" name="FormAction"/>
+                            </div>
+                        </fieldset>
+                    </div>
                 </form>
             </div>
         <?php } ?>
