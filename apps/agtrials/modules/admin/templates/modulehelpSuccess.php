@@ -71,7 +71,8 @@
                                 <option value="">Choose...</option>
                                 <option value="Trial" title="Trial">Trial</option>
                                 <option value="Search Trials" title="Search Trials">Search Trials</option>
-                                <option value="Batch Upload Trials" title="Batch Upload Trials">Batch Upload Trials</option>
+                                <option value="Batch Upload Trials Step 1" title="Batch Upload Trials Step 1">Batch Upload Trials Step 1</option>
+                                <option value="Batch Upload Trials Step 2" title="Batch Upload Trials Step 2">Batch Upload Trials Step 2</option>
                                 <option value="Batch uploads" title="Batch uploads">Batch uploads</option>
                                 <option value="Explore and verify - Trial Location" title="Explore and verify - Trial Location">Explore and verify - Trial Location</option>
                                 <option value="Explore and verify - Variables measured" title="Explore and verify - Variables measured">Explore and verify - Variables measured</option>
