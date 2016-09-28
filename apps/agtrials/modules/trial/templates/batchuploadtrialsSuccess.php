@@ -197,7 +197,7 @@ use_javascript('introJs/batchUploadTrials.js');
             </div>
 
         <?php } else if ($Form == "Step2") { ?>
-
+            <?php echo ModuleHelp('Batch Upload Trials'); ?>
             <span class="Title">Batch Upload Trials</span>
             <div id="div_loading" class="loading" align="center" style="display:none;">
                 <?php echo image_tag('loading.gif'); ?>

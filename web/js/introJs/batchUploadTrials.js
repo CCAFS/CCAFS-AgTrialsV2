@@ -24,7 +24,7 @@ function startIntro() {
             },
             {
                 element: '#buttons-block1',
-                intro: "x"
+                intro: "Click on the next step button for continue, or click on the skip this step button for not complete this page and continue."
             }
         ]
     });
