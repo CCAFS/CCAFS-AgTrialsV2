@@ -4,7 +4,7 @@ function startIntro() {
         steps: [
             {
                 element: '#information-block',
-                intro: 'Information.'
+                intro: 'General information.'
             },
             {
                 element: '#crop-block',
@@ -16,15 +16,15 @@ function startIntro() {
             },
             {
                 element: '#variablesMeasured-block',
-                intro: 'Indicate the variables measured that are included in your data set.'
-            },
-            {
-                element: '#nuevocrop',
                 intro: 'The traits or variables measured in your trial.'
             },
             {
-                element: '#buttons-block',
-                intro: "For trials with multiple crops (such as intercropping trials) here you can add additional crops."
+                element: '#nuevocrop',
+                intro: 'For trials with multiple crops (such as intercropping trials) here you can add additional crops.'
+            },
+            {
+                element: '#buttons-block1',
+                intro: "x"
             }
         ]
     });

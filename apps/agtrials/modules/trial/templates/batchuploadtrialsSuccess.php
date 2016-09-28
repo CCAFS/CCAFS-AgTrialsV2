@@ -184,10 +184,12 @@ use_javascript('introJs/batchUploadTrials.js');
                             <input type="hidden" value="1" id="filacrop" name="filacrop">
                         </div>
                         <br><br><br>
-                        <div style="margin-left: 0px; padding-left: 15px;">
-                            <button class="btn btn-action" type="button" title=" Next step " id="NextStep" neme="NextStep"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&ensp;Next step&ensp;</button>
-                            <button class="btn btn-action" type="button" title=" Skip this step " id="SkipStep" neme="SkipStep"><span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span>&ensp;Skip this step&ensp;</button>
-                            <input type="hidden" value="" id="FormAction" name="FormAction"/>
+                        <div id="buttons-block1">
+                            <div style="margin-left: 0px; padding-left: 15px;">
+                                <button class="btn btn-action" type="button" title=" Next step " id="NextStep" neme="NextStep"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&ensp;Next step&ensp;</button>
+                                <button class="btn btn-action" type="button" title=" Skip this step " id="SkipStep" neme="SkipStep"><span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span>&ensp;Skip this step&ensp;</button>
+                                <input type="hidden" value="" id="FormAction" name="FormAction"/>
+                            </div>
                         </div>
                         <br>
                     </fieldset>
