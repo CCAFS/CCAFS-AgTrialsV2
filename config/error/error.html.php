@@ -121,35 +121,28 @@ if (sfContext::getInstance()->getUser()->isAuthenticated()) {
                 <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
                     <span class="Title">Error</span>
                 </div>
-                <table>
-                    <tr>
-                        <td>
-                            <div class="sfTContainer">
-                                <div class="sfTMessageContainer sfTAlert">
-                                    <div class="sfTMessageWrap">
-                                        <h1>Oops! An Error Occurred</h1>
-                                        <h5>The server returned a "<?php echo $code ?> <?php echo $text ?>".</h5>
-                                    </div>
-                                </div>
+                <div class="sfTContainer">
+                    <div class="sfTMessageContainer sfTAlert">
+                        <div class="sfTMessageWrap">
+                            <h1>Oops! An Error Occurred</h1>
+                            <h5>The server returned a "<?php echo $code ?> <?php echo $text ?>".</h5>
+                        </div>
+                    </div>
 
-                                <dl class="sfTMessageInfo">
-                                    <dt><b>Something is broken</b></dt>
-                                    <dd>Please e-mail us at [<a href="mailto:h.r.espinosa@cgiar.org">h.r.espinosa@cgiar.org</a>] and let us know what you were doing when this error occurred. We will fix it as soon as possible.
-                                        Sorry for any inconvenience caused.</dd>
+                    <dl class="sfTMessageInfo">
+                        <dt><b>Something is broken</b></dt>
+                        <dd>Please e-mail us at [<a href="mailto:h.r.espinosa@cgiar.org">h.r.espinosa@cgiar.org</a>] and let us know what you were doing when this error occurred. We will fix it as soon as possible.
+                            Sorry for any inconvenience caused.</dd>
 
-                                    <dt><b>What's next</b></dt>
-                                    <dd>
-                                        <ul class="sfTIconList">
-                                            <li class="sfTLinkMessage"><a href="javascript:history.go(-1)">Back to previous page</a></li>
-                                            <li class="sfTLinkMessage"><a href="/">Go to Homepage</a></li>
-                                        </ul>
-                                    </dd>
-                                </dl>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                </table>
+                        <dt><b>What's next</b></dt>
+                        <dd>
+                            <ul class="sfTIconList">
+                                <li class="sfTLinkMessage"><a href="javascript:history.go(-1)">Back to previous page</a></li>
+                                <li class="sfTLinkMessage"><a href="/">Go to Homepage</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
             </div>              
         </div>
         <footer>
