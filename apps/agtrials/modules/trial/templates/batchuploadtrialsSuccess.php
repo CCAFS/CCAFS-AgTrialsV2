@@ -51,8 +51,9 @@ use_javascript('batchuploadtrials.js');
                                         </div>
                                         <div class="DivColIcon">
                                             <span id="DivFilterVariety1" style="display:none;"><?php echo image_tag('loading4.gif', array('size' => '18x18')); ?></span>
-                                            <span id="DivFilterVarietyOK1" style="display:none;"><?php echo image_tag('success.png', array('size' => '18x18')); ?></span>
+                                            <!--<span id="DivFilterVarietyOK1" style="display:none;"><?php echo image_tag('success.png', array('size' => '18x18')); ?></span>-->
                                             <span id="DivClearFilterVariety1" style="display:none;" class="Span-Action-Link" onclick="ClearFilterVariety(1);" title="Clear"><?php echo image_tag("/images/cross.png", array('size' => '18x18')); ?></span>
+                                            <span id="DivCreateNewVariety" title="Create new Variety" data-toggle="modal" onclick="GetInfoRowV(1);" data-target="#ModalCreateNewVariety"><?php echo image_tag("/images/add-icon.png", array('size' => '18x18')); ?></span>
                                         </div>
                                     </div>
                                     <table class="table table-hover table-striped">
@@ -122,8 +123,9 @@ use_javascript('batchuploadtrials.js');
                                             </div>
                                             <div class="DivColIcon">
                                                 <span id="DivFilterVariety<?php echo $i; ?>" style="display:none;"><?php echo image_tag('loading4.gif', array('size' => '18x18')); ?></span>
-                                                <span id="DivFilterVarietyOK<?php echo $i; ?>" style="display:none;"><?php echo image_tag('success.png', array('size' => '18x18')); ?></span>
+                                                <!--<span id="DivFilterVarietyOK<?php echo $i; ?>" style="display:none;"><?php echo image_tag('success.png', array('size' => '18x18')); ?></span>-->
                                                 <span id="DivClearFilterVariety<?php echo $i; ?>" style="display:none;" class="Span-Action-Link" onclick="ClearFilterVariety(<?php echo $i; ?>);" title="Clear"><?php echo image_tag("/images/cross.png", array('size' => '18x18')); ?></span>
+                                                <span id="DivCreateNewVariety" title="Create new Variety" data-toggle="modal" onclick="GetInfoRowV(<?php echo $i; ?>);" data-target="#ModalCreateNewVariety"><?php echo image_tag("/images/add-icon.png", array('size' => '18x18')); ?></span>
                                             </div>
                                         </div>
                                         <table class="table table-hover table-striped">
@@ -282,5 +284,121 @@ use_javascript('batchuploadtrials.js');
                 </form>
             </div>
         <?php } ?>
+    </div>
+</div>
+
+<!-- Modal Create New Variables Measured-->
+<div class="container">
+    <div class="modal fade" id="ModalCreateNewVariablesMeasured" role="dialog">
+        <div class="modal-content">
+            <div style="margin-top: 13px;" class="col-md-12 sf_admin_form">
+                <span class="Title">New Variables measured</span>
+                <form id="FormCreateNewVariablesMeasured" class="form-horizontal" action="">
+                    <div style="margin-top: 10px; margin-bottom: 10px;" class="Session">
+                        <div style="margin-left: 0px;" class="form-group control-type-text">All fields marked with <span class="Mandatory">*</span> are required.</div>
+                        <fieldset>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3"><span class="Mandatory">*</span> Crop:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmsshortname">
+                                    <?php echo select_from_table("id_crop_variablesmeasured", "TbCrop", "id_crop", "crpname", null, null, "class='form-control'"); ?>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3"><span class="Mandatory">*</span> Trait class:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmsshortname">
+                                    <?php echo select_from_table("id_traitclass", "TbTraitclass", "id_traitclass", "trclname", null, null, "class='form-control'"); ?>                   
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3"><span class="Mandatory">*</span> Name:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmsshortname">
+                                    <input type="text" name="vrmsname" class="form-control" id="vrmsname">                                   
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3">Short name:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmsshortname">
+                                    <input type="text" name="vrmsshortname" class="form-control" id="vrmsshortname">                                   
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3">Definition:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmsdefinition">
+                                    <input type="text" name="vrmsdefinition" class="form-control" id="vrmsdefinition">                                   
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3">Method:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmnmethod">
+                                    <input type="text" name="vrmnmethod" class="form-control" id="vrmnmethod">                                    
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3"><span class="Mandatory">*</span> Unit:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmsunit">
+                                    <input type="text" name="vrmsunit" class="form-control" id="vrmsunit">                                   
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="modal-footer">
+                        <button title="Save" id="SaveAddVariablesMeasured" name="SaveAddVariablesMeasured" type="button" class="btn btn-action" onclick="AddVariablesMeasured();"><span class="glyphicon glyphicon-save" aria-hidden="true"></span> Save</button>
+                        <button title="Close" id="CloseAddVariablesMeasured" name="CloseAddVariablesMeasured" type="button" class="btn btn-action" data-dismiss="modal"> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal Create New Variety--> 
+<div class="container">
+    <div class="modal fade" id="ModalCreateNewVariety" role="dialog">
+        <div class="modal-content">
+            <div style="margin-top: 13px;" class="col-md-12 sf_admin_form">
+                <span class="Title">New Variety</span>
+                <form id="FormCreateNewVariety" class="form-horizontal" action="">
+                    <div style="margin-top: 10px; margin-bottom: 10px;" class="Session">
+                        <div style="margin-left: 0px;" class="form-group control-type-text">All fields marked with <span class="Mandatory">*</span> are required.</div>
+                        <fieldset>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3"><span class="Mandatory">*</span> Crop:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmsshortname">
+                                    <?php echo select_from_table("id_crop_variety", "TbCrop", "id_crop", "crpname", null, null, "class='form-control'"); ?>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3"><span class="Mandatory">*</span> Origin:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmsshortname">
+                                    <input type="text" name="vrtorigin" class="form-control" id="vrtorigin">                                   
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3"><span class="Mandatory">*</span> Name:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmsshortname">
+                                    <input type="text" name="vrtname" class="form-control" id="vrtname">                                   
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3">Synonymous:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmsshortname">
+                                    <input type="text" name="vrtsynonymous" class="form-control" id="vrtsynonymous">                                   
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="col-sm-3">Description:</div>
+                                <div class="col-sm-6 control-type-text control-name-vrmsshortname">
+                                    <input type="text" name="vrtdescription" class="form-control" id="vrtdescription">                                   
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="modal-footer">
+                        <button title="Save" id="SaveAddVariety" name="SaveAddVariety" type="button" class="btn btn-action" onclick="AddVariety();"><span class="glyphicon glyphicon-save" aria-hidden="true"></span> Save</button>
+                        <button title="Close" id="CloseAddVariety" name="CloseAddVariety" type="button" class="btn btn-action" data-dismiss="modal"> Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
