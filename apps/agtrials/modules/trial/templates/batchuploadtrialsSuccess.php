@@ -1,5 +1,6 @@
 <?php
 use_javascript('batchuploadtrials.js');
+use_javascript('trials.js');
 ?>
 <div class="row">
     <div class="col-md-2 left-column">
