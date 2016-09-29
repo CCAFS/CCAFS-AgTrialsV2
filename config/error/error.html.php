@@ -117,29 +117,7 @@ if (sfContext::getInstance()->getUser()->isAuthenticated()) {
             </div>
         </header>
         <div class="container"> 
-            <style type="text/css">
-                .control-type-date select {width:auto;}
-            </style>  
-
             <div class="row">
-                <div class="col-md-2 left-column">
-                    <div class="MenuTrials">
-                        <span style="font-size:16px; font-weight: bold;  padding-left: 30px;">Database Tables</span>
-                        <div onclick="window.location.href = '/contactperson'" class="MenuButtonLeft "> Contact person </div>
-                        <div onclick="window.location.href = '/crop'" class="MenuButtonLeft "> Crop </div>
-                        <div onclick="window.location.href = '/donor'" class="MenuButtonLeft "> Donor </div>
-                        <div onclick="window.location.href = '/experimentaldesign'" class="MenuButtonLeft "> Experimental design </div>
-                        <div onclick="window.location.href = '/fieldhelp'" class="MenuButtonLeft "> Field help </div>
-                        <div onclick="window.location.href = '/institution'" class="MenuButtonLeft "> Institution </div>
-                        <div onclick="window.location.href = '/modulehelp'" class="MenuButtonLeft "> Module help </div>
-                        <div onclick="window.location.href = '/project'" class="MenuButtonLeft "> Project </div>
-                        <div onclick="window.location.href = '/rolecontactperson'" class="MenuButtonLeft "> Role contact person </div>
-                        <div onclick="window.location.href = '/traitclass'" class="MenuButtonLeft "> Trait class </div>
-                        <div onclick="window.location.href = '/triallocation'" class="MenuButtonLeft "> Trial location </div>
-                        <div onclick="window.location.href = '/variablesmeasured'" class="MenuButtonLeft "> Variables measured </div>
-                        <div onclick="window.location.href = '/variety'" class="MenuButtonLeft selected"> Variety </div>
-                        <div onclick="window.location.href = '/sfGuardUser'" class="MenuButtonLeft "> Users </div>
-                    </div>    </div>
                 <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
                     <span class="Title">Error</span>
                 </div>
