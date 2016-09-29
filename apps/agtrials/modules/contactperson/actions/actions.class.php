@@ -45,7 +45,6 @@ class contactpersonActions extends autoContactpersonActions {
         $id_contactperson = $request->getParameter("id_contactperson");
         $Query00 = Doctrine::getTable('TbContactperson')->findOneByIdContactperson($id_contactperson);
         $id_user_registro = $Query00->getIdUser();
-        $user = $this->getUser();
 
         //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
         if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
@@ -70,7 +69,6 @@ class contactpersonActions extends autoContactpersonActions {
         $id_contactperson = $request->getParameter("id_contactperson");
         $Query00 = Doctrine::getTable('TbContactperson')->findOneByIdContactperson($id_contactperson);
         $id_user_registro = $Query00->getIdUser();
-        $user = $this->getUser();
 
         //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
         if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
