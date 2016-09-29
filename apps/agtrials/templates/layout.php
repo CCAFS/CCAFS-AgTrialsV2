@@ -135,7 +135,7 @@ if ($sf_user->isAuthenticated()) {
             <div class="container">
 
                 <p>
-                    Please report any system problems and send us your feedback here. <br/>
+                    Please report any system problems and send us your feedback <a href="/contact" target="_blank">here</a>. <br/>
                     @ Copyright 2016 <br/>
                     Current version 2.0 
                 </p>
