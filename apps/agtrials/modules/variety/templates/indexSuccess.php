@@ -1,18 +1,17 @@
 <?php use_helper('I18N', 'Date') ?>
 <?php include_partial('variety/assets') ?>
-<?php $Notice = MessageNotice(); ?>
-<?php if ($Notice != ""): ?>
-    <div class="alert alert-danger alert-block">
-        <a href="#" class="close fade" data-dismiss="alert">&times;</a>
-        <?php echo $Notice . "****"; ?>
-    </div>
-<?php endif; ?>
 <div class="row">
     <div class="col-md-2 left-column">
         <?php include_partial('admin/ModuleMenu') ?>
     </div>
     <div class="col-md-10 sf_admin_form" style="margin-top: 13px;">
-
+        <?php $Notice = MessageNotice(); ?>
+        <?php if ($Notice != ""): ?>
+            <div class="alert alert-danger alert-block">
+                <a href="#" class="close fade" data-dismiss="alert">&times;</a>
+                <?php echo $Notice; ?>
+            </div>
+        <?php endif; ?>
         <span class="Title">Variety</span>
         <div class="pull-right">
             <a href="#filterPopup" class="btn btn-action" data-toggle="modal"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Filter</a>
