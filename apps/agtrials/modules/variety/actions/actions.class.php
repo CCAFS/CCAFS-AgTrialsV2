@@ -44,7 +44,6 @@ class varietyActions extends autoVarietyActions {
         $id_variety = $request->getParameter("id_variety");
         $Query00 = Doctrine::getTable('TbVariety')->findOneByIdVariety($id_variety);
         $id_user_registro = $Query00->getIdUser();
-        $user = $this->getUser();
 
         //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
         if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
@@ -62,7 +61,6 @@ class varietyActions extends autoVarietyActions {
         $id_variety = $request->getParameter("id_variety");
         $Query00 = Doctrine::getTable('TbVariety')->findOneByIdVariety($id_variety);
         $id_user_registro = $Query00->getIdUser();
-        $user = $this->getUser();
 
         //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
         if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
