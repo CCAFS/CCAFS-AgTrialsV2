@@ -48,9 +48,14 @@ class varietyActions extends autoVarietyActions {
         //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
         if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
             $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Delete!");
+        } else {
+            $request->checkCSRFProtection();
+            $this->dispatcher->notify(new sfEvent($this, 'admin.delete_object', array('object' => $this->getRoute()->getObject())));
+            if ($this->getRoute()->getObject()->delete()) {
+                $this->getUser()->setFlash('notice', 'The item was deleted successfully.');
+            }
+            $this->redirect('@tb_variety');
         }
-        $this->getUser()->setFlash('notice', 'The item was deleted successfully.');
-        $this->redirect("/variety");
     }
 
     public function executeEdit(sfWebRequest $request) {
