@@ -44,12 +44,18 @@ class traitclassActions extends autoTraitclassActions {
         $id_traitclass = $request->getParameter("id_traitclass");
         $Query00 = Doctrine::getTable('TbTraitclass')->findOneByIdTraitclass($id_traitclass);
         $id_user_registro = $Query00->getIdUser();
-        $user = $this->getUser();
 
         //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
         if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
             $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Delete!");
-            $this->redirect("/traitclass");
+            $this->redirect('@tb_traitclass');
+        } else {
+            $request->checkCSRFProtection();
+            $this->dispatcher->notify(new sfEvent($this, 'admin.delete_object', array('object' => $this->getRoute()->getObject())));
+            if ($this->getRoute()->getObject()->delete()) {
+                $this->getUser()->setFlash('notice', 'The item was deleted successfully.');
+            }
+            $this->redirect('@tb_traitclass');
         }
     }
 
@@ -62,12 +68,11 @@ class traitclassActions extends autoTraitclassActions {
         $id_traitclass = $request->getParameter("id_traitclass");
         $Query00 = Doctrine::getTable('TbTraitclass')->findOneByIdTraitclass($id_traitclass);
         $id_user_registro = $Query00->getIdUser();
-        $user = $this->getUser();
 
         //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
         if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
             $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Edit!");
-            $this->redirect("/traitclass");
+            $this->redirect('@tb_traitclass');
         }
     }
 

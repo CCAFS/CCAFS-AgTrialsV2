@@ -44,12 +44,18 @@ class rolecontactpersonActions extends autoRolecontactpersonActions {
         $id_rolecontactperson = $request->getParameter("id_rolecontactperson");
         $Query00 = Doctrine::getTable('TbRolecontactperson')->findOneByIdRolecontactperson($id_rolecontactperson);
         $id_user_registro = $Query00->getIdUser();
-        $user = $this->getUser();
 
         //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
         if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
             $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Delete!");
-            $this->redirect("/rolecontactperson");
+            $this->redirect('@tb_rolecontactperson');
+        } else {
+            $request->checkCSRFProtection();
+            $this->dispatcher->notify(new sfEvent($this, 'admin.delete_object', array('object' => $this->getRoute()->getObject())));
+            if ($this->getRoute()->getObject()->delete()) {
+                $this->getUser()->setFlash('notice', 'The item was deleted successfully.');
+            }
+            $this->redirect('@tb_rolecontactperson');
         }
     }
 
@@ -62,12 +68,11 @@ class rolecontactpersonActions extends autoRolecontactpersonActions {
         $id_rolecontactperson = $request->getParameter("id_rolecontactperson");
         $Query00 = Doctrine::getTable('TbRolecontactperson')->findOneByIdRolecontactperson($id_rolecontactperson);
         $id_user_registro = $Query00->getIdUser();
-        $user = $this->getUser();
 
         //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
         if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
             $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Edit!");
-            $this->redirect("/rolecontactperson");
+            $this->redirect('@tb_rolecontactperson');
         }
     }
 
