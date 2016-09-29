@@ -44,7 +44,6 @@ class variablesmeasuredActions extends autoVariablesmeasuredActions {
         $id_variablesmeasured = $request->getParameter("id_variablesmeasured");
         $Query00 = Doctrine::getTable('TbVariablesmeasured')->findOneByIdVariablesmeasured($id_variablesmeasured);
         $id_user_registro = $Query00->getIdUser();
-        $user = $this->getUser();
 
         //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
         if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
@@ -69,7 +68,6 @@ class variablesmeasuredActions extends autoVariablesmeasuredActions {
         $id_variablesmeasured = $request->getParameter("id_variablesmeasured");
         $Query00 = Doctrine::getTable('TbVariablesmeasured')->findOneByIdVariablesmeasured($id_variablesmeasured);
         $id_user_registro = $Query00->getIdUser();
-        $user = $this->getUser();
 
         //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
         if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {

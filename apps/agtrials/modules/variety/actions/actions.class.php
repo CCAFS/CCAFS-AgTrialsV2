@@ -72,7 +72,7 @@ class varietyActions extends autoVarietyActions {
         //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
         if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
             $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Edit!");
-            $this->redirect("/variety");
+            $this->redirect("@tb_variety");
         }
     }
 
