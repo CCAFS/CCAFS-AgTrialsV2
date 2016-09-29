@@ -49,6 +49,7 @@ class varietyActions extends autoVarietyActions {
         if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
             $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Delete!");
         }
+        $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Delete!");
         $this->redirect("/variety");
     }
 
