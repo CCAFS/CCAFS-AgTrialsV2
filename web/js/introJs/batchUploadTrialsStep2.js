@@ -7,28 +7,24 @@ function startIntro() {
                 intro: 'General information.'
             },
             {
-                element: '#TemplatePack-block',
-                intro: 'A.'
-            },
-            {
                 element: '#TrialTemplateFile-block',
-                intro: 'B.'
+                intro: 'Choose here your trial Dtemplate file.'
             },
             {
                 element: '#TrialInfoTemplateFile-block',
-                intro: 'C.'
+                intro: 'Choose here your trial info template file.'
             },
             {
                 element: '#ZipFileTrialInfoDataTemplates-block',
-                intro: 'D.'
+                intro: 'Choose here your zip file, it is contains all "trial info data templates" without folders'
             },
             {
                 element: '#ZipFiles-block',
-                intro: 'E.'
+                intro: 'Choose here your zip file, it is contains all files of his essays without folders.'
             },
             {
                 element: '#Buttons-block',
-                intro: 'F.'
+                intro: "Click on the back button for return to after page, or click on the execute button for run processes."
             }
         ]
     });
