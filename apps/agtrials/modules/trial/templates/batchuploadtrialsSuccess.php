@@ -82,8 +82,9 @@ use_javascript('trial.js');
                                         </div>
                                         <div class="DivColIcon">
                                             <span id="DivFilterVariablesMeasured1" style="display:none;"><?php echo image_tag('loading4.gif', array('size' => '18x18')); ?></span>
-                                            <span id="DivFilterVariablesMeasuredOK1" style="display:none;"><?php echo image_tag('success.png', array('size' => '18x18')); ?></span>
+                                            <!--<span id="DivFilterVariablesMeasuredOK1" style="display:none;"><?php echo image_tag('success.png', array('size' => '18x18')); ?></span>-->
                                             <span id="DivClearFilterVariablesMeasured1" style="display:none;" class="Span-Action-Link" onclick="ClearFilterVariablesMeasured(1);" title="Clear"><?php echo image_tag("/images/cross.png", array('size' => '18x18')); ?></span>
+                                            <span id="DivCreateNewVariablesMeasured" title="Create new variable measured" data-toggle="modal" onclick="GetInfoRowVM(1);" data-target="#ModalCreateNewVariablesMeasured"><?php echo image_tag("/images/add-icon.png", array('size' => '18x18')); ?></span>
                                         </div>
                                     </div>
                                     <table class="table table-hover table-striped">
@@ -154,8 +155,9 @@ use_javascript('trial.js');
                                             </div>
                                             <div class="DivColIcon">
                                                 <span id="DivFilterVariablesMeasured<?php echo $i; ?>" style="display:none;"><?php echo image_tag('loading4.gif', array('size' => '18x18')); ?></span>
-                                                <span id="DivFilterVariablesMeasuredOK<?php echo $i; ?>" style="display:none;"><?php echo image_tag('success.png', array('size' => '18x18')); ?></span>
+                                                <!--<span id="DivFilterVariablesMeasuredOK<?php echo $i; ?>" style="display:none;"><?php echo image_tag('success.png', array('size' => '18x18')); ?></span>-->
                                                 <span id="DivClearFilterVariablesMeasured<?php echo $i; ?>" style="display:none;" class="Span-Action-Link" onclick="ClearFilterVariablesMeasured(<?php echo $i; ?>);" title="Clear"><?php echo image_tag("/images/cross.png", array('size' => '18x18')); ?></span>
+                                                <span id="DivCreateNewVariablesMeasured" title="Create new variable measured" data-toggle="modal" onclick="GetInfoRowVM(<?php echo $i; ?>);" data-target="#ModalCreateNewVariablesMeasured"><?php echo image_tag("/images/add-icon.png", array('size' => '18x18')); ?></span>
                                             </div>
                                         </div>
                                         <table class="table table-hover table-striped">
