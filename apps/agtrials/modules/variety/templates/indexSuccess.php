@@ -4,7 +4,7 @@
 <?php if ($Notice != ""): ?>
     <div class="alert alert-danger alert-block">
         <a href="#" class="close fade" data-dismiss="alert">&times;</a>
-        <?php echo $Notice; ?>
+        <?php echo $Notice . "****"; ?>
     </div>
 <?php endif; ?>
 <div class="row">
