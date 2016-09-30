@@ -89,6 +89,7 @@ function Legend(controlDiv) {
     controlUI.style.backgroundColor = '#FFF';
     controlUI.style.borderStyle = 'solid';
     controlUI.style.borderWidth = '0px';
+    controlUI.style.borderRadius = '2px';
     controlUI.title = 'Legend';
     controlDiv.appendChild(controlUI);
 
@@ -100,13 +101,13 @@ function Legend(controlDiv) {
     controlText.style.textAlign = 'left';
 
     // Add the text
-    controlText.innerHTML = '<b>Number of trials</b><br />' +
-            '<span><img width="8" height="8"  style="padding-left: 4px;" src="/GoogleMapsV3/images/m0.png"/>&nbsp; 1<br />' +
-            '<span><img width="16" height="16" src="/GoogleMapsV3/images/m1.png"/> 2 - 10<br />' +
-            '<span><img width="16" height="16" src="/GoogleMapsV3/images/m2.png"/> 11 - 100<br />' +
-            '<span><img width="16" height="16" src="/GoogleMapsV3/images/m3.png"/> 101 - 1000<br />' +
-            '<span><img width="16" height="16" src="/GoogleMapsV3/images/m4.png"/> 1001 - 10000<br />' +
-            '<span><img width="16" height="16" src="/GoogleMapsV3/images/m5.png"/> > 100000<br />';
+    controlText.innerHTML = '<span style="font-size: 10.5px; font-weight: bold;">Number of trials</span><br/><br/>' +
+            '<span><img width="8" height="8"  style="padding-left: 4px;" src="/GoogleMapsV3/images/m0.png"/>&nbsp; 1</span><br/>' +
+            '<span><img width="16" height="16" src="/GoogleMapsV3/images/m1.png"/> 2 - 10</span><br/>' +
+            '<span><img width="16" height="16" src="/GoogleMapsV3/images/m2.png"/> 11 - 100</span><br/>' +
+            '<span><img width="16" height="16" src="/GoogleMapsV3/images/m3.png"/> 101 - 1.000</span><br/>' +
+            '<span><img width="16" height="16" src="/GoogleMapsV3/images/m4.png"/> 1.001 - 10.000</span><br/>' +
+            '<span><img width="16" height="16" src="/GoogleMapsV3/images/m5.png"/> 10.001 - more</span><br/>';
     controlUI.appendChild(controlText);
 }
 
