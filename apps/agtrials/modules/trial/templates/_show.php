@@ -658,27 +658,23 @@ $ArrTrialInfo = GetInfoTrialCropInfo($form->getObject()->get('id_trial'));
                                     <td>Created date:&ensp;</td>
                                     <td><?php echo $form->getObject()->get('created_at'); ?></td>
                                 </tr>
-                                <tr>
-                                    <td>Updated user:&ensp;</td>
-                                    <td>
-                                        <?php
-                                        if ($form->getObject()->get('id_user_update') != '') {
+                                <?php if ($form->getObject()->get('id_user_update') != '') { ?>
+                                    <tr>
+                                        <td>Updated user:&ensp;</td>
+                                        <td>
+                                            <?php
                                             $User = Doctrine::getTable('SfGuardUser')->findOneById($form->getObject()->get('id_user_update'));
                                             echo "{$User->getFirst_name()} {$User->getLast_name()}";
-                                        }
-                                        ?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Updated date:&ensp;</td>
-                                    <td>
-                                        <?php
-                                        if ($form->getObject()->get('id_user_update') != '') {
-                                            echo $form->getObject()->get('updated_at');
-                                        }
-                                        ?>
-                                    </td>
-                                </tr>
+                                            ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Updated date:&ensp;</td>
+                                        <td>
+                                            <?php echo $form->getObject()->get('updated_at'); ?>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
                             </table>
                         </div>
                     </div>
