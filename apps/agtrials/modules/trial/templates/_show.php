@@ -659,6 +659,17 @@ $ArrTrialInfo = GetInfoTrialCropInfo($form->getObject()->get('id_trial'));
                                     <td><?php echo $form->getObject()->get('created_at'); ?></td>
                                 </tr>
                                 <tr>
+                                    <td>Updated user:&ensp;</td>
+                                    <td>
+                                        <?php
+                                        if ($form->getObject()->get('id_user_update') != '') {
+                                            $User = Doctrine::getTable('SfGuardUser')->findOneById($form->getObject()->get('id_user_update'));
+                                            echo "{$User->getFirst_name()} {$User->getLast_name()}";
+                                        }
+                                        ?>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>Updated date:&ensp;</td>
                                     <td><?php echo $form->getObject()->get('updated_at'); ?></td>
                                 </tr>
