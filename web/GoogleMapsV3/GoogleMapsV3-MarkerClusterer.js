@@ -12,6 +12,7 @@
     }
     var j;
     function k(a, b, c) {
+
         this.extend(k, google.maps.OverlayView);
         this.c = a;
         this.a = [];
@@ -47,9 +48,12 @@
         });
         b && b.length && this.C(b, !1)
     }
+
+
     j = k.prototype;
     j.Q = "/images/GoogleMap/m";
     j.P = "png";
+
     j.extend = function (a, b) {
         return function (a) {
             for (var b in a.prototype)
@@ -62,6 +66,8 @@
         if (!this.A)
             this.A = !0, n(this)
     };
+
+
 
     j.draw = function () {};
     function l(a) {
@@ -164,6 +170,8 @@
         b = b.fromDivPixelToLatLng(f);
         a.extend(c);
         a.extend(b);
+
+
         return a
     };
 
@@ -213,6 +221,7 @@
                 }
     }
     function s(a) {
+
         this.k = a;
         this.c = a.getMap();
         this.g = a.w();
@@ -284,6 +293,8 @@
     j.getBounds = function () {
         for (var a = new google.maps.LatLngBounds(this.d, this.d), b = this.o(), c = 0, f; f = b[c]; c++)
             a.extend(f.getPosition());
+
+
         return a
     };
 
@@ -304,6 +315,8 @@
     }
     j.getMap = h("c");
     function t(a, b, c) {
+
+
         a.k.extend(t, google.maps.OverlayView);
         this.j = b;
         this.fa = c || 0;
@@ -317,8 +330,10 @@
     j = t.prototype;
     j.onAdd = function () {
         this.b = document.createElement("DIV");
+
+
         if (this.t)
-            this.b.style.cssText = A(this, B(this, this.d)), this.b.innerHTML = this.B.text;
+            this.b.style.cssText = A(this, B(this, this.d)), this.b.innerHTML = numberWithCommas(this.B.text);
         this.getPanes().overlayMouseTarget.appendChild(this.b);
         var a = this;
         google.maps.event.addDomListener(this.b, "click", function () {
@@ -332,6 +347,8 @@
         var c = a.getProjection().fromLatLngToDivPixel(b);
         c.x -= parseInt(a.p / 2, 10);
         c.y -= parseInt(a.h / 2, 10);
+
+
         return c
     }
     j.draw = function () {
@@ -364,6 +381,9 @@
 
     j.setCenter = e("d");
     function A(a, b) {
+
+
+
         var c = [];
         c.push("background-image:url(" + a.da + ");");
         c.push("background-position:" + (a.D ? a.D : "0 0") + ";");
@@ -403,3 +423,7 @@
     t.prototype.draw = t.prototype.draw;
     t.prototype.onRemove = t.prototype.onRemove;
 })();
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}

@@ -105,9 +105,9 @@ function Legend(controlDiv) {
             '<span><img width="8" height="8"  style="padding-left: 4px;" src="/GoogleMapsV3/images/m0.png"/>&nbsp; 1</span><br/>' +
             '<span><img width="16" height="16" src="/GoogleMapsV3/images/m1.png"/> 2 - 10</span><br/>' +
             '<span><img width="16" height="16" src="/GoogleMapsV3/images/m2.png"/> 11 - 100</span><br/>' +
-            '<span><img width="16" height="16" src="/GoogleMapsV3/images/m3.png"/> 101 - 1.000</span><br/>' +
-            '<span><img width="16" height="16" src="/GoogleMapsV3/images/m4.png"/> 1.001 - 10.000</span><br/>' +
-            '<span><img width="16" height="16" src="/GoogleMapsV3/images/m5.png"/> 10.001 - more</span><br/>';
+            '<span><img width="16" height="16" src="/GoogleMapsV3/images/m3.png"/> 101 - 1,000</span><br/>' +
+            '<span><img width="16" height="16" src="/GoogleMapsV3/images/m4.png"/> 1,001 - 10,000</span><br/>' +
+            '<span><img width="16" height="16" src="/GoogleMapsV3/images/m5.png"/> 10,001 - more</span><br/>';
     controlUI.appendChild(controlText);
 }
 
