@@ -33,7 +33,7 @@ class sfGuardAuthActions extends BasesfGuardAuthActions {
                     $cuerpo .= "<body>";
                     $cuerpo .= "<h1>Account Notification</h1>";
                     $cuerpo .= "<p>";
-                    $cuerpo .= "<b>Username: </b>$Username<br> <b>New Password: </b>$newpassword<br><br><a href='http://www.agtrials.org/login' target='blank'>www.agtrials.org</a><br><br><b>Please remember to change your password. After you login: ADMIN>>CHANGE PASSWORD</b>";
+                    $cuerpo .= "<b>Username: </b>$Username<br> <b>New Password: </b>$newpassword<br><br><a href='http://www.agtrials.org/login' target='blank'>www.agtrials.org</a><br><br><b>Please remember to change your password. After you login: Profile user -> <a href='http://www.agtrials.org/changepassword' target='blank'>Change password</a> </b>";
                     $cuerpo .= "</p>";
                     $cuerpo .= "<b>Send:</b> $sent ";
                     $cuerpo .= "</body>";
