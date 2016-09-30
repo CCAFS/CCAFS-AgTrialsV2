@@ -671,7 +671,13 @@ $ArrTrialInfo = GetInfoTrialCropInfo($form->getObject()->get('id_trial'));
                                 </tr>
                                 <tr>
                                     <td>Updated date:&ensp;</td>
-                                    <td><?php echo $form->getObject()->get('updated_at'); ?></td>
+                                    <td>
+                                        <?php
+                                        if ($form->getObject()->get('id_user_update') != '') {
+                                            echo $form->getObject()->get('updated_at');
+                                        }
+                                        ?>
+                                    </td>
                                 </tr>
                             </table>
                         </div>
