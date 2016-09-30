@@ -76,36 +76,36 @@ function toggleMarkerClusterer() {
     }
 }
 
-function Legend(controlDiv, map) {
+function Legend(controlDiv) {
     // Set CSS styles for the DIV containing the control
     // Setting padding to 5 px will offset the control
     // from the edge of the map
-    controlDiv.style.padding = '3px';
+    controlDiv.style.padding = '10px';
 
     // Set CSS for the control border
     var controlUI = document.createElement('DIV');
-    controlUI.style.backgroundColor = '#EBE8D9';
+    controlUI.style.backgroundColor = '#FFF';
     controlUI.style.borderStyle = 'solid';
-    controlUI.style.borderWidth = '1px';
-    controlUI.title = 'Leyenda';
+    controlUI.style.borderWidth = '0px';
+    controlUI.title = 'Legend';
     controlDiv.appendChild(controlUI);
 
     // Set CSS for the control text
     var controlText = document.createElement('DIV');
     controlText.style.fontFamily = 'Arial';
     controlText.style.fontSize = '9px';
-    controlText.style.paddingLeft = '2px';
-    controlText.style.paddingRight = '2px';
+    controlText.style.padding = '5px';
+    controlText.style.textAlign = 'left';
 
     // Add the text
-    controlText.innerHTML = '<b>Agrupación puntos</b><br />' +
-            '<span title="Punto"><img width="12" height="12" src="/GoogleMapsV3/images/m0.png"/> 1<br />' +
-            '<span title="De 2 a 10 Puntos"><img width="16" height="16" src="/GoogleMapsV3/images/m1.png"/> 2 - 10<br />' +
-            '<span title="De 11 a 100 Puntos"><img width="16" height="16" src="/GoogleMapsV3/images/m2.png"/> 11 - 100<br />' +
-            '<span title="De 101 a 1000 Puntos"><img width="16" height="16" src="/GoogleMapsV3/images/m3.png"/> 101 - 1000<br />' +
-            '<span title="De 1001 a 10000 Puntos"><img width="16" height="16" src="/GoogleMapsV3/images/m4.png"/> 1001 - 10000<br />' +
-            '<span title="Mayor a 10000 Puntos"><img width="16" height="16" src="/GoogleMapsV3/images/m5.png"/> > 100000<br />';
-    //controlUI.appendChild(controlText);
+    controlText.innerHTML = '<b>Number of trials</b><br />' +
+            '<span><img width="8" height="8"  style="padding-left: 4px;" src="/GoogleMapsV3/images/m0.png"/>&nbsp; 1<br />' +
+            '<span><img width="16" height="16" src="/GoogleMapsV3/images/m1.png"/> 2 - 10<br />' +
+            '<span><img width="16" height="16" src="/GoogleMapsV3/images/m2.png"/> 11 - 100<br />' +
+            '<span><img width="16" height="16" src="/GoogleMapsV3/images/m3.png"/> 101 - 1000<br />' +
+            '<span><img width="16" height="16" src="/GoogleMapsV3/images/m4.png"/> 1001 - 10000<br />' +
+            '<span><img width="16" height="16" src="/GoogleMapsV3/images/m5.png"/> > 100000<br />';
+    controlUI.appendChild(controlText);
 }
 
 /**

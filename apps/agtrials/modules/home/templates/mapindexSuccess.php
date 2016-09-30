@@ -4,7 +4,7 @@ $QUERY00 = "SELECT T.id_trial,CR.crpname,TL.trlclatitude,TL.trlclongitude ";
 $QUERY00 .= "FROM tb_trial T INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
 $QUERY00 .= "INNER JOIN tb_crop CR ON TI.id_crop = CR.id_crop ";
 $QUERY00 .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
-$QUERY00 .= "WHERE TL.trlclatitude IS NOT NULL AND TL.trlclongitude IS NOT NULL ";
+$QUERY00 .= "WHERE TL.trlclatitude IS NOT NULL AND TL.trlclongitude IS NOT NULL";
 $st = $connection->execute($QUERY00);
 $Resultado00 = $st->fetchAll();
 $a = 0;
@@ -17,10 +17,8 @@ foreach ($Resultado00 AS $fila) {
 
     $Desc_punto = "<b>Crop:</b> $Crop<br>";
     $Desc_punto .= "<br><img width='16' height='16' src='/images/lens-icon.png'><A HREF=\"#\" onClick=\"wopen({$id_trial})\"> More information</A>";
-    if (($latitud != '') && ($longitud != '')) {
-        $puntos['info'][$a] = array('title' => "$Crop", 'context' => $Desc_punto, 'lat' => $latitud, 'log' => $longitud);
-        $a++;
-    }
+    $puntos['info'][$a] = array('title' => "$Crop", 'context' => $Desc_punto, 'lat' => $latitud, 'log' => $longitud);
+    $a++;
 }
 $maps = json_encode($puntos);
 ?>

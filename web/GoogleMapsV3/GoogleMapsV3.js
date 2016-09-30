@@ -113,7 +113,7 @@ function initialize() {
                     flat: true,
                     icon: '/images/GoogleMap/m0.png'
                 });
-                google.maps.event.addListener(markers[level][i], 'click', (function (marker, i) {
+                google.maps.event.addListener(markers[level][i], 'click', (function (i) {
                     return function () {
                         var details = markers[level][i];
                         infowindow.setContent(details.context);
