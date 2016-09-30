@@ -101,7 +101,7 @@ function Legend(controlDiv) {
     controlText.style.textAlign = 'left';
 
     // Add the text
-    controlText.innerHTML = '<span style="font-size: 10.5px; font-weight: bold;">Number of trials</span><br/><br/>' +
+    controlText.innerHTML = '<span style="font-size: 10px; font-weight: bold;">Number of trials</span><br/><br/>' +
             '<span><img width="8" height="8"  style="padding-left: 4px;" src="/GoogleMapsV3/images/m0.png"/>&nbsp; 1</span><br/>' +
             '<span><img width="16" height="16" src="/GoogleMapsV3/images/m1.png"/> 2 - 10</span><br/>' +
             '<span><img width="16" height="16" src="/GoogleMapsV3/images/m2.png"/> 11 - 100</span><br/>' +
