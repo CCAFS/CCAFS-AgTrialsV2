@@ -22,20 +22,30 @@ foreach ($Resultado00 AS $fila) {
 }
 $maps = json_encode($puntos);
 ?>
-
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ3AuoynudzyBkbJ6uTVbC3PdQDObXjfc"></script>
-<script type="text/javascript" src="/GoogleMapsV3/GoogleMapsV3-Map.js"></script>
-<script type="text/javascript" src="/GoogleMapsV3/GoogleMapsV3-MarkerClusterer.js"></script>
-<script type="text/javascript" src="/GoogleMapsV3/GoogleMapsV3-MarkerManager.js"></script>
-<script type="text/javascript">
-    function wopen(trial) {
-        window.open("/trial/" + trial, "_blank");
-    }
-</script>
-
-<script type="text/javascript" >var markers = <?php echo $maps; ?></script>
-<div class="Mapa">
-    <input type="hidden" id="mgr-cb" name="mgr-cb" />
-    <input type="hidden" id="mc-cb" name="mc-cb" checked/>
-    <div id="map" style="width:100%; height:100%; text-align: center;">Loading Map...</div>
-</div>                        
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <link rel="shortcut icon" href="/images/favicon.ico" />
+        <meta http-equiv="content-type" content="text/html" />
+        <meta name="title" content="The Global Agricultural Trial Repository - CGIAR - CCAFS - CIAT" />
+        <meta name="description" content="The Global Agricultural Trial Repository" />
+        <meta name="keywords" content="Trial, Site, Bibliography, CGIAR, CCAFS, CIAT, Crop, Technology, Variety/Race, Variables measured" />
+        <meta name="language" content="en" />
+        <meta name="robots" content="index, follow" />
+        <title>The Global Agricultural Trial Repository - CGIAR - CCAFS - CIAT</title>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ3AuoynudzyBkbJ6uTVbC3PdQDObXjfc"></script>
+        <script type="text/javascript" src="/GoogleMapsV3/GoogleMapsV3-Map.js"></script>
+        <script type="text/javascript" src="/GoogleMapsV3/GoogleMapsV3-MarkerClusterer.js"></script>
+        <script type="text/javascript" src="/GoogleMapsV3/GoogleMapsV3-MarkerManager.js"></script>
+        <script type="text/javascript">
+            function wopen(trial) {
+                window.open("/trial/" + trial, "_blank");
+            }
+        </script>
+        <script type="text/javascript" >var markers = <?php echo $maps; ?></script>
+    </head>
+    <div class="Mapa">
+        <input type="hidden" id="mgr-cb" name="mgr-cb" />
+        <input type="hidden" id="mc-cb" name="mc-cb" checked/>
+        <div id="map" style="width:100%; height:100%; text-align: center;">Loading Map...</div>
+    </div>    
+</html>
