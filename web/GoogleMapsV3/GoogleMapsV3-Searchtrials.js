@@ -160,7 +160,7 @@ function initialize() {
 
     // Create the legend and display on the map
     var legendDiv = document.createElement('DIV');
-    var legend = new Legend(legendDiv, map);
+    new Legend(legendDiv, map);
     legendDiv.index = 1;
     map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legendDiv);
 }

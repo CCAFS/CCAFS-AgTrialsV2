@@ -53,7 +53,7 @@ function toggleMarkerManager() {
     } else {
         mgr = new MarkerManager(map, {
             trackMarkers: true,
-            maxZoom: 15
+            maxZoom: 5
         });
         google.maps.event.addListener(mgr, 'loaded', function () {
             mgr.addMarkers(markers.info, 0, 5);
@@ -119,6 +119,7 @@ function initialize() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: new google.maps.LatLng(0, 25),
         zoom: 3,
+        maxZoom: 12,
         mapTypeId: google.maps.MapTypeId.TERRAIN
     });
 
@@ -162,7 +163,7 @@ function initialize() {
 
     // Create the legend and display on the map
     var legendDiv = document.createElement('DIV');
-    var legend = new Legend(legendDiv, map);
+    new Legend(legendDiv, map);
     legendDiv.index = 1;
     map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legendDiv);
 }
