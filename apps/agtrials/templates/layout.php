@@ -81,7 +81,7 @@ if ($sf_user->isAuthenticated()) {
     </head>
     <body> 
         <header >
-            <div class="container">
+            <div class="container" onclick="window.location.href = '/'">
                 <div class="row">
                     <div class="LogoAgTrias">AgTrials</div>
                     <div class="LogoNombre">The Global Agricultural Trial Repository and Database</div>
@@ -92,7 +92,7 @@ if ($sf_user->isAuthenticated()) {
         <header class="Menu1">
             <div class="container">
                 <div class="row MenuPPl">
-                    <div id="Home" class="MenuPPlOpc <?php echo $Home ?>" onclick="window.location.href = '/home'">Home</div>
+                    <div id="Home" class="MenuPPlOpc <?php echo $Home ?>" onclick="window.location.href = '/'">Home</div>
                     <div class="MenuPPlOpc <?php echo $About ?>" onclick="window.location.href = '/about'">About Us</div>
                     <div class="MenuPPlOpc <?php echo $Trial ?>" onclick="window.location.href = '/searchtrials'">Trial</div>
                     <?php if ($sf_user->isAuthenticated()) { ?>
