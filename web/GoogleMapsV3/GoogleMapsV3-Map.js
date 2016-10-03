@@ -119,7 +119,7 @@ function initialize() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: new google.maps.LatLng(0, 25),
         zoom: 3,
-        maxZoom: 13,
+        maxZoom: 15,
         mapTypeId: google.maps.MapTypeId.TERRAIN
     });
 
