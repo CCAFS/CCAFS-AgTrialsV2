@@ -273,6 +273,10 @@ register:
   url:   /register/*
   param: { module: home, action: register }
   
+map:
+  url:   /map/*
+  param: { module: home, action: map }
+  
 #modulo Admin
 batchuploadanother:
   url:   /batchuploadanother/*

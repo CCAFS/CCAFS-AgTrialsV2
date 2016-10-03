@@ -113,7 +113,7 @@ class homeActions extends sfActions {
                     $SendPHPMailer->Subject = $asunto;
                     $SendPHPMailer->Body = $cuerpo;
                     $SendPHPMailer->Send();
-                    
+
                     $this->Notice = "Thank you for contact us, Your e-mail has been received and will be answered as soon as possible.";
                 }
             }
@@ -263,6 +263,10 @@ class homeActions extends sfActions {
     }
 
     public function executeMapindex(sfWebRequest $request) {
+        $this->setLayout(false);
+    }
+
+    public function executeMap(sfWebRequest $request) {
         $this->setLayout(false);
     }
 
