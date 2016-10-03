@@ -82,7 +82,7 @@ function Legend(controlDiv) {
     // Set CSS styles for the DIV containing the control
     // Setting padding to 5 px will offset the control
     // from the edge of the map
-    controlDiv.style.padding = '10px';
+    controlDiv.style.padding = '14px';
 
     // Set CSS for the control border
     var controlUI = document.createElement('DIV');
@@ -96,18 +96,18 @@ function Legend(controlDiv) {
     // Set CSS for the control text
     var controlText = document.createElement('DIV');
     controlText.style.fontFamily = 'Arial';
-    controlText.style.fontSize = '9px';
+    controlText.style.fontSize = '13px';
     controlText.style.padding = '5px';
     controlText.style.textAlign = 'left';
 
     // Add the text
-    controlText.innerHTML = '<div style="font-size: 10px; font-weight: bold; padding-bottom: 5px;">Number of trials</div>' +
+    controlText.innerHTML = '<div style="font-size: 14px; font-weight: bold; padding-bottom: 5px;">Number of trials</div>' +
             '<div><img width="8" height="8"  style="padding-left: 4px;" src="/GoogleMapsV3/images/m0.png"/>&nbsp; 1</div>' +
             '<div><img width="16" height="16" src="/GoogleMapsV3/images/m1.png"/> 2 - 10</div>' +
             '<div><img width="16" height="16" src="/GoogleMapsV3/images/m2.png"/> 11 - 100</div>' +
             '<div><img width="16" height="16" src="/GoogleMapsV3/images/m3.png"/> 101 - 1,000</div>' +
             '<div><img width="16" height="16" src="/GoogleMapsV3/images/m4.png"/> 1,001 - 10,000</div>' +
-            '<div><img width="16" height="16" src="/GoogleMapsV3/images/m5.png"/> 10,001 - More</div>' +
+            '<div><img width="16" height="16" src="/GoogleMapsV3/images/m5.png"/> 10,001 - More</div>';
     controlUI.appendChild(controlText);
 }
 
