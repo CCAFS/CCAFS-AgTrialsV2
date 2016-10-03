@@ -108,7 +108,7 @@ function Legend(controlDiv) {
             '<div><img width="16" height="16" src="/GoogleMapsV3/images/m3.png"/> 101 - 1,000</div>' +
             '<div><img width="16" height="16" src="/GoogleMapsV3/images/m4.png"/> 1,001 - 10,000</div>' +
             '<div><img width="16" height="16" src="/GoogleMapsV3/images/m5.png"/> 10,001 - More</div>' +
-            '<div style="padding-top: 5px; padding-left: 7px;"><a href="/maps" target="_blank">Full screen map</a></div>';
+            '<div style="padding-top: 5px; padding-left: 7px;"><a href="/map" target="_blank">Full screen map</a></div>';
     controlUI.appendChild(controlText);
 }
 
