@@ -342,7 +342,7 @@ class adminActions extends sfActions {
         $result = curl_exec($ch);
         
         $arr = json_decode($result);
-        print_r($result);
+        print_r($arr);
 
         die("\n\n Hola...");
     }
