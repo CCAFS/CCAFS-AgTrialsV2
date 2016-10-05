@@ -324,7 +324,7 @@ class adminActions extends sfActions {
         $ch = curl_init($url);
 
         //The JSON data.
-        $jsonData = array('key' => 'CtOqX3NIbBjaD7bt_jGVYk3YUKz3lSJ2kZ50SdnkVM3');
+        $jsonData = array('key' => 'CtOqX3NIbBjaD7bt_jGVYk3YUKz3lSJ2kZ50SdnkVM');
 
         //Encode the array into JSON.
         $jsonDataEncoded = json_encode($jsonData);
