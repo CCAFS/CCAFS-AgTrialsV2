@@ -486,7 +486,6 @@ function CreateTemplateTrialInfoData() {
                         $objPHPExcel->getActiveSheet()->setCellValue('B' . $i, $Vrtname);
                         $objPHPExcel->getActiveSheet()->getStyle('A' . $i)->getFont()->setBold(true);
                         $objPHPExcel->getActiveSheet()->getStyle('B' . $i)->getFont()->setBold(true);
-                        $objPHPExcel->getActiveSheet()->getStyle('C' . $i)->getFont()->setBold(true);
                         $i++;
                     }
                 }
