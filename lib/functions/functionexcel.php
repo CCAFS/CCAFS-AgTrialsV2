@@ -328,11 +328,11 @@ function CreateTemplateTrialInfo() {
             ->setCellValue('J1', 'Harvest start date (yyyy-mm-dd)')
             ->setCellValue('K1', 'Harvest end date (yyyy-mm-dd)')
             ->setCellValue('L1', 'Id Crop')
-            ->setCellValue('M1', 'Trial info template data')
-            ->setCellValue('N1', 'Results file')
-            ->setCellValue('O1', 'Suppplemental information file')
-            ->setCellValue('P1', 'Weather data file')
-            ->setCellValue('Q1', 'Soil data file');
+            ->setCellValue('M1', 'Trial info template data (name file with extension)')
+            ->setCellValue('N1', 'Results file (name file with extension)')
+            ->setCellValue('O1', 'Suppplemental information file (name file with extension)')
+            ->setCellValue('P1', 'Weather data file (name file with extension)')
+            ->setCellValue('Q1', 'Soil data file (name file with extension)');
 
     //DEFINIMOS LA COLUMNA F,G,H,I,J,K COMO TEXT
     $objPHPExcel->getActiveSheet()->getStyle('F1:F100')->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT);
