@@ -45,7 +45,7 @@ sfContext::getInstance()->getConfiguration()->loadHelpers('Partial');
         document.getElementById("view").innerHTML = (obj.style.display == 'none') ? 'View errors' : 'Hide errors';
     }
     function FinishedProcess() {
-        document.getElementById("FinishedProcess").innerHTML = 'Process Finished Successfully';
+        document.getElementById("FinishedProcess").innerHTML = 'Process Finished';
     }
 </script>
 <div class="row">

@@ -91,7 +91,7 @@ sfContext::getInstance()->getConfiguration()->loadHelpers('Partial');
     function FinishedProcess() {
         document.getElementById("ProgressTrialrecordInfoData").innerHTML = 'Read the completed files';
         document.getElementById("FileTrialInfoData").innerHTML = '';
-        document.getElementById("FinishedProcess").innerHTML = 'Process Finished Successfully';
+        document.getElementById("FinishedProcess").innerHTML = 'Process Finished';
     }
 </script>
 <div class="row">

@@ -887,7 +887,7 @@ function ReadTrialInfoTemplate($TrialInfoTemplateFile, $ArrTrial) {
             $st = $connection->execute($QUERY01);
             $CheckFieldsBatchTrialInfo = $st->fetchAll(PDO::FETCH_ASSOC);
             $InfoCheckFieldsBatchTrialInfo = $CheckFieldsBatchTrialInfo[0];
-
+           
             if ($InfoCheckFieldsBatchTrialInfo['info'] == "OK") {
                 //GRABAMOS EL REGISTRO EN TbTrialinfo
                 $id_trialinfo = TbTrialinfoTable::addTrialinfo($id_trial, $NumberReplicates, $IdExperimentalDesign, $TreatmentNumber, $TreatmentNameAndCode, $PlantingSowingStartDate, $PlantingSowingEndDate, $PhysiologicalMaturityStarDate, $PhysiologicalMaturityEndDate, $HarvestStartDate, $HarvestEndDate, $IdCrop, $TrialInfoTemplateData, $ResultsFile, $SuppplementalInformationFile, $WeatherDataFile, $SoilDataFile);
