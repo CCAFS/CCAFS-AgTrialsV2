@@ -26,7 +26,6 @@
 //inicio: CREACION DE PLANTILLA DE TRIAL
 function CreateTemplateTrial() {
     $connection = Doctrine_Manager::getInstance()->connection();
-    $user = sfContext::getInstance()->getUser();
     $id_user = sfContext::getInstance()->getUser()->getGuardUser()->getId();
     $UploadDir = sfConfig::get("sf_upload_dir");
     $tmp_download = $UploadDir . "/tmp$id_user";
@@ -57,8 +56,12 @@ function CreateTemplateTrial() {
             ->setCellValue('L1', 'User or Group Permissions List');
 
     //DEFINIMOS LA COLUMNA E Y F COMO TEXT
-    $objPHPExcel->getActiveSheet()->getStyle('E1:E1000')->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT);
-    $objPHPExcel->getActiveSheet()->getStyle('F1:F1000')->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT);
+    $objPHPExcel->getActiveSheet()->getStyle('E1:E10000')->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT);
+    $objPHPExcel->getActiveSheet()->getStyle('F1:F10000')->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT);
+    $objPHPExcel->getActiveSheet()->getStyle('L1:L10000')->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT);
+
+    //DEFINIMOS COLOR PARA LOS CAMPOS OBLIGATORIOS
+    $objPHPExcel->getActiveSheet()->getStyle('A1:I1')->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
 
     $objPHPExcel->getActiveSheet()->getStyle('A1:L1')->getFont()->setBold(true);
     for ($col = 'A'; $col != 'M'; $col++) {
@@ -83,9 +86,9 @@ function CreateTemplateTrial() {
     $QUERY00 = "SELECT P.id_project,P.prjname,(coalesce(CP.cnprfirstname, '')||' '||coalesce(CP.cnprmiddlename, '')||' '||coalesce(CP.cnprlastname, '')) AS contactperson, ";
     $QUERY00 .= "INS.insname AS institution,(P.prjprojectimplementingperiodstartdate||' to '||P.prjprojectimplementingperiodenddate) AS implementingperiod,D.dnrname ";
     $QUERY00 .= "FROM tb_project P ";
-    $QUERY00 .= "INNER JOIN tb_contactperson CP ON P.id_leadofproject = CP.id_contactperson ";
-    $QUERY00 .= "INNER JOIN tb_institution INS ON P.id_projectimplementinginstitutions = INS.id_institution ";
-    $QUERY00 .= "INNER JOIN tb_donor D ON P.id_donor = D.id_donor ";
+    $QUERY00 .= "LEFT JOIN tb_contactperson CP ON P.id_leadofproject = CP.id_contactperson ";
+    $QUERY00 .= "LEFT JOIN tb_institution INS ON P.id_projectimplementinginstitutions = INS.id_institution ";
+    $QUERY00 .= "LEFT JOIN tb_donor D ON P.id_donor = D.id_donor ";
     $QUERY00 .= "ORDER BY P.prjname ";
     $st00 = $connection->execute($QUERY00);
     $Resultado00 = $st00->fetchAll();
@@ -298,7 +301,6 @@ function CreateTemplateTrial() {
 //inicio: CREACION DE PLANTILLA DE TRIAL INFO
 function CreateTemplateTrialInfo() {
     $connection = Doctrine_Manager::getInstance()->connection();
-    $user = sfContext::getInstance()->getUser();
     $id_user = sfContext::getInstance()->getUser()->getGuardUser()->getId();
     $UploadDir = sfConfig::get("sf_upload_dir");
     $tmp_download = $UploadDir . "/tmp$id_user";
@@ -306,7 +308,6 @@ function CreateTemplateTrialInfo() {
         mkdir($tmp_download, 0777);
     }
 
-    $ArrTemplateFiles = null;
     $objPHPExcel = new PHPExcel();
     $objPHPExcel->getProperties()->setCreator("AgTrials")
             ->setLastModifiedBy("AgTrials")
@@ -341,6 +342,9 @@ function CreateTemplateTrialInfo() {
     $objPHPExcel->getActiveSheet()->getStyle('I1:I100')->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT);
     $objPHPExcel->getActiveSheet()->getStyle('J1:J100')->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT);
     $objPHPExcel->getActiveSheet()->getStyle('K1:K100')->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT);
+
+    //DEFINIMOS COLOR PARA LOS CAMPOS OBLIGATORIOS
+    $objPHPExcel->getActiveSheet()->getStyle('A1:M1')->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
 
     $objPHPExcel->getActiveSheet()->getStyle('A1:Q1')->getFont()->setBold(true);
     for ($col = 'A'; $col != 'R'; $col++) {
@@ -617,7 +621,6 @@ function DecompressFile($CompressedFile) {
 }
 
 function ReadTrialTemplate($TrialTemplateFile) {
-    $user = sfContext::getInstance()->getUser();
     $connection = Doctrine_Manager::getInstance()->connection();
     $id_user = sfContext::getInstance()->getUser()->getGuardUser()->getId();
     $NowDate = date("Y-m-d") . " " . date("H:i:s");
@@ -768,7 +771,6 @@ function ReadTrialTemplate($TrialTemplateFile) {
 }
 
 function ReadTrialInfoTemplate($TrialInfoTemplateFile, $ArrTrial) {
-    $user = sfContext::getInstance()->getUser();
     $connection = Doctrine_Manager::getInstance()->connection();
     $id_user = sfContext::getInstance()->getUser()->getGuardUser()->getId();
     $NowDate = date("Y-m-d") . " " . date("H:i:s");
@@ -887,7 +889,7 @@ function ReadTrialInfoTemplate($TrialInfoTemplateFile, $ArrTrial) {
             $st = $connection->execute($QUERY01);
             $CheckFieldsBatchTrialInfo = $st->fetchAll(PDO::FETCH_ASSOC);
             $InfoCheckFieldsBatchTrialInfo = $CheckFieldsBatchTrialInfo[0];
-           
+
             if ($InfoCheckFieldsBatchTrialInfo['info'] == "OK") {
                 //GRABAMOS EL REGISTRO EN TbTrialinfo
                 $id_trialinfo = TbTrialinfoTable::addTrialinfo($id_trial, $NumberReplicates, $IdExperimentalDesign, $TreatmentNumber, $TreatmentNameAndCode, $PlantingSowingStartDate, $PlantingSowingEndDate, $PhysiologicalMaturityStarDate, $PhysiologicalMaturityEndDate, $HarvestStartDate, $HarvestEndDate, $IdCrop, $TrialInfoTemplateData, $ResultsFile, $SuppplementalInformationFile, $WeatherDataFile, $SoilDataFile);
@@ -938,7 +940,6 @@ function ReadTrialInfoTemplate($TrialInfoTemplateFile, $ArrTrial) {
 }
 
 function ReadTrialInfoDataTemplate($ArrTrialInfo) {
-    $user = sfContext::getInstance()->getUser();
     $connection = Doctrine_Manager::getInstance()->connection();
     $id_user = sfContext::getInstance()->getUser()->getGuardUser()->getId();
     $NowDate = date("Y-m-d") . " " . date("H:i:s");
@@ -1055,5 +1056,3 @@ function CloseProcess($TmpUploadDir) {
     echo "<script>FinishedProcess();</script>";
     die();
 }
-
-?>
