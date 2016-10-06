@@ -1190,6 +1190,7 @@ class trialActions extends autoTrialActions {
 
     public function executeResultsearchtrials($request) {
         $SearchWhere = sfContext::getInstance()->getUser()->getAttribute('SearchWhere');
+
         $Where = "";
         foreach ($SearchWhere AS $value) {
             $Where .= $value;
@@ -1203,6 +1204,7 @@ class trialActions extends autoTrialActions {
         $QUERY00 .= "INNER JOIN tb_crop c ON TI.id_crop = C.id_crop ";
         $QUERY00 .= "$Where ";
         $QUERY00 .= "ORDER BY T.trltrialname,P.prjname ";
+
         $st = $connection->execute($QUERY00);
         $Results = $st->fetchAll();
         foreach ($Results AS $Row) {
@@ -1258,6 +1260,13 @@ class trialActions extends autoTrialActions {
                     $SearchWhere['trnfharveststartdate'] = "AND TI.trnfharveststartdate BETWEEN '$value 00:00:00' AND '$value2 23:59:59' ";
                 } else {
                     unset($SearchWhere['trnfharveststartdate']);
+                }
+                break;
+            case 'created_at':
+                if (($value != '') && ($value2 != '')) {
+                    $SearchWhere['created_at'] = "AND TI.created_at BETWEEN '$value 00:00:00' AND '$value2 23:59:59' ";
+                } else {
+                    unset($SearchWhere['created_at']);
                 }
                 break;
             case 'reset':
