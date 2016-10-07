@@ -247,11 +247,14 @@ footer {
     font-size:16px;
     float: right;
     width: 200px;
-    height: 50px;
+    height: 54px;
     position: relative;
     padding-top: 10px;
+    padding-right: 5px;
     text-align: center;
 }
+
+.MenuPPlOpcUser.selected{background: rgba(0, 0, 0, 0.1);box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.05);}
 
 .HomePart1{
     background: #ecf0f1;
