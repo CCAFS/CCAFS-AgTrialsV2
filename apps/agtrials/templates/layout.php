@@ -26,6 +26,10 @@ $Modulos = array('contactperson', 'crop', 'donor', 'experimentaldesign', 'instit
 $Actions = array('index', 'new', 'edit', 'modulehelp', 'fieldhelp');
 $ActionProsesses = array('batchuploadanother', 'checktriallocation', 'checkbatchtriallocation', 'checkvariablesmeasured', 'checkbatchvariablesmeasured', 'checkvariety', 'checkbatchvariety');
 
+$ModulosUser = array('sfGuardUser', 'api');
+$ActionsUser = array('user', 'changepassword', 'index');
+
+
 $Container = true;
 $Modulo = sfContext::getInstance()->getRequest()->getParameterHolder()->get('module');
 $Action = sfContext::getInstance()->getRequest()->getParameterHolder()->get('action');
@@ -45,6 +49,8 @@ if (($Modulo == 'home') && ($Action == 'contact'))
     $Contact = "selected";
 if (in_array($Modulo, $Modulos) && in_array($Action, $Actions))
     $Modules = "selected";
+if (in_array($Modulo, $ModulosUser) && in_array($Action, $ActionsUser))
+    $UserMenu = "selected";
 
 if ($sf_user->isAuthenticated()) {
     $id_user = sfContext::getInstance()->getUser()->getGuardUser()->getId();
@@ -101,7 +107,7 @@ if ($sf_user->isAuthenticated()) {
                     <?php } ?>
                     <div class="MenuPPlOpc <?php echo $Statistics ?>" onclick="window.location.href = '/statistics'">Statistics</div>
                     <div class="MenuPPlOpc <?php echo $Contact ?>" onclick="window.location.href = '/contact'">Contact Us</div>
-                    <div class="MenuPPlOpcUser">
+                    <div class="MenuPPlOpcUser  <?php echo $UserMenu ?>">
                         <ul class="nav navbar-nav navbar-right">
                             <?php if ($sf_user->isAuthenticated()) { ?>
                                 <li class="dropdown" id="fat-menu">
