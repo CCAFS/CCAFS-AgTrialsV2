@@ -1186,6 +1186,7 @@ class trialActions extends autoTrialActions {
 
     public function executeSearchtrials($request) {
         sfContext::getInstance()->getUser()->getAttributeHolder()->remove('SearchWhere');
+        $this->id_project = $request->getParameter('id_project');
     }
 
     public function executeResultsearchtrials($request) {

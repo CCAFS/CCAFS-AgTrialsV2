@@ -23,71 +23,9 @@
 jQuery(document).ready(function () {
 
     jQuery("#SubmitSearch").click(function () {
-        var searchterms = jQuery('#searchterms').val();
-        var id_project = jQuery('#id_project').val();
-        var id_contactperson = jQuery('#id_contactperson').val();
-        var id_crop = jQuery('#id_crop').val();
-        var id_trial = jQuery('#id_trial').val();
-
-        //CAMPOS BUSQUEDA AVANZADA
-        var searchtrnfplantingsowingfrom = jQuery('#searchtrnfplantingsowingfrom').val();
-        var searchtrnfplantingsowingto = jQuery('#searchtrnfplantingsowingto').val();
-        var searchtrnfharvestfrom = jQuery('#searchtrnfharvestfrom').val();
-        var searchtrnfharvestto = jQuery('#searchtrnfharvestto').val();
-        var searchcreatedatfrom = jQuery('#searchcreatedatfrom').val();
-        var searchcreatedatto = jQuery('#searchcreatedatto').val();
-
-        var Ico = "<img src='/images/bullet-black-icon.png'> ";
-        var BanderaFaltantes = false;
-        var MensajeFaltantes = "";
-        if ((searchterms === '') && (id_project === '') && (id_contactperson === '') && (id_crop === '') && (id_trial === '') && (searchtrnfplantingsowingfrom === '') && (searchtrnfplantingsowingto === '') && (searchtrnfharvestfrom === '') && (searchtrnfharvestto === '') && (searchcreatedatfrom === '') && (searchcreatedatto === '')) {
-            BanderaFaltantes = true;
-            MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + " Select a search criterion!<br>";
-        }
-
-        if (((searchtrnfplantingsowingfrom !== '') && (searchtrnfplantingsowingto === '')) || ((searchtrnfplantingsowingfrom === '') && (searchtrnfplantingsowingto !== ''))) {
-            BanderaFaltantes = true;
-            MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + " Incomplete information to Planting/Sowing!<br>";
-        }
-
-        if (((searchtrnfharvestfrom !== '') && (searchtrnfharvestto === '')) || ((searchtrnfharvestfrom === '') && (searchtrnfharvestto !== ''))) {
-            BanderaFaltantes = true;
-            MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + " Incomplete information to Harvest!<br>";
-        }
-
-        if (((searchcreatedatfrom !== '') && (searchcreatedatto === '')) || ((searchcreatedatfrom === '') && (searchcreatedatto !== ''))) {
-            BanderaFaltantes = true;
-            MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + " Incomplete information to Created at!<br>";
-        }
-
-        //VERIFICACION MENSAJE DE ALERTA
-        if (BanderaFaltantes) {
-            alerts.show({css: 'error', title: 'Importat!', message: MensajeFaltantes});
-        } else {
-            jQuery('#DivTableResusltsSearch').show();
-            jQuery('#ButtonResusltsSearch').show();
-            //jQuery('#DivTableResusltsSearchMaps').show();
-
-            jQuery('#TableResusltsSearch').DataTable({
-                "bDestroy": true,
-                "language": {
-                    "lengthMenu": "Display _MENU_ records per page",
-                    "info": "Showing page _PAGE_ of _PAGES_",
-                    "infoEmpty": "No records available",
-                    "infoFiltered": "(filtered from _MAX_ total records)"
-                },
-                "ajax": {
-                    'type': 'POST',
-                    'url': 'trial/resultsearchtrials/',
-                    'data': {}
-                },
-                "fnRowCallback": function (nRow, aData) {
-                    jQuery('td:eq(0)', nRow).html('<a target="_blank" href="/trial/' + aData[4] + '">' + aData[0] + '</a>');
-                    return nRow;
-                }
-            });
-        }
+        SubmitSearch();
     });
+
     jQuery("#ButtonClear").click(function () {
         jQuery('#searchterms').val('');
         jQuery('#CheckSearchterms').html("");
@@ -277,56 +215,134 @@ jQuery(document).ready(function () {
             }
         });
     });
+});
 
-    function ClearFieldAutocomplete(id, name, check) {
+function LoadStart() {
+    var id_project = jQuery('#id_project').val();
+    if (id_project !== '') {
+        AssignFieldAutocomplete("id_project", "searchprjname", "CheckProject");
+    }
+    SubmitSearch();
+}
+
+
+function AssignFieldAutocomplete(id, name, check) {
+    if ((jQuery('#' + id).val() !== '') && (jQuery('#' + name).val() !== '')) {
+        jQuery('#' + check).html("<img width='18' height='18' src='/images/success.png'>");
+    } else {
         jQuery('#' + id).val('');
         jQuery('#' + name).val('');
-        jQuery('#' + check).html('');
-        jQuery.ajax({
-            type: "GET",
-            url: "/trial/AssingWhere/",
-            data: "field=" + id + "&value=" + jQuery('#' + id).val(),
-            success: function () {}
-        });
+        jQuery('#' + check).html("");
+    }
+    jQuery.ajax({
+        type: "GET",
+        url: "/trial/AssingWhere/",
+        data: "field=" + id + "&value=" + jQuery('#' + id).val(),
+        success: function () {}
+    });
+}
+
+function ClearFieldAutocomplete(id, name, check) {
+    jQuery('#' + id).val('');
+    jQuery('#' + name).val('');
+    jQuery('#' + check).html('');
+    jQuery.ajax({
+        type: "GET",
+        url: "/trial/AssingWhere/",
+        data: "field=" + id + "&value=" + jQuery('#' + id).val(),
+        success: function () {}
+    });
+}
+
+
+
+function ValidSearchterms() {
+    var searchterms = jQuery('#searchterms').val();
+    var searchtermsoptions = jQuery('#searchtermsoptions').val();
+    searchterms = searchterms.replace('+', '%2B');
+    if (jQuery('#searchterms').val() !== '') {
+        jQuery('#CheckSearchterms').html("<img width='18' height='18' src='/images/success.png'>");
+    } else {
+        jQuery('#searchterms').val('');
+        jQuery('#CheckSearchterms').html("");
+    }
+    jQuery.ajax({
+        type: "GET",
+        url: "/trial/ValidSearchterms/",
+        data: "searchterms=" + searchterms + "&searchtermsoptions=" + searchtermsoptions,
+        success: function (data) {
+            if (data) {
+                jQuery('#searchterms').val('');
+                jQuery('#CheckSearchterms').html("");
+                alerts.show({css: 'error', title: 'Search Terms', message: 'Not found information, for terms written.!'});
+            }
+        }
+    });
+}
+
+function SubmitSearch() {
+    var searchterms = jQuery('#searchterms').val();
+    var id_project = jQuery('#id_project').val();
+    var id_contactperson = jQuery('#id_contactperson').val();
+    var id_crop = jQuery('#id_crop').val();
+    var id_trial = jQuery('#id_trial').val();
+
+    //CAMPOS BUSQUEDA AVANZADA
+    var searchtrnfplantingsowingfrom = jQuery('#searchtrnfplantingsowingfrom').val();
+    var searchtrnfplantingsowingto = jQuery('#searchtrnfplantingsowingto').val();
+    var searchtrnfharvestfrom = jQuery('#searchtrnfharvestfrom').val();
+    var searchtrnfharvestto = jQuery('#searchtrnfharvestto').val();
+    var searchcreatedatfrom = jQuery('#searchcreatedatfrom').val();
+    var searchcreatedatto = jQuery('#searchcreatedatto').val();
+
+    var Ico = "<img src='/images/bullet-black-icon.png'> ";
+    var BanderaFaltantes = false;
+    var MensajeFaltantes = "";
+    if ((searchterms === '') && (id_project === '') && (id_contactperson === '') && (id_crop === '') && (id_trial === '') && (searchtrnfplantingsowingfrom === '') && (searchtrnfplantingsowingto === '') && (searchtrnfharvestfrom === '') && (searchtrnfharvestto === '') && (searchcreatedatfrom === '') && (searchcreatedatto === '')) {
+        BanderaFaltantes = true;
+        MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + " Select a search criterion!<br>";
     }
 
-    function AssignFieldAutocomplete(id, name, check) {
-        if ((jQuery('#' + id).val() !== '') && (jQuery('#' + name).val() !== '')) {
-            jQuery('#' + check).html("<img width='18' height='18' src='/images/success.png'>");
-        } else {
-            jQuery('#' + id).val('');
-            jQuery('#' + name).val('');
-            jQuery('#' + check).html("");
-        }
-        jQuery.ajax({
-            type: "GET",
-            url: "/trial/AssingWhere/",
-            data: "field=" + id + "&value=" + jQuery('#' + id).val(),
-            success: function () {}
-        });
+    if (((searchtrnfplantingsowingfrom !== '') && (searchtrnfplantingsowingto === '')) || ((searchtrnfplantingsowingfrom === '') && (searchtrnfplantingsowingto !== ''))) {
+        BanderaFaltantes = true;
+        MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + " Incomplete information to Planting/Sowing!<br>";
     }
 
-    function ValidSearchterms() {
-        var searchterms = jQuery('#searchterms').val();
-        var searchtermsoptions = jQuery('#searchtermsoptions').val();
-        searchterms = searchterms.replace('+', '%2B');
-        if (jQuery('#searchterms').val() !== '') {
-            jQuery('#CheckSearchterms').html("<img width='18' height='18' src='/images/success.png'>");
-        } else {
-            jQuery('#searchterms').val('');
-            jQuery('#CheckSearchterms').html("");
-        }
-        jQuery.ajax({
-            type: "GET",
-            url: "/trial/ValidSearchterms/",
-            data: "searchterms=" + searchterms + "&searchtermsoptions=" + searchtermsoptions,
-            success: function (data) {
-                if (data) {
-                    jQuery('#searchterms').val('');
-                    jQuery('#CheckSearchterms').html("");
-                    alerts.show({css: 'error', title: 'Search Terms', message: 'Not found information, for terms written.!'});
-                }
+    if (((searchtrnfharvestfrom !== '') && (searchtrnfharvestto === '')) || ((searchtrnfharvestfrom === '') && (searchtrnfharvestto !== ''))) {
+        BanderaFaltantes = true;
+        MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + " Incomplete information to Harvest!<br>";
+    }
+
+    if (((searchcreatedatfrom !== '') && (searchcreatedatto === '')) || ((searchcreatedatfrom === '') && (searchcreatedatto !== ''))) {
+        BanderaFaltantes = true;
+        MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + " Incomplete information to Created at!<br>";
+    }
+
+    //VERIFICACION MENSAJE DE ALERTA
+    if (BanderaFaltantes) {
+        alerts.show({css: 'error', title: 'Importat!', message: MensajeFaltantes});
+    } else {
+        jQuery('#DivTableResusltsSearch').show();
+        jQuery('#ButtonResusltsSearch').show();
+        //jQuery('#DivTableResusltsSearchMaps').show();
+
+        jQuery('#TableResusltsSearch').DataTable({
+            "bDestroy": true,
+            "language": {
+                "lengthMenu": "Display _MENU_ records per page",
+                "info": "Showing page _PAGE_ of _PAGES_",
+                "infoEmpty": "No records available",
+                "infoFiltered": "(filtered from _MAX_ total records)"
+            },
+            "ajax": {
+                'type': 'POST',
+                'url': 'trial/resultsearchtrials/',
+                'data': {}
+            },
+            "fnRowCallback": function (nRow, aData) {
+                jQuery('td:eq(0)', nRow).html('<a target="_blank" href="/trial/' + aData[4] + '">' + aData[0] + '</a>');
+                return nRow;
             }
         });
     }
-});
+}

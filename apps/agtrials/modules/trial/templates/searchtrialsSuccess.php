@@ -2,6 +2,11 @@
 use_javascript('trial.js');
 use_javascript('searchtrials.js');
 use_javascript('introJs/searchTrials.js');
+
+if ($id_project != '') {
+    $TbProject = Doctrine::getTable('TbProject')->findByIdProject($id_project);
+    $searchprjname = $TbProject[0]->prjname;
+}
 ?>
 <div class="row">
     <!-- Left Menu -->
@@ -194,4 +199,5 @@ use_javascript('introJs/searchTrials.js');
 
 <script type="text/javascript">
     $('#TableResusltsSearch').removeClass('display').addClass('table table-striped table-bordered');
+    LoadStart();
 </script>
