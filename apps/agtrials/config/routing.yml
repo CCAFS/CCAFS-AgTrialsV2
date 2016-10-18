@@ -170,6 +170,10 @@ searchtrials:
   url:   /searchtrials/*
   param: { module: trial, action: searchtrials }
   
+list:   
+  url:   /list/*
+  param: { module: trial, action: list }
+  
 
   
   

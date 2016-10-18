@@ -2,7 +2,6 @@
 use_javascript('trial.js');
 use_javascript('searchtrials.js');
 use_javascript('introJs/searchTrials.js');
-
 if ($id_project != '') {
     $TbProject = Doctrine::getTable('TbProject')->findByIdProject($id_project);
     $searchprjname = $TbProject[0]->prjname;
@@ -44,7 +43,7 @@ if ($id_project != '') {
                         <div class="form-group control-type-text col-sm-3" style="width: 250px;">
                             <div class="col-sm-12">Project:</div>      
                             <div class="col-sm-11 control-type-text" style="padding-right: 2px;">
-                                <input name="id_project" id="id_project" type="hidden" value="<?php echo $id_project; ?>" /> 
+                                <input name="id_project" id="id_project" type="text" value="<?php echo $id_project; ?>" /> 
                                 <input class="form-control SearchInput" name="searchprjname" id="searchprjname" type="text" size="17" maxlength="150" value="<?php echo $searchprjname; ?>" />
                             </div>
                             <div class="DivColIcon">

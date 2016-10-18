@@ -336,7 +336,7 @@ function SubmitSearch() {
             },
             "ajax": {
                 'type': 'POST',
-                'url': 'trial/resultsearchtrials/',
+                'url': '/trial/resultsearchtrials/',
                 'data': {}
             },
             "fnRowCallback": function (nRow, aData) {
