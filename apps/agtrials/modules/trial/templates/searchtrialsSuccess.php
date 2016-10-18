@@ -2,9 +2,18 @@
 use_javascript('trial.js');
 use_javascript('searchtrials.js');
 use_javascript('introJs/searchTrials.js');
+
 if ($id_project != '') {
     $TbProject = Doctrine::getTable('TbProject')->findByIdProject($id_project);
     $searchprjname = $TbProject[0]->prjname;
+}
+if ($id_contactperson != '') {
+    $TbContactperson = Doctrine::getTable('TbContactperson')->findByIdContactperson($id_contactperson);
+    $searchcontactperson = $TbContactperson[0]->cnprfirstname . " " . $TbContactperson[0]->cnprlastname;
+}
+if ($id_crop != '') {
+    $TbCrop = Doctrine::getTable('TbCrop')->findByIdCrop($id_crop);
+    $searchcrpname = $TbCrop[0]->crpname;
 }
 ?>
 <div class="row">
