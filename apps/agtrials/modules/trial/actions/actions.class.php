@@ -1333,12 +1333,8 @@ class trialActions extends autoTrialActions {
     }
 
     public function executeList(sfWebRequest $request) {
-        $Parameters = "";
         $id_project = $request->getParameter('id_trialgroup_list');
-        if ($id_project != "")
-            $Parameters = "&id_project=$id_project";
-
-        $this->redirect("@searchtrials?true$Parameters");
+        $this->redirect('searchtrials', array('id_project' => $id_project));
     }
 
 }
