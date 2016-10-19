@@ -218,9 +218,14 @@ jQuery(document).ready(function () {
 });
 
 function LoadStart() {
-    var id_project = jQuery('#id_project').val();
-    if (id_project !== '') {
+    if (jQuery('#id_project').val() !== '') {
         AssignFieldAutocomplete("id_project", "searchprjname", "CheckProject");
+    }
+    if (jQuery('#id_contactperson').val() !== '') {
+        AssignFieldAutocomplete("id_contactperson", "searchcontactperson", "CheckContactperson");
+    }
+    if (jQuery('#id_crop').val() !== '') {
+        AssignFieldAutocomplete("id_crop", "searchcrpname", "CheckCrop");
     }
     SubmitSearch();
 }
