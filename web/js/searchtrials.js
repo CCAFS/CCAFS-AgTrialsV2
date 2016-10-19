@@ -227,6 +227,9 @@ function LoadStart() {
     if (jQuery('#id_crop').val() !== '') {
         AssignFieldAutocomplete("id_crop", "searchcrpname", "CheckCrop");
     }
+    if (jQuery('#id_trial').val() !== '') {
+        AssignFieldAutocomplete("id_trial", "searchtrltrialname", "CheckTrialname");
+    }
     SubmitSearch();
 }
 
