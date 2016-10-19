@@ -1339,10 +1339,15 @@ class trialActions extends autoTrialActions {
         $id_project = $request->getParameter('id_trialgroup_list');
         $id_contactperson = $request->getParameter('id_contactperson_list');
         $id_crop = $request->getParameter('id_crop_list');
-        //$Parameters = array('id_project' => $id_project, 'id_contactperson' => $id_contactperson, 'id_crop' => $id_crop)
 
         if ($id_project != "") {
             $Parameters['id_project'] = $id_project;
+        }
+        if ($id_contactperson != "") {
+            $Parameters['id_contactperson'] = $id_contactperson;
+        }
+        if ($id_crop != "") {
+            $Parameters['id_crop'] = $id_crop;
         }
 
         $this->redirect('searchtrials', $Parameters);
