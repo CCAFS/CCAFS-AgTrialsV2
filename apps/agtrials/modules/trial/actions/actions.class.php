@@ -1335,10 +1335,17 @@ class trialActions extends autoTrialActions {
     }
 
     public function executeList(sfWebRequest $request) {
+        $Parameters = array();
         $id_project = $request->getParameter('id_trialgroup_list');
         $id_contactperson = $request->getParameter('id_contactperson_list');
         $id_crop = $request->getParameter('id_crop_list');
-        $this->redirect('searchtrials', array('id_project' => $id_project, 'id_contactperson' => $id_contactperson, 'id_crop' => $id_crop));
+        //$Parameters = array('id_project' => $id_project, 'id_contactperson' => $id_contactperson, 'id_crop' => $id_crop)
+
+        if ($id_project != "") {
+            $Parameters['id_project'] = $id_project;
+        }
+
+        $this->redirect('searchtrials', $Parameters);
     }
 
 }
