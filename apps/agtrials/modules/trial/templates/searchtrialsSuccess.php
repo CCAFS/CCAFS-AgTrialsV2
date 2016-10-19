@@ -15,6 +15,11 @@ if ($id_crop != '') {
     $TbCrop = Doctrine::getTable('TbCrop')->findByIdCrop($id_crop);
     $searchcrpname = $TbCrop[0]->crpname;
 }
+if ($trlname != '') {
+    $TbTrial = Doctrine::getTable('TbTrial')->findByTrltrialname($trlname);
+    $id_trial = $TbTrial[0]->id_trial;
+    $searchtrltrialname = $TbTrial[0]->trltrialname;
+}
 ?>
 <div class="row">
     <!-- Left Menu -->

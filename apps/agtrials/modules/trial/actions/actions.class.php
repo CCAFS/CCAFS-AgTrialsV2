@@ -1189,6 +1189,7 @@ class trialActions extends autoTrialActions {
         $this->id_project = $request->getParameter('id_project');
         $this->id_contactperson = $request->getParameter('id_contactperson');
         $this->id_crop = $request->getParameter('id_crop');
+        $this->trlname = $request->getParameter('trlname');
     }
 
     public function executeResultsearchtrials($request) {
@@ -1344,6 +1345,9 @@ class trialActions extends autoTrialActions {
         }
         if ($request->getParameter('id_crop_list') != "") {
             $Parameters['id_crop'] = $request->getParameter('id_crop_list');
+        }
+        if ($request->getParameter('trlname') != "") {
+            $Parameters['trlname'] = $request->getParameter('trlname');
         }
 
         $this->redirect('searchtrials', $Parameters);
