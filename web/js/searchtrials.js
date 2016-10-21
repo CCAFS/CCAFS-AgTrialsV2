@@ -334,22 +334,23 @@ function SubmitSearch() {
         jQuery('#ButtonResusltsSearch').show();
 
         jQuery('#TableResusltsSearch').DataTable({
+            dom: 'Bfrtip',
             buttons: [
                 'copy', 'csv', 'excel', 'pdf', 'print'
             ],
-            "bDestroy": true,
-            "language": {
+            bDestroy: true,
+            language: {
                 "lengthMenu": "Display _MENU_ records per page",
                 "info": "Showing page _PAGE_ of _PAGES_",
                 "infoEmpty": "",
                 "infoFiltered": "(filtered from _MAX_ total records)"
             },
-            "ajax": {
+            ajax: {
                 'type': 'POST',
                 'url': '/trial/resultsearchtrials/',
                 'data': {}
             },
-            "fnRowCallback": function (nRow, aData) {
+            fnRowCallback: function (nRow, aData) {
                 jQuery('td:eq(0)', nRow).html('<a target="_blank" href="/trial/' + aData[4] + '">' + aData[0] + '</a>');
                 return nRow;
             }
