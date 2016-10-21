@@ -3,7 +3,6 @@ use_javascript('trial.js');
 use_javascript('searchtrials.js');
 use_javascript('introJs/searchTrials.js');
 
-use_javascript('/datatables/js/jquery-1.12.3.js');
 use_javascript('/datatables/js/jquery.dataTables.min.js');
 use_javascript('/datatables/js/dataTables.buttons.min.js');
 use_javascript('/datatables/js/buttons.flash.min.js');
