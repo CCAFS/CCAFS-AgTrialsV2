@@ -332,9 +332,11 @@ function SubmitSearch() {
     } else {
         jQuery('#DivTableResusltsSearch').show();
         jQuery('#ButtonResusltsSearch').show();
-        //jQuery('#DivTableResusltsSearchMaps').show();
 
         jQuery('#TableResusltsSearch').DataTable({
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
             "bDestroy": true,
             "language": {
                 "lengthMenu": "Display _MENU_ records per page",
