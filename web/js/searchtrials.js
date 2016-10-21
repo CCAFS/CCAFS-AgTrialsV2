@@ -336,7 +336,9 @@ function SubmitSearch() {
         jQuery('#TableResusltsSearch').DataTable({
             dom: 'Bfrtip',
             buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
             ],
             bDestroy: true,
             language: {
