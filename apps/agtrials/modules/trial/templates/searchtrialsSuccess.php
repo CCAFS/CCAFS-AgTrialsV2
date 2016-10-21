@@ -3,6 +3,19 @@ use_javascript('trial.js');
 use_javascript('searchtrials.js');
 use_javascript('introJs/searchTrials.js');
 
+use_javascript('/datatables/js/jquery-1.12.3.js');
+use_javascript('/datatables/js/jquery.dataTables.min.js');
+use_javascript('/datatables/js/dataTables.buttons.min.js');
+use_javascript('/datatables/js/buttons.flash.min.js');
+use_javascript('/datatables/js/jszip.min.js');
+use_javascript('/datatables/js/pdfmake.min.js');
+use_javascript('/datatables/js/vfs_fonts.js');
+use_javascript('/datatables/js/buttons.html5.min.js');
+use_javascript('/datatables/js/buttons.print.min.js');
+
+use_stylesheet("/datatables/css/jquery.dataTables.min.css");
+use_stylesheet("/datatables/css/buttons.dataTables.min.css");
+
 if ($id_project != '') {
     $TbProject = Doctrine::getTable('TbProject')->findByIdProject($id_project);
     $searchprjname = $TbProject[0]->prjname;
