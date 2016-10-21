@@ -337,8 +337,7 @@ function SubmitSearch() {
             dom: 'Bfrtip',
             buttons: [
                 'excelHtml5',
-                'csvHtml5',
-                'pdfHtml5'
+                'csvHtml5'
             ],
             bDestroy: true,
             language: {
