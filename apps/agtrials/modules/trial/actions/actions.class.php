@@ -1516,16 +1516,15 @@ class trialActions extends autoTrialActions {
         $output = "AgTriasData.zip";
 
         $zip = new ZipArchive();
+        $zip->open($output, ZIPARCHIVE::CREATE);
+        $all = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($folder));
+        
+        print_r($all);
+        die();
 
-        if ($zip->open($output, ZIPARCHIVE::CREATE) !== TRUE) {
-            die("Unable to open Archirve");
+        foreach ($all as $f => $value) {
+            $zip->addFile(realpath($f), $f) or die("ERROR: Unable to add file: $f");
         }
-
-//        $all = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($folder));
-//
-//        foreach ($all as $f => $value) {
-//            $zip->addFile(realpath($f), $f) or die("ERROR: Unable to add file: $f");
-//        }
         $zip->close();
 
 
