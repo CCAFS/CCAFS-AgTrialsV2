@@ -1176,4 +1176,38 @@ function CheckAPI($key) {
     return $user_id;
 }
 
+function CreateDirectory($dir) {
+    if (!is_dir($dir)) {
+        if (!mkdir($dir, 0777, true)) {
+            die('Fallo al crear las carpetas...');
+        }
+    }
+}
+
+function DeleteDirectory($dir) {
+    if (!file_exists($dir)) {
+        return true;
+    }
+    if (!is_dir($dir)) {
+        return unlink($dir);
+    }
+    foreach (scandir($dir) as $item) {
+        if ($item == '.' || $item == '..') {
+            continue;
+        }
+        if (!deleteDirectory($dir . DIRECTORY_SEPARATOR . $item)) {
+            return false;
+        }
+    }
+    return rmdir($dir);
+}
+
+function SizeDirectory($dir) {
+    $size = 0;
+    foreach (glob(rtrim($dir, '/') . '/*', GLOB_NOSORT) as $each) {
+        $size += is_file($each) ? filesize($each) : folderSize($each);
+    }
+    return $size;
+}
+
 ?>

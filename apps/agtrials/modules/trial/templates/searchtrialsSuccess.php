@@ -193,6 +193,8 @@ if ($trlname != '') {
                         &ensp;&ensp;&ensp;&ensp;
                         <button class="btn btn-action" type="button" title=" List " id="ButtonList" neme="ButtonList"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&ensp;List&ensp;</button>
                         <button class="btn btn-action" type="button" title=" Map " id="ButtonMap" neme="ButtonMap"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>&ensp;Map&ensp;</button>
+                        <button class="btn btn-action" type="button" title=" Download data " id="ButtonDownloaddata" neme="ButtonDownloaddata"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>&ensp;Download data&ensp;</button>
+
                     </span>                    
                     <input type="hidden" value="" id="FormAction" name="FormAction"/>
                 </div>

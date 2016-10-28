@@ -80,6 +80,10 @@ jQuery(document).ready(function () {
         jQuery("#ResusltsSearchMaps").attr('src', "/trial/mapsearchtrials/");
     });
 
+    jQuery("#ButtonDownloaddata").click(function () {
+        window.location.href = "/trial/Downloaddata/";
+    });
+
     jQuery("#ShowHideDivAdvancedSearch").on('click', function () {
         jQuery("#DivAdvancedSearch").toggle();
     });

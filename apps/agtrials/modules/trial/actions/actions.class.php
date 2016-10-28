@@ -26,7 +26,7 @@
 
 require_once dirname(__FILE__) . '/../lib/trialGeneratorConfiguration.class.php';
 require_once dirname(__FILE__) . '/../lib/trialGeneratorHelper.class.php';
-require_once '../lib/zip/pclzip.lib.php';
+//require_once '../lib/zip/pclzip.lib.php';
 require_once '../lib/functions/function.php';
 require_once '../lib/functions/functionexcel.php';
 require_once '../lib/functions/html.php';
@@ -55,7 +55,7 @@ class trialActions extends autoTrialActions {
 
 
 
-        //RESET VARIABLES DE SESION
+//RESET VARIABLES DE SESION
         sfContext::getInstance()->getUser()->getAttributeHolder()->remove('user_id');
         sfContext::getInstance()->getUser()->getAttributeHolder()->remove('user_name');
         sfContext::getInstance()->getUser()->getAttributeHolder()->remove('group_id');
@@ -67,20 +67,20 @@ class trialActions extends autoTrialActions {
 
     public function executeEdit(sfWebRequest $request) {
 
-        //VERIFICAMOS LOS PERMISOS DE MODIFICACION
+//VERIFICAMOS LOS PERMISOS DE MODIFICACION
         $id_user = $this->getUser()->getGuardUser()->getId();
         $id_trial = $request->getParameter("id_trial");
         $Query00 = Doctrine::getTable('TbTrial')->findOneByIdTrial($id_trial);
         $id_user_registro = $Query00->getIdUser();
         $user = $this->getUser();
 
-        //VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
+//VERIFICA SI ES EL USUARIO CREADOR Ó TIENE PERMISOS DE ADMIN(1)
         if (!($id_user == $id_user_registro || (CheckUserPermission($id_user, "1")))) {
             $this->getUser()->setAttribute('Notice', "<b>Error: </b>Not have permission to Edit!");
             $this->redirect("/trial/$id_trial");
         } else {
 
-            //RESET VARIABLES DE SESION
+//RESET VARIABLES DE SESION
             sfContext::getInstance()->getUser()->getAttributeHolder()->remove('user_id');
             sfContext::getInstance()->getUser()->getAttributeHolder()->remove('user_name');
             sfContext::getInstance()->getUser()->getAttributeHolder()->remove('group_id');
@@ -92,7 +92,7 @@ class trialActions extends autoTrialActions {
             $connection = Doctrine_Manager::getInstance()->connection();
             $user = sfContext::getInstance()->getUser();
 
-            //INICIO: AQUI CONSUILTAMOS LOS REGISTROS DE LA TABLA tb_trialpermissionuser
+//INICIO: AQUI CONSUILTAMOS LOS REGISTROS DE LA TABLA tb_trialpermissionuser
             $Trialpermissionuser = Doctrine::getTable('TbTrialpermissionuser')->findByIdTrial($id_trial);
             for ($cont = 0; $cont < count($Trialpermissionuser); $cont++) {
                 $SfGuardUser = Doctrine::getTable('SfGuardUser')->findOneById($Trialpermissionuser[$cont]->getIdUserpermission());
@@ -102,7 +102,7 @@ class trialActions extends autoTrialActions {
             $user->setAttribute('user_id', $user_id_saved);
             $user->setAttribute('user_name', $user_name_saved);
 
-            //INICIO: AQUI CONSUILTAMOS LOS REGISTROS DE LA TABLA tb_trialpermissiongroup
+//INICIO: AQUI CONSUILTAMOS LOS REGISTROS DE LA TABLA tb_trialpermissiongroup
             $TbTrialpermissiongroup = Doctrine::getTable('TbTrialpermissiongroup')->findByIdTrial($id_trial);
             for ($cont = 0; $cont < count($TbTrialpermissiongroup); $cont++) {
                 $SfGuardGroup = Doctrine::getTable('SfGuardGroup')->findOneById($TbTrialpermissiongroup[$cont]->getIdGrouppermission());
@@ -112,7 +112,7 @@ class trialActions extends autoTrialActions {
             $user->setAttribute('group_id', $group_id_saved);
             $user->setAttribute('group_name', $group_name_saved);
 
-            //INICIO: AQUI CONSUILTAMOS LOS REGISTROS DE LA TABLA tb_trialinfo
+//INICIO: AQUI CONSUILTAMOS LOS REGISTROS DE LA TABLA tb_trialinfo
             $QUERY = "SELECT T1.id_trialinfo,T1.id_crop,T2.crpname,T1.trnfnumberofreplicates,T3.xpdsname,T1.trnftreatmentnumber,T1.trnftreatmentnameandcode,T1.trnfplantingsowingstartdate, ";
             $QUERY .= "T1.trnfplantingsowingenddate,T1.trnfphysiologicalmaturitystardate,T1.trnfphysiologicalmaturityenddate,T1.trnfharveststartdate,T1.trnfharvestenddate, ";
             $QUERY .= "T1.trnfdatafile,T1.trnfdataorresultsfile,T1.trnfsuppplementalinformationfile,T1.trnfweatherdatafile,T1.trnfsoildatafile ";
@@ -136,7 +136,7 @@ class trialActions extends autoTrialActions {
         $id_trial = $request->getParameter("id_trial");
         $Query00 = Doctrine::getTable('TbTrial')->findOneByIdTrial($id_trial);
         $id_user_registro = $Query00->getIdUser();
-        //VERIFICAMOS LOS PERMISOS SOBRE EL REGISTRO
+//VERIFICAMOS LOS PERMISOS SOBRE EL REGISTRO
         if ($id_user == $id_user_registro || (CheckUserPermission($id_user, "1"))) {
             $this->dispatcher->notify(new sfEvent($this, 'admin.delete_object', array('object' => $this->getRoute()->getObject())));
             $this->getRoute()->getObject()->delete();
@@ -157,7 +157,7 @@ class trialActions extends autoTrialActions {
             $tb_trial = $form->save();
             $id_trial = $tb_trial->getIdTrial();
 
-            //OPTENEMOS INFORMACION (Project / Trial Groups)
+//OPTENEMOS INFORMACION (Project / Trial Groups)
             $id_projecttrialgroups = $request->getParameter("id_project");
             $prjname = $request->getParameter("prjname");
             $id_leadofproject = $request->getParameter("id_leadofproject");
@@ -181,7 +181,7 @@ class trialActions extends autoTrialActions {
             $prjabstract = $request->getParameter("prjabstract");
             $prjkeywords = $request->getParameter("prjkeywords");
 
-            //GRABAMOS (Project / Trial Groups)
+//GRABAMOS (Project / Trial Groups)
             if ($insnameleadofproject != '' && $id_countryinstitutionleadofproject != '') {
                 $id_institutionleadofproject = TbInstitutionTable::addInstitution($insnameleadofproject, $id_countryinstitutionleadofproject);
             }
@@ -201,7 +201,7 @@ class trialActions extends autoTrialActions {
                 $tb_trial->setIdProject($id_project);
             }
 
-            //OPTENEMOS INFORMACION (Trial Manager)
+//OPTENEMOS INFORMACION (Trial Manager)
             $id_leadofproject = $request->getParameter("id_contactperson");
             $cnprfirstnametrialmanager = $request->getParameter("cnprfirstnametrialmanager");
             $cnprmiddlenametrialmanager = $request->getParameter("cnprmiddlenametrialmanager");
@@ -212,7 +212,7 @@ class trialActions extends autoTrialActions {
             $namecountryinstitutiontrialmanager = $request->getParameter("namecountryinstitutiontrialmanager");
             $cnpremailtrialmanager = $request->getParameter("cnpremailtrialmanager");
             $cnprtelephonetrialmanager = $request->getParameter("cnprtelephonetrialmanager");
-            //GRABAMOS (Trial Manager)
+//GRABAMOS (Trial Manager)
             if ($insnametrialmanager != '' && $id_countryinstitutiontrialmanager != '') {
                 $id_institutiontrialmanager = TbInstitutionTable::addInstitution($insnametrialmanager, $id_countryinstitutiontrialmanager);
             }
@@ -223,7 +223,7 @@ class trialActions extends autoTrialActions {
                 $tb_trial->setIdContactperson($id_contactperson);
             }
 
-            //OPTENEMOS INFORMACION (Trial Location)
+//OPTENEMOS INFORMACION (Trial Location)
             $id_triallocation = $request->getParameter("id_triallocation");
             $trlcname = $request->getParameter("trlcname");
             $id_countrytriallocation = $request->getParameter("id_countrytriallocation");
@@ -233,7 +233,7 @@ class trialActions extends autoTrialActions {
             $trlclatitude = $request->getParameter("trlclatitude");
             $trlclongitude = $request->getParameter("trlclongitude");
             $trlcaltitude = $request->getParameter("trlcaltitude");
-            //GRABAMOS (Trial Location)
+//GRABAMOS (Trial Location)
             if ($trlcname != '' && $trlclatitude != '' && $trlclongitude != '') {
                 $id_triallocation = TbTriallocationTable::addTriallocation($trlcname, $trlclatitude, $trlclongitude, $trlcaltitude);
             }
@@ -253,10 +253,10 @@ class trialActions extends autoTrialActions {
                 $tb_trial->setIdTriallocation($id_triallocation);
             }
 
-            //Access to Information (Users or Groups)
+//Access to Information (Users or Groups)
             TbTrialpermissionuserTable::delTrialpermissionuser($id_trial);
             TbTrialpermissiongroupTable::delTrialpermissiongroup($id_trial);
-            //GRABAMOS LOS PERMISOS DE LOS USUARIOS
+//GRABAMOS LOS PERMISOS DE LOS USUARIOS
             if ($tb_trial->getTrltrialpermissions() == 'Open to specified users') {
                 $array_users = sfContext::getInstance()->getRequest()->getParameterHolder()->get('users');
                 $user_id = $array_users['user']['id'];
@@ -268,7 +268,7 @@ class trialActions extends autoTrialActions {
                     }
                 }
             }
-            //GRABAMOS LOS PERMISOS DEL GRUPO
+//GRABAMOS LOS PERMISOS DEL GRUPO
             if ($tb_trial->getTrltrialpermissions() == 'Open to specified groups') {
                 $array_groups = sfContext::getInstance()->getRequest()->getParameterHolder()->get('groups');
                 $group_id = $array_groups['user']['id'];
@@ -282,7 +282,7 @@ class trialActions extends autoTrialActions {
             }
             $tb_trial->save();
 
-            //AQUI GRABAMOS LOS REGISTROS DE CULTIVOS (CROP)
+//AQUI GRABAMOS LOS REGISTROS DE CULTIVOS (CROP)
             $ArrVariety = $user->getAttribute('ArrVariety');
             $ArrVariablesMeasured = $user->getAttribute('ArrVariablesMeasured');
             for ($a = 1; $a <= 10; $a++) {
@@ -308,11 +308,11 @@ class trialActions extends autoTrialActions {
                     $trnfdatafile = md5(time()) . "." . $ExtFile;
                 }
 
-                //SI LA INFORMACION ESTA COMPLETA GRABAMOS
+//SI LA INFORMACION ESTA COMPLETA GRABAMOS
                 if (($id_trial != '') && ($id_crop != '')) {
                     $id_trialinfo = TbTrialinfoTable::addTrialinfo($id_trial, $trnfnumberofreplicates, $id_experimentaldesign, $trnftreatmentnumber, $trnftreatmentnameandcode, $trnfplantingsowingstartdate, $trnfplantingsowingenddate, $trnfphysiologicalmaturitystardate, $trnfphysiologicalmaturityenddate, $trnfharveststartdate, $trnfharvestenddate, $id_crop, $trnfdatafile, $trnfdataorresultsfile, $trnfsuppplementalinformationfile, $trnfweatherdatafile, $trnfsoildatafile);
 
-                    //GRABAMOS VARIEDADES Y VARIABLES MEDIDAS
+//GRABAMOS VARIEDADES Y VARIABLES MEDIDAS
                     if (count($ArrVariety[$a]) > 0) {
                         foreach ($ArrVariety[$a] AS $id_variety) {
                             if (count($ArrVariablesMeasured[$a]) > 0) {
@@ -327,7 +327,7 @@ class trialActions extends autoTrialActions {
                         }
                     }
 
-                    //AQUI UBICAMOS LOS ARCHIVOS AL REPOSITORIO FINAL SI EXISTEN
+//AQUI UBICAMOS LOS ARCHIVOS AL REPOSITORIO FINAL SI EXISTEN
                     $Directorio = "FilesTrial$id_trial";
                     $UploadDir = sfConfig::get("sf_upload_dir");
                     $DirUploads = "$UploadDir/$Directorio";
@@ -349,14 +349,14 @@ class trialActions extends autoTrialActions {
                         move_uploaded_file($_FILES["trnfsoildatafile" . $a]['tmp_name'], "$DirUploads/$trnfsoildatafile");
                     }
 
-                    //GRABAMOS LOS DATOS DE RESULTADOS DESDE LA PLANTILLA DE EXCEL 
+//GRABAMOS LOS DATOS DE RESULTADOS DESDE LA PLANTILLA DE EXCEL 
                     if ($trnfdatafile != '') {
                         SaveTrialData($id_trialinfo, $inputFileName, $id_user, $id_crop);
                     }
                 }
             }
 
-            //RESET VARIABLES DE SESION
+//RESET VARIABLES DE SESION
             sfContext::getInstance()->getUser()->getAttributeHolder()->remove('user_id');
             sfContext::getInstance()->getUser()->getAttributeHolder()->remove('user_name');
             sfContext::getInstance()->getUser()->getAttributeHolder()->remove('group_id');
@@ -425,44 +425,44 @@ class trialActions extends autoTrialActions {
         }
         rrmdir($TmpUploadDir);
 
-        //inicio: DESCOMPRIMIMOS EL ARCHIVO QUE CONTIENE LAS PLANTILLAS
+//inicio: DESCOMPRIMIMOS EL ARCHIVO QUE CONTIENE LAS PLANTILLAS
         $CompressedFileTrialInfoDataTemplates = $request->getFiles('CompressedFileTrialInfoDataTemplates');
         if ($CompressedFileTrialInfoDataTemplates != '') {
             DecompressFile($CompressedFileTrialInfoDataTemplates);
         }
-        //fin: DESCOMPRIMIMOS EL ARCHIVO QUE CONTIENE LAS PLANTILLAS
-        //
-        //inicio: DESCOMPRIMIMOS EL ARCHIVO QUE CONTIENE LOS DOCUMENTOS
+//fin: DESCOMPRIMIMOS EL ARCHIVO QUE CONTIENE LAS PLANTILLAS
+//
+//inicio: DESCOMPRIMIMOS EL ARCHIVO QUE CONTIENE LOS DOCUMENTOS
         $CompressedFiles = $request->getFiles('CompressedFiles');
         if ($CompressedFiles != '') {
             DecompressFile($CompressedFiles);
         }
-        //fin: DESCOMPRIMIMOS EL ARCHIVO QUE CONTIENE LOS DOCUMENTOS
-        //
-        //inicio: LLAMAMOS LA FUNCION DE LECTURA DEL TrialTemplate
+//fin: DESCOMPRIMIMOS EL ARCHIVO QUE CONTIENE LOS DOCUMENTOS
+//
+//inicio: LLAMAMOS LA FUNCION DE LECTURA DEL TrialTemplate
         $TrialTemplateFile = $request->getFiles('TrialTemplateFile');
         $ArrTrial = null;
         if ($TrialTemplateFile != '') {
             $InfoReadTrialTemplate = ReadTrialTemplate($TrialTemplateFile);
             $ArrTrial = $InfoReadTrialTemplate['ArrTrial'];
         }
-        //fin: LLAMAMOS LA FUNCION DE LECTURA DEL TrialTemplate
-        //
-        //inicio: LLAMAMOS LA FUNCION DE LECTURA DEL TrialInfoTemplate
+//fin: LLAMAMOS LA FUNCION DE LECTURA DEL TrialTemplate
+//
+//inicio: LLAMAMOS LA FUNCION DE LECTURA DEL TrialInfoTemplate
         $TrialInfoTemplateFile = $request->getFiles('TrialInfoTemplateFile');
         $ArrTrialInfo = null;
         if (($TrialInfoTemplateFile['name'] != '') && (count($ArrTrial) > 0)) {
             $InfoReadTrialInfoTemplate = ReadTrialInfoTemplate($TrialInfoTemplateFile, $ArrTrial);
             $ArrTrialInfo = $InfoReadTrialInfoTemplate['ArrTrialInfo'];
         }
-        //fin: LLAMAMOS LA FUNCION DE LECTURA DEL TrialInfoTemplate
-        //
-        //inicio: LLAMAMOS LA FUNCION DE LECTURA DEL TrialInfoDataTemplate
+//fin: LLAMAMOS LA FUNCION DE LECTURA DEL TrialInfoTemplate
+//
+//inicio: LLAMAMOS LA FUNCION DE LECTURA DEL TrialInfoDataTemplate
         if (count($ArrTrialInfo) > 0) {
             $CompressedFileTrialInfoDataTemplates = $request->getFiles('CompressedFileTrialInfoDataTemplates');
             ReadTrialInfoDataTemplate($ArrTrialInfo);
         }
-        //fin: LLAMAMOS LA FUNCION DE LECTURA DEL TrialInfoDataTemplate
+//fin: LLAMAMOS LA FUNCION DE LECTURA DEL TrialInfoDataTemplate
         CloseProcess($TmpUploadDir);
     }
 
@@ -511,7 +511,7 @@ class trialActions extends autoTrialActions {
         $this->setLayout(false);
     }
 
-    //VALIDAMOS LOS PERMISOS DE DESCARGA
+//VALIDAMOS LOS PERMISOS DE DESCARGA
     public function executeValidatePermissionsDownload($request) {
         $this->setLayout(false);
         $id_trial = $request->getParameter('id_trial');
@@ -521,7 +521,7 @@ class trialActions extends autoTrialActions {
         $user = sfContext::getInstance()->getUser();
         $Menssage = 'Not-Permissions';
 
-        //SI TIENE LA REGLA PARA USUARIOS VERIFICAMOS EL USUARIO
+//SI TIENE LA REGLA PARA USUARIOS VERIFICAMOS EL USUARIO
         if ($Trltrialpermissions == 'Open to specified users') {
             if ($this->getUser()->isAuthenticated()) {
                 $id_user = $this->getUser()->getGuardUser()->getId();
@@ -540,7 +540,7 @@ class trialActions extends autoTrialActions {
             }
         }
 
-        //SI TIENE LA REGLA PARA GRUPOS VERIFICAMOS EL GRUPO DEL USUARIO
+//SI TIENE LA REGLA PARA GRUPOS VERIFICAMOS EL GRUPO DEL USUARIO
         if ($Trltrialpermissions == 'Open to specified groups') {
             if ($this->getUser()->isAuthenticated()) {
                 $id_user = $this->getUser()->getGuardUser()->getId();
@@ -558,7 +558,7 @@ class trialActions extends autoTrialActions {
             }
         }
 
-        //SI TIENE LA REGLA PARA TODOS LOS USUARIOS DEL SISTEMA SE VERIFICA QUE ESTE AUTENTICADO
+//SI TIENE LA REGLA PARA TODOS LOS USUARIOS DEL SISTEMA SE VERIFICA QUE ESTE AUTENTICADO
         if ($Trltrialpermissions == 'Open to all users') {
             if ($this->getUser()->isAuthenticated()) {
                 $Menssage = 'OK';
@@ -567,7 +567,7 @@ class trialActions extends autoTrialActions {
             }
         }
 
-        //PERMISO PARA LOS USUARIOS DE INTERNET        
+//PERMISO PARA LOS USUARIOS DE INTERNET        
         if ($Trltrialpermissions == 'Public domain') {
             $Menssage = 'OK';
         }
@@ -583,7 +583,7 @@ class trialActions extends autoTrialActions {
         $user = sfContext::getInstance()->getUser();
         $Continue = false;
 
-        //SI TIENE LA REGLA PARA USUARIOS VERIFICAMOS EL USUARIO
+//SI TIENE LA REGLA PARA USUARIOS VERIFICAMOS EL USUARIO
         if ($Trltrialpermissions == 'Open to specified users') {
             if ($this->getUser()->isAuthenticated()) {
                 $id_user = $this->getUser()->getGuardUser()->getId();
@@ -603,7 +603,7 @@ class trialActions extends autoTrialActions {
             }
         }
 
-        //SI TIENE LA REGLA PARA GRUPOS VERIFICAMOS EL GRUPO DEL USUARIO
+//SI TIENE LA REGLA PARA GRUPOS VERIFICAMOS EL GRUPO DEL USUARIO
         if ($Trltrialpermissions == 'Open to specified groups') {
             if ($this->getUser()->isAuthenticated()) {
                 $id_user = $this->getUser()->getGuardUser()->getId();
@@ -622,7 +622,7 @@ class trialActions extends autoTrialActions {
             }
         }
 
-        //SI TIENE LA REGLA PARA TODOS LOS USUARIOS DEL SISTEMA SE VERIFICA QUE ESTE AUTENTICADO
+//SI TIENE LA REGLA PARA TODOS LOS USUARIOS DEL SISTEMA SE VERIFICA QUE ESTE AUTENTICADO
         if ($Trltrialpermissions == 'Open to all users') {
             if ($this->getUser()->isAuthenticated()) {
                 $Continue = true;
@@ -692,7 +692,7 @@ class trialActions extends autoTrialActions {
         $SfGuardUserDownloads->setUsdwsize($TotalTamanoMB);
         $SfGuardUserDownloads->save();
 
-        //$DirFile = str_replace("/", "\\", $DirFile); //ESTA PARTE ES PARA LOS SEVIRDORES WINDOWS
+//$DirFile = str_replace("/", "\\", $DirFile); //ESTA PARTE ES PARA LOS SEVIRDORES WINDOWS
         $DirFile = file($DirFile);
         $DirFile = implode("", $DirFile);
         header("Content-Type: application/octet-stream");
@@ -746,7 +746,7 @@ class trialActions extends autoTrialActions {
         die($HTML);
     }
 
-    //ADICIONAMOS LA VARIEDAD AL ARRAY DE VARIEDADES SELECCIONADAS
+//ADICIONAMOS LA VARIEDAD AL ARRAY DE VARIEDADES SELECCIONADAS
     public function executeVarietySelected($request) {
         $this->setLayout(false);
         $id_variety = $request->getParameter('id_variety');
@@ -758,7 +758,7 @@ class trialActions extends autoTrialActions {
         DIE();
     }
 
-    //CARGAMOS LAS VARIABLES SELECIONADAS
+//CARGAMOS LAS VARIABLES SELECIONADAS
     public function executeLoadVarietySelected($request) {
         $this->setLayout(false);
         $i = $request->getParameter('i');
@@ -795,7 +795,7 @@ class trialActions extends autoTrialActions {
         die();
     }
 
-    //REMOVEMOS LA VARIEDAD DEL ARRAY DE VARIEDADES SELECCIONADAS
+//REMOVEMOS LA VARIEDAD DEL ARRAY DE VARIEDADES SELECCIONADAS
     public function executeRemoveVariety($request) {
         $this->setLayout(false);
         $id_variety = $request->getParameter('id_variety');
@@ -807,7 +807,7 @@ class trialActions extends autoTrialActions {
         die();
     }
 
-    //REMOVEMOS LAS VARIEDADES AL CAMBIO DE CULTIVO
+//REMOVEMOS LAS VARIEDADES AL CAMBIO DE CULTIVO
     public function executeDeleteVarietySelected($request) {
         $this->setLayout(false);
         $i = $request->getParameter('i');
@@ -818,7 +818,7 @@ class trialActions extends autoTrialActions {
         die();
     }
 
-    //FILTRAMOS LAS Variables Measured
+//FILTRAMOS LAS Variables Measured
     public function executeFilterVariablesMeasured($request) {
         $this->setLayout(false);
         $txt = $request->getParameter('txt');
@@ -866,7 +866,7 @@ class trialActions extends autoTrialActions {
         die($HTML);
     }
 
-    //ADICIONAMOS LA VARIEDAD AL ARRAY DE VARIEDADES SELECCIONADAS
+//ADICIONAMOS LA VARIEDAD AL ARRAY DE VARIEDADES SELECCIONADAS
     public function executeVariablesMeasuredSelected($request) {
         $this->setLayout(false);
         $id_variablesmeasured = $request->getParameter('id_variablesmeasured');
@@ -878,7 +878,7 @@ class trialActions extends autoTrialActions {
         die();
     }
 
-    //CARGAMOS LAS VARIABLES SELECIONADAS
+//CARGAMOS LAS VARIABLES SELECIONADAS
     public function executeLoadVariablesMeasuredSelected($request) {
         $this->setLayout(false);
         $i = $request->getParameter('i');
@@ -920,7 +920,7 @@ class trialActions extends autoTrialActions {
         die();
     }
 
-    //REMOVEMOS LA VARIEDAD DEL ARRAY DE VARIEDADES SELECCIONADAS
+//REMOVEMOS LA VARIEDAD DEL ARRAY DE VARIEDADES SELECCIONADAS
     public function executeRemoveVariablesMeasured($request) {
         $this->setLayout(false);
         $id_variablesmeasured = $request->getParameter('id_variablesmeasured');
@@ -932,7 +932,7 @@ class trialActions extends autoTrialActions {
         die();
     }
 
-    //REMOVEMOS LAS VARIEDADES AL CAMBIO DE CULTIVO
+//REMOVEMOS LAS VARIEDADES AL CAMBIO DE CULTIVO
     public function executeDeleteVariablesMeasuredSelected($request) {
         $this->setLayout(false);
         $i = $request->getParameter('i');
@@ -943,7 +943,7 @@ class trialActions extends autoTrialActions {
         die();
     }
 
-    //DESCARGAMOS EL TEMPLATE DE LA FILA
+//DESCARGAMOS EL TEMPLATE DE LA FILA
     public function executeDownloadDataTemplate($request) {
         $this->setLayout(false);
         $Ind = $request->getParameter('i');
@@ -958,11 +958,11 @@ class trialActions extends autoTrialActions {
         error_reporting(E_ALL);
         date_default_timezone_set('Europe/London');
         set_time_limit(900000);
-        // Create new PHPExcel object
+// Create new PHPExcel object
 
         $objPHPExcel = new PHPExcel();
 
-        // Set properties
+// Set properties
         $objPHPExcel->getProperties()->setCreator("AgTrials")
                 ->setLastModifiedBy("AgTrials")
                 ->setTitle("Template Trial Data")
@@ -971,7 +971,7 @@ class trialActions extends autoTrialActions {
                 ->setKeywords("Template Trial Data")
                 ->setCategory("Template Trial Data");
 
-        // Add some data
+// Add some data
         $objPHPExcel->setActiveSheetIndex(0);
         $objPHPExcel->getActiveSheet(0)->setTitle('Template Trial Data');
         $objPHPExcel->getActiveSheet()->setCellValue('A1', 'Replication');
@@ -982,7 +982,7 @@ class trialActions extends autoTrialActions {
         $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
 
-        //AQUI GENERAMOS LAS FILA DE VARIABLES MEDIDAS
+//AQUI GENERAMOS LAS FILA DE VARIABLES MEDIDAS
         $letter = "B";
         foreach ($ArrVariablesMeasured AS $variablesmeasured_id) {
             $TbVariablesmeasured = Doctrine::getTable('TbVariablesmeasured')->findOneByIdVariablesmeasured($variablesmeasured_id);
@@ -995,7 +995,7 @@ class trialActions extends autoTrialActions {
         }
         $objPHPExcel->getActiveSheet()->protectCells("A1:" . $letter . "1");
 
-        //AQUI GENERAMOS LAS COLUMNAS DE REPLICACION Y VARIEDADES
+//AQUI GENERAMOS LAS COLUMNAS DE REPLICACION Y VARIEDADES
         $i = 2;
         for ($a = 1; $a <= $replication; $a++) {
             foreach ($ArrVariety AS $varieties_id) {
@@ -1010,20 +1010,20 @@ class trialActions extends autoTrialActions {
             }
         }
 
-        //APLICAMOS NEGRILLA AL TITULO
+//APLICAMOS NEGRILLA AL TITULO
         $objPHPExcel->getActiveSheet()->getStyle('A1:' . $letter . '1')->getFont()->setBold(true);
         $objPHPExcel->getActiveSheet()->getStyle('A1:C1')->getFont()->setBold(true);
         $objPHPExcel->getActiveSheet()->getStyle('A1')->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT);
         $objPHPExcel->getActiveSheet()->getStyle('B1')->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT);
 
-        //APLICAMOS COLOR ROJO A COLUMNAS OBLIGATORIAS
+//APLICAMOS COLOR ROJO A COLUMNAS OBLIGATORIAS
         $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
 
-        //RENOMBRAMOS EL LIBO
+//RENOMBRAMOS EL LIBO
         $objPHPExcel->getActiveSheet(0)->setTitle('Template Trial Data');
 
-        //inicio: GENERAMOS EL LIBRO DE VARIEDADES
+//inicio: GENERAMOS EL LIBRO DE VARIEDADES
         $objPHPExcel->createSheet();
         $objPHPExcel->setActiveSheetIndex(1);
         $objPHPExcel->getActiveSheet(1)->setTitle('Varieties');
@@ -1051,9 +1051,9 @@ class trialActions extends autoTrialActions {
         $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
-        //fin: GENERAMOS EL LIBRO DE VARIEDADES
-        //
-        //inicio: GENERAMOS EL LIBRO DE VARIABLES MEDIDAS
+//fin: GENERAMOS EL LIBRO DE VARIEDADES
+//
+//inicio: GENERAMOS EL LIBRO DE VARIABLES MEDIDAS
         $objPHPExcel->createSheet();
         $objPHPExcel->setActiveSheetIndex(2);
         $objPHPExcel->getActiveSheet(2)->setTitle('Variables Measured');
@@ -1085,11 +1085,11 @@ class trialActions extends autoTrialActions {
         $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
-        //fin: GENERAMOS EL LIBRO DE VARIABLES MEDIDAS
-        //
-        //ACTIVAMOS EL PRIMER LIBRO
+//fin: GENERAMOS EL LIBRO DE VARIABLES MEDIDAS
+//
+//ACTIVAMOS EL PRIMER LIBRO
         $objPHPExcel->setActiveSheetIndex(0);
-        // Redirect output to a clientâ€™s web browser (Excel5)
+// Redirect output to a clientâ€™s web browser (Excel5)
         header("Content-Type: application/vnd.ms-excel");
         header("Content-Disposition: attachment;filename=TrialDataTemplate$Ind.xls");
         header("Cache-Control: max-age=0");
@@ -1351,6 +1351,197 @@ class trialActions extends autoTrialActions {
         }
 
         $this->redirect('searchtrials', $Parameters);
+    }
+
+    public function executeDownloaddata(sfWebRequest $request) {
+        if ($this->getUser()->isAuthenticated()) {
+            $id_user = $this->getUser()->getGuardUser()->getId();
+            $SfGuardUserGroup = Doctrine::getTable('SfGuardUserGroup')->findByUserId($id_user);
+            foreach ($SfGuardUserGroup AS $Group) {
+                $id_group = $Group->group_id;
+            }
+        }
+
+        $date = date("Y-m-d") . " " . date("H:i:s");
+        error_reporting(E_ALL);
+        date_default_timezone_set('Europe/London');
+        set_time_limit(900000);
+        $UploadDir = sfConfig::get("sf_upload_dir");
+        $Rand = rand(1000, 9999);
+        $TmpDir = $UploadDir . "/tmp$Rand";
+        $TmpDownloaddataDir = $TmpDir . "/Downloaddata";
+        CreateDirectory($TmpDownloaddataDir);
+
+        $SearchWhere = sfContext::getInstance()->getUser()->getAttribute('SearchWhere');
+        $Where = "";
+        foreach ($SearchWhere AS $value) {
+            $Where .= $value;
+        }
+        $connection = Doctrine_Manager::getInstance()->connection();
+        $QUERY00 = "SELECT T.id_trial,T.trltrialname,P.id_project,P.prjname,TL.id_triallocation,TL.trlcname,C.id_crop,C.crpname, T.trltrialpermissions, fc_trialpermissionusergroup(T.id_trial) AS trialpermissionusergroup, TI.trnfdatafile, TI.trnfdataorresultsfile, TI.trnfsuppplementalinformationfile, TI.trnfweatherdatafile, TI.trnfsoildatafile ";
+        $QUERY00 .= "FROM tb_trial T ";
+        $QUERY00 .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
+        $QUERY00 .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
+        $QUERY00 .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
+        $QUERY00 .= "INNER JOIN tb_crop c ON TI.id_crop = C.id_crop ";
+        $QUERY00 .= "$Where ";
+        $QUERY00 .= "ORDER BY T.trltrialname,P.prjname ";
+        $st = $connection->execute($QUERY00);
+        $QUERY00Info = $st->fetchAll(PDO::FETCH_ASSOC);
+
+        $ArrIdTrials = array();
+
+        $objPHPExcel = new PHPExcel();
+        $objPHPExcel->setActiveSheetIndex(0);
+        $objPHPExcel->getActiveSheet(0)->setTitle('Trial Info');
+        $objPHPExcel->getActiveSheet()->setCellValue('A1', 'Id Trial');
+        $objPHPExcel->getActiveSheet()->setCellValue('B1', 'Trial name');
+        $objPHPExcel->getActiveSheet()->setCellValue('C1', 'Project name');
+        $objPHPExcel->getActiveSheet()->setCellValue('D1', 'Trials location name');
+        $objPHPExcel->getActiveSheet()->setCellValue('E1', 'Crop name');
+
+        $objPHPExcel->getActiveSheet()->getStyle('A1:E1')->getFont()->setBold(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
+
+        $a = 2;
+        if (count($QUERY00Info) > 0) {
+            foreach ($QUERY00Info AS $Valor) {
+                $objPHPExcel->getActiveSheet()->setCellValue("A$a", $Valor['id_trial']);
+                $objPHPExcel->getActiveSheet()->setCellValue("B$a", $Valor['trltrialname']);
+                $objPHPExcel->getActiveSheet()->setCellValue("C$a", $Valor['prjname']);
+                $objPHPExcel->getActiveSheet()->setCellValue("D$a", $Valor['trlcname']);
+                $objPHPExcel->getActiveSheet()->setCellValue("E$a", $Valor['crpname']);
+                $ArrIdTrials[$Valor['id_trial']] = array('id_crop' => $Valor['id_crop'], 'trltrialpermissions' => $Valor['trltrialpermissions'], 'trialpermissionusergroup' => $Valor['trialpermissionusergroup'], 'trnfdatafile' => $Valor['trnfdatafile'], 'trnfdataorresultsfile' => $Valor['trnfdataorresultsfile'], 'trnfsuppplementalinformationfile' => $Valor['trnfsuppplementalinformationfile'], 'trnfweatherdatafile' => $Valor['trnfweatherdatafile'], 'trnfsoildatafile' => $Valor['trnfsoildatafile']);
+                $a++;
+            }
+        }
+
+        $objPHPExcel->setActiveSheetIndex(0);
+        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+        $objWriter->save("$TmpDownloaddataDir/AgTrialsInfo.xls");
+
+
+
+        foreach ($ArrIdTrials AS $Key => $Trialinfo) {
+            $id_trial = $Key;
+            $id_crop = $Trialinfo['id_crop'];
+            $trltrialpermissions = $Trialinfo['trltrialpermissions'];
+            $ArrTrialpermissionusergroup = explode(",", $Trialinfo['trialpermissionusergroup']);
+            $trnfdatafile = $Trialinfo['trnfdatafile'];
+            $trnfdataorresultsfile = $Trialinfo['trnfdataorresultsfile'];
+            $trnfsuppplementalinformationfile = $Trialinfo['trnfsuppplementalinformationfile'];
+            $trnfweatherdatafile = $Trialinfo['trnfweatherdatafile'];
+            $trnfsoildatafile = $Trialinfo['trnfsoildatafile'];
+
+            $Continue = false;
+
+            if ($trltrialpermissions === 'Public domain') {
+                $Continue = true;
+            }
+            if (($trltrialpermissions === 'Open to all users') && ($this->getUser()->isAuthenticated())) {
+                $Continue = true;
+            }
+            if (($trltrialpermissions === 'Open to specified users') && (in_array($id_user, $ArrTrialpermissionusergroup))) {
+                $Continue = true;
+            }
+
+            if (($trltrialpermissions === 'Open to specified groups') && (in_array($id_group, $ArrTrialpermissionusergroup))) {
+                $Continue = true;
+            }
+
+            if ($Continue) {
+                $TmpDownloaddataDir = $TmpDir . "/Downloaddata";
+                $TmpTrialDir = "$TmpDownloaddataDir/TrialInfo$id_trial";
+                $TrialInfoDir = "$UploadDir/FilesTrial$id_trial";
+                CreateDirectory($TmpTrialDir);
+
+                $trnfdatafile = $Trialinfo['trnfdatafile'];
+                $trnfdataorresultsfile = $Trialinfo['trnfdataorresultsfile'];
+                $trnfsuppplementalinformationfile = $Trialinfo['trnfsuppplementalinformationfile'];
+                $trnfweatherdatafile = $Trialinfo['trnfweatherdatafile'];
+                $trnfsoildatafile = $Trialinfo['trnfsoildatafile'];
+
+                if ($trnfdatafile !== '') {
+                    $DirDatafile = "$TrialInfoDir/$trnfdatafile";
+                    if ((file_exists($DirDatafile))) {
+                        copy($DirDatafile, "$TmpTrialDir/$trnfdatafile");
+                    }
+                }
+                if ($trnfdataorresultsfile !== '') {
+                    $DirDataorresultsfile = "$TrialInfoDir/$trnfdataorresultsfile";
+                    if ((file_exists($DirDataorresultsfile))) {
+                        copy($DirDataorresultsfile, "$TmpTrialDir/$trnfdataorresultsfile");
+                    }
+                }
+                if ($trnfsuppplementalinformationfile !== '') {
+                    $DirSuppplementalinformationfile = "$TrialInfoDir/$trnfsuppplementalinformationfile";
+                    if ((file_exists($DirSuppplementalinformationfile))) {
+                        copy($DirSuppplementalinformationfile, "$TmpTrialDir/$trnfsuppplementalinformationfile");
+                    }
+                }
+                if ($trnfweatherdatafile !== '') {
+                    $DirWeatherdatafile = "$TrialInfoDir/$trnfweatherdatafile";
+                    if ((file_exists($DirWeatherdatafile))) {
+                        copy($DirWeatherdatafile, "$TmpTrialDir/$trnfw$trnfweatherdatafile");
+                    }
+                }
+                if ($trnfsoildatafile !== '') {
+                    $DirSoildatafile = "$TrialInfoDir/$trnfsoildatafile";
+                    if ((file_exists($DirSoildatafile))) {
+                        copy($DirSoildatafile, "$TmpTrialDir/$trnfsoildatafile");
+                    }
+                }
+
+                $TotalTamano = SizeDirectory($TmpTrialDir);
+                $TotalTamanoMB = round(($TotalTamano / 1024000), 2);
+                $SfGuardUserDownloads = new SfGuardUserDownloads();
+                $SfGuardUserDownloads->setUserId($id_user);
+                $SfGuardUserDownloads->setIdTrial($id_trial);
+                $SfGuardUserDownloads->setIdCrop($id_crop);
+                $SfGuardUserDownloads->setUsdwtype('All');
+                $SfGuardUserDownloads->setUsdwfile('All');
+                $SfGuardUserDownloads->setUsdwdate($date);
+                $SfGuardUserDownloads->setUsdwsize($TotalTamanoMB);
+                $SfGuardUserDownloads->save();
+            }
+        }
+
+
+
+        $folder = $TmpDownloaddataDir . "/";
+        $output = "$UploadDir/compressed.zip";
+
+        echo "I: $folder <br>";
+        echo "F: $output <br>";
+
+        $zip = new ZipArchive();
+
+        if ($zip->open($output, ZIPARCHIVE::CREATE) !== TRUE) {
+            die("Unable to open Archirve");
+        }
+
+        $all = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($folder));
+
+        foreach ($all as $f => $value) {
+            $zip->addFile(realpath($f), $f) or die("ERROR: Unable to add file: $f");
+        }
+        $zip->close();
+
+
+
+        //unlink($filename);
+
+
+        die("Fin");
+
+
+
+        //DeleteDirectory($TmpDir);
+        die();
     }
 
 }
