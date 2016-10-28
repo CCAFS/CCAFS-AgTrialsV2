@@ -1524,11 +1524,14 @@ class trialActions extends autoTrialActions {
         }
         $zip->close();
 
-        readfile($output);
+        if (file_exists($output)) {
+            header('Content-type: "application/zip"');
+            header('Content-Disposition: attachment; filename="TemplatePack.zip"');
+            readfile($output);
+            unlink($output);
+        }
 
         //unlink($filename);
-
-
         //DeleteDirectory($TmpDir);
         die();
     }
