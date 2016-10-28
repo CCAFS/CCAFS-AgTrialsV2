@@ -1526,7 +1526,7 @@ class trialActions extends autoTrialActions {
 
         if (file_exists($output)) {
             header('Content-type: "application/zip"');
-            header('Content-Disposition: attachment; filename="TemplatePack.zip"');
+            header('Content-Disposition: attachment; filename="AgTriasData.zip"');
             readfile($output);
             unlink($output);
         }
