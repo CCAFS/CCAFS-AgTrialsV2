@@ -1518,12 +1518,10 @@ class trialActions extends autoTrialActions {
         $zip = new ZipArchive();
         $zip->open($output, ZIPARCHIVE::CREATE);
         $all = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($folder));
-        
-        print_r($all);
-        die();
 
         foreach ($all as $f => $value) {
-            $zip->addFile(realpath($f), $f) or die("ERROR: Unable to add file: $f");
+            //die("s: $f");
+            $zip->addFile($f, $f);
         }
         $zip->close();
 
