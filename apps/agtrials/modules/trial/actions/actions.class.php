@@ -1513,7 +1513,7 @@ class trialActions extends autoTrialActions {
 
 
         $folder = $TmpDownloaddataDir . "/";
-        $output = "AgTriasData.zip";
+        $output = "$UploadDir/AgTriasData.zip";
 
         $zip = new ZipArchive();
         $zip->open($output, ZIPARCHIVE::CREATE);
