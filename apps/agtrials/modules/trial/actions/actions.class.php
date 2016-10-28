@@ -1453,7 +1453,7 @@ class trialActions extends autoTrialActions {
                 $Continue = true;
             }
 
-            if ($Continue) {
+            if ($Continue && (($trnfdatafile !== '') || ($trnfdataorresultsfile !== '') || ($trnfsuppplementalinformationfile !== '') || ($trnfweatherdatafile !== '') || ($trnfsoildatafile !== ''))) {
                 $TmpDownloaddataDir = $TmpDir . "/Downloaddata";
                 $TmpTrialDir = "$TmpDownloaddataDir/TrialInfo$id_trial";
                 $TrialInfoDir = "$UploadDir/FilesTrial$id_trial";
