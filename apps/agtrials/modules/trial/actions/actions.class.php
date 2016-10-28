@@ -1524,13 +1524,9 @@ class trialActions extends autoTrialActions {
         }
         $zip->close();
 
-
+        readfile($output);
 
         //unlink($filename);
-
-
-        die("Fin");
-
 
 
         //DeleteDirectory($TmpDir);
