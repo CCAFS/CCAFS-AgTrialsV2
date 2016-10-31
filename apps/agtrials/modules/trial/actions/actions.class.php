@@ -1595,7 +1595,7 @@ function agregar_zip($dir, $zip) {
                      */
                 } elseif (is_file($dir . $archivo) && $archivo != "." && $archivo != "..") {
                     echo "Agregando archivo: $dir$archivo <br/>";
-                    $zip->addFile($dir . $archivo, $dir . $archivo);
+                    $zip->addFile($dir . $archivo, 'aaa' . $archivo);
                 }
             }
             //cerramos el directorio abierto en el momento
