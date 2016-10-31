@@ -1540,16 +1540,10 @@ function agregar_zip($dir, $zip) {
         if ($da) {
             //leemos del directorio hasta que termine
             while (($archivo = readdir($da)) !== false) {
-                /* Si es un directorio imprimimos la ruta
-                 * y llamamos recursivamente esta función
-                 * para que verifique dentro del nuevo directorio
-                 * por mas directorios o archivos
-                 */
 
                 if ($archivo != "." && $archivo != "..") {
                     $DirFilesZip = strstr($dir, 'Downloaddata');
-                    die("S: $DirFilesZip");
-                    agregar_zip($dir . $archivo . "/", $zip);
+                    $zip->addFile($dir . $archivo, $DirFilesZip . $archivo);
 
                 } 
             }
