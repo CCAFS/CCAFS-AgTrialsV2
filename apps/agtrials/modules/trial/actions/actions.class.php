@@ -1540,7 +1540,7 @@ function agregar_zip($dir, $zip) {
             //leemos del directorio hasta que termine
             while (($archivo = readdir($da)) !== false) {
 
-                if ($archivo != "." && $archivo != "..") {
+                if (is_file($dir . $archivo) && $archivo != "." && $archivo != "..") {
                     $DirFilesZip = strstr($dir, 'Downloaddata');
                     $FileZip = $DirFilesZip . $archivo;
                     echo "$FileZip <br>";
