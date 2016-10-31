@@ -1518,6 +1518,7 @@ class trialActions extends autoTrialActions {
             agregar_zip($DirFiles, $zip);
             $zip->close();
 
+            die();
             if (file_exists($FileZip)) {
                 header('Content-type: "application/zip"');
                 header('Content-Disposition: attachment; filename="AgTriasData.zip"');
@@ -1553,10 +1554,9 @@ function agregar_zip($dir, $zip) {
                      */
                 } elseif (is_file($dir . $archivo) && $archivo != "." && $archivo != "..") {
                     echo "Agregando archivo: $dir$archivo <br/>";
-                    $zip->addFile($dir . $archivo, 'aaa/' . $archivo);
+                    $zip->addFile($dir . $archivo, 'AgTriasData/' . $archivo);
                 }
             }
-            //cerramos el directorio abierto en el momento
             closedir($da);
         }
     }
