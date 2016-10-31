@@ -1536,13 +1536,9 @@ class trialActions extends autoTrialActions {
             agregar_zip($dir, $zip);
             $zip->close();
 
-            //Muevo el archivo a una ruta
-            //donde no se mezcle los zip con los demas archivos
-            rename($archivoZip, "$rutaFinal/$archivoZip");
-
             //Hasta aqui el archivo zip ya esta creado
             //Verifico si el archivo ha sido creado
-            if (file_exists($rutaFinal . "/" . $archivoZip)) {
+            if (file_exists($archivoZip)) {
                 echo "Proceso Finalizado!! <br/><br/>
                 Descargar: <a href='$rutaFinal/$archivoZip'>$archivoZip</a>";
             } else {
