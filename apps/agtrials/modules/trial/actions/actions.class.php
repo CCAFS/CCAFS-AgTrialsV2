@@ -1544,14 +1544,7 @@ function agregar_zip($dir, $zip) {
          * para que verifique dentro del nuevo directorio
          * por mas directorios o archivos
          */
-        if (is_dir($dir . $archivo) && $archivo != "." && $archivo != "..") {
-          echo "<strong>Creando directorio: $dir$archivo</strong><br/>";
-          agregar_zip($dir . $archivo . "/", $zip);
- 
-          /*si encuentra un archivo imprimimos la ruta donde se encuentra
-           * y agregamos el archivo al zip junto con su ruta 
-           */
-        } elseif (is_file($dir . $archivo) && $archivo != "." && $archivo != "..") {
+        if (is_file($dir . $archivo) && $archivo != "." && $archivo != "..") {
           echo "Agregando archivo: $dir$archivo <br/>";
           $zip->addFile($dir . $archivo, $dir . $archivo);
         }
