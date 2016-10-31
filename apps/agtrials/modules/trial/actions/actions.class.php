@@ -1546,7 +1546,7 @@ function agregar_zip($dir, $zip) {
                  * por mas directorios o archivos
                  */
 
-                $pos = strpos($dir, 'Downloaddata');
+                $pos = strstr_after($dir, 'Downloaddata');
 
 
 
