@@ -1546,7 +1546,7 @@ function agregar_zip($dir, $zip) {
                  * por mas directorios o archivos
                  */
 
-                $DirFilesZip = strstr_after($dir, 'Downloaddata');
+                $DirFilesZip = strstr($dir, 'Downloaddata');
 
 
                 die("D: $DirFilesZip");
