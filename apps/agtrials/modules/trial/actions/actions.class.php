@@ -1512,8 +1512,8 @@ class trialActions extends autoTrialActions {
 
         $DirFiles = $TmpDownloaddataDir . "/";
         $FileZip = "$UploadDir/AgTriasData.zip";
-        
-       $zip = new ZipArchive();
+
+        $zip = new ZipArchive();
         if ($zip->open($FileZip, ZIPARCHIVE::CREATE) === true) {
             agregar_zip($DirFiles, $zip);
             $zip->close();
@@ -1545,14 +1545,19 @@ function agregar_zip($dir, $zip) {
                  * para que verifique dentro del nuevo directorio
                  * por mas directorios o archivos
                  */
-                
+
                 $pos = strpos($dir, 'Downloaddata');
-                
-                
-                die("P: $pos ");
-                
-                
-                
+
+
+
+
+
+                $DirFilesZip = strstr($dir, $pos);
+
+                die("P: $pos -> $DirFilesZip");
+
+
+
                 if (is_dir($dir . $archivo) && $archivo != "." && $archivo != "..") {
                     echo "<strong>Creando directorio: $dir$archivo</strong><br/>";
                     agregar_zip($dir . $archivo . "/", $zip);
