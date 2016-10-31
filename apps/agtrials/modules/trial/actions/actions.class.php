@@ -1540,11 +1540,24 @@ function agregar_zip($dir, $zip) {
             //leemos del directorio hasta que termine
             while (($archivo = readdir($da)) !== false) {
 
-                    $DirFilesZip = strstr($dir, 'Downloaddata');
-                    $FileZip = $DirFilesZip . $archivo;
-                    echo "$FileZip <br>";
-                    $zip->addFile($dir . $archivo, $FileZip);
-                
+//                    $DirFilesZip = strstr($dir, 'Downloaddata');
+//                    $FileZip = $DirFilesZip . $archivo;
+//                    echo "$FileZip <br>";
+//                    $zip->addFile($dir . $archivo, $FileZip);
+
+                if (is_dir($dir . $archivo) && $archivo != "." && $archivo != "..") {
+                    echo "<strong>Creando directorio: $dir$archivo</strong><br/>";
+                    echo "$zip <br>";
+                    //agregar_zip($dir . $archivo . "/", $zip);
+
+                    /* si encuentra un archivo imprimimos la ruta donde se encuentra
+                     * y agregamos el archivo al zip junto con su ruta 
+                     */
+                } elseif (is_file($dir . $archivo) && $archivo != "." && $archivo != "..") {
+                    echo "Agregando archivo: $dir$archivo <br/>";
+                    echo "$dir . $archivo <br>";
+                    //$zip->addFile($dir . $archivo, $dir . $archivo);
+                }
             }
             closedir($da);
         }
