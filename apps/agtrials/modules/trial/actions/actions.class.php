@@ -1538,15 +1538,15 @@ class trialActions extends autoTrialActions {
 
             //Hasta aqui el archivo zip ya esta creado
             //Verifico si el archivo ha sido creado
-            if (file_exists($archivoZip)) {
-                echo "Proceso Finalizado!! <br/><br/>
-                Descargar: <a href='$rutaFinal/$archivoZip'>$archivoZip</a>";
-            } else {
-                echo "Error, archivo zip no ha sido creado!!";
+            if (file_exists($output)) {
+                header('Content-type: "application/zip"');
+                header('Content-Disposition: attachment; filename="AgTriasData.zip"');
+                readfile($output);
+                unlink($output);
             }
         }
         die();
-        
+
 
 //        $zip = new ZipArchive();
 //        $zip->open($output, ZIPARCHIVE::CREATE);
@@ -1577,7 +1577,8 @@ function agregar_zip($dir, $zip) {
     //verificamos si $dir es un directorio
     if (is_dir($dir)) {
         //abrimos el directorio y lo asignamos a $da
-        if ($da = opendir($dir)) {
+        $da = opendir($dir);
+        if ($da) {
             //leemos del directorio hasta que termine
             while (($archivo = readdir($da)) !== false) {
                 /* Si es un directorio imprimimos la ruta
