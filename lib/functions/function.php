@@ -1179,7 +1179,7 @@ function CheckAPI($key) {
 function CreateDirectory($dir) {
     if (!is_dir($dir)) {
         if (!mkdir($dir, 0777, true)) {
-            die('Fallo al crear las carpetas...');
+            die("Fallo al crear las carpetas...{$dir}");
         }
     }
 }
