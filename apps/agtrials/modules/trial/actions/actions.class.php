@@ -1369,7 +1369,7 @@ class trialActions extends autoTrialActions {
         $UploadDir = sfConfig::get("sf_upload_dir");
         $Rand = rand(1000, 9999);
         $TmpDir = $UploadDir . "/tmp$Rand";
-        $TmpDownloaddataDir = $TmpDir . "/Downloaddata";
+        $TmpDownloaddataDir = $TmpDir . "/AgTrialsData";
         CreateDirectory($TmpDownloaddataDir);
 
         $SearchWhere = sfContext::getInstance()->getUser()->getAttribute('SearchWhere');
@@ -1511,8 +1511,8 @@ class trialActions extends autoTrialActions {
         }
 
         $DirFiles = $TmpDownloaddataDir . "/";
-        $FileZip = "$UploadDir/AgTriasData.zip";
-        $DirBase = "Downloaddata";
+        $FileZip = "$UploadDir/AgTrialsData.zip";
+        $DirBase = "AgTrialsData";
 
         $zip = new ZipArchive();
         if ($zip->open($FileZip, ZIPARCHIVE::CREATE) === true) {
@@ -1520,7 +1520,7 @@ class trialActions extends autoTrialActions {
             $zip->close();
             if (file_exists($FileZip)) {
                 header('Content-type: "application/zip"');
-                header('Content-Disposition: attachment; filename="AgTriasData.zip"');
+                header('Content-Disposition: attachment; filename="AgTrialsData.zip"');
                 readfile($FileZip);
                 unlink($FileZip);
             }
