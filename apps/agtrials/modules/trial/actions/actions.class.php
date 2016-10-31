@@ -1581,7 +1581,7 @@ function agregar_zip($dir, $zip) {
     //verificamos si $dir es un directorio
     if (is_dir($dir)) {
         //abrimos el directorio y lo asignamos a $da
-        if ($da == opendir($dir)) {
+        if ($da = opendir($dir)) {
             //leemos del directorio hasta que termine
             while (($archivo = readdir($da)) !== false) {
                 /* Si es un directorio imprimimos la ruta
