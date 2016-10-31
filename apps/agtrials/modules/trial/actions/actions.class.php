@@ -1546,24 +1546,12 @@ function agregar_zip($dir, $zip) {
                  * por mas directorios o archivos
                  */
 
-                $DirFilesZip = strstr($dir, 'Downloaddata');
-
-
-                die("D: $DirFilesZip");
-
-
-
-                if (is_dir($dir . $archivo) && $archivo != "." && $archivo != "..") {
-                    echo "<strong>Creando directorio: $dir$archivo</strong><br/>";
+                if ($archivo != "." && $archivo != "..") {
+                    $DirFilesZip = strstr($dir, 'Downloaddata');
+                    die("S: $DirFilesZip");
                     agregar_zip($dir . $archivo . "/", $zip);
 
-                    /* si encuentra un archivo imprimimos la ruta donde se encuentra
-                     * y agregamos el archivo al zip junto con su ruta 
-                     */
-                } elseif (is_file($dir . $archivo) && $archivo != "." && $archivo != "..") {
-                    echo "Agregando archivo: $dir$archivo <br/>";
-                    $zip->addFile($dir . $archivo, 'AgTriasData/' . $archivo);
-                }
+                } 
             }
             closedir($da);
         }
