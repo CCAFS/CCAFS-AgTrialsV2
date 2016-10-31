@@ -1525,7 +1525,7 @@ class trialActions extends autoTrialActions {
                 unlink($FileZip);
             }
         }
-        //DeleteDirectory($TmpDir);
+        DeleteDirectory($TmpDir);
         die();
     }
 
