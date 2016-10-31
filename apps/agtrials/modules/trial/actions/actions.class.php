@@ -1541,19 +1541,21 @@ function agregar_zip($Dirbase, $dir, $zip) {
             //leemos del directorio hasta que termine
             while (($archivo = readdir($da)) !== false) {
 
-                if (is_dir($dir . $archivo) && $archivo != "." && $archivo != "..") {
-                    $NewDir = strstr($dir . $archivo, $Dirbase) . "/";
-                    echo "<strong>Creando directorio: $dir . $archivo</strong><br/>";
-                    agregar_zip($Dirbase, $dir . $archivo, $zip);
+                echo "a: $archivo <br>";
 
-                    /* si encuentra un archivo imprimimos la ruta donde se encuentra
-                     * y agregamos el archivo al zip junto con su ruta 
-                     */
-                } elseif (is_file($dir . $archivo) && $archivo != "." && $archivo != "..") {
-                    $File = strstr($dir . $archivo, $Dirbase);
-                    echo "Agregando archivo: $dir$archivo <br/>";
-                    $zip->addFile($dir . $archivo, $dir . $archivo);
-                }
+//                if (is_dir($dir . $archivo) && $archivo != "." && $archivo != "..") {
+//                    $NewDir = strstr($dir . $archivo, $Dirbase) . "/";
+//                    echo "<strong>Creando directorio: $dir . $archivo</strong><br/>";
+//                    agregar_zip($Dirbase, $dir . $archivo, $zip);
+//
+//                    /* si encuentra un archivo imprimimos la ruta donde se encuentra
+//                     * y agregamos el archivo al zip junto con su ruta 
+//                     */
+//                } elseif (is_file($dir . $archivo) && $archivo != "." && $archivo != "..") {
+//                    $File = strstr($dir . $archivo, $Dirbase);
+//                    echo "Agregando archivo: $dir$archivo <br/>";
+//                    $zip->addFile($dir . $archivo, $dir . $archivo);
+//                }
             }
             closedir($da);
         }
