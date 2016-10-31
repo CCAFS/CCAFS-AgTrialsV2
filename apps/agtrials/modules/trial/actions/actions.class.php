@@ -1543,7 +1543,7 @@ function agregar_zip($dir, $zip) {
                 if ($archivo != "." && $archivo != "..") {
                     $DirFilesZip = strstr($dir, 'Downloaddata');
                     $FileZip = $DirFilesZip . $archivo;
-                    echoln($FileZip);
+                    echo "$FileZip <br>";
                     $zip->addFile($dir . $archivo, $FileZip);
                 }
             }
