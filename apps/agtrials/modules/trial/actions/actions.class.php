@@ -1512,10 +1512,11 @@ class trialActions extends autoTrialActions {
 
         $DirFiles = $TmpDownloaddataDir . "/";
         $FileZip = "$UploadDir/AgTriasData.zip";
+        $DirBase = "Downloaddata";
 
         $zip = new ZipArchive();
         if ($zip->open($FileZip, ZIPARCHIVE::CREATE) === true) {
-            agregar_zip($DirFiles, $zip);
+            agregar_zip($DirBase, $DirFiles, $zip);
             $zip->close();
             die("Fin");
             if (file_exists($FileZip)) {
@@ -1531,7 +1532,7 @@ class trialActions extends autoTrialActions {
 
 }
 
-function agregar_zip($dir, $zip) {
+function agregar_zip($Dirbase, $dir, $zip) {
     //verificamos si $dir es un directorio
     if (is_dir($dir)) {
         //abrimos el directorio y lo asignamos a $da
@@ -1540,14 +1541,15 @@ function agregar_zip($dir, $zip) {
             //leemos del directorio hasta que termine
             while (($archivo = readdir($da)) !== false) {
 
-//                    $DirFilesZip = strstr($dir, 'Downloaddata');
+//                    $DirFilesZip = strstr($dir, $Dirbase);
 //                    $FileZip = $DirFilesZip . $archivo;
 //                    echo "$FileZip <br>";
 //                    $zip->addFile($dir . $archivo, $FileZip);
 
                 if (is_dir($dir . $archivo) && $archivo != "." && $archivo != "..") {
-                    echo "<strong>Creando directorio: $dir$archivo</strong><br/>";
-                    agregar_zip($dir . $archivo . "/", $zip);
+                    $NewDir = strstr($dir . $archivo, $Dirbase);
+                    echo "<strong>Creando directorio: $NewDir</strong><br/>";
+                    agregar_zip($NewDir, $zip);
 
                     /* si encuentra un archivo imprimimos la ruta donde se encuentra
                      * y agregamos el archivo al zip junto con su ruta 
