@@ -1511,9 +1511,9 @@ class trialActions extends autoTrialActions {
         }
 
         $DirFiles = $TmpDownloaddataDir . "/";
-        $FileZip = "$UploadDir/AgTrialsData.zip";
+        $FileZip = $DirFiles . "AgTrialsData.zip";
         $DirBase = "AgTrialsData";
-        
+
         $Zip = new ZipArchive();
         if ($Zip->open($FileZip, ZIPARCHIVE::CREATE) === true) {
             ZipAdd($Zip, $DirFiles, $DirBase);
