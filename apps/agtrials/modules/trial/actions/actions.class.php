@@ -1531,21 +1531,19 @@ class trialActions extends autoTrialActions {
 
 }
 
-ZipAdd($Zip, $DirFiles, $DirBase);
-
-function ZipAdd($Zip, $dir, $Dirbase) {
-    if (is_dir($dir)) {
-        $da = opendir($dir);
-        if ($da) {
-            while (($archivo = readdir($da)) !== false) {
-                if (is_dir($dir . $archivo) && $archivo != "." && $archivo != "..") {
-                    ZipAdd($Zip, $dir . $archivo . "/", $Dirbase);
-                } elseif (is_file($dir . $archivo) && $archivo != "." && $archivo != "..") {
-                    $File = strstr($dir . $archivo, $Dirbase);
-                    $Zip->addFile($dir . $archivo, $File);
+function ZipAdd($Zip, $DirFiles, $Dirbase) {
+    if (is_dir($DirFiles)) {
+        $DF = opendir($DirFiles);
+        if ($DF) {
+            while (($File = readdir($da)) !== false) {
+                if ((is_dir($DirFiles . $File)) && ($File != "..") && ($File != ".")) {
+                    ZipAdd($Zip, $DirFiles . $File . "/", $Dirbase);
+                } elseif ((is_file($DirFiles . $File)) && ($File != "..") && ($File != ".")) {
+                    $FileZip = strstr($DirFiles . $File, $Dirbase);
+                    $Zip->addFile($DirFiles . $File, $FileZip);
                 }
             }
-            closedir($da);
+            closedir($DF);
         }
     }
 }
