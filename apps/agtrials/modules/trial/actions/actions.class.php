@@ -1535,7 +1535,7 @@ function ZipAdd($Zip, $DirFiles, $Dirbase) {
     if (is_dir($DirFiles)) {
         $DF = opendir($DirFiles);
         if ($DF) {
-            while (($File = readdir($da)) !== false) {
+            while (($File = readdir($DF)) !== false) {
                 if ((is_dir($DirFiles . $File)) && ($File != "..") && ($File != ".")) {
                     ZipAdd($Zip, $DirFiles . $File . "/", $Dirbase);
                 } elseif ((is_file($DirFiles . $File)) && ($File != "..") && ($File != ".")) {
