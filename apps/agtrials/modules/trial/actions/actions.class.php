@@ -1510,18 +1510,11 @@ class trialActions extends autoTrialActions {
             }
         }
 
+        $DirFiles = $TmpDownloaddataDir . "/";
 
-
-        $folder =  "AgTriasData/";
         $output = "$UploadDir/AgTriasData.zip";
 
         $zip = new ZipArchive();
-
-        /* directorio a comprimir
-         * la barra inclinada al final es importante
-         * la ruta debe ser relativa no absoluta
-         */
-        $dir = $folder;
 
 //ruta donde guardar los archivos zip, ya debe existir
         $rutaFinal = $UploadDir;
@@ -1533,7 +1526,7 @@ class trialActions extends autoTrialActions {
         $archivoZip = $output;
 
         if ($zip->open($archivoZip, ZIPARCHIVE::CREATE) === true) {
-            agregar_zip($dir, $zip);
+            agregar_zip($DirFiles, $zip);
             $zip->close();
 
             //Hasta aqui el archivo zip ya esta creado
