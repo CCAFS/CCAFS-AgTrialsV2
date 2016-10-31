@@ -1520,8 +1520,10 @@ class trialActions extends autoTrialActions {
         $all = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($folder));
 
         foreach ($all as $f => $value) {
+            echo "F: $f <br>";
             $zip->addFile($f, $f);
         }
+        die();
         $zip->close();
 
         if (file_exists($output)) {
