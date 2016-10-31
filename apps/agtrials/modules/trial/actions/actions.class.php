@@ -1544,9 +1544,7 @@ function agregar_zip($Dirbase, $dir, $zip) {
                 if (is_dir($dir . $archivo) && $archivo != "." && $archivo != "..") {
                     $NewDir = strstr($dir . $archivo, $Dirbase) . "/";
                     echo "<strong>Creando directorio: $NewDir</strong><br/>";
-                    agregar_zip($Dirbase, $dir . $archivo, $zip);
-
-
+                    agregar_zip($Dirbase, $NewDir, $zip);
                 } elseif (is_file($dir . $archivo) && $archivo != "." && $archivo != "..") {
                     $File = strstr($dir . $archivo, $Dirbase);
                     echo "Agregando archivo: $dir$archivo <br/>";
