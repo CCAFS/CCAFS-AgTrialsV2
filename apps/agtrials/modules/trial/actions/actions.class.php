@@ -26,7 +26,7 @@
 
 require_once dirname(__FILE__) . '/../lib/trialGeneratorConfiguration.class.php';
 require_once dirname(__FILE__) . '/../lib/trialGeneratorHelper.class.php';
-//require_once '../lib/zip/pclzip.lib.php';
+require_once '../lib/zip/pclzip.lib.php';
 require_once '../lib/functions/function.php';
 require_once '../lib/functions/functionexcel.php';
 require_once '../lib/functions/html.php';
@@ -1514,8 +1514,6 @@ class trialActions extends autoTrialActions {
         $FileZip = "$UploadDir/AgTrialsData.zip";
         $DirBase = "AgTrialsData";
         
-        die("-> $DirFiles");
-
         $Zip = new ZipArchive();
         if ($Zip->open($FileZip, ZIPARCHIVE::CREATE) === true) {
             ZipAdd($Zip, $DirFiles, $DirBase);
@@ -1524,10 +1522,10 @@ class trialActions extends autoTrialActions {
                 header('Content-type: "application/zip"');
                 header('Content-Disposition: attachment; filename="AgTrialsData.zip"');
                 readfile($FileZip);
-                //unlink($FileZip);
+                unlink($FileZip);
             }
         }
-        //DeleteDirectory($TmpDir);
+        DeleteDirectory($TmpDir);
         die();
     }
 
