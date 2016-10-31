@@ -1362,6 +1362,9 @@ class trialActions extends autoTrialActions {
             }
         }
 
+        if ($id_user === '')
+            $id_user = null;
+
         $date = date("Y-m-d") . " " . date("H:i:s");
         error_reporting(E_ALL);
         date_default_timezone_set('Europe/London');
