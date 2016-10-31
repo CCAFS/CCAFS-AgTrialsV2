@@ -477,22 +477,22 @@ class trialActions extends autoTrialActions {
             mkdir($tmp_download, 0777);
         }
 
-        $zip = new ZipArchive();
+        $Zip = new ZipArchive();
         $filename = "$tmp_download/TemplatePack.zip";
-        $zip->open($filename, ZIPARCHIVE::CREATE);
+        $Zip->open($filename, ZIPARCHIVE::CREATE);
 
         $TrialTemplate = CreateTemplateTrial();
-        $zip->addFile("$tmp_download/$TrialTemplate", "$TrialTemplate");
+        $Zip->addFile("$tmp_download/$TrialTemplate", "$TrialTemplate");
 
         $TrialInfoTemplate = CreateTemplateTrialInfo();
-        $zip->addFile("$tmp_download/$TrialInfoTemplate", "$TrialInfoTemplate");
+        $Zip->addFile("$tmp_download/$TrialInfoTemplate", "$TrialInfoTemplate");
 
         $ArrTemplateFiles = CreateTemplateTrialInfoData();
         foreach ($ArrTemplateFiles AS $TemplateFile) {
-            $zip->addFile("$tmp_download/$TemplateFile", "$TemplateFile");
+            $Zip->addFile("$tmp_download/$TemplateFile", "$TemplateFile");
         }
 
-        $zip->close();
+        $Zip->close();
 
         if (file_exists($filename)) {
             header('Content-type: "application/zip"');
@@ -1514,10 +1514,10 @@ class trialActions extends autoTrialActions {
         $FileZip = "$UploadDir/AgTrialsData.zip";
         $DirBase = "AgTrialsData";
 
-        $zip = new ZipArchive();
-        if ($zip->open($FileZip, ZIPARCHIVE::CREATE) === true) {
-            agregar_zip($DirBase, $DirFiles, $zip);
-            $zip->close();
+        $Zip = new ZipArchive();
+        if ($Zip->open($FileZip, ZIPARCHIVE::CREATE) === true) {
+            ZipAdd($Zip, $DirFiles, $DirBase);
+            $Zip->close();
             if (file_exists($FileZip)) {
                 header('Content-type: "application/zip"');
                 header('Content-Disposition: attachment; filename="AgTrialsData.zip"');
@@ -1531,16 +1531,18 @@ class trialActions extends autoTrialActions {
 
 }
 
-function agregar_zip($Dirbase, $dir, $zip) {
+ZipAdd($Zip, $DirFiles, $DirBase);
+
+function ZipAdd($Zip, $dir, $Dirbase) {
     if (is_dir($dir)) {
         $da = opendir($dir);
         if ($da) {
             while (($archivo = readdir($da)) !== false) {
                 if (is_dir($dir . $archivo) && $archivo != "." && $archivo != "..") {
-                    agregar_zip($Dirbase, $dir . $archivo . "/", $zip);
+                    ZipAdd($Zip, $dir . $archivo . "/", $Dirbase);
                 } elseif (is_file($dir . $archivo) && $archivo != "." && $archivo != "..") {
                     $File = strstr($dir . $archivo, $Dirbase);
-                    $zip->addFile($dir . $archivo, $File);
+                    $Zip->addFile($dir . $archivo, $File);
                 }
             }
             closedir($da);
