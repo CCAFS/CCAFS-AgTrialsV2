@@ -1522,10 +1522,10 @@ class trialActions extends autoTrialActions {
                 header('Content-type: "application/zip"');
                 header('Content-Disposition: attachment; filename="AgTrialsData.zip"');
                 readfile($FileZip);
-                unlink($FileZip);
+                //unlink($FileZip);
             }
         }
-        DeleteDirectory($TmpDir);
+        //DeleteDirectory($TmpDir);
         die();
     }
 
