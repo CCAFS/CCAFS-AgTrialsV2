@@ -1511,57 +1511,22 @@ class trialActions extends autoTrialActions {
         }
 
         $DirFiles = $TmpDownloaddataDir . "/";
-
-        $output = "$UploadDir/AgTriasData.zip";
+        $FileZip = "$UploadDir/AgTriasData.zip";
 
         $zip = new ZipArchive();
-
-//ruta donde guardar los archivos zip, ya debe existir
-        $rutaFinal = $UploadDir;
-
-        if (!file_exists($rutaFinal)) {
-            mkdir($rutaFinal);
-        }
-
-        $archivoZip = $output;
-
-        if ($zip->open($archivoZip, ZIPARCHIVE::CREATE) === true) {
+        if ($zip->open($FileZip, ZIPARCHIVE::CREATE) === true) {
             agregar_zip($DirFiles, $zip);
             $zip->close();
 
-            //Hasta aqui el archivo zip ya esta creado
-            //Verifico si el archivo ha sido creado
-            if (file_exists($output)) {
+            if (file_exists($FileZip)) {
                 header('Content-type: "application/zip"');
                 header('Content-Disposition: attachment; filename="AgTriasData.zip"');
-                readfile($output);
-                unlink($output);
+                readfile($FileZip);
+                unlink($FileZip);
             }
         }
+        //DeleteDirectory($TmpDir);
         die();
-
-
-//        $zip = new ZipArchive();
-//        $zip->open($output, ZIPARCHIVE::CREATE);
-//        $all = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($folder));
-//
-//        foreach ($all as $f => $value) {
-//            echo "F: $f <br>";
-//            $zip->addFile($f, $f);
-//        }
-//        die();
-//        $zip->close();
-//
-//        if (file_exists($output)) {
-//            header('Content-type: "application/zip"');
-//            header('Content-Disposition: attachment; filename="AgTriasData.zip"');
-//            readfile($output);
-//            unlink($output);
-//        }
-//
-//        //unlink($filename);
-//        //DeleteDirectory($TmpDir);
-//        die();
     }
 
 }
