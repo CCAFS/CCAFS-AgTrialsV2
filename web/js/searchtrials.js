@@ -81,7 +81,8 @@ jQuery(document).ready(function () {
     });
 
     jQuery("#ButtonDownloaddata").click(function () {
-        window.location.href = "/trial/Downloaddata/";
+        window.open("/Downloaddata", null, "height=400,width=800,status=yes,toolbar=no,menubar=no,location=no");
+        //window.location.href = "/trial/Downloaddata/";
     });
 
     jQuery("#ShowHideDivAdvancedSearch").on('click', function () {
@@ -361,4 +362,8 @@ function SubmitSearch() {
             }
         });
     }
+}
+
+function Downloaddatapart(num) {
+    window.location.href = "/Downloaddata/part/" + num;
 }

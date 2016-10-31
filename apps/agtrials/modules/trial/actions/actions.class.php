@@ -1354,182 +1354,211 @@ class trialActions extends autoTrialActions {
     }
 
     public function executeDownloaddata(sfWebRequest $request) {
-        if ($this->getUser()->isAuthenticated()) {
-            $id_user = $this->getUser()->getGuardUser()->getId();
-            $SfGuardUserGroup = Doctrine::getTable('SfGuardUserGroup')->findByUserId($id_user);
-            foreach ($SfGuardUserGroup AS $Group) {
-                $id_group = $Group->group_id;
-            }
-        }
-
-        if ($id_user === '')
-            $id_user = null;
-
-        $date = date("Y-m-d") . " " . date("H:i:s");
-        error_reporting(E_ALL);
-        date_default_timezone_set('Europe/London');
-        set_time_limit(900000);
-        $UploadDir = sfConfig::get("sf_upload_dir");
-        $Rand = rand(1000, 9999);
-        $TmpDir = $UploadDir . "/tmp$Rand";
-        $TmpDownloaddataDir = $TmpDir . "/AgTrialsData";
-        CreateDirectory($TmpDownloaddataDir);
-
+        $this->setLayout(false);
+        $connection = Doctrine_Manager::getInstance()->connection();
         $SearchWhere = sfContext::getInstance()->getUser()->getAttribute('SearchWhere');
+        $part = sfContext::getInstance()->getRequest()->getParameterHolder()->get('part');
         $Where = "";
         foreach ($SearchWhere AS $value) {
             $Where .= $value;
         }
-        $connection = Doctrine_Manager::getInstance()->connection();
-        $QUERY00 = "SELECT T.id_trial,T.trltrialname,P.id_project,P.prjname,TL.id_triallocation,TL.trlcname,C.id_crop,C.crpname, T.trltrialpermissions, fc_trialpermissionusergroup(T.id_trial) AS trialpermissionusergroup, TI.trnfdatafile, TI.trnfdataorresultsfile, TI.trnfsuppplementalinformationfile, TI.trnfweatherdatafile, TI.trnfsoildatafile ";
-        $QUERY00 .= "FROM tb_trial T ";
-        $QUERY00 .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
-        $QUERY00 .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
-        $QUERY00 .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
-        $QUERY00 .= "INNER JOIN tb_crop c ON TI.id_crop = C.id_crop ";
-        $QUERY00 .= "$Where ";
-        $QUERY00 .= "ORDER BY T.trltrialname,P.prjname ";
-        $st = $connection->execute($QUERY00);
-        $QUERY00Info = $st->fetchAll(PDO::FETCH_ASSOC);
 
-        $ArrIdTrials = array();
-
-        $objPHPExcel = new PHPExcel();
-        $objPHPExcel->setActiveSheetIndex(0);
-        $objPHPExcel->getActiveSheet(0)->setTitle('Trial Info');
-        $objPHPExcel->getActiveSheet()->setCellValue('A1', 'Id Trial');
-        $objPHPExcel->getActiveSheet()->setCellValue('B1', 'Trial name');
-        $objPHPExcel->getActiveSheet()->setCellValue('C1', 'Project name');
-        $objPHPExcel->getActiveSheet()->setCellValue('D1', 'Trials location name');
-        $objPHPExcel->getActiveSheet()->setCellValue('E1', 'Crop name');
-
-        $objPHPExcel->getActiveSheet()->getStyle('A1:E1')->getFont()->setBold(true);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
-
-        $a = 2;
-        if (count($QUERY00Info) > 0) {
-            foreach ($QUERY00Info AS $Valor) {
-                $objPHPExcel->getActiveSheet()->setCellValue("A$a", $Valor['id_trial']);
-                $objPHPExcel->getActiveSheet()->setCellValue("B$a", $Valor['trltrialname']);
-                $objPHPExcel->getActiveSheet()->setCellValue("C$a", $Valor['prjname']);
-                $objPHPExcel->getActiveSheet()->setCellValue("D$a", $Valor['trlcname']);
-                $objPHPExcel->getActiveSheet()->setCellValue("E$a", $Valor['crpname']);
-                $ArrIdTrials[$Valor['id_trial']] = array('id_crop' => $Valor['id_crop'], 'trltrialpermissions' => $Valor['trltrialpermissions'], 'trialpermissionusergroup' => $Valor['trialpermissionusergroup'], 'trnfdatafile' => $Valor['trnfdatafile'], 'trnfdataorresultsfile' => $Valor['trnfdataorresultsfile'], 'trnfsuppplementalinformationfile' => $Valor['trnfsuppplementalinformationfile'], 'trnfweatherdatafile' => $Valor['trnfweatherdatafile'], 'trnfsoildatafile' => $Valor['trnfsoildatafile']);
-                $a++;
+        if ($part == '') {
+            $QUERY00 = "SELECT T.id_trial ";
+            $QUERY00 .= "FROM tb_trial T ";
+            $QUERY00 .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
+            $QUERY00 .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
+            $QUERY00 .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
+            $QUERY00 .= "INNER JOIN tb_crop c ON TI.id_crop = C.id_crop ";
+            $QUERY00 .= "$Where ";
+            $st = $connection->execute($QUERY00);
+            $QUERY00Count = $st->fetchAll(PDO::FETCH_ASSOC);
+            $Count = count($QUERY00Count);
+            $Cursormax = ceil(($Count / 1000));
+            $this->Cursormax = $Cursormax;
+        } else {
+            if (($part > 1)) {
+                $offset = ((($part - 1) * 1000) + 1);
+            } else {
+                $offset = 0;
             }
-        }
-
-        $objPHPExcel->setActiveSheetIndex(0);
-        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
-        $objWriter->save("$TmpDownloaddataDir/AgTrialsInfo.xls");
-
-
-
-        foreach ($ArrIdTrials AS $Key => $Trialinfo) {
-            $id_trial = $Key;
-            $id_crop = $Trialinfo['id_crop'];
-            $trltrialpermissions = $Trialinfo['trltrialpermissions'];
-            $ArrTrialpermissionusergroup = explode(",", $Trialinfo['trialpermissionusergroup']);
-            $trnfdatafile = $Trialinfo['trnfdatafile'];
-            $trnfdataorresultsfile = $Trialinfo['trnfdataorresultsfile'];
-            $trnfsuppplementalinformationfile = $Trialinfo['trnfsuppplementalinformationfile'];
-            $trnfweatherdatafile = $Trialinfo['trnfweatherdatafile'];
-            $trnfsoildatafile = $Trialinfo['trnfsoildatafile'];
-
-            $Continue = false;
-
-            if ($trltrialpermissions === 'Public domain') {
-                $Continue = true;
-            }
-            if (($trltrialpermissions === 'Open to all users') && ($this->getUser()->isAuthenticated())) {
-                $Continue = true;
-            }
-            if (($trltrialpermissions === 'Open to specified users') && (in_array($id_user, $ArrTrialpermissionusergroup))) {
-                $Continue = true;
+            if ($this->getUser()->isAuthenticated()) {
+                $id_user = $this->getUser()->getGuardUser()->getId();
+                $SfGuardUserGroup = Doctrine::getTable('SfGuardUserGroup')->findByUserId($id_user);
+                foreach ($SfGuardUserGroup AS $Group) {
+                    $id_group = $Group->group_id;
+                }
             }
 
-            if (($trltrialpermissions === 'Open to specified groups') && (in_array($id_group, $ArrTrialpermissionusergroup))) {
-                $Continue = true;
+            if ($id_user === '')
+                $id_user = null;
+
+            $date = date("Y-m-d") . " " . date("H:i:s");
+            error_reporting(E_ALL);
+            date_default_timezone_set('Europe/London');
+            set_time_limit(900000);
+            $UploadDir = sfConfig::get("sf_upload_dir");
+            $Rand = rand(1000, 9999);
+            $TmpDir = $UploadDir . "/tmp$Rand";
+            $TmpDownloaddataDir = $TmpDir . "/AgTrialsData";
+            CreateDirectory($TmpDownloaddataDir);
+
+            $SearchWhere = sfContext::getInstance()->getUser()->getAttribute('SearchWhere');
+            $Where = "";
+            foreach ($SearchWhere AS $value) {
+                $Where .= $value;
             }
 
-            if ($Continue && (($trnfdatafile !== '') || ($trnfdataorresultsfile !== '') || ($trnfsuppplementalinformationfile !== '') || ($trnfweatherdatafile !== '') || ($trnfsoildatafile !== ''))) {
-                $TmpDownloaddataDir = $TmpDir . "/AgTrialsData";
-                $TmpTrialDir = "$TmpDownloaddataDir/TrialInfo$id_trial";
-                $TrialInfoDir = "$UploadDir/FilesTrial$id_trial";
-                CreateDirectory($TmpTrialDir);
+            $QUERY00 = "SELECT T.id_trial,T.trltrialname,P.id_project,P.prjname,TL.id_triallocation,TL.trlcname,C.id_crop,C.crpname, T.trltrialpermissions, fc_trialpermissionusergroup(T.id_trial) AS trialpermissionusergroup, TI.trnfdatafile, TI.trnfdataorresultsfile, TI.trnfsuppplementalinformationfile, TI.trnfweatherdatafile, TI.trnfsoildatafile ";
+            $QUERY00 .= "FROM tb_trial T ";
+            $QUERY00 .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
+            $QUERY00 .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
+            $QUERY00 .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
+            $QUERY00 .= "INNER JOIN tb_crop c ON TI.id_crop = C.id_crop ";
+            $QUERY00 .= "$Where ";
+            $QUERY00 .= "ORDER BY T.id_trial ASC LIMIT 1000 OFFSET $offset";
+            $st = $connection->execute($QUERY00);
+            $QUERY00Info = $st->fetchAll(PDO::FETCH_ASSOC);
 
+            $ArrIdTrials = array();
+
+            $objPHPExcel = new PHPExcel();
+            $objPHPExcel->setActiveSheetIndex(0);
+            $objPHPExcel->getActiveSheet(0)->setTitle('Trial Info');
+            $objPHPExcel->getActiveSheet()->setCellValue('A1', 'Id Trial');
+            $objPHPExcel->getActiveSheet()->setCellValue('B1', 'Trial name');
+            $objPHPExcel->getActiveSheet()->setCellValue('C1', 'Project name');
+            $objPHPExcel->getActiveSheet()->setCellValue('D1', 'Trials location name');
+            $objPHPExcel->getActiveSheet()->setCellValue('E1', 'Crop name');
+
+            $objPHPExcel->getActiveSheet()->getStyle('A1:E1')->getFont()->setBold(true);
+            $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
+            $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
+            $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
+            $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
+            $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
+
+            $a = 2;
+            if (count($QUERY00Info) > 0) {
+                foreach ($QUERY00Info AS $Valor) {
+                    $objPHPExcel->getActiveSheet()->setCellValue("A$a", $Valor['id_trial']);
+                    $objPHPExcel->getActiveSheet()->setCellValue("B$a", $Valor['trltrialname']);
+                    $objPHPExcel->getActiveSheet()->setCellValue("C$a", $Valor['prjname']);
+                    $objPHPExcel->getActiveSheet()->setCellValue("D$a", $Valor['trlcname']);
+                    $objPHPExcel->getActiveSheet()->setCellValue("E$a", $Valor['crpname']);
+                    $ArrIdTrials[$Valor['id_trial']] = array('id_crop' => $Valor['id_crop'], 'trltrialpermissions' => $Valor['trltrialpermissions'], 'trialpermissionusergroup' => $Valor['trialpermissionusergroup'], 'trnfdatafile' => $Valor['trnfdatafile'], 'trnfdataorresultsfile' => $Valor['trnfdataorresultsfile'], 'trnfsuppplementalinformationfile' => $Valor['trnfsuppplementalinformationfile'], 'trnfweatherdatafile' => $Valor['trnfweatherdatafile'], 'trnfsoildatafile' => $Valor['trnfsoildatafile']);
+                    $a++;
+                }
+            }
+
+            $objPHPExcel->setActiveSheetIndex(0);
+            $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+            $objWriter->save("$TmpDownloaddataDir/AgTrialsInfo.xls");
+
+
+
+            foreach ($ArrIdTrials AS $Key => $Trialinfo) {
+                $id_trial = $Key;
+                $id_crop = $Trialinfo['id_crop'];
+                $trltrialpermissions = $Trialinfo['trltrialpermissions'];
+                $ArrTrialpermissionusergroup = explode(",", $Trialinfo['trialpermissionusergroup']);
                 $trnfdatafile = $Trialinfo['trnfdatafile'];
                 $trnfdataorresultsfile = $Trialinfo['trnfdataorresultsfile'];
                 $trnfsuppplementalinformationfile = $Trialinfo['trnfsuppplementalinformationfile'];
                 $trnfweatherdatafile = $Trialinfo['trnfweatherdatafile'];
                 $trnfsoildatafile = $Trialinfo['trnfsoildatafile'];
 
-                if ($trnfdatafile !== '') {
-                    $DirDatafile = "$TrialInfoDir/$trnfdatafile";
-                    if ((file_exists($DirDatafile))) {
-                        copy($DirDatafile, "$TmpTrialDir/$trnfdatafile");
-                    }
+                $Continue = false;
+
+                if ($trltrialpermissions === 'Public domain') {
+                    $Continue = true;
                 }
-                if ($trnfdataorresultsfile !== '') {
-                    $DirDataorresultsfile = "$TrialInfoDir/$trnfdataorresultsfile";
-                    if ((file_exists($DirDataorresultsfile))) {
-                        copy($DirDataorresultsfile, "$TmpTrialDir/$trnfdataorresultsfile");
-                    }
+                if (($trltrialpermissions === 'Open to all users') && ($this->getUser()->isAuthenticated())) {
+                    $Continue = true;
                 }
-                if ($trnfsuppplementalinformationfile !== '') {
-                    $DirSuppplementalinformationfile = "$TrialInfoDir/$trnfsuppplementalinformationfile";
-                    if ((file_exists($DirSuppplementalinformationfile))) {
-                        copy($DirSuppplementalinformationfile, "$TmpTrialDir/$trnfsuppplementalinformationfile");
-                    }
-                }
-                if ($trnfweatherdatafile !== '') {
-                    $DirWeatherdatafile = "$TrialInfoDir/$trnfweatherdatafile";
-                    if ((file_exists($DirWeatherdatafile))) {
-                        copy($DirWeatherdatafile, "$TmpTrialDir/$trnfw$trnfweatherdatafile");
-                    }
-                }
-                if ($trnfsoildatafile !== '') {
-                    $DirSoildatafile = "$TrialInfoDir/$trnfsoildatafile";
-                    if ((file_exists($DirSoildatafile))) {
-                        copy($DirSoildatafile, "$TmpTrialDir/$trnfsoildatafile");
-                    }
+                if (($trltrialpermissions === 'Open to specified users') && (in_array($id_user, $ArrTrialpermissionusergroup))) {
+                    $Continue = true;
                 }
 
-                $TotalTamano = SizeDirectory($TmpTrialDir);
-                $TotalTamanoMB = round(($TotalTamano / 1024000), 2);
-                $SfGuardUserDownloads = new SfGuardUserDownloads();
-                $SfGuardUserDownloads->setUserId($id_user);
-                $SfGuardUserDownloads->setIdTrial($id_trial);
-                $SfGuardUserDownloads->setIdCrop($id_crop);
-                $SfGuardUserDownloads->setUsdwtype('All');
-                $SfGuardUserDownloads->setUsdwfile('All');
-                $SfGuardUserDownloads->setUsdwdate($date);
-                $SfGuardUserDownloads->setUsdwsize($TotalTamanoMB);
-                $SfGuardUserDownloads->save();
+                if (($trltrialpermissions === 'Open to specified groups') && (in_array($id_group, $ArrTrialpermissionusergroup))) {
+                    $Continue = true;
+                }
+
+                if ($Continue && (($trnfdatafile !== '') || ($trnfdataorresultsfile !== '') || ($trnfsuppplementalinformationfile !== '') || ($trnfweatherdatafile !== '') || ($trnfsoildatafile !== ''))) {
+                    $TmpDownloaddataDir = $TmpDir . "/AgTrialsData";
+                    $TmpTrialDir = "$TmpDownloaddataDir/TrialInfo$id_trial";
+                    $TrialInfoDir = "$UploadDir/FilesTrial$id_trial";
+                    CreateDirectory($TmpTrialDir);
+
+                    $trnfdatafile = $Trialinfo['trnfdatafile'];
+                    $trnfdataorresultsfile = $Trialinfo['trnfdataorresultsfile'];
+                    $trnfsuppplementalinformationfile = $Trialinfo['trnfsuppplementalinformationfile'];
+                    $trnfweatherdatafile = $Trialinfo['trnfweatherdatafile'];
+                    $trnfsoildatafile = $Trialinfo['trnfsoildatafile'];
+
+                    if ($trnfdatafile !== '') {
+                        $DirDatafile = "$TrialInfoDir/$trnfdatafile";
+                        if ((file_exists($DirDatafile))) {
+                            copy($DirDatafile, "$TmpTrialDir/$trnfdatafile");
+                        }
+                    }
+                    if ($trnfdataorresultsfile !== '') {
+                        $DirDataorresultsfile = "$TrialInfoDir/$trnfdataorresultsfile";
+                        if ((file_exists($DirDataorresultsfile))) {
+                            copy($DirDataorresultsfile, "$TmpTrialDir/$trnfdataorresultsfile");
+                        }
+                    }
+                    if ($trnfsuppplementalinformationfile !== '') {
+                        $DirSuppplementalinformationfile = "$TrialInfoDir/$trnfsuppplementalinformationfile";
+                        if ((file_exists($DirSuppplementalinformationfile))) {
+                            copy($DirSuppplementalinformationfile, "$TmpTrialDir/$trnfsuppplementalinformationfile");
+                        }
+                    }
+                    if ($trnfweatherdatafile !== '') {
+                        $DirWeatherdatafile = "$TrialInfoDir/$trnfweatherdatafile";
+                        if ((file_exists($DirWeatherdatafile))) {
+                            copy($DirWeatherdatafile, "$TmpTrialDir/$trnfw$trnfweatherdatafile");
+                        }
+                    }
+                    if ($trnfsoildatafile !== '') {
+                        $DirSoildatafile = "$TrialInfoDir/$trnfsoildatafile";
+                        if ((file_exists($DirSoildatafile))) {
+                            copy($DirSoildatafile, "$TmpTrialDir/$trnfsoildatafile");
+                        }
+                    }
+
+                    $TotalTamano = SizeDirectory($TmpTrialDir);
+                    $TotalTamanoMB = round(($TotalTamano / 1024000), 2);
+                    $SfGuardUserDownloads = new SfGuardUserDownloads();
+                    $SfGuardUserDownloads->setUserId($id_user);
+                    $SfGuardUserDownloads->setIdTrial($id_trial);
+                    $SfGuardUserDownloads->setIdCrop($id_crop);
+                    $SfGuardUserDownloads->setUsdwtype('All');
+                    $SfGuardUserDownloads->setUsdwfile('All');
+                    $SfGuardUserDownloads->setUsdwdate($date);
+                    $SfGuardUserDownloads->setUsdwsize($TotalTamanoMB);
+                    $SfGuardUserDownloads->save();
+                }
             }
-        }
 
-        $DirFiles = $TmpDownloaddataDir . "/";
-        $FileZip = $DirFiles . "AgTrialsData.zip";
-        $DirBase = "AgTrialsData";
+            $DirFiles = $TmpDownloaddataDir . "/";
+            $FileZip = $DirFiles . "AgTrialsData.zip";
+            $DirBase = "AgTrialsData";
 
-        $Zip = new ZipArchive();
-        if ($Zip->open($FileZip, ZIPARCHIVE::CREATE) === true) {
-            ZipAdd($Zip, $DirFiles, $DirBase);
-            $Zip->close();
-            if (file_exists($FileZip)) {
-                header('Content-type: "application/zip"');
-                header('Content-Disposition: attachment; filename="AgTrialsData.zip"');
-                readfile($FileZip);
-                unlink($FileZip);
+            $Zip = new ZipArchive();
+            if ($Zip->open($FileZip, ZIPARCHIVE::CREATE) === true) {
+                ZipAdd($Zip, $DirFiles, $DirBase);
+                $Zip->close();
+                if (file_exists($FileZip)) {
+                    header('Content-type: "application/zip"');
+                    header('Content-Disposition: attachment; filename="AgTrialsData.zip"');
+                    readfile($FileZip);
+                    unlink($FileZip);
+                }
             }
+            DeleteDirectory($TmpDir);
+            die();
         }
-        DeleteDirectory($TmpDir);
-        die();
     }
 
 }
