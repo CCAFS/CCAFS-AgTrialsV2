@@ -1549,6 +1549,8 @@ class trialActions extends autoTrialActions {
                 echo "Error, archivo zip no ha sido creado!!";
             }
         }
+        die();
+        
 
 //        $zip = new ZipArchive();
 //        $zip->open($output, ZIPARCHIVE::CREATE);
