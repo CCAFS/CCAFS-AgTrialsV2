@@ -1547,7 +1547,7 @@ function agregar_zip($dir, $zip) {
 
                 if (is_dir($dir . $archivo) && $archivo != "." && $archivo != "..") {
                     echo "<strong>Creando directorio: $dir$archivo</strong><br/>";
-                    echo "$zip <br>";
+                    //echo "$zip <br>";
                     //agregar_zip($dir . $archivo . "/", $zip);
 
                     /* si encuentra un archivo imprimimos la ruta donde se encuentra
