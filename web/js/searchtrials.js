@@ -81,7 +81,7 @@ jQuery(document).ready(function () {
     });
 
     jQuery("#ButtonDownloaddata").click(function () {
-        window.open("/Downloaddata", null, "height=400,width=800,status=yes,toolbar=no,menubar=no,location=no");
+        window.open("/downloaddata", null, "height=400,width=800,status=yes,toolbar=no,menubar=no,location=no");
         //window.location.href = "/trial/Downloaddata/";
     });
 
@@ -365,5 +365,5 @@ function SubmitSearch() {
 }
 
 function Downloaddatapart(num) {
-    window.location.href = "/Downloaddata/part/" + num;
+    window.location.href = "/downloaddata/part/" + num;
 }
