@@ -175,8 +175,8 @@ list:
   param: { module: trial, action: list }
   
 Downloaddata:
-  url:   /Downloaddata/*
-  param: { module: trial, action: Downloaddata }
+  url:   /downloaddata/*
+  param: { module: trial, action: downloaddata }
   
 
   
