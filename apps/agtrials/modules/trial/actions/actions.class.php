@@ -1552,14 +1552,7 @@ class trialActions extends autoTrialActions {
             if ($Zip->open($FileZip, ZIPARCHIVE::CREATE) === true) {
                 ZipAdd($Zip, $DirFiles, $DirBase);
                 $Zip->close();
-//                if (file_exists($FileZip)) {
-//                    header('Content-type: "application/zip"');
-//                    header('Content-Disposition: attachment; filename="AgTrialsData.zip"');
-//                    readfile($FileZip);
-//                    unlink($FileZip);
-//                }
             }
-
             die($TmpFolder);
         }
     }
@@ -1572,9 +1565,9 @@ class trialActions extends autoTrialActions {
             header('Content-type: "application/zip"');
             header('Content-Disposition: attachment; filename="AgTrialsData.zip"');
             readfile($FileZip);
-            //unlink($FileZip);
+            unlink($FileZip);
         }
-        //DeleteDirectory($TmpDir);
+        DeleteDirectory($TmpDir);
         die();
     }
 
