@@ -1362,6 +1362,8 @@ class trialActions extends autoTrialActions {
         foreach ($SearchWhere AS $value) {
             $Where .= $value;
         }
+        
+        $MaxTrialsDownload = 250;
 
         if ($part == '') {
             $QUERY00 = "SELECT T.id_trial ";
@@ -1374,11 +1376,11 @@ class trialActions extends autoTrialActions {
             $st = $connection->execute($QUERY00);
             $QUERY00Count = $st->fetchAll(PDO::FETCH_ASSOC);
             $Count = count($QUERY00Count);
-            $Cursormax = ceil(($Count / 500));
+            $Cursormax = ceil(($Count / $MaxTrialsDownload));
             $this->Cursormax = $Cursormax;
         } else {
             if (($part > 1)) {
-                $offset = ((($part - 1) * 500) + 1);
+                $offset = ((($part - 1) * $MaxTrialsDownload) + 1);
             } else {
                 $offset = 0;
             }
@@ -1419,7 +1421,7 @@ class trialActions extends autoTrialActions {
             $QUERY00 .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
             $QUERY00 .= "INNER JOIN tb_crop c ON TI.id_crop = C.id_crop ";
             $QUERY00 .= "$Where ";
-            $QUERY00 .= "ORDER BY T.id_trial ASC LIMIT 500 OFFSET $offset";
+            $QUERY00 .= "ORDER BY T.id_trial ASC LIMIT $MaxTrialsDownload OFFSET $offset";
             $st = $connection->execute($QUERY00);
             $QUERY00Info = $st->fetchAll(PDO::FETCH_ASSOC);
 
