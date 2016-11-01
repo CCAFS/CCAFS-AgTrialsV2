@@ -1557,7 +1557,10 @@ class trialActions extends autoTrialActions {
         }
     }
 
-    public function executeDownloadingdata($request) {
+    public function executeDownloadingdata() {
+        ini_set("memory_limit", "2048M");
+        ignore_user_abort(true);
+        set_time_limit(0);
         $TmpFolder = sfContext::getInstance()->getRequest()->getParameterHolder()->get('tmp');
         $TmpDir = sfConfig::get("sf_upload_dir") . "/" . $TmpFolder;
         $FileZip = $TmpDir . "/AgTrialsData/AgTrialsData.zip";
