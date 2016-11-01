@@ -366,7 +366,7 @@ function SubmitSearch() {
 
 function Downloaddatapart(num) {
     jQuery('#Downloading' + num).html(" Downloading...");
-    $("#Downloaddatapart" + num).css("background-color", "#EEEEEE");
+    $("#Downloaddatapart" + num).css("background-color", "#FCF8E3");
     jQuery.ajax({
         type: "GET",
         url: "/downloaddata/part/" + num,
