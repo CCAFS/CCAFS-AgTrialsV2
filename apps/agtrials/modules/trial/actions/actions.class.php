@@ -1363,7 +1363,7 @@ class trialActions extends autoTrialActions {
             $Where .= $value;
         }
 
-        $MaxTrialsDownload = 250;
+        $MaxTrialsDownload = 100;
 
         if ($part == '') {
             $QUERY00 = "SELECT T.id_trial ";
