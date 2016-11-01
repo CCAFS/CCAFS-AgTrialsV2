@@ -366,7 +366,7 @@ function SubmitSearch() {
 
 function Downloaddatapart(num) {
     jQuery('#Downloading' + num).html(" Downloading...");
-    $("#Downloaddatapart" + num).css("background-color", "#FCF8E3");
+    $("#DivDownloaddatapart" + num).css("background-color", "#FCF8E3");
     jQuery.ajax({
         type: "GET",
         url: "/downloaddata/part/" + num,
@@ -374,7 +374,8 @@ function Downloaddatapart(num) {
         success: function (data) {
             window.location.href = "/trial/downloadingdata/tmp/" + data;
             jQuery('#Downloading' + num).html("");
-            $("#Downloaddatapart" + num).css("background-color", "#FFFFFF");
+            $("#DivDownloaddatapart" + num).css("background-color", "#FFFFFF");
+            jQuery('#SpanDownloaddatapart' + num).html("Download data part " + num + " <img src='/images/Ok-icon.png' width='13' height='13'>");
         }
     });
 }
