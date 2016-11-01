@@ -1,6 +1,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
+
+        <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="/js/functions.js"></script>
         <script type="text/javascript" src="/js/searchtrials.js"></script>
+
         <link rel="stylesheet" type="text/css" media="screen" href="/bootstrapAdminThemePlugin/css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="/css/bootstrap-personalized.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
@@ -18,6 +23,7 @@
                 </div>
             </header>
             <div class="container">
+                <div class="alert alert-info alert-dismissible fade in" role="alert" style="margin-top: 10px;"><span style="font-size: 1.7em;color: #8a8a8a;" class="glyphicon glyphicon-info-sign pull-left">&ensp;</span><p>Each <b>Download data part</b> contains 500 folders maximum with information from each trial..</p><div class="clearfix"></div></div>
                 <div class="row" style="padding-top: 15px;">
                     <?php for ($a = 1; $a <= $Cursormax; $a++) { ?>
                         <div class=" col-sm-4 control-type-text">
@@ -25,7 +31,6 @@
                         </div>
                     <?php } ?>
                 </div>
-            </div>
             </div>
         </body>
     </head>

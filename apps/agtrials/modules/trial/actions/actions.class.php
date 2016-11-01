@@ -1397,7 +1397,9 @@ class trialActions extends autoTrialActions {
             error_reporting(E_ALL);
             date_default_timezone_set('Europe/London');
             ini_set("memory_limit", "2048M");
-            set_time_limit(90000000000000);
+            ignore_user_abort(true);
+            set_time_limit(0);
+
             $UploadDir = sfConfig::get("sf_upload_dir");
             $Rand = rand(1000, 9999);
             $TmpDir = $UploadDir . "/tmp$Rand";
@@ -1455,8 +1457,6 @@ class trialActions extends autoTrialActions {
             $objPHPExcel->setActiveSheetIndex(0);
             $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
             $objWriter->save("$TmpDownloaddataDir/AgTrialsInfo.xls");
-
-
 
             foreach ($ArrIdTrials AS $Key => $Trialinfo) {
                 $id_trial = $Key;
