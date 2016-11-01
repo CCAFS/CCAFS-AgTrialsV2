@@ -26,9 +26,9 @@
                 <div class="alert alert-info alert-dismissible fade in" role="alert" style="margin-top: 10px;"><span style="font-size: 1.7em;color: #8a8a8a;" class="glyphicon glyphicon-info-sign pull-left">&ensp;</span><p>Each <b>Download data part</b> contains 100 folders maximum with information from each trial.</p><div class="clearfix"></div></div>
                 <div class="row" style="padding-top: 15px;">
                     <?php for ($a = 1; $a <= $Cursormax; $a++) { ?>
-                        <div class=" col-sm-4 control-type-text">
+                        <div id="Downloaddatapart<?php echo $a; ?>" class=" col-sm-4 control-type-text">
                             <span class="Span-Action-Link" title="Download data part <?php echo $a; ?>" onclick="Downloaddatapart(<?php echo $a; ?>);"><img src="/images/download-icon.png" width="13" height="13"> Download data part <?php echo $a; ?></span>
-                            <span id="Downloading<?php echo $a; ?>"></span>
+                            <div style="padding-left: 18px; font-size: 12px; font-weight: bold;" id="Downloading<?php echo $a; ?>"></div>
                         </div>
 
                     <?php } ?>

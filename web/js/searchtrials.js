@@ -366,6 +366,7 @@ function SubmitSearch() {
 
 function Downloaddatapart(num) {
     jQuery('#Downloading' + num).html(" Downloading...");
+    $("#Downloaddatapart" + num).css("background-color", "#EEEEEE");
     jQuery.ajax({
         type: "GET",
         url: "/downloaddata/part/" + num,
@@ -373,6 +374,7 @@ function Downloaddatapart(num) {
         success: function (data) {
             window.location.href = "/trial/downloadingdata/tmp/" + data;
             jQuery('#Downloading' + num).html("");
+            $("#Downloaddatapart" + num).css("background-color", "#FFFFFF");
         }
     });
 }
