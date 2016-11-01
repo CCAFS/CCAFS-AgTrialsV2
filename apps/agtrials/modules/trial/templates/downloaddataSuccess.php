@@ -34,6 +34,7 @@
                     <?php } ?>
                 </div>
             </div>
+            <br>
         </body>
     </head>
 </html>
