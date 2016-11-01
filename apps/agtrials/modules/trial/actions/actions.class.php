@@ -1396,7 +1396,8 @@ class trialActions extends autoTrialActions {
             $date = date("Y-m-d") . " " . date("H:i:s");
             error_reporting(E_ALL);
             date_default_timezone_set('Europe/London');
-            set_time_limit(900000);
+            ini_set("memory_limit", "2048M");
+            set_time_limit(900000000000);
             $UploadDir = sfConfig::get("sf_upload_dir");
             $Rand = rand(1000, 9999);
             $TmpDir = $UploadDir . "/tmp$Rand";
