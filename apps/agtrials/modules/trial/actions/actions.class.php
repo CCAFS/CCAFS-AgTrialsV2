@@ -1362,7 +1362,7 @@ class trialActions extends autoTrialActions {
         foreach ($SearchWhere AS $value) {
             $Where .= $value;
         }
-        
+
         $MaxTrialsDownload = 250;
 
         if ($part == '') {
@@ -1404,7 +1404,8 @@ class trialActions extends autoTrialActions {
 
             $UploadDir = sfConfig::get("sf_upload_dir");
             $Rand = rand(1000, 9999);
-            $TmpDir = $UploadDir . "/tmp$Rand";
+            $TmpFolder = "tmp$Rand";
+            $TmpDir = $UploadDir . "/" . $TmpFolder;
             $TmpDownloaddataDir = $TmpDir . "/AgTrialsData";
             CreateDirectory($TmpDownloaddataDir);
 
@@ -1547,21 +1548,34 @@ class trialActions extends autoTrialActions {
             $DirFiles = $TmpDownloaddataDir . "/";
             $FileZip = $DirFiles . "AgTrialsData.zip";
             $DirBase = "AgTrialsData";
-
             $Zip = new ZipArchive();
             if ($Zip->open($FileZip, ZIPARCHIVE::CREATE) === true) {
                 ZipAdd($Zip, $DirFiles, $DirBase);
                 $Zip->close();
-                if (file_exists($FileZip)) {
-                    header('Content-type: "application/zip"');
-                    header('Content-Disposition: attachment; filename="AgTrialsData.zip"');
-                    readfile($FileZip);
-                    unlink($FileZip);
-                }
+//                if (file_exists($FileZip)) {
+//                    header('Content-type: "application/zip"');
+//                    header('Content-Disposition: attachment; filename="AgTrialsData.zip"');
+//                    readfile($FileZip);
+//                    unlink($FileZip);
+//                }
             }
-            DeleteDirectory($TmpDir);
-            die();
+
+            die($TmpFolder);
         }
+    }
+
+    public function executeDownloadingdata($request) {
+        $TmpFolder = sfContext::getInstance()->getRequest()->getParameterHolder()->get('tmp');
+        $TmpDir = sfConfig::get("sf_upload_dir") . "/" . $TmpFolder;
+        $FileZip = $TmpDir . "/AgTrialsData/AgTrialsData.zip";
+        if (file_exists($FileZip)) {
+            header('Content-type: "application/zip"');
+            header('Content-Disposition: attachment; filename="AgTrialsData.zip"');
+            readfile($FileZip);
+            //unlink($FileZip);
+        }
+        //DeleteDirectory($TmpDir);
+        die();
     }
 
 }

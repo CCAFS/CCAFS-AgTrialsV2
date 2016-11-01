@@ -365,5 +365,14 @@ function SubmitSearch() {
 }
 
 function Downloaddatapart(num) {
-    window.location.href = "/downloaddata/part/" + num;
+    jQuery('#Downloading' + num).html(" Downloading...");
+    jQuery.ajax({
+        type: "GET",
+        url: "/downloaddata/part/" + num,
+        data: "",
+        success: function (data) {
+            window.location.href = "/trial/downloadingdata/tmp/" + data;
+            jQuery('#Downloading' + num).html("");
+        }
+    });
 }
