@@ -1418,7 +1418,7 @@ class trialActions extends autoTrialActions {
             $QUERY00 = "SELECT T.id_trial,T.trltrialname,P.id_project,P.prjname,TL.id_triallocation,TL.trlcname,C.id_crop,C.crpname, ";
             $QUERY00 .= "T.trltrialpermissions, fc_trialpermissionusergroup(T.id_trial) AS trialpermissionusergroup, TI.trnfdatafile, ";
             $QUERY00 .= "TI.trnfdataorresultsfile, TI.trnfsuppplementalinformationfile, TI.trnfweatherdatafile, TI.trnfsoildatafile, ";
-            $QUERY00 .= "fc_trialvariety(T.id_trial, 'NAME') AS variety, fc_trialvariablesmeasured(T.id_trial, 'NAME') AS variablesmeasured";
+            $QUERY00 .= "fc_trialvariety(T.id_trial, 'NAME') AS variety, fc_trialvariablesmeasured(T.id_trial, 'NAME') AS variablesmeasured ";
             $QUERY00 .= "FROM tb_trial T ";
             $QUERY00 .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
             $QUERY00 .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
