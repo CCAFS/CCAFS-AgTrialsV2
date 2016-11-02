@@ -386,7 +386,7 @@ function Downloaddatapart(num, cursormax) {
         }
     }
 
-    jQuery('#Downloading' + num).html(" Downloading...");
+    jQuery('#Downloading' + num).html("<img width='18' height='18' src='/images/loading4.gif'> Downloading...");
     jQuery('#SpanDownloaddatapart' + num).html("Download data part " + num);
     jQuery("#DivDownloaddatapart" + num).css("background-color", "#FCF8E3");
     jQuery.ajax({
