@@ -81,7 +81,23 @@ jQuery(document).ready(function () {
     });
 
     jQuery("#ButtonDownloaddata").click(function () {
-        window.open("/downloaddata", null, "height=400,width=800,scrollbars, status=yes,toolbar=no,menubar=no,location=no");
+        var License = '<div><a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license"><img src="http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png" style="border-width:0; width: 88px; height: 31px;" alt="Creative Commons License"></a><br>This <span rel="dct:type" href="http://purl.org/dc/dcmitype/Text" xmlns:dct="http://purl.org/dc/terms/">work</span> is licensed under a <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.</div>';
+
+        License += "<br><br><b>Do you agree with the license?</b>";
+        $.confirm({
+            icon: "glyphicon glyphicon-subtitles",
+            columnClass: "col-md-8 col-md-offset-2",
+            closeIconClass: 'fa fa-close',
+            autoClose: 'cancel|31000',
+            title: "Agreement Licence",
+            confirmButton: "I accept the licence",
+            cancelButton: "I don't accept the licence",
+            content: License,
+            confirm: function () {
+                window.open("/downloaddata", null, "height=400,width=800,scrollbars, status=yes,toolbar=no,menubar=no,location=no");
+            },
+            cancel: function () {}
+        });
     });
 
     jQuery("#ShowHideDivAdvancedSearch").on('click', function () {
