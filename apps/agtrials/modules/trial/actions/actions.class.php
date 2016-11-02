@@ -1441,13 +1441,15 @@ class trialActions extends autoTrialActions {
             $objPHPExcel->getActiveSheet()->setCellValue('E1', 'Crop name');
             $objPHPExcel->getActiveSheet()->setCellValue('F1', 'Varieties name');
             $objPHPExcel->getActiveSheet()->setCellValue('G1', 'Variables measured name');
+            $objPHPExcel->getActiveSheet()->setCellValue('H1', 'Folder data');
 
-            $objPHPExcel->getActiveSheet()->getStyle('A1:G1')->getFont()->setBold(true);
+            $objPHPExcel->getActiveSheet()->getStyle('A1:H1')->getFont()->setBold(true);
             $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
             $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
             $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
             $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
             $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
+            $objPHPExcel->getActiveSheet()->getColumnDimension('H')->setAutoSize(true);
 
             $a = 2;
             if (count($QUERY00Info) > 0) {
@@ -1459,6 +1461,8 @@ class trialActions extends autoTrialActions {
                     $objPHPExcel->getActiveSheet()->setCellValue("E$a", $Valor['crpname']);
                     $objPHPExcel->getActiveSheet()->setCellValue("F$a", $Valor['variety']);
                     $objPHPExcel->getActiveSheet()->setCellValue("G$a", $Valor['variablesmeasured']);
+                    $objPHPExcel->getActiveSheet()->setCellValue("H$a", "TrialData{$Valor['id_trial']}");
+
                     $ArrIdTrials[$Valor['id_trial']] = array('id_crop' => $Valor['id_crop'], 'trltrialpermissions' => $Valor['trltrialpermissions'], 'trialpermissionusergroup' => $Valor['trialpermissionusergroup'], 'trnfdatafile' => $Valor['trnfdatafile'], 'trnfdataorresultsfile' => $Valor['trnfdataorresultsfile'], 'trnfsuppplementalinformationfile' => $Valor['trnfsuppplementalinformationfile'], 'trnfweatherdatafile' => $Valor['trnfweatherdatafile'], 'trnfsoildatafile' => $Valor['trnfsoildatafile']);
                     $a++;
                 }
@@ -1497,7 +1501,7 @@ class trialActions extends autoTrialActions {
 
                 if ($Continue && (($trnfdatafile !== '') || ($trnfdataorresultsfile !== '') || ($trnfsuppplementalinformationfile !== '') || ($trnfweatherdatafile !== '') || ($trnfsoildatafile !== ''))) {
                     $TmpDownloaddataDir = $TmpDir . "/AgTrialsData";
-                    $TmpTrialDir = "$TmpDownloaddataDir/TrialInfo$id_trial";
+                    $TmpTrialDir = "$TmpDownloaddataDir/TrialData$id_trial";
                     $TrialInfoDir = "$UploadDir/FilesTrial$id_trial";
                     CreateDirectory($TmpTrialDir);
 
