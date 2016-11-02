@@ -1415,7 +1415,10 @@ class trialActions extends autoTrialActions {
                 $Where .= $value;
             }
 
-            $QUERY00 = "SELECT T.id_trial,T.trltrialname,P.id_project,P.prjname,TL.id_triallocation,TL.trlcname,C.id_crop,C.crpname, T.trltrialpermissions, fc_trialpermissionusergroup(T.id_trial) AS trialpermissionusergroup, TI.trnfdatafile, TI.trnfdataorresultsfile, TI.trnfsuppplementalinformationfile, TI.trnfweatherdatafile, TI.trnfsoildatafile ";
+            $QUERY00 = "SELECT T.id_trial,T.trltrialname,P.id_project,P.prjname,TL.id_triallocation,TL.trlcname,C.id_crop,C.crpname, ";
+            $QUERY00 .= "T.trltrialpermissions, fc_trialpermissionusergroup(T.id_trial) AS trialpermissionusergroup, TI.trnfdatafile, ";
+            $QUERY00 .= "TI.trnfdataorresultsfile, TI.trnfsuppplementalinformationfile, TI.trnfweatherdatafile, TI.trnfsoildatafile, ";
+            $QUERY00 .= "fc_trialvariety(T.id_trial, 'NAME') AS variety, fc_trialvariablesmeasured(T.id_trial, 'NAME') AS variablesmeasured";
             $QUERY00 .= "FROM tb_trial T ";
             $QUERY00 .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
             $QUERY00 .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
@@ -1436,8 +1439,10 @@ class trialActions extends autoTrialActions {
             $objPHPExcel->getActiveSheet()->setCellValue('C1', 'Project name');
             $objPHPExcel->getActiveSheet()->setCellValue('D1', 'Trials location name');
             $objPHPExcel->getActiveSheet()->setCellValue('E1', 'Crop name');
+            $objPHPExcel->getActiveSheet()->setCellValue('F1', 'Varieties name');
+            $objPHPExcel->getActiveSheet()->setCellValue('G1', 'Variables measured name');
 
-            $objPHPExcel->getActiveSheet()->getStyle('A1:E1')->getFont()->setBold(true);
+            $objPHPExcel->getActiveSheet()->getStyle('A1:G1')->getFont()->setBold(true);
             $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
             $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
             $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
@@ -1452,6 +1457,8 @@ class trialActions extends autoTrialActions {
                     $objPHPExcel->getActiveSheet()->setCellValue("C$a", $Valor['prjname']);
                     $objPHPExcel->getActiveSheet()->setCellValue("D$a", $Valor['trlcname']);
                     $objPHPExcel->getActiveSheet()->setCellValue("E$a", $Valor['crpname']);
+                    $objPHPExcel->getActiveSheet()->setCellValue("F$a", $Valor['variety']);
+                    $objPHPExcel->getActiveSheet()->setCellValue("G$a", $Valor['variablesmeasured']);
                     $ArrIdTrials[$Valor['id_trial']] = array('id_crop' => $Valor['id_crop'], 'trltrialpermissions' => $Valor['trltrialpermissions'], 'trialpermissionusergroup' => $Valor['trialpermissionusergroup'], 'trnfdatafile' => $Valor['trnfdatafile'], 'trnfdataorresultsfile' => $Valor['trnfdataorresultsfile'], 'trnfsuppplementalinformationfile' => $Valor['trnfsuppplementalinformationfile'], 'trnfweatherdatafile' => $Valor['trnfweatherdatafile'], 'trnfsoildatafile' => $Valor['trnfsoildatafile']);
                     $a++;
                 }
