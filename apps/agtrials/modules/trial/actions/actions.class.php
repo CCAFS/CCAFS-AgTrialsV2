@@ -1562,16 +1562,20 @@ class trialActions extends autoTrialActions {
         ignore_user_abort(true);
         set_time_limit(0);
         $TmpFolder = sfContext::getInstance()->getRequest()->getParameterHolder()->get('tmp');
-        $TmpDir = sfConfig::get("sf_upload_dir") . "/" . $TmpFolder;
-        $FileZip = $TmpDir . "/AgTrialsData/AgTrialsData.zip";
-        if (file_exists($FileZip)) {
-            header('Content-type: "application/zip"');
-            header('Content-Disposition: attachment; filename="AgTrialsData.zip"');
-            readfile($FileZip);
-            unlink($FileZip);
+        if ($TmpFolder != '') {
+            $TmpDir = sfConfig::get("sf_upload_dir") . "/" . $TmpFolder;
+            $FileZip = $TmpDir . "/AgTrialsData/AgTrialsData.zip";
+            if (file_exists($FileZip)) {
+                header('Content-type: "application/zip"');
+                header('Content-Disposition: attachment; filename="AgTrialsData.zip"');
+                readfile($FileZip);
+                unlink($FileZip);
+            }
+            DeleteDirectory($TmpDir);
+            die();
+        } else {
+            die("Error: Tmp Dir...");
         }
-        DeleteDirectory($TmpDir);
-        die();
     }
 
 }
