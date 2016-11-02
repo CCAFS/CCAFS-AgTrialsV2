@@ -363,7 +363,13 @@ function SubmitSearch() {
     }
 }
 
-function Downloaddatapart(num) {
+function Downloaddatapart(num, cursormax) {
+    for (var i = 1; i <= cursormax; i++) {
+        if (num !== i) {
+            jQuery('#SpanDownloaddatapart' + i).css('pointer-events', 'none');
+        }
+    }
+
     jQuery('#Downloading' + num).html(" Downloading...");
     jQuery('#SpanDownloaddatapart' + num).html("Download data part " + num);
     jQuery("#DivDownloaddatapart" + num).css("background-color", "#FCF8E3");
@@ -372,10 +378,21 @@ function Downloaddatapart(num) {
         url: "/downloaddata/part/" + num,
         data: "",
         success: function (data) {
+            var Listdownloaded = jQuery('#Listdownloaded').val();
+            Listdownloaded = Listdownloaded + "," + num;
+            var ArrListdownloaded = Listdownloaded.split(',');
+
             window.location.href = "/trial/downloadingdata/tmp/" + data;
             jQuery('#Downloading' + num).html("");
             jQuery("#DivDownloaddatapart" + num).css("background-color", "#FFFFFF");
             jQuery('#SpanDownloaddatapart' + num).html("Download data part " + num + " <img src='/images/Ok-icon.png' width='13' height='13'>");
+            for (var i = 1; i <= cursormax; i++) {
+                if (jQuery.inArray(i.toString(), ArrListdownloaded) === -1) {
+                    jQuery('#SpanDownloaddatapart' + i).css('pointer-events', 'auto');
+                    jQuery('#SpanDownloaddatapart' + num).css('pointer-events', 'none');
+                }
+            }
+            jQuery('#Listdownloaded').val(Listdownloaded);
         }
     });
 }
