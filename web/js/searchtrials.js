@@ -405,9 +405,9 @@ function Downloaddatapart(num, cursormax) {
             for (var i = 1; i <= cursormax; i++) {
                 if (jQuery.inArray(i.toString(), ArrListdownloaded) === -1) {
                     jQuery('#SpanDownloaddatapart' + i).css('pointer-events', 'auto');
-                    jQuery('#SpanDownloaddatapart' + num).css('pointer-events', 'none');
                 }
             }
+            jQuery('#SpanDownloaddatapart' + num).css('pointer-events', 'none');
             jQuery('#Listdownloaded').val(Listdownloaded);
         }
     });
