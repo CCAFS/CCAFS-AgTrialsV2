@@ -82,7 +82,6 @@ jQuery(document).ready(function () {
 
     jQuery("#ButtonDownloaddata").click(function () {
         window.open("/downloaddata", null, "height=400,width=800,scrollbars, status=yes,toolbar=no,menubar=no,location=no");
-        //window.location.href = "/trial/Downloaddata/";
     });
 
     jQuery("#ShowHideDivAdvancedSearch").on('click', function () {
@@ -366,7 +365,8 @@ function SubmitSearch() {
 
 function Downloaddatapart(num) {
     jQuery('#Downloading' + num).html(" Downloading...");
-    $("#DivDownloaddatapart" + num).css("background-color", "#FCF8E3");
+    jQuery('#SpanDownloaddatapart' + num).html("Download data part " + num);
+    jQuery("#DivDownloaddatapart" + num).css("background-color", "#FCF8E3");
     jQuery.ajax({
         type: "GET",
         url: "/downloaddata/part/" + num,
@@ -374,7 +374,7 @@ function Downloaddatapart(num) {
         success: function (data) {
             window.location.href = "/trial/downloadingdata/tmp/" + data;
             jQuery('#Downloading' + num).html("");
-            $("#DivDownloaddatapart" + num).css("background-color", "#FFFFFF");
+            jQuery("#DivDownloaddatapart" + num).css("background-color", "#FFFFFF");
             jQuery('#SpanDownloaddatapart' + num).html("Download data part " + num + " <img src='/images/Ok-icon.png' width='13' height='13'>");
         }
     });
