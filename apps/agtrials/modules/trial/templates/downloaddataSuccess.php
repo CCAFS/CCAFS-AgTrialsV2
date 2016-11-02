@@ -24,7 +24,7 @@
             </header>
             <div class="container">
                 <div class="alert alert-info alert-dismissible fade in" role="alert" style="margin-top: 10px;"><span style="font-size: 1.7em;color: #8a8a8a;" class="glyphicon glyphicon-info-sign pull-left">&ensp;</span><p>Each <b>Download data part</b> contains 100 folders maximum with information from each trial.</p><div class="clearfix"></div></div>
-                <input type="text" name="Listdownloaded" id="Listdownloaded" value=""/>
+                <input type="hidden" name="Listdownloaded" id="Listdownloaded" value=""/>
                 <div class="row" style="padding-top: 15px;">
                     <?php for ($a = 1; $a <= $Cursormax; $a++) { ?>
                         <div id="DivDownloaddatapart<?php echo $a; ?>" class=" col-sm-4 control-type-text">
