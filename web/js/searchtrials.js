@@ -120,8 +120,6 @@ jQuery(document).ready(function () {
         ClearFieldAutocomplete("id_contactperson", "searchcontactperson", "CheckContactperson");
     });
     jQuery("#searchcrpname").focus(function () {
-        var IdCrop = jQuery('#id_crop').val();
-        jQuery('#id_crop1').val(IdCrop);
         ClearFieldAutocomplete("id_crop", "searchcrpname", "CheckCrop");
     });
     jQuery("#searchtrltrialname").focus(function () {
@@ -136,8 +134,6 @@ jQuery(document).ready(function () {
         AssignFieldAutocomplete("id_contactperson", "searchcontactperson", "CheckContactperson");
     });
     jQuery("#searchcrpname").blur(function () {
-        var IdCrop = jQuery('#id_crop').val();
-        jQuery('#id_crop1').val(IdCrop);
         AssignFieldAutocomplete("id_crop", "searchcrpname", "CheckCrop");
     });
     jQuery("#searchtrltrialname").blur(function () {
@@ -410,4 +406,59 @@ function Downloaddatapart(num, cursormax) {
             jQuery('#Listdownloaded').val(Listdownloaded);
         }
     });
+}
+
+//BUSQUEDA DE VARIEDADES
+function FilterVarietyTrials(Campo, i) {
+    var Value = Campo.value;
+    var id_crop = jQuery("#id_crop").val();
+    var Value = Value.replace(" ", "*quot*");
+    if (id_crop !== '') {
+        if (Value !== '') {
+            jQuery("#DivFilterVariety" + i).show();
+            jQuery("#InfoVariety" + i).load("/trial/FilterVarietyTrials/?txt=" + Value + '&id_crop=' + id_crop + "&i=" + i, function () {
+                jQuery("#DivFilterVariety" + i).hide();
+                jQuery("#DivFilterVarietyOK" + i).show();
+                jQuery("#DivClearFilterVariety" + i).show();
+            });
+        } else {
+            jQuery("#InfoVariety" + i).html("");
+            jQuery("#DivFilterVarietyOK" + i).hide();
+            jQuery("#DivClearFilterVariety" + i).hide();
+        }
+    } else {
+        alerts.show({css: 'error', title: 'Important', message: 'Before adding, specify the Crop.! '});
+        jQuery('#Variety' + i).val('');
+        jQuery("#InfoVariety" + i).html("");
+        jQuery("#DivVariety" + i).removeClass("DivListSelect");
+    }
+}
+
+//BUSQUEDA DE Variables Measured
+function FilterVariablesMeasuredTrials(Campo, i) {
+    //var id = Campo.id;
+    var Value = Campo.value;
+    var id_crop = jQuery("#id_crop").val();
+    var Value = Value.replace(" ", "*quot*");
+    if (id_crop !== '') {
+        if (Value !== '') {
+            jQuery("#DivFilterVariablesMeasured" + i).show();
+            jQuery("#InfoVariablesMeasured" + i).addClass("DivListSelect");
+            jQuery("#InfoVariablesMeasured" + i).load("/trial/FilterVariablesMeasuredTrials/?txt=" + Value + '&id_crop=' + id_crop + "&i=" + i, function () {
+                jQuery("#DivFilterVariablesMeasured" + i).hide();
+                jQuery("#DivFilterVariablesMeasuredOK" + i).show();
+                jQuery("#DivClearFilterVariablesMeasured" + i).show();
+            });
+        } else {
+            jQuery("#InfoVariablesMeasured" + i).html("");
+            jQuery("#DivFilterVariablesMeasuredOK" + i).hide();
+            jQuery("#DivClearFilterVariablesMeasured" + i).hide();
+            jQuery("#InfoVariablesMeasured" + i).removeClass("DivListSelect");
+        }
+    } else {
+        alerts.show({css: 'error', title: 'Important', message: 'Before adding, specify the Crop.! '});
+        jQuery('#VariablesMeasured' + i).val('');
+        jQuery("#InfoVariablesMeasured" + i).html("");
+        jQuery("#InfoVariablesMeasured" + i).removeClass("DivListSelect");
+    }
 }

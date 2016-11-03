@@ -749,6 +749,56 @@ class trialActions extends autoTrialActions {
         die("<td colspan='4' bgcolor='#FFFFD9'>Not selected a technology!</td>");
     }
 
+    public function executeFilterVarietyTrials($request) {
+        $this->setLayout(false);
+        $txt = $request->getParameter('txt');
+        $id_crop = $request->getParameter('id_crop');
+        $i = $request->getParameter('i');
+        $connection = Doctrine_Manager::getInstance()->connection();
+        $user = sfContext::getInstance()->getUser();
+        $ArrVariety = $user->getAttribute('ArrVariety');
+        $NotInIdVariety = "";
+        if (is_numeric($id_crop)) {
+            if (count($ArrVariety[$i]) > 0) {
+                foreach ($ArrVariety[$i] AS $id_variety) {
+                    $NotInIdVariety .= "$id_variety,";
+                }
+                $NotInIdVariety = substr($NotInIdVariety, 0, (strlen($NotInIdVariety) - 1));
+            }
+
+            $txt = str_replace("*quot*", " ", $txt);
+            $txt = mb_strtolower($txt, 'UTF-8');
+            $QUERY = "SELECT T.id_variety,T.vrtname,T.vrtorigin,T.vrtsynonymous,T.id_genebank ";
+            $QUERY .= "FROM tb_variety T ";
+            $QUERY .= "INNER JOIN tb_trialinfodata TID ON T.id_variety = TID.id_variety ";
+            $QUERY .= "WHERE UPPER(T.vrtname) LIKE UPPER('$txt%') ";
+            $QUERY .= "AND T.id_crop = $id_crop ";
+            if ($NotInIdVariety != '')
+                $QUERY .= "AND T.id_variety NOT IN ($NotInIdVariety) ";
+            $QUERY .= "GROUP BY T.id_variety,T.vrtname,T.vrtorigin,T.vrtsynonymous,T.id_genebank ";
+            $QUERY .= "ORDER BY T.vrtname ";
+            $QUERY .= "LIMIT 100 ";
+            $st = $connection->execute($QUERY);
+            $Variety = $st->fetchAll(PDO::FETCH_ASSOC);
+            $HTML = "";
+            if (count($Variety) > O) {
+                foreach ($Variety AS $Valor) {
+                    $HTML .= "<tr title='Click to select' onclick='SelectVariety({$Valor['id_variety']},$i);'>";
+                    $HTML .= "<td>{$Valor['vrtname']}</td>";
+                    $HTML .= "<td>{$Valor['vrtorigin']}</td>";
+                    $HTML .= "<td>{$Valor['vrtsynonymous']}</td>";
+                    $HTML .= "<td>";
+                    $HTML .= "</td>";
+                    $HTML .= "</tr>";
+                }
+            } else {
+                $HTML .= "<td colspan='4' bgcolor='#FFFFD9' ><b>Not Results</b></td>";
+            }
+            die($HTML);
+        }
+        die("<td colspan='4' bgcolor='#FFFFD9'>Not selected a technology!</td>");
+    }
+
 //ADICIONAMOS LA VARIEDAD AL ARRAY DE VARIEDADES SELECCIONADAS
     public function executeVarietySelected($request) {
         $this->setLayout(false);
@@ -831,7 +881,7 @@ class trialActions extends autoTrialActions {
         $user = sfContext::getInstance()->getUser();
         $ArrVariablesMeasured = $user->getAttribute('ArrVariablesMeasured');
         $NotInIdVariablesMeasured = "";
-        if (is_null($id_crop)) {
+        if (is_numeric($id_crop)) {
             if (count($ArrVariablesMeasured[$i]) > 0) {
                 foreach ($ArrVariablesMeasured[$i] AS $id_variablesmeasured) {
                     $NotInIdVariablesMeasured .= "$id_variablesmeasured,";
@@ -848,6 +898,59 @@ class trialActions extends autoTrialActions {
             $QUERY .= "AND T.id_crop = $id_crop ";
             if ($NotInIdVariablesMeasured != '')
                 $QUERY .= "AND T.id_variablesmeasured NOT IN ($NotInIdVariablesMeasured) ";
+            $QUERY .= "ORDER BY T.vrmsname ";
+            $QUERY .= "LIMIT 100 ";
+            $st = $connection->execute($QUERY);
+            $VariablesMeasured = $st->fetchAll(PDO::FETCH_ASSOC);
+            $HTML = "";
+            if (count($VariablesMeasured) > 0) {
+                foreach ($VariablesMeasured AS $Valor) {
+                    $HTML .= "<tr title='Click to select' onclick='SelectVariablesMeasured({$Valor['id_variablesmeasured']},$i);'>";
+                    $HTML .= "<td>{$Valor['vrmsname']}</b></td>";
+                    $HTML .= "<td>{$Valor['trclname']}</td>";
+                    $HTML .= "<td>{$Valor['vrmsdefinition']}</td>";
+                    $HTML .= "<td>{$Valor['vrmsunit']}</td>";
+                    $HTML .= "<td>";
+                    $HTML .= "</td>";
+                    $HTML .= "</tr>";
+                }
+            } else {
+                $HTML .= "<td colspan='5' bgcolor='#FFFFD9' ><b>Not Results</b></td>";
+            }
+            die($HTML);
+        }
+        die("<td colspan='5' bgcolor='#FFFFD9'>Not selected a technology!</td>");
+    }
+
+    //FILTRAMOS LAS Variables Measured
+    public function executeFilterVariablesMeasuredTrials($request) {
+        $this->setLayout(false);
+        $txt = $request->getParameter('txt');
+        $id_crop = $request->getParameter('id_crop');
+        $i = $request->getParameter('i');
+        $connection = Doctrine_Manager::getInstance()->connection();
+        $user = sfContext::getInstance()->getUser();
+        $ArrVariablesMeasured = $user->getAttribute('ArrVariablesMeasured');
+        $NotInIdVariablesMeasured = "";
+        if (is_numeric($id_crop)) {
+            if (count($ArrVariablesMeasured[$i]) > 0) {
+                foreach ($ArrVariablesMeasured[$i] AS $id_variablesmeasured) {
+                    $NotInIdVariablesMeasured .= "$id_variablesmeasured,";
+                }
+                $NotInIdVariablesMeasured = substr($NotInIdVariablesMeasured, 0, (strlen($NotInIdVariablesMeasured) - 1));
+            }
+
+            $txt = str_replace("*quot*", " ", $txt);
+            $txt = mb_strtolower($txt, 'UTF-8');
+            $QUERY = "SELECT T.id_variablesmeasured,T.vrmsname,T2.trclname,T.vrmsdefinition,T.vrmsunit,T.id_ontology ";
+            $QUERY .= "FROM tb_variablesmeasured T ";
+            $QUERY .= "INNER JOIN tb_trialinfodata TID ON T.id_variablesmeasured = TID.id_variablesmeasured ";
+            $QUERY .= "INNER JOIN tb_traitclass T2 ON T.id_traitclass = T2.id_traitclass ";
+            $QUERY .= "WHERE UPPER(T.vrmsname) LIKE UPPER('$txt%') ";
+            $QUERY .= "AND T.id_crop = $id_crop ";
+            if ($NotInIdVariablesMeasured != '')
+                $QUERY .= "AND T.id_variablesmeasured NOT IN ($NotInIdVariablesMeasured) ";
+            $QUERY .= "GROUP BY T.id_variablesmeasured,T.vrmsname,T2.trclname,T.vrmsdefinition,T.vrmsunit,T.id_ontology ";
             $QUERY .= "ORDER BY T.vrmsname ";
             $QUERY .= "LIMIT 100 ";
             $st = $connection->execute($QUERY);
@@ -1192,6 +1295,9 @@ class trialActions extends autoTrialActions {
 
     public function executeSearchtrials($request) {
         sfContext::getInstance()->getUser()->getAttributeHolder()->remove('SearchWhere');
+        sfContext::getInstance()->getUser()->getAttributeHolder()->remove('ArrVariety');
+        sfContext::getInstance()->getUser()->getAttributeHolder()->remove('ArrVariablesMeasured');
+
         $this->id_project = $request->getParameter('id_project');
         $this->id_contactperson = $request->getParameter('id_contactperson');
         $this->id_crop = $request->getParameter('id_crop');

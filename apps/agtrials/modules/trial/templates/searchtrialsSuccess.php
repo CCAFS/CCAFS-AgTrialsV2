@@ -81,7 +81,6 @@ if ($trlname != '') {
                             <div class="col-sm-12">Crop / Technology:</div>      
                             <div class="col-sm-11 control-type-text" style="padding-right: 2px;">
                                 <input name="id_crop" id="id_crop" type="hidden" value="<?php echo $id_crop; ?>" /> 
-                                <input name="id_crop1" id="id_crop1" type="hidden" value="<?php echo $id_crop; ?>" /> 
                                 <input class="form-control SearchInput" name="searchcrpname" id="searchcrpname" type="text" size="17" maxlength="150" value="<?php echo $searchcrpname; ?>" />
                             </div>
                             <div class="DivColIcon">
@@ -106,7 +105,6 @@ if ($trlname != '') {
             </div>
             <div id="DivAdvancedSearch" class="Session col-sm-12 control-type-text" style="margin-top: 10px; margin-bottom: 10px; display:none;">
                 <div class="col-sm-12" style="color: #93c47d; font-size: 16px; padding-bottom: 8px;">Advanced Search:</div>
-
                 <div class="col-sm-12">
                     <fieldset id="varieties-block">
                         <div class="panel panel-default">
@@ -115,11 +113,10 @@ if ($trlname != '') {
                             <div class="panel-body" style="padding-top: 5px; padding-bottom: 5px; background: #EEEEEE;">
                                 <div class="col-sm-1" style="padding-left: 0px; padding-right: 0px; width: 50px;">Search:</div> 
                                 <div class=" col-sm-4 control-type-text">
-                                    <input class="SearchInput form-control"  name="Variety1" id="Variety1" onkeyup="FilterVariety(this, 1);" type="text" size="36" maxlength="255" value="">
+                                    <input class="SearchInput form-control"  name="Variety1" id="Variety1" onkeyup="FilterVarietyTrials(this, 1);" type="text" size="36" maxlength="255" value="">
                                 </div>
                                 <div class="DivColIcon">
                                     <span id="DivFilterVariety1" style="display:none;"><?php echo image_tag('loading4.gif', array('size' => '18x18')); ?></span>
-                                    <!--<span id="DivFilterVarietyOK1" style="display:none;"><?php echo image_tag('success.png', array('size' => '18x18')); ?></span>-->
                                     <span id="DivClearFilterVariety1" style="display:none;" class="Span-Action-Link" onclick="ClearFilterVariety(1);" title="Clear"><?php echo image_tag("/images/cross.png", array('size' => '18x18')); ?></span>
                                     <span id="DivCreateNewVariety" title="Create new Variety" data-toggle="modal" onclick="GetInfoRowV(1);" data-target="#ModalCreateNewVariety"><?php echo image_tag("/images/add-icon.png", array('size' => '18x18')); ?></span>
                                 </div>
@@ -147,11 +144,10 @@ if ($trlname != '') {
                             <div class="panel-body" style="padding-top: 5px; padding-bottom: 5px; background: #EEEEEE;">
                                 <div class="col-sm-1" style="padding-left: 0px; padding-right: 0px; width: 50px;">Search:</div> 
                                 <div class=" col-sm-4 control-type-text">
-                                    <input class="SearchInput form-control"  name="VariablesMeasured1" id="VariablesMeasured1" onkeyup="FilterVariablesMeasured(this, 1);" type="text" size="36" maxlength="255" value="">
+                                    <input class="SearchInput form-control"  name="VariablesMeasured1" id="VariablesMeasured1" onkeyup="FilterVariablesMeasuredTrials(this, 1);" type="text" size="36" maxlength="255" value="">
                                 </div>
                                 <div class="DivColIcon">
                                     <span id="DivFilterVariablesMeasured1" style="display:none;"><?php echo image_tag('loading4.gif', array('size' => '18x18')); ?></span>
-                                    <!--<span id="DivFilterVariablesMeasuredOK1" style="display:none;"><?php echo image_tag('success.png', array('size' => '18x18')); ?></span>-->
                                     <span id="DivClearFilterVariablesMeasured1" style="display:none;" class="Span-Action-Link" onclick="ClearFilterVariablesMeasured(1);" title="Clear"><?php echo image_tag("/images/cross.png", array('size' => '18x18')); ?></span>
                                     <span id="DivCreateNewVariablesMeasured" title="Create new variable measured" data-toggle="modal" onclick="GetInfoRowVM(1);" data-target="#ModalCreateNewVariablesMeasured"><?php echo image_tag("/images/add-icon.png", array('size' => '18x18')); ?></span>
                                 </div>
@@ -172,6 +168,7 @@ if ($trlname != '') {
                         </div>
                     </fieldset>
                 </div>
+
 
                 <div class="col-sm-12">
                     <div class="form-group control-type-text col-sm-3"style="height: 60px; padding-top: 20px;">
