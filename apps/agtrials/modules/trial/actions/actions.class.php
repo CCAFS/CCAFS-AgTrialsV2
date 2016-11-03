@@ -1311,7 +1311,7 @@ class trialActions extends autoTrialActions {
         $ArrVariablesMeasured = sfContext::getInstance()->getUser()->getAttribute('ArrVariablesMeasured');
         $ListVariablesMeasured = implode(",", $ArrVariablesMeasured[1]);
 
-        $Where = "";
+        $Where = "WHERE true ";
         foreach ($SearchWhere AS $value) {
             $Where .= $value;
         }
@@ -1330,7 +1330,7 @@ class trialActions extends autoTrialActions {
         $QUERY00 .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
         $QUERY00 .= "INNER JOIN tb_crop c ON TI.id_crop = C.id_crop ";
         if (($ListVariety != '') || ($ListVariablesMeasured != ''))
-            $QUERY00 .= "INNER JOIN tb_trialinfodata TID ON TI.id_trialinfo = TID.id_trialinfo ";
+            $QUERY00 .= "LEFT JOIN tb_trialinfodata TID ON TI.id_trialinfo = TID.id_trialinfo ";
         $QUERY00 .= "$Where ";
         $QUERY00 .= "GROUP BY T.id_trial,T.trltrialname,P.id_project,P.prjname,TL.id_triallocation,TL.trlcname,C.id_crop,C.crpname ";
         $QUERY00 .= "ORDER BY T.trltrialname,P.prjname ";
@@ -1489,7 +1489,9 @@ class trialActions extends autoTrialActions {
         $ListVariablesMeasured = implode(",", $ArrVariablesMeasured[1]);
 
         $part = sfContext::getInstance()->getRequest()->getParameterHolder()->get('part');
-        $Where = "";
+
+        $Where = "WHERE true ";
+
         foreach ($SearchWhere AS $value) {
             $Where .= $value;
         }
@@ -1509,9 +1511,11 @@ class trialActions extends autoTrialActions {
             $QUERY00 .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
             $QUERY00 .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
             $QUERY00 .= "INNER JOIN tb_crop c ON TI.id_crop = C.id_crop ";
-            $QUERY00 .= "LEFT JOIN tb_trialinfodata TID ON TI.id_trialinfo = TID.id_trialinfo ";
+            if (($ListVariety != '') || ($ListVariablesMeasured != ''))
+                $QUERY00 .= "LEFT JOIN tb_trialinfodata TID ON TI.id_trialinfo = TID.id_trialinfo ";
 
             $QUERY00 .= "$Where ";
+
             $st = $connection->execute($QUERY00);
             $QUERY00Count = $st->fetchAll(PDO::FETCH_ASSOC);
             $Count = count($QUERY00Count);
@@ -1549,7 +1553,8 @@ class trialActions extends autoTrialActions {
             CreateDirectory($TmpDownloaddataDir);
 
             $SearchWhere = sfContext::getInstance()->getUser()->getAttribute('SearchWhere');
-            $Where = "";
+            $Where = "WHERE true ";
+
             foreach ($SearchWhere AS $value) {
                 $Where .= $value;
             }
@@ -1563,7 +1568,9 @@ class trialActions extends autoTrialActions {
             $QUERY00 .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
             $QUERY00 .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
             $QUERY00 .= "INNER JOIN tb_crop c ON TI.id_crop = C.id_crop ";
-            $QUERY00 .= "LEFT JOIN tb_trialinfodata TID ON TI.id_trialinfo = TID.id_trialinfo ";
+            if (($ListVariety != '') || ($ListVariablesMeasured != ''))
+                $QUERY00 .= "LEFT JOIN tb_trialinfodata TID ON TI.id_trialinfo = TID.id_trialinfo ";
+
             $QUERY00 .= "$Where ";
             $QUERY00 .= "ORDER BY T.id_trial ASC LIMIT $MaxTrialsDownload OFFSET $offset";
             $st = $connection->execute($QUERY00);
