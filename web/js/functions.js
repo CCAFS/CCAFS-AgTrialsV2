@@ -332,7 +332,6 @@ function ValidaCrop(i) {
 
 //BUSQUEDA DE VARIEDADES
 function FilterVariety(Campo, i) {
-    //var id = Campo.id;
     var Value = Campo.value;
     var id_crop = jQuery("#id_crop" + i).val();
     var Value = Value.replace(" ", "*quot*");

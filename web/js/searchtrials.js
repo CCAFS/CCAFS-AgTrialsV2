@@ -120,6 +120,8 @@ jQuery(document).ready(function () {
         ClearFieldAutocomplete("id_contactperson", "searchcontactperson", "CheckContactperson");
     });
     jQuery("#searchcrpname").focus(function () {
+        var IdCrop = jQuery('#id_crop').val();
+        jQuery('#id_crop1').val(IdCrop);
         ClearFieldAutocomplete("id_crop", "searchcrpname", "CheckCrop");
     });
     jQuery("#searchtrltrialname").focus(function () {
@@ -134,6 +136,8 @@ jQuery(document).ready(function () {
         AssignFieldAutocomplete("id_contactperson", "searchcontactperson", "CheckContactperson");
     });
     jQuery("#searchcrpname").blur(function () {
+        var IdCrop = jQuery('#id_crop').val();
+        jQuery('#id_crop1').val(IdCrop);
         AssignFieldAutocomplete("id_crop", "searchcrpname", "CheckCrop");
     });
     jQuery("#searchtrltrialname").blur(function () {
@@ -354,11 +358,6 @@ function SubmitSearch() {
         jQuery('#ButtonResusltsSearch').show();
 
         jQuery('#TableResusltsSearch').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                'excelHtml5',
-                'csvHtml5'
-            ],
             bDestroy: true,
             language: {
                 "lengthMenu": "Display _MENU_ records per page",
