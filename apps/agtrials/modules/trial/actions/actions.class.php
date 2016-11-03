@@ -1449,6 +1449,8 @@ class trialActions extends autoTrialActions {
             $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
             $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
             $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
+            $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(25);
+            $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(25);
             $objPHPExcel->getActiveSheet()->getColumnDimension('H')->setAutoSize(true);
 
             $a = 2;
