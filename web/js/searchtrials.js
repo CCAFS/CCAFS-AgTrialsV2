@@ -121,6 +121,14 @@ jQuery(document).ready(function () {
     });
     jQuery("#searchcrpname").focus(function () {
         ClearFieldAutocomplete("id_crop", "searchcrpname", "CheckCrop");
+        var i = 1;
+        jQuery('#InfoVariety' + i).val('');
+        jQuery("#InfoVarietySelected" + i).load("/trial/DeleteVarietySelected/?i=" + i, function () {
+            jQuery("#InfoVarietySelected" + i).html("");
+        });
+        jQuery("#InfoVariablesMeasuredSelected" + i).load("/trial/DeleteVariablesMeasuredSelected/?i=" + i, function () {
+            jQuery("#InfoVariablesMeasured" + i).html("");
+        });
     });
     jQuery("#searchtrltrialname").focus(function () {
         ClearFieldAutocomplete("id_trial", "searchtrltrialname", "CheckTrialname");
