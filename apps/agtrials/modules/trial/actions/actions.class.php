@@ -1329,8 +1329,10 @@ class trialActions extends autoTrialActions {
         $QUERY00 .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
         $QUERY00 .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
         $QUERY00 .= "INNER JOIN tb_crop c ON TI.id_crop = C.id_crop ";
-        $QUERY00 .= "INNER JOIN tb_trialinfodata TID ON TI.id_trialinfo = TID.id_trialinfo ";
+        if (($ListVariety != '') || ($ListVariablesMeasured != ''))
+            $QUERY00 .= "INNER JOIN tb_trialinfodata TID ON TI.id_trialinfo = TID.id_trialinfo ";
         $QUERY00 .= "$Where ";
+        $QUERY00 .= "GROUP BY T.id_trial,T.trltrialname,P.id_project,P.prjname,TL.id_triallocation,TL.trlcname,C.id_crop,C.crpname ";
         $QUERY00 .= "ORDER BY T.trltrialname,P.prjname ";
 
         $st = $connection->execute($QUERY00);
