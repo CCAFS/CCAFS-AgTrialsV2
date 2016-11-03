@@ -1333,8 +1333,6 @@ class trialActions extends autoTrialActions {
         $QUERY00 .= "$Where ";
         $QUERY00 .= "ORDER BY T.trltrialname,P.prjname ";
 
-        DIE($QUERY00);
-
         $st = $connection->execute($QUERY00);
         $Results = $st->fetchAll();
         foreach ($Results AS $Row) {
