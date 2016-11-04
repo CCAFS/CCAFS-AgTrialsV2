@@ -1311,35 +1311,39 @@ class trialActions extends autoTrialActions {
         $ArrVariablesMeasured = sfContext::getInstance()->getUser()->getAttribute('ArrVariablesMeasured');
         $ListVariablesMeasured = implode(",", $ArrVariablesMeasured[1]);
 
-        $Where = "WHERE true ";
-        foreach ($SearchWhere AS $value) {
-            $Where .= $value;
+        if (count($SearchWhere) > 0) {
+            $Where = "WHERE true ";
+            foreach ($SearchWhere AS $value) {
+                $Where .= $value;
+            }
+
+            if ($ListVariety != '')
+                $Where .= " AND TID.id_variety IN ($ListVariety) ";
+
+            if ($ListVariablesMeasured != '')
+                $Where .= " AND TID.id_variablesmeasured IN ($ListVariablesMeasured) ";
+
+            $connection = Doctrine_Manager::getInstance()->connection();
+            $QUERY00 = "SELECT T.id_trial,T.trltrialname,P.id_project,P.prjname,TL.id_triallocation,TL.trlcname,C.id_crop,C.crpname ";
+            $QUERY00 .= "FROM tb_trial T ";
+            $QUERY00 .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
+            $QUERY00 .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
+            $QUERY00 .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
+            $QUERY00 .= "INNER JOIN tb_crop c ON TI.id_crop = C.id_crop ";
+            if (($ListVariety != '') || ($ListVariablesMeasured != ''))
+                $QUERY00 .= "LEFT JOIN tb_trialinfodata TID ON TI.id_trialinfo = TID.id_trialinfo ";
+            $QUERY00 .= "$Where ";
+            $QUERY00 .= "GROUP BY T.id_trial,T.trltrialname,P.id_project,P.prjname,TL.id_triallocation,TL.trlcname,C.id_crop,C.crpname ";
+            $QUERY00 .= "ORDER BY T.trltrialname,P.prjname ";
+
+            $st = $connection->execute($QUERY00);
+            $Results = $st->fetchAll();
+            foreach ($Results AS $Row) {
+                $ResultsJSON['data'][] = array($Row['trltrialname'], $Row['prjname'], $Row['trlcname'], $Row['crpname'], $Row['id_trial']);
+            }
+            die(json_encode($ResultsJSON));
         }
-
-        if ($ListVariety != '')
-            $Where .= " AND TID.id_variety IN ($ListVariety) ";
-
-        if ($ListVariablesMeasured != '')
-            $Where .= " AND TID.id_variablesmeasured IN ($ListVariablesMeasured) ";
-
-        $connection = Doctrine_Manager::getInstance()->connection();
-        $QUERY00 = "SELECT T.id_trial,T.trltrialname,P.id_project,P.prjname,TL.id_triallocation,TL.trlcname,C.id_crop,C.crpname ";
-        $QUERY00 .= "FROM tb_trial T ";
-        $QUERY00 .= "INNER JOIN tb_project P ON T.id_project = P.id_project ";
-        $QUERY00 .= "INNER JOIN tb_trialinfo TI ON T.id_trial = TI.id_trial ";
-        $QUERY00 .= "INNER JOIN tb_triallocation TL ON T.id_triallocation = TL.id_triallocation ";
-        $QUERY00 .= "INNER JOIN tb_crop c ON TI.id_crop = C.id_crop ";
-        if (($ListVariety != '') || ($ListVariablesMeasured != ''))
-            $QUERY00 .= "LEFT JOIN tb_trialinfodata TID ON TI.id_trialinfo = TID.id_trialinfo ";
-        $QUERY00 .= "$Where ";
-        $QUERY00 .= "GROUP BY T.id_trial,T.trltrialname,P.id_project,P.prjname,TL.id_triallocation,TL.trlcname,C.id_crop,C.crpname ";
-        $QUERY00 .= "ORDER BY T.trltrialname,P.prjname ";
-
-        $st = $connection->execute($QUERY00);
-        $Results = $st->fetchAll();
-        foreach ($Results AS $Row) {
-            $ResultsJSON['data'][] = array($Row['trltrialname'], $Row['prjname'], $Row['trlcname'], $Row['crpname'], $Row['id_trial']);
-        }
+        $ResultsJSON = array();
         die(json_encode($ResultsJSON));
     }
 

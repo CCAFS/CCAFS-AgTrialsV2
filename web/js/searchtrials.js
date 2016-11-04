@@ -68,6 +68,15 @@ jQuery(document).ready(function () {
             success: function () {
             }
         });
+
+        var i = 1;
+        jQuery('#InfoVariety' + i).val('');
+        jQuery("#InfoVarietySelected" + i).load("/trial/DeleteVarietySelected/?i=" + i, function () {
+            jQuery("#InfoVarietySelected" + i).html("");
+        });
+        jQuery("#InfoVariablesMeasuredSelected" + i).load("/trial/DeleteVariablesMeasuredSelected/?i=" + i, function () {
+            jQuery("#InfoVariablesMeasured" + i).html("");
+        });
     });
 
     jQuery("#ButtonList").click(function () {
@@ -293,27 +302,32 @@ function ClearFieldAutocomplete(id, name, check) {
 
 
 function ValidSearchterms() {
+    var Return = false;
     var searchterms = jQuery('#searchterms').val();
     var searchtermsoptions = jQuery('#searchtermsoptions').val();
-    searchterms = searchterms.replace('+', '%2B');
-    if (jQuery('#searchterms').val() !== '') {
-        jQuery('#CheckSearchterms').html("<img width='18' height='18' src='/images/success.png'>");
-    } else {
-        jQuery('#searchterms').val('');
-        jQuery('#CheckSearchterms').html("");
-    }
-    jQuery.ajax({
-        type: "GET",
-        url: "/trial/ValidSearchterms/",
-        data: "searchterms=" + searchterms + "&searchtermsoptions=" + searchtermsoptions,
-        success: function (data) {
-            if (data) {
-                jQuery('#searchterms').val('');
-                jQuery('#CheckSearchterms').html("");
-                alerts.show({css: 'error', title: 'Search Terms', message: 'Not found information, for terms written.!'});
-            }
+    if (searchterms !== '') {
+        searchterms = searchterms.replace('+', '%2B');
+        if (jQuery('#searchterms').val() !== '') {
+            jQuery('#CheckSearchterms').html("<img width='18' height='18' src='/images/success.png'>");
+        } else {
+            jQuery('#searchterms').val('');
+            jQuery('#CheckSearchterms').html("");
         }
-    });
+        jQuery.ajax({
+            type: "GET",
+            url: "/trial/ValidSearchterms/",
+            data: "searchterms=" + searchterms + "&searchtermsoptions=" + searchtermsoptions,
+            success: function (data) {
+                if (data) {
+                    jQuery('#searchterms').val('');
+                    jQuery('#CheckSearchterms').html("");
+                    alerts.show({css: 'error', title: 'Search Terms', message: 'Not found information, for terms written.!'});
+                    Return = true;
+                }
+            }
+        });
+    }
+    return Return;
 }
 
 function SubmitSearch() {
@@ -334,6 +348,8 @@ function SubmitSearch() {
     var Ico = "<img src='/images/bullet-black-icon.png'> ";
     var BanderaFaltantes = false;
     var MensajeFaltantes = "";
+
+
     if ((searchterms === '') && (id_project === '') && (id_contactperson === '') && (id_crop === '') && (id_trial === '') && (searchtrnfplantingsowingfrom === '') && (searchtrnfplantingsowingto === '') && (searchtrnfharvestfrom === '') && (searchtrnfharvestto === '') && (searchcreatedatfrom === '') && (searchcreatedatto === '')) {
         BanderaFaltantes = true;
         MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + " Select a search criterion!<br>";
@@ -366,7 +382,8 @@ function SubmitSearch() {
             language: {
                 "lengthMenu": "Display _MENU_ records per page",
                 "info": "Showing page _PAGE_ of _PAGES_",
-                "infoEmpty": "",
+                "loadingRecords": "",
+                "infoEmpty": "Records Not Found",
                 "infoFiltered": "(filtered from _MAX_ total records)"
             },
             ajax: {
