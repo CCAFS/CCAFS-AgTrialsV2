@@ -25,7 +25,6 @@ jQuery(document).ready(function () {
     jQuery("#SubmitSearch").click(function () {
         SubmitSearch();
     });
-
     jQuery("#ButtonClear").click(function () {
         jQuery('#searchterms').val('');
         jQuery('#CheckSearchterms').html("");
@@ -41,7 +40,6 @@ jQuery(document).ready(function () {
         jQuery('#id_trial').val('');
         jQuery('#searchtrltrialname').val('');
         jQuery('#CheckTrialname').html("");
-
         jQuery('#searchtrnfplantingsowingfrom').val('');
         jQuery('#CheckSowingFrom').html("");
         jQuery('#searchtrnfplantingsowingto').val('');
@@ -54,13 +52,10 @@ jQuery(document).ready(function () {
         jQuery('#CheckCreatedatFrom').html("");
         jQuery('#searchcreatedatto').val('');
         jQuery('#CheckCreatedatTo').html("");
-
         jQuery('#ButtonResusltsSearch').hide();
         jQuery('#DivTableResusltsSearch').hide();
         jQuery('#DivTableResusltsSearchMaps').hide();
         jQuery("#ResusltsSearchMaps").attr('src', "");
-
-
         jQuery.ajax({
             type: "GET",
             url: "/trial/AssingWhere/",
@@ -68,7 +63,6 @@ jQuery(document).ready(function () {
             success: function () {
             }
         });
-
         var i = 1;
         jQuery('#InfoVariety' + i).val('');
         jQuery("#InfoVarietySelected" + i).load("/trial/DeleteVarietySelected/?i=" + i, function () {
@@ -78,7 +72,6 @@ jQuery(document).ready(function () {
             jQuery("#InfoVariablesMeasured" + i).html("");
         });
     });
-
     jQuery("#ButtonList").click(function () {
         jQuery('#DivTableResusltsSearch').show();
         jQuery('#DivTableResusltsSearchMaps').hide();
@@ -88,10 +81,8 @@ jQuery(document).ready(function () {
         jQuery('#DivTableResusltsSearchMaps').show();
         jQuery("#ResusltsSearchMaps").attr('src', "/trial/mapsearchtrials/");
     });
-
     jQuery("#ButtonDownloaddata").click(function () {
         var License = '<div><a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license"><img src="http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png" style="border-width:0; width: 88px; height: 31px;" alt="Creative Commons License"></a><br>This <span rel="dct:type" href="http://purl.org/dc/dcmitype/Text" xmlns:dct="http://purl.org/dc/terms/">work</span> is licensed under a <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.</div>';
-
         License += "<br><br><b>Do you agree with the license?</b>";
         $.confirm({
             icon: "glyphicon glyphicon-subtitles",
@@ -108,20 +99,16 @@ jQuery(document).ready(function () {
             cancel: function () {}
         });
     });
-
     jQuery("#ShowHideDivAdvancedSearch").on('click', function () {
         jQuery("#DivAdvancedSearch").toggle();
     });
-
     jQuery("#searchterms").blur(function () {
         ValidSearchterms();
     });
-
     jQuery("#searchtermsoptions").change(function () {
         if (jQuery('#searchterms').val() !== '')
             ValidSearchterms();
     });
-
     jQuery("#searchprjname").focus(function () {
         ClearFieldAutocomplete("id_project", "searchprjname", "CheckProject");
     });
@@ -142,8 +129,6 @@ jQuery(document).ready(function () {
     jQuery("#searchtrltrialname").focus(function () {
         ClearFieldAutocomplete("id_trial", "searchtrltrialname", "CheckTrialname");
     });
-
-
     jQuery("#searchprjname").blur(function () {
         AssignFieldAutocomplete("id_project", "searchprjname", "CheckProject");
     });
@@ -156,7 +141,6 @@ jQuery(document).ready(function () {
     jQuery("#searchtrltrialname").blur(function () {
         AssignFieldAutocomplete("id_trial", "searchtrltrialname", "CheckTrialname");
     });
-
     jQuery("#searchtrnfplantingsowingfrom").blur(function () {
         if (jQuery('#searchtrnfplantingsowingfrom').val() !== '') {
             jQuery('#CheckSowingFrom').html("<img width='18' height='18' src='/images/success.png'>");
@@ -172,7 +156,6 @@ jQuery(document).ready(function () {
             }
         });
     });
-
     jQuery("#searchtrnfplantingsowingto").blur(function () {
         if (jQuery('#searchtrnfplantingsowingto').val() !== '') {
             jQuery('#CheckSowingTo').html("<img width='18' height='18' src='/images/success.png'>");
@@ -188,7 +171,6 @@ jQuery(document).ready(function () {
             }
         });
     });
-
     jQuery("#searchtrnfharvestfrom").blur(function () {
         if (jQuery('#searchtrnfharvestfrom').val() !== '') {
             jQuery('#CheckHarvestFrom').html("<img width='18' height='18' src='/images/success.png'>");
@@ -204,7 +186,6 @@ jQuery(document).ready(function () {
             }
         });
     });
-
     jQuery("#searchtrnfharvestto").blur(function () {
         if (jQuery('#searchtrnfharvestto').val() !== '') {
             jQuery('#CheckHarvestTo').html("<img width='18' height='18' src='/images/success.png'>");
@@ -220,7 +201,6 @@ jQuery(document).ready(function () {
             }
         });
     });
-
     jQuery("#searchcreatedatfrom").blur(function () {
         if (jQuery('#searchcreatedatfrom').val() !== '') {
             jQuery('#CheckCreatedatFrom').html("<img width='18' height='18' src='/images/success.png'>");
@@ -236,7 +216,6 @@ jQuery(document).ready(function () {
             }
         });
     });
-
     jQuery("#searchcreatedatto").blur(function () {
         if (jQuery('#searchcreatedatto').val() !== '') {
             jQuery('#CheckCreatedatTo').html("<img width='18' height='18' src='/images/success.png'>");
@@ -253,7 +232,6 @@ jQuery(document).ready(function () {
         });
     });
 });
-
 function LoadStart() {
     if (jQuery('#id_project').val() !== '') {
         AssignFieldAutocomplete("id_project", "searchprjname", "CheckProject");
@@ -336,7 +314,6 @@ function SubmitSearch() {
     var id_contactperson = jQuery('#id_contactperson').val();
     var id_crop = jQuery('#id_crop').val();
     var id_trial = jQuery('#id_trial').val();
-
     //CAMPOS BUSQUEDA AVANZADA
     var searchtrnfplantingsowingfrom = jQuery('#searchtrnfplantingsowingfrom').val();
     var searchtrnfplantingsowingto = jQuery('#searchtrnfplantingsowingto').val();
@@ -344,12 +321,9 @@ function SubmitSearch() {
     var searchtrnfharvestto = jQuery('#searchtrnfharvestto').val();
     var searchcreatedatfrom = jQuery('#searchcreatedatfrom').val();
     var searchcreatedatto = jQuery('#searchcreatedatto').val();
-
     var Ico = "<img src='/images/bullet-black-icon.png'> ";
     var BanderaFaltantes = false;
     var MensajeFaltantes = "";
-
-
     if ((searchterms === '') && (id_project === '') && (id_contactperson === '') && (id_crop === '') && (id_trial === '') && (searchtrnfplantingsowingfrom === '') && (searchtrnfplantingsowingto === '') && (searchtrnfharvestfrom === '') && (searchtrnfharvestto === '') && (searchcreatedatfrom === '') && (searchcreatedatto === '')) {
         BanderaFaltantes = true;
         MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + " Select a search criterion!<br>";
@@ -370,21 +344,20 @@ function SubmitSearch() {
         MensajeFaltantes += "&ensp;&ensp;&ensp; " + Ico + " Incomplete information to Created at!<br>";
     }
 
-    //VERIFICACION MENSAJE DE ALERTA
+//VERIFICACION MENSAJE DE ALERTA
     if (BanderaFaltantes) {
         alerts.show({css: 'error', title: 'Importat!', message: MensajeFaltantes});
     } else {
         jQuery("#SubmitSearch").html("<span class='glyphicon glyphicon-search' aria-hidden='true'></span>&ensp;Search&ensp; <img width='18' height='18' src='/images/loading4.gif'>");
         jQuery('#DivTableResusltsSearch').show();
         jQuery('#ButtonResusltsSearch').show();
-
         jQuery('#TableResusltsSearch').DataTable({
             bDestroy: true,
             language: {
                 "lengthMenu": "Display _MENU_ records per page",
                 "info": "Showing page _PAGE_ of _PAGES_",
-                "loadingRecords": "",
-                "infoEmpty": "Records Not Found",
+                "loadingRecords": "Loading...",
+                "infoEmpty": "",
                 "infoFiltered": "(filtered from _MAX_ total records)"
             },
             ajax: {
@@ -395,11 +368,12 @@ function SubmitSearch() {
             fnRowCallback: function (nRow, aData) {
                 jQuery('td:eq(0)', nRow).html('<a target="_blank" href="/trial/' + aData[4] + '">' + aData[0] + '</a>');
                 return nRow;
+            },
+            initComplete: function () {
                 jQuery("#SubmitSearch").html("<span class='glyphicon glyphicon-search' aria-hidden='true'></span>&ensp;Search&ensp; ");
             }
+
         });
-
-
     }
 }
 
@@ -420,7 +394,6 @@ function Downloaddatapart(num, cursormax) {
             var Listdownloaded = jQuery('#Listdownloaded').val();
             Listdownloaded = Listdownloaded + "," + num;
             var ArrListdownloaded = Listdownloaded.split(',');
-
             window.location.href = "/trial/downloadingdata/tmp/" + data;
             jQuery('#Downloading' + num).html("");
             jQuery("#DivDownloaddatapart" + num).css("background-color", "#FFFFFF");
@@ -464,7 +437,7 @@ function FilterVarietyTrials(Campo, i) {
 
 //BUSQUEDA DE Variables Measured
 function FilterVariablesMeasuredTrials(Campo, i) {
-    //var id = Campo.id;
+//var id = Campo.id;
     var Value = Campo.value;
     var id_crop = jQuery("#id_crop").val();
     var Value = Value.replace(" ", "*quot*");
