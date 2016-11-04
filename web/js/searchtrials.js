@@ -395,9 +395,10 @@ function SubmitSearch() {
             fnRowCallback: function (nRow, aData) {
                 jQuery('td:eq(0)', nRow).html('<a target="_blank" href="/trial/' + aData[4] + '">' + aData[0] + '</a>');
                 return nRow;
+                jQuery("#SubmitSearch").html("<span class='glyphicon glyphicon-search' aria-hidden='true'></span>&ensp;Search&ensp; ");
             }
         });
-        jQuery("#SubmitSearch").html("<span class='glyphicon glyphicon-search' aria-hidden='true'></span>&ensp;Search&ensp; ");
+
 
     }
 }
