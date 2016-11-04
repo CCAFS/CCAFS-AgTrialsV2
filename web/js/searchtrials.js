@@ -375,7 +375,6 @@ function SubmitSearch() {
         alerts.show({css: 'error', title: 'Importat!', message: MensajeFaltantes});
     } else {
         jQuery("#SubmitSearch").html("<span class='glyphicon glyphicon-search' aria-hidden='true'></span>&ensp;Search&ensp; <img width='18' height='18' src='/images/loading4.gif'>");
-
         jQuery('#DivTableResusltsSearch').show();
         jQuery('#ButtonResusltsSearch').show();
 
@@ -398,7 +397,7 @@ function SubmitSearch() {
                 return nRow;
             }
         });
-        jQuery("#SubmitSearch").html("<span class='glyphicon glyphicon-search' aria-hidden='true'></span>&ensp;Search&ensp; ");
+        //jQuery("#SubmitSearch").html("<span class='glyphicon glyphicon-search' aria-hidden='true'></span>&ensp;Search&ensp; ");
 
     }
 }
