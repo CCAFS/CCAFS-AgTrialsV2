@@ -1521,6 +1521,7 @@ class trialActions extends autoTrialActions {
             $Count = count($QUERY00Count);
             $Cursormax = ceil(($Count / $MaxTrialsDownload));
             $this->Cursormax = $Cursormax;
+            $this->Count = $Count;
         } else {
             if (($part > 1)) {
                 $offset = ((($part - 1) * $MaxTrialsDownload) + 1);

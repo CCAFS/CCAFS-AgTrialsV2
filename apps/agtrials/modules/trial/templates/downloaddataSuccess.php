@@ -23,12 +23,21 @@
                 </div>
             </header>
             <div class="container">
-                <div class="alert alert-info alert-dismissible fade in" role="alert" style="margin-top: 10px;"><span style="font-size: 1.7em;color: #8a8a8a;" class="glyphicon glyphicon-info-sign pull-left">&ensp;</span><p>Each <b>Download data part</b> contains 100 folders maximum with information from each trial.</p><div class="clearfix"></div></div>
+                <div class="alert alert-info alert-dismissible fade in" role="alert" style="margin-top: 10px;"><span style="font-size: 1.7em;color: #8a8a8a;" class="glyphicon glyphicon-info-sign pull-left">&ensp;</span>Each link contains a maximum of 100 trials with data.</p><div class="clearfix"></div></div>
                 <input type="hidden" name="Listdownloaded" id="Listdownloaded" value=""/>
                 <div class="row" style="padding-top: 15px;">
-                    <?php for ($a = 1; $a <= $Cursormax; $a++) { ?>
+                    <?php
+                    $Tmp = 100;
+                    for ($a = 1; $a <= $Cursormax; $a++) {
+                        $Ini = $Tmp - 99;
+                        $Fin = $Tmp;
+                        if ($a == $Cursormax)
+                            $Fin = $Count;
+                        $Downloaddata = "$Ini-$Fin";
+                        $Tmp = $Tmp + 100;
+                        ?>
                         <div id="DivDownloaddatapart<?php echo $a; ?>" class=" col-sm-4 control-type-text">
-                            <span id="SpanDownloaddatapart<?php echo $a; ?>" class="Span-Action-Link" title="Download data part <?php echo $a; ?>" onclick="Downloaddatapart(<?php echo $a; ?>,<?php echo $Cursormax; ?>);">Download data part <?php echo $a; ?></span>
+                            <span id="SpanDownloaddatapart<?php echo $a; ?>" class="Span-Action-Link" title="Download data (<?php echo $Downloaddata; ?> trials)" onclick="Downloaddatapart(<?php echo $a; ?>,<?php echo $Cursormax; ?>);">Download data (<?php echo $Downloaddata; ?> trials)</span>
                             <div style="font-size: 12px; font-weight: bold;" id="Downloading<?php echo $a; ?>"></div>
                         </div>
                     <?php } ?>

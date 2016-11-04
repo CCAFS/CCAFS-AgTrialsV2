@@ -390,7 +390,6 @@ function Downloaddatapart(num, cursormax) {
     }
 
     jQuery('#Downloading' + num).html("Downloading <img width='14' height='14' src='/images/loading4.gif'>");
-    jQuery('#SpanDownloaddatapart' + num).html("Download data part " + num);
     jQuery("#DivDownloaddatapart" + num).css("background-color", "#FCF8E3");
     jQuery.ajax({
         type: "GET",
@@ -404,7 +403,7 @@ function Downloaddatapart(num, cursormax) {
             window.location.href = "/trial/downloadingdata/tmp/" + data;
             jQuery('#Downloading' + num).html("");
             jQuery("#DivDownloaddatapart" + num).css("background-color", "#FFFFFF");
-            jQuery('#SpanDownloaddatapart' + num).html("Download data part " + num + " <img src='/images/Ok-icon.png' width='13' height='13'>");
+            jQuery('#SpanDownloaddatapart' + num).append(" <img src='/images/Ok-icon.png' width='13' height='13'>");
             for (var i = 1; i <= cursormax; i++) {
                 if (jQuery.inArray(i.toString(), ArrListdownloaded) === -1) {
                     jQuery('#SpanDownloaddatapart' + i).css('pointer-events', 'auto');
