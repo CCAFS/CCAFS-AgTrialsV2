@@ -397,7 +397,7 @@ function SubmitSearch() {
                 return nRow;
             }
         });
-        //jQuery("#SubmitSearch").html("<span class='glyphicon glyphicon-search' aria-hidden='true'></span>&ensp;Search&ensp; ");
+        jQuery("#SubmitSearch").html("<span class='glyphicon glyphicon-search' aria-hidden='true'></span>&ensp;Search&ensp; ");
 
     }
 }
