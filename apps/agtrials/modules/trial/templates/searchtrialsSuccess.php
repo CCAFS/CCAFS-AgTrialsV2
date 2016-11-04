@@ -243,7 +243,7 @@ if ($trlname != '') {
             <div class="clearfix"></div>
             <fieldset  style="margin-top: 10px; margin-left: 13px;">
                 <div id="buttons-block" class="form-group control-type-text" style="margin-left: 0px;">
-                    <button class="btn btn-action" type="button" title=" Search " id="SubmitSearch" neme="SubmitSearch"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&ensp;Search&ensp;</button>
+                    <button class="btn btn-action" type="button" title=" Search " id="SubmitSearch" neme="SubmitSearch"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&ensp;Search&ensp; </button>
                     <button class="btn btn-action" type="button" title=" Clear " id="ButtonClear" neme="ButtonClear"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span>&ensp;Clear&ensp;</button>
                     <span id="ButtonResusltsSearch" style="display:none;">
                         &ensp;&ensp;&ensp;&ensp;
