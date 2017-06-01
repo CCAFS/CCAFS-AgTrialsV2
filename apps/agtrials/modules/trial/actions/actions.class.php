@@ -1425,22 +1425,22 @@ class trialActions extends autoTrialActions {
         if ($searchterms != '') {
             $Arr_Searchterms = explode("+", $searchterms);
             $WhereSearchterms = "";
+            $WhereSearchterms1 = "";
             $WhereSearchterms2 = "";
             $WhereSearchterms3 = "";
             foreach ($Arr_Searchterms AS $value) {
                 $value = trim($value);
-                $WhereSearchterms .= "P.prjname  ILIKE '%$value%' $searchtermsoptions ";
+                $WhereSearchterms1 .= "P.prjname  ILIKE '%$value%' $searchtermsoptions ";
                 $WhereSearchterms2 .= "T.trltrialname  ILIKE '%$value%' $searchtermsoptions ";
                 $WhereSearchterms3 .= "C.crpname  ILIKE '%$value%' $searchtermsoptions ";
             }
-            $WhereSearchterms = substr($WhereSearchterms, 0, strlen($WhereSearchterms) - 4);
-            $WhereSearchterms = "AND ($WhereSearchterms)";
+            $WhereSearchterms1 = substr($WhereSearchterms1, 0, strlen($WhereSearchterms) - 4);
 
             $WhereSearchterms2 = substr($WhereSearchterms2, 0, strlen($WhereSearchterms2) - 4);
-            $WhereSearchterms2 = "OR ($WhereSearchterms2)";
 
             $WhereSearchterms3 = substr($WhereSearchterms3, 0, strlen($WhereSearchterms3) - 4);
-            $WhereSearchterms3 = "OR ($WhereSearchterms3)";
+            
+            $WhereSearchterms = "AND (($WhereSearchterms1) OR ($WhereSearchterms2) OR ($WhereSearchterms3))";
 
             $QUERY = "SELECT P.id_project AS value ";
             $QUERY .= "FROM tb_project P ";
@@ -1449,11 +1449,10 @@ class trialActions extends autoTrialActions {
             $QUERY .= "INNER JOIN tb_crop C ON TI.id_crop = C.id_crop ";
             $QUERY .= "WHERE TRUE ";
             $QUERY .= "$WhereSearchterms ";
-            $QUERY .= "$WhereSearchterms2 ";
-            $QUERY .= "$WhereSearchterms3 ";
             $QUERY .= "$Where ";
             $QUERY .= "GROUP BY P.id_project,P.prjname ";
             $QUERY .= "ORDER BY P.prjname ";
+            //DIE("os $QUERY");
             $st = $connection->execute($QUERY);
             $Projects = $st->fetchAll(PDO::FETCH_ASSOC);
             if (count($Projects) > 0) {
