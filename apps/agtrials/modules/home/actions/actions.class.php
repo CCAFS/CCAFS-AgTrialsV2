@@ -252,8 +252,8 @@ class homeActions extends sfActions {
 
                 $SendPHPMailer = SendPHPMailer();
                 $SendPHPMailer->AddAddress("herlin25@gmail.com");
-                //$SendPHPMailer->AddAddress("g.hyman@cgiar.org");
-                //$SendPHPMailer->AddAddress("andrewfarrow72@gmail.com");
+                $SendPHPMailer->AddAddress("g.hyman@cgiar.org");
+                $SendPHPMailer->AddAddress("andrewfarrow72@gmail.com");
                 $SendPHPMailer->AddAddress("h.r.espinosa@cgiar.org");
                 $SendPHPMailer->Subject = $asunto;
                 $SendPHPMailer->Body = $cuerpo;
